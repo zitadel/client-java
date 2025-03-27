@@ -1,0 +1,39 @@
+name: Release
+
+on:
+    push:
+        branches:
+            - main
+
+permissions:
+    contents: write
+
+defaults:
+    run:
+        working-directory: ./
+
+jobs:
+    publish-package:
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v4
+
+            -   name: Setup Java
+                uses: actions/setup-java@v4
+                with:
+                    java-version: '17'
+                    distribution: 'corretto'
+                    cache: maven
+
+            -   name: Install Semantic Release
+                run: |
+                    npm install --global semantic-release $(jq -r '.plugins[] | if type == "string" then . else .[0] end' .releaserc.json)
+
+            -   name: Run semantic-release
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                    MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+                    MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+                run: npx semantic-release
