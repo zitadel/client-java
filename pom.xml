@@ -6,12 +6,15 @@
 	<packaging>jar</packaging>
 	<name>client</name>
 	<version>0.0.1</version>
-	<url>https://github.com/openapitools/openapi-generator</url>
-	<description>Official Zitadel SDK for Java. Authenticate and access Zitadel's authentication and management APIs in Java.</description>
+	<url>https://github.com/zitadel/client-java</url>
+	<description>Official Zitadel SDK for Java. Authenticate and access Zitadel's authentication and management APIs in
+		Java.
+	</description>
 	<scm>
-		<connection>scm:git:git@github.com:openapitools/openapi-generator.git</connection>
-		<developerConnection>scm:git:git@github.com:openapitools/openapi-generator.git</developerConnection>
-		<url>https://github.com/openapitools/openapi-generator</url>
+		<connection>scm:git:git@github.com:zitadel/client-java.git</connection>
+		<developerConnection>scm:git:git@github.com:zitadel/client-java.git</developerConnection>
+		<tag>main</tag>
+		<url>https://github.com/zitadel/client-java</url>
 	</scm>
 	<licenses>
 		<license>
@@ -20,14 +23,28 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+	<organization>
+		<name>Zitadel</name>
+		<url>https://zitadel.com</url>
+	</organization>
 	<developers>
 		<developer>
-			<name>Zitadel</name>
-			<email>hi@zitadel.com</email>
-			<organization>zitadel.com</organization>
+			<id>mridang</id>
+			<name>Mridang Agarwalla</name>
+			<email>mridang@zitadel.com</email>
+			<url>https://www.github.com/mridang</url>
+			<organization>Zitadel</organization>
 			<organizationUrl>https://zitadel.com/</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>America/New_York</timezone>
 		</developer>
 	</developers>
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/zitadel/client-java/issues</url>
+	</issueManagement>
 	<build>
 		<plugins>
 			<plugin>
