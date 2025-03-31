@@ -4,8 +4,9 @@
 	<groupId>com.zitadel</groupId>
 	<artifactId>client</artifactId>
 	<packaging>jar</packaging>
-	<name>client</name>
+	<name>Official Zitadel SDK for Java</name>
 	<version>0.0.1</version>
+	<inceptionYear>2025</inceptionYear>
 	<url>https://github.com/zitadel/client-java</url>
 	<description>Official Zitadel SDK for Java. Authenticate and access Zitadel's authentication and management APIs in
 		Java.
