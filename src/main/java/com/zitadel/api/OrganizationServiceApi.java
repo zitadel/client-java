@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -52,8 +52,8 @@ public class OrganizationServiceApi extends BaseApi {
    * @return V2AddOrganizationResponse
    * @throws ApiException if fails to make API call
    */
-  public V2AddOrganizationResponse organizationServiceAddOrganization(V2AddOrganizationRequest body) throws ApiException {
-    return this.organizationServiceAddOrganization(body, Collections.emptyMap());
+  public V2AddOrganizationResponse addOrganization(V2AddOrganizationRequest body) throws ApiException {
+    return this.addOrganization(body, Collections.emptyMap());
   }
 
 
@@ -65,12 +65,12 @@ public class OrganizationServiceApi extends BaseApi {
    * @return V2AddOrganizationResponse
    * @throws ApiException if fails to make API call
    */
-  public V2AddOrganizationResponse organizationServiceAddOrganization(V2AddOrganizationRequest body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2AddOrganizationResponse addOrganization(V2AddOrganizationRequest body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling organizationServiceAddOrganization");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling addOrganization");
     }
     
     // create path and map variables
@@ -126,8 +126,8 @@ public class OrganizationServiceApi extends BaseApi {
    * @return V2ListOrganizationsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListOrganizationsResponse organizationServiceListOrganizations(V2ListOrganizationsRequest body) throws ApiException {
-    return this.organizationServiceListOrganizations(body, Collections.emptyMap());
+  public V2ListOrganizationsResponse listOrganizations(V2ListOrganizationsRequest body) throws ApiException {
+    return this.listOrganizations(body, Collections.emptyMap());
   }
 
 
@@ -139,12 +139,12 @@ public class OrganizationServiceApi extends BaseApi {
    * @return V2ListOrganizationsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListOrganizationsResponse organizationServiceListOrganizations(V2ListOrganizationsRequest body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2ListOrganizationsResponse listOrganizations(V2ListOrganizationsRequest body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling organizationServiceListOrganizations");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling listOrganizations");
     }
     
     // create path and map variables

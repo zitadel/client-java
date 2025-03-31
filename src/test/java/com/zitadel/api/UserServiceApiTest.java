@@ -1,5 +1,5 @@
 /*
- * merged spec
+ * OpenAI API
  * merged spec
  *
  * The version of the OpenAPI document: 1.0.0
@@ -112,9 +112,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceAddHumanUserTest() throws ApiException {
+    public void addHumanUserTest() throws ApiException {
         V2AddHumanUserRequest body = null;
-        V2AddHumanUserResponse response = api.userServiceAddHumanUser(body);
+        V2AddHumanUserResponse response = api.addHumanUser(body);
 
         // TODO: test validations
     }
@@ -127,10 +127,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceAddIDPLinkTest() throws ApiException {
+    public void addIDPLinkTest() throws ApiException {
         String userId = null;
         UserServiceAddIDPLinkBody body = null;
-        V2AddIDPLinkResponse response = api.userServiceAddIDPLink(userId, body);
+        V2AddIDPLinkResponse response = api.addIDPLink(userId, body);
 
         // TODO: test validations
     }
@@ -143,9 +143,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceAddOTPEmailTest() throws ApiException {
+    public void addOTPEmailTest() throws ApiException {
         String userId = null;
-        V2AddOTPEmailResponse response = api.userServiceAddOTPEmail(userId);
+        V2AddOTPEmailResponse response = api.addOTPEmail(userId);
 
         // TODO: test validations
     }
@@ -158,9 +158,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceAddOTPSMSTest() throws ApiException {
+    public void addOTPSMSTest() throws ApiException {
         String userId = null;
-        V2AddOTPSMSResponse response = api.userServiceAddOTPSMS(userId);
+        V2AddOTPSMSResponse response = api.addOTPSMS(userId);
 
         // TODO: test validations
     }
@@ -173,10 +173,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceCreateInviteCodeTest() throws ApiException {
+    public void createInviteCodeTest() throws ApiException {
         String userId = null;
         UserServiceCreateInviteCodeBody body = null;
-        V2CreateInviteCodeResponse response = api.userServiceCreateInviteCode(userId, body);
+        V2CreateInviteCodeResponse response = api.createInviteCode(userId, body);
 
         // TODO: test validations
     }
@@ -189,10 +189,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceCreatePasskeyRegistrationLinkTest() throws ApiException {
+    public void createPasskeyRegistrationLinkTest() throws ApiException {
         String userId = null;
         UserServiceCreatePasskeyRegistrationLinkBody body = null;
-        V2CreatePasskeyRegistrationLinkResponse response = api.userServiceCreatePasskeyRegistrationLink(userId, body);
+        V2CreatePasskeyRegistrationLinkResponse response = api.createPasskeyRegistrationLink(userId, body);
 
         // TODO: test validations
     }
@@ -205,9 +205,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceDeactivateUserTest() throws ApiException {
+    public void deactivateUserTest() throws ApiException {
         String userId = null;
-        V2DeactivateUserResponse response = api.userServiceDeactivateUser(userId);
+        V2DeactivateUserResponse response = api.deactivateUser(userId);
 
         // TODO: test validations
     }
@@ -220,9 +220,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceDeleteUserTest() throws ApiException {
+    public void deleteUserTest() throws ApiException {
         String userId = null;
-        V2DeleteUserResponse response = api.userServiceDeleteUser(userId);
+        V2DeleteUserResponse response = api.deleteUser(userId);
 
         // TODO: test validations
     }
@@ -235,9 +235,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceGetUserByIDTest() throws ApiException {
+    public void getUserByIDTest() throws ApiException {
         String userId = null;
-        V2GetUserByIDResponse response = api.userServiceGetUserByID(userId);
+        V2GetUserByIDResponse response = api.getUserByID(userId);
 
         // TODO: test validations
     }
@@ -250,9 +250,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceHumanMFAInitSkippedTest() throws ApiException {
+    public void humanMFAInitSkippedTest() throws ApiException {
         String userId = null;
-        V2HumanMFAInitSkippedResponse response = api.userServiceHumanMFAInitSkipped(userId);
+        V2HumanMFAInitSkippedResponse response = api.humanMFAInitSkipped(userId);
 
         // TODO: test validations
     }
@@ -261,11 +261,11 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceListAuthenticationFactorsTest() throws ApiException {
+    public void listAuthenticationFactorsTest() throws ApiException {
         String userId = null;
         List<String> authFactors = null;
         List<String> states = null;
-        V2ListAuthenticationFactorsResponse response = api.userServiceListAuthenticationFactors(userId, authFactors, states);
+        V2ListAuthenticationFactorsResponse response = api.listAuthenticationFactors(userId, authFactors, states);
 
         // TODO: test validations
     }
@@ -278,11 +278,11 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceListAuthenticationMethodTypesTest() throws ApiException {
+    public void listAuthenticationMethodTypesTest() throws ApiException {
         String userId = null;
         Boolean domainQueryIncludeWithoutDomain = null;
         String domainQueryDomain = null;
-        V2ListAuthenticationMethodTypesResponse response = api.userServiceListAuthenticationMethodTypes(userId, domainQueryIncludeWithoutDomain, domainQueryDomain);
+        V2ListAuthenticationMethodTypesResponse response = api.listAuthenticationMethodTypes(userId, domainQueryIncludeWithoutDomain, domainQueryDomain);
 
         // TODO: test validations
     }
@@ -295,10 +295,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceListIDPLinksTest() throws ApiException {
+    public void listIDPLinksTest() throws ApiException {
         String userId = null;
         UserServiceListIDPLinksBody body = null;
-        V2ListIDPLinksResponse response = api.userServiceListIDPLinks(userId, body);
+        V2ListIDPLinksResponse response = api.listIDPLinks(userId, body);
 
         // TODO: test validations
     }
@@ -311,9 +311,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceListPasskeysTest() throws ApiException {
+    public void listPasskeysTest() throws ApiException {
         String userId = null;
-        V2ListPasskeysResponse response = api.userServiceListPasskeys(userId);
+        V2ListPasskeysResponse response = api.listPasskeys(userId);
 
         // TODO: test validations
     }
@@ -326,9 +326,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceListUsersTest() throws ApiException {
+    public void listUsersTest() throws ApiException {
         V2ListUsersRequest body = null;
-        V2ListUsersResponse response = api.userServiceListUsers(body);
+        V2ListUsersResponse response = api.listUsers(body);
 
         // TODO: test validations
     }
@@ -341,9 +341,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceLockUserTest() throws ApiException {
+    public void lockUserTest() throws ApiException {
         String userId = null;
-        V2LockUserResponse response = api.userServiceLockUser(userId);
+        V2LockUserResponse response = api.lockUser(userId);
 
         // TODO: test validations
     }
@@ -356,10 +356,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServicePasswordResetTest() throws ApiException {
+    public void passwordResetTest() throws ApiException {
         String userId = null;
         UserServicePasswordResetBody body = null;
-        V2PasswordResetResponse response = api.userServicePasswordReset(userId, body);
+        V2PasswordResetResponse response = api.passwordReset(userId, body);
 
         // TODO: test validations
     }
@@ -372,9 +372,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceReactivateUserTest() throws ApiException {
+    public void reactivateUserTest() throws ApiException {
         String userId = null;
-        V2ReactivateUserResponse response = api.userServiceReactivateUser(userId);
+        V2ReactivateUserResponse response = api.reactivateUser(userId);
 
         // TODO: test validations
     }
@@ -387,10 +387,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceRegisterPasskeyTest() throws ApiException {
+    public void registerPasskeyTest() throws ApiException {
         String userId = null;
         UserServiceRegisterPasskeyBody body = null;
-        V2RegisterPasskeyResponse response = api.userServiceRegisterPasskey(userId, body);
+        V2RegisterPasskeyResponse response = api.registerPasskey(userId, body);
 
         // TODO: test validations
     }
@@ -403,9 +403,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceRegisterTOTPTest() throws ApiException {
+    public void registerTOTPTest() throws ApiException {
         String userId = null;
-        V2RegisterTOTPResponse response = api.userServiceRegisterTOTP(userId);
+        V2RegisterTOTPResponse response = api.registerTOTP(userId);
 
         // TODO: test validations
     }
@@ -418,10 +418,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceRegisterU2FTest() throws ApiException {
+    public void registerU2FTest() throws ApiException {
         String userId = null;
         UserServiceRegisterU2FBody body = null;
-        V2RegisterU2FResponse response = api.userServiceRegisterU2F(userId, body);
+        V2RegisterU2FResponse response = api.registerU2F(userId, body);
 
         // TODO: test validations
     }
@@ -434,11 +434,11 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceRemoveIDPLinkTest() throws ApiException {
+    public void removeIDPLinkTest() throws ApiException {
         String userId = null;
         String idpId = null;
         String linkedUserId = null;
-        V2RemoveIDPLinkResponse response = api.userServiceRemoveIDPLink(userId, idpId, linkedUserId);
+        V2RemoveIDPLinkResponse response = api.removeIDPLink(userId, idpId, linkedUserId);
 
         // TODO: test validations
     }
@@ -451,9 +451,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceRemoveOTPEmailTest() throws ApiException {
+    public void removeOTPEmailTest() throws ApiException {
         String userId = null;
-        V2RemoveOTPEmailResponse response = api.userServiceRemoveOTPEmail(userId);
+        V2RemoveOTPEmailResponse response = api.removeOTPEmail(userId);
 
         // TODO: test validations
     }
@@ -466,9 +466,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceRemoveOTPSMSTest() throws ApiException {
+    public void removeOTPSMSTest() throws ApiException {
         String userId = null;
-        V2RemoveOTPSMSResponse response = api.userServiceRemoveOTPSMS(userId);
+        V2RemoveOTPSMSResponse response = api.removeOTPSMS(userId);
 
         // TODO: test validations
     }
@@ -481,10 +481,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceRemovePasskeyTest() throws ApiException {
+    public void removePasskeyTest() throws ApiException {
         String userId = null;
         String passkeyId = null;
-        V2RemovePasskeyResponse response = api.userServiceRemovePasskey(userId, passkeyId);
+        V2RemovePasskeyResponse response = api.removePasskey(userId, passkeyId);
 
         // TODO: test validations
     }
@@ -497,9 +497,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceRemovePhoneTest() throws ApiException {
+    public void removePhoneTest() throws ApiException {
         String userId = null;
-        V2RemovePhoneResponse response = api.userServiceRemovePhone(userId);
+        V2RemovePhoneResponse response = api.removePhone(userId);
 
         // TODO: test validations
     }
@@ -512,9 +512,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceRemoveTOTPTest() throws ApiException {
+    public void removeTOTPTest() throws ApiException {
         String userId = null;
-        V2RemoveTOTPResponse response = api.userServiceRemoveTOTP(userId);
+        V2RemoveTOTPResponse response = api.removeTOTP(userId);
 
         // TODO: test validations
     }
@@ -527,10 +527,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceRemoveU2FTest() throws ApiException {
+    public void removeU2FTest() throws ApiException {
         String userId = null;
         String u2fId = null;
-        V2RemoveU2FResponse response = api.userServiceRemoveU2F(userId, u2fId);
+        V2RemoveU2FResponse response = api.removeU2F(userId, u2fId);
 
         // TODO: test validations
     }
@@ -543,10 +543,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceResendEmailCodeTest() throws ApiException {
+    public void resendEmailCodeTest() throws ApiException {
         String userId = null;
         UserServiceResendEmailCodeBody body = null;
-        V2ResendEmailCodeResponse response = api.userServiceResendEmailCode(userId, body);
+        V2ResendEmailCodeResponse response = api.resendEmailCode(userId, body);
 
         // TODO: test validations
     }
@@ -559,9 +559,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceResendInviteCodeTest() throws ApiException {
+    public void resendInviteCodeTest() throws ApiException {
         String userId = null;
-        V2ResendInviteCodeResponse response = api.userServiceResendInviteCode(userId);
+        V2ResendInviteCodeResponse response = api.resendInviteCode(userId);
 
         // TODO: test validations
     }
@@ -574,10 +574,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceResendPhoneCodeTest() throws ApiException {
+    public void resendPhoneCodeTest() throws ApiException {
         String userId = null;
         UserServiceResendPhoneCodeBody body = null;
-        V2ResendPhoneCodeResponse response = api.userServiceResendPhoneCode(userId, body);
+        V2ResendPhoneCodeResponse response = api.resendPhoneCode(userId, body);
 
         // TODO: test validations
     }
@@ -590,10 +590,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceRetrieveIdentityProviderIntentTest() throws ApiException {
+    public void retrieveIdentityProviderIntentTest() throws ApiException {
         String idpIntentId = null;
         UserServiceRetrieveIdentityProviderIntentBody body = null;
-        V2RetrieveIdentityProviderIntentResponse response = api.userServiceRetrieveIdentityProviderIntent(idpIntentId, body);
+        V2RetrieveIdentityProviderIntentResponse response = api.retrieveIdentityProviderIntent(idpIntentId, body);
 
         // TODO: test validations
     }
@@ -606,10 +606,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceSendEmailCodeTest() throws ApiException {
+    public void sendEmailCodeTest() throws ApiException {
         String userId = null;
         UserServiceSendEmailCodeBody body = null;
-        V2SendEmailCodeResponse response = api.userServiceSendEmailCode(userId, body);
+        V2SendEmailCodeResponse response = api.sendEmailCode(userId, body);
 
         // TODO: test validations
     }
@@ -622,10 +622,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceSetEmailTest() throws ApiException {
+    public void setEmailTest() throws ApiException {
         String userId = null;
         UserServiceSetEmailBody body = null;
-        V2SetEmailResponse response = api.userServiceSetEmail(userId, body);
+        V2SetEmailResponse response = api.setEmail(userId, body);
 
         // TODO: test validations
     }
@@ -638,10 +638,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceSetPasswordTest() throws ApiException {
+    public void setPasswordTest() throws ApiException {
         String userId = null;
         V2UserServiceSetPasswordBody body = null;
-        V2SetPasswordResponse response = api.userServiceSetPassword(userId, body);
+        V2SetPasswordResponse response = api.setPassword(userId, body);
 
         // TODO: test validations
     }
@@ -654,10 +654,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceSetPhoneTest() throws ApiException {
+    public void setPhoneTest() throws ApiException {
         String userId = null;
         UserServiceSetPhoneBody body = null;
-        V2SetPhoneResponse response = api.userServiceSetPhone(userId, body);
+        V2SetPhoneResponse response = api.setPhone(userId, body);
 
         // TODO: test validations
     }
@@ -670,9 +670,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceStartIdentityProviderIntentTest() throws ApiException {
+    public void startIdentityProviderIntentTest() throws ApiException {
         V2StartIdentityProviderIntentRequest body = null;
-        V2StartIdentityProviderIntentResponse response = api.userServiceStartIdentityProviderIntent(body);
+        V2StartIdentityProviderIntentResponse response = api.startIdentityProviderIntent(body);
 
         // TODO: test validations
     }
@@ -685,9 +685,9 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceUnlockUserTest() throws ApiException {
+    public void unlockUserTest() throws ApiException {
         String userId = null;
-        V2UnlockUserResponse response = api.userServiceUnlockUser(userId);
+        V2UnlockUserResponse response = api.unlockUser(userId);
 
         // TODO: test validations
     }
@@ -700,10 +700,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceUpdateHumanUserTest() throws ApiException {
+    public void updateHumanUserTest() throws ApiException {
         String userId = null;
         UserServiceUpdateHumanUserBody body = null;
-        V2UpdateHumanUserResponse response = api.userServiceUpdateHumanUser(userId, body);
+        V2UpdateHumanUserResponse response = api.updateHumanUser(userId, body);
 
         // TODO: test validations
     }
@@ -716,10 +716,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceVerifyEmailTest() throws ApiException {
+    public void verifyEmailTest() throws ApiException {
         String userId = null;
         UserServiceVerifyEmailBody body = null;
-        V2VerifyEmailResponse response = api.userServiceVerifyEmail(userId, body);
+        V2VerifyEmailResponse response = api.verifyEmail(userId, body);
 
         // TODO: test validations
     }
@@ -732,10 +732,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceVerifyInviteCodeTest() throws ApiException {
+    public void verifyInviteCodeTest() throws ApiException {
         String userId = null;
         UserServiceVerifyInviteCodeBody body = null;
-        V2VerifyInviteCodeResponse response = api.userServiceVerifyInviteCode(userId, body);
+        V2VerifyInviteCodeResponse response = api.verifyInviteCode(userId, body);
 
         // TODO: test validations
     }
@@ -748,11 +748,11 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceVerifyPasskeyRegistrationTest() throws ApiException {
+    public void verifyPasskeyRegistrationTest() throws ApiException {
         String userId = null;
         String passkeyId = null;
         UserServiceVerifyPasskeyRegistrationBody body = null;
-        V2VerifyPasskeyRegistrationResponse response = api.userServiceVerifyPasskeyRegistration(userId, passkeyId, body);
+        V2VerifyPasskeyRegistrationResponse response = api.verifyPasskeyRegistration(userId, passkeyId, body);
 
         // TODO: test validations
     }
@@ -765,10 +765,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceVerifyPhoneTest() throws ApiException {
+    public void verifyPhoneTest() throws ApiException {
         String userId = null;
         UserServiceVerifyPhoneBody body = null;
-        V2VerifyPhoneResponse response = api.userServiceVerifyPhone(userId, body);
+        V2VerifyPhoneResponse response = api.verifyPhone(userId, body);
 
         // TODO: test validations
     }
@@ -781,10 +781,10 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceVerifyTOTPRegistrationTest() throws ApiException {
+    public void verifyTOTPRegistrationTest() throws ApiException {
         String userId = null;
         UserServiceVerifyTOTPRegistrationBody body = null;
-        V2VerifyTOTPRegistrationResponse response = api.userServiceVerifyTOTPRegistration(userId, body);
+        V2VerifyTOTPRegistrationResponse response = api.verifyTOTPRegistration(userId, body);
 
         // TODO: test validations
     }
@@ -797,11 +797,11 @@ public class UserServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void userServiceVerifyU2FRegistrationTest() throws ApiException {
+    public void verifyU2FRegistrationTest() throws ApiException {
         String userId = null;
         String u2fId = null;
         UserServiceVerifyU2FRegistrationBody body = null;
-        V2VerifyU2FRegistrationResponse response = api.userServiceVerifyU2FRegistration(userId, u2fId, body);
+        V2VerifyU2FRegistrationResponse response = api.verifyU2FRegistration(userId, u2fId, body);
 
         // TODO: test validations
     }

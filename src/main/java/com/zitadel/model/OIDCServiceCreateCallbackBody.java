@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.V2AuthorizationError;
-import com.zitadel.model.V2Session1;
+import com.zitadel.model.V2Session;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -39,7 +39,7 @@ import java.util.StringJoiner;
 public class OIDCServiceCreateCallbackBody {
   public static final String JSON_PROPERTY_SESSION = "session";
   @javax.annotation.Nullable
-  private V2Session1 session;
+  private V2Session session;
 
   public static final String JSON_PROPERTY_ERROR = "error";
   @javax.annotation.Nullable
@@ -48,7 +48,7 @@ public class OIDCServiceCreateCallbackBody {
   public OIDCServiceCreateCallbackBody() {
   }
 
-  public OIDCServiceCreateCallbackBody session(@javax.annotation.Nullable V2Session1 session) {
+  public OIDCServiceCreateCallbackBody session(@javax.annotation.Nullable V2Session session) {
     
     this.session = session;
     return this;
@@ -62,14 +62,14 @@ public class OIDCServiceCreateCallbackBody {
   @JsonProperty(JSON_PROPERTY_SESSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public V2Session1 getSession() {
+  public V2Session getSession() {
     return session;
   }
 
 
   @JsonProperty(JSON_PROPERTY_SESSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSession(@javax.annotation.Nullable V2Session1 session) {
+  public void setSession(@javax.annotation.Nullable V2Session session) {
     this.session = session;
   }
 

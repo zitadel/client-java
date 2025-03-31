@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -57,8 +57,8 @@ public class SessionServiceApi extends BaseApi {
    * @return V2CreateSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public V2CreateSessionResponse sessionServiceCreateSession(V2CreateSessionRequest body) throws ApiException {
-    return this.sessionServiceCreateSession(body, Collections.emptyMap());
+  public V2CreateSessionResponse createSession(V2CreateSessionRequest body) throws ApiException {
+    return this.createSession(body, Collections.emptyMap());
   }
 
 
@@ -70,12 +70,12 @@ public class SessionServiceApi extends BaseApi {
    * @return V2CreateSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public V2CreateSessionResponse sessionServiceCreateSession(V2CreateSessionRequest body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2CreateSessionResponse createSession(V2CreateSessionRequest body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling sessionServiceCreateSession");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling createSession");
     }
     
     // create path and map variables
@@ -132,8 +132,8 @@ public class SessionServiceApi extends BaseApi {
    * @return V2DeleteSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public V2DeleteSessionResponse sessionServiceDeleteSession(String sessionId, SessionServiceDeleteSessionBody body) throws ApiException {
-    return this.sessionServiceDeleteSession(sessionId, body, Collections.emptyMap());
+  public V2DeleteSessionResponse deleteSession(String sessionId, SessionServiceDeleteSessionBody body) throws ApiException {
+    return this.deleteSession(sessionId, body, Collections.emptyMap());
   }
 
 
@@ -146,17 +146,17 @@ public class SessionServiceApi extends BaseApi {
    * @return V2DeleteSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public V2DeleteSessionResponse sessionServiceDeleteSession(String sessionId, SessionServiceDeleteSessionBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2DeleteSessionResponse deleteSession(String sessionId, SessionServiceDeleteSessionBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'sessionId' is set
     if (sessionId == null) {
-      throw new ApiException(400, "Missing the required parameter 'sessionId' when calling sessionServiceDeleteSession");
+      throw new ApiException(400, "Missing the required parameter 'sessionId' when calling deleteSession");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling sessionServiceDeleteSession");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling deleteSession");
     }
     
     // create path and map variables
@@ -214,8 +214,8 @@ public class SessionServiceApi extends BaseApi {
    * @return V2GetSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetSessionResponse sessionServiceGetSession(String sessionId, String sessionToken) throws ApiException {
-    return this.sessionServiceGetSession(sessionId, sessionToken, Collections.emptyMap());
+  public V2GetSessionResponse getSession(String sessionId, String sessionToken) throws ApiException {
+    return this.getSession(sessionId, sessionToken, Collections.emptyMap());
   }
 
 
@@ -228,12 +228,12 @@ public class SessionServiceApi extends BaseApi {
    * @return V2GetSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetSessionResponse sessionServiceGetSession(String sessionId, String sessionToken, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetSessionResponse getSession(String sessionId, String sessionToken, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'sessionId' is set
     if (sessionId == null) {
-      throw new ApiException(400, "Missing the required parameter 'sessionId' when calling sessionServiceGetSession");
+      throw new ApiException(400, "Missing the required parameter 'sessionId' when calling getSession");
     }
     
     // create path and map variables
@@ -291,8 +291,8 @@ public class SessionServiceApi extends BaseApi {
    * @return V2ListSessionsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListSessionsResponse sessionServiceListSessions(V2ListSessionsRequest body) throws ApiException {
-    return this.sessionServiceListSessions(body, Collections.emptyMap());
+  public V2ListSessionsResponse listSessions(V2ListSessionsRequest body) throws ApiException {
+    return this.listSessions(body, Collections.emptyMap());
   }
 
 
@@ -304,12 +304,12 @@ public class SessionServiceApi extends BaseApi {
    * @return V2ListSessionsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListSessionsResponse sessionServiceListSessions(V2ListSessionsRequest body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2ListSessionsResponse listSessions(V2ListSessionsRequest body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling sessionServiceListSessions");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling listSessions");
     }
     
     // create path and map variables
@@ -366,8 +366,8 @@ public class SessionServiceApi extends BaseApi {
    * @return V2SetSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetSessionResponse sessionServiceSetSession(String sessionId, SessionServiceSetSessionBody body) throws ApiException {
-    return this.sessionServiceSetSession(sessionId, body, Collections.emptyMap());
+  public V2SetSessionResponse setSession(String sessionId, SessionServiceSetSessionBody body) throws ApiException {
+    return this.setSession(sessionId, body, Collections.emptyMap());
   }
 
 
@@ -380,17 +380,17 @@ public class SessionServiceApi extends BaseApi {
    * @return V2SetSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetSessionResponse sessionServiceSetSession(String sessionId, SessionServiceSetSessionBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2SetSessionResponse setSession(String sessionId, SessionServiceSetSessionBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'sessionId' is set
     if (sessionId == null) {
-      throw new ApiException(400, "Missing the required parameter 'sessionId' when calling sessionServiceSetSession");
+      throw new ApiException(400, "Missing the required parameter 'sessionId' when calling setSession");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling sessionServiceSetSession");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling setSession");
     }
     
     // create path and map variables

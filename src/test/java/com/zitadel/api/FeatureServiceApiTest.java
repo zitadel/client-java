@@ -1,5 +1,5 @@
 /*
- * merged spec
+ * OpenAI API
  * merged spec
  *
  * The version of the OpenAPI document: 1.0.0
@@ -57,9 +57,9 @@ public class FeatureServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void featureServiceGetInstanceFeaturesTest() throws ApiException {
+    public void getInstanceFeaturesTest() throws ApiException {
         Boolean inheritance = null;
-        V2GetInstanceFeaturesResponse response = api.featureServiceGetInstanceFeatures(inheritance);
+        V2GetInstanceFeaturesResponse response = api.getInstanceFeatures(inheritance);
 
         // TODO: test validations
     }
@@ -72,10 +72,10 @@ public class FeatureServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void featureServiceGetOrganizationFeaturesTest() throws ApiException {
+    public void getOrganizationFeaturesTest() throws ApiException {
         String organizationId = null;
         Boolean inheritance = null;
-        V2GetOrganizationFeaturesResponse response = api.featureServiceGetOrganizationFeatures(organizationId, inheritance);
+        V2GetOrganizationFeaturesResponse response = api.getOrganizationFeatures(organizationId, inheritance);
 
         // TODO: test validations
     }
@@ -88,8 +88,8 @@ public class FeatureServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void featureServiceGetSystemFeaturesTest() throws ApiException {
-        V2GetSystemFeaturesResponse response = api.featureServiceGetSystemFeatures();
+    public void getSystemFeaturesTest() throws ApiException {
+        V2GetSystemFeaturesResponse response = api.getSystemFeatures();
 
         // TODO: test validations
     }
@@ -102,10 +102,10 @@ public class FeatureServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void featureServiceGetUserFeaturesTest() throws ApiException {
+    public void getUserFeaturesTest() throws ApiException {
         String userId = null;
         Boolean inheritance = null;
-        V2GetUserFeaturesResponse response = api.featureServiceGetUserFeatures(userId, inheritance);
+        V2GetUserFeaturesResponse response = api.getUserFeatures(userId, inheritance);
 
         // TODO: test validations
     }
@@ -118,8 +118,8 @@ public class FeatureServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void featureServiceResetInstanceFeaturesTest() throws ApiException {
-        V2ResetInstanceFeaturesResponse response = api.featureServiceResetInstanceFeatures();
+    public void resetInstanceFeaturesTest() throws ApiException {
+        V2ResetInstanceFeaturesResponse response = api.resetInstanceFeatures();
 
         // TODO: test validations
     }
@@ -132,9 +132,9 @@ public class FeatureServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void featureServiceResetOrganizationFeaturesTest() throws ApiException {
+    public void resetOrganizationFeaturesTest() throws ApiException {
         String organizationId = null;
-        V2ResetOrganizationFeaturesResponse response = api.featureServiceResetOrganizationFeatures(organizationId);
+        V2ResetOrganizationFeaturesResponse response = api.resetOrganizationFeatures(organizationId);
 
         // TODO: test validations
     }
@@ -147,8 +147,8 @@ public class FeatureServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void featureServiceResetSystemFeaturesTest() throws ApiException {
-        V2ResetSystemFeaturesResponse response = api.featureServiceResetSystemFeatures();
+    public void resetSystemFeaturesTest() throws ApiException {
+        V2ResetSystemFeaturesResponse response = api.resetSystemFeatures();
 
         // TODO: test validations
     }
@@ -161,9 +161,9 @@ public class FeatureServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void featureServiceResetUserFeaturesTest() throws ApiException {
+    public void resetUserFeaturesTest() throws ApiException {
         String userId = null;
-        V2ResetUserFeaturesResponse response = api.featureServiceResetUserFeatures(userId);
+        V2ResetUserFeaturesResponse response = api.resetUserFeatures(userId);
 
         // TODO: test validations
     }
@@ -176,9 +176,9 @@ public class FeatureServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void featureServiceSetInstanceFeaturesTest() throws ApiException {
+    public void setInstanceFeaturesTest() throws ApiException {
         V2SetInstanceFeaturesRequest body = null;
-        V2SetInstanceFeaturesResponse response = api.featureServiceSetInstanceFeatures(body);
+        V2SetInstanceFeaturesResponse response = api.setInstanceFeatures(body);
 
         // TODO: test validations
     }
@@ -191,9 +191,9 @@ public class FeatureServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void featureServiceSetOrganizationFeaturesTest() throws ApiException {
+    public void setOrganizationFeaturesTest() throws ApiException {
         String organizationId = null;
-        V2SetOrganizationFeaturesResponse response = api.featureServiceSetOrganizationFeatures(organizationId);
+        V2SetOrganizationFeaturesResponse response = api.setOrganizationFeatures(organizationId);
 
         // TODO: test validations
     }
@@ -206,9 +206,9 @@ public class FeatureServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void featureServiceSetSystemFeaturesTest() throws ApiException {
+    public void setSystemFeaturesTest() throws ApiException {
         V2SetSystemFeaturesRequest body = null;
-        V2SetSystemFeaturesResponse response = api.featureServiceSetSystemFeatures(body);
+        V2SetSystemFeaturesResponse response = api.setSystemFeatures(body);
 
         // TODO: test validations
     }
@@ -221,9 +221,9 @@ public class FeatureServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void featureServiceSetUserFeaturesTest() throws ApiException {
+    public void setUserFeaturesTest() throws ApiException {
         String userId = null;
-        V2SetUserFeaturesResponse response = api.featureServiceSetUserFeatures(userId);
+        V2SetUserFeaturesResponse response = api.setUserFeatures(userId);
 
         // TODO: test validations
     }

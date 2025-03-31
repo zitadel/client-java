@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -62,8 +62,8 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetActiveIdentityProvidersResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetActiveIdentityProvidersResponse settingsServiceGetActiveIdentityProviders(String ctxOrgId, Boolean ctxInstance, Boolean creationAllowed, Boolean linkingAllowed, Boolean autoCreation, Boolean autoLinking) throws ApiException {
-    return this.settingsServiceGetActiveIdentityProviders(ctxOrgId, ctxInstance, creationAllowed, linkingAllowed, autoCreation, autoLinking, Collections.emptyMap());
+  public V2GetActiveIdentityProvidersResponse getActiveIdentityProviders(String ctxOrgId, Boolean ctxInstance, Boolean creationAllowed, Boolean linkingAllowed, Boolean autoCreation, Boolean autoLinking) throws ApiException {
+    return this.getActiveIdentityProviders(ctxOrgId, ctxInstance, creationAllowed, linkingAllowed, autoCreation, autoLinking, Collections.emptyMap());
   }
 
 
@@ -80,7 +80,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetActiveIdentityProvidersResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetActiveIdentityProvidersResponse settingsServiceGetActiveIdentityProviders(String ctxOrgId, Boolean ctxInstance, Boolean creationAllowed, Boolean linkingAllowed, Boolean autoCreation, Boolean autoLinking, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetActiveIdentityProvidersResponse getActiveIdentityProviders(String ctxOrgId, Boolean ctxInstance, Boolean creationAllowed, Boolean linkingAllowed, Boolean autoCreation, Boolean autoLinking, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -143,8 +143,8 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetBrandingSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetBrandingSettingsResponse settingsServiceGetBrandingSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetBrandingSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public V2GetBrandingSettingsResponse getBrandingSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
+    return this.getBrandingSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
   }
 
 
@@ -157,7 +157,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetBrandingSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetBrandingSettingsResponse settingsServiceGetBrandingSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetBrandingSettingsResponse getBrandingSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -216,8 +216,8 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetDomainSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetDomainSettingsResponse settingsServiceGetDomainSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetDomainSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public V2GetDomainSettingsResponse getDomainSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
+    return this.getDomainSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
   }
 
 
@@ -230,7 +230,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetDomainSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetDomainSettingsResponse settingsServiceGetDomainSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetDomainSettingsResponse getDomainSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -287,8 +287,8 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetGeneralSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetGeneralSettingsResponse settingsServiceGetGeneralSettings() throws ApiException {
-    return this.settingsServiceGetGeneralSettings(Collections.emptyMap());
+  public V2GetGeneralSettingsResponse getGeneralSettings() throws ApiException {
+    return this.getGeneralSettings(Collections.emptyMap());
   }
 
 
@@ -299,7 +299,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetGeneralSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetGeneralSettingsResponse settingsServiceGetGeneralSettings(Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetGeneralSettingsResponse getGeneralSettings(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -356,8 +356,8 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetLegalAndSupportSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetLegalAndSupportSettingsResponse settingsServiceGetLegalAndSupportSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetLegalAndSupportSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public V2GetLegalAndSupportSettingsResponse getLegalAndSupportSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
+    return this.getLegalAndSupportSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
   }
 
 
@@ -370,7 +370,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetLegalAndSupportSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetLegalAndSupportSettingsResponse settingsServiceGetLegalAndSupportSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetLegalAndSupportSettingsResponse getLegalAndSupportSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -429,8 +429,8 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetLockoutSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetLockoutSettingsResponse settingsServiceGetLockoutSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetLockoutSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public V2GetLockoutSettingsResponse getLockoutSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
+    return this.getLockoutSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
   }
 
 
@@ -443,7 +443,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetLockoutSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetLockoutSettingsResponse settingsServiceGetLockoutSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetLockoutSettingsResponse getLockoutSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -502,8 +502,8 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetLoginSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetLoginSettingsResponse settingsServiceGetLoginSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetLoginSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public V2GetLoginSettingsResponse getLoginSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
+    return this.getLoginSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
   }
 
 
@@ -516,7 +516,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetLoginSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetLoginSettingsResponse settingsServiceGetLoginSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetLoginSettingsResponse getLoginSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -575,8 +575,8 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetPasswordComplexitySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetPasswordComplexitySettingsResponse settingsServiceGetPasswordComplexitySettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetPasswordComplexitySettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public V2GetPasswordComplexitySettingsResponse getPasswordComplexitySettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
+    return this.getPasswordComplexitySettings(ctxOrgId, ctxInstance, Collections.emptyMap());
   }
 
 
@@ -589,7 +589,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetPasswordComplexitySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetPasswordComplexitySettingsResponse settingsServiceGetPasswordComplexitySettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetPasswordComplexitySettingsResponse getPasswordComplexitySettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -648,8 +648,8 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetPasswordExpirySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetPasswordExpirySettingsResponse settingsServiceGetPasswordExpirySettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetPasswordExpirySettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public V2GetPasswordExpirySettingsResponse getPasswordExpirySettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
+    return this.getPasswordExpirySettings(ctxOrgId, ctxInstance, Collections.emptyMap());
   }
 
 
@@ -662,7 +662,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return V2GetPasswordExpirySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetPasswordExpirySettingsResponse settingsServiceGetPasswordExpirySettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetPasswordExpirySettingsResponse getPasswordExpirySettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables

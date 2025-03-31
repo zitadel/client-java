@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -27,44 +27,44 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * Query for users under a specific organization as resource owner.
+ * V2OrganizationIDQuery
  */
 @JsonPropertyOrder({
-  V2OrganizationIdQuery.JSON_PROPERTY_ORGANIZATION_ID
+  V2OrganizationIDQuery.JSON_PROPERTY_ID
 })
-@JsonTypeName("v2OrganizationIdQuery")
+@JsonTypeName("v2OrganizationIDQuery")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
-public class V2OrganizationIdQuery {
-  public static final String JSON_PROPERTY_ORGANIZATION_ID = "organizationId";
+public class V2OrganizationIDQuery {
+  public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nonnull
-  private String organizationId;
+  private String id;
 
-  public V2OrganizationIdQuery() {
+  public V2OrganizationIDQuery() {
   }
 
-  public V2OrganizationIdQuery organizationId(@javax.annotation.Nonnull String organizationId) {
+  public V2OrganizationIDQuery id(@javax.annotation.Nonnull String id) {
     
-    this.organizationId = organizationId;
+    this.id = id;
     return this;
   }
 
   /**
-   * Get organizationId
-   * @return organizationId
+   * Unique identifier of the organization.
+   * @return id
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID)
+  @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getOrganizationId() {
-    return organizationId;
+  public String getId() {
+    return id;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID)
+  @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOrganizationId(@javax.annotation.Nonnull String organizationId) {
-    this.organizationId = organizationId;
+  public void setId(@javax.annotation.Nonnull String id) {
+    this.id = id;
   }
 
   @Override
@@ -75,20 +75,20 @@ public class V2OrganizationIdQuery {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    V2OrganizationIdQuery v2OrganizationIdQuery = (V2OrganizationIdQuery) o;
-    return Objects.equals(this.organizationId, v2OrganizationIdQuery.organizationId);
+    V2OrganizationIDQuery v2OrganizationIDQuery = (V2OrganizationIDQuery) o;
+    return Objects.equals(this.id, v2OrganizationIDQuery.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(organizationId);
+    return Objects.hash(id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class V2OrganizationIdQuery {\n");
-    sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
+    sb.append("class V2OrganizationIDQuery {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -136,10 +136,10 @@ public class V2OrganizationIdQuery {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `organizationId` to the URL query string
-    if (getOrganizationId() != null) {
+    // add `id` to the URL query string
+    if (getId() != null) {
       try {
-        joiner.add(String.format("%sorganizationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrganizationId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

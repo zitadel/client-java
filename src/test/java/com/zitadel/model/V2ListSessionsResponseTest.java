@@ -1,5 +1,5 @@
 /*
- * merged spec
+ * OpenAI API
  * merged spec
  *
  * The version of the OpenAPI document: 1.0.0
@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.Objectv2ListDetails;
-import com.zitadel.model.V2Session;
+import com.zitadel.model.V2Session1;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

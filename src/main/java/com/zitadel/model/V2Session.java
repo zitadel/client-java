@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -20,11 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.V2Factors;
-import com.zitadel.model.V2UserAgent;
-import java.time.OffsetDateTime;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -35,259 +30,71 @@ import java.util.StringJoiner;
  * V2Session
  */
 @JsonPropertyOrder({
-  V2Session.JSON_PROPERTY_ID,
-  V2Session.JSON_PROPERTY_CREATION_DATE,
-  V2Session.JSON_PROPERTY_CHANGE_DATE,
-  V2Session.JSON_PROPERTY_SEQUENCE,
-  V2Session.JSON_PROPERTY_FACTORS,
-  V2Session.JSON_PROPERTY_METADATA,
-  V2Session.JSON_PROPERTY_USER_AGENT,
-  V2Session.JSON_PROPERTY_EXPIRATION_DATE
+  V2Session.JSON_PROPERTY_SESSION_ID,
+  V2Session.JSON_PROPERTY_SESSION_TOKEN
 })
 @JsonTypeName("v2Session")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class V2Session {
-  public static final String JSON_PROPERTY_ID = "id";
+  public static final String JSON_PROPERTY_SESSION_ID = "sessionId";
   @javax.annotation.Nullable
-  private String id;
+  private String sessionId;
 
-  public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
+  public static final String JSON_PROPERTY_SESSION_TOKEN = "sessionToken";
   @javax.annotation.Nullable
-  private OffsetDateTime creationDate;
-
-  public static final String JSON_PROPERTY_CHANGE_DATE = "changeDate";
-  @javax.annotation.Nullable
-  private OffsetDateTime changeDate;
-
-  public static final String JSON_PROPERTY_SEQUENCE = "sequence";
-  @javax.annotation.Nullable
-  private String sequence;
-
-  public static final String JSON_PROPERTY_FACTORS = "factors";
-  @javax.annotation.Nullable
-  private V2Factors factors;
-
-  public static final String JSON_PROPERTY_METADATA = "metadata";
-  @javax.annotation.Nullable
-  private Map<String, byte[]> metadata = new HashMap<>();
-
-  public static final String JSON_PROPERTY_USER_AGENT = "userAgent";
-  @javax.annotation.Nullable
-  private V2UserAgent userAgent;
-
-  public static final String JSON_PROPERTY_EXPIRATION_DATE = "expirationDate";
-  @javax.annotation.Nullable
-  private OffsetDateTime expirationDate;
+  private String sessionToken;
 
   public V2Session() {
   }
 
-  public V2Session id(@javax.annotation.Nullable String id) {
+  public V2Session sessionId(@javax.annotation.Nullable String sessionId) {
     
-    this.id = id;
+    this.sessionId = sessionId;
     return this;
   }
 
   /**
-   * \&quot;id of the session\&quot;
-   * @return id
+   * ID of the session, used to login the user. Connects the session to the Auth Request.
+   * @return sessionId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(JSON_PROPERTY_SESSION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getId() {
-    return id;
+  public String getSessionId() {
+    return sessionId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(JSON_PROPERTY_SESSION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable String id) {
-    this.id = id;
+  public void setSessionId(@javax.annotation.Nullable String sessionId) {
+    this.sessionId = sessionId;
   }
 
-  public V2Session creationDate(@javax.annotation.Nullable OffsetDateTime creationDate) {
+  public V2Session sessionToken(@javax.annotation.Nullable String sessionToken) {
     
-    this.creationDate = creationDate;
+    this.sessionToken = sessionToken;
     return this;
   }
 
   /**
-   * \&quot;time when the session was created\&quot;
-   * @return creationDate
+   * Token to verify the session is valid
+   * @return sessionToken
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public OffsetDateTime getCreationDate() {
-    return creationDate;
+  public String getSessionToken() {
+    return sessionToken;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreationDate(@javax.annotation.Nullable OffsetDateTime creationDate) {
-    this.creationDate = creationDate;
-  }
-
-  public V2Session changeDate(@javax.annotation.Nullable OffsetDateTime changeDate) {
-    
-    this.changeDate = changeDate;
-    return this;
-  }
-
-  /**
-   * \&quot;time when the session was last updated\&quot;
-   * @return changeDate
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CHANGE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public OffsetDateTime getChangeDate() {
-    return changeDate;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CHANGE_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setChangeDate(@javax.annotation.Nullable OffsetDateTime changeDate) {
-    this.changeDate = changeDate;
-  }
-
-  public V2Session sequence(@javax.annotation.Nullable String sequence) {
-    
-    this.sequence = sequence;
-    return this;
-  }
-
-  /**
-   * \&quot;sequence of the session\&quot;
-   * @return sequence
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SEQUENCE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getSequence() {
-    return sequence;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SEQUENCE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSequence(@javax.annotation.Nullable String sequence) {
-    this.sequence = sequence;
-  }
-
-  public V2Session factors(@javax.annotation.Nullable V2Factors factors) {
-    
-    this.factors = factors;
-    return this;
-  }
-
-  /**
-   * Get factors
-   * @return factors
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FACTORS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public V2Factors getFactors() {
-    return factors;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FACTORS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFactors(@javax.annotation.Nullable V2Factors factors) {
-    this.factors = factors;
-  }
-
-  public V2Session metadata(@javax.annotation.Nullable Map<String, byte[]> metadata) {
-    
-    this.metadata = metadata;
-    return this;
-  }
-
-  public V2Session putMetadataItem(String key, byte[] metadataItem) {
-    if (this.metadata == null) {
-      this.metadata = new HashMap<>();
-    }
-    this.metadata.put(key, metadataItem);
-    return this;
-  }
-
-  /**
-   * \&quot;custom key value list\&quot;
-   * @return metadata
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_METADATA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Map<String, byte[]> getMetadata() {
-    return metadata;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_METADATA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMetadata(@javax.annotation.Nullable Map<String, byte[]> metadata) {
-    this.metadata = metadata;
-  }
-
-  public V2Session userAgent(@javax.annotation.Nullable V2UserAgent userAgent) {
-    
-    this.userAgent = userAgent;
-    return this;
-  }
-
-  /**
-   * Get userAgent
-   * @return userAgent
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USER_AGENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public V2UserAgent getUserAgent() {
-    return userAgent;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USER_AGENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserAgent(@javax.annotation.Nullable V2UserAgent userAgent) {
-    this.userAgent = userAgent;
-  }
-
-  public V2Session expirationDate(@javax.annotation.Nullable OffsetDateTime expirationDate) {
-    
-    this.expirationDate = expirationDate;
-    return this;
-  }
-
-  /**
-   * \&quot;time the session will be automatically invalidated\&quot;
-   * @return expirationDate
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EXPIRATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public OffsetDateTime getExpirationDate() {
-    return expirationDate;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_EXPIRATION_DATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExpirationDate(@javax.annotation.Nullable OffsetDateTime expirationDate) {
-    this.expirationDate = expirationDate;
+  public void setSessionToken(@javax.annotation.Nullable String sessionToken) {
+    this.sessionToken = sessionToken;
   }
 
   @Override
@@ -299,33 +106,21 @@ public class V2Session {
       return false;
     }
     V2Session v2Session = (V2Session) o;
-    return Objects.equals(this.id, v2Session.id) &&
-        Objects.equals(this.creationDate, v2Session.creationDate) &&
-        Objects.equals(this.changeDate, v2Session.changeDate) &&
-        Objects.equals(this.sequence, v2Session.sequence) &&
-        Objects.equals(this.factors, v2Session.factors) &&
-        Objects.equals(this.metadata, v2Session.metadata) &&
-        Objects.equals(this.userAgent, v2Session.userAgent) &&
-        Objects.equals(this.expirationDate, v2Session.expirationDate);
+    return Objects.equals(this.sessionId, v2Session.sessionId) &&
+        Objects.equals(this.sessionToken, v2Session.sessionToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, creationDate, changeDate, sequence, factors, metadata, userAgent, expirationDate);
+    return Objects.hash(sessionId, sessionToken);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class V2Session {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
-    sb.append("    changeDate: ").append(toIndentedString(changeDate)).append("\n");
-    sb.append("    sequence: ").append(toIndentedString(sequence)).append("\n");
-    sb.append("    factors: ").append(toIndentedString(factors)).append("\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
-    sb.append("    userAgent: ").append(toIndentedString(userAgent)).append("\n");
-    sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
+    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
+    sb.append("    sessionToken: ").append(toIndentedString(sessionToken)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -373,74 +168,20 @@ public class V2Session {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `id` to the URL query string
-    if (getId() != null) {
+    // add `sessionId` to the URL query string
+    if (getSessionId() != null) {
       try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%ssessionId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSessionId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
       }
     }
 
-    // add `creationDate` to the URL query string
-    if (getCreationDate() != null) {
+    // add `sessionToken` to the URL query string
+    if (getSessionToken() != null) {
       try {
-        joiner.add(String.format("%screationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreationDate()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `changeDate` to the URL query string
-    if (getChangeDate() != null) {
-      try {
-        joiner.add(String.format("%schangeDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChangeDate()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `sequence` to the URL query string
-    if (getSequence() != null) {
-      try {
-        joiner.add(String.format("%ssequence%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSequence()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `factors` to the URL query string
-    if (getFactors() != null) {
-      joiner.add(getFactors().toUrlQueryString(prefix + "factors" + suffix));
-    }
-
-    // add `metadata` to the URL query string
-    if (getMetadata() != null) {
-      for (String _key : getMetadata().keySet()) {
-        try {
-          joiner.add(String.format("%smetadata%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
-              getMetadata().get(_key), URLEncoder.encode(String.valueOf(getMetadata().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
-        }
-      }
-    }
-
-    // add `userAgent` to the URL query string
-    if (getUserAgent() != null) {
-      joiner.add(getUserAgent().toUrlQueryString(prefix + "userAgent" + suffix));
-    }
-
-    // add `expirationDate` to the URL query string
-    if (getExpirationDate() != null) {
-      try {
-        joiner.add(String.format("%sexpirationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpirationDate()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%ssessionToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSessionToken()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

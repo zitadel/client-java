@@ -1,5 +1,5 @@
 /*
- * merged spec
+ * OpenAI API
  * merged spec
  *
  * The version of the OpenAPI document: 1.0.0
@@ -52,9 +52,9 @@ public class SessionServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void sessionServiceCreateSessionTest() throws ApiException {
+    public void createSessionTest() throws ApiException {
         V2CreateSessionRequest body = null;
-        V2CreateSessionResponse response = api.sessionServiceCreateSession(body);
+        V2CreateSessionResponse response = api.createSession(body);
 
         // TODO: test validations
     }
@@ -67,10 +67,10 @@ public class SessionServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void sessionServiceDeleteSessionTest() throws ApiException {
+    public void deleteSessionTest() throws ApiException {
         String sessionId = null;
         SessionServiceDeleteSessionBody body = null;
-        V2DeleteSessionResponse response = api.sessionServiceDeleteSession(sessionId, body);
+        V2DeleteSessionResponse response = api.deleteSession(sessionId, body);
 
         // TODO: test validations
     }
@@ -83,10 +83,10 @@ public class SessionServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void sessionServiceGetSessionTest() throws ApiException {
+    public void getSessionTest() throws ApiException {
         String sessionId = null;
         String sessionToken = null;
-        V2GetSessionResponse response = api.sessionServiceGetSession(sessionId, sessionToken);
+        V2GetSessionResponse response = api.getSession(sessionId, sessionToken);
 
         // TODO: test validations
     }
@@ -99,9 +99,9 @@ public class SessionServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void sessionServiceListSessionsTest() throws ApiException {
+    public void listSessionsTest() throws ApiException {
         V2ListSessionsRequest body = null;
-        V2ListSessionsResponse response = api.sessionServiceListSessions(body);
+        V2ListSessionsResponse response = api.listSessions(body);
 
         // TODO: test validations
     }
@@ -114,10 +114,10 @@ public class SessionServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void sessionServiceSetSessionTest() throws ApiException {
+    public void setSessionTest() throws ApiException {
         String sessionId = null;
         SessionServiceSetSessionBody body = null;
-        V2SetSessionResponse response = api.sessionServiceSetSession(sessionId, body);
+        V2SetSessionResponse response = api.setSession(sessionId, body);
 
         // TODO: test validations
     }

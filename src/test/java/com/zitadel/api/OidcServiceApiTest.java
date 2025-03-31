@@ -1,5 +1,5 @@
 /*
- * merged spec
+ * OpenAI API
  * merged spec
  *
  * The version of the OpenAPI document: 1.0.0
@@ -46,10 +46,10 @@ public class OidcServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void oIDCServiceCreateCallbackTest() throws ApiException {
+    public void createCallbackTest() throws ApiException {
         String authRequestId = null;
         OIDCServiceCreateCallbackBody body = null;
-        V2CreateCallbackResponse response = api.oIDCServiceCreateCallback(authRequestId, body);
+        V2CreateCallbackResponse response = api.createCallback(authRequestId, body);
 
         // TODO: test validations
     }
@@ -62,9 +62,9 @@ public class OidcServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void oIDCServiceGetAuthRequestTest() throws ApiException {
+    public void getAuthRequestTest() throws ApiException {
         String authRequestId = null;
-        V2GetAuthRequestResponse response = api.oIDCServiceGetAuthRequest(authRequestId);
+        V2GetAuthRequestResponse response = api.getAuthRequest(authRequestId);
 
         // TODO: test validations
     }

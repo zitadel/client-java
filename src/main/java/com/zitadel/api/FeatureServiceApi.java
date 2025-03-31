@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -62,8 +62,8 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2GetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetInstanceFeaturesResponse featureServiceGetInstanceFeatures(Boolean inheritance) throws ApiException {
-    return this.featureServiceGetInstanceFeatures(inheritance, Collections.emptyMap());
+  public V2GetInstanceFeaturesResponse getInstanceFeatures(Boolean inheritance) throws ApiException {
+    return this.getInstanceFeatures(inheritance, Collections.emptyMap());
   }
 
 
@@ -75,7 +75,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2GetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetInstanceFeaturesResponse featureServiceGetInstanceFeatures(Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetInstanceFeaturesResponse getInstanceFeatures(Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -133,8 +133,8 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2GetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetOrganizationFeaturesResponse featureServiceGetOrganizationFeatures(String organizationId, Boolean inheritance) throws ApiException {
-    return this.featureServiceGetOrganizationFeatures(organizationId, inheritance, Collections.emptyMap());
+  public V2GetOrganizationFeaturesResponse getOrganizationFeatures(String organizationId, Boolean inheritance) throws ApiException {
+    return this.getOrganizationFeatures(organizationId, inheritance, Collections.emptyMap());
   }
 
 
@@ -147,12 +147,12 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2GetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetOrganizationFeaturesResponse featureServiceGetOrganizationFeatures(String organizationId, Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetOrganizationFeaturesResponse getOrganizationFeatures(String organizationId, Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'organizationId' is set
     if (organizationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'organizationId' when calling featureServiceGetOrganizationFeatures");
+      throw new ApiException(400, "Missing the required parameter 'organizationId' when calling getOrganizationFeatures");
     }
     
     // create path and map variables
@@ -209,8 +209,8 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2GetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetSystemFeaturesResponse featureServiceGetSystemFeatures() throws ApiException {
-    return this.featureServiceGetSystemFeatures(Collections.emptyMap());
+  public V2GetSystemFeaturesResponse getSystemFeatures() throws ApiException {
+    return this.getSystemFeatures(Collections.emptyMap());
   }
 
 
@@ -221,7 +221,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2GetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetSystemFeaturesResponse featureServiceGetSystemFeatures(Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetSystemFeaturesResponse getSystemFeatures(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -278,8 +278,8 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2GetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetUserFeaturesResponse featureServiceGetUserFeatures(String userId, Boolean inheritance) throws ApiException {
-    return this.featureServiceGetUserFeatures(userId, inheritance, Collections.emptyMap());
+  public V2GetUserFeaturesResponse getUserFeatures(String userId, Boolean inheritance) throws ApiException {
+    return this.getUserFeatures(userId, inheritance, Collections.emptyMap());
   }
 
 
@@ -292,12 +292,12 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2GetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetUserFeaturesResponse featureServiceGetUserFeatures(String userId, Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetUserFeaturesResponse getUserFeatures(String userId, Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling featureServiceGetUserFeatures");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling getUserFeatures");
     }
     
     // create path and map variables
@@ -354,8 +354,8 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2ResetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResetInstanceFeaturesResponse featureServiceResetInstanceFeatures() throws ApiException {
-    return this.featureServiceResetInstanceFeatures(Collections.emptyMap());
+  public V2ResetInstanceFeaturesResponse resetInstanceFeatures() throws ApiException {
+    return this.resetInstanceFeatures(Collections.emptyMap());
   }
 
 
@@ -366,7 +366,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2ResetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResetInstanceFeaturesResponse featureServiceResetInstanceFeatures(Map<String, String> additionalHeaders) throws ApiException {
+  public V2ResetInstanceFeaturesResponse resetInstanceFeatures(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -422,8 +422,8 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2ResetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResetOrganizationFeaturesResponse featureServiceResetOrganizationFeatures(String organizationId) throws ApiException {
-    return this.featureServiceResetOrganizationFeatures(organizationId, Collections.emptyMap());
+  public V2ResetOrganizationFeaturesResponse resetOrganizationFeatures(String organizationId) throws ApiException {
+    return this.resetOrganizationFeatures(organizationId, Collections.emptyMap());
   }
 
 
@@ -435,12 +435,12 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2ResetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResetOrganizationFeaturesResponse featureServiceResetOrganizationFeatures(String organizationId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2ResetOrganizationFeaturesResponse resetOrganizationFeatures(String organizationId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'organizationId' is set
     if (organizationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'organizationId' when calling featureServiceResetOrganizationFeatures");
+      throw new ApiException(400, "Missing the required parameter 'organizationId' when calling resetOrganizationFeatures");
     }
     
     // create path and map variables
@@ -496,8 +496,8 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2ResetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResetSystemFeaturesResponse featureServiceResetSystemFeatures() throws ApiException {
-    return this.featureServiceResetSystemFeatures(Collections.emptyMap());
+  public V2ResetSystemFeaturesResponse resetSystemFeatures() throws ApiException {
+    return this.resetSystemFeatures(Collections.emptyMap());
   }
 
 
@@ -508,7 +508,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2ResetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResetSystemFeaturesResponse featureServiceResetSystemFeatures(Map<String, String> additionalHeaders) throws ApiException {
+  public V2ResetSystemFeaturesResponse resetSystemFeatures(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -564,8 +564,8 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2ResetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResetUserFeaturesResponse featureServiceResetUserFeatures(String userId) throws ApiException {
-    return this.featureServiceResetUserFeatures(userId, Collections.emptyMap());
+  public V2ResetUserFeaturesResponse resetUserFeatures(String userId) throws ApiException {
+    return this.resetUserFeatures(userId, Collections.emptyMap());
   }
 
 
@@ -577,12 +577,12 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2ResetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResetUserFeaturesResponse featureServiceResetUserFeatures(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2ResetUserFeaturesResponse resetUserFeatures(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling featureServiceResetUserFeatures");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling resetUserFeatures");
     }
     
     // create path and map variables
@@ -639,8 +639,8 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2SetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetInstanceFeaturesResponse featureServiceSetInstanceFeatures(V2SetInstanceFeaturesRequest body) throws ApiException {
-    return this.featureServiceSetInstanceFeatures(body, Collections.emptyMap());
+  public V2SetInstanceFeaturesResponse setInstanceFeatures(V2SetInstanceFeaturesRequest body) throws ApiException {
+    return this.setInstanceFeatures(body, Collections.emptyMap());
   }
 
 
@@ -652,12 +652,12 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2SetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetInstanceFeaturesResponse featureServiceSetInstanceFeatures(V2SetInstanceFeaturesRequest body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2SetInstanceFeaturesResponse setInstanceFeatures(V2SetInstanceFeaturesRequest body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling featureServiceSetInstanceFeatures");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling setInstanceFeatures");
     }
     
     // create path and map variables
@@ -713,8 +713,8 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2SetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetOrganizationFeaturesResponse featureServiceSetOrganizationFeatures(String organizationId) throws ApiException {
-    return this.featureServiceSetOrganizationFeatures(organizationId, Collections.emptyMap());
+  public V2SetOrganizationFeaturesResponse setOrganizationFeatures(String organizationId) throws ApiException {
+    return this.setOrganizationFeatures(organizationId, Collections.emptyMap());
   }
 
 
@@ -726,12 +726,12 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2SetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetOrganizationFeaturesResponse featureServiceSetOrganizationFeatures(String organizationId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2SetOrganizationFeaturesResponse setOrganizationFeatures(String organizationId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'organizationId' is set
     if (organizationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'organizationId' when calling featureServiceSetOrganizationFeatures");
+      throw new ApiException(400, "Missing the required parameter 'organizationId' when calling setOrganizationFeatures");
     }
     
     // create path and map variables
@@ -788,8 +788,8 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2SetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetSystemFeaturesResponse featureServiceSetSystemFeatures(V2SetSystemFeaturesRequest body) throws ApiException {
-    return this.featureServiceSetSystemFeatures(body, Collections.emptyMap());
+  public V2SetSystemFeaturesResponse setSystemFeatures(V2SetSystemFeaturesRequest body) throws ApiException {
+    return this.setSystemFeatures(body, Collections.emptyMap());
   }
 
 
@@ -801,12 +801,12 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2SetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetSystemFeaturesResponse featureServiceSetSystemFeatures(V2SetSystemFeaturesRequest body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2SetSystemFeaturesResponse setSystemFeatures(V2SetSystemFeaturesRequest body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling featureServiceSetSystemFeatures");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling setSystemFeatures");
     }
     
     // create path and map variables
@@ -862,8 +862,8 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2SetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetUserFeaturesResponse featureServiceSetUserFeatures(String userId) throws ApiException {
-    return this.featureServiceSetUserFeatures(userId, Collections.emptyMap());
+  public V2SetUserFeaturesResponse setUserFeatures(String userId) throws ApiException {
+    return this.setUserFeatures(userId, Collections.emptyMap());
   }
 
 
@@ -875,12 +875,12 @@ public class FeatureServiceApi extends BaseApi {
    * @return V2SetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetUserFeaturesResponse featureServiceSetUserFeatures(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2SetUserFeaturesResponse setUserFeatures(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling featureServiceSetUserFeatures");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling setUserFeatures");
     }
     
     // create path and map variables

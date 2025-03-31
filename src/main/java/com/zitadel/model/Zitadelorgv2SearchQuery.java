@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.V2OrganizationDomainQuery;
-import com.zitadel.model.V2OrganizationIdQuery;
+import com.zitadel.model.V2OrganizationIDQuery;
 import com.zitadel.model.V2OrganizationNameQuery;
 import com.zitadel.model.V2OrganizationStateQuery;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -57,7 +57,7 @@ public class Zitadelorgv2SearchQuery {
 
   public static final String JSON_PROPERTY_ID_QUERY = "idQuery";
   @javax.annotation.Nullable
-  private V2OrganizationIdQuery idQuery;
+  private V2OrganizationIDQuery idQuery;
 
   public static final String JSON_PROPERTY_DEFAULT_QUERY = "defaultQuery";
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class Zitadelorgv2SearchQuery {
     this.stateQuery = stateQuery;
   }
 
-  public Zitadelorgv2SearchQuery idQuery(@javax.annotation.Nullable V2OrganizationIdQuery idQuery) {
+  public Zitadelorgv2SearchQuery idQuery(@javax.annotation.Nullable V2OrganizationIDQuery idQuery) {
     
     this.idQuery = idQuery;
     return this;
@@ -155,14 +155,14 @@ public class Zitadelorgv2SearchQuery {
   @JsonProperty(JSON_PROPERTY_ID_QUERY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public V2OrganizationIdQuery getIdQuery() {
+  public V2OrganizationIDQuery getIdQuery() {
     return idQuery;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ID_QUERY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIdQuery(@javax.annotation.Nullable V2OrganizationIdQuery idQuery) {
+  public void setIdQuery(@javax.annotation.Nullable V2OrganizationIDQuery idQuery) {
     this.idQuery = idQuery;
   }
 

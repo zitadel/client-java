@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -52,8 +52,8 @@ public class OidcServiceApi extends BaseApi {
    * @return V2CreateCallbackResponse
    * @throws ApiException if fails to make API call
    */
-  public V2CreateCallbackResponse oIDCServiceCreateCallback(String authRequestId, OIDCServiceCreateCallbackBody body) throws ApiException {
-    return this.oIDCServiceCreateCallback(authRequestId, body, Collections.emptyMap());
+  public V2CreateCallbackResponse createCallback(String authRequestId, OIDCServiceCreateCallbackBody body) throws ApiException {
+    return this.createCallback(authRequestId, body, Collections.emptyMap());
   }
 
 
@@ -66,17 +66,17 @@ public class OidcServiceApi extends BaseApi {
    * @return V2CreateCallbackResponse
    * @throws ApiException if fails to make API call
    */
-  public V2CreateCallbackResponse oIDCServiceCreateCallback(String authRequestId, OIDCServiceCreateCallbackBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2CreateCallbackResponse createCallback(String authRequestId, OIDCServiceCreateCallbackBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'authRequestId' is set
     if (authRequestId == null) {
-      throw new ApiException(400, "Missing the required parameter 'authRequestId' when calling oIDCServiceCreateCallback");
+      throw new ApiException(400, "Missing the required parameter 'authRequestId' when calling createCallback");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling oIDCServiceCreateCallback");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling createCallback");
     }
     
     // create path and map variables
@@ -133,8 +133,8 @@ public class OidcServiceApi extends BaseApi {
    * @return V2GetAuthRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetAuthRequestResponse oIDCServiceGetAuthRequest(String authRequestId) throws ApiException {
-    return this.oIDCServiceGetAuthRequest(authRequestId, Collections.emptyMap());
+  public V2GetAuthRequestResponse getAuthRequest(String authRequestId) throws ApiException {
+    return this.getAuthRequest(authRequestId, Collections.emptyMap());
   }
 
 
@@ -146,12 +146,12 @@ public class OidcServiceApi extends BaseApi {
    * @return V2GetAuthRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetAuthRequestResponse oIDCServiceGetAuthRequest(String authRequestId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetAuthRequestResponse getAuthRequest(String authRequestId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'authRequestId' is set
     if (authRequestId == null) {
-      throw new ApiException(400, "Missing the required parameter 'authRequestId' when calling oIDCServiceGetAuthRequest");
+      throw new ApiException(400, "Missing the required parameter 'authRequestId' when calling getAuthRequest");
     }
     
     // create path and map variables

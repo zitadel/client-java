@@ -1,5 +1,5 @@
 /*
- * merged spec
+ * OpenAI API
  * merged spec
  *
  * The version of the OpenAPI document: 1.0.0
@@ -18,11 +18,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.V2Factors;
-import com.zitadel.model.V2UserAgent;
-import java.time.OffsetDateTime;
-import java.util.HashMap;
-import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -42,67 +37,19 @@ class V2SessionTest {
     }
 
     /**
-     * Test the property 'id'
+     * Test the property 'sessionId'
      */
     @Test
-    void idTest() {
-        // TODO: test id
+    void sessionIdTest() {
+        // TODO: test sessionId
     }
 
     /**
-     * Test the property 'creationDate'
+     * Test the property 'sessionToken'
      */
     @Test
-    void creationDateTest() {
-        // TODO: test creationDate
-    }
-
-    /**
-     * Test the property 'changeDate'
-     */
-    @Test
-    void changeDateTest() {
-        // TODO: test changeDate
-    }
-
-    /**
-     * Test the property 'sequence'
-     */
-    @Test
-    void sequenceTest() {
-        // TODO: test sequence
-    }
-
-    /**
-     * Test the property 'factors'
-     */
-    @Test
-    void factorsTest() {
-        // TODO: test factors
-    }
-
-    /**
-     * Test the property 'metadata'
-     */
-    @Test
-    void metadataTest() {
-        // TODO: test metadata
-    }
-
-    /**
-     * Test the property 'userAgent'
-     */
-    @Test
-    void userAgentTest() {
-        // TODO: test userAgent
-    }
-
-    /**
-     * Test the property 'expirationDate'
-     */
-    @Test
-    void expirationDateTest() {
-        // TODO: test expirationDate
+    void sessionTokenTest() {
+        // TODO: test sessionToken
     }
 
 }

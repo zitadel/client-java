@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -49,8 +49,8 @@ public class IdentityProviderServiceApi extends BaseApi {
    * @return V2GetIDPByIDResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetIDPByIDResponse identityProviderServiceGetIDPByID(String id) throws ApiException {
-    return this.identityProviderServiceGetIDPByID(id, Collections.emptyMap());
+  public V2GetIDPByIDResponse getIDPByID(String id) throws ApiException {
+    return this.getIDPByID(id, Collections.emptyMap());
   }
 
 
@@ -62,12 +62,12 @@ public class IdentityProviderServiceApi extends BaseApi {
    * @return V2GetIDPByIDResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetIDPByIDResponse identityProviderServiceGetIDPByID(String id, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetIDPByIDResponse getIDPByID(String id, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'id' is set
     if (id == null) {
-      throw new ApiException(400, "Missing the required parameter 'id' when calling identityProviderServiceGetIDPByID");
+      throw new ApiException(400, "Missing the required parameter 'id' when calling getIDPByID");
     }
     
     // create path and map variables

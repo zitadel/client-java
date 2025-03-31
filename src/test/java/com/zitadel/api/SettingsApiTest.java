@@ -1,5 +1,5 @@
 /*
- * merged spec
+ * OpenAI API
  * merged spec
  *
  * The version of the OpenAPI document: 1.0.0
@@ -46,8 +46,8 @@ public class SettingsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void settingsServiceGetSecuritySettingsTest() throws ApiException {
-        V2GetSecuritySettingsResponse response = api.settingsServiceGetSecuritySettings();
+    public void getSecuritySettingsTest() throws ApiException {
+        V2GetSecuritySettingsResponse response = api.getSecuritySettings();
 
         // TODO: test validations
     }
@@ -60,9 +60,9 @@ public class SettingsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void settingsServiceSetSecuritySettingsTest() throws ApiException {
+    public void setSecuritySettingsTest() throws ApiException {
         V2SetSecuritySettingsRequest body = null;
-        V2SetSecuritySettingsResponse response = api.settingsServiceSetSecuritySettings(body);
+        V2SetSecuritySettingsResponse response = api.setSecuritySettings(body);
 
         // TODO: test validations
     }

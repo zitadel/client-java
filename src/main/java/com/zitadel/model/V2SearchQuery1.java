@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -31,7 +31,7 @@ import com.zitadel.model.V2LoginNameQuery;
 import com.zitadel.model.V2NickNameQuery;
 import com.zitadel.model.V2NotQuery;
 import com.zitadel.model.V2OrQuery;
-import com.zitadel.model.V2OrganizationIdQuery;
+import com.zitadel.model.V2OrganizationIDQuery;
 import com.zitadel.model.V2PhoneQuery;
 import com.zitadel.model.V2StateQuery;
 import com.zitadel.model.V2TypeQuery;
@@ -124,7 +124,7 @@ public class V2SearchQuery1 {
 
   public static final String JSON_PROPERTY_ORGANIZATION_ID_QUERY = "organizationIdQuery";
   @javax.annotation.Nullable
-  private V2OrganizationIdQuery organizationIdQuery;
+  private V2OrganizationIDQuery organizationIdQuery;
 
   public static final String JSON_PROPERTY_PHONE_QUERY = "phoneQuery";
   @javax.annotation.Nullable
@@ -483,7 +483,7 @@ public class V2SearchQuery1 {
     this.inUserEmailsQuery = inUserEmailsQuery;
   }
 
-  public V2SearchQuery1 organizationIdQuery(@javax.annotation.Nullable V2OrganizationIdQuery organizationIdQuery) {
+  public V2SearchQuery1 organizationIdQuery(@javax.annotation.Nullable V2OrganizationIDQuery organizationIdQuery) {
     
     this.organizationIdQuery = organizationIdQuery;
     return this;
@@ -497,14 +497,14 @@ public class V2SearchQuery1 {
   @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID_QUERY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public V2OrganizationIdQuery getOrganizationIdQuery() {
+  public V2OrganizationIDQuery getOrganizationIdQuery() {
     return organizationIdQuery;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID_QUERY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOrganizationIdQuery(@javax.annotation.Nullable V2OrganizationIdQuery organizationIdQuery) {
+  public void setOrganizationIdQuery(@javax.annotation.Nullable V2OrganizationIDQuery organizationIdQuery) {
     this.organizationIdQuery = organizationIdQuery;
   }
 

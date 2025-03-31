@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -50,8 +50,8 @@ public class SettingsApi extends BaseApi {
    * @return V2GetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetSecuritySettingsResponse settingsServiceGetSecuritySettings() throws ApiException {
-    return this.settingsServiceGetSecuritySettings(Collections.emptyMap());
+  public V2GetSecuritySettingsResponse getSecuritySettings() throws ApiException {
+    return this.getSecuritySettings(Collections.emptyMap());
   }
 
 
@@ -62,7 +62,7 @@ public class SettingsApi extends BaseApi {
    * @return V2GetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetSecuritySettingsResponse settingsServiceGetSecuritySettings(Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetSecuritySettingsResponse getSecuritySettings(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -118,8 +118,8 @@ public class SettingsApi extends BaseApi {
    * @return V2SetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetSecuritySettingsResponse settingsServiceSetSecuritySettings(V2SetSecuritySettingsRequest body) throws ApiException {
-    return this.settingsServiceSetSecuritySettings(body, Collections.emptyMap());
+  public V2SetSecuritySettingsResponse setSecuritySettings(V2SetSecuritySettingsRequest body) throws ApiException {
+    return this.setSecuritySettings(body, Collections.emptyMap());
   }
 
 
@@ -131,12 +131,12 @@ public class SettingsApi extends BaseApi {
    * @return V2SetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetSecuritySettingsResponse settingsServiceSetSecuritySettings(V2SetSecuritySettingsRequest body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2SetSecuritySettingsResponse setSecuritySettings(V2SetSecuritySettingsRequest body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling settingsServiceSetSecuritySettings");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling setSecuritySettings");
     }
     
     // create path and map variables

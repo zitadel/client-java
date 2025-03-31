@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -117,8 +117,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2AddHumanUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2AddHumanUserResponse userServiceAddHumanUser(V2AddHumanUserRequest body) throws ApiException {
-    return this.userServiceAddHumanUser(body, Collections.emptyMap());
+  public V2AddHumanUserResponse addHumanUser(V2AddHumanUserRequest body) throws ApiException {
+    return this.addHumanUser(body, Collections.emptyMap());
   }
 
 
@@ -130,12 +130,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2AddHumanUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2AddHumanUserResponse userServiceAddHumanUser(V2AddHumanUserRequest body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2AddHumanUserResponse addHumanUser(V2AddHumanUserRequest body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceAddHumanUser");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling addHumanUser");
     }
     
     // create path and map variables
@@ -192,8 +192,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2AddIDPLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public V2AddIDPLinkResponse userServiceAddIDPLink(String userId, UserServiceAddIDPLinkBody body) throws ApiException {
-    return this.userServiceAddIDPLink(userId, body, Collections.emptyMap());
+  public V2AddIDPLinkResponse addIDPLink(String userId, UserServiceAddIDPLinkBody body) throws ApiException {
+    return this.addIDPLink(userId, body, Collections.emptyMap());
   }
 
 
@@ -206,17 +206,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2AddIDPLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public V2AddIDPLinkResponse userServiceAddIDPLink(String userId, UserServiceAddIDPLinkBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2AddIDPLinkResponse addIDPLink(String userId, UserServiceAddIDPLinkBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceAddIDPLink");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling addIDPLink");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceAddIDPLink");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling addIDPLink");
     }
     
     // create path and map variables
@@ -273,8 +273,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2AddOTPEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public V2AddOTPEmailResponse userServiceAddOTPEmail(String userId) throws ApiException {
-    return this.userServiceAddOTPEmail(userId, Collections.emptyMap());
+  public V2AddOTPEmailResponse addOTPEmail(String userId) throws ApiException {
+    return this.addOTPEmail(userId, Collections.emptyMap());
   }
 
 
@@ -286,12 +286,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2AddOTPEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public V2AddOTPEmailResponse userServiceAddOTPEmail(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2AddOTPEmailResponse addOTPEmail(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceAddOTPEmail");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling addOTPEmail");
     }
     
     // create path and map variables
@@ -348,8 +348,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2AddOTPSMSResponse
    * @throws ApiException if fails to make API call
    */
-  public V2AddOTPSMSResponse userServiceAddOTPSMS(String userId) throws ApiException {
-    return this.userServiceAddOTPSMS(userId, Collections.emptyMap());
+  public V2AddOTPSMSResponse addOTPSMS(String userId) throws ApiException {
+    return this.addOTPSMS(userId, Collections.emptyMap());
   }
 
 
@@ -361,12 +361,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2AddOTPSMSResponse
    * @throws ApiException if fails to make API call
    */
-  public V2AddOTPSMSResponse userServiceAddOTPSMS(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2AddOTPSMSResponse addOTPSMS(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceAddOTPSMS");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling addOTPSMS");
     }
     
     // create path and map variables
@@ -424,8 +424,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2CreateInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public V2CreateInviteCodeResponse userServiceCreateInviteCode(String userId, UserServiceCreateInviteCodeBody body) throws ApiException {
-    return this.userServiceCreateInviteCode(userId, body, Collections.emptyMap());
+  public V2CreateInviteCodeResponse createInviteCode(String userId, UserServiceCreateInviteCodeBody body) throws ApiException {
+    return this.createInviteCode(userId, body, Collections.emptyMap());
   }
 
 
@@ -438,17 +438,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2CreateInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public V2CreateInviteCodeResponse userServiceCreateInviteCode(String userId, UserServiceCreateInviteCodeBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2CreateInviteCodeResponse createInviteCode(String userId, UserServiceCreateInviteCodeBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceCreateInviteCode");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling createInviteCode");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceCreateInviteCode");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling createInviteCode");
     }
     
     // create path and map variables
@@ -506,8 +506,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2CreatePasskeyRegistrationLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public V2CreatePasskeyRegistrationLinkResponse userServiceCreatePasskeyRegistrationLink(String userId, UserServiceCreatePasskeyRegistrationLinkBody body) throws ApiException {
-    return this.userServiceCreatePasskeyRegistrationLink(userId, body, Collections.emptyMap());
+  public V2CreatePasskeyRegistrationLinkResponse createPasskeyRegistrationLink(String userId, UserServiceCreatePasskeyRegistrationLinkBody body) throws ApiException {
+    return this.createPasskeyRegistrationLink(userId, body, Collections.emptyMap());
   }
 
 
@@ -520,17 +520,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2CreatePasskeyRegistrationLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public V2CreatePasskeyRegistrationLinkResponse userServiceCreatePasskeyRegistrationLink(String userId, UserServiceCreatePasskeyRegistrationLinkBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2CreatePasskeyRegistrationLinkResponse createPasskeyRegistrationLink(String userId, UserServiceCreatePasskeyRegistrationLinkBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceCreatePasskeyRegistrationLink");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling createPasskeyRegistrationLink");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceCreatePasskeyRegistrationLink");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling createPasskeyRegistrationLink");
     }
     
     // create path and map variables
@@ -587,8 +587,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2DeactivateUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2DeactivateUserResponse userServiceDeactivateUser(String userId) throws ApiException {
-    return this.userServiceDeactivateUser(userId, Collections.emptyMap());
+  public V2DeactivateUserResponse deactivateUser(String userId) throws ApiException {
+    return this.deactivateUser(userId, Collections.emptyMap());
   }
 
 
@@ -600,12 +600,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2DeactivateUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2DeactivateUserResponse userServiceDeactivateUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2DeactivateUserResponse deactivateUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceDeactivateUser");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling deactivateUser");
     }
     
     // create path and map variables
@@ -662,8 +662,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2DeleteUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2DeleteUserResponse userServiceDeleteUser(String userId) throws ApiException {
-    return this.userServiceDeleteUser(userId, Collections.emptyMap());
+  public V2DeleteUserResponse deleteUser(String userId) throws ApiException {
+    return this.deleteUser(userId, Collections.emptyMap());
   }
 
 
@@ -675,12 +675,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2DeleteUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2DeleteUserResponse userServiceDeleteUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2DeleteUserResponse deleteUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceDeleteUser");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling deleteUser");
     }
     
     // create path and map variables
@@ -737,8 +737,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2GetUserByIDResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetUserByIDResponse userServiceGetUserByID(String userId) throws ApiException {
-    return this.userServiceGetUserByID(userId, Collections.emptyMap());
+  public V2GetUserByIDResponse getUserByID(String userId) throws ApiException {
+    return this.getUserByID(userId, Collections.emptyMap());
   }
 
 
@@ -750,12 +750,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2GetUserByIDResponse
    * @throws ApiException if fails to make API call
    */
-  public V2GetUserByIDResponse userServiceGetUserByID(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2GetUserByIDResponse getUserByID(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceGetUserByID");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling getUserByID");
     }
     
     // create path and map variables
@@ -812,8 +812,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2HumanMFAInitSkippedResponse
    * @throws ApiException if fails to make API call
    */
-  public V2HumanMFAInitSkippedResponse userServiceHumanMFAInitSkipped(String userId) throws ApiException {
-    return this.userServiceHumanMFAInitSkipped(userId, Collections.emptyMap());
+  public V2HumanMFAInitSkippedResponse humanMFAInitSkipped(String userId) throws ApiException {
+    return this.humanMFAInitSkipped(userId, Collections.emptyMap());
   }
 
 
@@ -825,12 +825,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2HumanMFAInitSkippedResponse
    * @throws ApiException if fails to make API call
    */
-  public V2HumanMFAInitSkippedResponse userServiceHumanMFAInitSkipped(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2HumanMFAInitSkippedResponse humanMFAInitSkipped(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceHumanMFAInitSkipped");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling humanMFAInitSkipped");
     }
     
     // create path and map variables
@@ -889,8 +889,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2ListAuthenticationFactorsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListAuthenticationFactorsResponse userServiceListAuthenticationFactors(String userId, List<String> authFactors, List<String> states) throws ApiException {
-    return this.userServiceListAuthenticationFactors(userId, authFactors, states, Collections.emptyMap());
+  public V2ListAuthenticationFactorsResponse listAuthenticationFactors(String userId, List<String> authFactors, List<String> states) throws ApiException {
+    return this.listAuthenticationFactors(userId, authFactors, states, Collections.emptyMap());
   }
 
 
@@ -904,12 +904,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2ListAuthenticationFactorsResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListAuthenticationFactorsResponse userServiceListAuthenticationFactors(String userId, List<String> authFactors, List<String> states, Map<String, String> additionalHeaders) throws ApiException {
+  public V2ListAuthenticationFactorsResponse listAuthenticationFactors(String userId, List<String> authFactors, List<String> states, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceListAuthenticationFactors");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling listAuthenticationFactors");
     }
     
     // create path and map variables
@@ -970,8 +970,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2ListAuthenticationMethodTypesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListAuthenticationMethodTypesResponse userServiceListAuthenticationMethodTypes(String userId, Boolean domainQueryIncludeWithoutDomain, String domainQueryDomain) throws ApiException {
-    return this.userServiceListAuthenticationMethodTypes(userId, domainQueryIncludeWithoutDomain, domainQueryDomain, Collections.emptyMap());
+  public V2ListAuthenticationMethodTypesResponse listAuthenticationMethodTypes(String userId, Boolean domainQueryIncludeWithoutDomain, String domainQueryDomain) throws ApiException {
+    return this.listAuthenticationMethodTypes(userId, domainQueryIncludeWithoutDomain, domainQueryDomain, Collections.emptyMap());
   }
 
 
@@ -985,12 +985,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2ListAuthenticationMethodTypesResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListAuthenticationMethodTypesResponse userServiceListAuthenticationMethodTypes(String userId, Boolean domainQueryIncludeWithoutDomain, String domainQueryDomain, Map<String, String> additionalHeaders) throws ApiException {
+  public V2ListAuthenticationMethodTypesResponse listAuthenticationMethodTypes(String userId, Boolean domainQueryIncludeWithoutDomain, String domainQueryDomain, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceListAuthenticationMethodTypes");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling listAuthenticationMethodTypes");
     }
     
     // create path and map variables
@@ -1050,8 +1050,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2ListIDPLinksResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListIDPLinksResponse userServiceListIDPLinks(String userId, UserServiceListIDPLinksBody body) throws ApiException {
-    return this.userServiceListIDPLinks(userId, body, Collections.emptyMap());
+  public V2ListIDPLinksResponse listIDPLinks(String userId, UserServiceListIDPLinksBody body) throws ApiException {
+    return this.listIDPLinks(userId, body, Collections.emptyMap());
   }
 
 
@@ -1064,17 +1064,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2ListIDPLinksResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListIDPLinksResponse userServiceListIDPLinks(String userId, UserServiceListIDPLinksBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2ListIDPLinksResponse listIDPLinks(String userId, UserServiceListIDPLinksBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceListIDPLinks");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling listIDPLinks");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceListIDPLinks");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling listIDPLinks");
     }
     
     // create path and map variables
@@ -1131,8 +1131,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2ListPasskeysResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListPasskeysResponse userServiceListPasskeys(String userId) throws ApiException {
-    return this.userServiceListPasskeys(userId, Collections.emptyMap());
+  public V2ListPasskeysResponse listPasskeys(String userId) throws ApiException {
+    return this.listPasskeys(userId, Collections.emptyMap());
   }
 
 
@@ -1144,12 +1144,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2ListPasskeysResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListPasskeysResponse userServiceListPasskeys(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2ListPasskeysResponse listPasskeys(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceListPasskeys");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling listPasskeys");
     }
     
     // create path and map variables
@@ -1206,8 +1206,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2ListUsersResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListUsersResponse userServiceListUsers(V2ListUsersRequest body) throws ApiException {
-    return this.userServiceListUsers(body, Collections.emptyMap());
+  public V2ListUsersResponse listUsers(V2ListUsersRequest body) throws ApiException {
+    return this.listUsers(body, Collections.emptyMap());
   }
 
 
@@ -1219,12 +1219,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2ListUsersResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ListUsersResponse userServiceListUsers(V2ListUsersRequest body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2ListUsersResponse listUsers(V2ListUsersRequest body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceListUsers");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling listUsers");
     }
     
     // create path and map variables
@@ -1280,8 +1280,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2LockUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2LockUserResponse userServiceLockUser(String userId) throws ApiException {
-    return this.userServiceLockUser(userId, Collections.emptyMap());
+  public V2LockUserResponse lockUser(String userId) throws ApiException {
+    return this.lockUser(userId, Collections.emptyMap());
   }
 
 
@@ -1293,12 +1293,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2LockUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2LockUserResponse userServiceLockUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2LockUserResponse lockUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceLockUser");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling lockUser");
     }
     
     // create path and map variables
@@ -1356,8 +1356,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2PasswordResetResponse
    * @throws ApiException if fails to make API call
    */
-  public V2PasswordResetResponse userServicePasswordReset(String userId, UserServicePasswordResetBody body) throws ApiException {
-    return this.userServicePasswordReset(userId, body, Collections.emptyMap());
+  public V2PasswordResetResponse passwordReset(String userId, UserServicePasswordResetBody body) throws ApiException {
+    return this.passwordReset(userId, body, Collections.emptyMap());
   }
 
 
@@ -1370,17 +1370,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2PasswordResetResponse
    * @throws ApiException if fails to make API call
    */
-  public V2PasswordResetResponse userServicePasswordReset(String userId, UserServicePasswordResetBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2PasswordResetResponse passwordReset(String userId, UserServicePasswordResetBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServicePasswordReset");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling passwordReset");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServicePasswordReset");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling passwordReset");
     }
     
     // create path and map variables
@@ -1437,8 +1437,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2ReactivateUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ReactivateUserResponse userServiceReactivateUser(String userId) throws ApiException {
-    return this.userServiceReactivateUser(userId, Collections.emptyMap());
+  public V2ReactivateUserResponse reactivateUser(String userId) throws ApiException {
+    return this.reactivateUser(userId, Collections.emptyMap());
   }
 
 
@@ -1450,12 +1450,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2ReactivateUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ReactivateUserResponse userServiceReactivateUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2ReactivateUserResponse reactivateUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceReactivateUser");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling reactivateUser");
     }
     
     // create path and map variables
@@ -1513,8 +1513,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2RegisterPasskeyResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RegisterPasskeyResponse userServiceRegisterPasskey(String userId, UserServiceRegisterPasskeyBody body) throws ApiException {
-    return this.userServiceRegisterPasskey(userId, body, Collections.emptyMap());
+  public V2RegisterPasskeyResponse registerPasskey(String userId, UserServiceRegisterPasskeyBody body) throws ApiException {
+    return this.registerPasskey(userId, body, Collections.emptyMap());
   }
 
 
@@ -1527,17 +1527,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2RegisterPasskeyResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RegisterPasskeyResponse userServiceRegisterPasskey(String userId, UserServiceRegisterPasskeyBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2RegisterPasskeyResponse registerPasskey(String userId, UserServiceRegisterPasskeyBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceRegisterPasskey");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling registerPasskey");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceRegisterPasskey");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling registerPasskey");
     }
     
     // create path and map variables
@@ -1594,8 +1594,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2RegisterTOTPResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RegisterTOTPResponse userServiceRegisterTOTP(String userId) throws ApiException {
-    return this.userServiceRegisterTOTP(userId, Collections.emptyMap());
+  public V2RegisterTOTPResponse registerTOTP(String userId) throws ApiException {
+    return this.registerTOTP(userId, Collections.emptyMap());
   }
 
 
@@ -1607,12 +1607,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2RegisterTOTPResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RegisterTOTPResponse userServiceRegisterTOTP(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2RegisterTOTPResponse registerTOTP(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceRegisterTOTP");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling registerTOTP");
     }
     
     // create path and map variables
@@ -1670,8 +1670,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2RegisterU2FResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RegisterU2FResponse userServiceRegisterU2F(String userId, UserServiceRegisterU2FBody body) throws ApiException {
-    return this.userServiceRegisterU2F(userId, body, Collections.emptyMap());
+  public V2RegisterU2FResponse registerU2F(String userId, UserServiceRegisterU2FBody body) throws ApiException {
+    return this.registerU2F(userId, body, Collections.emptyMap());
   }
 
 
@@ -1684,17 +1684,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2RegisterU2FResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RegisterU2FResponse userServiceRegisterU2F(String userId, UserServiceRegisterU2FBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2RegisterU2FResponse registerU2F(String userId, UserServiceRegisterU2FBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceRegisterU2F");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling registerU2F");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceRegisterU2F");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling registerU2F");
     }
     
     // create path and map variables
@@ -1753,8 +1753,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemoveIDPLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemoveIDPLinkResponse userServiceRemoveIDPLink(String userId, String idpId, String linkedUserId) throws ApiException {
-    return this.userServiceRemoveIDPLink(userId, idpId, linkedUserId, Collections.emptyMap());
+  public V2RemoveIDPLinkResponse removeIDPLink(String userId, String idpId, String linkedUserId) throws ApiException {
+    return this.removeIDPLink(userId, idpId, linkedUserId, Collections.emptyMap());
   }
 
 
@@ -1768,22 +1768,22 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemoveIDPLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemoveIDPLinkResponse userServiceRemoveIDPLink(String userId, String idpId, String linkedUserId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2RemoveIDPLinkResponse removeIDPLink(String userId, String idpId, String linkedUserId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceRemoveIDPLink");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling removeIDPLink");
     }
     
     // verify the required parameter 'idpId' is set
     if (idpId == null) {
-      throw new ApiException(400, "Missing the required parameter 'idpId' when calling userServiceRemoveIDPLink");
+      throw new ApiException(400, "Missing the required parameter 'idpId' when calling removeIDPLink");
     }
     
     // verify the required parameter 'linkedUserId' is set
     if (linkedUserId == null) {
-      throw new ApiException(400, "Missing the required parameter 'linkedUserId' when calling userServiceRemoveIDPLink");
+      throw new ApiException(400, "Missing the required parameter 'linkedUserId' when calling removeIDPLink");
     }
     
     // create path and map variables
@@ -1842,8 +1842,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemoveOTPEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemoveOTPEmailResponse userServiceRemoveOTPEmail(String userId) throws ApiException {
-    return this.userServiceRemoveOTPEmail(userId, Collections.emptyMap());
+  public V2RemoveOTPEmailResponse removeOTPEmail(String userId) throws ApiException {
+    return this.removeOTPEmail(userId, Collections.emptyMap());
   }
 
 
@@ -1855,12 +1855,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemoveOTPEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemoveOTPEmailResponse userServiceRemoveOTPEmail(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2RemoveOTPEmailResponse removeOTPEmail(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceRemoveOTPEmail");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling removeOTPEmail");
     }
     
     // create path and map variables
@@ -1917,8 +1917,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemoveOTPSMSResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemoveOTPSMSResponse userServiceRemoveOTPSMS(String userId) throws ApiException {
-    return this.userServiceRemoveOTPSMS(userId, Collections.emptyMap());
+  public V2RemoveOTPSMSResponse removeOTPSMS(String userId) throws ApiException {
+    return this.removeOTPSMS(userId, Collections.emptyMap());
   }
 
 
@@ -1930,12 +1930,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemoveOTPSMSResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemoveOTPSMSResponse userServiceRemoveOTPSMS(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2RemoveOTPSMSResponse removeOTPSMS(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceRemoveOTPSMS");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling removeOTPSMS");
     }
     
     // create path and map variables
@@ -1993,8 +1993,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemovePasskeyResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemovePasskeyResponse userServiceRemovePasskey(String userId, String passkeyId) throws ApiException {
-    return this.userServiceRemovePasskey(userId, passkeyId, Collections.emptyMap());
+  public V2RemovePasskeyResponse removePasskey(String userId, String passkeyId) throws ApiException {
+    return this.removePasskey(userId, passkeyId, Collections.emptyMap());
   }
 
 
@@ -2007,17 +2007,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemovePasskeyResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemovePasskeyResponse userServiceRemovePasskey(String userId, String passkeyId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2RemovePasskeyResponse removePasskey(String userId, String passkeyId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceRemovePasskey");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling removePasskey");
     }
     
     // verify the required parameter 'passkeyId' is set
     if (passkeyId == null) {
-      throw new ApiException(400, "Missing the required parameter 'passkeyId' when calling userServiceRemovePasskey");
+      throw new ApiException(400, "Missing the required parameter 'passkeyId' when calling removePasskey");
     }
     
     // create path and map variables
@@ -2075,8 +2075,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemovePhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemovePhoneResponse userServiceRemovePhone(String userId) throws ApiException {
-    return this.userServiceRemovePhone(userId, Collections.emptyMap());
+  public V2RemovePhoneResponse removePhone(String userId) throws ApiException {
+    return this.removePhone(userId, Collections.emptyMap());
   }
 
 
@@ -2088,12 +2088,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemovePhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemovePhoneResponse userServiceRemovePhone(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2RemovePhoneResponse removePhone(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceRemovePhone");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling removePhone");
     }
     
     // create path and map variables
@@ -2150,8 +2150,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemoveTOTPResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemoveTOTPResponse userServiceRemoveTOTP(String userId) throws ApiException {
-    return this.userServiceRemoveTOTP(userId, Collections.emptyMap());
+  public V2RemoveTOTPResponse removeTOTP(String userId) throws ApiException {
+    return this.removeTOTP(userId, Collections.emptyMap());
   }
 
 
@@ -2163,12 +2163,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemoveTOTPResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemoveTOTPResponse userServiceRemoveTOTP(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2RemoveTOTPResponse removeTOTP(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceRemoveTOTP");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling removeTOTP");
     }
     
     // create path and map variables
@@ -2226,8 +2226,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemoveU2FResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemoveU2FResponse userServiceRemoveU2F(String userId, String u2fId) throws ApiException {
-    return this.userServiceRemoveU2F(userId, u2fId, Collections.emptyMap());
+  public V2RemoveU2FResponse removeU2F(String userId, String u2fId) throws ApiException {
+    return this.removeU2F(userId, u2fId, Collections.emptyMap());
   }
 
 
@@ -2240,17 +2240,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2RemoveU2FResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RemoveU2FResponse userServiceRemoveU2F(String userId, String u2fId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2RemoveU2FResponse removeU2F(String userId, String u2fId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceRemoveU2F");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling removeU2F");
     }
     
     // verify the required parameter 'u2fId' is set
     if (u2fId == null) {
-      throw new ApiException(400, "Missing the required parameter 'u2fId' when calling userServiceRemoveU2F");
+      throw new ApiException(400, "Missing the required parameter 'u2fId' when calling removeU2F");
     }
     
     // create path and map variables
@@ -2309,8 +2309,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2ResendEmailCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResendEmailCodeResponse userServiceResendEmailCode(String userId, UserServiceResendEmailCodeBody body) throws ApiException {
-    return this.userServiceResendEmailCode(userId, body, Collections.emptyMap());
+  public V2ResendEmailCodeResponse resendEmailCode(String userId, UserServiceResendEmailCodeBody body) throws ApiException {
+    return this.resendEmailCode(userId, body, Collections.emptyMap());
   }
 
 
@@ -2323,17 +2323,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2ResendEmailCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResendEmailCodeResponse userServiceResendEmailCode(String userId, UserServiceResendEmailCodeBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2ResendEmailCodeResponse resendEmailCode(String userId, UserServiceResendEmailCodeBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceResendEmailCode");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling resendEmailCode");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceResendEmailCode");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling resendEmailCode");
     }
     
     // create path and map variables
@@ -2390,8 +2390,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2ResendInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResendInviteCodeResponse userServiceResendInviteCode(String userId) throws ApiException {
-    return this.userServiceResendInviteCode(userId, Collections.emptyMap());
+  public V2ResendInviteCodeResponse resendInviteCode(String userId) throws ApiException {
+    return this.resendInviteCode(userId, Collections.emptyMap());
   }
 
 
@@ -2403,12 +2403,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2ResendInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResendInviteCodeResponse userServiceResendInviteCode(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2ResendInviteCodeResponse resendInviteCode(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceResendInviteCode");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling resendInviteCode");
     }
     
     // create path and map variables
@@ -2466,8 +2466,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2ResendPhoneCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResendPhoneCodeResponse userServiceResendPhoneCode(String userId, UserServiceResendPhoneCodeBody body) throws ApiException {
-    return this.userServiceResendPhoneCode(userId, body, Collections.emptyMap());
+  public V2ResendPhoneCodeResponse resendPhoneCode(String userId, UserServiceResendPhoneCodeBody body) throws ApiException {
+    return this.resendPhoneCode(userId, body, Collections.emptyMap());
   }
 
 
@@ -2480,17 +2480,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2ResendPhoneCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public V2ResendPhoneCodeResponse userServiceResendPhoneCode(String userId, UserServiceResendPhoneCodeBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2ResendPhoneCodeResponse resendPhoneCode(String userId, UserServiceResendPhoneCodeBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceResendPhoneCode");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling resendPhoneCode");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceResendPhoneCode");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling resendPhoneCode");
     }
     
     // create path and map variables
@@ -2548,8 +2548,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2RetrieveIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RetrieveIdentityProviderIntentResponse userServiceRetrieveIdentityProviderIntent(String idpIntentId, UserServiceRetrieveIdentityProviderIntentBody body) throws ApiException {
-    return this.userServiceRetrieveIdentityProviderIntent(idpIntentId, body, Collections.emptyMap());
+  public V2RetrieveIdentityProviderIntentResponse retrieveIdentityProviderIntent(String idpIntentId, UserServiceRetrieveIdentityProviderIntentBody body) throws ApiException {
+    return this.retrieveIdentityProviderIntent(idpIntentId, body, Collections.emptyMap());
   }
 
 
@@ -2562,17 +2562,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2RetrieveIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
    */
-  public V2RetrieveIdentityProviderIntentResponse userServiceRetrieveIdentityProviderIntent(String idpIntentId, UserServiceRetrieveIdentityProviderIntentBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2RetrieveIdentityProviderIntentResponse retrieveIdentityProviderIntent(String idpIntentId, UserServiceRetrieveIdentityProviderIntentBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'idpIntentId' is set
     if (idpIntentId == null) {
-      throw new ApiException(400, "Missing the required parameter 'idpIntentId' when calling userServiceRetrieveIdentityProviderIntent");
+      throw new ApiException(400, "Missing the required parameter 'idpIntentId' when calling retrieveIdentityProviderIntent");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceRetrieveIdentityProviderIntent");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling retrieveIdentityProviderIntent");
     }
     
     // create path and map variables
@@ -2630,8 +2630,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2SendEmailCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SendEmailCodeResponse userServiceSendEmailCode(String userId, UserServiceSendEmailCodeBody body) throws ApiException {
-    return this.userServiceSendEmailCode(userId, body, Collections.emptyMap());
+  public V2SendEmailCodeResponse sendEmailCode(String userId, UserServiceSendEmailCodeBody body) throws ApiException {
+    return this.sendEmailCode(userId, body, Collections.emptyMap());
   }
 
 
@@ -2644,17 +2644,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2SendEmailCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SendEmailCodeResponse userServiceSendEmailCode(String userId, UserServiceSendEmailCodeBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2SendEmailCodeResponse sendEmailCode(String userId, UserServiceSendEmailCodeBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceSendEmailCode");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling sendEmailCode");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceSendEmailCode");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling sendEmailCode");
     }
     
     // create path and map variables
@@ -2712,8 +2712,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2SetEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetEmailResponse userServiceSetEmail(String userId, UserServiceSetEmailBody body) throws ApiException {
-    return this.userServiceSetEmail(userId, body, Collections.emptyMap());
+  public V2SetEmailResponse setEmail(String userId, UserServiceSetEmailBody body) throws ApiException {
+    return this.setEmail(userId, body, Collections.emptyMap());
   }
 
 
@@ -2726,17 +2726,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2SetEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetEmailResponse userServiceSetEmail(String userId, UserServiceSetEmailBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2SetEmailResponse setEmail(String userId, UserServiceSetEmailBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceSetEmail");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling setEmail");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceSetEmail");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling setEmail");
     }
     
     // create path and map variables
@@ -2794,8 +2794,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2SetPasswordResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetPasswordResponse userServiceSetPassword(String userId, V2UserServiceSetPasswordBody body) throws ApiException {
-    return this.userServiceSetPassword(userId, body, Collections.emptyMap());
+  public V2SetPasswordResponse setPassword(String userId, V2UserServiceSetPasswordBody body) throws ApiException {
+    return this.setPassword(userId, body, Collections.emptyMap());
   }
 
 
@@ -2808,17 +2808,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2SetPasswordResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetPasswordResponse userServiceSetPassword(String userId, V2UserServiceSetPasswordBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2SetPasswordResponse setPassword(String userId, V2UserServiceSetPasswordBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceSetPassword");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling setPassword");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceSetPassword");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling setPassword");
     }
     
     // create path and map variables
@@ -2876,8 +2876,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2SetPhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetPhoneResponse userServiceSetPhone(String userId, UserServiceSetPhoneBody body) throws ApiException {
-    return this.userServiceSetPhone(userId, body, Collections.emptyMap());
+  public V2SetPhoneResponse setPhone(String userId, UserServiceSetPhoneBody body) throws ApiException {
+    return this.setPhone(userId, body, Collections.emptyMap());
   }
 
 
@@ -2890,17 +2890,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2SetPhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public V2SetPhoneResponse userServiceSetPhone(String userId, UserServiceSetPhoneBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2SetPhoneResponse setPhone(String userId, UserServiceSetPhoneBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceSetPhone");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling setPhone");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceSetPhone");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling setPhone");
     }
     
     // create path and map variables
@@ -2957,8 +2957,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2StartIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
    */
-  public V2StartIdentityProviderIntentResponse userServiceStartIdentityProviderIntent(V2StartIdentityProviderIntentRequest body) throws ApiException {
-    return this.userServiceStartIdentityProviderIntent(body, Collections.emptyMap());
+  public V2StartIdentityProviderIntentResponse startIdentityProviderIntent(V2StartIdentityProviderIntentRequest body) throws ApiException {
+    return this.startIdentityProviderIntent(body, Collections.emptyMap());
   }
 
 
@@ -2970,12 +2970,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2StartIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
    */
-  public V2StartIdentityProviderIntentResponse userServiceStartIdentityProviderIntent(V2StartIdentityProviderIntentRequest body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2StartIdentityProviderIntentResponse startIdentityProviderIntent(V2StartIdentityProviderIntentRequest body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceStartIdentityProviderIntent");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling startIdentityProviderIntent");
     }
     
     // create path and map variables
@@ -3031,8 +3031,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2UnlockUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2UnlockUserResponse userServiceUnlockUser(String userId) throws ApiException {
-    return this.userServiceUnlockUser(userId, Collections.emptyMap());
+  public V2UnlockUserResponse unlockUser(String userId) throws ApiException {
+    return this.unlockUser(userId, Collections.emptyMap());
   }
 
 
@@ -3044,12 +3044,12 @@ public class UserServiceApi extends BaseApi {
    * @return V2UnlockUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2UnlockUserResponse userServiceUnlockUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  public V2UnlockUserResponse unlockUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceUnlockUser");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling unlockUser");
     }
     
     // create path and map variables
@@ -3107,8 +3107,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2UpdateHumanUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2UpdateHumanUserResponse userServiceUpdateHumanUser(String userId, UserServiceUpdateHumanUserBody body) throws ApiException {
-    return this.userServiceUpdateHumanUser(userId, body, Collections.emptyMap());
+  public V2UpdateHumanUserResponse updateHumanUser(String userId, UserServiceUpdateHumanUserBody body) throws ApiException {
+    return this.updateHumanUser(userId, body, Collections.emptyMap());
   }
 
 
@@ -3121,17 +3121,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2UpdateHumanUserResponse
    * @throws ApiException if fails to make API call
    */
-  public V2UpdateHumanUserResponse userServiceUpdateHumanUser(String userId, UserServiceUpdateHumanUserBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2UpdateHumanUserResponse updateHumanUser(String userId, UserServiceUpdateHumanUserBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceUpdateHumanUser");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling updateHumanUser");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceUpdateHumanUser");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling updateHumanUser");
     }
     
     // create path and map variables
@@ -3189,8 +3189,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2VerifyEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public V2VerifyEmailResponse userServiceVerifyEmail(String userId, UserServiceVerifyEmailBody body) throws ApiException {
-    return this.userServiceVerifyEmail(userId, body, Collections.emptyMap());
+  public V2VerifyEmailResponse verifyEmail(String userId, UserServiceVerifyEmailBody body) throws ApiException {
+    return this.verifyEmail(userId, body, Collections.emptyMap());
   }
 
 
@@ -3203,17 +3203,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2VerifyEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public V2VerifyEmailResponse userServiceVerifyEmail(String userId, UserServiceVerifyEmailBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2VerifyEmailResponse verifyEmail(String userId, UserServiceVerifyEmailBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceVerifyEmail");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling verifyEmail");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceVerifyEmail");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling verifyEmail");
     }
     
     // create path and map variables
@@ -3271,8 +3271,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2VerifyInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public V2VerifyInviteCodeResponse userServiceVerifyInviteCode(String userId, UserServiceVerifyInviteCodeBody body) throws ApiException {
-    return this.userServiceVerifyInviteCode(userId, body, Collections.emptyMap());
+  public V2VerifyInviteCodeResponse verifyInviteCode(String userId, UserServiceVerifyInviteCodeBody body) throws ApiException {
+    return this.verifyInviteCode(userId, body, Collections.emptyMap());
   }
 
 
@@ -3285,17 +3285,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2VerifyInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public V2VerifyInviteCodeResponse userServiceVerifyInviteCode(String userId, UserServiceVerifyInviteCodeBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2VerifyInviteCodeResponse verifyInviteCode(String userId, UserServiceVerifyInviteCodeBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceVerifyInviteCode");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling verifyInviteCode");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceVerifyInviteCode");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling verifyInviteCode");
     }
     
     // create path and map variables
@@ -3354,8 +3354,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2VerifyPasskeyRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public V2VerifyPasskeyRegistrationResponse userServiceVerifyPasskeyRegistration(String userId, String passkeyId, UserServiceVerifyPasskeyRegistrationBody body) throws ApiException {
-    return this.userServiceVerifyPasskeyRegistration(userId, passkeyId, body, Collections.emptyMap());
+  public V2VerifyPasskeyRegistrationResponse verifyPasskeyRegistration(String userId, String passkeyId, UserServiceVerifyPasskeyRegistrationBody body) throws ApiException {
+    return this.verifyPasskeyRegistration(userId, passkeyId, body, Collections.emptyMap());
   }
 
 
@@ -3369,22 +3369,22 @@ public class UserServiceApi extends BaseApi {
    * @return V2VerifyPasskeyRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public V2VerifyPasskeyRegistrationResponse userServiceVerifyPasskeyRegistration(String userId, String passkeyId, UserServiceVerifyPasskeyRegistrationBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2VerifyPasskeyRegistrationResponse verifyPasskeyRegistration(String userId, String passkeyId, UserServiceVerifyPasskeyRegistrationBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceVerifyPasskeyRegistration");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling verifyPasskeyRegistration");
     }
     
     // verify the required parameter 'passkeyId' is set
     if (passkeyId == null) {
-      throw new ApiException(400, "Missing the required parameter 'passkeyId' when calling userServiceVerifyPasskeyRegistration");
+      throw new ApiException(400, "Missing the required parameter 'passkeyId' when calling verifyPasskeyRegistration");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceVerifyPasskeyRegistration");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling verifyPasskeyRegistration");
     }
     
     // create path and map variables
@@ -3443,8 +3443,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2VerifyPhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public V2VerifyPhoneResponse userServiceVerifyPhone(String userId, UserServiceVerifyPhoneBody body) throws ApiException {
-    return this.userServiceVerifyPhone(userId, body, Collections.emptyMap());
+  public V2VerifyPhoneResponse verifyPhone(String userId, UserServiceVerifyPhoneBody body) throws ApiException {
+    return this.verifyPhone(userId, body, Collections.emptyMap());
   }
 
 
@@ -3457,17 +3457,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2VerifyPhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public V2VerifyPhoneResponse userServiceVerifyPhone(String userId, UserServiceVerifyPhoneBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2VerifyPhoneResponse verifyPhone(String userId, UserServiceVerifyPhoneBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceVerifyPhone");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling verifyPhone");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceVerifyPhone");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling verifyPhone");
     }
     
     // create path and map variables
@@ -3525,8 +3525,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2VerifyTOTPRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public V2VerifyTOTPRegistrationResponse userServiceVerifyTOTPRegistration(String userId, UserServiceVerifyTOTPRegistrationBody body) throws ApiException {
-    return this.userServiceVerifyTOTPRegistration(userId, body, Collections.emptyMap());
+  public V2VerifyTOTPRegistrationResponse verifyTOTPRegistration(String userId, UserServiceVerifyTOTPRegistrationBody body) throws ApiException {
+    return this.verifyTOTPRegistration(userId, body, Collections.emptyMap());
   }
 
 
@@ -3539,17 +3539,17 @@ public class UserServiceApi extends BaseApi {
    * @return V2VerifyTOTPRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public V2VerifyTOTPRegistrationResponse userServiceVerifyTOTPRegistration(String userId, UserServiceVerifyTOTPRegistrationBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2VerifyTOTPRegistrationResponse verifyTOTPRegistration(String userId, UserServiceVerifyTOTPRegistrationBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceVerifyTOTPRegistration");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling verifyTOTPRegistration");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceVerifyTOTPRegistration");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling verifyTOTPRegistration");
     }
     
     // create path and map variables
@@ -3608,8 +3608,8 @@ public class UserServiceApi extends BaseApi {
    * @return V2VerifyU2FRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public V2VerifyU2FRegistrationResponse userServiceVerifyU2FRegistration(String userId, String u2fId, UserServiceVerifyU2FRegistrationBody body) throws ApiException {
-    return this.userServiceVerifyU2FRegistration(userId, u2fId, body, Collections.emptyMap());
+  public V2VerifyU2FRegistrationResponse verifyU2FRegistration(String userId, String u2fId, UserServiceVerifyU2FRegistrationBody body) throws ApiException {
+    return this.verifyU2FRegistration(userId, u2fId, body, Collections.emptyMap());
   }
 
 
@@ -3623,22 +3623,22 @@ public class UserServiceApi extends BaseApi {
    * @return V2VerifyU2FRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public V2VerifyU2FRegistrationResponse userServiceVerifyU2FRegistration(String userId, String u2fId, UserServiceVerifyU2FRegistrationBody body, Map<String, String> additionalHeaders) throws ApiException {
+  public V2VerifyU2FRegistrationResponse verifyU2FRegistration(String userId, String u2fId, UserServiceVerifyU2FRegistrationBody body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
     
     // verify the required parameter 'userId' is set
     if (userId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userId' when calling userServiceVerifyU2FRegistration");
+      throw new ApiException(400, "Missing the required parameter 'userId' when calling verifyU2FRegistration");
     }
     
     // verify the required parameter 'u2fId' is set
     if (u2fId == null) {
-      throw new ApiException(400, "Missing the required parameter 'u2fId' when calling userServiceVerifyU2FRegistration");
+      throw new ApiException(400, "Missing the required parameter 'u2fId' when calling verifyU2FRegistration");
     }
     
     // verify the required parameter 'body' is set
     if (body == null) {
-      throw new ApiException(400, "Missing the required parameter 'body' when calling userServiceVerifyU2FRegistration");
+      throw new ApiException(400, "Missing the required parameter 'body' when calling verifyU2FRegistration");
     }
     
     // create path and map variables

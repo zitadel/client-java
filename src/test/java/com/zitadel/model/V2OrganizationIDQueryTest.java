@@ -1,5 +1,5 @@
 /*
- * merged spec
+ * OpenAI API
  * merged spec
  *
  * The version of the OpenAPI document: 1.0.0
@@ -23,25 +23,25 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
- * Model tests for V2OrganizationIdQuery
+ * Model tests for V2OrganizationIDQuery
  */
-class V2OrganizationIdQueryTest {
-    private final V2OrganizationIdQuery model = new V2OrganizationIdQuery();
+class V2OrganizationIDQueryTest {
+    private final V2OrganizationIDQuery model = new V2OrganizationIDQuery();
 
     /**
-     * Model tests for V2OrganizationIdQuery
+     * Model tests for V2OrganizationIDQuery
      */
     @Test
-    void testV2OrganizationIdQuery() {
-        // TODO: test V2OrganizationIdQuery
+    void testV2OrganizationIDQuery() {
+        // TODO: test V2OrganizationIDQuery
     }
 
     /**
-     * Test the property 'organizationId'
+     * Test the property 'id'
      */
     @Test
-    void organizationIdTest() {
-        // TODO: test organizationId
+    void idTest() {
+        // TODO: test id
     }
 
 }

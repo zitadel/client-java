@@ -1,5 +1,5 @@
 /*
- * merged spec
+ * OpenAI API
  * merged spec
  *
  * The version of the OpenAPI document: 1.0.0
@@ -44,9 +44,9 @@ public class IdentityProviderServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void identityProviderServiceGetIDPByIDTest() throws ApiException {
+    public void getIDPByIDTest() throws ApiException {
         String id = null;
-        V2GetIDPByIDResponse response = api.identityProviderServiceGetIDPByID(id);
+        V2GetIDPByIDResponse response = api.getIDPByID(id);
 
         // TODO: test validations
     }

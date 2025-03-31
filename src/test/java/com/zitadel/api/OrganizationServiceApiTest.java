@@ -1,5 +1,5 @@
 /*
- * merged spec
+ * OpenAI API
  * merged spec
  *
  * The version of the OpenAPI document: 1.0.0
@@ -47,9 +47,9 @@ public class OrganizationServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void organizationServiceAddOrganizationTest() throws ApiException {
+    public void addOrganizationTest() throws ApiException {
         V2AddOrganizationRequest body = null;
-        V2AddOrganizationResponse response = api.organizationServiceAddOrganization(body);
+        V2AddOrganizationResponse response = api.addOrganization(body);
 
         // TODO: test validations
     }
@@ -62,9 +62,9 @@ public class OrganizationServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void organizationServiceListOrganizationsTest() throws ApiException {
+    public void listOrganizationsTest() throws ApiException {
         V2ListOrganizationsRequest body = null;
-        V2ListOrganizationsResponse response = api.organizationServiceListOrganizations(body);
+        V2ListOrganizationsResponse response = api.listOrganizations(body);
 
         // TODO: test validations
     }

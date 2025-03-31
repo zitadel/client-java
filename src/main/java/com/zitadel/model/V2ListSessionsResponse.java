@@ -1,6 +1,6 @@
 /*
- * merged spec
- * merged spec
+ * Zitadel SDK
+ * The Zitadel SDK is a convenience wrapper around the Zitadel APIs to assist you in integrating with your Zitadel environment. This SDK enables you to handle resources, settings, and configurations within the Zitadel platform.
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.Objectv2ListDetails;
-import com.zitadel.model.V2Session;
+import com.zitadel.model.V2Session1;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -47,7 +47,7 @@ public class V2ListSessionsResponse {
 
   public static final String JSON_PROPERTY_SESSIONS = "sessions";
   @javax.annotation.Nullable
-  private List<V2Session> sessions = new ArrayList<>();
+  private List<V2Session1> sessions = new ArrayList<>();
 
   public V2ListSessionsResponse() {
   }
@@ -77,13 +77,13 @@ public class V2ListSessionsResponse {
     this.details = details;
   }
 
-  public V2ListSessionsResponse sessions(@javax.annotation.Nullable List<V2Session> sessions) {
+  public V2ListSessionsResponse sessions(@javax.annotation.Nullable List<V2Session1> sessions) {
     
     this.sessions = sessions;
     return this;
   }
 
-  public V2ListSessionsResponse addSessionsItem(V2Session sessionsItem) {
+  public V2ListSessionsResponse addSessionsItem(V2Session1 sessionsItem) {
     if (this.sessions == null) {
       this.sessions = new ArrayList<>();
     }
@@ -99,14 +99,14 @@ public class V2ListSessionsResponse {
   @JsonProperty(JSON_PROPERTY_SESSIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<V2Session> getSessions() {
+  public List<V2Session1> getSessions() {
     return sessions;
   }
 
 
   @JsonProperty(JSON_PROPERTY_SESSIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSessions(@javax.annotation.Nullable List<V2Session> sessions) {
+  public void setSessions(@javax.annotation.Nullable List<V2Session1> sessions) {
     this.sessions = sessions;
   }
 

@@ -1,5 +1,5 @@
 /*
- * merged spec
+ * OpenAI API
  * merged spec
  *
  * The version of the OpenAPI document: 1.0.0
@@ -52,14 +52,14 @@ public class SettingsServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void settingsServiceGetActiveIdentityProvidersTest() throws ApiException {
+    public void getActiveIdentityProvidersTest() throws ApiException {
         String ctxOrgId = null;
         Boolean ctxInstance = null;
         Boolean creationAllowed = null;
         Boolean linkingAllowed = null;
         Boolean autoCreation = null;
         Boolean autoLinking = null;
-        V2GetActiveIdentityProvidersResponse response = api.settingsServiceGetActiveIdentityProviders(ctxOrgId, ctxInstance, creationAllowed, linkingAllowed, autoCreation, autoLinking);
+        V2GetActiveIdentityProvidersResponse response = api.getActiveIdentityProviders(ctxOrgId, ctxInstance, creationAllowed, linkingAllowed, autoCreation, autoLinking);
 
         // TODO: test validations
     }
@@ -72,10 +72,10 @@ public class SettingsServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void settingsServiceGetBrandingSettingsTest() throws ApiException {
+    public void getBrandingSettingsTest() throws ApiException {
         String ctxOrgId = null;
         Boolean ctxInstance = null;
-        V2GetBrandingSettingsResponse response = api.settingsServiceGetBrandingSettings(ctxOrgId, ctxInstance);
+        V2GetBrandingSettingsResponse response = api.getBrandingSettings(ctxOrgId, ctxInstance);
 
         // TODO: test validations
     }
@@ -88,10 +88,10 @@ public class SettingsServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void settingsServiceGetDomainSettingsTest() throws ApiException {
+    public void getDomainSettingsTest() throws ApiException {
         String ctxOrgId = null;
         Boolean ctxInstance = null;
-        V2GetDomainSettingsResponse response = api.settingsServiceGetDomainSettings(ctxOrgId, ctxInstance);
+        V2GetDomainSettingsResponse response = api.getDomainSettings(ctxOrgId, ctxInstance);
 
         // TODO: test validations
     }
@@ -104,8 +104,8 @@ public class SettingsServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void settingsServiceGetGeneralSettingsTest() throws ApiException {
-        V2GetGeneralSettingsResponse response = api.settingsServiceGetGeneralSettings();
+    public void getGeneralSettingsTest() throws ApiException {
+        V2GetGeneralSettingsResponse response = api.getGeneralSettings();
 
         // TODO: test validations
     }
@@ -118,10 +118,10 @@ public class SettingsServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void settingsServiceGetLegalAndSupportSettingsTest() throws ApiException {
+    public void getLegalAndSupportSettingsTest() throws ApiException {
         String ctxOrgId = null;
         Boolean ctxInstance = null;
-        V2GetLegalAndSupportSettingsResponse response = api.settingsServiceGetLegalAndSupportSettings(ctxOrgId, ctxInstance);
+        V2GetLegalAndSupportSettingsResponse response = api.getLegalAndSupportSettings(ctxOrgId, ctxInstance);
 
         // TODO: test validations
     }
@@ -134,10 +134,10 @@ public class SettingsServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void settingsServiceGetLockoutSettingsTest() throws ApiException {
+    public void getLockoutSettingsTest() throws ApiException {
         String ctxOrgId = null;
         Boolean ctxInstance = null;
-        V2GetLockoutSettingsResponse response = api.settingsServiceGetLockoutSettings(ctxOrgId, ctxInstance);
+        V2GetLockoutSettingsResponse response = api.getLockoutSettings(ctxOrgId, ctxInstance);
 
         // TODO: test validations
     }
@@ -150,10 +150,10 @@ public class SettingsServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void settingsServiceGetLoginSettingsTest() throws ApiException {
+    public void getLoginSettingsTest() throws ApiException {
         String ctxOrgId = null;
         Boolean ctxInstance = null;
-        V2GetLoginSettingsResponse response = api.settingsServiceGetLoginSettings(ctxOrgId, ctxInstance);
+        V2GetLoginSettingsResponse response = api.getLoginSettings(ctxOrgId, ctxInstance);
 
         // TODO: test validations
     }
@@ -166,10 +166,10 @@ public class SettingsServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void settingsServiceGetPasswordComplexitySettingsTest() throws ApiException {
+    public void getPasswordComplexitySettingsTest() throws ApiException {
         String ctxOrgId = null;
         Boolean ctxInstance = null;
-        V2GetPasswordComplexitySettingsResponse response = api.settingsServiceGetPasswordComplexitySettings(ctxOrgId, ctxInstance);
+        V2GetPasswordComplexitySettingsResponse response = api.getPasswordComplexitySettings(ctxOrgId, ctxInstance);
 
         // TODO: test validations
     }
@@ -182,10 +182,10 @@ public class SettingsServiceApiTest {
      *          if the Api call fails
      */
     @Test
-    public void settingsServiceGetPasswordExpirySettingsTest() throws ApiException {
+    public void getPasswordExpirySettingsTest() throws ApiException {
         String ctxOrgId = null;
         Boolean ctxInstance = null;
-        V2GetPasswordExpirySettingsResponse response = api.settingsServiceGetPasswordExpirySettings(ctxOrgId, ctxInstance);
+        V2GetPasswordExpirySettingsResponse response = api.getPasswordExpirySettings(ctxOrgId, ctxInstance);
 
         // TODO: test validations
     }

@@ -1,5 +1,5 @@
 /*
- * merged spec
+ * OpenAI API
  * merged spec
  *
  * The version of the OpenAPI document: 1.0.0
@@ -29,7 +29,7 @@ import com.zitadel.model.V2LoginNameQuery;
 import com.zitadel.model.V2NickNameQuery;
 import com.zitadel.model.V2NotQuery;
 import com.zitadel.model.V2OrQuery;
-import com.zitadel.model.V2OrganizationIdQuery;
+import com.zitadel.model.V2OrganizationIDQuery;
 import com.zitadel.model.V2PhoneQuery;
 import com.zitadel.model.V2StateQuery;
 import com.zitadel.model.V2TypeQuery;
