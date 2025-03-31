@@ -1,5 +1,6 @@
 package com.zitadel;
 
+import java.util.function.Consumer;
 import com.zitadel.api.FeatureServiceApi;
 import com.zitadel.api.IdentityProviderServiceApi;
 import com.zitadel.api.OidcServiceApi;
@@ -7,7 +8,6 @@ import com.zitadel.api.OrganizationServiceApi;
 import com.zitadel.api.SessionServiceApi;
 import com.zitadel.api.SettingsServiceApi;
 import com.zitadel.api.UserServiceApi;
-import com.zitadel.ApiClient;
 
 public class Zitadel {
 	public final ApiClient apiClient;
@@ -20,8 +20,19 @@ public class Zitadel {
 	public final UserServiceApi users;
 
 	public Zitadel(String host, String accessToken) {
+		this(host, accessToken, apiClient -> {
+			// Dummy lambda that does nothing, can add default behavior here if needed
+		});
+	}
+
+	public Zitadel(String host, String accessToken, Consumer<ApiClient> mutateApiClient) {
 		this.apiClient = new ApiClient();
 		this.apiClient.setBasePath(host).setBearerToken(accessToken);
+
+		if (mutateApiClient != null) {
+			mutateApiClient.accept(this.apiClient);
+		}
+
 		this.features = new FeatureServiceApi(apiClient);
 		this.idps = new IdentityProviderServiceApi(apiClient);
 		this.oidc = new OidcServiceApi(apiClient);
