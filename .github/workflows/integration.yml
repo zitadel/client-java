@@ -1,0 +1,39 @@
+name: Compatibility
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-compatibility:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-version: [ '8', '11', '17', '21' ]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          path: project/library
+
+      - name: Checkout sanity stub
+        uses: actions/checkout@v4
+        with:
+          ref: sanity
+          path: project/sanity
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java-version }}
+          distribution: 'corretto'
+
+      - name: Build Library
+        working-directory: project/library
+        run: mvn clean install
+
+      - name: Check Installability
+        working-directory: project/sanity
+        run: mvn clean test
