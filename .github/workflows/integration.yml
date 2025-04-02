@@ -7,6 +7,7 @@ on:
 
 jobs:
   check-compatibility:
+    name: With Java ${{ matrix.java-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
