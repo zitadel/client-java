@@ -19,6 +19,10 @@ public class NoAuthAuthenticator extends Authenticator {
     super(host);
   }
 
+  public NoAuthAuthenticator() {
+    this("localhost");
+  }
+
   /**
    * Returns an empty set of authentication headers.
    *
