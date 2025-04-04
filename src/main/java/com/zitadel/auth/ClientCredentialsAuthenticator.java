@@ -33,10 +33,10 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
    * @param clientId     The OAuth2 client identifier.clientSecret
    * @param clientSecret The OAuth2 client secret.
    * @param tokenUrlStr  The URL (or relative path starting with '/') of the OAuth2 token endpoint.
-   * @param scopes       The scope for the token request.
+   * @param authScopes       The scope for the token request.
    */
-  private ClientCredentialsAuthenticator(String host, ClientID clientId, Secret clientSecret, String tokenUrlStr, Set<String> scopes) throws MalformedURLException, URISyntaxException {
-    super(host, GRANT, tokenUrlStr, new Scope(scopes.toArray(new String[0])));
+  ClientCredentialsAuthenticator(String host, ClientID clientId, Secret clientSecret, String tokenUrlStr, Scope authScopes) throws MalformedURLException, URISyntaxException {
+    super(host, GRANT, tokenUrlStr, authScopes);
     this.clientSecret = clientSecret;
     this.clientId = clientId;
   }
@@ -47,8 +47,9 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
    * This method uses the Nimbus OAuth2 SDK to send a token request.
    */
   @Override
-  public void refreshToken() {
+  public Token refreshToken() {
     this.token = super.getToken(new ClientSecretBasic(this.clientId, this.clientSecret));
+    return this.token;
   }
 
   /**

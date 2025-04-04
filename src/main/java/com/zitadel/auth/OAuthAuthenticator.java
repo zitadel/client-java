@@ -74,7 +74,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
    * <p>
    * Subclasses must implement this method using their specific OAuth flow.
    */
-  public abstract void refreshToken();
+  public abstract Token refreshToken();
 
   protected Token getToken(ClientAuthentication authentication) {
     try {
@@ -110,7 +110,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
      * @param accessToken The access token string.
      * @param expiresAt   The expiration time as an epoch second.
      */
-    public Token(String accessToken, Instant expiresAt) {
+    private Token(String accessToken, Instant expiresAt) {
       this.accessToken = accessToken;
       this.expiresAt = expiresAt;
     }
@@ -120,7 +120,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
      *
      * @return true if expired; false otherwise.
      */
-    public boolean isExpired() {
+    private boolean isExpired() {
       return Instant.now().isAfter(expiresAt);
     }
   }
@@ -128,7 +128,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
   protected static abstract class OAuthAuthenticatorBuilder<T extends OAuthAuthenticatorBuilder<?>> {
 
     protected final String host;
-    protected Set<String> authScopes = Collections.singleton("openid");
+    protected Scope authScopes = Scope.parse("openid");
     protected String tokenEndpoint = "/oauth/v2/token";
 
     protected OAuthAuthenticatorBuilder(String host) {
@@ -141,9 +141,10 @@ public abstract class OAuthAuthenticator extends Authenticator {
      * @param tokenEndpoint The URL (or relative path starting with '/') of the OAuth2 token endpoint.
      * @return The builder instance.
      */
-    public final OAuthAuthenticatorBuilder<T> tokenEndpoint(String tokenEndpoint) {
+    @SuppressWarnings("unchecked")
+    public final T tokenEndpoint(String tokenEndpoint) {
       this.tokenEndpoint = tokenEndpoint;
-      return this;
+      return (T) this;
     }
 
     /**
@@ -152,9 +153,10 @@ public abstract class OAuthAuthenticator extends Authenticator {
      * @param authScopes A set of scopes for the token request.
      * @return The builder instance.
      */
-    public final OAuthAuthenticatorBuilder<T> scopes(Set<String> authScopes) {
-      this.authScopes = authScopes;
-      return this;
+    @SuppressWarnings("unchecked")
+    public final T scopes(Set<String> authScopes) {
+      this.authScopes = Scope.parse(authScopes);
+      return (T) this;
     }
   }
 }

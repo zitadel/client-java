@@ -11,6 +11,11 @@ import com.nimbusds.jose.crypto.RSASSASigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.nimbusds.oauth2.sdk.JWTBearerGrant;
+import com.nimbusds.oauth2.sdk.Scope;
+import com.nimbusds.oauth2.sdk.auth.ClientAuthentication;
+import com.nimbusds.oauth2.sdk.auth.ClientAuthenticationMethod;
+import com.nimbusds.oauth2.sdk.http.HTTPRequest;
+import com.nimbusds.oauth2.sdk.id.ClientID;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +32,8 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Base64;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * JWT-based Authenticator using the JWT Bearer Grant (RFC7523).
@@ -35,8 +42,8 @@ import java.util.Date;
  */
 public class JWTAuthenticator extends OAuthAuthenticator {
 
-  private JWTAuthenticator(String host, JWTBearerGrant grant, String tokenUrl) throws ParseException, MalformedURLException, URISyntaxException {
-    super(host, grant, tokenUrl, null);
+  private JWTAuthenticator(String host, JWTBearerGrant grant, String tokenUrl, Scope authScopes) throws MalformedURLException, URISyntaxException {
+    super(host, grant, tokenUrl, authScopes);
   }
 
   /**
@@ -45,8 +52,20 @@ public class JWTAuthenticator extends OAuthAuthenticator {
    * This method generates a JWT assertion and exchanges it for an access token.
    */
   @Override
-  public void refreshToken() {
-    this.token = super.getToken(null);
+  public Token refreshToken() {
+    this.token = super.getToken(new ClientAuthentication(ClientAuthenticationMethod.NONE,new ClientID()) {
+
+      @Override
+      public Set<String> getFormParameterNames() {
+        return new HashSet<>();
+      }
+
+      @Override
+      public void applyTo(HTTPRequest httpRequest) {
+        //
+      }
+    });
+    return token;
   }
 
   /**
@@ -222,7 +241,7 @@ public class JWTAuthenticator extends OAuthAuthenticator {
 
         signedJWT.sign(keySigner);
 
-        return new JWTAuthenticator(host, new JWTBearerGrant(SignedJWT.parse(signedJWT.serialize())), tokenEndpoint);
+        return new JWTAuthenticator(host, new JWTBearerGrant(SignedJWT.parse(signedJWT.serialize())), tokenEndpoint, authScopes);
       } catch (JOSEException e) {
         throw new RuntimeException("Failed to generate JWT assertion: " + e.getMessage(), e);
       }
