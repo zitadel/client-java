@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.zitadel.auth.Authenticator;
 import com.zitadel.auth.NoAuthAuthenticator;
+import com.zitadel.utils.StringUtil;
 import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
 import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
@@ -37,16 +38,18 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.text.DateFormat;
 import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ApiClient extends JavaTimeFormatter {
+public class ApiClient {
 
   private static final List<String> bodyMethods = Arrays.asList("POST", "PUT", "DELETE", "PATCH");
   private final Authenticator authenticator;
   protected String tempFolderPath = null;
+  private final DateTimeFormatter offsetDateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
   private boolean debugging = false;
   private CloseableHttpClient httpClient;
   private ObjectMapper objectMapper;
@@ -192,7 +195,7 @@ public class ApiClient extends JavaTimeFormatter {
     } else if (param instanceof Date) {
       return formatDate((Date) param);
     } else if (param instanceof OffsetDateTime) {
-      return formatOffsetDateTime((OffsetDateTime) param);
+      return offsetDateTimeFormatter.format((OffsetDateTime) param);
     } else if (param instanceof Collection) {
       StringBuilder b = new StringBuilder();
       for (Object o : (Collection<?>) param) {

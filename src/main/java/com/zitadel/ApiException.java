@@ -29,7 +29,7 @@ public class ApiException extends Exception {
   }
 
   public ApiException(String message, int code, Map<String, List<String>> responseHeaders, String responseBody) {
-    this(message, (Throwable) null, code, responseHeaders, responseBody);
+    this(message, null, code, responseHeaders, responseBody);
   }
 
   public ApiException(String message, Throwable throwable, int code, Map<String, List<String>> responseHeaders) {
@@ -37,7 +37,7 @@ public class ApiException extends Exception {
   }
 
   public ApiException(int code, Map<String, List<String>> responseHeaders, String responseBody) {
-    this("Response Code: " + code + " Response Body: " + responseBody, (Throwable) null, code, responseHeaders, responseBody);
+    this("Response Code: " + code + " Response Body: " + responseBody, null, code, responseHeaders, responseBody);
   }
 
   public ApiException(int code, String message) {

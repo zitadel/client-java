@@ -34,10 +34,6 @@ public class Pair {
   }
 
   private boolean isValidString(String arg) {
-    if (arg == null) {
-      return false;
-    }
-
-    return true;
+    return arg != null;
   }
 }

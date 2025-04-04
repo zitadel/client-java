@@ -1,4 +1,4 @@
-package com.zitadel;
+package com.zitadel.utils;
 
 public class StringUtil {
 
