@@ -10,9 +10,9 @@ import javax.annotation.Nullable;
 
 public abstract class OAuthAuthenticatorTest {
 
+  protected static String oauthHost;
   @Nullable
   private static GenericContainer<?> mockOAuth2Server;
-  protected static String oauthHost;
 
   @SuppressWarnings("resource")
   @BeforeAll

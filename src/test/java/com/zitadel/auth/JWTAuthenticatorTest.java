@@ -1,21 +1,15 @@
 package com.zitadel.auth;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.containers.wait.strategy.Wait;
-import org.testcontainers.utility.DockerImageName;
 
-import javax.annotation.Nullable;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.interfaces.RSAPrivateKey;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class JWTAuthenticatorTest extends OAuthAuthenticatorTest {
 
@@ -38,5 +32,6 @@ class JWTAuthenticatorTest extends OAuthAuthenticatorTest {
     OAuthAuthenticator.Token token = authenticator.refreshToken();
     assertNotNull(token.accessToken, "Access token should not be null");
     assertTrue(token.expiresAt.isAfter(Instant.now()), "Token expiry should be in the future");
+    assertEquals(Collections.singletonMap("Authorization", "Bearer " + token.accessToken), authenticator.getAuthHeaders());
   }
 }
