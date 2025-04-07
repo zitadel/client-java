@@ -24,7 +24,7 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
    * Constructs a ClientCredentialsAuthenticator.
    *
    * @param openId       The base URL for the API endpoints.
-   * @param clientId     The OAuth2 client identifier.clientSecret
+   * @param clientId     The OAuth2 client identifier.
    * @param clientSecret The OAuth2 client secret.
    * @param authScopes   The scope for the token request.
    */
