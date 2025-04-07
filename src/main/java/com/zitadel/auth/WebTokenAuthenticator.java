@@ -21,8 +21,6 @@ import com.nimbusds.oauth2.sdk.id.ClientID;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
@@ -282,10 +280,8 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
      * Prepares all required values for JWT-based authentication.
      *
      * @return a new JWTAuthenticator instance.
-     * @throws MalformedURLException if the tokenUrl is malformed.
-     * @throws URISyntaxException    if the tokenUrl is not a valid URI.
      */
-    public WebTokenAuthenticator build() throws MalformedURLException, URISyntaxException {
+    public WebTokenAuthenticator build() {
       return new WebTokenAuthenticator(
         openId,
         jwtIssuer,

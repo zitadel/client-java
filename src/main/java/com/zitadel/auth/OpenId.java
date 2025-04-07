@@ -45,6 +45,7 @@ public class OpenId {
     }
   }
 
+  @SuppressWarnings("HttpUrlsUsage")
   private static URL buildWellKnownUrl(String hostname) {
     try {
       if (!hostname.startsWith("http://") && !hostname.startsWith("https://")) {

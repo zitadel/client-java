@@ -7,9 +7,6 @@ import com.nimbusds.oauth2.sdk.auth.ClientSecretBasic;
 import com.nimbusds.oauth2.sdk.auth.Secret;
 import com.nimbusds.oauth2.sdk.id.ClientID;
 
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-
 /**
  * OAuth2 Client Credentials Authenticator.
  * <p>
@@ -31,7 +28,7 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
    * @param clientSecret The OAuth2 client secret.
    * @param authScopes   The scope for the token request.
    */
-  ClientCredentialsAuthenticator(OpenId openId, ClientID clientId, Secret clientSecret, Scope authScopes) throws MalformedURLException, URISyntaxException {
+  ClientCredentialsAuthenticator(OpenId openId, ClientID clientId, Secret clientSecret, Scope authScopes) {
     super(openId, authScopes);
     this.clientSecret = clientSecret;
     this.clientId = clientId;
@@ -90,10 +87,8 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
      * Builds the ClientCredentialsAuthenticator.
      *
      * @return a new ClientCredentialsAuthenticator instance.
-     * @throws MalformedURLException if the token URL is malformed.
-     * @throws URISyntaxException    if the token URL is not a valid URI.
      */
-    public ClientCredentialsAuthenticator build() throws MalformedURLException, URISyntaxException {
+    public ClientCredentialsAuthenticator build() {
       return new ClientCredentialsAuthenticator(openId, clientId, clientSecret, authScopes);
     }
   }

@@ -1,7 +1,7 @@
 package com.zitadel.auth;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.zitadel.utils.URLUtil;
+
 import java.util.Collections;
 import java.util.Map;
 
@@ -23,8 +23,8 @@ public class PersonalAccessTokenAuthenticator extends Authenticator {
    * @param host  The base URL for the API endpoints.
    * @param token The personal access token.
    */
-  public PersonalAccessTokenAuthenticator(String host, String token) throws MalformedURLException {
-    super(new URL(host));
+  public PersonalAccessTokenAuthenticator(String host, String token) {
+    super(URLUtil.buildHostname(host));
     this.token = token;
   }
 
