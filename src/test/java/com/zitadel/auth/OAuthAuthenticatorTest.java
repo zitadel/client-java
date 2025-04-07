@@ -16,7 +16,7 @@ public abstract class OAuthAuthenticatorTest {
 
   @SuppressWarnings("resource")
   @BeforeAll
-  static void setUp() throws Exception {
+  static void setUp() {
     mockOAuth2Server = new GenericContainer<>(DockerImageName.parse("ghcr.io/navikt/mock-oauth2-server:2.1.10"))
       .withExposedPorts(8080)
       .waitingFor(Wait.forHttp("/").forStatusCode(405));

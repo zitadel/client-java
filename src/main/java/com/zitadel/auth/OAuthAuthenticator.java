@@ -6,10 +6,7 @@ import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.token.BearerAccessToken;
 
 import javax.annotation.Nullable;
-import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.Map;
@@ -24,14 +21,10 @@ import java.util.Set;
 public abstract class OAuthAuthenticator extends Authenticator {
 
   /**
-   * The URL of the OAuth2 token endpoint.
-   */
-  protected final URL tokenUrl;
-  /**
    * The scope for the token request.
    */
   protected final Scope scope;
-  protected final AuthorizationGrant grant;
+  private final OpenId openId;
   /**
    * The OAuth token.
    */
@@ -41,16 +34,22 @@ public abstract class OAuthAuthenticator extends Authenticator {
   /**
    * Constructs an OAuthAuthenticator.
    *
-   * @param host     The base URL for API endpoints.
-   * @param tokenUrl The URL of the OAuth2 token endpoint.
-   * @param scope    The scope for the token request.
+   * @param openId The URL of the OAuth2 token endpoint.
+   * @param scope  The scope for the token request.
    */
-  public OAuthAuthenticator(String host, AuthorizationGrant grant, String tokenUrl, Scope scope) throws URISyntaxException, MalformedURLException {
-    super(host);
-    this.grant = grant;
-    this.tokenUrl = new URI(host).resolve(tokenUrl).toURL();
+  public OAuthAuthenticator(OpenId openId, Scope scope) {
+    super(openId.getHostEndpoint());
     this.scope = scope;
     this.token = null;
+    this.openId = openId;
+  }
+
+  public String getAuthToken() {
+    if (token == null || token.isExpired()) {
+      refreshToken();
+    }
+
+    return token.accessToken;
   }
 
   /**
@@ -62,11 +61,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
    */
   @Override
   public Map<String, String> getAuthHeaders() {
-    if (token == null || token.isExpired()) {
-      refreshToken();
-    }
-
-    return Collections.singletonMap("Authorization", "Bearer " + token.accessToken);
+    return Collections.singletonMap("Authorization", "Bearer " + getAuthToken());
   }
 
   /**
@@ -76,10 +71,12 @@ public abstract class OAuthAuthenticator extends Authenticator {
    */
   public abstract Token refreshToken();
 
+  protected abstract AuthorizationGrant getGrant();
+
   protected Token getToken(ClientAuthentication authentication) {
     try {
-      URI tokenEndpoint = tokenUrl.toURI();
-      TokenRequest request = new TokenRequest(tokenEndpoint, authentication, this.grant, this.scope);
+      URI tokenEndpoint = openId.getTokenEndpoint().toURI();
+      TokenRequest request = new TokenRequest(tokenEndpoint, authentication, this.getGrant(), this.scope);
       HTTPRequest httpRequest = request.toHTTPRequest();
       TokenResponse tokenResponse = TokenResponse.parse(httpRequest.send());
 
@@ -127,24 +124,11 @@ public abstract class OAuthAuthenticator extends Authenticator {
 
   protected static abstract class OAuthAuthenticatorBuilder<T extends OAuthAuthenticatorBuilder<?>> {
 
-    protected final String host;
+    protected final OpenId openId;
     protected Scope authScopes = Scope.parse("openid");
-    protected String tokenEndpoint = "/oauth/v2/token";
 
     protected OAuthAuthenticatorBuilder(String host) {
-      this.host = host;
-    }
-
-    /**
-     * Overrides the default token URL.
-     *
-     * @param tokenEndpoint The URL (or relative path starting with '/') of the OAuth2 token endpoint.
-     * @return The builder instance.
-     */
-    @SuppressWarnings("unchecked")
-    public final T tokenEndpoint(String tokenEndpoint) {
-      this.tokenEndpoint = tokenEndpoint;
-      return (T) this;
+      this.openId = new OpenId(host);
     }
 
     /**

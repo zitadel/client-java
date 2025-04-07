@@ -7,9 +7,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
+import com.nimbusds.jose.JWSSigner;
 import com.nimbusds.jose.crypto.RSASSASigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import com.nimbusds.oauth2.sdk.AuthorizationGrant;
 import com.nimbusds.oauth2.sdk.JWTBearerGrant;
 import com.nimbusds.oauth2.sdk.Scope;
 import com.nimbusds.oauth2.sdk.auth.ClientAuthentication;
@@ -40,10 +42,44 @@ import java.util.Set;
  * <p>
  * This class creates a JWT assertion and exchanges it for an access token.
  */
-public class JWTAuthenticator extends OAuthAuthenticator {
+public class WebTokenAuthenticator extends OAuthAuthenticator {
 
-  private JWTAuthenticator(String host, JWTBearerGrant grant, String tokenUrl, Scope authScopes) throws MalformedURLException, URISyntaxException {
-    super(host, grant, tokenUrl, authScopes);
+  private final String jwtIssuer;
+  private final String jwtSubject;
+  private final String jwtAudience;
+  private final JWSSigner keySigner;
+  private final Duration tokenLifetime;
+  private final JWSHeader jwsHeader;
+
+  public WebTokenAuthenticator(
+    OpenId openId,
+    String jwtIssuer,
+    String jwtSubject,
+    String jwtAudience,
+    JWSSigner keySigner,
+    Duration tokenLifetime,
+    JWSHeader jwsHeader,
+    Scope authScopes
+  ) {
+    super(openId, authScopes);
+    this.jwtIssuer = jwtIssuer;
+    this.jwtSubject = jwtSubject;
+    this.jwtAudience = jwtAudience;
+    this.keySigner = keySigner;
+    this.tokenLifetime = tokenLifetime;
+    this.jwsHeader = jwsHeader;
+  }
+
+  /**
+   * Returns a new builder instance for JWTAuthenticator.
+   *
+   * @param host       The base URL for API endpoints.
+   * @param userId     Used as both the issuer and subject in the JWT.
+   * @param privateKey The private key used to sign the JWT.
+   * @return a new JWTAuthenticatorBuilder instance.
+   */
+  public static Builder builder(String host, String userId, PrivateKey privateKey) {
+    return new Builder(host, userId, userId, host, privateKey);
   }
 
   /**
@@ -53,7 +89,7 @@ public class JWTAuthenticator extends OAuthAuthenticator {
    */
   @Override
   public Token refreshToken() {
-    this.token = super.getToken(new ClientAuthentication(ClientAuthenticationMethod.NONE,new ClientID()) {
+    this.token = super.getToken(new ClientAuthentication(ClientAuthenticationMethod.NONE, new ClientID()) {
 
       @Override
       public Set<String> getFormParameterNames() {
@@ -66,6 +102,28 @@ public class JWTAuthenticator extends OAuthAuthenticator {
       }
     });
     return token;
+  }
+
+  @Override
+  public AuthorizationGrant getGrant() {
+    try {
+      SignedJWT signedJWT = new SignedJWT(
+        jwsHeader,
+        new JWTClaimsSet.Builder()
+          .issuer(jwtIssuer)
+          .subject(jwtSubject)
+          .audience(jwtAudience)
+          .issueTime(Date.from(Instant.now()))
+          .expirationTime(Date.from(Instant.now().plus(tokenLifetime)))
+          .build()
+      );
+
+      signedJWT.sign(keySigner);
+      return new JWTBearerGrant(SignedJWT.parse(signedJWT.serialize()));
+
+    } catch (JOSEException | ParseException e) {
+      throw new RuntimeException("Failed to generate JWT assertion: " + e.getMessage(), e);
+    }
   }
 
   /**
@@ -191,11 +249,11 @@ public class JWTAuthenticator extends OAuthAuthenticator {
      * @param jwtAudience The audience claim for the JWT.
      * @param privateKey  The RSAPrivateKey used to sign the JWT.
      */
-    public Builder(String host,
-                   String jwtIssuer,
-                   String jwtSubject,
-                   String jwtAudience,
-                   PrivateKey privateKey) {
+    Builder(String host,
+            String jwtIssuer,
+            String jwtSubject,
+            String jwtAudience,
+            PrivateKey privateKey) {
       super(host);
       this.jwtIssuer = jwtIssuer;
       this.jwtSubject = jwtSubject;
@@ -221,30 +279,23 @@ public class JWTAuthenticator extends OAuthAuthenticator {
     /**
      * Builds the JWTAuthenticator.
      * <p>
-     * Inlines the JWT assertion generation logic.
+     * Prepares all required values for JWT-based authentication.
      *
      * @return a new JWTAuthenticator instance.
-     * @throws ParseException        if parsing the JWT assertion fails.
      * @throws MalformedURLException if the tokenUrl is malformed.
      * @throws URISyntaxException    if the tokenUrl is not a valid URI.
      */
-    public JWTAuthenticator build() throws ParseException, MalformedURLException, URISyntaxException {
-      try {
-
-        SignedJWT signedJWT = new SignedJWT(jwsHeader, new JWTClaimsSet.Builder()
-          .issuer(jwtIssuer)
-          .subject(jwtSubject)
-          .audience(jwtAudience)
-          .issueTime(Date.from(Instant.now()))
-          .expirationTime(Date.from(Instant.now().plus(tokenLifetime)))
-          .build());
-
-        signedJWT.sign(keySigner);
-
-        return new JWTAuthenticator(host, new JWTBearerGrant(SignedJWT.parse(signedJWT.serialize())), tokenEndpoint, authScopes);
-      } catch (JOSEException e) {
-        throw new RuntimeException("Failed to generate JWT assertion: " + e.getMessage(), e);
-      }
+    public WebTokenAuthenticator build() throws MalformedURLException, URISyntaxException {
+      return new WebTokenAuthenticator(
+        openId,
+        jwtIssuer,
+        jwtSubject,
+        jwtAudience,
+        keySigner,
+        tokenLifetime,
+        jwsHeader,
+        authScopes
+      );
     }
   }
 }

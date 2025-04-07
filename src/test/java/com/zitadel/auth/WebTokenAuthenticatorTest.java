@@ -1,5 +1,6 @@
 package com.zitadel.auth;
 
+import com.zitadel.auth.OAuthAuthenticator.Token;
 import org.junit.jupiter.api.Test;
 
 import java.security.KeyPair;
@@ -11,7 +12,7 @@ import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class JWTAuthenticatorTest extends OAuthAuthenticatorTest {
+class WebTokenAuthenticatorTest extends OAuthAuthenticatorTest {
 
   @Test
   void testRefreshTokenUsingBuilder() throws Exception {
@@ -21,17 +22,18 @@ class JWTAuthenticatorTest extends OAuthAuthenticatorTest {
     KeyPair keyPair = kpg.generateKeyPair();
     RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
 
-    String clientId = "dummy-client";
-    Duration tokenLifetime = Duration.ofSeconds(3600);
-
-    JWTAuthenticator authenticator = new JWTAuthenticator.Builder(oauthHost, clientId, clientId, oauthHost, privateKey)
-      .tokenLifetime(tokenLifetime)
+    WebTokenAuthenticator authenticator = WebTokenAuthenticator.builder(oauthHost, "dummy-client", privateKey)
+      .tokenLifetime(Duration.ofSeconds(3600))
       .jwtAlgorithm("RS256")
       .build();
 
-    OAuthAuthenticator.Token token = authenticator.refreshToken();
+    assertNotNull(authenticator.getAuthToken(), "Access token should not be empty");
+    Token token = authenticator.refreshToken();
+    assertEquals(Collections.singletonMap("Authorization", "Bearer " + token.accessToken), authenticator.getAuthHeaders());
     assertNotNull(token.accessToken, "Access token should not be null");
     assertTrue(token.expiresAt.isAfter(Instant.now()), "Token expiry should be in the future");
-    assertEquals(Collections.singletonMap("Authorization", "Bearer " + token.accessToken), authenticator.getAuthHeaders());
+    assertEquals(token.accessToken, authenticator.getAuthToken());
+    assertEquals(oauthHost, authenticator.getHost());
+    assertNotEquals(authenticator.refreshToken().accessToken, authenticator.refreshToken().accessToken);
   }
 }

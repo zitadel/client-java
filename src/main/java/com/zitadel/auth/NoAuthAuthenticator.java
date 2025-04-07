@@ -1,5 +1,7 @@
 package com.zitadel.auth;
 
+import com.zitadel.utils.URLUtil;
+
 import java.util.Collections;
 import java.util.Map;
 
@@ -16,7 +18,7 @@ public class NoAuthAuthenticator extends Authenticator {
    * @param host The base URL for authentication endpoints.
    */
   public NoAuthAuthenticator(String host) {
-    super(host);
+    super(URLUtil.buildHostname(host));
   }
 
   public NoAuthAuthenticator() {

@@ -1,5 +1,7 @@
 package com.zitadel.auth;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.Map;
 
@@ -8,7 +10,7 @@ import java.util.Map;
  * <p>
  * Uses a static personal access token for API authentication.
  */
-public class PersonalAccessAuthenticator extends Authenticator {
+public class PersonalAccessTokenAuthenticator extends Authenticator {
 
   /**
    * The personal access token.
@@ -21,8 +23,8 @@ public class PersonalAccessAuthenticator extends Authenticator {
    * @param host  The base URL for the API endpoints.
    * @param token The personal access token.
    */
-  public PersonalAccessAuthenticator(String host, String token) {
-    super(host);
+  public PersonalAccessTokenAuthenticator(String host, String token) throws MalformedURLException {
+    super(new URL(host));
     this.token = token;
   }
 

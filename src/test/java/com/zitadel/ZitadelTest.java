@@ -6,6 +6,7 @@ import io.github.classgraph.ScanResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Set;
@@ -33,7 +34,7 @@ class ZitadelTest {
    */
   @Test
   @DisplayName("All API services must be registered in Zitadel")
-  void testServicesDynamic() {
+  void testServicesDynamic() throws IOException {
     try (ScanResult scanResult = new ClassGraph()
       .acceptPackages("com.zitadel.api")
       .scan()) {

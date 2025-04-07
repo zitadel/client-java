@@ -13,13 +13,17 @@ class ClientCredentialsAuthenticatorTest extends OAuthAuthenticatorTest {
 
   @Test
   void testRefreshToken() throws Exception {
-    ClientCredentialsAuthenticator authenticator = new ClientCredentialsAuthenticator.Builder(oauthHost, "dummy-client", "dummy-secret")
+    ClientCredentialsAuthenticator authenticator = ClientCredentialsAuthenticator.builder(oauthHost, "dummy-client", "dummy-secret")
       .scopes(new HashSet<>(Arrays.asList("openid", "foo")))
       .build();
 
+    assertNotNull(authenticator.getAuthToken(), "Access token should not be empty");
     OAuthAuthenticator.Token token = authenticator.refreshToken();
+    assertEquals(Collections.singletonMap("Authorization", "Bearer " + token.accessToken), authenticator.getAuthHeaders());
     assertNotNull(token.accessToken, "Access token should not be null");
     assertTrue(token.expiresAt.isAfter(Instant.now()), "Token expiry should be in the future");
-    assertEquals(Collections.singletonMap("Authorization", "Bearer " + token.accessToken), authenticator.getAuthHeaders());
+    assertEquals(token.accessToken, authenticator.getAuthToken());
+    assertEquals(oauthHost, authenticator.getHost());
+    assertNotEquals(authenticator.refreshToken().accessToken, authenticator.refreshToken().accessToken);
   }
 }

@@ -1,5 +1,6 @@
 package com.zitadel.auth;
 
+import java.net.URL;
 import java.util.Map;
 
 /**
@@ -10,18 +11,15 @@ import java.util.Map;
  */
 public abstract class Authenticator {
 
-  /**
-   * The base URL for authentication endpoints.
-   */
-  protected final String host;
+  protected final URL hostEndpoint;
 
   /**
    * Constructs an Authenticator with the specified host.
    *
-   * @param host The base URL for all authentication endpoints.
+   * @param hostEndpoint The base URL for all authentication endpoints.
    */
-  public Authenticator(String host) {
-    this.host = host;
+  public Authenticator(URL hostEndpoint) {
+    this.hostEndpoint = hostEndpoint;
   }
 
   /**
@@ -37,6 +35,6 @@ public abstract class Authenticator {
    * @return The host URL.
    */
   public String getHost() {
-    return host;
+    return hostEndpoint.toString();
   }
 }
