@@ -14,7 +14,7 @@ public abstract class OAuthAuthenticatorTest {
   @Nullable
   private static GenericContainer<?> mockOAuth2Server;
 
-  @SuppressWarnings("resource")
+  @SuppressWarnings({"resource", "HttpUrlsUsage"})
   @BeforeAll
   static void setUp() {
     mockOAuth2Server = new GenericContainer<>(DockerImageName.parse("ghcr.io/navikt/mock-oauth2-server:2.1.10"))

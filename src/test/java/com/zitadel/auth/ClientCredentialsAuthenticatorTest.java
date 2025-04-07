@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ClientCredentialsAuthenticatorTest extends OAuthAuthenticatorTest {
 
   @Test
-  void testRefreshToken() throws Exception {
+  void testRefreshToken() {
     ClientCredentialsAuthenticator authenticator = ClientCredentialsAuthenticator.builder(oauthHost, "dummy-client", "dummy-secret")
       .scopes(new HashSet<>(Arrays.asList("openid", "foo")))
       .build();
