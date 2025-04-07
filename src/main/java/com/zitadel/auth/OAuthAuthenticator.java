@@ -125,7 +125,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
   protected static abstract class OAuthAuthenticatorBuilder<T extends OAuthAuthenticatorBuilder<?>> {
 
     protected final OpenId openId;
-    protected Scope authScopes = Scope.parse("openid");
+    protected Scope authScopes = Scope.parse("openid urn:zitadel:iam:org:project:id:zitadel:aud");
 
     protected OAuthAuthenticatorBuilder(String host) {
       this.openId = new OpenId(host);

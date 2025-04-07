@@ -49,7 +49,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
   private final Duration tokenLifetime;
   private final JWSHeader jwsHeader;
 
-  public WebTokenAuthenticator(
+  WebTokenAuthenticator(
     OpenId openId,
     String jwtIssuer,
     String jwtSubject,
