@@ -49,7 +49,7 @@ class ZitadelTest {
       Field[] fields = zitadel.getClass().getDeclaredFields();
       Set<Class<?>> actual = Arrays.stream(fields)
         .map(Field::getType)
-        .filter(c -> "com.zitadel.api".equals(c.getPackage().getName()))
+        .filter(c -> c.getPackage() != null && "com.zitadel.api".equals(c.getPackage().getName()))
         .collect(Collectors.toSet());
 
       assertEquals(expected, actual, "The registered API services in Zitadel do not match the expected set");
