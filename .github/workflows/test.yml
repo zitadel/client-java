@@ -29,3 +29,6 @@ jobs:
 
       - name: Run Junit
         run: mvn test
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
