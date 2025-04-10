@@ -237,7 +237,18 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <!-- Specify the spec directory for integration tests -->
+                    <testSourceDirectory>src/spec/java</testSourceDirectory>
+                    <includes>
+                        <include>**/*Spec.java</include>  <!-- or whatever pattern you use for integration tests -->
+                    </includes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <profiles>
@@ -342,6 +353,12 @@
             <groupId>io.github.classgraph</groupId>
             <artifactId>classgraph</artifactId>
             <version>4.8.157</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>java-dotenv</artifactId>
+            <version>5.2.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
