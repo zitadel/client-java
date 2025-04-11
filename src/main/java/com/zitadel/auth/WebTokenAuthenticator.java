@@ -1,8 +1,6 @@
 package com.zitadel.auth;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSAlgorithm;
@@ -18,21 +16,17 @@ import com.nimbusds.oauth2.sdk.auth.ClientAuthentication;
 import com.nimbusds.oauth2.sdk.auth.ClientAuthenticationMethod;
 import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.id.ClientID;
+import com.zitadel.utils.KeyUtil;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
 import java.text.ParseException;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Base64;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -66,6 +60,56 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
     this.keySigner = keySigner;
     this.tokenLifetime = tokenLifetime;
     this.jwsHeader = jwsHeader;
+  }
+
+  /**
+   * Creates a {@code WebTokenAuthenticator} instance from a JSON configuration file.
+   *
+   * <p>The JSON file must be formatted as follows:
+   * <pre>
+   * {
+   *   "type": "serviceaccount",
+   *   "keyId": "<key-id>",
+   *   "key": "<private-key in PEM format>",
+   *   "userId": "<user-id>"
+   * }
+   * </pre>
+   *
+   * @param host     the base URL for the API endpoints.
+   * @param jsonPath the file path to the JSON configuration file.
+   * @return a new instance of {@code WebTokenAuthenticator}.
+   * @throws RuntimeException if the file cannot be read, the JSON is invalid,
+   *                          or required keys are missing or invalid.
+   */
+  public static WebTokenAuthenticator fromJson(String host, String jsonPath) {
+    ObjectMapper mapper = new ObjectMapper();
+    Map<String, Object> config;
+    try {
+      config = mapper.readValue(new File(jsonPath), new TypeReference<Map<String, Object>>() {
+      });
+    } catch (IOException e) {
+      throw new RuntimeException("Unable to read or parse JSON file at " + jsonPath + ": " + e.getMessage(), e);
+    }
+
+    if (config == null || config.isEmpty()) {
+      throw new RuntimeException("Expected a JSON object in file at " + jsonPath);
+    }
+
+    String userId = (String) config.get("userId");
+    String keyString = (String) config.get("key");
+
+    if (userId == null || keyString == null) {
+      throw new RuntimeException("Missing required keys 'userId' or 'key' in JSON file.");
+    }
+
+    PrivateKey privateKey;
+    try {
+      privateKey = KeyUtil.getPrivateKeyFromString(keyString);
+    } catch (Exception e) {
+      throw new RuntimeException("Unable to convert key string to PrivateKey: " + e.getMessage(), e);
+    }
+
+    return WebTokenAuthenticator.builder(host, userId, privateKey).build();
   }
 
   /**
@@ -125,108 +169,6 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
   }
 
   /**
-   * Immutable POJO for deserializing service account configuration.
-   * <p>
-   * Expects a JSON structure similar to:
-   * <p>
-   * {
-   * "type": "serviceaccount",
-   * "keyId": "100509901696068329",
-   * "key": "-----BEGIN PRIVATE KEY----- ... -----END PRIVATE KEY-----",
-   * "userId": "100507859606888466"
-   * }
-   */
-  public static class ServiceAccountConfig {
-
-    private static final KeyFactory KEY_FACTORY;
-
-    static {
-      try {
-        KEY_FACTORY = KeyFactory.getInstance("RSA");
-      } catch (NoSuchAlgorithmException e) {
-        throw new RuntimeException(e);
-      }
-    }
-
-    private final String keyType;
-    private final String userId;
-    private final String keyId;
-    private final PrivateKey keySpec;
-
-    /**
-     * Constructs a ServiceAccountConfig.
-     *
-     * @param keyType   The type field (expected to be "serviceaccount").
-     * @param userId    The service account user ID.
-     * @param keyId     The key identifier.
-     * @param keyString The PEM-formatted private key string.
-     */
-    @JsonCreator
-    public ServiceAccountConfig(
-      @JsonProperty("type") String keyType,
-      @JsonProperty("userId") String userId,
-      @JsonProperty("keyId") String keyId,
-      @JsonProperty("key") String keyString) throws InvalidKeySpecException {
-      this.keyType = keyType;
-      this.userId = userId;
-      this.keyId = keyId;
-      // Clean the key string by removing PEM header, footer, and whitespace.
-      String cleanedKey = keyString
-        .replace("-----BEGIN PRIVATE KEY-----", "")
-        .replace("-----END PRIVATE KEY-----", "")
-        .replaceAll("\\s+", "");
-      byte[] decoded = Base64.getDecoder().decode(cleanedKey);
-      this.keySpec = KEY_FACTORY.generatePrivate(new PKCS8EncodedKeySpec(decoded));
-    }
-
-    public static ServiceAccountConfig fromPath(Path path) {
-      try {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        return mapper.readValue(path.toFile(), ServiceAccountConfig.class);
-      } catch (IOException e) {
-        throw new RuntimeException("Failed to load service account config from file: " + e.getMessage(), e);
-      }
-    }
-
-    /**
-     * Returns the type.
-     *
-     * @return the type.
-     */
-    public String getKeyType() {
-      return keyType;
-    }
-
-    /**
-     * Returns the service account user ID.
-     *
-     * @return the userId.
-     */
-    public String getUserId() {
-      return userId;
-    }
-
-    /**
-     * Returns the key identifier.
-     *
-     * @return the keyId.
-     */
-    public String getKeyId() {
-      return keyId;
-    }
-
-    /**
-     * Returns the PKCS8EncodedKeySpec representing the private key.
-     *
-     * @return the keySpec.
-     */
-    public PrivateKey getKeySpec() {
-      return keySpec;
-    }
-  }
-
-  /**
    * Builder for JWTAuthenticator.
    */
   public static class Builder extends OAuthAuthenticatorBuilder<Builder> {
@@ -257,11 +199,6 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
       this.jwtSubject = jwtSubject;
       this.jwtAudience = jwtAudience;
       this.keySigner = new RSASSASigner(privateKey);
-    }
-
-    public static Builder fromKeyfile(String host, String jsonPath) {
-      ServiceAccountConfig config = ServiceAccountConfig.fromPath(new File(jsonPath).toPath());
-      return new Builder(host, config.getUserId(), config.getUserId(), host, config.getKeySpec());
     }
 
     public Builder tokenLifetime(Duration tokenLifetime) {

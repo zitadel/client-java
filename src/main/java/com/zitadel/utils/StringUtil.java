@@ -2,6 +2,10 @@ package com.zitadel.utils;
 
 public class StringUtil {
 
+  private StringUtil() {
+    //
+  }
+
   /**
    * Join an array of strings with the given separator.
    * <p>
