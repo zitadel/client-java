@@ -14,7 +14,7 @@ public class Pair {
   }
 
   private void setName(String name) {
-    if (!isValidString(name)) {
+    if (isValidString(name)) {
       return;
     }
 
@@ -26,7 +26,7 @@ public class Pair {
   }
 
   private void setValue(String value) {
-    if (!isValidString(value)) {
+    if (isValidString(value)) {
       return;
     }
 
@@ -34,6 +34,6 @@ public class Pair {
   }
 
   private boolean isValidString(String arg) {
-    return arg != null;
+    return arg == null;
   }
 }

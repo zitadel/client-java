@@ -7,21 +7,9 @@ import java.util.Map;
 
 public abstract class BaseApi {
 
-  protected ApiClient apiClient;
-
-  public BaseApi() {
-    this(Configuration.getDefaultApiClient());
-  }
+  protected final ApiClient apiClient;
 
   public BaseApi(ApiClient apiClient) {
-    this.apiClient = apiClient;
-  }
-
-  public ApiClient getApiClient() {
-    return apiClient;
-  }
-
-  public void setApiClient(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 
@@ -32,6 +20,7 @@ public abstract class BaseApi {
    * @param method The HTTP method for the request.
    * @throws ApiException if fails to make API call.
    */
+  @SuppressWarnings("unused")
   public void invokeAPI(String url, String method) throws ApiException {
     invokeAPI(url, method, null, null, Collections.emptyMap());
   }
@@ -44,6 +33,7 @@ public abstract class BaseApi {
    * @param additionalHeaders Additional headers for the request.
    * @throws ApiException if fails to make API call.
    */
+  @SuppressWarnings("unused")
   public void invokeAPI(String url, String method, Map<String, String> additionalHeaders) throws ApiException {
     invokeAPI(url, method, null, null, additionalHeaders);
   }
@@ -56,6 +46,7 @@ public abstract class BaseApi {
    * @param request The request object.
    * @throws ApiException if fails to make API call.
    */
+  @SuppressWarnings("unused")
   public void invokeAPI(String url, String method, Object request) throws ApiException {
     invokeAPI(url, method, request, null, Collections.emptyMap());
   }
@@ -69,6 +60,7 @@ public abstract class BaseApi {
    * @param additionalHeaders Additional headers for the request.
    * @throws ApiException if fails to make API call.
    */
+  @SuppressWarnings("unused")
   public void invokeAPI(String url, String method, Object request, Map<String, String> additionalHeaders) throws ApiException {
     invokeAPI(url, method, request, null, additionalHeaders);
   }
@@ -82,6 +74,7 @@ public abstract class BaseApi {
    * @return The API response in the specified type.
    * @throws ApiException if fails to make API call.
    */
+  @SuppressWarnings("unused")
   public <T> T invokeAPI(String url, String method, TypeReference<T> returnType) throws ApiException {
     return invokeAPI(url, method, null, returnType, Collections.emptyMap());
   }
@@ -96,6 +89,7 @@ public abstract class BaseApi {
    * @return The API response in the specified type.
    * @throws ApiException if fails to make API call.
    */
+  @SuppressWarnings("unused")
   public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType) throws ApiException {
     return invokeAPI(url, method, request, returnType, Collections.emptyMap());
   }

@@ -3,6 +3,7 @@ package com.zitadel;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("unused")
 public class ApiException extends Exception {
   private static final long serialVersionUID = 1L;
 

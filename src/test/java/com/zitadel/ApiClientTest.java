@@ -38,7 +38,7 @@ public class ApiClientTest {
   protected static String oauthHost;
   private static GenericContainer<?> mockOAuth2Server;
 
-  @SuppressWarnings("resource")
+  @SuppressWarnings({"resource", "HttpUrlsUsage"})
   @BeforeAll
   public static void setUp() {
     mockOAuth2Server = new GenericContainer<>(DockerImageName.parse("wiremock/wiremock"))

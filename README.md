@@ -63,19 +63,27 @@ to the [Zitadel documentation on authenticating service users](https://zitadel.c
 import com.zitadel.Zitadel;
 import com.zitadel.model.*;
 
-Zitadel zitadel = new Zitadel("your-zitadel-base-url", 'your-valid-token');
+public class Example {
+    public static void main(String[] args) {
+        // Use double quotes for the token string
+        Zitadel zitadel = new Zitadel("your-zitadel-base-url", "your-valid-token");
 
-try {
-	V2AddHumanUserResponse response = zitadel.users.addHumanUser(new V2AddHumanUserRequest()
-		.username("john.doe")
-		.profile(new V2SetHumanProfile()
-			.givenName("John")
-			.familyName("Doe"))
-		.email(new V2SetHumanEmail()
-			.email("john@doe.com")));
-	System.out.println("User created: " + response);
-} catch (ApiException e) {
-	throw e;
+        try {
+            V2AddHumanUserResponse response = zitadel.users.addHumanUser(
+                new V2AddHumanUserRequest()
+                    .username("john.doe")
+                    .profile(new V2SetHumanProfile()
+                        .givenName("John")
+                        .familyName("Doe"))
+                    .email(new V2SetHumanEmail()
+                        .email("john@doe.com"))
+            );
+            System.out.println("User created: " + response);
+        } catch (ApiException e) {
+            // It is a good practice to print the stack trace in the catch block
+            e.printStackTrace();
+        }
+    }
 }
 ```
 

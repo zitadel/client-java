@@ -38,6 +38,7 @@ public class RFC3339DateFormat extends DateFormat {
     return fmt.format(date, toAppendTo, fieldPosition);
   }
 
+  @SuppressWarnings("EmptyMethod")
   @Override
   public Object clone() {
     return super.clone();

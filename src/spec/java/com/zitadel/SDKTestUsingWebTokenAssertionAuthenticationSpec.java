@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.fail;
  * This spec tests the SDK behavior using Personal Access Token (PAT) authentication.
  * It includes test cases for valid and invalid token scenarios related to user deactivation and reactivation.
  */
+@SuppressWarnings("NewClassNamingConvention")
 class SDKTestUsingWebTokenAssertionAuthenticationSpec extends BaseTest {
 
   private final String baseUrl = System.getProperty("BASE_URL");

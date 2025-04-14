@@ -8,6 +8,7 @@ public class URLUtil {
     //
   }
 
+  @SuppressWarnings("HttpUrlsUsage")
   public static URL buildHostname(String hostname) {
     try {
       if (!hostname.startsWith("http://") && !hostname.startsWith("https://")) {
