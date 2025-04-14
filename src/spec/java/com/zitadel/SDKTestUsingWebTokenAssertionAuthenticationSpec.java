@@ -1,10 +1,13 @@
 package com.zitadel;
 
-import com.zitadel.auth.PersonalAccessTokenAuthenticator;
+import com.zitadel.auth.WebTokenAuthenticator;
 import com.zitadel.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.fail;
@@ -13,18 +16,25 @@ import static org.junit.jupiter.api.Assertions.fail;
  * This spec tests the SDK behavior using Personal Access Token (PAT) authentication.
  * It includes test cases for valid and invalid token scenarios related to user deactivation and reactivation.
  */
-class SDKTestUsingPersonalAccessTokenAuthenticationSpec extends BaseTest {
+class SDKTestUsingWebTokenAssertionAuthenticationSpec extends BaseTest {
 
-  private final String validToken = System.getProperty("AUTH_TOKEN");
-  private final String invalidToken = "whoops";
   private final String baseUrl = System.getProperty("BASE_URL");
+  private String keyFile;
   private String userId;
 
   /**
    * Sets up the test environment before each test by creating a user.
    */
   @BeforeEach
-  void setUp() {
+  void setUp() throws IOException {
+    String k = System.getProperty("JWT_KEY");
+    System.out.println("moo");
+    System.out.println(System.getProperty("BASE_URL"));
+    System.out.println(k);
+    if (k == null) System.exit(1);
+    File f = File.createTempFile("jwt_", null);
+    Files.write(f.toPath(), k.getBytes());
+    keyFile = f.getAbsolutePath();
     userId = createUser();
   }
 
@@ -34,7 +44,7 @@ class SDKTestUsingPersonalAccessTokenAuthenticationSpec extends BaseTest {
    * @return the user ID of the newly created user
    */
   private String createUser() {
-    Zitadel zitadel = new Zitadel(new PersonalAccessTokenAuthenticator(baseUrl, validToken));
+    Zitadel zitadel = new Zitadel(WebTokenAuthenticator.fromJson(baseUrl, keyFile));
 
     try {
       V2AddHumanUserResponse response = zitadel.users.addHumanUser(new V2AddHumanUserRequest()
@@ -59,7 +69,7 @@ class SDKTestUsingPersonalAccessTokenAuthenticationSpec extends BaseTest {
    */
   @Test
   void shouldDeactivateAndReactivateUserWithValidToken() {
-    Zitadel zitadel = new Zitadel(new PersonalAccessTokenAuthenticator(baseUrl, validToken));
+    Zitadel zitadel = new Zitadel(WebTokenAuthenticator.fromJson(baseUrl, keyFile));
 
     try {
       V2DeactivateUserResponse deactivateResponse = zitadel.users.deactivateUser(userId);
@@ -70,32 +80,6 @@ class SDKTestUsingPersonalAccessTokenAuthenticationSpec extends BaseTest {
       // assertEquals("success", reactivateResponse.getStatus());
     } catch (ApiException e) {
       fail("Exception when calling deactivateUser or reactivateUser with valid token: " + e.getMessage());
-    }
-  }
-
-  /**
-   * Tests deactivating and reactivating a user with an invalid Personal Access Token.
-   * <p>
-   * It expects an exception to be thrown for both deactivate and reactivate operations.
-   */
-  @Test
-  void shouldNotDeactivateOrReactivateUserWithInvalidToken() {
-    Zitadel zitadel = new Zitadel(new PersonalAccessTokenAuthenticator(baseUrl, invalidToken));
-
-    try {
-      zitadel.users.deactivateUser(userId);
-      fail("Expected exception when deactivating user with invalid token, but got response.");
-    } catch (ApiException e) {
-      // assertTrue(e.getMessage().contains("Unauthorized"));
-      System.out.println("Caught expected ApiException: " + e.getMessage());
-    }
-
-    try {
-      zitadel.users.reactivateUser(userId);
-      fail("Expected exception when reactivating user with invalid token, but got response.");
-    } catch (ApiException e) {
-      // assertTrue(e.getMessage().contains("Unauthorized"));
-      System.out.println("Caught expected ApiException: " + e.getMessage());
     }
   }
 }

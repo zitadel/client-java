@@ -18,6 +18,7 @@ import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.id.ClientID;
 import com.zitadel.utils.KeyUtil;
 
+import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.security.PrivateKey;
@@ -97,19 +98,20 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
 
     String userId = (String) config.get("userId");
     String keyString = (String) config.get("key");
-
-    if (userId == null || keyString == null) {
-      throw new RuntimeException("Missing required keys 'userId' or 'key' in JSON file.");
+    String keyId = (String) config.get("keyId");
+    if (userId == null || keyString == null || keyId == null) {
+      throw new RuntimeException("Missing required keys 'userId', 'keyId' or 'key' in JSON file.");
     }
 
     PrivateKey privateKey;
     try {
+      System.out.println(keyString);
       privateKey = KeyUtil.getPrivateKeyFromString(keyString);
     } catch (Exception e) {
       throw new RuntimeException("Unable to convert key string to PrivateKey: " + e.getMessage(), e);
     }
 
-    return WebTokenAuthenticator.builder(host, userId, privateKey).build();
+    return WebTokenAuthenticator.builder(host, userId, privateKey).keyId(keyId).build();
   }
 
   /**
@@ -178,7 +180,9 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
     private final String jwtAudience;
     private final RSASSASigner keySigner;
     private Duration tokenLifetime = Duration.ofHours(1);
-    private JWSHeader jwsHeader = new JWSHeader.Builder(JWSAlgorithm.RS256).build();
+    @Nullable
+    private String keyId;
+    private JWSAlgorithm jwtAlgorithm = JWSAlgorithm.RS256;
 
     /**
      * Builder constructor with required parameters.
@@ -207,7 +211,12 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
     }
 
     public Builder jwtAlgorithm(String jwtAlgorithm) {
-      this.jwsHeader = new JWSHeader.Builder(JWSAlgorithm.parse(jwtAlgorithm)).build();
+      this.jwtAlgorithm = JWSAlgorithm.parse(jwtAlgorithm);
+      return this;
+    }
+
+    public Builder keyId(String keyId) {
+      this.keyId = keyId;
       return this;
     }
 
@@ -226,7 +235,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
         jwtAudience,
         keySigner,
         tokenLifetime,
-        jwsHeader,
+        new JWSHeader.Builder(jwtAlgorithm).keyID(keyId).build(),
         authScopes
       );
     }

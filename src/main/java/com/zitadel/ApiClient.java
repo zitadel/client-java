@@ -48,8 +48,8 @@ public class ApiClient {
 
   private static final List<String> bodyMethods = Arrays.asList("POST", "PUT", "DELETE", "PATCH");
   private final Authenticator authenticator;
-  protected String tempFolderPath = null;
   private final DateTimeFormatter offsetDateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
+  protected String tempFolderPath = null;
   private boolean debugging = false;
   private CloseableHttpClient httpClient;
   private ObjectMapper objectMapper;
