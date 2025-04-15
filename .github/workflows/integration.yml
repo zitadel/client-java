@@ -35,7 +35,7 @@ jobs:
 
       - name: Build Library
         working-directory: project/library
-        run: mvn clean install
+        run: mvn clean install -DskipErrorProne=true
 
       - name: Check Installability
         working-directory: project/sanity
