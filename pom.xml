@@ -270,7 +270,7 @@
                 <arg>--should-stop=ifError=FLOW</arg>
                 <arg>-Xlint:all</arg>
                 <arg>-Xplugin:ErrorProne -XepExcludedPaths:.*/com/zitadel/(api|model)/.*
-                  -XepDisableWarningsInGeneratedCode -Xep:NullAway:ERROR -XepOpt:NullAway:AnnotatedPackages=com.zitadel
+                  -Xep:NullAway:ERROR -XepOpt:NullAway:AnnotatedPackages=com.zitadel
                   -XepOpt:NullAway:UnannotatedSubPackages=com.zitadel.api,com.zitadel.model
                 </arg>
                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
