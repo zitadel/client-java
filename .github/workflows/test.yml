@@ -30,7 +30,7 @@ jobs:
           cache: maven
 
       - name: Install Dependencies
-        run: mvn install
+        run: mvn install --batch-mode
 
       - name: Run Junit
         run: mvn test
