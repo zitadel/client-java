@@ -13,6 +13,7 @@ public class Zitadel {
   public final OrganizationServiceApi organizations;
   public final SessionServiceApi sessions;
   public final SettingsServiceApi settings;
+  @SuppressWarnings("unused")
   public final UserServiceApi users;
 
   public Zitadel(Authenticator authenticator) {

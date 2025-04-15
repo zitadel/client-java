@@ -25,6 +25,7 @@ import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.http.message.BasicNameValuePair;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 
+import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -49,6 +50,7 @@ public class ApiClient {
   private static final List<String> bodyMethods = Arrays.asList("POST", "PUT", "DELETE", "PATCH");
   private final Authenticator authenticator;
   private final DateTimeFormatter offsetDateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
+  @Nullable
   protected String tempFolderPath = null;
   private boolean debugging = false;
   private CloseableHttpClient httpClient;
@@ -118,6 +120,7 @@ public class ApiClient {
    *
    * @return Temp folder path
    */
+  @Nullable
   @SuppressWarnings("unused")
   public String getTempFolderPath() {
     return tempFolderPath;
@@ -290,6 +293,7 @@ public class ApiClient {
    * @return The Accept header to use. If the given array is empty,
    * null will be returned (not to set the Accept header explicitly).
    */
+  @Nullable
   public String selectHeaderAccept(String[] accepts) {
     if (accepts.length == 0) {
       return null;
@@ -372,6 +376,7 @@ public class ApiClient {
   /**
    * Get the content-type of a response or null if one was not provided
    */
+  @Nullable
   private String getResponseMimeType(HttpResponse response) throws ApiException {
     Header contentTypeHeader = response.getFirstHeader("Content-Type");
     if (contentTypeHeader != null) {
@@ -388,9 +393,8 @@ public class ApiClient {
    * @param contentType Content type
    * @param formParams  Form parameters
    * @return Object
-   * @throws ApiException API exception
    */
-  public HttpEntity serialize(Object obj, Map<String, Object> formParams, ContentType contentType) throws ApiException {
+  public HttpEntity serialize(@Nullable Object obj, Map<String, Object> formParams, ContentType contentType) throws ApiException {
     String mimeType = contentType.getMimeType();
     if (isJsonMime(mimeType)) {
       try {
@@ -446,6 +450,7 @@ public class ApiClient {
    * @throws IOException  IO exception
    */
   @SuppressWarnings("unchecked")
+  @Nullable
   public <T> T deserialize(CloseableHttpResponse response, TypeReference<T> valueType) throws ApiException, IOException, ParseException {
     if (valueType == null) {
       return null;
@@ -468,7 +473,7 @@ public class ApiClient {
       }
 
       return objectMapper.readValue(content, valueType);
-    } else if (mimeType.toLowerCase().startsWith("text/")) {
+    } else if (mimeType.toLowerCase(Locale.ENGLISH).startsWith("text/")) {
       // convert input stream to string
       return (T) EntityUtils.toString(entity);
     } else {
@@ -490,7 +495,7 @@ public class ApiClient {
     return file;
   }
 
-  protected File prepareDownloadFile(String contentDisposition) throws IOException {
+  protected File prepareDownloadFile(@Nullable String contentDisposition) throws IOException {
     String filename = null;
     if (contentDisposition != null && !contentDisposition.isEmpty()) {
       // Get filename from the Content-Disposition header.
@@ -543,7 +548,7 @@ public class ApiClient {
    * @return The full URL
    */
   @SuppressWarnings({"DuplicatedCode", "DuplicateExpressions"})
-  private String buildUrl(String path, List<Pair> queryParams, List<Pair> collectionQueryParams, String urlQueryDeepObject) {
+  private String buildUrl(String path, List<Pair> queryParams, @Nullable List<Pair> collectionQueryParams, @Nullable String urlQueryDeepObject) {
     String baseURL = getBaseURL();
 
     final StringBuilder url = new StringBuilder();
@@ -600,6 +605,7 @@ public class ApiClient {
     return bodyMethods.contains(method);
   }
 
+  @Nullable
   protected <T> T processResponse(CloseableHttpResponse response, TypeReference<T> returnType) throws ApiException, IOException, ParseException {
     int statusCode = response.getCode();
     if (statusCode == HttpStatus.SC_NO_CONTENT) {
@@ -637,13 +643,14 @@ public class ApiClient {
    * @throws ApiException API exception
    */
   @SuppressWarnings({"deprecation", "unused"})
+  @Nullable
   public <T> T invokeAPI(
     String path,
     String method,
     List<Pair> queryParams,
     List<Pair> collectionQueryParams,
-    String urlQueryDeepObject,
-    Object body,
+    @Nullable String urlQueryDeepObject,
+    @Nullable Object body,
     Map<String, String> headerParams,
     Map<String, String> cookieParams,
     Map<String, Object> formParams,

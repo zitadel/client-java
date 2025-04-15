@@ -49,6 +49,9 @@ public abstract class OAuthAuthenticator extends Authenticator {
             refreshToken();
         }
 
+        if (token == null) {
+          throw new RuntimeException();
+        }
         return token.accessToken;
     }
 

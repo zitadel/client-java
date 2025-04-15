@@ -23,7 +23,7 @@ class WebTokenAuthenticatorTest extends OAuthAuthenticatorTest {
     RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
 
     WebTokenAuthenticator authenticator = WebTokenAuthenticator.builder(oauthHost, "dummy-client", privateKey)
-      .tokenLifetime(Duration.ofSeconds(3600))
+      .tokenLifetime(Duration.ofHours(1))
       .jwtAlgorithm("RS256")
       .build();
 

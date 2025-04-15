@@ -2,6 +2,7 @@ package com.zitadel;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
+import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.Map;
 
@@ -105,5 +106,5 @@ public abstract class BaseApi {
    * @return The API response in the specified type.
    * @throws ApiException if fails to make API call.
    */
-  public abstract <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException;
+  public abstract <T> T invokeAPI(String url, String method, @Nullable Object request, @Nullable TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException;
 }

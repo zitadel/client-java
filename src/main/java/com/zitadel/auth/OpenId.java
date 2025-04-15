@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class OpenId {
 
@@ -27,7 +28,7 @@ public class OpenId {
                 throw new IOException("Failed to fetch OpenID configuration: HTTP " + status);
             }
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
             StringBuilder responseBuilder = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
