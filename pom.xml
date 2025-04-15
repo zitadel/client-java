@@ -60,7 +60,8 @@
           <maxmem>512m</maxmem>
           <compilerArgs>
             <arg>-Xlint:all</arg>
-            <arg>-J-Xss4m</arg> </compilerArgs>
+            <arg>-J-Xss4m</arg>
+          </compilerArgs>
 
         </configuration>
       </plugin>
@@ -268,7 +269,10 @@
                 <arg>-XDcompilePolicy=simple</arg>
                 <arg>--should-stop=ifError=FLOW</arg>
                 <arg>-Xlint:all</arg>
-                <arg>-Xplugin:ErrorProne -XepExcludedPaths:.*/com/zitadel/(api|model)/.* -XepDisableWarningsInGeneratedCode -Xep:NullAway:ERROR -XepOpt:NullAway:AnnotatedPackages=com.zitadel -XepOpt:NullAway:UnannotatedSubPackages=com.zitadel.api,com.zitadel.model</arg>
+                <arg>-Xplugin:ErrorProne -XepExcludedPaths:.*/com/zitadel/(api|model)/.*
+                  -XepDisableWarningsInGeneratedCode -Xep:NullAway:ERROR -XepOpt:NullAway:AnnotatedPackages=com.zitadel
+                  -XepOpt:NullAway:UnannotatedSubPackages=com.zitadel.api,com.zitadel.model
+                </arg>
                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
@@ -285,11 +289,13 @@
                 <path>
                   <groupId>com.google.errorprone</groupId>
                   <artifactId>error_prone_core</artifactId>
-                  <version>2.37.0</version> </path>
+                  <version>2.37.0</version>
+                </path>
                 <path>
                   <groupId>com.uber.nullaway</groupId>
                   <artifactId>nullaway</artifactId>
-                  <version>0.12.6</version> </path>
+                  <version>0.12.6</version>
+                </path>
               </annotationProcessorPaths>
             </configuration>
           </plugin>

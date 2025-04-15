@@ -10,7 +10,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.fail;
 
 @SuppressWarnings("NewClassNamingConvention")
-public class SDKTestUsingClientCredentialsAuthenticationSpec extends BaseTest{
+public class SDKTestUsingClientCredentialsAuthenticationSpec extends BaseTest {
 
   private final String clientId = System.getProperty("CLIENT_ID");
   private final String clientSecret = System.getProperty("CLIENT_SECRET");
