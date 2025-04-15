@@ -53,7 +53,7 @@ public class ApiClient {
   private boolean debugging = false;
   private CloseableHttpClient httpClient;
   private ObjectMapper objectMapper;
-  private DateFormat dateFormat;
+  private final DateFormat dateFormat;
 
   public ApiClient(Authenticator authenticator, CloseableHttpClient httpClient) {
     objectMapper = new ObjectMapper();
@@ -93,6 +93,7 @@ public class ApiClient {
    * @param objectMapper object mapper
    * @return API client
    */
+  @SuppressWarnings("unused")
   public ApiClient setObjectMapper(ObjectMapper objectMapper) {
     this.objectMapper = objectMapper;
     return this;
@@ -104,6 +105,7 @@ public class ApiClient {
    * @param httpClient HTTP client
    * @return API client
    */
+  @SuppressWarnings("unused")
   public ApiClient setHttpClient(CloseableHttpClient httpClient) {
     this.httpClient = httpClient;
     return this;
@@ -116,6 +118,7 @@ public class ApiClient {
    *
    * @return Temp folder path
    */
+  @SuppressWarnings("unused")
   public String getTempFolderPath() {
     return tempFolderPath;
   }
@@ -126,6 +129,7 @@ public class ApiClient {
    * @param tempFolderPath Temp folder path
    * @return API client
    */
+  @SuppressWarnings("unused")
   public ApiClient setTempFolderPath(String tempFolderPath) {
     this.tempFolderPath = tempFolderPath;
     return this;
@@ -136,6 +140,7 @@ public class ApiClient {
    *
    * @return True if debugging is on
    */
+  @SuppressWarnings("unused")
   public boolean isDebugging() {
     return debugging;
   }
@@ -146,30 +151,9 @@ public class ApiClient {
    * @param debugging To enable (true) or disable (false) debugging
    * @return API client
    */
+  @SuppressWarnings("unused")
   public ApiClient setDebugging(boolean debugging) {
     this.debugging = debugging;
-    return this;
-  }
-
-  /**
-   * Get the date format used to parse/format date parameters.
-   *
-   * @return Date format
-   */
-  public DateFormat getDateFormat() {
-    return dateFormat;
-  }
-
-  /**
-   * Set the date format used to parse/format date parameters.
-   *
-   * @param dateFormat Date format
-   * @return API client
-   */
-  public ApiClient setDateFormat(DateFormat dateFormat) {
-    this.dateFormat = dateFormat;
-    // Also set the date format for model (de)serialization with Date properties.
-    this.objectMapper.setDateFormat((DateFormat) dateFormat.clone());
     return this;
   }
 
@@ -220,7 +204,7 @@ public class ApiClient {
    * @return A list containing a single {@code Pair} object.
    */
   public List<Pair> parameterToPair(String name, Object value) {
-    List<Pair> params = new ArrayList<Pair>();
+    List<Pair> params = new ArrayList<>();
 
     // preconditions
     if (name == null || name.isEmpty() || value == null || value instanceof Collection) {
@@ -242,7 +226,7 @@ public class ApiClient {
    * @return A list of {@code Pair} objects.
    */
   public List<Pair> parameterToPairs(String collectionFormat, String name, Collection<?> value) {
-    List<Pair> params = new ArrayList<Pair>();
+    List<Pair> params = new ArrayList<>();
 
     // preconditions
     if (name == null || name.isEmpty() || value == null || value.isEmpty()) {
@@ -386,7 +370,7 @@ public class ApiClient {
   }
 
   /**
-   * Get content type of a response or null if one was not provided
+   * Get the content-type of a response or null if one was not provided
    */
   private String getResponseMimeType(HttpResponse response) throws ApiException {
     Header contentTypeHeader = response.getFirstHeader("Content-Type");
@@ -508,7 +492,7 @@ public class ApiClient {
 
   protected File prepareDownloadFile(String contentDisposition) throws IOException {
     String filename = null;
-    if (contentDisposition != null && !"".equals(contentDisposition)) {
+    if (contentDisposition != null && !contentDisposition.isEmpty()) {
       // Get filename from the Content-Disposition header.
       Pattern pattern = Pattern.compile("filename=['\"]?([^'\"\\s]+)['\"]?");
       Matcher matcher = pattern.matcher(contentDisposition);
@@ -558,6 +542,7 @@ public class ApiClient {
    * @param urlQueryDeepObject    URL query string of the deep object parameters
    * @return The full URL
    */
+  @SuppressWarnings({"DuplicatedCode", "DuplicateExpressions"})
   private String buildUrl(String path, List<Pair> queryParams, List<Pair> collectionQueryParams, String urlQueryDeepObject) {
     String baseURL = getBaseURL();
 
@@ -599,7 +584,7 @@ public class ApiClient {
       }
     }
 
-    if (urlQueryDeepObject != null && urlQueryDeepObject.length() > 0) {
+    if (urlQueryDeepObject != null && !urlQueryDeepObject.isEmpty()) {
       url.append(url.toString().contains("?") ? "&" : "?");
       url.append(urlQueryDeepObject);
     }
@@ -651,6 +636,7 @@ public class ApiClient {
    * @return The response body in type of string
    * @throws ApiException API exception
    */
+  @SuppressWarnings({"deprecation", "unused"})
   public <T> T invokeAPI(
     String path,
     String method,

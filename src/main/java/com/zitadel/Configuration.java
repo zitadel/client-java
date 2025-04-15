@@ -1,7 +1,6 @@
 package com.zitadel;
 
 public class Configuration {
-  public static final String VERSION = "0.0.1";
 
   private static volatile ApiClient defaultApiClient = new ApiClient();
 
@@ -21,6 +20,7 @@ public class Configuration {
    *
    * @param apiClient API client
    */
+  @SuppressWarnings("unused")
   public static void setDefaultApiClient(ApiClient apiClient) {
     defaultApiClient = apiClient;
   }

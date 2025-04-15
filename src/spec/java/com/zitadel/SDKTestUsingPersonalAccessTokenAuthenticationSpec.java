@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.fail;
  * This spec tests the SDK behavior using Personal Access Token (PAT) authentication.
  * It includes test cases for valid and invalid token scenarios related to user deactivation and reactivation.
  */
+@SuppressWarnings("NewClassNamingConvention")
 class SDKTestUsingPersonalAccessTokenAuthenticationSpec extends BaseTest {
 
   private final String validToken = System.getProperty("AUTH_TOKEN");
-  private final String invalidToken = "whoops";
   private final String baseUrl = System.getProperty("BASE_URL");
   private String userId;
 
@@ -80,7 +80,7 @@ class SDKTestUsingPersonalAccessTokenAuthenticationSpec extends BaseTest {
    */
   @Test
   void shouldNotDeactivateOrReactivateUserWithInvalidToken() {
-    Zitadel zitadel = new Zitadel(new PersonalAccessTokenAuthenticator(baseUrl, invalidToken));
+    Zitadel zitadel = new Zitadel(new PersonalAccessTokenAuthenticator(baseUrl, "whoops"));
 
     try {
       zitadel.users.deactivateUser(userId);
