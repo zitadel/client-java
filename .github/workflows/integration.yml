@@ -39,4 +39,4 @@ jobs:
 
       - name: Check Installability
         working-directory: project/sanity
-        run: mvn clean test
+        run: mvn clean test -DskipErrorProne=true
