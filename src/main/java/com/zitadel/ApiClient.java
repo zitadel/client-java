@@ -47,6 +47,7 @@ import java.util.regex.Pattern;
 
 public class ApiClient {
 
+  public static final String USER_AGENT = String.format("zitadel-client/%s (lang=java; lang_version=%s; os=%s; arch=%s)", Version.VERSION, System.getProperty("java.version"), System.getProperty("os.name"), System.getProperty("os.arch")).toLowerCase(Locale.ENGLISH);
   private static final List<String> bodyMethods = Arrays.asList("POST", "PUT", "DELETE", "PATCH");
   private final Authenticator authenticator;
   private final DateTimeFormatter offsetDateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
@@ -75,13 +76,13 @@ public class ApiClient {
 
   public ApiClient() {
     this(new NoAuthAuthenticator(), HttpClients.custom()
-      .setUserAgent("MyCustomUserAgent/1.0")
+      .setUserAgent(USER_AGENT)
       .build());
   }
 
   public ApiClient(Authenticator authenticator) {
     this(authenticator, HttpClients.custom()
-      .setUserAgent("MyCustomUserAgent/1.0")
+      .setUserAgent(USER_AGENT)
       .build());
   }
 
