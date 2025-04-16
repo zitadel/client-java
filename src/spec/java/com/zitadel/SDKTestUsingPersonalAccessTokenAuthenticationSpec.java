@@ -47,8 +47,7 @@ class SDKTestUsingPersonalAccessTokenAuthenticationSpec extends BaseTest {
       System.out.println("User created: " + response);
       return response.getUserId();
     } catch (ApiException e) {
-      fail("Exception while creating user: " + e.getMessage());
-      return null;
+      throw new RuntimeException("Exception while creating user: " + e.getMessage());
     }
   }
 
