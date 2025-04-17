@@ -41,7 +41,7 @@ public class ApiClientTest {
   @SuppressWarnings({"resource", "HttpUrlsUsage"})
   @BeforeAll
   public static void setUp() {
-    mockOAuth2Server = new GenericContainer<>(DockerImageName.parse("wiremock/wiremock"))
+    mockOAuth2Server = new GenericContainer<>(DockerImageName.parse("wiremock/wiremock:3.12.1"))
       .withExposedPorts(8080)
       .waitingFor(Wait.forHttp("/").forStatusCodeMatching(i -> true));
     mockOAuth2Server.start();
