@@ -1,7 +1,15 @@
 package com.zitadel;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.auth.PersonalAccessTokenAuthenticator;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Scanner;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
@@ -14,24 +22,14 @@ import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
 
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Scanner;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 /**
- * This test verifies that the API client correctly builds the endpoint path using the base URL provided by the
- * authenticator and adds the Personal Access Token to the Authorization header.
+ * This test verifies that the API client correctly builds the endpoint path using the base URL
+ * provided by the authenticator and adds the Personal Access Token to the Authorization header.
  *
- * <p>
- * A WireMock server is started using TestContainers and configured via a JSON mapping loaded from a resource file.
- * The test then invokes the API using an {@link ApiClient} that utilizes a {@link PersonalAccessTokenAuthenticator}.
- * It asserts that the response from the API matches the expected output.
- * </p>
+ * <p>A WireMock server is started using TestContainers and configured via a JSON mapping loaded
+ * from a resource file. The test then invokes the API using an {@link ApiClient} that utilizes a
+ * {@link PersonalAccessTokenAuthenticator}. It asserts that the response from the API matches the
+ * expected output.
  */
 public class ApiClientTest {
 
@@ -41,9 +39,10 @@ public class ApiClientTest {
   @SuppressWarnings({"resource", "HttpUrlsUsage"})
   @BeforeAll
   public static void setUp() {
-    mockOAuth2Server = new GenericContainer<>(DockerImageName.parse("wiremock/wiremock:3.12.1"))
-      .withExposedPorts(8080)
-      .waitingFor(Wait.forHttp("/").forStatusCodeMatching(i -> true));
+    mockOAuth2Server =
+        new GenericContainer<>(DockerImageName.parse("wiremock/wiremock:3.12.1"))
+            .withExposedPorts(8080)
+            .waitingFor(Wait.forHttp("/").forStatusCodeMatching(i -> true));
     mockOAuth2Server.start();
     oauthHost = "http://" + mockOAuth2Server.getHost() + ":" + mockOAuth2Server.getMappedPort(8080);
   }
@@ -62,7 +61,8 @@ public class ApiClientTest {
    * @return the content of the resource file as a String
    * @throws Exception if the resource cannot be found or read
    */
-  private String loadResourceFile(@SuppressWarnings("SameParameterValue") String resourcePath) throws Exception {
+  private String loadResourceFile(@SuppressWarnings("SameParameterValue") String resourcePath)
+      throws Exception {
     try (InputStream is = getClass().getClassLoader().getResourceAsStream(resourcePath)) {
       if (is == null) {
         throw new IllegalArgumentException("Resource not found: " + resourcePath);
@@ -75,9 +75,9 @@ public class ApiClientTest {
   }
 
   /**
-   * Tests that the API client correctly integrates the PersonalAccessTokenAuthenticator,
-   * ensuring that the token is added to the Authorization header and that the request path is built from
-   * the base URL provided by the authenticator.
+   * Tests that the API client correctly integrates the PersonalAccessTokenAuthenticator, ensuring
+   * that the token is added to the Authorization header and that the request path is built from the
+   * base URL provided by the authenticator.
    *
    * @throws Exception if any error occurs during the test execution
    */
@@ -87,29 +87,30 @@ public class ApiClientTest {
       HttpPost postRequest = new HttpPost(oauthHost + "/__admin/mappings");
       postRequest.addHeader("Content-Type", "application/json");
       postRequest.setEntity(new StringEntity(loadResourceFile("wiremock.json")));
-      httpClient.execute(postRequest, response -> {
-        EntityUtils.consume(response.getEntity());
-        return null;
-      });
+      httpClient.execute(
+          postRequest,
+          response -> {
+            EntityUtils.consume(response.getEntity());
+            return null;
+          });
     }
 
     ApiClient apiClient = new ApiClient(new PersonalAccessTokenAuthenticator(oauthHost, "mm"));
-    Map<String, Object> apiResponse = apiClient.invokeAPI(
-      "/your/endpoint",
-      "GET",
-      Collections.emptyList(),
-      Collections.emptyList(),
-      null,
-      null,
-      Collections.emptyMap(),
-      Collections.emptyMap(),
-      Collections.emptyMap(),
-      "application/json",
-      "application/json",
-      new String[0],
-      new TypeReference<Map<String, Object>>() {
-      }
-    );
+    Map<String, Object> apiResponse =
+        apiClient.invokeAPI(
+            "/your/endpoint",
+            "GET",
+            Collections.emptyList(),
+            Collections.emptyList(),
+            null,
+            null,
+            Collections.emptyMap(),
+            Collections.emptyMap(),
+            Collections.emptyMap(),
+            "application/json",
+            "application/json",
+            new String[0],
+            new TypeReference<Map<String, Object>>() {});
     assertNotNull(apiResponse);
     assertEquals("value", apiResponse.get("key"));
   }
