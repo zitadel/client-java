@@ -2,7 +2,6 @@ package com.zitadel;
 
 import com.zitadel.api.*;
 import com.zitadel.auth.Authenticator;
-
 import java.util.function.Consumer;
 
 public class Zitadel {
@@ -13,13 +12,16 @@ public class Zitadel {
   public final OrganizationServiceApi organizations;
   public final SessionServiceApi sessions;
   public final SettingsServiceApi settings;
+
   @SuppressWarnings("unused")
   public final UserServiceApi users;
 
   public Zitadel(Authenticator authenticator) {
-    this(authenticator, apiClient -> {
-      // Dummy lambda that does nothing, can add default behavior here if needed
-    });
+    this(
+        authenticator,
+        apiClient -> {
+          // Dummy lambda that does nothing, can add default behavior here if needed
+        });
   }
 
   public Zitadel(Authenticator authenticator, Consumer<ApiClient> mutateApiClient) {
