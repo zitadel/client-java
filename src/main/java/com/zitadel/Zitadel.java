@@ -5,7 +5,6 @@ import com.zitadel.auth.Authenticator;
 import com.zitadel.auth.ClientCredentialsAuthenticator;
 import com.zitadel.auth.PersonalAccessTokenAuthenticator;
 import com.zitadel.auth.WebTokenAuthenticator;
-
 import java.util.function.Consumer;
 
 public class Zitadel {
@@ -49,7 +48,8 @@ public class Zitadel {
   }
 
   public static Zitadel withClientCredentials(String host, String clientId, String clientSecret) {
-    return new Zitadel(ClientCredentialsAuthenticator.builder(host, clientId, clientSecret).build());
+    return new Zitadel(
+        ClientCredentialsAuthenticator.builder(host, clientId, clientSecret).build());
   }
 
   public static Zitadel withPrivateKey(String host, String keyFile) {
