@@ -1,6 +1,5 @@
 package com.zitadel;
 
-import com.zitadel.auth.PersonalAccessTokenAuthenticator;
 import com.zitadel.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +33,7 @@ void setUp() {
 * @return the user ID of the newly created user
 */
 private String createUser() {
-	Zitadel zitadel = new Zitadel(new PersonalAccessTokenAuthenticator(baseUrl, validToken));
+	Zitadel zitadel = Zitadel.withAccessToken(baseUrl, validToken);
 
 	try {
 	V2AddHumanUserResponse response = zitadel.users.addHumanUser(new V2AddHumanUserRequest()
@@ -58,7 +57,7 @@ private String createUser() {
 */
 @Test
 void shouldDeactivateAndReactivateUserWithValidToken() {
-	Zitadel zitadel = new Zitadel(new PersonalAccessTokenAuthenticator(baseUrl, validToken));
+  Zitadel zitadel = Zitadel.withAccessToken(baseUrl, validToken);
 
 	try {
 	V2DeactivateUserResponse deactivateResponse = zitadel.users.deactivateUser(userId);
@@ -79,7 +78,7 @@ void shouldDeactivateAndReactivateUserWithValidToken() {
 */
 @Test
 void shouldNotDeactivateOrReactivateUserWithInvalidToken() {
-	Zitadel zitadel = new Zitadel(new PersonalAccessTokenAuthenticator(baseUrl, "whoops"));
+  Zitadel zitadel = Zitadel.withAccessToken(baseUrl, "whoops");
 
 	try {
 	zitadel.users.deactivateUser(userId);
