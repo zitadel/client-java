@@ -46,10 +46,12 @@ public class Zitadel {
   /**
    * Initialize the SDK with a Personal Access Token (PAT).
    *
-   * @param host         API URL (e.g. "https://api.zitadel.example.com").
-   * @param accessToken  Personal Access Token for Bearer authentication.
+   * @param host API URL (e.g. "https://api.zitadel.example.com").
+   * @param accessToken Personal Access Token for Bearer authentication.
    * @return Configured Zitadel client instance.
-   * @see <a href="https://zitadel.com/docs/guides/integrate/service-users/personal-access-token">PAT Guide</a>
+   * @see <a
+   *     href="https://zitadel.com/docs/guides/integrate/service-users/personal-access-token">PAT
+   *     Guide</a>
    */
   public static Zitadel withAccessToken(String host, String accessToken) {
     return new Zitadel(new PersonalAccessTokenAuthenticator(host, accessToken));
@@ -58,31 +60,27 @@ public class Zitadel {
   /**
    * Initialize the SDK using OAuth2 Client Credentials flow.
    *
-   * @param host         API URL.
-   * @param clientId     OAuth2 client identifier.
+   * @param host API URL.
+   * @param clientId OAuth2 client identifier.
    * @param clientSecret OAuth2 client secret.
    * @return Configured Zitadel client instance with token auto-refresh.
-   * @see <a href="https://zitadel.com/docs/guides/integrate/service-users/client-credentials">Client Credentials Guide</a>
+   * @see <a
+   *     href="https://zitadel.com/docs/guides/integrate/service-users/client-credentials">Client
+   *     Credentials Guide</a>
    */
-  public static Zitadel withClientCredentials(
-    String host,
-    String clientId,
-    String clientSecret
-  ) {
+  public static Zitadel withClientCredentials(String host, String clientId, String clientSecret) {
     return new Zitadel(
-      ClientCredentialsAuthenticator
-        .builder(host, clientId, clientSecret)
-        .build()
-    );
+        ClientCredentialsAuthenticator.builder(host, clientId, clientSecret).build());
   }
 
   /**
    * Initialize the SDK via Private Key JWT assertion.
    *
-   * @param host    API URL.
+   * @param host API URL.
    * @param keyFile Path to service account JSON or PEM key file.
    * @return Configured Zitadel client instance using JWT assertion.
-   * @see <a href="https://zitadel.com/docs/guides/integrate/service-users/private-key-jwt">Private Key JWT Guide</a>
+   * @see <a href="https://zitadel.com/docs/guides/integrate/service-users/private-key-jwt">Private
+   *     Key JWT Guide</a>
    */
   public static Zitadel withPrivateKey(String host, String keyFile) {
     return new Zitadel(WebTokenAuthenticator.fromJson(host, keyFile));
