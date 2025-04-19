@@ -4,38 +4,33 @@ import com.nimbusds.oauth2.sdk.*;
 import com.nimbusds.oauth2.sdk.auth.ClientAuthentication;
 import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.token.BearerAccessToken;
-
-import javax.annotation.Nullable;
 import java.net.URI;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
+import javax.annotation.Nullable;
 
 /**
  * Abstract base class for OAuth-based authenticators.
- * <p>
- * Provides common functionality for OAuth authenticators, including token management
- * and header construction.
+ *
+ * <p>Provides common functionality for OAuth authenticators, including token management and header
+ * construction.
  */
 public abstract class OAuthAuthenticator extends Authenticator {
 
-  /**
-   * The scope for the token request.
-   */
+  /** The scope for the token request. */
   protected final Scope scope;
+
   private final OpenId openId;
-  /**
-   * The OAuth token.
-   */
-  @Nullable
-  protected Token token;
+  /** The OAuth token. */
+  @Nullable protected Token token;
 
   /**
    * Constructs an OAuthAuthenticator.
    *
    * @param openId The URL of the OAuth2 token endpoint.
-   * @param scope  The scope for the token request.
+   * @param scope The scope for the token request.
    */
   public OAuthAuthenticator(OpenId openId, Scope scope) {
     super(openId.getHostEndpoint());
@@ -57,8 +52,8 @@ public abstract class OAuthAuthenticator extends Authenticator {
 
   /**
    * Retrieves the authentication headers.
-   * <p>
-   * If no token is available or the current token is expired, refreshes the token.
+   *
+   * <p>If no token is available or the current token is expired, refreshes the token.
    *
    * @return A map containing the 'Authorization' header.
    */
@@ -69,8 +64,8 @@ public abstract class OAuthAuthenticator extends Authenticator {
 
   /**
    * Refreshes the access token.
-   * <p>
-   * Subclasses must implement this method using their specific OAuth flow.
+   *
+   * <p>Subclasses must implement this method using their specific OAuth flow.
    */
   public abstract Token refreshToken();
 
@@ -79,26 +74,28 @@ public abstract class OAuthAuthenticator extends Authenticator {
   protected Token getToken(ClientAuthentication authentication) {
     try {
       URI tokenEndpoint = openId.getTokenEndpoint().toURI();
-      TokenRequest request = new TokenRequest(tokenEndpoint, authentication, this.getGrant(), this.scope);
+      TokenRequest request =
+          new TokenRequest(tokenEndpoint, authentication, this.getGrant(), this.scope);
       HTTPRequest httpRequest = request.toHTTPRequest();
       TokenResponse tokenResponse = TokenResponse.parse(httpRequest.send());
 
       if (!tokenResponse.indicatesSuccess()) {
         TokenErrorResponse errorResponse = tokenResponse.toErrorResponse();
-        throw new RuntimeException("Token request failed: " + errorResponse.getErrorObject().toString());
+        throw new RuntimeException(
+            "Token request failed: " + errorResponse.getErrorObject().toString());
       } else {
         AccessTokenResponse successResponse = (AccessTokenResponse) tokenResponse;
-        BearerAccessToken accessToken = (BearerAccessToken) successResponse.getTokens().getAccessToken();
-        return new Token(accessToken.getValue(), Instant.now().plusSeconds(accessToken.getLifetime()));
+        BearerAccessToken accessToken =
+            (BearerAccessToken) successResponse.getTokens().getAccessToken();
+        return new Token(
+            accessToken.getValue(), Instant.now().plusSeconds(accessToken.getLifetime()));
       }
     } catch (Exception e) {
       throw new RuntimeException("Failed to refresh token: " + e.getMessage(), e);
     }
   }
 
-  /**
-   * A simple POJO representing an OAuth token.
-   */
+  /** A simple POJO representing an OAuth token. */
   public static class Token {
 
     protected final String accessToken;
@@ -108,7 +105,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
      * Constructs a Token.
      *
      * @param accessToken The access token string.
-     * @param expiresAt   The expiration time as an epoch second.
+     * @param expiresAt The expiration time as an epoch second.
      */
     private Token(String accessToken, Instant expiresAt) {
       this.accessToken = accessToken;
@@ -125,7 +122,8 @@ public abstract class OAuthAuthenticator extends Authenticator {
     }
   }
 
-  protected static abstract class OAuthAuthenticatorBuilder<T extends OAuthAuthenticatorBuilder<?>> {
+  protected abstract static class OAuthAuthenticatorBuilder<
+      T extends OAuthAuthenticatorBuilder<?>> {
 
     protected final OpenId openId;
     protected Scope authScopes = Scope.parse("openid urn:zitadel:iam:org:project:id:zitadel:aud");

@@ -1,21 +1,18 @@
 package com.zitadel;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
+import javax.annotation.Nullable;
 
 @SuppressWarnings("unused")
 public class ApiException extends Exception {
   private static final long serialVersionUID = 1L;
 
   private int code = 0;
-  @Nullable
-  private Map<String, List<String>> responseHeaders = null;
-  @Nullable
-  private String responseBody = null;
+  @Nullable private Map<String, List<String>> responseHeaders = null;
+  @Nullable private String responseBody = null;
 
-  public ApiException() {
-  }
+  public ApiException() {}
 
   public ApiException(Throwable throwable) {
     super(throwable);
@@ -25,23 +22,35 @@ public class ApiException extends Exception {
     super(message);
   }
 
-  public ApiException(String message, @Nullable Throwable throwable, int code, @Nullable Map<String, List<String>> responseHeaders, @Nullable String responseBody) {
+  public ApiException(
+      String message,
+      @Nullable Throwable throwable,
+      int code,
+      @Nullable Map<String, List<String>> responseHeaders,
+      @Nullable String responseBody) {
     super(message, throwable);
     this.code = code;
     this.responseHeaders = responseHeaders;
     this.responseBody = responseBody;
   }
 
-  public ApiException(String message, int code, Map<String, List<String>> responseHeaders, String responseBody) {
+  public ApiException(
+      String message, int code, Map<String, List<String>> responseHeaders, String responseBody) {
     this(message, null, code, responseHeaders, responseBody);
   }
 
-  public ApiException(String message, Throwable throwable, int code, Map<String, List<String>> responseHeaders) {
+  public ApiException(
+      String message, Throwable throwable, int code, Map<String, List<String>> responseHeaders) {
     this(message, throwable, code, responseHeaders, null);
   }
 
   public ApiException(int code, Map<String, List<String>> responseHeaders, String responseBody) {
-    this("Response Code: " + code + " Response Body: " + responseBody, null, code, responseHeaders, responseBody);
+    this(
+        "Response Code: " + code + " Response Body: " + responseBody,
+        null,
+        code,
+        responseHeaders,
+        responseBody);
   }
 
   public ApiException(int code, String message) {
@@ -49,7 +58,11 @@ public class ApiException extends Exception {
     this.code = code;
   }
 
-  public ApiException(int code, String message, @Nullable Map<String, List<String>> responseHeaders, @Nullable String responseBody) {
+  public ApiException(
+      int code,
+      String message,
+      @Nullable Map<String, List<String>> responseHeaders,
+      @Nullable String responseBody) {
     this(code, message);
     this.responseHeaders = responseHeaders;
     this.responseBody = responseBody;
