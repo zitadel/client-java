@@ -104,7 +104,6 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
 
     PrivateKey privateKey;
     try {
-      System.out.println(keyString);
       privateKey = KeyUtil.getPrivateKeyFromString(keyString);
     } catch (Exception e) {
       throw new RuntimeException(

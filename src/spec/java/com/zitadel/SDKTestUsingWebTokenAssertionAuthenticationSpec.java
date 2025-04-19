@@ -28,9 +28,6 @@ private String userId;
 @BeforeEach
 void setUp() throws IOException {
 	String k = System.getProperty("JWT_KEY");
-	System.out.println("moo");
-	System.out.println(System.getProperty("BASE_URL"));
-	System.out.println(k);
 	if (k == null) System.exit(1);
 	File f = File.createTempFile("jwt_", null);
 	Files.write(f.toPath(), k.getBytes());
