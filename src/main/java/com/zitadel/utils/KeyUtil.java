@@ -1,15 +1,14 @@
 package com.zitadel.utils;
 
+import java.io.StringReader;
+import java.security.KeyFactory;
+import java.security.PrivateKey;
+import java.security.spec.PKCS8EncodedKeySpec;
 import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.asn1.pkcs.RSAPrivateKey;
 import org.bouncycastle.util.io.pem.PemObject;
 import org.bouncycastle.util.io.pem.PemReader;
-
-import java.io.StringReader;
-import java.security.KeyFactory;
-import java.security.PrivateKey;
-import java.security.spec.PKCS8EncodedKeySpec;
 
 public class KeyUtil {
 
@@ -37,10 +36,11 @@ public class KeyUtil {
       // Parse the PKCS#1 structure
       RSAPrivateKey rsaPrivateKey = RSAPrivateKey.getInstance(keyBytes);
       // Wrap it into a PKCS#8 structure using PrivateKeyInfo
-      PrivateKeyInfo privateKeyInfo = new PrivateKeyInfo(
-        new org.bouncycastle.asn1.x509.AlgorithmIdentifier(PKCSObjectIdentifiers.rsaEncryption),
-        rsaPrivateKey
-      );
+      PrivateKeyInfo privateKeyInfo =
+          new PrivateKeyInfo(
+              new org.bouncycastle.asn1.x509.AlgorithmIdentifier(
+                  PKCSObjectIdentifiers.rsaEncryption),
+              rsaPrivateKey);
       keyBytes = privateKeyInfo.getEncoded();
     }
 

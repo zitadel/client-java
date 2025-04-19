@@ -1,26 +1,23 @@
 package com.zitadel.auth;
 
 import com.zitadel.utils.URLUtil;
-
 import java.util.Collections;
 import java.util.Map;
 
 /**
  * Personal Access Token Authenticator.
- * <p>
- * Uses a static personal access token for API authentication.
+ *
+ * <p>Uses a static personal access token for API authentication.
  */
 public class PersonalAccessTokenAuthenticator extends Authenticator {
 
-  /**
-   * The personal access token.
-   */
+  /** The personal access token. */
   private final String token;
 
   /**
    * Constructs a PersonalAccessAuthenticator.
    *
-   * @param host  The base URL for the API endpoints.
+   * @param host The base URL for the API endpoints.
    * @param token The personal access token.
    */
   public PersonalAccessTokenAuthenticator(String host, String token) {
