@@ -5,9 +5,9 @@ import java.util.Map;
 
 /**
  * Base abstract class for all authentication strategies.
- * <p>
- * This abstract class defines a standard interface for retrieving authentication
- * headers required for API requests.
+ *
+ * <p>This abstract class defines a standard interface for retrieving authentication headers
+ * required for API requests.
  */
 public abstract class Authenticator {
 
