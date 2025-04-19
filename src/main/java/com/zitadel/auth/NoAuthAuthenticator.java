@@ -1,14 +1,13 @@
 package com.zitadel.auth;
 
 import com.zitadel.utils.URLUtil;
-
 import java.util.Collections;
 import java.util.Map;
 
 /**
  * Authenticator implementation for testing purposes.
- * <p>
- * This strategy applies no authentication and returns empty headers.
+ *
+ * <p>This strategy applies no authentication and returns empty headers.
  */
 public class NoAuthAuthenticator extends Authenticator {
 

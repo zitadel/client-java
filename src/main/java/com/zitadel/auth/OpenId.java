@@ -3,7 +3,6 @@ package com.zitadel.auth;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zitadel.utils.URLUtil;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,7 +19,8 @@ public class OpenId {
     try {
       this.hostEndpoint = URLUtil.buildHostname(hostname);
 
-      HttpURLConnection connection = (HttpURLConnection) buildWellKnownUrl(hostname).openConnection();
+      HttpURLConnection connection =
+          (HttpURLConnection) buildWellKnownUrl(hostname).openConnection();
       connection.setRequestMethod("GET");
 
       int status = connection.getResponseCode();
@@ -28,7 +28,9 @@ public class OpenId {
         throw new IOException("Failed to fetch OpenID configuration: HTTP " + status);
       }
 
-      BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
+      BufferedReader reader =
+          new BufferedReader(
+              new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
       StringBuilder responseBuilder = new StringBuilder();
       String line;
       while ((line = reader.readLine()) != null) {
