@@ -2,6 +2,10 @@ package com.zitadel;
 
 import com.zitadel.api.*;
 import com.zitadel.auth.Authenticator;
+import com.zitadel.auth.ClientCredentialsAuthenticator;
+import com.zitadel.auth.PersonalAccessTokenAuthenticator;
+import com.zitadel.auth.WebTokenAuthenticator;
+
 import java.util.function.Consumer;
 
 public class Zitadel {
@@ -38,5 +42,17 @@ public class Zitadel {
     this.sessions = new SessionServiceApi(apiClient);
     this.settings = new SettingsServiceApi(apiClient);
     this.users = new UserServiceApi(apiClient);
+  }
+
+  public static Zitadel withAccessToken(String host, String accessToken) {
+    return new Zitadel(new PersonalAccessTokenAuthenticator(host, accessToken));
+  }
+
+  public static Zitadel withClientCredentials(String host, String clientId, String clientSecret) {
+    return new Zitadel(ClientCredentialsAuthenticator.builder(host, clientId, clientSecret).build());
+  }
+
+  public static Zitadel withPrivateKey(String host, String keyFile) {
+    return new Zitadel(WebTokenAuthenticator.fromJson(host, keyFile));
   }
 }

@@ -1,6 +1,5 @@
 package com.zitadel;
 
-import com.zitadel.auth.ClientCredentialsAuthenticator;
 import com.zitadel.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +30,7 @@ void setUp() {
 * @return the user ID of the newly created user
 */
 private String createUser() {
-	Zitadel zitadel = new Zitadel(ClientCredentialsAuthenticator.builder(baseUrl, clientId, clientSecret).build());
+	Zitadel zitadel = Zitadel.withClientCredentials(baseUrl, clientId, clientSecret);
 
 	try {
 	V2AddHumanUserResponse response = zitadel.users.addHumanUser(new V2AddHumanUserRequest()
@@ -55,7 +54,7 @@ private String createUser() {
 */
 @Test
 void shouldDeactivateAndReactivateUserWithValidToken() {
-	Zitadel zitadel = new Zitadel(ClientCredentialsAuthenticator.builder(baseUrl, clientId, clientSecret).build());
+	Zitadel zitadel = Zitadel.withClientCredentials(baseUrl, clientId, clientSecret);
 
 	try {
 	V2DeactivateUserResponse deactivateResponse = zitadel.users.deactivateUser(userId);
@@ -76,7 +75,7 @@ void shouldDeactivateAndReactivateUserWithValidToken() {
 */
 @Test
 void shouldNotDeactivateOrReactivateUserWithInvalidToken() {
-	Zitadel zitadel = new Zitadel(ClientCredentialsAuthenticator.builder(baseUrl, "clientId", "clientSecret").build());
+	Zitadel zitadel = Zitadel.withClientCredentials(baseUrl, "clientId", "clientSecret");
 
 	try {
 	zitadel.users.deactivateUser(userId);

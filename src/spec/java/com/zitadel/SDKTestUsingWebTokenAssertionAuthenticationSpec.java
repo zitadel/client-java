@@ -1,6 +1,5 @@
 package com.zitadel;
 
-import com.zitadel.auth.WebTokenAuthenticator;
 import com.zitadel.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,7 +44,7 @@ void setUp() throws IOException {
 * @return the user ID of the newly created user
 */
 private String createUser() {
-	Zitadel zitadel = new Zitadel(WebTokenAuthenticator.fromJson(baseUrl, keyFile));
+  Zitadel zitadel = Zitadel.withPrivateKey(baseUrl, keyFile);
 
 	try {
 	V2AddHumanUserResponse response = zitadel.users.addHumanUser(new V2AddHumanUserRequest()
@@ -69,7 +68,7 @@ private String createUser() {
 */
 @Test
 void shouldDeactivateAndReactivateUserWithValidToken() {
-	Zitadel zitadel = new Zitadel(WebTokenAuthenticator.fromJson(baseUrl, keyFile));
+	Zitadel zitadel = Zitadel.withPrivateKey(baseUrl, keyFile);
 
 	try {
 	V2DeactivateUserResponse deactivateResponse = zitadel.users.deactivateUser(userId);
