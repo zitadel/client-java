@@ -249,6 +249,38 @@
           </includes>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>com.diffplug.spotless</groupId>
+        <artifactId>spotless-maven-plugin</artifactId>
+        <version>2.12.0</version>
+        <configuration>
+          <formats>
+            <format>
+              <includes>
+                <include>**/*.java</include>
+              </includes>
+              <excludes>
+                <exclude>**/api/*.java</exclude>
+                <exclude>**/model/*.java</exclude>
+              </excludes>
+            </format>
+          </formats>
+          <java>
+            <excludes>
+              <exclude>**/api/*.java</exclude>
+              <exclude>**/model/*.java</exclude>
+            </excludes>
+            <googleJavaFormat/>
+          </java>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>apply</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
   <profiles>
@@ -269,10 +301,7 @@
                 <arg>-XDcompilePolicy=simple</arg>
                 <arg>--should-stop=ifError=FLOW</arg>
                 <arg>-Xlint:all</arg>
-                <arg>-Xplugin:ErrorProne -XepExcludedPaths:.*/com/zitadel/(api|model)/.*
-                  -XepDisableWarningsInGeneratedCode -Xep:NullAway:ERROR -XepOpt:NullAway:AnnotatedPackages=com.zitadel
-                  -XepOpt:NullAway:UnannotatedSubPackages=com.zitadel.api,com.zitadel.model
-                </arg>
+                <arg>-Xplugin:ErrorProne -XepExcludedPaths:.*/com/zitadel/(api|model)/.* -XepDisableWarningsInGeneratedCode -Xep:NullAway:ERROR -XepOpt:NullAway:AnnotatedPackages=com.zitadel -XepOpt:NullAway:UnannotatedSubPackages=com.zitadel.api,com.zitadel.model</arg>
                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
                 <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>

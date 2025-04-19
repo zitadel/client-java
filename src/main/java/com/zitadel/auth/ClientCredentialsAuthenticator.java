@@ -9,26 +9,26 @@ import com.nimbusds.oauth2.sdk.id.ClientID;
 
 /**
  * OAuth2 Client Credentials Authenticator.
- * <p>
- * Implements the OAuth2 client credentials grant to obtain an access token.
+ *
+ * <p>Implements the OAuth2 client credentials grant to obtain an access token.
  */
 public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
 
-  /**
-   * The OAuth2 client secret.
-   */
+  /** The OAuth2 client secret. */
   private final Secret clientSecret;
+
   private final ClientID clientId;
 
   /**
    * Constructs a ClientCredentialsAuthenticator.
    *
-   * @param openId       The base URL for the API endpoints.
-   * @param clientId     The OAuth2 client identifier.
+   * @param openId The base URL for the API endpoints.
+   * @param clientId The OAuth2 client identifier.
    * @param clientSecret The OAuth2 client secret.
-   * @param authScopes   The scope for the token request.
+   * @param authScopes The scope for the token request.
    */
-  ClientCredentialsAuthenticator(OpenId openId, ClientID clientId, Secret clientSecret, Scope authScopes) {
+  ClientCredentialsAuthenticator(
+      OpenId openId, ClientID clientId, Secret clientSecret, Scope authScopes) {
     super(openId, authScopes);
     this.clientSecret = clientSecret;
     this.clientId = clientId;
@@ -37,8 +37,8 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
   /**
    * Returns a new builder instance for ClientCredentialsAuthenticator.
    *
-   * @param host         The base URL for API endpoints.
-   * @param clientId     The OAuth2 client identifier.
+   * @param host The base URL for API endpoints.
+   * @param clientId The OAuth2 client identifier.
    * @param clientSecret The OAuth2 client secret.
    * @return a new ClientCredentialsAuthenticatorBuilder instance.
    */
@@ -48,8 +48,8 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
 
   /**
    * Refreshes the access token using the client credentials grant.
-   * <p>
-   * This method uses the Nimbus OAuth2 SDK to send a token request.
+   *
+   * <p>This method uses the Nimbus OAuth2 SDK to send a token request.
    */
   @Override
   public Token refreshToken() {
@@ -62,9 +62,7 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
     return new ClientCredentialsGrant();
   }
 
-  /**
-   * Builder for ClientCredentialsAuthenticator.
-   */
+  /** Builder for ClientCredentialsAuthenticator. */
   public static class Builder extends OAuthAuthenticatorBuilder<Builder> {
 
     private final ClientID clientId;
@@ -73,8 +71,8 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
     /**
      * Builder constructor with required parameters.
      *
-     * @param host         The base URL for the API endpoints.
-     * @param clientId     The OAuth2 client identifier.
+     * @param host The base URL for the API endpoints.
+     * @param clientId The OAuth2 client identifier.
      * @param clientSecret The OAuth2 client secret.
      */
     Builder(String host, String clientId, String clientSecret) {
