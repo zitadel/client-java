@@ -1,0 +1,16 @@
+{
+	"name": "maven-internal",
+	"online": true,
+	"storage": {
+		"blobStoreName": "default",
+		"strictContentTypeValidation": true,
+		"writePolicy": "allow"
+	},
+	"cleanup": {
+		"policyNames": ["weekly-cleanup"]
+	},
+	"maven": {
+		"versionPolicy": "MIXED",
+		"layoutPolicy": "STRICT"
+	}
+}
