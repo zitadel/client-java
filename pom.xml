@@ -99,6 +99,8 @@
           <argLine>${jacoco.agent} -Xms512m -Xmx1500m</argLine>
           <parallel>methods</parallel>
           <threadCount>10</threadCount>
+          <reportsDirectory>${project.build.directory}/reports</reportsDirectory>
+          <trimStackTrace>false</trimStackTrace>
         </configuration>
       </plugin>
       <plugin>
