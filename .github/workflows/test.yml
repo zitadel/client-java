@@ -46,7 +46,7 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: build/reports/**/*.xml
+          path: target/reports/**/*.xml
 
       - name: Generate Report
         if: ${{ always() && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false) }}
@@ -54,5 +54,5 @@ jobs:
         with:
           name: Tests
           reporter: java-junit
-          path: build/reports/**/*.xml
+          path: target/reports/**/*.xml
           token: ${{ secrets.GITHUB_TOKEN }}
