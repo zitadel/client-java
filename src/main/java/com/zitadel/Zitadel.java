@@ -15,6 +15,7 @@ public class Zitadel {
   public final OrganizationServiceApi organizations;
   public final SessionServiceApi sessions;
   public final SettingsServiceApi settings;
+  public final SamlServiceApi saml;
 
   @SuppressWarnings("unused")
   public final UserServiceApi users;
@@ -41,12 +42,13 @@ public class Zitadel {
     this.sessions = new SessionServiceApi(apiClient);
     this.settings = new SettingsServiceApi(apiClient);
     this.users = new UserServiceApi(apiClient);
+    this.saml = new SamlServiceApi(apiClient);
   }
 
   /**
    * Initialize the SDK with a Personal Access Token (PAT).
    *
-   * @param host API URL (e.g. "https://api.zitadel.example.com").
+   * @param host API URL (e.g. "<a href="https://api.zitadel.example.com">...</a>").
    * @param accessToken Personal Access Token for Bearer authentication.
    * @return Configured Zitadel client instance.
    * @see <a
