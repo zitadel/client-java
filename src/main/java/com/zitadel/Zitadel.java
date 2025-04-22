@@ -16,6 +16,7 @@ public class Zitadel {
   public final SessionServiceApi sessions;
   public final SettingsServiceApi settings;
   public final SamlServiceApi saml;
+
   @SuppressWarnings("unused")
   public final UserServiceApi users;
 
