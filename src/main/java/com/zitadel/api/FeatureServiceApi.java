@@ -56,8 +56,8 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Get instance level features
-   * Returns all configured features for an instance. Unset fields mean the feature is the current system default.
+   * Get Instance Features
+   * Returns all configured features for an instance. Unset fields mean the feature is the current system default.  Required permissions:  - none
    * @param inheritance Inherit unset features from the resource owners. This option is recursive: if the flag is set, the resource&#39;s ancestors are consulted up to system defaults. If this option is disabled and the feature is not set on the instance, it will be omitted from the response or Not Found is returned when the instance has no features flags at all. (optional)
    * @return FeatureServiceGetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -68,8 +68,8 @@ public class FeatureServiceApi extends BaseApi {
 
 
   /**
-   * Get instance level features
-   * Returns all configured features for an instance. Unset fields mean the feature is the current system default.
+   * Get Instance Features
+   * Returns all configured features for an instance. Unset fields mean the feature is the current system default.  Required permissions:  - none
    * @param inheritance Inherit unset features from the resource owners. This option is recursive: if the flag is set, the resource&#39;s ancestors are consulted up to system defaults. If this option is disabled and the feature is not set on the instance, it will be omitted from the response or Not Found is returned when the instance has no features flags at all. (optional)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceGetInstanceFeaturesResponse
@@ -126,8 +126,8 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Get organization level features
-   * Returns all configured features for an organization. Unset fields mean the feature is the current instance default.
+   * Get Organization Features
+   * Returns all configured features for an organization. Unset fields mean the feature is the current instance default.  Required permissions:  - org.feature.read  - no permission required for the organization the user belongs to
    * @param organizationId  (required)
    * @param inheritance Inherit unset features from the resource owners. This option is recursive: if the flag is set, the resource&#39;s ancestors are consulted up to system defaults. If this option is disabled and the feature is not set on the organization, it will be omitted from the response or Not Found is returned when the organization has no features flags at all. (optional)
    * @return FeatureServiceGetOrganizationFeaturesResponse
@@ -139,8 +139,8 @@ public class FeatureServiceApi extends BaseApi {
 
 
   /**
-   * Get organization level features
-   * Returns all configured features for an organization. Unset fields mean the feature is the current instance default.
+   * Get Organization Features
+   * Returns all configured features for an organization. Unset fields mean the feature is the current instance default.  Required permissions:  - org.feature.read  - no permission required for the organization the user belongs to
    * @param organizationId  (required)
    * @param inheritance Inherit unset features from the resource owners. This option is recursive: if the flag is set, the resource&#39;s ancestors are consulted up to system defaults. If this option is disabled and the feature is not set on the organization, it will be omitted from the response or Not Found is returned when the organization has no features flags at all. (optional)
    * @param additionalHeaders additionalHeaders for this call
@@ -204,8 +204,8 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Get system level features
-   * Returns all configured features for the system. Unset fields mean the feature is the current system default.
+   * Get System Features
+   * Returns all configured features for the system. Unset fields mean the feature is the current system default.  Required permissions:  - none
    * @return FeatureServiceGetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
@@ -215,8 +215,8 @@ public class FeatureServiceApi extends BaseApi {
 
 
   /**
-   * Get system level features
-   * Returns all configured features for the system. Unset fields mean the feature is the current system default.
+   * Get System Features
+   * Returns all configured features for the system. Unset fields mean the feature is the current system default.  Required permissions:  - none
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceGetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -271,8 +271,8 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Get organization level features
-   * Returns all configured features for an organization. Unset fields mean the feature is the current instance default.
+   * Get User Features
+   * Returns all configured features for a user. Unset fields mean the feature is the current organization default.  Required permissions:  - user.feature.read  - no permission required for the own user
    * @param userId  (required)
    * @param inheritance Inherit unset features from the resource owners. This option is recursive: if the flag is set, the resource&#39;s ancestors are consulted up to system defaults. If this option is disabled and the feature is not set on the user, it will be ommitted from the response or Not Found is returned when the user has no features flags at all. (optional)
    * @return FeatureServiceGetUserFeaturesResponse
@@ -284,8 +284,8 @@ public class FeatureServiceApi extends BaseApi {
 
 
   /**
-   * Get organization level features
-   * Returns all configured features for an organization. Unset fields mean the feature is the current instance default.
+   * Get User Features
+   * Returns all configured features for a user. Unset fields mean the feature is the current organization default.  Required permissions:  - user.feature.read  - no permission required for the own user
    * @param userId  (required)
    * @param inheritance Inherit unset features from the resource owners. This option is recursive: if the flag is set, the resource&#39;s ancestors are consulted up to system defaults. If this option is disabled and the feature is not set on the user, it will be ommitted from the response or Not Found is returned when the user has no features flags at all. (optional)
    * @param additionalHeaders additionalHeaders for this call
@@ -349,8 +349,8 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Reset instance level features
-   * Deletes ALL configured features for an instance, reverting the behaviors to system defaults.
+   * Reset Instance Features
+   * Deletes ALL configured features for an instance, reverting the behaviors to system defaults.  Required permissions:  - iam.feature.delete
    * @return FeatureServiceResetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
@@ -360,8 +360,8 @@ public class FeatureServiceApi extends BaseApi {
 
 
   /**
-   * Reset instance level features
-   * Deletes ALL configured features for an instance, reverting the behaviors to system defaults.
+   * Reset Instance Features
+   * Deletes ALL configured features for an instance, reverting the behaviors to system defaults.  Required permissions:  - iam.feature.delete
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceResetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -416,8 +416,8 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Reset organization level features
-   * Deletes ALL configured features for an organization, reverting the behaviors to instance defaults.
+   * Reset Organization Features
+   * Deletes ALL configured features for an organization, reverting the behaviors to instance defaults.  Required permissions:  - org.feature.delete
    * @param organizationId  (required)
    * @return FeatureServiceResetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -428,8 +428,8 @@ public class FeatureServiceApi extends BaseApi {
 
 
   /**
-   * Reset organization level features
-   * Deletes ALL configured features for an organization, reverting the behaviors to instance defaults.
+   * Reset Organization Features
+   * Deletes ALL configured features for an organization, reverting the behaviors to instance defaults.  Required permissions:  - org.feature.delete
    * @param organizationId  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceResetOrganizationFeaturesResponse
@@ -491,8 +491,8 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Reset system level features
-   * Deletes ALL configured features for the system, reverting the behaviors to system defaults.
+   * Reset System Features
+   * Deletes ALL configured features for the system, reverting the behaviors to system defaults.  Required permissions:  - system.feature.delete
    * @return FeatureServiceResetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
@@ -502,8 +502,8 @@ public class FeatureServiceApi extends BaseApi {
 
 
   /**
-   * Reset system level features
-   * Deletes ALL configured features for the system, reverting the behaviors to system defaults.
+   * Reset System Features
+   * Deletes ALL configured features for the system, reverting the behaviors to system defaults.  Required permissions:  - system.feature.delete
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceResetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -558,8 +558,8 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Reset user level features
-   * Deletes ALL configured features for a user, reverting the behaviors to organization defaults.
+   * Reset User Features
+   * Deletes ALL configured features for a user, reverting the behaviors to organization defaults.  Required permissions:  - user.feature.delete
    * @param userId  (required)
    * @return FeatureServiceResetUserFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -570,8 +570,8 @@ public class FeatureServiceApi extends BaseApi {
 
 
   /**
-   * Reset user level features
-   * Deletes ALL configured features for a user, reverting the behaviors to organization defaults.
+   * Reset User Features
+   * Deletes ALL configured features for a user, reverting the behaviors to organization defaults.  Required permissions:  - user.feature.delete
    * @param userId  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceResetUserFeaturesResponse
@@ -633,8 +633,8 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Set instance level features
-   * Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.
+   * Set Instance Features
+   * Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.  Required permissions:  - iam.feature.write
    * @param featureServiceSetInstanceFeaturesRequest  (required)
    * @return FeatureServiceSetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -645,8 +645,8 @@ public class FeatureServiceApi extends BaseApi {
 
 
   /**
-   * Set instance level features
-   * Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.
+   * Set Instance Features
+   * Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.  Required permissions:  - iam.feature.write
    * @param featureServiceSetInstanceFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceSetInstanceFeaturesResponse
@@ -707,8 +707,8 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Set organization level features
-   * Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.
+   * Set Organization Features
+   * Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.  Required permissions:  - org.feature.write
    * @param organizationId  (required)
    * @return FeatureServiceSetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -719,8 +719,8 @@ public class FeatureServiceApi extends BaseApi {
 
 
   /**
-   * Set organization level features
-   * Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.
+   * Set Organization Features
+   * Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.  Required permissions:  - org.feature.write
    * @param organizationId  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceSetOrganizationFeaturesResponse
@@ -782,8 +782,8 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Set system level features
-   * Configure and set features that apply to the complete system. Only fields present in the request are set or unset.
+   * Set System Features
+   * Configure and set features that apply to the complete system. Only fields present in the request are set or unset.  Required permissions:  - system.feature.write
    * @param featureServiceSetSystemFeaturesRequest  (required)
    * @return FeatureServiceSetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -794,8 +794,8 @@ public class FeatureServiceApi extends BaseApi {
 
 
   /**
-   * Set system level features
-   * Configure and set features that apply to the complete system. Only fields present in the request are set or unset.
+   * Set System Features
+   * Configure and set features that apply to the complete system. Only fields present in the request are set or unset.  Required permissions:  - system.feature.write
    * @param featureServiceSetSystemFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceSetSystemFeaturesResponse
@@ -856,8 +856,8 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Set user level features
-   * Configure and set features that apply to an user. Only fields present in the request are set or unset.
+   * Set User Features
+   * Configure and set features that apply to an user. Only fields present in the request are set or unset.  Required permissions:  - user.feature.write
    * @param userId  (required)
    * @return FeatureServiceSetUserFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -868,8 +868,8 @@ public class FeatureServiceApi extends BaseApi {
 
 
   /**
-   * Set user level features
-   * Configure and set features that apply to an user. Only fields present in the request are set or unset.
+   * Set User Features
+   * Configure and set features that apply to an user. Only fields present in the request are set or unset.  Required permissions:  - user.feature.write
    * @param userId  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceSetUserFeaturesResponse
