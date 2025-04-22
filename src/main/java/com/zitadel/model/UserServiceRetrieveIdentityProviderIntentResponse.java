@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.UserServiceAddHumanUserRequest;
 import com.zitadel.model.UserServiceDetails;
 import com.zitadel.model.UserServiceIDPInformation;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -34,7 +35,8 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   UserServiceRetrieveIdentityProviderIntentResponse.JSON_PROPERTY_DETAILS,
   UserServiceRetrieveIdentityProviderIntentResponse.JSON_PROPERTY_IDP_INFORMATION,
-  UserServiceRetrieveIdentityProviderIntentResponse.JSON_PROPERTY_USER_ID
+  UserServiceRetrieveIdentityProviderIntentResponse.JSON_PROPERTY_USER_ID,
+  UserServiceRetrieveIdentityProviderIntentResponse.JSON_PROPERTY_ADD_HUMAN_USER
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class UserServiceRetrieveIdentityProviderIntentResponse {
@@ -49,6 +51,10 @@ public class UserServiceRetrieveIdentityProviderIntentResponse {
   public static final String JSON_PROPERTY_USER_ID = "userId";
   @javax.annotation.Nullable
   private String userId;
+
+  public static final String JSON_PROPERTY_ADD_HUMAN_USER = "addHumanUser";
+  @javax.annotation.Nullable
+  private UserServiceAddHumanUserRequest addHumanUser;
 
   public UserServiceRetrieveIdentityProviderIntentResponse() {
   }
@@ -128,6 +134,31 @@ public class UserServiceRetrieveIdentityProviderIntentResponse {
     this.userId = userId;
   }
 
+  public UserServiceRetrieveIdentityProviderIntentResponse addHumanUser(@javax.annotation.Nullable UserServiceAddHumanUserRequest addHumanUser) {
+    
+    this.addHumanUser = addHumanUser;
+    return this;
+  }
+
+  /**
+   * Get addHumanUser
+   * @return addHumanUser
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ADD_HUMAN_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UserServiceAddHumanUserRequest getAddHumanUser() {
+    return addHumanUser;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ADD_HUMAN_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAddHumanUser(@javax.annotation.Nullable UserServiceAddHumanUserRequest addHumanUser) {
+    this.addHumanUser = addHumanUser;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -139,12 +170,13 @@ public class UserServiceRetrieveIdentityProviderIntentResponse {
     UserServiceRetrieveIdentityProviderIntentResponse userServiceRetrieveIdentityProviderIntentResponse = (UserServiceRetrieveIdentityProviderIntentResponse) o;
     return Objects.equals(this.details, userServiceRetrieveIdentityProviderIntentResponse.details) &&
         Objects.equals(this.idpInformation, userServiceRetrieveIdentityProviderIntentResponse.idpInformation) &&
-        Objects.equals(this.userId, userServiceRetrieveIdentityProviderIntentResponse.userId);
+        Objects.equals(this.userId, userServiceRetrieveIdentityProviderIntentResponse.userId) &&
+        Objects.equals(this.addHumanUser, userServiceRetrieveIdentityProviderIntentResponse.addHumanUser);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(details, idpInformation, userId);
+    return Objects.hash(details, idpInformation, userId, addHumanUser);
   }
 
   @Override
@@ -154,6 +186,7 @@ public class UserServiceRetrieveIdentityProviderIntentResponse {
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    idpInformation: ").append(toIndentedString(idpInformation)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    addHumanUser: ").append(toIndentedString(addHumanUser)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -219,6 +252,11 @@ public class UserServiceRetrieveIdentityProviderIntentResponse {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
       }
+    }
+
+    // add `addHumanUser` to the URL query string
+    if (getAddHumanUser() != null) {
+      joiner.add(getAddHumanUser().toUrlQueryString(prefix + "addHumanUser" + suffix));
     }
 
     return joiner.toString();
