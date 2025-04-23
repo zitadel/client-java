@@ -30,7 +30,6 @@ public class BaseTest {
 
         // Retrieves all entries from the .env file.
         Set<DotenvEntry> envVars = dotenv.entries();
-        System.out.println(envVars);
 
         // Iterates over each entry and sets the key-value pair as a system property.
         for (DotenvEntry entry : envVars) {
