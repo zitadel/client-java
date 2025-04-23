@@ -33,12 +33,12 @@ private String createUser() {
 	Zitadel zitadel = Zitadel.withClientCredentials(baseUrl, clientId, clientSecret);
 
 	try {
-	V2AddHumanUserResponse response = zitadel.users.addHumanUser(new V2AddHumanUserRequest()
+	UserServiceAddHumanUserResponse response = zitadel.users.userServiceAddHumanUser(new UserServiceAddHumanUserRequest()
 		.username(UUID.randomUUID().toString())
-		.profile(new V2SetHumanProfile()
+		.profile(new UserServiceSetHumanProfile()
 		.givenName("John")
 		.familyName("Doe"))
-		.email(new V2SetHumanEmail()
+		.email(new UserServiceSetHumanEmail()
 		.email("johndoe" + UUID.randomUUID() + "@caos.ag")));
 	System.out.println("User created: " + response);
 	return response.getUserId();
@@ -57,10 +57,10 @@ void shouldDeactivateAndReactivateUserWithValidToken() {
 	Zitadel zitadel = Zitadel.withClientCredentials(baseUrl, clientId, clientSecret);
 
 	try {
-	V2DeactivateUserResponse deactivateResponse = zitadel.users.deactivateUser(userId);
+	UserServiceDeactivateUserResponse deactivateResponse = zitadel.users.userServiceDeactivateUser(userId);
 	System.out.println("User deactivated: " + deactivateResponse);
 
-	V2ReactivateUserResponse reactivateResponse = zitadel.users.reactivateUser(userId);
+	UserServiceReactivateUserResponse reactivateResponse = zitadel.users.userServiceReactivateUser(userId);
 	System.out.println("User reactivated: " + reactivateResponse);
 	// assertEquals("success", reactivateResponse.getStatus());
 	} catch (ApiException e) {
@@ -78,7 +78,7 @@ void shouldNotDeactivateOrReactivateUserWithInvalidToken() {
 	Zitadel zitadel = Zitadel.withClientCredentials(baseUrl, "clientId", "clientSecret");
 
 	try {
-	zitadel.users.deactivateUser(userId);
+	zitadel.users.userServiceDeactivateUser(userId);
 	fail("Expected exception when deactivating user with invalid token, but got response.");
 	} catch (Exception e) {
 	// assertTrue(e.getMessage().contains("Unauthorized"));
@@ -86,7 +86,7 @@ void shouldNotDeactivateOrReactivateUserWithInvalidToken() {
 	}
 
 	try {
-	zitadel.users.reactivateUser(userId);
+	zitadel.users.userServiceReactivateUser(userId);
 	fail("Expected exception when reactivating user with invalid token, but got response.");
 	} catch (Exception e) {
 	// assertTrue(e.getMessage().contains("Unauthorized"));

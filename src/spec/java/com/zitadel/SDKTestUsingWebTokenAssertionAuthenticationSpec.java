@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.UUID;
 
@@ -30,7 +31,7 @@ void setUp() throws IOException {
 	String k = System.getProperty("JWT_KEY");
 	if (k == null) System.exit(1);
 	File f = File.createTempFile("jwt_", null);
-	Files.write(f.toPath(), k.getBytes());
+	Files.write(f.toPath(), k.getBytes(StandardCharsets.UTF_8));
 	keyFile = f.getAbsolutePath();
 	userId = createUser();
 }
@@ -44,12 +45,12 @@ private String createUser() {
   Zitadel zitadel = Zitadel.withPrivateKey(baseUrl, keyFile);
 
 	try {
-	V2AddHumanUserResponse response = zitadel.users.addHumanUser(new V2AddHumanUserRequest()
+	UserServiceAddHumanUserResponse response = zitadel.users.userServiceAddHumanUser(new UserServiceAddHumanUserRequest()
 		.username(UUID.randomUUID().toString())
-		.profile(new V2SetHumanProfile()
+		.profile(new UserServiceSetHumanProfile()
 		.givenName("John")
 		.familyName("Doe"))
-		.email(new V2SetHumanEmail()
+		.email(new UserServiceSetHumanEmail()
 		.email("johndoe" + UUID.randomUUID() + "@caos.ag")));
 	System.out.println("User created: " + response);
 	return response.getUserId();
@@ -68,10 +69,10 @@ void shouldDeactivateAndReactivateUserWithValidToken() {
 	Zitadel zitadel = Zitadel.withPrivateKey(baseUrl, keyFile);
 
 	try {
-	V2DeactivateUserResponse deactivateResponse = zitadel.users.deactivateUser(userId);
+	UserServiceDeactivateUserResponse deactivateResponse = zitadel.users.userServiceDeactivateUser(userId);
 	System.out.println("User deactivated: " + deactivateResponse);
 
-	V2ReactivateUserResponse reactivateResponse = zitadel.users.reactivateUser(userId);
+	UserServiceReactivateUserResponse reactivateResponse = zitadel.users.userServiceReactivateUser(userId);
 	System.out.println("User reactivated: " + reactivateResponse);
 	// assertEquals("success", reactivateResponse.getStatus());
 	} catch (ApiException e) {

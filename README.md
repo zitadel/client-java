@@ -67,23 +67,28 @@ JSON file. This process creates a secure token.
 **Example:**
 
 ```java
-// Create an authenticator using your JWT private key file.
-Zitadel zitadel = Zitadel.withPrivateKey("https://example.us1.zitadel.cloud", "path/to/jwt-key.json");
+import com.zitadel.ApiException;
+import com.zitadel.Zitadel;
+import com.zitadel.model.UserServiceAddHumanUserRequest;
+import com.zitadel.model.UserServiceAddHumanUserResponse;
+import com.zitadel.model.UserServiceSetHumanEmail;
+import com.zitadel.model.UserServiceSetHumanProfile;
 
-// Now use the client as usual.
-try {
-    V2AddHumanUserResponse response = zitadel.users.addHumanUser(
-        new V2AddHumanUserRequest()
-            .username("john.doe")
-            .profile(new V2SetHumanProfile()
-                .givenName("John")
-                .familyName("Doe"))
-            .email(new V2SetHumanEmail()
-                .email("john@doe.com"))
-    );
-    System.out.println("User created: " + response);
-} catch (ApiException e) {
-    e.printStackTrace();
+class Demo {
+    public static void main(String[] args) throws ApiException {
+        Zitadel zitadel = Zitadel.withPrivateKey("https://example.us1.zitadel.cloud", "path/to/jwt-key.json");
+
+        UserServiceAddHumanUserResponse response = zitadel.users.userServiceAddHumanUser(
+                new UserServiceAddHumanUserRequest()
+                        .username("john.doe")
+                        .profile(new UserServiceSetHumanProfile()
+                                .givenName("John")
+                                .familyName("Doe"))
+                        .email(new UserServiceSetHumanEmail()
+                                .email("john@doe.com"))
+        );
+        System.out.println("User created: " + response);
+    }
 }
 ```
 
@@ -106,22 +111,28 @@ which is then used to authenticate.
 **Example:**
 
 ```java
-// Create an authenticator using client credentials.
-Zitadel zitadel = Zitadel.withClientCredentials("https://example.us1.zitadel.cloud", "id", "secret");
+import com.zitadel.ApiException;
+import com.zitadel.Zitadel;
+import com.zitadel.model.UserServiceAddHumanUserRequest;
+import com.zitadel.model.UserServiceAddHumanUserResponse;
+import com.zitadel.model.UserServiceSetHumanEmail;
+import com.zitadel.model.UserServiceSetHumanProfile;
 
-try {
-    V2AddHumanUserResponse response = zitadel.users.addHumanUser(
-        new V2AddHumanUserRequest()
-            .username("john.doe")
-            .profile(new V2SetHumanProfile()
-                .givenName("John")
-                .familyName("Doe"))
-            .email(new V2SetHumanEmail()
-                .email("john@doe.com"))
-    );
-    System.out.println("User created: " + response);
-} catch (ApiException e) {
-    e.printStackTrace();
+class Demo {
+    public static void main(String[] args) throws ApiException {
+        Zitadel zitadel = Zitadel.withClientCredentials("https://example.us1.zitadel.cloud", "id", "secret");
+
+        UserServiceAddHumanUserResponse response = zitadel.users.userServiceAddHumanUser(
+                new UserServiceAddHumanUserRequest()
+                        .username("john.doe")
+                        .profile(new UserServiceSetHumanProfile()
+                                .givenName("John")
+                                .familyName("Doe"))
+                        .email(new UserServiceSetHumanEmail()
+                                .email("john@doe.com"))
+        );
+        System.out.println("User created: " + response);
+    }
 }
 ```
 
@@ -144,24 +155,29 @@ authenticate without exchanging credentials every time.
 **Example:**
 
 ```java
+import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
+import com.zitadel.model.UserServiceAddHumanUserRequest;
+import com.zitadel.model.UserServiceAddHumanUserResponse;
+import com.zitadel.model.UserServiceSetHumanEmail;
+import com.zitadel.model.UserServiceSetHumanProfile;
 
-// Create an authenticator using a personal access token.
-Zitadel zitadel = Zitadel.withAccessToken("https://example.us1.zitadel.cloud", "token");
+class Demo {
 
-try{
-  V2AddHumanUserResponse response = zitadel.users.addHumanUser(
-    new V2AddHumanUserRequest()
-      .username("john.doe")
-      .profile(new V2SetHumanProfile()
-        .givenName("John")
-        .familyName("Doe"))
-      .email(new V2SetHumanEmail()
-        .email("john@doe.com"))
-  );
-    System.out.println("User created: "+response);
-} catch (ApiException e){
-  e.printStackTrace();
+    public static void main(String[] args) throws ApiException {
+        Zitadel zitadel = Zitadel.withAccessToken("https://example.us1.zitadel.cloud", "token");
+
+        UserServiceAddHumanUserResponse response = zitadel.users.userServiceAddHumanUser(
+                new UserServiceAddHumanUserRequest()
+                        .username("john.doe")
+                        .profile(new UserServiceSetHumanProfile()
+                                .givenName("John")
+                                .familyName("Doe"))
+                        .email(new UserServiceSetHumanEmail()
+                                .email("john@doe.com"))
+        );
+        System.out.println("User created: " + response);
+    }
 }
 ```
 
