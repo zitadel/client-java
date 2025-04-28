@@ -233,36 +233,6 @@ public class UserServiceSetPassword {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `password` to the URL query string
-    if (getPassword() != null) {
-      joiner.add(getPassword().toUrlQueryString(prefix + "password" + suffix));
-    }
-
-    // add `hashedPassword` to the URL query string
-    if (getHashedPassword() != null) {
-      joiner.add(getHashedPassword().toUrlQueryString(prefix + "hashedPassword" + suffix));
-    }
-
-    // add `currentPassword` to the URL query string
-    if (getCurrentPassword() != null) {
-      try {
-        joiner.add(String.format("%scurrentPassword%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCurrentPassword()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `verificationCode` to the URL query string
-    if (getVerificationCode() != null) {
-      try {
-        joiner.add(String.format("%sverificationCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVerificationCode()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
     return joiner.toString();
   }
 

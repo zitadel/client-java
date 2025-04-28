@@ -168,21 +168,6 @@ public class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `session` to the URL query string
-    if (getSession() != null) {
-      joiner.add(getSession().toUrlQueryString(prefix + "session" + suffix));
-    }
-
-    // add `deny` to the URL query string
-    if (getDeny() != null) {
-      try {
-        joiner.add(String.format("%sdeny%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDeny()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
     return joiner.toString();
   }
 

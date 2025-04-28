@@ -267,36 +267,6 @@ public class OrganizationServiceSearchQuery {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `nameQuery` to the URL query string
-    if (getNameQuery() != null) {
-      joiner.add(getNameQuery().toUrlQueryString(prefix + "nameQuery" + suffix));
-    }
-
-    // add `domainQuery` to the URL query string
-    if (getDomainQuery() != null) {
-      joiner.add(getDomainQuery().toUrlQueryString(prefix + "domainQuery" + suffix));
-    }
-
-    // add `stateQuery` to the URL query string
-    if (getStateQuery() != null) {
-      joiner.add(getStateQuery().toUrlQueryString(prefix + "stateQuery" + suffix));
-    }
-
-    // add `idQuery` to the URL query string
-    if (getIdQuery() != null) {
-      joiner.add(getIdQuery().toUrlQueryString(prefix + "idQuery" + suffix));
-    }
-
-    // add `defaultQuery` to the URL query string
-    if (getDefaultQuery() != null) {
-      try {
-        joiner.add(String.format("%sdefaultQuery%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDefaultQuery()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
     return joiner.toString();
   }
 

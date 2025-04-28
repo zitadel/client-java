@@ -167,26 +167,6 @@ public class UserServiceResendPhoneCodeRequest {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `sendCode` to the URL query string
-    if (getSendCode() != null) {
-      try {
-        joiner.add(String.format("%ssendCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSendCode()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `returnCode` to the URL query string
-    if (getReturnCode() != null) {
-      try {
-        joiner.add(String.format("%sreturnCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getReturnCode()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
     return joiner.toString();
   }
 
