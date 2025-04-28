@@ -268,31 +268,6 @@ public class SessionServiceSearchQuery {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `idsQuery` to the URL query string
-    if (getIdsQuery() != null) {
-      joiner.add(getIdsQuery().toUrlQueryString(prefix + "idsQuery" + suffix));
-    }
-
-    // add `userIdQuery` to the URL query string
-    if (getUserIdQuery() != null) {
-      joiner.add(getUserIdQuery().toUrlQueryString(prefix + "userIdQuery" + suffix));
-    }
-
-    // add `creationDateQuery` to the URL query string
-    if (getCreationDateQuery() != null) {
-      joiner.add(getCreationDateQuery().toUrlQueryString(prefix + "creationDateQuery" + suffix));
-    }
-
-    // add `creatorQuery` to the URL query string
-    if (getCreatorQuery() != null) {
-      joiner.add(getCreatorQuery().toUrlQueryString(prefix + "creatorQuery" + suffix));
-    }
-
-    // add `userAgentQuery` to the URL query string
-    if (getUserAgentQuery() != null) {
-      joiner.add(getUserAgentQuery().toUrlQueryString(prefix + "userAgentQuery" + suffix));
-    }
-
     return joiner.toString();
   }
 

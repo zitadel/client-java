@@ -233,36 +233,6 @@ public class UserServiceStartIdentityProviderIntentResponse {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `details` to the URL query string
-    if (getDetails() != null) {
-      joiner.add(getDetails().toUrlQueryString(prefix + "details" + suffix));
-    }
-
-    // add `authUrl` to the URL query string
-    if (getAuthUrl() != null) {
-      try {
-        joiner.add(String.format("%sauthUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAuthUrl()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `idpIntent` to the URL query string
-    if (getIdpIntent() != null) {
-      joiner.add(getIdpIntent().toUrlQueryString(prefix + "idpIntent" + suffix));
-    }
-
-    // add `postForm` to the URL query string
-    if (getPostForm() != null) {
-      try {
-        joiner.add(String.format("%spostForm%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPostForm()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
     return joiner.toString();
   }
 

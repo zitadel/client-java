@@ -168,21 +168,6 @@ public class UserServiceSendEmailCodeRequest {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `sendCode` to the URL query string
-    if (getSendCode() != null) {
-      joiner.add(getSendCode().toUrlQueryString(prefix + "sendCode" + suffix));
-    }
-
-    // add `returnCode` to the URL query string
-    if (getReturnCode() != null) {
-      try {
-        joiner.add(String.format("%sreturnCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getReturnCode()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
     return joiner.toString();
   }
 

@@ -168,26 +168,6 @@ public class IdentityProviderServiceAzureADTenant {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `tenantType` to the URL query string
-    if (getTenantType() != null) {
-      try {
-        joiner.add(String.format("%stenantType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTenantType()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `tenantId` to the URL query string
-    if (getTenantId() != null) {
-      try {
-        joiner.add(String.format("%stenantId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTenantId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
     return joiner.toString();
   }
 

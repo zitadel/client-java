@@ -233,36 +233,6 @@ public class SAMLServiceCreateResponseResponse {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `details` to the URL query string
-    if (getDetails() != null) {
-      joiner.add(getDetails().toUrlQueryString(prefix + "details" + suffix));
-    }
-
-    // add `url` to the URL query string
-    if (getUrl() != null) {
-      try {
-        joiner.add(String.format("%surl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUrl()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `redirect` to the URL query string
-    if (getRedirect() != null) {
-      try {
-        joiner.add(String.format("%sredirect%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRedirect()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `post` to the URL query string
-    if (getPost() != null) {
-      joiner.add(getPost().toUrlQueryString(prefix + "post" + suffix));
-    }
-
     return joiner.toString();
   }
 

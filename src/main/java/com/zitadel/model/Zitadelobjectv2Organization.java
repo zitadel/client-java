@@ -168,26 +168,6 @@ public class Zitadelobjectv2Organization {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `orgId` to the URL query string
-    if (getOrgId() != null) {
-      try {
-        joiner.add(String.format("%sorgId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrgId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `orgDomain` to the URL query string
-    if (getOrgDomain() != null) {
-      try {
-        joiner.add(String.format("%sorgDomain%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrgDomain()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
     return joiner.toString();
   }
 

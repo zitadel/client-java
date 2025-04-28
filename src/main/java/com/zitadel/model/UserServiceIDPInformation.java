@@ -330,61 +330,6 @@ public class UserServiceIDPInformation {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `oauth` to the URL query string
-    if (getOauth() != null) {
-      joiner.add(getOauth().toUrlQueryString(prefix + "oauth" + suffix));
-    }
-
-    // add `ldap` to the URL query string
-    if (getLdap() != null) {
-      joiner.add(getLdap().toUrlQueryString(prefix + "ldap" + suffix));
-    }
-
-    // add `saml` to the URL query string
-    if (getSaml() != null) {
-      joiner.add(getSaml().toUrlQueryString(prefix + "saml" + suffix));
-    }
-
-    // add `idpId` to the URL query string
-    if (getIdpId() != null) {
-      try {
-        joiner.add(String.format("%sidpId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdpId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `userId` to the URL query string
-    if (getUserId() != null) {
-      try {
-        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `userName` to the URL query string
-    if (getUserName() != null) {
-      try {
-        joiner.add(String.format("%suserName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `rawInformation` to the URL query string
-    if (getRawInformation() != null) {
-      try {
-        joiner.add(String.format("%srawInformation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRawInformation()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
     return joiner.toString();
   }
 

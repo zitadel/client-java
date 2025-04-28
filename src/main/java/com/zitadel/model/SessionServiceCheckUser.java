@@ -167,26 +167,6 @@ public class SessionServiceCheckUser {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `userId` to the URL query string
-    if (getUserId() != null) {
-      try {
-        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `loginName` to the URL query string
-    if (getLoginName() != null) {
-      try {
-        joiner.add(String.format("%sloginName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLoginName()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
     return joiner.toString();
   }
 
