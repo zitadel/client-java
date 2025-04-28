@@ -211,35 +211,6 @@ public class OrganizationServiceAddOrganizationRequestAdmin {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `userId` to the URL query string
-    if (getUserId() != null) {
-      try {
-        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `human` to the URL query string
-    if (getHuman() != null) {
-      joiner.add(getHuman().toUrlQueryString(prefix + "human" + suffix));
-    }
-
-    // add `roles` to the URL query string
-    if (getRoles() != null) {
-      for (int i = 0; i < getRoles().size(); i++) {
-        try {
-          joiner.add(String.format("%sroles%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getRoles().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
-        }
-      }
-    }
-
     return joiner.toString();
   }
 

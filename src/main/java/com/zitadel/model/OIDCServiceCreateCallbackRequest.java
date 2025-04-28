@@ -169,16 +169,6 @@ public class OIDCServiceCreateCallbackRequest {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `session` to the URL query string
-    if (getSession() != null) {
-      joiner.add(getSession().toUrlQueryString(prefix + "session" + suffix));
-    }
-
-    // add `error` to the URL query string
-    if (getError() != null) {
-      joiner.add(getError().toUrlQueryString(prefix + "error" + suffix));
-    }
-
     return joiner.toString();
   }
 

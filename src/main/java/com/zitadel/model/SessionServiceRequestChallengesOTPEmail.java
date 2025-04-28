@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.SessionServiceRequestChallengesOTPEmailSendCode;
+import com.zitadel.model.SessionServiceOTPEmailSendCode;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -38,7 +38,7 @@ import java.util.StringJoiner;
 public class SessionServiceRequestChallengesOTPEmail {
   public static final String JSON_PROPERTY_SEND_CODE = "sendCode";
   @javax.annotation.Nullable
-  private SessionServiceRequestChallengesOTPEmailSendCode sendCode;
+  private SessionServiceOTPEmailSendCode sendCode;
 
   public static final String JSON_PROPERTY_RETURN_CODE = "returnCode";
   @javax.annotation.Nullable
@@ -47,7 +47,7 @@ public class SessionServiceRequestChallengesOTPEmail {
   public SessionServiceRequestChallengesOTPEmail() {
   }
 
-  public SessionServiceRequestChallengesOTPEmail sendCode(@javax.annotation.Nullable SessionServiceRequestChallengesOTPEmailSendCode sendCode) {
+  public SessionServiceRequestChallengesOTPEmail sendCode(@javax.annotation.Nullable SessionServiceOTPEmailSendCode sendCode) {
     
     this.sendCode = sendCode;
     return this;
@@ -61,14 +61,14 @@ public class SessionServiceRequestChallengesOTPEmail {
   @JsonProperty(JSON_PROPERTY_SEND_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SessionServiceRequestChallengesOTPEmailSendCode getSendCode() {
+  public SessionServiceOTPEmailSendCode getSendCode() {
     return sendCode;
   }
 
 
   @JsonProperty(JSON_PROPERTY_SEND_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSendCode(@javax.annotation.Nullable SessionServiceRequestChallengesOTPEmailSendCode sendCode) {
+  public void setSendCode(@javax.annotation.Nullable SessionServiceOTPEmailSendCode sendCode) {
     this.sendCode = sendCode;
   }
 
@@ -167,21 +167,6 @@ public class SessionServiceRequestChallengesOTPEmail {
     }
 
     StringJoiner joiner = new StringJoiner("&");
-
-    // add `sendCode` to the URL query string
-    if (getSendCode() != null) {
-      joiner.add(getSendCode().toUrlQueryString(prefix + "sendCode" + suffix));
-    }
-
-    // add `returnCode` to the URL query string
-    if (getReturnCode() != null) {
-      try {
-        joiner.add(String.format("%sreturnCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getReturnCode()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
 
     return joiner.toString();
   }

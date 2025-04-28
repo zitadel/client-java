@@ -22,7 +22,7 @@ import com.zitadel.Pair;
 
 import com.zitadel.model.SessionServiceCreateSessionRequest;
 import com.zitadel.model.SessionServiceCreateSessionResponse;
-import com.zitadel.model.SessionServiceDeleteSessionBody;
+import com.zitadel.model.SessionServiceDeleteSessionRequest;
 import com.zitadel.model.SessionServiceDeleteSessionResponse;
 import com.zitadel.model.SessionServiceGetSessionResponse;
 import com.zitadel.model.SessionServiceListSessionsRequest;
@@ -128,12 +128,12 @@ public class SessionServiceApi extends BaseApi {
    * Terminate an existing session
    * Terminate your own session or if granted any other session.
    * @param sessionId \&quot;id of the session to terminate\&quot; (required)
-   * @param sessionServiceDeleteSessionBody  (required)
+   * @param sessionServiceDeleteSessionRequest  (required)
    * @return SessionServiceDeleteSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceDeleteSessionResponse sessionServiceDeleteSession(String sessionId, SessionServiceDeleteSessionBody sessionServiceDeleteSessionBody) throws ApiException {
-    return this.sessionServiceDeleteSession(sessionId, sessionServiceDeleteSessionBody, Collections.emptyMap());
+  public SessionServiceDeleteSessionResponse sessionServiceDeleteSession(String sessionId, SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest) throws ApiException {
+    return this.sessionServiceDeleteSession(sessionId, sessionServiceDeleteSessionRequest, Collections.emptyMap());
   }
 
 
@@ -141,22 +141,22 @@ public class SessionServiceApi extends BaseApi {
    * Terminate an existing session
    * Terminate your own session or if granted any other session.
    * @param sessionId \&quot;id of the session to terminate\&quot; (required)
-   * @param sessionServiceDeleteSessionBody  (required)
+   * @param sessionServiceDeleteSessionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SessionServiceDeleteSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceDeleteSessionResponse sessionServiceDeleteSession(String sessionId, SessionServiceDeleteSessionBody sessionServiceDeleteSessionBody, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = sessionServiceDeleteSessionBody;
+  public SessionServiceDeleteSessionResponse sessionServiceDeleteSession(String sessionId, SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = sessionServiceDeleteSessionRequest;
     
     // verify the required parameter 'sessionId' is set
     if (sessionId == null) {
       throw new ApiException(400, "Missing the required parameter 'sessionId' when calling sessionServiceDeleteSession");
     }
     
-    // verify the required parameter 'sessionServiceDeleteSessionBody' is set
-    if (sessionServiceDeleteSessionBody == null) {
-      throw new ApiException(400, "Missing the required parameter 'sessionServiceDeleteSessionBody' when calling sessionServiceDeleteSession");
+    // verify the required parameter 'sessionServiceDeleteSessionRequest' is set
+    if (sessionServiceDeleteSessionRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'sessionServiceDeleteSessionRequest' when calling sessionServiceDeleteSession");
     }
     
     // create path and map variables

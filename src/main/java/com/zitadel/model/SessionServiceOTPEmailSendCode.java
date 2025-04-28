@@ -27,21 +27,21 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * SessionServiceRequestChallengesOTPEmailSendCode
+ * SessionServiceOTPEmailSendCode
  */
 @JsonPropertyOrder({
-  SessionServiceRequestChallengesOTPEmailSendCode.JSON_PROPERTY_URL_TEMPLATE
+  SessionServiceOTPEmailSendCode.JSON_PROPERTY_URL_TEMPLATE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
-public class SessionServiceRequestChallengesOTPEmailSendCode {
+public class SessionServiceOTPEmailSendCode {
   public static final String JSON_PROPERTY_URL_TEMPLATE = "urlTemplate";
   @javax.annotation.Nullable
   private String urlTemplate;
 
-  public SessionServiceRequestChallengesOTPEmailSendCode() {
+  public SessionServiceOTPEmailSendCode() {
   }
 
-  public SessionServiceRequestChallengesOTPEmailSendCode urlTemplate(@javax.annotation.Nullable String urlTemplate) {
+  public SessionServiceOTPEmailSendCode urlTemplate(@javax.annotation.Nullable String urlTemplate) {
     
     this.urlTemplate = urlTemplate;
     return this;
@@ -74,8 +74,8 @@ public class SessionServiceRequestChallengesOTPEmailSendCode {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SessionServiceRequestChallengesOTPEmailSendCode sessionServiceRequestChallengesOTPEmailSendCode = (SessionServiceRequestChallengesOTPEmailSendCode) o;
-    return Objects.equals(this.urlTemplate, sessionServiceRequestChallengesOTPEmailSendCode.urlTemplate);
+    SessionServiceOTPEmailSendCode sessionServiceOTPEmailSendCode = (SessionServiceOTPEmailSendCode) o;
+    return Objects.equals(this.urlTemplate, sessionServiceOTPEmailSendCode.urlTemplate);
   }
 
   @Override
@@ -86,7 +86,7 @@ public class SessionServiceRequestChallengesOTPEmailSendCode {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SessionServiceRequestChallengesOTPEmailSendCode {\n");
+    sb.append("class SessionServiceOTPEmailSendCode {\n");
     sb.append("    urlTemplate: ").append(toIndentedString(urlTemplate)).append("\n");
     sb.append("}");
     return sb.toString();

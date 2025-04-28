@@ -27,21 +27,21 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * SessionServiceDeleteSessionBody
+ * SessionServiceDeleteSessionRequest
  */
 @JsonPropertyOrder({
-  SessionServiceDeleteSessionBody.JSON_PROPERTY_SESSION_TOKEN
+  SessionServiceDeleteSessionRequest.JSON_PROPERTY_SESSION_TOKEN
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
-public class SessionServiceDeleteSessionBody {
+public class SessionServiceDeleteSessionRequest {
   public static final String JSON_PROPERTY_SESSION_TOKEN = "sessionToken";
   @javax.annotation.Nullable
   private String sessionToken;
 
-  public SessionServiceDeleteSessionBody() {
+  public SessionServiceDeleteSessionRequest() {
   }
 
-  public SessionServiceDeleteSessionBody sessionToken(@javax.annotation.Nullable String sessionToken) {
+  public SessionServiceDeleteSessionRequest sessionToken(@javax.annotation.Nullable String sessionToken) {
     
     this.sessionToken = sessionToken;
     return this;
@@ -74,8 +74,8 @@ public class SessionServiceDeleteSessionBody {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SessionServiceDeleteSessionBody sessionServiceDeleteSessionBody = (SessionServiceDeleteSessionBody) o;
-    return Objects.equals(this.sessionToken, sessionServiceDeleteSessionBody.sessionToken);
+    SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest = (SessionServiceDeleteSessionRequest) o;
+    return Objects.equals(this.sessionToken, sessionServiceDeleteSessionRequest.sessionToken);
   }
 
   @Override
@@ -86,7 +86,7 @@ public class SessionServiceDeleteSessionBody {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SessionServiceDeleteSessionBody {\n");
+    sb.append("class SessionServiceDeleteSessionRequest {\n");
     sb.append("    sessionToken: ").append(toIndentedString(sessionToken)).append("\n");
     sb.append("}");
     return sb.toString();

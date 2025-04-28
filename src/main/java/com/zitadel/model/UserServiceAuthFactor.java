@@ -265,51 +265,6 @@ public class UserServiceAuthFactor {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `state` to the URL query string
-    if (getState() != null) {
-      try {
-        joiner.add(String.format("%sstate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getState()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `otp` to the URL query string
-    if (getOtp() != null) {
-      try {
-        joiner.add(String.format("%sotp%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOtp()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `u2f` to the URL query string
-    if (getU2f() != null) {
-      joiner.add(getU2f().toUrlQueryString(prefix + "u2f" + suffix));
-    }
-
-    // add `otpSms` to the URL query string
-    if (getOtpSms() != null) {
-      try {
-        joiner.add(String.format("%sotpSms%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOtpSms()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `otpEmail` to the URL query string
-    if (getOtpEmail() != null) {
-      try {
-        joiner.add(String.format("%sotpEmail%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOtpEmail()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
     return joiner.toString();
   }
 

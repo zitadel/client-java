@@ -201,26 +201,6 @@ public class UserServiceStartIdentityProviderIntentRequest {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `idpId` to the URL query string
-    if (getIdpId() != null) {
-      try {
-        joiner.add(String.format("%sidpId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdpId()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `urls` to the URL query string
-    if (getUrls() != null) {
-      joiner.add(getUrls().toUrlQueryString(prefix + "urls" + suffix));
-    }
-
-    // add `ldap` to the URL query string
-    if (getLdap() != null) {
-      joiner.add(getLdap().toUrlQueryString(prefix + "ldap" + suffix));
-    }
-
     return joiner.toString();
   }
 
