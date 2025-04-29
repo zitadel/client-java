@@ -8,7 +8,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "mvn install --batch-mode -DskipTests"
+        "prepareCmd": "mvn --batch-mode --show-version dependency:go-offline"
       }
     ],
     [

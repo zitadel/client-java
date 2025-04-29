@@ -41,7 +41,7 @@ jobs:
           cache: maven
 
       - name: Install Dependencies
-        run: mvn install --batch-mode -DskipTests
+        run: mvn --batch-mode --show-version dependency:go-offline
 
       - name: Run Junit
         run: mvn verify --batch-mode

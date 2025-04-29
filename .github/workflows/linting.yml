@@ -35,7 +35,7 @@ jobs:
           cache: maven
 
       - name: Install Dependencies
-        run: mvn install --batch-mode -DskipTests
+        run: mvn --batch-mode --show-version dependency:go-offline
 
       - name: Run Formatter
         run: mvn spotless:apply --batch-mode
