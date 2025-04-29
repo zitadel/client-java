@@ -1,12 +1,12 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: write
+  workflow_call:
+    secrets:
+      SERVER_USERNAME:
+        required: true
+      SERVER_PASSWORD:
+        required: true
 
 defaults:
   run:
@@ -20,6 +20,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -35,6 +42,6 @@ jobs:
       - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SERVER_USERNAME: ${{ secrets.MAVEN_USERNAME }}
-          SERVER_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+          SERVER_USERNAME: ${{ secrets.SERVER_USERNAME }}
+          SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
         run: npx semantic-release

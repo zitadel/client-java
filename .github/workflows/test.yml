@@ -1,13 +1,22 @@
 name: Testing
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-
-permissions:
-  contents: write
+  workflow_call:
+    inputs:
+      ref:
+        required: true
+        type: string
+    secrets:
+      BASE_URL:
+        required: false
+      AUTH_TOKEN:
+        required: false
+      JWT_KEY:
+        required: false
+      CLIENT_ID:
+        required: false
+      CLIENT_SECRET:
+        required: false
 
 defaults:
   run:
@@ -21,6 +30,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -30,10 +41,10 @@ jobs:
           cache: maven
 
       - name: Install Dependencies
-        run: mvn install --batch-mode
+        run: mvn install --batch-mode -DskipTests
 
       - name: Run Junit
-        run: mvn test
+        run: mvn verify --batch-mode
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
           AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
@@ -47,6 +58,13 @@ jobs:
         with:
           name: test-results
           path: target/reports/**/*.xml
+
+      - name: Upload Coverage
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-coverage
+          path: target/coverage/jacoco.xml
 
       - name: Generate Report
         if: ${{ always() && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false) }}
