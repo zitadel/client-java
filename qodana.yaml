@@ -1,0 +1,14 @@
+version: "1.0"
+
+profile:
+  name: qodana.recommended
+
+exclude:
+  - name: All
+    paths:
+      - src/main/java/com/zitadel/api
+      - src/main/java/com/zitadel/model
+
+projectJDK: "22"
+
+linter: jetbrains/qodana-jvm:2025.1

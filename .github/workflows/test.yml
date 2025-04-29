@@ -1,6 +1,10 @@
-name: Run Tests
+name: Testing
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 permissions:
   contents: write
@@ -12,6 +16,7 @@ defaults:
 jobs:
   app-testing:
     runs-on: ubuntu-latest
+    name: Run Tests
 
     steps:
       - name: Checkout code
@@ -25,7 +30,7 @@ jobs:
           cache: maven
 
       - name: Install Dependencies
-        run: mvn install
+        run: mvn install --batch-mode
 
       - name: Run Junit
         run: mvn test
@@ -35,3 +40,19 @@ jobs:
           JWT_KEY: ${{ secrets.JWT_KEY }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+
+      - name: Upload Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: target/reports/**/*.xml
+
+      - name: Generate Report
+        if: ${{ always() && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false) }}
+        uses: dorny/test-reporter@v2.0.0
+        with:
+          name: Tests
+          reporter: java-junit
+          path: target/reports/**/*.xml
+          token: ${{ secrets.GITHUB_TOKEN }}

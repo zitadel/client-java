@@ -5,8 +5,6 @@ on:
     branches:
       - main
   pull_request:
-    branches:
-      - main
 
 jobs:
   check-compatibility:
@@ -15,6 +13,7 @@ jobs:
     strategy:
       matrix:
         java-version: [ '8', '11', '17', '21' ]
+      fail-fast: false
 
     steps:
       - name: Checkout code
@@ -34,10 +33,27 @@ jobs:
           java-version: ${{ matrix.java-version }}
           distribution: 'corretto'
 
+      - name: Workaround - Remove incompatible JVM args for Java 8
+        # Run this step *only* for the Java 8 job in the matrix
+        if: matrix.java-version == '8'
+        working-directory: project/library # Ensure we modify the library's config
+        run: |
+          echo "Applying Java 8 workaround for .mvn/jvm.config..."
+          # Check if the file exists before trying to modify it
+          if [ -f .mvn/jvm.config ]; then
+            # Use sed to delete lines starting with --add-exports= in place
+            # The -i option *without* a suffix modifies the file directly (GNU sed)
+            sed -i '/^--add-exports=/d' .mvn/jvm.config
+            echo "Temporarily modified .mvn/jvm.config for Java 8 build (removed --add-exports lines, no backup):"
+            cat .mvn/jvm.config
+          else
+            echo ".mvn/jvm.config not found in project/library, skipping modification."
+          fi
+
       - name: Build Library
         working-directory: project/library
-        run: mvn clean install
+        run: mvn clean install -DskipErrorProne=true --batch-mode
 
       - name: Check Installability
         working-directory: project/sanity
-        run: mvn clean test
+        run: mvn clean test -DskipErrorProne=true

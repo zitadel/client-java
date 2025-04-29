@@ -1,0 +1,11 @@
+pre-commit:
+  parallel: true
+
+  commands:
+    format:
+      glob: "*.java"
+      run: mvn spotless:apply
+
+    check:
+      glob: "*.java"
+      run: mvn verify
