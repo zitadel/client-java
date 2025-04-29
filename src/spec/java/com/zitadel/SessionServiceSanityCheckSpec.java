@@ -54,7 +54,7 @@ class SessionServiceSanityCheckSpec extends BaseTest {
         try {
             client.sessions.sessionServiceDeleteSession(
                 session.getSessionId(),
-                new SessionServiceDeleteSessionBody()
+                new SessionServiceDeleteSessionRequest()
             );
         } catch (ApiException ignored) {
             // cleanup errors are ignored

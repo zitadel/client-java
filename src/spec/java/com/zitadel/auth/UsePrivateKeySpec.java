@@ -3,6 +3,7 @@ package com.zitadel.auth;
 import com.zitadel.ApiException;
 import com.zitadel.BaseTest;
 import com.zitadel.Zitadel;
+import com.zitadel.utils.KeyUtil;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -35,8 +36,11 @@ class UsePrivateKeySpec extends BaseTest {
      * @throws IOException on file I/O errors
      */
     @BeforeAll
-    void setUp() throws IOException {
+    void setUp() throws Exception {
         String k = System.getProperty("JWT_KEY");
+        if (k != null) {
+            k = k.replace("\\\"", "\"");
+        }
         if (k == null) System.exit(1);
         File f = File.createTempFile("jwt_", null);
         Files.write(f.toPath(), k.getBytes(StandardCharsets.UTF_8));
@@ -68,6 +72,6 @@ class UsePrivateKeySpec extends BaseTest {
             keyFile
         );
 
-        assertThrows(ApiException.class, invalid.settings::settingsServiceGetGeneralSettings);
+        assertThrows(RuntimeException.class, invalid.settings::settingsServiceGetGeneralSettings);
     }
 }

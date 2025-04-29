@@ -160,6 +160,18 @@
               </sources>
             </configuration>
           </execution>
+          <execution>
+            <id>add_spec_sources</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>add-test-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src/spec/java</source>
+              </sources>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
       <plugin>
@@ -243,12 +255,18 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <version>3.5.3</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+          </execution>
+        </executions>
         <configuration>
-          <!-- Specify the spec directory for integration tests -->
           <testSourceDirectory>src/spec/java</testSourceDirectory>
           <includes>
-            <include>**/*Spec.java</include>  <!-- or whatever pattern you use for integration tests -->
-          </includes>
+            <include>**/*Spec.java</include>  </includes>
         </configuration>
       </plugin>
       <plugin>
