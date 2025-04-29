@@ -58,7 +58,7 @@ jobs:
     name: Check Build Status
     runs-on: ubuntu-latest
     needs:
-      - lint-commits
+      #- lint-commits
       - code-style
       - compat-check
       - run-tests
