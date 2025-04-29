@@ -8,16 +8,13 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "mvn --batch-mode --show-version dependency:go-offline"
+        "prepareCmd": "sed -i 's/0\\.0\\.0/'\"$NEXT_RELEASE_VERSION\"'/' src/main/java/com/zitadel/Version.java"
       }
     ],
     [
-      "semantic-release-plugin-update-version-in-files",
+      "@semantic-release/exec",
       {
-        "files": [
-          "src/main/java/com/zitadel/Version.java"
-        ],
-        "placeholder": "0.0.0"
+        "prepareCmd": "mvn --batch-mode --show-version dependency:go-offline"
       }
     ],
     [
