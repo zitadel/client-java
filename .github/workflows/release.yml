@@ -3,9 +3,9 @@ name: Release
 on:
   workflow_call:
     secrets:
-      SERVER_USERNAME:
+      MAVEN_USERNAME:
         required: true
-      SERVER_PASSWORD:
+      MAVEN_PASSWORD:
         required: true
 
 defaults:
