@@ -6,6 +6,7 @@ import com.nimbusds.oauth2.sdk.Scope;
 import com.nimbusds.oauth2.sdk.auth.ClientSecretBasic;
 import com.nimbusds.oauth2.sdk.auth.Secret;
 import com.nimbusds.oauth2.sdk.id.ClientID;
+import com.zitadel.ZitadelException;
 
 /**
  * OAuth2 Client Credentials Authenticator.
@@ -52,7 +53,7 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
    * <p>This method uses the Nimbus OAuth2 SDK to send a token request.
    */
   @Override
-  public Token refreshToken() {
+  public Token refreshToken() throws ZitadelException {
     this.token = super.getToken(new ClientSecretBasic(this.clientId, this.clientSecret));
     return this.token;
   }

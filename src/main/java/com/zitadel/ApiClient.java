@@ -382,8 +382,7 @@ public class ApiClient {
      * @return Object
      */
     public HttpEntity serialize(
-        @Nullable Object obj, Map<String, Object> formParams, ContentType contentType)
-        throws ApiException {
+        @Nullable Object obj, Map<String, Object> formParams, ContentType contentType) {
         String mimeType = contentType.getMimeType();
         if (isJsonMime(mimeType)) {
             try {
@@ -603,8 +602,8 @@ public class ApiClient {
         if (isSuccessfulStatus(statusCode)) {
             return this.deserialize(response, returnType);
         } else {
-            String message = EntityUtils.toString(response.getEntity());
-            throw new ApiException(message, statusCode, responseHeaders, message);
+            String responseBody = EntityUtils.toString(response.getEntity());
+            throw new ApiException(statusCode, responseHeaders, responseBody);
         }
     }
 
@@ -661,10 +660,14 @@ public class ApiClient {
             builder.addHeader(keyValue.getKey(), keyValue.getValue());
         }
 
-        for (Map.Entry<String, String> keyValue : this.authenticator.getAuthHeaders().entrySet()) {
-            if (!headerParams.containsKey(keyValue.getKey())) {
-                builder.addHeader(keyValue.getKey(), keyValue.getValue());
+        try {
+            for (Entry<String, String> keyValue : this.authenticator.getAuthHeaders().entrySet()) {
+                if (!headerParams.containsKey(keyValue.getKey())) {
+                    builder.addHeader(keyValue.getKey(), keyValue.getValue());
+                }
             }
+        } catch (ZitadelException e) {
+            throw new RuntimeException(e);
         }
 
         HttpClientContext context = HttpClientContext.create();

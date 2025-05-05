@@ -2,49 +2,66 @@ package com.zitadel;
 
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-@SuppressWarnings("unused")
-public class ApiException extends Exception {
-  private static final long serialVersionUID = 1L;
+/**
+ * Represents an HTTP error returned from the Zitadel API.
+ * <p>
+ * Exposes the HTTP status code, response headers, and response body.
+ */
+public class ApiException extends ZitadelException {
+    private static final long serialVersionUID = 1L;
 
-  private final int code;
-  private final Map<String, List<String>> responseHeaders;
-  private final String responseBody;
+    /** HTTP status code. */
+    private final int code;
 
-  public ApiException(String message, int statusCode, Map<String, List<String>> responseHeaders, String responseBody) {
-      super(message);
-      this.code = statusCode;
-      this.responseHeaders = responseHeaders;
-      this.responseBody = responseBody;
-  }
+    /** HTTP response headers. */
+    private final Map<String, List<String>> responseHeaders;
 
-  /**
-   * Get the HTTP status code.
-   *
-   * @return HTTP status code
-   */
-  public int getCode() {
-    return code;
-  }
+    /** HTTP response body (string, decoded JSON, or object). */
+    private final String responseBody;
 
-  /**
-   * Get the HTTP response headers.
-   *
-   * @return A map of a list of string
-   */
-  @Nullable
-  public Map<String, List<String>> getResponseHeaders() {
-    return responseHeaders;
-  }
+    /**
+     * Constructor.
+     *
+     * @param code            HTTP status code
+     * @param responseHeaders HTTP response headers
+     * @param responseBody    HTTP response body (string, decoded JSON, or object)
+     */
+    public ApiException(
+        int code,
+        Map<String, List<String>> responseHeaders,
+        String responseBody
+    ) {
+        super("Error " + code);
+        this.code = code;
+        this.responseHeaders = responseHeaders;
+        this.responseBody = responseBody;
+    }
 
-  /**
-   * Get the HTTP response body.
-   *
-   * @return Response body in the form of string
-   */
-  @Nullable
-  public String getResponseBody() {
-    return responseBody;
-  }
+    /**
+     * Gets the HTTP status code.
+     *
+     * @return HTTP status code
+     */
+    public int getCode() {
+        return code;
+    }
+
+    /**
+     * Gets the HTTP response headers.
+     *
+     * @return HTTP response headers
+     */
+    public Map<String, List<String>> getResponseHeaders() {
+        return responseHeaders;
+    }
+
+    /**
+     * Gets the HTTP response body (string, decoded JSON, or object).
+     *
+     * @return HTTP response body
+     */
+    public String getResponseBody() {
+        return responseBody;
+    }
 }

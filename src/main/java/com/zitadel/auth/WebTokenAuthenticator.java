@@ -16,6 +16,7 @@ import com.nimbusds.oauth2.sdk.auth.ClientAuthentication;
 import com.nimbusds.oauth2.sdk.auth.ClientAuthenticationMethod;
 import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.id.ClientID;
+import com.zitadel.ZitadelException;
 import com.zitadel.utils.KeyUtil;
 import java.io.File;
 import java.io.IOException;
@@ -131,7 +132,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
    * <p>This method generates a JWT assertion and exchanges it for an access token.
    */
   @Override
-  public Token refreshToken() {
+  public Token refreshToken() throws ZitadelException {
     this.token =
         super.getToken(
             new ClientAuthentication(ClientAuthenticationMethod.NONE, new ClientID()) {

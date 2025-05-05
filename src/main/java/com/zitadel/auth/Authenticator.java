@@ -1,5 +1,7 @@
 package com.zitadel.auth;
 
+import com.zitadel.ZitadelException;
+
 import java.net.URL;
 import java.util.Map;
 
@@ -27,7 +29,7 @@ public abstract class Authenticator {
    *
    * @return A map of header keys and values.
    */
-  public abstract Map<String, String> getAuthHeaders();
+  public abstract Map<String, String> getAuthHeaders() throws ZitadelException;
 
   /**
    * Returns the base host URL.

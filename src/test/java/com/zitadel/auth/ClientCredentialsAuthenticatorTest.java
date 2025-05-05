@@ -6,12 +6,14 @@ import java.time.Instant;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+
+import com.zitadel.ZitadelException;
 import org.junit.jupiter.api.Test;
 
 class ClientCredentialsAuthenticatorTest extends OAuthAuthenticatorTest {
 
   @Test
-  void testRefreshToken() {
+  void testRefreshToken() throws ZitadelException {
     ClientCredentialsAuthenticator authenticator =
         ClientCredentialsAuthenticator.builder(oauthHost, "dummy-client", "dummy-secret")
             .scopes(new HashSet<>(Arrays.asList("openid", "foo")))

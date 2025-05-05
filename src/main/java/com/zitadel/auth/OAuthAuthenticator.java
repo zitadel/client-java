@@ -4,6 +4,8 @@ import com.nimbusds.oauth2.sdk.*;
 import com.nimbusds.oauth2.sdk.auth.ClientAuthentication;
 import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.token.BearerAccessToken;
+import com.zitadel.ZitadelException;
+
 import java.net.URI;
 import java.time.Instant;
 import java.util.Collections;
@@ -39,7 +41,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
     this.openId = openId;
   }
 
-  public String getAuthToken() {
+  public String getAuthToken() throws ZitadelException {
     if (token == null || token.isExpired()) {
       refreshToken();
     }
@@ -58,7 +60,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
    * @return A map containing the 'Authorization' header.
    */
   @Override
-  public Map<String, String> getAuthHeaders() {
+  public Map<String, String> getAuthHeaders() throws ZitadelException {
     return Collections.singletonMap("Authorization", "Bearer " + getAuthToken());
   }
 
@@ -67,11 +69,11 @@ public abstract class OAuthAuthenticator extends Authenticator {
    *
    * <p>Subclasses must implement this method using their specific OAuth flow.
    */
-  public abstract Token refreshToken();
+  public abstract Token refreshToken() throws ZitadelException;
 
   protected abstract AuthorizationGrant getGrant();
 
-  protected Token getToken(ClientAuthentication authentication) {
+  protected Token getToken(ClientAuthentication authentication) throws ZitadelException {
     try {
       URI tokenEndpoint = openId.getTokenEndpoint().toURI();
       TokenRequest request =
@@ -81,7 +83,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
 
       if (!tokenResponse.indicatesSuccess()) {
         TokenErrorResponse errorResponse = tokenResponse.toErrorResponse();
-        throw new RuntimeException(
+        throw new ZitadelException(
             "Token request failed: " + errorResponse.getErrorObject().toString());
       } else {
         AccessTokenResponse successResponse = (AccessTokenResponse) tokenResponse;
@@ -91,7 +93,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
             accessToken.getValue(), Instant.now().plusSeconds(accessToken.getLifetime()));
       }
     } catch (Exception e) {
-      throw new RuntimeException("Failed to refresh token: " + e.getMessage(), e);
+      throw new ZitadelException("Failed to refresh token: " + e.getMessage(), e);
     }
   }
 
