@@ -7,17 +7,18 @@
   ],
   "shell": {
     "init_hook": [
-      "lefthook install"
+      "lefthook install",
+      "mvn --batch-mode --show-version dependency:go-offline"
     ],
     "scripts": {
       "format": [
         "mvn spotless:apply"
       ],
       "test": [
-        "mvn test"
+        "mvn verify"
       ],
       "check": [
-        "mvn verify"
+        "mvn compile"
       ]
     }
   }
