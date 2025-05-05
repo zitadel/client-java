@@ -1,16 +1,17 @@
 package com.zitadel;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import com.zitadel.auth.NoAuthAuthenticator;
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ScanResult;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test class to verify that all API service classes defined in the "com.zitadel.api" package are
@@ -27,31 +28,31 @@ import org.junit.jupiter.api.Test;
  */
 class ZitadelTest {
 
-  /**
-   * Verifies that all API service classes in "com.zitadel.api" are registered as fields in the
-   * Zitadel class.
-   */
-  @Test
-  @DisplayName("All API services must be registered in Zitadel")
-  void testServicesDynamic() {
-    try (ScanResult scanResult = new ClassGraph().acceptPackages("com.zitadel.api").scan()) {
-      Set<Class<?>> expected =
-          scanResult.getAllClasses().loadClasses().stream()
-              .filter(c -> !c.getSimpleName().endsWith("Test"))
-              .filter(c -> c.getSimpleName().endsWith("ServiceApi"))
-              .collect(Collectors.toSet());
+    /**
+     * Verifies that all API service classes in "com.zitadel.api" are registered as fields in the
+     * Zitadel class.
+     */
+    @Test
+    @DisplayName("All API services must be registered in Zitadel")
+    void testServicesDynamic() {
+        try (ScanResult scanResult = new ClassGraph().acceptPackages("com.zitadel.api").scan()) {
+            Set<Class<?>> expected =
+                scanResult.getAllClasses().loadClasses().stream()
+                    .filter(c -> !c.getSimpleName().endsWith("Test"))
+                    .filter(c -> c.getSimpleName().endsWith("ServiceApi"))
+                    .collect(Collectors.toSet());
 
-      Zitadel zitadel = new Zitadel(new NoAuthAuthenticator("http://dummy"));
-      Field[] fields = zitadel.getClass().getDeclaredFields();
-      Set<Class<?>> actual =
-          Arrays.stream(fields)
-              .map(Field::getType)
-              .filter(
-                  c -> c.getPackage() != null && "com.zitadel.api".equals(c.getPackage().getName()))
-              .collect(Collectors.toSet());
+            Zitadel zitadel = new Zitadel(new NoAuthAuthenticator("http://dummy"));
+            Field[] fields = zitadel.getClass().getDeclaredFields();
+            Set<Class<?>> actual =
+                Arrays.stream(fields)
+                    .map(Field::getType)
+                    .filter(
+                        c -> c.getPackage() != null && "com.zitadel.api".equals(c.getPackage().getName()))
+                    .collect(Collectors.toSet());
 
-      assertEquals(
-          expected, actual, "The registered API services in Zitadel do not match the expected set");
+            assertEquals(
+                expected, actual, "The registered API services in Zitadel do not match the expected set");
+        }
     }
-  }
 }

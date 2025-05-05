@@ -3,7 +3,6 @@ package com.zitadel.auth;
 import com.zitadel.ApiException;
 import com.zitadel.BaseTest;
 import com.zitadel.Zitadel;
-import com.zitadel.utils.KeyUtil;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

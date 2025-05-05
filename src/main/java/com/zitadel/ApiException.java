@@ -11,13 +11,19 @@ import java.util.Map;
 public class ApiException extends ZitadelException {
     private static final long serialVersionUID = 1L;
 
-    /** HTTP status code. */
+    /**
+     * HTTP status code.
+     */
     private final int code;
 
-    /** HTTP response headers. */
+    /**
+     * HTTP response headers.
+     */
     private final Map<String, List<String>> responseHeaders;
 
-    /** HTTP response body (string, decoded JSON, or object). */
+    /**
+     * HTTP response body (string, decoded JSON, or object).
+     */
     private final String responseBody;
 
     /**

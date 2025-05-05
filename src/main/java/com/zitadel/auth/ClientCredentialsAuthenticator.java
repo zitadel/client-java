@@ -15,80 +15,84 @@ import com.zitadel.ZitadelException;
  */
 public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
 
-  /** The OAuth2 client secret. */
-  private final Secret clientSecret;
-
-  private final ClientID clientId;
-
-  /**
-   * Constructs a ClientCredentialsAuthenticator.
-   *
-   * @param openId The base URL for the API endpoints.
-   * @param clientId The OAuth2 client identifier.
-   * @param clientSecret The OAuth2 client secret.
-   * @param authScopes The scope for the token request.
-   */
-  ClientCredentialsAuthenticator(
-      OpenId openId, ClientID clientId, Secret clientSecret, Scope authScopes) {
-    super(openId, authScopes);
-    this.clientSecret = clientSecret;
-    this.clientId = clientId;
-  }
-
-  /**
-   * Returns a new builder instance for ClientCredentialsAuthenticator.
-   *
-   * @param host The base URL for API endpoints.
-   * @param clientId The OAuth2 client identifier.
-   * @param clientSecret The OAuth2 client secret.
-   * @return a new ClientCredentialsAuthenticatorBuilder instance.
-   */
-  public static Builder builder(String host, String clientId, String clientSecret) {
-    return new Builder(host, clientId, clientSecret);
-  }
-
-  /**
-   * Refreshes the access token using the client credentials grant.
-   *
-   * <p>This method uses the Nimbus OAuth2 SDK to send a token request.
-   */
-  @Override
-  public Token refreshToken() throws ZitadelException {
-    this.token = super.getToken(new ClientSecretBasic(this.clientId, this.clientSecret));
-    return this.token;
-  }
-
-  @Override
-  public AuthorizationGrant getGrant() {
-    return new ClientCredentialsGrant();
-  }
-
-  /** Builder for ClientCredentialsAuthenticator. */
-  public static class Builder extends OAuthAuthenticatorBuilder<Builder> {
-
-    private final ClientID clientId;
+    /**
+     * The OAuth2 client secret.
+     */
     private final Secret clientSecret;
 
+    private final ClientID clientId;
+
     /**
-     * Builder constructor with required parameters.
+     * Constructs a ClientCredentialsAuthenticator.
      *
-     * @param host The base URL for the API endpoints.
-     * @param clientId The OAuth2 client identifier.
+     * @param openId       The base URL for the API endpoints.
+     * @param clientId     The OAuth2 client identifier.
      * @param clientSecret The OAuth2 client secret.
+     * @param authScopes   The scope for the token request.
      */
-    Builder(String host, String clientId, String clientSecret) {
-      super(host);
-      this.clientId = new ClientID(clientId);
-      this.clientSecret = new Secret(clientSecret);
+    ClientCredentialsAuthenticator(
+        OpenId openId, ClientID clientId, Secret clientSecret, Scope authScopes) {
+        super(openId, authScopes);
+        this.clientSecret = clientSecret;
+        this.clientId = clientId;
     }
 
     /**
-     * Builds the ClientCredentialsAuthenticator.
+     * Returns a new builder instance for ClientCredentialsAuthenticator.
      *
-     * @return a new ClientCredentialsAuthenticator instance.
+     * @param host         The base URL for API endpoints.
+     * @param clientId     The OAuth2 client identifier.
+     * @param clientSecret The OAuth2 client secret.
+     * @return a new ClientCredentialsAuthenticatorBuilder instance.
      */
-    public ClientCredentialsAuthenticator build() {
-      return new ClientCredentialsAuthenticator(openId, clientId, clientSecret, authScopes);
+    public static Builder builder(String host, String clientId, String clientSecret) {
+        return new Builder(host, clientId, clientSecret);
     }
-  }
+
+    /**
+     * Refreshes the access token using the client credentials grant.
+     *
+     * <p>This method uses the Nimbus OAuth2 SDK to send a token request.
+     */
+    @Override
+    public Token refreshToken() throws ZitadelException {
+        this.token = super.getToken(new ClientSecretBasic(this.clientId, this.clientSecret));
+        return this.token;
+    }
+
+    @Override
+    public AuthorizationGrant getGrant() {
+        return new ClientCredentialsGrant();
+    }
+
+    /**
+     * Builder for ClientCredentialsAuthenticator.
+     */
+    public static class Builder extends OAuthAuthenticatorBuilder<Builder> {
+
+        private final ClientID clientId;
+        private final Secret clientSecret;
+
+        /**
+         * Builder constructor with required parameters.
+         *
+         * @param host         The base URL for the API endpoints.
+         * @param clientId     The OAuth2 client identifier.
+         * @param clientSecret The OAuth2 client secret.
+         */
+        Builder(String host, String clientId, String clientSecret) {
+            super(host);
+            this.clientId = new ClientID(clientId);
+            this.clientSecret = new Secret(clientSecret);
+        }
+
+        /**
+         * Builds the ClientCredentialsAuthenticator.
+         *
+         * @return a new ClientCredentialsAuthenticator instance.
+         */
+        public ClientCredentialsAuthenticator build() {
+            return new ClientCredentialsAuthenticator(openId, clientId, clientSecret, authScopes);
+        }
+    }
 }
