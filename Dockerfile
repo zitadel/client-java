@@ -6,4 +6,4 @@ COPY . .
 
 RUN mvn install -DskipTests
 
-CMD ["jshell", "--class-path", "target/classes"]
+CMD ["jshell", "--class-path", "target/classes:target/lib/*"]

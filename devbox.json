@@ -19,6 +19,10 @@
       ],
       "check": [
         "mvn compile"
+      ],
+      "replit": [
+        "docker build --tag java-repl --file Dockerfile .",
+        "docker run --rm --interactive --tty java-repl"
       ]
     }
   }
