@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN mvn install -DskipTests
+RUN mvn install -DskipErrorProne=true -Dspotbugs.skip=true --batch-mode -DskipTests
 
 CMD ["jshell", "--class-path", "target/classes:target/lib/*"]
