@@ -10,6 +10,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.zitadel.auth.Authenticator;
 import com.zitadel.auth.NoAuthAuthenticator;
 import com.zitadel.utils.StringUtil;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
 import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
@@ -101,7 +102,7 @@ public class ApiClient {
      */
     @SuppressWarnings("unused")
     public ApiClient setObjectMapper(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
+        this.objectMapper = objectMapper.copy();
         return this;
     }
 
@@ -461,7 +462,7 @@ public class ApiClient {
             }
 
             return objectMapper.readValue(content, valueType);
-        } else if (mimeType.toLowerCase(Locale.ENGLISH).startsWith("text/")) {
+        } else if (mimeType.regionMatches(true, 0, "text/", 0, 5)) {
             return (T) EntityUtils.toString(entity);
         } else {
             throw new RuntimeException(
@@ -483,6 +484,7 @@ public class ApiClient {
         return file;
     }
 
+    @SuppressFBWarnings("PATH_TRAVERSAL_IN")
     protected File prepareDownloadFile(@Nullable String contentDisposition) throws IOException {
         String filename = null;
         if (contentDisposition != null && !contentDisposition.isEmpty()) {

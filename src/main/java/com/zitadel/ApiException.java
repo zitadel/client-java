@@ -1,5 +1,6 @@
 package com.zitadel;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +41,7 @@ public class ApiException extends ZitadelException {
     ) {
         super("Error " + code);
         this.code = code;
-        this.responseHeaders = responseHeaders;
+        this.responseHeaders = Collections.unmodifiableMap(responseHeaders);
         this.responseBody = responseBody;
     }
 

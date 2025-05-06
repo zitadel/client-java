@@ -49,6 +49,38 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+        <version>4.7.3.0</version>
+        <configuration>
+          <effort>Max</effort>
+          <threshold>Low</threshold>
+          <xmlOutput>true</xmlOutput>
+          <failOnError>true</failOnError>
+          <excludeFilterFile>${project.basedir}/spotbugs.xml</excludeFilterFile>
+          <plugins>
+            <plugin>
+              <groupId>com.h3xstream.findsecbugs</groupId>
+              <artifactId>findsecbugs-plugin</artifactId>
+              <version>1.11.0</version>
+            </plugin>
+<!--            <plugin>-->
+<!--              <groupId>com.mebigfatguy.fb-contrib</groupId>-->
+<!--              <artifactId>fb-contrib</artifactId>-->
+<!--              <version>7.6.9</version>-->
+<!--            </plugin>-->
+          </plugins>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+              <goal>spotbugs</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.14.0</version>
@@ -98,7 +130,7 @@
           </systemPropertyVariables>
           <argLine>${jacoco.agent} -Xms512m -Xmx1500m</argLine>
           <parallel>methods</parallel>
-          <threadCount>10</threadCount>
+          <useUnlimitedThreads>true</useUnlimitedThreads>
           <reportsDirectory>${project.build.directory}/reports</reportsDirectory>
           <trimStackTrace>false</trimStackTrace>
         </configuration>
@@ -266,7 +298,10 @@
         <configuration>
           <testSourceDirectory>src/spec/java</testSourceDirectory>
           <includes>
-            <include>**/*Spec.java</include>  </includes>
+            <include>**/*Spec.java</include>
+          </includes>
+          <parallel>methods</parallel>
+          <useUnlimitedThreads>true</useUnlimitedThreads>
         </configuration>
       </plugin>
       <plugin>
@@ -398,6 +433,12 @@
       <version>3.0.2</version>
     </dependency>
     <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>annotations</artifactId>
+      <version>3.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>org.apache.httpcomponents.client5</groupId>
       <artifactId>httpclient5</artifactId>
       <version>5.4.4</version>
@@ -468,8 +509,8 @@
     </dependency>
     <dependency>
       <groupId>io.github.cdimascio</groupId>
-      <artifactId>java-dotenv</artifactId>
-      <version>5.2.2</version>
+      <artifactId>dotenv-java</artifactId>
+      <version>3.2.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>

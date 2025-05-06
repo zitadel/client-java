@@ -29,7 +29,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @SuppressWarnings("NewClassNamingConvention")
 class UserServiceSanityCheckSpec extends BaseTest {
 
+    @SuppressWarnings("UnnecessaryLambda")
     private final Supplier<String> validToken = () -> System.getProperty("AUTH_TOKEN");
+    @SuppressWarnings("UnnecessaryLambda")
     private final Supplier<String> baseUrl = () -> System.getProperty("BASE_URL");
     private Zitadel client;
     private UserServiceAddHumanUserResponse user;

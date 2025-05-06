@@ -18,6 +18,7 @@ import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.id.ClientID;
 import com.zitadel.ZitadelException;
 import com.zitadel.utils.KeyUtil;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import javax.annotation.Nullable;
 import java.io.File;
@@ -67,15 +68,15 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
      * Creates a {@code WebTokenAuthenticator} instance from a JSON configuration file.
      *
      * <p>The JSON file must be formatted as follows:
-     *
-     * <pre>
+     * <p>
+     * <code>
      * {
      *   "type": "serviceaccount",
-     *   "keyId": "<key-id>",
-     *   "key": "<private-key in PEM format>",
-     *   "userId": "<user-id>"
+     *   "keyId": "key-id",
+     *   "key": "private-key in PEM format",
+     *   "userId": "user-id"
      * }
-     * </pre>
+     * </code>
      *
      * @param host     the base URL for the API endpoints.
      * @param jsonPath the file path to the JSON configuration file.
@@ -83,6 +84,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
      * @throws RuntimeException if the file cannot be read, the JSON is invalid, or required keys are
      *                          missing or invalid.
      */
+    @SuppressFBWarnings("PATH_TRAVERSAL_IN")
     public static WebTokenAuthenticator fromJson(String host, String jsonPath) {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> config;
@@ -134,6 +136,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
      * <p>This method generates a JWT assertion and exchanges it for an access token.
      */
     @Override
+    @SuppressFBWarnings("SIC_INNER_SHOULD_BE_STATIC_ANON")
     public Token refreshToken() throws ZitadelException {
         this.token =
             super.getToken(

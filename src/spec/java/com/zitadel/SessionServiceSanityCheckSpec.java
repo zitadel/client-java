@@ -29,7 +29,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SessionServiceSanityCheckSpec extends BaseTest {
 
+    @SuppressWarnings("UnnecessaryLambda")
     private final Supplier<String> validToken = () -> System.getProperty("AUTH_TOKEN");
+    @SuppressWarnings("UnnecessaryLambda")
     private final Supplier<String> baseUrl = () -> System.getProperty("BASE_URL");
     private Zitadel client;
     private SessionServiceCreateSessionResponse session;

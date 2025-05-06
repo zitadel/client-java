@@ -7,7 +7,9 @@ import com.nimbusds.oauth2.sdk.token.BearerAccessToken;
 import com.zitadel.ZitadelException;
 
 import javax.annotation.Nullable;
+import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.Map;
@@ -41,7 +43,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
      */
     public OAuthAuthenticator(OpenId openId, Scope scope) {
         super(openId.getHostEndpoint());
-        this.scope = scope;
+        this.scope = new Scope(scope);
         this.token = null;
         this.openId = openId;
     }
@@ -97,7 +99,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
                 return new Token(
                     accessToken.getValue(), Instant.now().plusSeconds(accessToken.getLifetime()));
             }
-        } catch (Exception e) {
+        } catch (RuntimeException | IOException | ParseException | URISyntaxException e) {
             throw new ZitadelException("Failed to refresh token: " + e.getMessage(), e);
         }
     }
