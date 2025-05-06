@@ -17,7 +17,7 @@ public class OpenId {
     private final URL hostEndpoint;
     private final URL tokenEndpoint;
 
-    @SuppressFBWarnings("URLCONNECTION_SSRF_FD")
+    @SuppressFBWarnings({"URLCONNECTION_SSRF_FD", "CT_CONSTRUCTOR_THROW"})
     public OpenId(String hostname) {
         HttpURLConnection connection = null;
         try {

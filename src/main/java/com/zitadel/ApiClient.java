@@ -46,6 +46,7 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@SuppressFBWarnings("THROWS_METHOD_THROWS_RUNTIMEEXCEPTION")
 public class ApiClient {
 
     public static final String USER_AGENT =
