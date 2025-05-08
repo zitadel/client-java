@@ -3,7 +3,8 @@
   "packages": [
     "jdk17@latest",
     "maven@latest",
-    "lefthook@latest"
+    "lefthook@latest",
+    "gnupg@latest"
   ],
   "shell": {
     "init_hook": [
@@ -23,6 +24,9 @@
       "replit": [
         "docker build --tag java-repl --file Dockerfile .",
         "docker run --rm --interactive --tty java-repl"
+      ],
+      "docgen": [
+        "mvn javadoc:javadoc"
       ]
     }
   }

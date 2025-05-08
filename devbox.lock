@@ -1,6 +1,54 @@
 {
   "lockfile_version": "1",
   "packages": {
+    "gnupg@latest": {
+      "last_modified": "2025-04-17T05:47:26Z",
+      "resolved": "github:NixOS/nixpkgs/ebe4301cbd8f81c4f8d3244b3632338bbeb6d49c#gnupg",
+      "source": "devbox-search",
+      "version": "2.4.7",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/12rr0qf4b1kmy6li5781gy3b3cnac9bp-gnupg-2.4.7",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/12rr0qf4b1kmy6li5781gy3b3cnac9bp-gnupg-2.4.7"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/g2dig0xsmi4g6ms3wsaj130awn995nbl-gnupg-2.4.7",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/g2dig0xsmi4g6ms3wsaj130awn995nbl-gnupg-2.4.7"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/hpry92s8is5say0svlfdz3r28jnv843l-gnupg-2.4.7",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/hpry92s8is5say0svlfdz3r28jnv843l-gnupg-2.4.7"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wfsqj2kiqsnrp24gjfrw2bprrmzca31i-gnupg-2.4.7",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/wfsqj2kiqsnrp24gjfrw2bprrmzca31i-gnupg-2.4.7"
+        }
+      }
+    },
     "jdk17@latest": {
       "last_modified": "2025-03-23T05:31:05Z",
       "resolved": "github:NixOS/nixpkgs/dd613136ee91f67e5dba3f3f41ac99ae89c5406b#jdk17",
