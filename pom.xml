@@ -419,7 +419,7 @@
     <dependency>
       <groupId>com.nimbusds</groupId>
       <artifactId>oauth2-oidc-sdk</artifactId>
-      <version>11.23.1</version>
+      <version>11.24</version>
     </dependency>
     <dependency>
       <groupId>jakarta.annotation</groupId>
@@ -435,7 +435,7 @@
     <dependency>
       <groupId>com.google.code.findbugs</groupId>
       <artifactId>annotations</artifactId>
-      <version>3.0.1</version>
+      <version>3.0.1u2</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
