@@ -20,8 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.SessionServiceChecks;
-import com.zitadel.model.SessionServiceRequestChallenges;
+import com.zitadel.model.SessionServiceBetaChecks;
+import com.zitadel.model.SessionServiceBetaRequestChallenges;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -48,7 +48,7 @@ public class SessionServiceSetSessionRequest {
 
   public static final String JSON_PROPERTY_CHECKS = "checks";
   @javax.annotation.Nullable
-  private SessionServiceChecks checks;
+  private SessionServiceBetaChecks checks;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
   @javax.annotation.Nullable
@@ -56,7 +56,7 @@ public class SessionServiceSetSessionRequest {
 
   public static final String JSON_PROPERTY_CHALLENGES = "challenges";
   @javax.annotation.Nullable
-  private SessionServiceRequestChallenges challenges;
+  private SessionServiceBetaRequestChallenges challenges;
 
   public static final String JSON_PROPERTY_LIFETIME = "lifetime";
   @javax.annotation.Nullable
@@ -90,7 +90,7 @@ public class SessionServiceSetSessionRequest {
     this.sessionToken = sessionToken;
   }
 
-  public SessionServiceSetSessionRequest checks(@javax.annotation.Nullable SessionServiceChecks checks) {
+  public SessionServiceSetSessionRequest checks(@javax.annotation.Nullable SessionServiceBetaChecks checks) {
     
     this.checks = checks;
     return this;
@@ -104,14 +104,14 @@ public class SessionServiceSetSessionRequest {
   @JsonProperty(JSON_PROPERTY_CHECKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SessionServiceChecks getChecks() {
+  public SessionServiceBetaChecks getChecks() {
     return checks;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CHECKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setChecks(@javax.annotation.Nullable SessionServiceChecks checks) {
+  public void setChecks(@javax.annotation.Nullable SessionServiceBetaChecks checks) {
     this.checks = checks;
   }
 
@@ -148,7 +148,7 @@ public class SessionServiceSetSessionRequest {
     this.metadata = metadata;
   }
 
-  public SessionServiceSetSessionRequest challenges(@javax.annotation.Nullable SessionServiceRequestChallenges challenges) {
+  public SessionServiceSetSessionRequest challenges(@javax.annotation.Nullable SessionServiceBetaRequestChallenges challenges) {
     
     this.challenges = challenges;
     return this;
@@ -162,14 +162,14 @@ public class SessionServiceSetSessionRequest {
   @JsonProperty(JSON_PROPERTY_CHALLENGES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SessionServiceRequestChallenges getChallenges() {
+  public SessionServiceBetaRequestChallenges getChallenges() {
     return challenges;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CHALLENGES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setChallenges(@javax.annotation.Nullable SessionServiceRequestChallenges challenges) {
+  public void setChallenges(@javax.annotation.Nullable SessionServiceBetaRequestChallenges challenges) {
     this.challenges = challenges;
   }
 

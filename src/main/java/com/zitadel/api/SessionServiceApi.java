@@ -8,6 +8,11 @@ import com.zitadel.BaseApi;
 import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
+import com.zitadel.model.SessionServiceBetaCreateSessionResponse;
+import com.zitadel.model.SessionServiceBetaDeleteSessionResponse;
+import com.zitadel.model.SessionServiceBetaGetSessionResponse;
+import com.zitadel.model.SessionServiceBetaListSessionsResponse;
+import com.zitadel.model.SessionServiceBetaSetSessionResponse;
 import com.zitadel.model.SessionServiceCreateSessionRequest;
 import com.zitadel.model.SessionServiceCreateSessionResponse;
 import com.zitadel.model.SessionServiceDeleteSessionRequest;
@@ -42,11 +47,83 @@ public class SessionServiceApi extends BaseApi {
    * Create a new session
    * Create a new session. A token will be returned, which is required for further updates of the session.
    * @param sessionServiceCreateSessionRequest  (required)
+   * @return SessionServiceBetaCreateSessionResponse
+   * @throws ApiException if fails to make API call
+   */
+  public SessionServiceBetaCreateSessionResponse sessionServiceCreateSession(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest) throws ApiException {
+    return this.sessionServiceCreateSession(sessionServiceCreateSessionRequest, Collections.emptyMap());
+  }
+
+
+  /**
+   * Create a new session
+   * Create a new session. A token will be returned, which is required for further updates of the session.
+   * @param sessionServiceCreateSessionRequest  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return SessionServiceBetaCreateSessionResponse
+   * @throws ApiException if fails to make API call
+   */
+  public SessionServiceBetaCreateSessionResponse sessionServiceCreateSession(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = sessionServiceCreateSessionRequest;
+    
+    if (sessionServiceCreateSessionRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceCreateSessionRequest' when calling sessionServiceCreateSession");
+    }
+    
+    String localVarPath = "/v2beta/sessions";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<SessionServiceBetaCreateSessionResponse> localVarReturnType = new TypeReference<SessionServiceBetaCreateSessionResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Create a new session
+   * Create a new session. A token will be returned, which is required for further updates of the session.
+   * @param sessionServiceCreateSessionRequest  (required)
    * @return SessionServiceCreateSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceCreateSessionResponse sessionServiceCreateSession(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest) throws ApiException {
-    return this.sessionServiceCreateSession(sessionServiceCreateSessionRequest, Collections.emptyMap());
+  public SessionServiceCreateSessionResponse sessionServiceCreateSession_0(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest) throws ApiException {
+    return this.sessionServiceCreateSession_0(sessionServiceCreateSessionRequest, Collections.emptyMap());
   }
 
 
@@ -58,11 +135,11 @@ public class SessionServiceApi extends BaseApi {
    * @return SessionServiceCreateSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceCreateSessionResponse sessionServiceCreateSession(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public SessionServiceCreateSessionResponse sessionServiceCreateSession_0(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = sessionServiceCreateSessionRequest;
     
     if (sessionServiceCreateSessionRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceCreateSessionRequest' when calling sessionServiceCreateSession");
+      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceCreateSessionRequest' when calling sessionServiceCreateSession_0");
     }
     
     String localVarPath = "/v2/sessions";
@@ -115,11 +192,90 @@ public class SessionServiceApi extends BaseApi {
    * Terminate your own session or if granted any other session.
    * @param sessionId \&quot;id of the session to terminate\&quot; (required)
    * @param sessionServiceDeleteSessionRequest  (required)
+   * @return SessionServiceBetaDeleteSessionResponse
+   * @throws ApiException if fails to make API call
+   */
+  public SessionServiceBetaDeleteSessionResponse sessionServiceDeleteSession(String sessionId, SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest) throws ApiException {
+    return this.sessionServiceDeleteSession(sessionId, sessionServiceDeleteSessionRequest, Collections.emptyMap());
+  }
+
+
+  /**
+   * Terminate an existing session
+   * Terminate your own session or if granted any other session.
+   * @param sessionId \&quot;id of the session to terminate\&quot; (required)
+   * @param sessionServiceDeleteSessionRequest  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return SessionServiceBetaDeleteSessionResponse
+   * @throws ApiException if fails to make API call
+   */
+  public SessionServiceBetaDeleteSessionResponse sessionServiceDeleteSession(String sessionId, SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = sessionServiceDeleteSessionRequest;
+    
+    if (sessionId == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'sessionId' when calling sessionServiceDeleteSession");
+    }
+    
+    if (sessionServiceDeleteSessionRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceDeleteSessionRequest' when calling sessionServiceDeleteSession");
+    }
+    
+    String localVarPath = "/v2beta/sessions/{sessionId}"
+      .replaceAll("\\{" + "sessionId" + "\\}", apiClient.escapeString(apiClient.parameterToString(sessionId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<SessionServiceBetaDeleteSessionResponse> localVarReturnType = new TypeReference<SessionServiceBetaDeleteSessionResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "DELETE",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Terminate an existing session
+   * Terminate your own session or if granted any other session.
+   * @param sessionId \&quot;id of the session to terminate\&quot; (required)
+   * @param sessionServiceDeleteSessionRequest  (required)
    * @return SessionServiceDeleteSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceDeleteSessionResponse sessionServiceDeleteSession(String sessionId, SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest) throws ApiException {
-    return this.sessionServiceDeleteSession(sessionId, sessionServiceDeleteSessionRequest, Collections.emptyMap());
+  public SessionServiceDeleteSessionResponse sessionServiceDeleteSession_0(String sessionId, SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest) throws ApiException {
+    return this.sessionServiceDeleteSession_0(sessionId, sessionServiceDeleteSessionRequest, Collections.emptyMap());
   }
 
 
@@ -132,15 +288,15 @@ public class SessionServiceApi extends BaseApi {
    * @return SessionServiceDeleteSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceDeleteSessionResponse sessionServiceDeleteSession(String sessionId, SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public SessionServiceDeleteSessionResponse sessionServiceDeleteSession_0(String sessionId, SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = sessionServiceDeleteSessionRequest;
     
     if (sessionId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'sessionId' when calling sessionServiceDeleteSession");
+      throw new IllegalArgumentException("Missing the required parameter 'sessionId' when calling sessionServiceDeleteSession_0");
     }
     
     if (sessionServiceDeleteSessionRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceDeleteSessionRequest' when calling sessionServiceDeleteSession");
+      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceDeleteSessionRequest' when calling sessionServiceDeleteSession_0");
     }
     
     String localVarPath = "/v2/sessions/{sessionId}"
@@ -194,11 +350,87 @@ public class SessionServiceApi extends BaseApi {
    * Get a session and all its information like the time of the user or password verification
    * @param sessionId  (required)
    * @param sessionToken  (optional)
+   * @return SessionServiceBetaGetSessionResponse
+   * @throws ApiException if fails to make API call
+   */
+  public SessionServiceBetaGetSessionResponse sessionServiceGetSession(String sessionId, String sessionToken) throws ApiException {
+    return this.sessionServiceGetSession(sessionId, sessionToken, Collections.emptyMap());
+  }
+
+
+  /**
+   * Get a session
+   * Get a session and all its information like the time of the user or password verification
+   * @param sessionId  (required)
+   * @param sessionToken  (optional)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return SessionServiceBetaGetSessionResponse
+   * @throws ApiException if fails to make API call
+   */
+  public SessionServiceBetaGetSessionResponse sessionServiceGetSession(String sessionId, String sessionToken, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    if (sessionId == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'sessionId' when calling sessionServiceGetSession");
+    }
+    
+    String localVarPath = "/v2beta/sessions/{sessionId}"
+      .replaceAll("\\{" + "sessionId" + "\\}", apiClient.escapeString(apiClient.parameterToString(sessionId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPair("sessionToken", sessionToken));
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<SessionServiceBetaGetSessionResponse> localVarReturnType = new TypeReference<SessionServiceBetaGetSessionResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Get a session
+   * Get a session and all its information like the time of the user or password verification
+   * @param sessionId  (required)
+   * @param sessionToken  (optional)
    * @return SessionServiceGetSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceGetSessionResponse sessionServiceGetSession(String sessionId, String sessionToken) throws ApiException {
-    return this.sessionServiceGetSession(sessionId, sessionToken, Collections.emptyMap());
+  public SessionServiceGetSessionResponse sessionServiceGetSession_0(String sessionId, String sessionToken) throws ApiException {
+    return this.sessionServiceGetSession_0(sessionId, sessionToken, Collections.emptyMap());
   }
 
 
@@ -211,11 +443,11 @@ public class SessionServiceApi extends BaseApi {
    * @return SessionServiceGetSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceGetSessionResponse sessionServiceGetSession(String sessionId, String sessionToken, Map<String, String> additionalHeaders) throws ApiException {
+  public SessionServiceGetSessionResponse sessionServiceGetSession_0(String sessionId, String sessionToken, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (sessionId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'sessionId' when calling sessionServiceGetSession");
+      throw new IllegalArgumentException("Missing the required parameter 'sessionId' when calling sessionServiceGetSession_0");
     }
     
     String localVarPath = "/v2/sessions/{sessionId}"
@@ -269,11 +501,83 @@ public class SessionServiceApi extends BaseApi {
    * Search sessions
    * Search for sessions
    * @param sessionServiceListSessionsRequest  (required)
+   * @return SessionServiceBetaListSessionsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public SessionServiceBetaListSessionsResponse sessionServiceListSessions(SessionServiceListSessionsRequest sessionServiceListSessionsRequest) throws ApiException {
+    return this.sessionServiceListSessions(sessionServiceListSessionsRequest, Collections.emptyMap());
+  }
+
+
+  /**
+   * Search sessions
+   * Search for sessions
+   * @param sessionServiceListSessionsRequest  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return SessionServiceBetaListSessionsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public SessionServiceBetaListSessionsResponse sessionServiceListSessions(SessionServiceListSessionsRequest sessionServiceListSessionsRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = sessionServiceListSessionsRequest;
+    
+    if (sessionServiceListSessionsRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceListSessionsRequest' when calling sessionServiceListSessions");
+    }
+    
+    String localVarPath = "/v2beta/sessions/search";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<SessionServiceBetaListSessionsResponse> localVarReturnType = new TypeReference<SessionServiceBetaListSessionsResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Search sessions
+   * Search for sessions
+   * @param sessionServiceListSessionsRequest  (required)
    * @return SessionServiceListSessionsResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceListSessionsResponse sessionServiceListSessions(SessionServiceListSessionsRequest sessionServiceListSessionsRequest) throws ApiException {
-    return this.sessionServiceListSessions(sessionServiceListSessionsRequest, Collections.emptyMap());
+  public SessionServiceListSessionsResponse sessionServiceListSessions_0(SessionServiceListSessionsRequest sessionServiceListSessionsRequest) throws ApiException {
+    return this.sessionServiceListSessions_0(sessionServiceListSessionsRequest, Collections.emptyMap());
   }
 
 
@@ -285,11 +589,11 @@ public class SessionServiceApi extends BaseApi {
    * @return SessionServiceListSessionsResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceListSessionsResponse sessionServiceListSessions(SessionServiceListSessionsRequest sessionServiceListSessionsRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public SessionServiceListSessionsResponse sessionServiceListSessions_0(SessionServiceListSessionsRequest sessionServiceListSessionsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = sessionServiceListSessionsRequest;
     
     if (sessionServiceListSessionsRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceListSessionsRequest' when calling sessionServiceListSessions");
+      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceListSessionsRequest' when calling sessionServiceListSessions_0");
     }
     
     String localVarPath = "/v2/sessions/search";
@@ -342,11 +646,90 @@ public class SessionServiceApi extends BaseApi {
    * Update an existing session with new information.
    * @param sessionId \&quot;id of the session to update\&quot; (required)
    * @param sessionServiceSetSessionRequest  (required)
+   * @return SessionServiceBetaSetSessionResponse
+   * @throws ApiException if fails to make API call
+   */
+  public SessionServiceBetaSetSessionResponse sessionServiceSetSession(String sessionId, SessionServiceSetSessionRequest sessionServiceSetSessionRequest) throws ApiException {
+    return this.sessionServiceSetSession(sessionId, sessionServiceSetSessionRequest, Collections.emptyMap());
+  }
+
+
+  /**
+   * Update an existing session
+   * Update an existing session with new information.
+   * @param sessionId \&quot;id of the session to update\&quot; (required)
+   * @param sessionServiceSetSessionRequest  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return SessionServiceBetaSetSessionResponse
+   * @throws ApiException if fails to make API call
+   */
+  public SessionServiceBetaSetSessionResponse sessionServiceSetSession(String sessionId, SessionServiceSetSessionRequest sessionServiceSetSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = sessionServiceSetSessionRequest;
+    
+    if (sessionId == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'sessionId' when calling sessionServiceSetSession");
+    }
+    
+    if (sessionServiceSetSessionRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceSetSessionRequest' when calling sessionServiceSetSession");
+    }
+    
+    String localVarPath = "/v2beta/sessions/{sessionId}"
+      .replaceAll("\\{" + "sessionId" + "\\}", apiClient.escapeString(apiClient.parameterToString(sessionId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<SessionServiceBetaSetSessionResponse> localVarReturnType = new TypeReference<SessionServiceBetaSetSessionResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "PATCH",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Update an existing session
+   * Update an existing session with new information.
+   * @param sessionId \&quot;id of the session to update\&quot; (required)
+   * @param sessionServiceSetSessionRequest  (required)
    * @return SessionServiceSetSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceSetSessionResponse sessionServiceSetSession(String sessionId, SessionServiceSetSessionRequest sessionServiceSetSessionRequest) throws ApiException {
-    return this.sessionServiceSetSession(sessionId, sessionServiceSetSessionRequest, Collections.emptyMap());
+  public SessionServiceSetSessionResponse sessionServiceSetSession_0(String sessionId, SessionServiceSetSessionRequest sessionServiceSetSessionRequest) throws ApiException {
+    return this.sessionServiceSetSession_0(sessionId, sessionServiceSetSessionRequest, Collections.emptyMap());
   }
 
 
@@ -359,15 +742,15 @@ public class SessionServiceApi extends BaseApi {
    * @return SessionServiceSetSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceSetSessionResponse sessionServiceSetSession(String sessionId, SessionServiceSetSessionRequest sessionServiceSetSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public SessionServiceSetSessionResponse sessionServiceSetSession_0(String sessionId, SessionServiceSetSessionRequest sessionServiceSetSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = sessionServiceSetSessionRequest;
     
     if (sessionId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'sessionId' when calling sessionServiceSetSession");
+      throw new IllegalArgumentException("Missing the required parameter 'sessionId' when calling sessionServiceSetSession_0");
     }
     
     if (sessionServiceSetSessionRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceSetSessionRequest' when calling sessionServiceSetSession");
+      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceSetSessionRequest' when calling sessionServiceSetSession_0");
     }
     
     String localVarPath = "/v2/sessions/{sessionId}"

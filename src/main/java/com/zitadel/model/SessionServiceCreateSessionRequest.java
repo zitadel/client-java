@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.SessionServiceChecks;
-import com.zitadel.model.SessionServiceRequestChallenges;
-import com.zitadel.model.SessionServiceUserAgent;
+import com.zitadel.model.SessionServiceBetaChecks;
+import com.zitadel.model.SessionServiceBetaRequestChallenges;
+import com.zitadel.model.SessionServiceBetaUserAgent;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -45,7 +45,7 @@ import java.util.StringJoiner;
 public class SessionServiceCreateSessionRequest {
   public static final String JSON_PROPERTY_CHECKS = "checks";
   @javax.annotation.Nullable
-  private SessionServiceChecks checks;
+  private SessionServiceBetaChecks checks;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
   @javax.annotation.Nullable
@@ -53,11 +53,11 @@ public class SessionServiceCreateSessionRequest {
 
   public static final String JSON_PROPERTY_CHALLENGES = "challenges";
   @javax.annotation.Nullable
-  private SessionServiceRequestChallenges challenges;
+  private SessionServiceBetaRequestChallenges challenges;
 
   public static final String JSON_PROPERTY_USER_AGENT = "userAgent";
   @javax.annotation.Nullable
-  private SessionServiceUserAgent userAgent;
+  private SessionServiceBetaUserAgent userAgent;
 
   public static final String JSON_PROPERTY_LIFETIME = "lifetime";
   @javax.annotation.Nullable
@@ -66,7 +66,7 @@ public class SessionServiceCreateSessionRequest {
   public SessionServiceCreateSessionRequest() {
   }
 
-  public SessionServiceCreateSessionRequest checks(@javax.annotation.Nullable SessionServiceChecks checks) {
+  public SessionServiceCreateSessionRequest checks(@javax.annotation.Nullable SessionServiceBetaChecks checks) {
     
     this.checks = checks;
     return this;
@@ -80,14 +80,14 @@ public class SessionServiceCreateSessionRequest {
   @JsonProperty(JSON_PROPERTY_CHECKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SessionServiceChecks getChecks() {
+  public SessionServiceBetaChecks getChecks() {
     return checks;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CHECKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setChecks(@javax.annotation.Nullable SessionServiceChecks checks) {
+  public void setChecks(@javax.annotation.Nullable SessionServiceBetaChecks checks) {
     this.checks = checks;
   }
 
@@ -124,7 +124,7 @@ public class SessionServiceCreateSessionRequest {
     this.metadata = metadata;
   }
 
-  public SessionServiceCreateSessionRequest challenges(@javax.annotation.Nullable SessionServiceRequestChallenges challenges) {
+  public SessionServiceCreateSessionRequest challenges(@javax.annotation.Nullable SessionServiceBetaRequestChallenges challenges) {
     
     this.challenges = challenges;
     return this;
@@ -138,18 +138,18 @@ public class SessionServiceCreateSessionRequest {
   @JsonProperty(JSON_PROPERTY_CHALLENGES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SessionServiceRequestChallenges getChallenges() {
+  public SessionServiceBetaRequestChallenges getChallenges() {
     return challenges;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CHALLENGES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setChallenges(@javax.annotation.Nullable SessionServiceRequestChallenges challenges) {
+  public void setChallenges(@javax.annotation.Nullable SessionServiceBetaRequestChallenges challenges) {
     this.challenges = challenges;
   }
 
-  public SessionServiceCreateSessionRequest userAgent(@javax.annotation.Nullable SessionServiceUserAgent userAgent) {
+  public SessionServiceCreateSessionRequest userAgent(@javax.annotation.Nullable SessionServiceBetaUserAgent userAgent) {
     
     this.userAgent = userAgent;
     return this;
@@ -163,14 +163,14 @@ public class SessionServiceCreateSessionRequest {
   @JsonProperty(JSON_PROPERTY_USER_AGENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SessionServiceUserAgent getUserAgent() {
+  public SessionServiceBetaUserAgent getUserAgent() {
     return userAgent;
   }
 
 
   @JsonProperty(JSON_PROPERTY_USER_AGENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserAgent(@javax.annotation.Nullable SessionServiceUserAgent userAgent) {
+  public void setUserAgent(@javax.annotation.Nullable SessionServiceBetaUserAgent userAgent) {
     this.userAgent = userAgent;
   }
 

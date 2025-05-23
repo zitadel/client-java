@@ -9,6 +9,8 @@ import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
 import com.zitadel.model.OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest;
+import com.zitadel.model.OIDCServiceBetaCreateCallbackResponse;
+import com.zitadel.model.OIDCServiceBetaGetAuthRequestResponse;
 import com.zitadel.model.OIDCServiceCreateCallbackRequest;
 import com.zitadel.model.OIDCServiceCreateCallbackResponse;
 import com.zitadel.model.OIDCServiceGetAuthRequestResponse;
@@ -193,6 +195,85 @@ public class OidcServiceApi extends BaseApi {
   }
 
   /**
+   * Finalize an Auth Request and get the callback URL.
+   * Finalize an Auth Request and get the callback URL for success or failure. The user must be redirected to the URL in order to inform the application about the success or failure. On success, the URL contains details for the application to obtain the tokens. This method can only be called once for an Auth request.
+   * @param authRequestId Set this field when the authorization flow failed. It creates a callback URL to the application, with the error details set. (required)
+   * @param oiDCServiceCreateCallbackRequest  (required)
+   * @return OIDCServiceBetaCreateCallbackResponse
+   * @throws ApiException if fails to make API call
+   */
+  public OIDCServiceBetaCreateCallbackResponse oIDCServiceCreateCallback_0(String authRequestId, OIDCServiceCreateCallbackRequest oiDCServiceCreateCallbackRequest) throws ApiException {
+    return this.oIDCServiceCreateCallback_0(authRequestId, oiDCServiceCreateCallbackRequest, Collections.emptyMap());
+  }
+
+
+  /**
+   * Finalize an Auth Request and get the callback URL.
+   * Finalize an Auth Request and get the callback URL for success or failure. The user must be redirected to the URL in order to inform the application about the success or failure. On success, the URL contains details for the application to obtain the tokens. This method can only be called once for an Auth request.
+   * @param authRequestId Set this field when the authorization flow failed. It creates a callback URL to the application, with the error details set. (required)
+   * @param oiDCServiceCreateCallbackRequest  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return OIDCServiceBetaCreateCallbackResponse
+   * @throws ApiException if fails to make API call
+   */
+  public OIDCServiceBetaCreateCallbackResponse oIDCServiceCreateCallback_0(String authRequestId, OIDCServiceCreateCallbackRequest oiDCServiceCreateCallbackRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = oiDCServiceCreateCallbackRequest;
+    
+    if (authRequestId == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'authRequestId' when calling oIDCServiceCreateCallback_0");
+    }
+    
+    if (oiDCServiceCreateCallbackRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'oiDCServiceCreateCallbackRequest' when calling oIDCServiceCreateCallback_0");
+    }
+    
+    String localVarPath = "/v2beta/oidc/auth_requests/{authRequestId}"
+      .replaceAll("\\{" + "authRequestId" + "\\}", apiClient.escapeString(apiClient.parameterToString(authRequestId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<OIDCServiceBetaCreateCallbackResponse> localVarReturnType = new TypeReference<OIDCServiceBetaCreateCallbackResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
    * Get OIDC Auth Request details
    * Get OIDC Auth Request details by ID, obtained from the redirect URL. Returns details that are parsed from the application&#39;s Auth Request.
    * @param authRequestId ID of the Auth Request, as obtained from the redirect URL. (required)
@@ -248,6 +329,79 @@ public class OidcServiceApi extends BaseApi {
     String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
 
     TypeReference<OIDCServiceGetAuthRequestResponse> localVarReturnType = new TypeReference<OIDCServiceGetAuthRequestResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Get OIDC Auth Request details
+   * Get OIDC Auth Request details by ID, obtained from the redirect URL. Returns details that are parsed from the application&#39;s Auth Request.
+   * @param authRequestId ID of the Auth Request, as obtained from the redirect URL. (required)
+   * @return OIDCServiceBetaGetAuthRequestResponse
+   * @throws ApiException if fails to make API call
+   */
+  public OIDCServiceBetaGetAuthRequestResponse oIDCServiceGetAuthRequest_0(String authRequestId) throws ApiException {
+    return this.oIDCServiceGetAuthRequest_0(authRequestId, Collections.emptyMap());
+  }
+
+
+  /**
+   * Get OIDC Auth Request details
+   * Get OIDC Auth Request details by ID, obtained from the redirect URL. Returns details that are parsed from the application&#39;s Auth Request.
+   * @param authRequestId ID of the Auth Request, as obtained from the redirect URL. (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return OIDCServiceBetaGetAuthRequestResponse
+   * @throws ApiException if fails to make API call
+   */
+  public OIDCServiceBetaGetAuthRequestResponse oIDCServiceGetAuthRequest_0(String authRequestId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    if (authRequestId == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'authRequestId' when calling oIDCServiceGetAuthRequest_0");
+    }
+    
+    String localVarPath = "/v2beta/oidc/auth_requests/{authRequestId}"
+      .replaceAll("\\{" + "authRequestId" + "\\}", apiClient.escapeString(apiClient.parameterToString(authRequestId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<OIDCServiceBetaGetAuthRequestResponse> localVarReturnType = new TypeReference<OIDCServiceBetaGetAuthRequestResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "GET",

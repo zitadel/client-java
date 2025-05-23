@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.SessionServiceRequestChallengesOTPEmail;
+import com.zitadel.model.SessionServiceRequestChallengesOTPEmail1;
 import com.zitadel.model.SessionServiceRequestChallengesOTPSMS;
 import com.zitadel.model.SessionServiceRequestChallengesWebAuthN;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -49,7 +49,7 @@ public class SessionServiceRequestChallenges {
 
   public static final String JSON_PROPERTY_OTP_EMAIL = "otpEmail";
   @javax.annotation.Nullable
-  private SessionServiceRequestChallengesOTPEmail otpEmail;
+  private SessionServiceRequestChallengesOTPEmail1 otpEmail;
 
   public SessionServiceRequestChallenges() {
   }
@@ -104,7 +104,7 @@ public class SessionServiceRequestChallenges {
     this.otpSms = otpSms;
   }
 
-  public SessionServiceRequestChallenges otpEmail(@javax.annotation.Nullable SessionServiceRequestChallengesOTPEmail otpEmail) {
+  public SessionServiceRequestChallenges otpEmail(@javax.annotation.Nullable SessionServiceRequestChallengesOTPEmail1 otpEmail) {
     
     this.otpEmail = otpEmail;
     return this;
@@ -118,14 +118,14 @@ public class SessionServiceRequestChallenges {
   @JsonProperty(JSON_PROPERTY_OTP_EMAIL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SessionServiceRequestChallengesOTPEmail getOtpEmail() {
+  public SessionServiceRequestChallengesOTPEmail1 getOtpEmail() {
     return otpEmail;
   }
 
 
   @JsonProperty(JSON_PROPERTY_OTP_EMAIL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOtpEmail(@javax.annotation.Nullable SessionServiceRequestChallengesOTPEmail otpEmail) {
+  public void setOtpEmail(@javax.annotation.Nullable SessionServiceRequestChallengesOTPEmail1 otpEmail) {
     this.otpEmail = otpEmail;
   }
 

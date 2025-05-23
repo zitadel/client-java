@@ -20,8 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.FeatureServiceImprovedPerformance;
-import com.zitadel.model.FeatureServiceLoginV2;
+import com.zitadel.model.FeatureServiceBetaImprovedPerformance;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,12 +43,7 @@ import java.util.StringJoiner;
   FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_IMPROVED_PERFORMANCE,
   FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_WEB_KEY,
   FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_DEBUG_OIDC_PARENT_ERROR,
-  FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION,
-  FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT,
-  FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT,
-  FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_LOGIN_V2,
-  FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_PERMISSION_CHECK_V2,
-  FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_CONSOLE_USE_V2_USER_API
+  FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class FeatureServiceSetInstanceFeaturesRequest {
@@ -79,7 +73,7 @@ public class FeatureServiceSetInstanceFeaturesRequest {
 
   public static final String JSON_PROPERTY_IMPROVED_PERFORMANCE = "improvedPerformance";
   @javax.annotation.Nullable
-  private List<FeatureServiceImprovedPerformance> improvedPerformance = new ArrayList<>();
+  private List<FeatureServiceBetaImprovedPerformance> improvedPerformance = new ArrayList<>();
 
   public static final String JSON_PROPERTY_WEB_KEY = "webKey";
   @javax.annotation.Nullable
@@ -92,26 +86,6 @@ public class FeatureServiceSetInstanceFeaturesRequest {
   public static final String JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION = "oidcSingleV1SessionTermination";
   @javax.annotation.Nullable
   private Boolean oidcSingleV1SessionTermination;
-
-  public static final String JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT = "disableUserTokenEvent";
-  @javax.annotation.Nullable
-  private Boolean disableUserTokenEvent;
-
-  public static final String JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT = "enableBackChannelLogout";
-  @javax.annotation.Nullable
-  private Boolean enableBackChannelLogout;
-
-  public static final String JSON_PROPERTY_LOGIN_V2 = "loginV2";
-  @javax.annotation.Nullable
-  private FeatureServiceLoginV2 loginV2;
-
-  public static final String JSON_PROPERTY_PERMISSION_CHECK_V2 = "permissionCheckV2";
-  @javax.annotation.Nullable
-  private Boolean permissionCheckV2;
-
-  public static final String JSON_PROPERTY_CONSOLE_USE_V2_USER_API = "consoleUseV2UserApi";
-  @javax.annotation.Nullable
-  private Boolean consoleUseV2UserApi;
 
   public FeatureServiceSetInstanceFeaturesRequest() {
   }
@@ -266,13 +240,13 @@ public class FeatureServiceSetInstanceFeaturesRequest {
     this.actions = actions;
   }
 
-  public FeatureServiceSetInstanceFeaturesRequest improvedPerformance(@javax.annotation.Nullable List<FeatureServiceImprovedPerformance> improvedPerformance) {
+  public FeatureServiceSetInstanceFeaturesRequest improvedPerformance(@javax.annotation.Nullable List<FeatureServiceBetaImprovedPerformance> improvedPerformance) {
     
     this.improvedPerformance = improvedPerformance;
     return this;
   }
 
-  public FeatureServiceSetInstanceFeaturesRequest addImprovedPerformanceItem(FeatureServiceImprovedPerformance improvedPerformanceItem) {
+  public FeatureServiceSetInstanceFeaturesRequest addImprovedPerformanceItem(FeatureServiceBetaImprovedPerformance improvedPerformanceItem) {
     if (this.improvedPerformance == null) {
       this.improvedPerformance = new ArrayList<>();
     }
@@ -288,14 +262,14 @@ public class FeatureServiceSetInstanceFeaturesRequest {
   @JsonProperty(JSON_PROPERTY_IMPROVED_PERFORMANCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<FeatureServiceImprovedPerformance> getImprovedPerformance() {
+  public List<FeatureServiceBetaImprovedPerformance> getImprovedPerformance() {
     return improvedPerformance;
   }
 
 
   @JsonProperty(JSON_PROPERTY_IMPROVED_PERFORMANCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setImprovedPerformance(@javax.annotation.Nullable List<FeatureServiceImprovedPerformance> improvedPerformance) {
+  public void setImprovedPerformance(@javax.annotation.Nullable List<FeatureServiceBetaImprovedPerformance> improvedPerformance) {
     this.improvedPerformance = improvedPerformance;
   }
 
@@ -374,131 +348,6 @@ public class FeatureServiceSetInstanceFeaturesRequest {
     this.oidcSingleV1SessionTermination = oidcSingleV1SessionTermination;
   }
 
-  public FeatureServiceSetInstanceFeaturesRequest disableUserTokenEvent(@javax.annotation.Nullable Boolean disableUserTokenEvent) {
-    
-    this.disableUserTokenEvent = disableUserTokenEvent;
-    return this;
-  }
-
-  /**
-   * Do not push user token meta-event user.token.v2.added to improve performance on many concurrent single (machine-)user logins
-   * @return disableUserTokenEvent
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getDisableUserTokenEvent() {
-    return disableUserTokenEvent;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDisableUserTokenEvent(@javax.annotation.Nullable Boolean disableUserTokenEvent) {
-    this.disableUserTokenEvent = disableUserTokenEvent;
-  }
-
-  public FeatureServiceSetInstanceFeaturesRequest enableBackChannelLogout(@javax.annotation.Nullable Boolean enableBackChannelLogout) {
-    
-    this.enableBackChannelLogout = enableBackChannelLogout;
-    return this;
-  }
-
-  /**
-   * If the flag is enabled, you&#39;ll be able to use the OIDC Back-Channel Logout to be notified in your application about terminated user sessions.
-   * @return enableBackChannelLogout
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getEnableBackChannelLogout() {
-    return enableBackChannelLogout;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnableBackChannelLogout(@javax.annotation.Nullable Boolean enableBackChannelLogout) {
-    this.enableBackChannelLogout = enableBackChannelLogout;
-  }
-
-  public FeatureServiceSetInstanceFeaturesRequest loginV2(@javax.annotation.Nullable FeatureServiceLoginV2 loginV2) {
-    
-    this.loginV2 = loginV2;
-    return this;
-  }
-
-  /**
-   * Get loginV2
-   * @return loginV2
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOGIN_V2)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FeatureServiceLoginV2 getLoginV2() {
-    return loginV2;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LOGIN_V2)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoginV2(@javax.annotation.Nullable FeatureServiceLoginV2 loginV2) {
-    this.loginV2 = loginV2;
-  }
-
-  public FeatureServiceSetInstanceFeaturesRequest permissionCheckV2(@javax.annotation.Nullable Boolean permissionCheckV2) {
-    
-    this.permissionCheckV2 = permissionCheckV2;
-    return this;
-  }
-
-  /**
-   * Enable a newer, more performant, permission check used for v2 and v3 resource based APIs.
-   * @return permissionCheckV2
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PERMISSION_CHECK_V2)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getPermissionCheckV2() {
-    return permissionCheckV2;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PERMISSION_CHECK_V2)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPermissionCheckV2(@javax.annotation.Nullable Boolean permissionCheckV2) {
-    this.permissionCheckV2 = permissionCheckV2;
-  }
-
-  public FeatureServiceSetInstanceFeaturesRequest consoleUseV2UserApi(@javax.annotation.Nullable Boolean consoleUseV2UserApi) {
-    
-    this.consoleUseV2UserApi = consoleUseV2UserApi;
-    return this;
-  }
-
-  /**
-   * If this is enabled the console web client will use the new User v2 API for certain calls
-   * @return consoleUseV2UserApi
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CONSOLE_USE_V2_USER_API)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getConsoleUseV2UserApi() {
-    return consoleUseV2UserApi;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_CONSOLE_USE_V2_USER_API)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConsoleUseV2UserApi(@javax.annotation.Nullable Boolean consoleUseV2UserApi) {
-    this.consoleUseV2UserApi = consoleUseV2UserApi;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -517,17 +366,12 @@ public class FeatureServiceSetInstanceFeaturesRequest {
         Objects.equals(this.improvedPerformance, featureServiceSetInstanceFeaturesRequest.improvedPerformance) &&
         Objects.equals(this.webKey, featureServiceSetInstanceFeaturesRequest.webKey) &&
         Objects.equals(this.debugOidcParentError, featureServiceSetInstanceFeaturesRequest.debugOidcParentError) &&
-        Objects.equals(this.oidcSingleV1SessionTermination, featureServiceSetInstanceFeaturesRequest.oidcSingleV1SessionTermination) &&
-        Objects.equals(this.disableUserTokenEvent, featureServiceSetInstanceFeaturesRequest.disableUserTokenEvent) &&
-        Objects.equals(this.enableBackChannelLogout, featureServiceSetInstanceFeaturesRequest.enableBackChannelLogout) &&
-        Objects.equals(this.loginV2, featureServiceSetInstanceFeaturesRequest.loginV2) &&
-        Objects.equals(this.permissionCheckV2, featureServiceSetInstanceFeaturesRequest.permissionCheckV2) &&
-        Objects.equals(this.consoleUseV2UserApi, featureServiceSetInstanceFeaturesRequest.consoleUseV2UserApi);
+        Objects.equals(this.oidcSingleV1SessionTermination, featureServiceSetInstanceFeaturesRequest.oidcSingleV1SessionTermination);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(loginDefaultOrg, oidcTriggerIntrospectionProjections, oidcLegacyIntrospection, userSchema, oidcTokenExchange, actions, improvedPerformance, webKey, debugOidcParentError, oidcSingleV1SessionTermination, disableUserTokenEvent, enableBackChannelLogout, loginV2, permissionCheckV2, consoleUseV2UserApi);
+    return Objects.hash(loginDefaultOrg, oidcTriggerIntrospectionProjections, oidcLegacyIntrospection, userSchema, oidcTokenExchange, actions, improvedPerformance, webKey, debugOidcParentError, oidcSingleV1SessionTermination);
   }
 
   @Override
@@ -544,11 +388,6 @@ public class FeatureServiceSetInstanceFeaturesRequest {
     sb.append("    webKey: ").append(toIndentedString(webKey)).append("\n");
     sb.append("    debugOidcParentError: ").append(toIndentedString(debugOidcParentError)).append("\n");
     sb.append("    oidcSingleV1SessionTermination: ").append(toIndentedString(oidcSingleV1SessionTermination)).append("\n");
-    sb.append("    disableUserTokenEvent: ").append(toIndentedString(disableUserTokenEvent)).append("\n");
-    sb.append("    enableBackChannelLogout: ").append(toIndentedString(enableBackChannelLogout)).append("\n");
-    sb.append("    loginV2: ").append(toIndentedString(loginV2)).append("\n");
-    sb.append("    permissionCheckV2: ").append(toIndentedString(permissionCheckV2)).append("\n");
-    sb.append("    consoleUseV2UserApi: ").append(toIndentedString(consoleUseV2UserApi)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -696,51 +535,6 @@ public class FeatureServiceSetInstanceFeaturesRequest {
     if (getOidcSingleV1SessionTermination() != null) {
       try {
         joiner.add(String.format("%soidcSingleV1SessionTermination%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOidcSingleV1SessionTermination()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `disableUserTokenEvent` to the URL query string
-    if (getDisableUserTokenEvent() != null) {
-      try {
-        joiner.add(String.format("%sdisableUserTokenEvent%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDisableUserTokenEvent()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `enableBackChannelLogout` to the URL query string
-    if (getEnableBackChannelLogout() != null) {
-      try {
-        joiner.add(String.format("%senableBackChannelLogout%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnableBackChannelLogout()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `loginV2` to the URL query string
-    if (getLoginV2() != null) {
-      joiner.add(getLoginV2().toUrlQueryString(prefix + "loginV2" + suffix));
-    }
-
-    // add `permissionCheckV2` to the URL query string
-    if (getPermissionCheckV2() != null) {
-      try {
-        joiner.add(String.format("%spermissionCheckV2%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPermissionCheckV2()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `consoleUseV2UserApi` to the URL query string
-    if (getConsoleUseV2UserApi() != null) {
-      try {
-        joiner.add(String.format("%sconsoleUseV2UserApi%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConsoleUseV2UserApi()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

@@ -48,7 +48,7 @@ public class SessionServiceOTPEmailSendCode {
   }
 
   /**
-   * Optionally set a url_template, which will be used in the mail sent by ZITADEL to guide the user to your verification page. If no template is set, the default ZITADEL url will be used.  The following placeholders can be used: Code, UserID, LoginName, DisplayName, PreferredLanguage, SessionID
+   * \&quot;Optionally set a url_template, which will be used in the mail sent by ZITADEL to guide the user to your verification page. If no template is set, the default ZITADEL url will be used.\&quot;
    * @return urlTemplate
    */
   @javax.annotation.Nullable

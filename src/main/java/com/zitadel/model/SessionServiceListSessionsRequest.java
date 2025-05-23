@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.SessionServiceListQuery;
-import com.zitadel.model.SessionServiceSearchQuery;
-import com.zitadel.model.SessionServiceSessionFieldName;
+import com.zitadel.model.SessionServiceBetaListQuery;
+import com.zitadel.model.SessionServiceBetaSearchQuery;
+import com.zitadel.model.SessionServiceBetaSessionFieldName;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,20 +44,20 @@ import java.util.StringJoiner;
 public class SessionServiceListSessionsRequest {
   public static final String JSON_PROPERTY_QUERY = "query";
   @javax.annotation.Nullable
-  private SessionServiceListQuery query;
+  private SessionServiceBetaListQuery query;
 
   public static final String JSON_PROPERTY_QUERIES = "queries";
   @javax.annotation.Nullable
-  private List<SessionServiceSearchQuery> queries = new ArrayList<>();
+  private List<SessionServiceBetaSearchQuery> queries = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SORTING_COLUMN = "sortingColumn";
   @javax.annotation.Nullable
-  private SessionServiceSessionFieldName sortingColumn = SessionServiceSessionFieldName.SESSION_FIELD_NAME_UNSPECIFIED;
+  private SessionServiceBetaSessionFieldName sortingColumn = SessionServiceBetaSessionFieldName.SESSION_FIELD_NAME_UNSPECIFIED;
 
   public SessionServiceListSessionsRequest() {
   }
 
-  public SessionServiceListSessionsRequest query(@javax.annotation.Nullable SessionServiceListQuery query) {
+  public SessionServiceListSessionsRequest query(@javax.annotation.Nullable SessionServiceBetaListQuery query) {
     
     this.query = query;
     return this;
@@ -71,24 +71,24 @@ public class SessionServiceListSessionsRequest {
   @JsonProperty(JSON_PROPERTY_QUERY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SessionServiceListQuery getQuery() {
+  public SessionServiceBetaListQuery getQuery() {
     return query;
   }
 
 
   @JsonProperty(JSON_PROPERTY_QUERY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQuery(@javax.annotation.Nullable SessionServiceListQuery query) {
+  public void setQuery(@javax.annotation.Nullable SessionServiceBetaListQuery query) {
     this.query = query;
   }
 
-  public SessionServiceListSessionsRequest queries(@javax.annotation.Nullable List<SessionServiceSearchQuery> queries) {
+  public SessionServiceListSessionsRequest queries(@javax.annotation.Nullable List<SessionServiceBetaSearchQuery> queries) {
     
     this.queries = queries;
     return this;
   }
 
-  public SessionServiceListSessionsRequest addQueriesItem(SessionServiceSearchQuery queriesItem) {
+  public SessionServiceListSessionsRequest addQueriesItem(SessionServiceBetaSearchQuery queriesItem) {
     if (this.queries == null) {
       this.queries = new ArrayList<>();
     }
@@ -104,18 +104,18 @@ public class SessionServiceListSessionsRequest {
   @JsonProperty(JSON_PROPERTY_QUERIES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<SessionServiceSearchQuery> getQueries() {
+  public List<SessionServiceBetaSearchQuery> getQueries() {
     return queries;
   }
 
 
   @JsonProperty(JSON_PROPERTY_QUERIES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQueries(@javax.annotation.Nullable List<SessionServiceSearchQuery> queries) {
+  public void setQueries(@javax.annotation.Nullable List<SessionServiceBetaSearchQuery> queries) {
     this.queries = queries;
   }
 
-  public SessionServiceListSessionsRequest sortingColumn(@javax.annotation.Nullable SessionServiceSessionFieldName sortingColumn) {
+  public SessionServiceListSessionsRequest sortingColumn(@javax.annotation.Nullable SessionServiceBetaSessionFieldName sortingColumn) {
     
     this.sortingColumn = sortingColumn;
     return this;
@@ -129,14 +129,14 @@ public class SessionServiceListSessionsRequest {
   @JsonProperty(JSON_PROPERTY_SORTING_COLUMN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SessionServiceSessionFieldName getSortingColumn() {
+  public SessionServiceBetaSessionFieldName getSortingColumn() {
     return sortingColumn;
   }
 
 
   @JsonProperty(JSON_PROPERTY_SORTING_COLUMN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSortingColumn(@javax.annotation.Nullable SessionServiceSessionFieldName sortingColumn) {
+  public void setSortingColumn(@javax.annotation.Nullable SessionServiceBetaSessionFieldName sortingColumn) {
     this.sortingColumn = sortingColumn;
   }
 
