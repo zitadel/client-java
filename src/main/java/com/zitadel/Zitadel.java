@@ -12,13 +12,15 @@ import java.util.function.Consumer;
 @SuppressFBWarnings("URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD")
 public class Zitadel {
     public final ApiClient apiClient;
+    public final ActionServiceApi actions;
     public final FeatureServiceApi features;
     public final IdentityProviderServiceApi idps;
     public final OidcServiceApi oidc;
     public final OrganizationServiceApi organizations;
+    public final SamlServiceApi saml;
     public final SessionServiceApi sessions;
     public final SettingsServiceApi settings;
-    public final SamlServiceApi saml;
+    public final WebKeyServiceApi webkeys;
 
     @SuppressWarnings("unused")
     public final UserServiceApi users;
@@ -38,14 +40,16 @@ public class Zitadel {
             mutateApiClient.accept(this.apiClient);
         }
 
+        this.actions = new ActionServiceApi(apiClient);
         this.features = new FeatureServiceApi(apiClient);
         this.idps = new IdentityProviderServiceApi(apiClient);
         this.oidc = new OidcServiceApi(apiClient);
         this.organizations = new OrganizationServiceApi(apiClient);
+        this.saml = new SamlServiceApi(apiClient);
         this.sessions = new SessionServiceApi(apiClient);
         this.settings = new SettingsServiceApi(apiClient);
         this.users = new UserServiceApi(apiClient);
-        this.saml = new SamlServiceApi(apiClient);
+        this.webkeys = new WebKeyServiceApi(apiClient);
     }
 
     /**

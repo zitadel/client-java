@@ -8,19 +8,21 @@ import com.zitadel.BaseApi;
 import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
-import com.zitadel.model.SettingsServiceGetActiveIdentityProvidersResponse;
-import com.zitadel.model.SettingsServiceGetBrandingSettingsResponse;
-import com.zitadel.model.SettingsServiceGetDomainSettingsResponse;
-import com.zitadel.model.SettingsServiceGetGeneralSettingsResponse;
-import com.zitadel.model.SettingsServiceGetLegalAndSupportSettingsResponse;
-import com.zitadel.model.SettingsServiceGetLockoutSettingsResponse;
-import com.zitadel.model.SettingsServiceGetLoginSettingsResponse;
-import com.zitadel.model.SettingsServiceGetPasswordComplexitySettingsResponse;
-import com.zitadel.model.SettingsServiceGetPasswordExpirySettingsResponse;
-import com.zitadel.model.SettingsServiceGetSecuritySettingsResponse;
-import com.zitadel.model.SettingsServiceRpcStatus;
-import com.zitadel.model.SettingsServiceSetSecuritySettingsRequest;
-import com.zitadel.model.SettingsServiceSetSecuritySettingsResponse;
+import com.zitadel.model.ActionServiceBetaCreateTargetResponse;
+import com.zitadel.model.ActionServiceBetaDeleteTargetResponse;
+import com.zitadel.model.ActionServiceBetaGetTargetResponse;
+import com.zitadel.model.ActionServiceBetaListExecutionFunctionsResponse;
+import com.zitadel.model.ActionServiceBetaListExecutionMethodsResponse;
+import com.zitadel.model.ActionServiceBetaListExecutionServicesResponse;
+import com.zitadel.model.ActionServiceBetaListExecutionsResponse;
+import com.zitadel.model.ActionServiceBetaListTargetsResponse;
+import com.zitadel.model.ActionServiceBetaSetExecutionResponse;
+import com.zitadel.model.ActionServiceBetaUpdateTargetResponse;
+import com.zitadel.model.ActionServiceCreateTargetRequest;
+import com.zitadel.model.ActionServiceListTargetsRequest;
+import com.zitadel.model.ActionServiceRpcStatus;
+import com.zitadel.model.ActionServiceSetExecutionRequest;
+import com.zitadel.model.ActionServiceUpdateTargetRequest;
 
 
 import java.util.ArrayList;
@@ -31,764 +33,44 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
-public class SettingsServiceApi extends BaseApi {
+public class ActionServiceApi extends BaseApi {
 
-  public SettingsServiceApi() {
+  public ActionServiceApi() {
     super(Configuration.getDefaultApiClient());
   }
 
-  public SettingsServiceApi(ApiClient apiClient) {
+  public ActionServiceApi(ApiClient apiClient) {
     super(apiClient);
   }
 
   /**
-   * Get the current active identity providers
-   * Return the current active identity providers for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @param creationAllowed  (optional)
-   * @param linkingAllowed  (optional)
-   * @param autoCreation  (optional)
-   * @param autoLinking  (optional)
-   * @return SettingsServiceGetActiveIdentityProvidersResponse
+   * Create Target
+   * Create a new target to your endpoint, which can be used in executions.  Required permission:   - &#x60;action.target.write&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param actionServiceCreateTargetRequest  (required)
+   * @return ActionServiceBetaCreateTargetResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetActiveIdentityProvidersResponse settingsServiceGetActiveIdentityProviders(String ctxOrgId, Boolean ctxInstance, Boolean creationAllowed, Boolean linkingAllowed, Boolean autoCreation, Boolean autoLinking) throws ApiException {
-    return this.settingsServiceGetActiveIdentityProviders(ctxOrgId, ctxInstance, creationAllowed, linkingAllowed, autoCreation, autoLinking, Collections.emptyMap());
+  public ActionServiceBetaCreateTargetResponse actionServiceCreateTarget(ActionServiceCreateTargetRequest actionServiceCreateTargetRequest) throws ApiException {
+    return this.actionServiceCreateTarget(actionServiceCreateTargetRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Get the current active identity providers
-   * Return the current active identity providers for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @param creationAllowed  (optional)
-   * @param linkingAllowed  (optional)
-   * @param autoCreation  (optional)
-   * @param autoLinking  (optional)
+   * Create Target
+   * Create a new target to your endpoint, which can be used in executions.  Required permission:   - &#x60;action.target.write&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param actionServiceCreateTargetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
-   * @return SettingsServiceGetActiveIdentityProvidersResponse
+   * @return ActionServiceBetaCreateTargetResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetActiveIdentityProvidersResponse settingsServiceGetActiveIdentityProviders(String ctxOrgId, Boolean ctxInstance, Boolean creationAllowed, Boolean linkingAllowed, Boolean autoCreation, Boolean autoLinking, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public ActionServiceBetaCreateTargetResponse actionServiceCreateTarget(ActionServiceCreateTargetRequest actionServiceCreateTargetRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = actionServiceCreateTargetRequest;
     
-    String localVarPath = "/v2/settings/login/idps";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
-    localVarQueryParams.addAll(apiClient.parameterToPair("creationAllowed", creationAllowed));
-    localVarQueryParams.addAll(apiClient.parameterToPair("linkingAllowed", linkingAllowed));
-    localVarQueryParams.addAll(apiClient.parameterToPair("autoCreation", autoCreation));
-    localVarQueryParams.addAll(apiClient.parameterToPair("autoLinking", autoLinking));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SettingsServiceGetActiveIdentityProvidersResponse> localVarReturnType = new TypeReference<SettingsServiceGetActiveIdentityProvidersResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * Get the current active branding settings
-   * Return the current active branding settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @return SettingsServiceGetBrandingSettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetBrandingSettingsResponse settingsServiceGetBrandingSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetBrandingSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
-  }
-
-
-  /**
-   * Get the current active branding settings
-   * Return the current active branding settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SettingsServiceGetBrandingSettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetBrandingSettingsResponse settingsServiceGetBrandingSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    String localVarPath = "/v2/settings/branding";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SettingsServiceGetBrandingSettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetBrandingSettingsResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * Get the domain settings
-   * Return the domain settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @return SettingsServiceGetDomainSettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetDomainSettingsResponse settingsServiceGetDomainSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetDomainSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
-  }
-
-
-  /**
-   * Get the domain settings
-   * Return the domain settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SettingsServiceGetDomainSettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetDomainSettingsResponse settingsServiceGetDomainSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    String localVarPath = "/v2/settings/domain";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SettingsServiceGetDomainSettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetDomainSettingsResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * Get basic information over the instance
-   * Return the basic information of the instance for the requested context
-   * @return SettingsServiceGetGeneralSettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetGeneralSettingsResponse settingsServiceGetGeneralSettings() throws ApiException {
-    return this.settingsServiceGetGeneralSettings(Collections.emptyMap());
-  }
-
-
-  /**
-   * Get basic information over the instance
-   * Return the basic information of the instance for the requested context
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SettingsServiceGetGeneralSettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetGeneralSettingsResponse settingsServiceGetGeneralSettings(Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    String localVarPath = "/v2/settings";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SettingsServiceGetGeneralSettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetGeneralSettingsResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * Get the legal and support settings
-   * Return the legal settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @return SettingsServiceGetLegalAndSupportSettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetLegalAndSupportSettingsResponse settingsServiceGetLegalAndSupportSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetLegalAndSupportSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
-  }
-
-
-  /**
-   * Get the legal and support settings
-   * Return the legal settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SettingsServiceGetLegalAndSupportSettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetLegalAndSupportSettingsResponse settingsServiceGetLegalAndSupportSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    String localVarPath = "/v2/settings/legal_support";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SettingsServiceGetLegalAndSupportSettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetLegalAndSupportSettingsResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * Get the lockout settings
-   * Return the lockout settings for the requested context, which define when a user will be locked
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @return SettingsServiceGetLockoutSettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetLockoutSettingsResponse settingsServiceGetLockoutSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetLockoutSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
-  }
-
-
-  /**
-   * Get the lockout settings
-   * Return the lockout settings for the requested context, which define when a user will be locked
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SettingsServiceGetLockoutSettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetLockoutSettingsResponse settingsServiceGetLockoutSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    String localVarPath = "/v2/settings/lockout";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SettingsServiceGetLockoutSettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetLockoutSettingsResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * Get the login settings
-   * Return the settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @return SettingsServiceGetLoginSettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetLoginSettingsResponse settingsServiceGetLoginSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetLoginSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
-  }
-
-
-  /**
-   * Get the login settings
-   * Return the settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SettingsServiceGetLoginSettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetLoginSettingsResponse settingsServiceGetLoginSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    String localVarPath = "/v2/settings/login";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SettingsServiceGetLoginSettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetLoginSettingsResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * Get the password complexity settings
-   * Return the password complexity settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @return SettingsServiceGetPasswordComplexitySettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetPasswordComplexitySettingsResponse settingsServiceGetPasswordComplexitySettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetPasswordComplexitySettings(ctxOrgId, ctxInstance, Collections.emptyMap());
-  }
-
-
-  /**
-   * Get the password complexity settings
-   * Return the password complexity settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SettingsServiceGetPasswordComplexitySettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetPasswordComplexitySettingsResponse settingsServiceGetPasswordComplexitySettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    String localVarPath = "/v2/settings/password/complexity";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SettingsServiceGetPasswordComplexitySettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetPasswordComplexitySettingsResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * Get the password expiry settings
-   * Return the password expiry settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @return SettingsServiceGetPasswordExpirySettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetPasswordExpirySettingsResponse settingsServiceGetPasswordExpirySettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetPasswordExpirySettings(ctxOrgId, ctxInstance, Collections.emptyMap());
-  }
-
-
-  /**
-   * Get the password expiry settings
-   * Return the password expiry settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SettingsServiceGetPasswordExpirySettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetPasswordExpirySettingsResponse settingsServiceGetPasswordExpirySettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    String localVarPath = "/v2/settings/password/expiry";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SettingsServiceGetPasswordExpirySettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetPasswordExpirySettingsResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * Get Security Settings
-   * Returns the security settings of the ZITADEL instance.
-   * @return SettingsServiceGetSecuritySettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetSecuritySettingsResponse settingsServiceGetSecuritySettings() throws ApiException {
-    return this.settingsServiceGetSecuritySettings(Collections.emptyMap());
-  }
-
-
-  /**
-   * Get Security Settings
-   * Returns the security settings of the ZITADEL instance.
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SettingsServiceGetSecuritySettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceGetSecuritySettingsResponse settingsServiceGetSecuritySettings(Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
-    String localVarPath = "/v2/settings/security";
-
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SettingsServiceGetSecuritySettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetSecuritySettingsResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "GET",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  /**
-   * Set Security Settings
-   * Set the security settings of the ZITADEL instance.
-   * @param settingsServiceSetSecuritySettingsRequest  (required)
-   * @return SettingsServiceSetSecuritySettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceSetSecuritySettingsResponse settingsServiceSetSecuritySettings(SettingsServiceSetSecuritySettingsRequest settingsServiceSetSecuritySettingsRequest) throws ApiException {
-    return this.settingsServiceSetSecuritySettings(settingsServiceSetSecuritySettingsRequest, Collections.emptyMap());
-  }
-
-
-  /**
-   * Set Security Settings
-   * Set the security settings of the ZITADEL instance.
-   * @param settingsServiceSetSecuritySettingsRequest  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SettingsServiceSetSecuritySettingsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SettingsServiceSetSecuritySettingsResponse settingsServiceSetSecuritySettings(SettingsServiceSetSecuritySettingsRequest settingsServiceSetSecuritySettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = settingsServiceSetSecuritySettingsRequest;
-    
-    if (settingsServiceSetSecuritySettingsRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'settingsServiceSetSecuritySettingsRequest' when calling settingsServiceSetSecuritySettings");
+    if (actionServiceCreateTargetRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'actionServiceCreateTargetRequest' when calling actionServiceCreateTarget");
     }
     
-    String localVarPath = "/v2/policies/security";
+    String localVarPath = "/v2beta/actions/targets";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -815,10 +97,655 @@ public class SettingsServiceApi extends BaseApi {
 
     String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
 
-    TypeReference<SettingsServiceSetSecuritySettingsResponse> localVarReturnType = new TypeReference<SettingsServiceSetSecuritySettingsResponse>() {};
+    TypeReference<ActionServiceBetaCreateTargetResponse> localVarReturnType = new TypeReference<ActionServiceBetaCreateTargetResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Delete Target
+   * Delete an existing target. This will remove it from any configured execution as well. In case the target is not found, the request will return a successful response as the desired state is already achieved.  Required permission:   - &#x60;action.target.delete&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param id  (required)
+   * @return ActionServiceBetaDeleteTargetResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaDeleteTargetResponse actionServiceDeleteTarget(String id) throws ApiException {
+    return this.actionServiceDeleteTarget(id, Collections.emptyMap());
+  }
+
+
+  /**
+   * Delete Target
+   * Delete an existing target. This will remove it from any configured execution as well. In case the target is not found, the request will return a successful response as the desired state is already achieved.  Required permission:   - &#x60;action.target.delete&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param id  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ActionServiceBetaDeleteTargetResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaDeleteTargetResponse actionServiceDeleteTarget(String id, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    if (id == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'id' when calling actionServiceDeleteTarget");
+    }
+    
+    String localVarPath = "/v2beta/actions/targets/{id}"
+      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(apiClient.parameterToString(id)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<ActionServiceBetaDeleteTargetResponse> localVarReturnType = new TypeReference<ActionServiceBetaDeleteTargetResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "DELETE",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Get Target
+   * Returns the target identified by the requested ID.  Required permission:   - &#x60;action.target.read&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param id  (required)
+   * @return ActionServiceBetaGetTargetResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaGetTargetResponse actionServiceGetTarget(String id) throws ApiException {
+    return this.actionServiceGetTarget(id, Collections.emptyMap());
+  }
+
+
+  /**
+   * Get Target
+   * Returns the target identified by the requested ID.  Required permission:   - &#x60;action.target.read&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param id  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ActionServiceBetaGetTargetResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaGetTargetResponse actionServiceGetTarget(String id, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    if (id == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'id' when calling actionServiceGetTarget");
+    }
+    
+    String localVarPath = "/v2beta/actions/targets/{id}"
+      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(apiClient.parameterToString(id)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<ActionServiceBetaGetTargetResponse> localVarReturnType = new TypeReference<ActionServiceBetaGetTargetResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * List Execution Functions
+   * List all available functions which can be used as condition for executions.
+   * @return ActionServiceBetaListExecutionFunctionsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaListExecutionFunctionsResponse actionServiceListExecutionFunctions() throws ApiException {
+    return this.actionServiceListExecutionFunctions(Collections.emptyMap());
+  }
+
+
+  /**
+   * List Execution Functions
+   * List all available functions which can be used as condition for executions.
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ActionServiceBetaListExecutionFunctionsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaListExecutionFunctionsResponse actionServiceListExecutionFunctions(Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    String localVarPath = "/v2beta/actions/executions/functions";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<ActionServiceBetaListExecutionFunctionsResponse> localVarReturnType = new TypeReference<ActionServiceBetaListExecutionFunctionsResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * List Execution Methods
+   * List all available methods which can be used as condition for executions.
+   * @return ActionServiceBetaListExecutionMethodsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaListExecutionMethodsResponse actionServiceListExecutionMethods() throws ApiException {
+    return this.actionServiceListExecutionMethods(Collections.emptyMap());
+  }
+
+
+  /**
+   * List Execution Methods
+   * List all available methods which can be used as condition for executions.
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ActionServiceBetaListExecutionMethodsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaListExecutionMethodsResponse actionServiceListExecutionMethods(Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    String localVarPath = "/v2beta/actions/executions/methods";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<ActionServiceBetaListExecutionMethodsResponse> localVarReturnType = new TypeReference<ActionServiceBetaListExecutionMethodsResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * List Execution Services
+   * List all available services which can be used as condition for executions.
+   * @return ActionServiceBetaListExecutionServicesResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaListExecutionServicesResponse actionServiceListExecutionServices() throws ApiException {
+    return this.actionServiceListExecutionServices(Collections.emptyMap());
+  }
+
+
+  /**
+   * List Execution Services
+   * List all available services which can be used as condition for executions.
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ActionServiceBetaListExecutionServicesResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaListExecutionServicesResponse actionServiceListExecutionServices(Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    String localVarPath = "/v2beta/actions/executions/services";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<ActionServiceBetaListExecutionServicesResponse> localVarReturnType = new TypeReference<ActionServiceBetaListExecutionServicesResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * List Executions
+   * List all matching executions. By default all executions of the instance are returned that have at least one execution target. Make sure to include a limit and sorting for pagination.  Required permission:   - &#x60;action.execution.read&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param paginationOffset Starting point for retrieval, in combination of offset used to query a set list of objects. (optional)
+   * @param paginationLimit limit is the maximum amount of objects returned. The default is set to 100 with a maximum of 1000 in the runtime configuration. If the limit exceeds the maximum configured ZITADEL will throw an error. If no limit is present the default is taken. (optional)
+   * @param paginationAsc Asc is the sorting order. If true the list is sorted ascending, if false the list is sorted descending. The default is descending. (optional)
+   * @param sortingColumn The field the result is sorted by. The default is the creation date. Beware that if you change this, your result pagination might be inconsistent. (optional, default to EXECUTION_FIELD_NAME_UNSPECIFIED)
+   * @return ActionServiceBetaListExecutionsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaListExecutionsResponse actionServiceListExecutions(String paginationOffset, Long paginationLimit, Boolean paginationAsc, String sortingColumn) throws ApiException {
+    return this.actionServiceListExecutions(paginationOffset, paginationLimit, paginationAsc, sortingColumn, Collections.emptyMap());
+  }
+
+
+  /**
+   * List Executions
+   * List all matching executions. By default all executions of the instance are returned that have at least one execution target. Make sure to include a limit and sorting for pagination.  Required permission:   - &#x60;action.execution.read&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param paginationOffset Starting point for retrieval, in combination of offset used to query a set list of objects. (optional)
+   * @param paginationLimit limit is the maximum amount of objects returned. The default is set to 100 with a maximum of 1000 in the runtime configuration. If the limit exceeds the maximum configured ZITADEL will throw an error. If no limit is present the default is taken. (optional)
+   * @param paginationAsc Asc is the sorting order. If true the list is sorted ascending, if false the list is sorted descending. The default is descending. (optional)
+   * @param sortingColumn The field the result is sorted by. The default is the creation date. Beware that if you change this, your result pagination might be inconsistent. (optional, default to EXECUTION_FIELD_NAME_UNSPECIFIED)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ActionServiceBetaListExecutionsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaListExecutionsResponse actionServiceListExecutions(String paginationOffset, Long paginationLimit, Boolean paginationAsc, String sortingColumn, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    String localVarPath = "/v2beta/actions/executions/_search";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPair("pagination.offset", paginationOffset));
+    localVarQueryParams.addAll(apiClient.parameterToPair("pagination.limit", paginationLimit));
+    localVarQueryParams.addAll(apiClient.parameterToPair("pagination.asc", paginationAsc));
+    localVarQueryParams.addAll(apiClient.parameterToPair("sortingColumn", sortingColumn));
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<ActionServiceBetaListExecutionsResponse> localVarReturnType = new TypeReference<ActionServiceBetaListExecutionsResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * List targets
+   * List all matching targets. By default all targets of the instance are returned. Make sure to include a limit and sorting for pagination.  Required permission:   - &#x60;action.target.read&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param actionServiceListTargetsRequest  (required)
+   * @return ActionServiceBetaListTargetsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaListTargetsResponse actionServiceListTargets(ActionServiceListTargetsRequest actionServiceListTargetsRequest) throws ApiException {
+    return this.actionServiceListTargets(actionServiceListTargetsRequest, Collections.emptyMap());
+  }
+
+
+  /**
+   * List targets
+   * List all matching targets. By default all targets of the instance are returned. Make sure to include a limit and sorting for pagination.  Required permission:   - &#x60;action.target.read&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param actionServiceListTargetsRequest  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ActionServiceBetaListTargetsResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaListTargetsResponse actionServiceListTargets(ActionServiceListTargetsRequest actionServiceListTargetsRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = actionServiceListTargetsRequest;
+    
+    if (actionServiceListTargetsRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'actionServiceListTargetsRequest' when calling actionServiceListTargets");
+    }
+    
+    String localVarPath = "/v2beta/actions/targets/_search";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<ActionServiceBetaListTargetsResponse> localVarReturnType = new TypeReference<ActionServiceBetaListTargetsResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Set Execution
+   * Sets an execution to call a target or include the targets of another execution. Setting an empty list of targets will remove all targets from the execution, making it a noop.  Required permission:   - &#x60;action.execution.write&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param actionServiceSetExecutionRequest  (required)
+   * @return ActionServiceBetaSetExecutionResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaSetExecutionResponse actionServiceSetExecution(ActionServiceSetExecutionRequest actionServiceSetExecutionRequest) throws ApiException {
+    return this.actionServiceSetExecution(actionServiceSetExecutionRequest, Collections.emptyMap());
+  }
+
+
+  /**
+   * Set Execution
+   * Sets an execution to call a target or include the targets of another execution. Setting an empty list of targets will remove all targets from the execution, making it a noop.  Required permission:   - &#x60;action.execution.write&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param actionServiceSetExecutionRequest  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ActionServiceBetaSetExecutionResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaSetExecutionResponse actionServiceSetExecution(ActionServiceSetExecutionRequest actionServiceSetExecutionRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = actionServiceSetExecutionRequest;
+    
+    if (actionServiceSetExecutionRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'actionServiceSetExecutionRequest' when calling actionServiceSetExecution");
+    }
+    
+    String localVarPath = "/v2beta/actions/executions";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<ActionServiceBetaSetExecutionResponse> localVarReturnType = new TypeReference<ActionServiceBetaSetExecutionResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "PUT",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Update Target
+   * Update an existing target. To generate a new signing key set the optional expirationSigningKey.  Required permission:   - &#x60;action.target.write&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param id  (required)
+   * @param actionServiceUpdateTargetRequest  (required)
+   * @return ActionServiceBetaUpdateTargetResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaUpdateTargetResponse actionServiceUpdateTarget(String id, ActionServiceUpdateTargetRequest actionServiceUpdateTargetRequest) throws ApiException {
+    return this.actionServiceUpdateTarget(id, actionServiceUpdateTargetRequest, Collections.emptyMap());
+  }
+
+
+  /**
+   * Update Target
+   * Update an existing target. To generate a new signing key set the optional expirationSigningKey.  Required permission:   - &#x60;action.target.write&#x60;  Required feature flag:   - &#x60;actions&#x60;
+   * @param id  (required)
+   * @param actionServiceUpdateTargetRequest  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ActionServiceBetaUpdateTargetResponse
+   * @throws ApiException if fails to make API call
+   */
+  public ActionServiceBetaUpdateTargetResponse actionServiceUpdateTarget(String id, ActionServiceUpdateTargetRequest actionServiceUpdateTargetRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = actionServiceUpdateTargetRequest;
+    
+    if (id == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'id' when calling actionServiceUpdateTarget");
+    }
+    
+    if (actionServiceUpdateTargetRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'actionServiceUpdateTargetRequest' when calling actionServiceUpdateTarget");
+    }
+    
+    String localVarPath = "/v2beta/actions/targets/{id}"
+      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(apiClient.parameterToString(id)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<ActionServiceBetaUpdateTargetResponse> localVarReturnType = new TypeReference<ActionServiceBetaUpdateTargetResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
