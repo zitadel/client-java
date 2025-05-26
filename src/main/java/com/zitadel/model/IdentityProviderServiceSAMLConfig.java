@@ -36,7 +36,8 @@ import java.util.StringJoiner;
   IdentityProviderServiceSAMLConfig.JSON_PROPERTY_BINDING,
   IdentityProviderServiceSAMLConfig.JSON_PROPERTY_WITH_SIGNED_REQUEST,
   IdentityProviderServiceSAMLConfig.JSON_PROPERTY_NAME_ID_FORMAT,
-  IdentityProviderServiceSAMLConfig.JSON_PROPERTY_TRANSIENT_MAPPING_ATTRIBUTE_NAME
+  IdentityProviderServiceSAMLConfig.JSON_PROPERTY_TRANSIENT_MAPPING_ATTRIBUTE_NAME,
+  IdentityProviderServiceSAMLConfig.JSON_PROPERTY_FEDERATED_LOGOUT_ENABLED
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class IdentityProviderServiceSAMLConfig {
@@ -59,6 +60,10 @@ public class IdentityProviderServiceSAMLConfig {
   public static final String JSON_PROPERTY_TRANSIENT_MAPPING_ATTRIBUTE_NAME = "transientMappingAttributeName";
   @javax.annotation.Nullable
   private String transientMappingAttributeName;
+
+  public static final String JSON_PROPERTY_FEDERATED_LOGOUT_ENABLED = "federatedLogoutEnabled";
+  @javax.annotation.Nullable
+  private Boolean federatedLogoutEnabled;
 
   public IdentityProviderServiceSAMLConfig() {
   }
@@ -188,6 +193,31 @@ public class IdentityProviderServiceSAMLConfig {
     this.transientMappingAttributeName = transientMappingAttributeName;
   }
 
+  public IdentityProviderServiceSAMLConfig federatedLogoutEnabled(@javax.annotation.Nullable Boolean federatedLogoutEnabled) {
+    
+    this.federatedLogoutEnabled = federatedLogoutEnabled;
+    return this;
+  }
+
+  /**
+   * Boolean weather federated logout is enabled. If enabled, ZITADEL will send a logout request to the identity provider, if the user terminates the session in ZITADEL. Be sure to provide a SLO endpoint as part of the metadata.
+   * @return federatedLogoutEnabled
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_FEDERATED_LOGOUT_ENABLED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getFederatedLogoutEnabled() {
+    return federatedLogoutEnabled;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FEDERATED_LOGOUT_ENABLED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFederatedLogoutEnabled(@javax.annotation.Nullable Boolean federatedLogoutEnabled) {
+    this.federatedLogoutEnabled = federatedLogoutEnabled;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -201,12 +231,13 @@ public class IdentityProviderServiceSAMLConfig {
         Objects.equals(this.binding, identityProviderServiceSAMLConfig.binding) &&
         Objects.equals(this.withSignedRequest, identityProviderServiceSAMLConfig.withSignedRequest) &&
         Objects.equals(this.nameIdFormat, identityProviderServiceSAMLConfig.nameIdFormat) &&
-        Objects.equals(this.transientMappingAttributeName, identityProviderServiceSAMLConfig.transientMappingAttributeName);
+        Objects.equals(this.transientMappingAttributeName, identityProviderServiceSAMLConfig.transientMappingAttributeName) &&
+        Objects.equals(this.federatedLogoutEnabled, identityProviderServiceSAMLConfig.federatedLogoutEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(Arrays.hashCode(metadataXml), binding, withSignedRequest, nameIdFormat, transientMappingAttributeName);
+    return Objects.hash(Arrays.hashCode(metadataXml), binding, withSignedRequest, nameIdFormat, transientMappingAttributeName, federatedLogoutEnabled);
   }
 
   @Override
@@ -218,6 +249,7 @@ public class IdentityProviderServiceSAMLConfig {
     sb.append("    withSignedRequest: ").append(toIndentedString(withSignedRequest)).append("\n");
     sb.append("    nameIdFormat: ").append(toIndentedString(nameIdFormat)).append("\n");
     sb.append("    transientMappingAttributeName: ").append(toIndentedString(transientMappingAttributeName)).append("\n");
+    sb.append("    federatedLogoutEnabled: ").append(toIndentedString(federatedLogoutEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -309,6 +341,16 @@ public class IdentityProviderServiceSAMLConfig {
     if (getTransientMappingAttributeName() != null) {
       try {
         joiner.add(String.format("%stransientMappingAttributeName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTransientMappingAttributeName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `federatedLogoutEnabled` to the URL query string
+    if (getFederatedLogoutEnabled() != null) {
+      try {
+        joiner.add(String.format("%sfederatedLogoutEnabled%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFederatedLogoutEnabled()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

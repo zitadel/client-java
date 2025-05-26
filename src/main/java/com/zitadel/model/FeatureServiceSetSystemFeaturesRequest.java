@@ -40,7 +40,6 @@ import java.util.StringJoiner;
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_USER_SCHEMA,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_OIDC_TOKEN_EXCHANGE,
-  FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_ACTIONS,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_IMPROVED_PERFORMANCE,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT,
@@ -69,10 +68,6 @@ public class FeatureServiceSetSystemFeaturesRequest {
   public static final String JSON_PROPERTY_OIDC_TOKEN_EXCHANGE = "oidcTokenExchange";
   @javax.annotation.Nullable
   private Boolean oidcTokenExchange;
-
-  public static final String JSON_PROPERTY_ACTIONS = "actions";
-  @javax.annotation.Nullable
-  private Boolean actions;
 
   public static final String JSON_PROPERTY_IMPROVED_PERFORMANCE = "improvedPerformance";
   @javax.annotation.Nullable
@@ -224,31 +219,6 @@ public class FeatureServiceSetSystemFeaturesRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setOidcTokenExchange(@javax.annotation.Nullable Boolean oidcTokenExchange) {
     this.oidcTokenExchange = oidcTokenExchange;
-  }
-
-  public FeatureServiceSetSystemFeaturesRequest actions(@javax.annotation.Nullable Boolean actions) {
-    
-    this.actions = actions;
-    return this;
-  }
-
-  /**
-   * Actions allow to manage data executions and targets. If the flag is enabled, you&#39;ll be able to use the new API and its features. Note that it is still in an early stage.
-   * @return actions
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ACTIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getActions() {
-    return actions;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ACTIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setActions(@javax.annotation.Nullable Boolean actions) {
-    this.actions = actions;
   }
 
   public FeatureServiceSetSystemFeaturesRequest improvedPerformance(@javax.annotation.Nullable List<FeatureServiceImprovedPerformance> improvedPerformance) {
@@ -423,7 +393,6 @@ public class FeatureServiceSetSystemFeaturesRequest {
         Objects.equals(this.oidcLegacyIntrospection, featureServiceSetSystemFeaturesRequest.oidcLegacyIntrospection) &&
         Objects.equals(this.userSchema, featureServiceSetSystemFeaturesRequest.userSchema) &&
         Objects.equals(this.oidcTokenExchange, featureServiceSetSystemFeaturesRequest.oidcTokenExchange) &&
-        Objects.equals(this.actions, featureServiceSetSystemFeaturesRequest.actions) &&
         Objects.equals(this.improvedPerformance, featureServiceSetSystemFeaturesRequest.improvedPerformance) &&
         Objects.equals(this.oidcSingleV1SessionTermination, featureServiceSetSystemFeaturesRequest.oidcSingleV1SessionTermination) &&
         Objects.equals(this.disableUserTokenEvent, featureServiceSetSystemFeaturesRequest.disableUserTokenEvent) &&
@@ -434,7 +403,7 @@ public class FeatureServiceSetSystemFeaturesRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(loginDefaultOrg, oidcTriggerIntrospectionProjections, oidcLegacyIntrospection, userSchema, oidcTokenExchange, actions, improvedPerformance, oidcSingleV1SessionTermination, disableUserTokenEvent, enableBackChannelLogout, loginV2, permissionCheckV2);
+    return Objects.hash(loginDefaultOrg, oidcTriggerIntrospectionProjections, oidcLegacyIntrospection, userSchema, oidcTokenExchange, improvedPerformance, oidcSingleV1SessionTermination, disableUserTokenEvent, enableBackChannelLogout, loginV2, permissionCheckV2);
   }
 
   @Override
@@ -446,7 +415,6 @@ public class FeatureServiceSetSystemFeaturesRequest {
     sb.append("    oidcLegacyIntrospection: ").append(toIndentedString(oidcLegacyIntrospection)).append("\n");
     sb.append("    userSchema: ").append(toIndentedString(userSchema)).append("\n");
     sb.append("    oidcTokenExchange: ").append(toIndentedString(oidcTokenExchange)).append("\n");
-    sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
     sb.append("    improvedPerformance: ").append(toIndentedString(improvedPerformance)).append("\n");
     sb.append("    oidcSingleV1SessionTermination: ").append(toIndentedString(oidcSingleV1SessionTermination)).append("\n");
     sb.append("    disableUserTokenEvent: ").append(toIndentedString(disableUserTokenEvent)).append("\n");
@@ -544,16 +512,6 @@ public class FeatureServiceSetSystemFeaturesRequest {
     if (getOidcTokenExchange() != null) {
       try {
         joiner.add(String.format("%soidcTokenExchange%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOidcTokenExchange()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `actions` to the URL query string
-    if (getActions() != null) {
-      try {
-        joiner.add(String.format("%sactions%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getActions()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

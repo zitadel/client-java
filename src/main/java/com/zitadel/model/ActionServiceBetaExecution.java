@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.ActionServiceBetaCondition;
-import com.zitadel.model.ActionServiceBetaExecutionTargetType;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,7 +56,7 @@ public class ActionServiceBetaExecution {
 
   public static final String JSON_PROPERTY_TARGETS = "targets";
   @javax.annotation.Nullable
-  private List<ActionServiceBetaExecutionTargetType> targets = new ArrayList<>();
+  private List<String> targets = new ArrayList<>();
 
   public ActionServiceBetaExecution() {
   }
@@ -137,13 +136,13 @@ public class ActionServiceBetaExecution {
     this.changeDate = changeDate;
   }
 
-  public ActionServiceBetaExecution targets(@javax.annotation.Nullable List<ActionServiceBetaExecutionTargetType> targets) {
+  public ActionServiceBetaExecution targets(@javax.annotation.Nullable List<String> targets) {
     
     this.targets = targets;
     return this;
   }
 
-  public ActionServiceBetaExecution addTargetsItem(ActionServiceBetaExecutionTargetType targetsItem) {
+  public ActionServiceBetaExecution addTargetsItem(String targetsItem) {
     if (this.targets == null) {
       this.targets = new ArrayList<>();
     }
@@ -152,21 +151,21 @@ public class ActionServiceBetaExecution {
   }
 
   /**
-   * Ordered list of targets/includes called during the execution.
+   * Ordered list of targets called during the execution.
    * @return targets
    */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TARGETS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<ActionServiceBetaExecutionTargetType> getTargets() {
+  public List<String> getTargets() {
     return targets;
   }
 
 
   @JsonProperty(JSON_PROPERTY_TARGETS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTargets(@javax.annotation.Nullable List<ActionServiceBetaExecutionTargetType> targets) {
+  public void setTargets(@javax.annotation.Nullable List<String> targets) {
     this.targets = targets;
   }
 
@@ -273,9 +272,13 @@ public class ActionServiceBetaExecution {
     // add `targets` to the URL query string
     if (getTargets() != null) {
       for (int i = 0; i < getTargets().size(); i++) {
-        if (getTargets().get(i) != null) {
-          joiner.add(getTargets().get(i).toUrlQueryString(String.format("%stargets%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        try {
+          joiner.add(String.format("%stargets%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getTargets().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
         }
       }
     }
