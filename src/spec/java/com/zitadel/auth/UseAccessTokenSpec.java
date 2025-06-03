@@ -34,7 +34,7 @@ class UseAccessTokenSpec extends BaseTest {
         );
 
         SettingsServiceGetGeneralSettingsResponse response =
-            client.settings.settingsServiceGetGeneralSettings();
+            client.settings.getGeneralSettings(new Object());
         assertNotNull(response);
     }
 
@@ -48,7 +48,7 @@ class UseAccessTokenSpec extends BaseTest {
             "invalid"
         );
 
-        assertThrows(ApiException.class, invalid.settings::settingsServiceGetGeneralSettings
+        assertThrows(ApiException.class, () -> invalid.settings.getGeneralSettings(new Object())
         );
     }
 }

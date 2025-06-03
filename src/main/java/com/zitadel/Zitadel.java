@@ -12,7 +12,6 @@ import java.util.function.Consumer;
 @SuppressFBWarnings("URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD")
 public class Zitadel {
     public final ApiClient apiClient;
-    public final ActionServiceApi actions;
     public final FeatureServiceApi features;
     public final IdentityProviderServiceApi idps;
     public final OidcServiceApi oidc;
@@ -20,7 +19,6 @@ public class Zitadel {
     public final SamlServiceApi saml;
     public final SessionServiceApi sessions;
     public final SettingsServiceApi settings;
-    public final WebKeyServiceApi webkeys;
 
     @SuppressWarnings("unused")
     public final UserServiceApi users;
@@ -40,7 +38,6 @@ public class Zitadel {
             mutateApiClient.accept(this.apiClient);
         }
 
-        this.actions = new ActionServiceApi(apiClient);
         this.features = new FeatureServiceApi(apiClient);
         this.idps = new IdentityProviderServiceApi(apiClient);
         this.oidc = new OidcServiceApi(apiClient);
@@ -49,7 +46,6 @@ public class Zitadel {
         this.sessions = new SessionServiceApi(apiClient);
         this.settings = new SettingsServiceApi(apiClient);
         this.users = new UserServiceApi(apiClient);
-        this.webkeys = new WebKeyServiceApi(apiClient);
     }
 
     /**

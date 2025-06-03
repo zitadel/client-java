@@ -35,7 +35,7 @@ class UseClientCredentialsSpec extends BaseTest {
         );
 
         SettingsServiceGetGeneralSettingsResponse response =
-            client.settings.settingsServiceGetGeneralSettings();
+            client.settings.getGeneralSettings(new Object());
         assertNotNull(response);
     }
 
@@ -50,7 +50,7 @@ class UseClientCredentialsSpec extends BaseTest {
             "invalid"
         );
 
-        assertThrows(RuntimeException.class, invalid.settings::settingsServiceGetGeneralSettings
+        assertThrows(RuntimeException.class, () ->invalid.settings.getGeneralSettings(new Object())
         );
     }
 }

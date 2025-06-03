@@ -58,7 +58,7 @@ class UsePrivateKeySpec extends BaseTest {
             keyFile
         );
 
-        client.settings.settingsServiceGetGeneralSettings();
+        client.settings.getGeneralSettings(new Object());
     }
 
     /**
@@ -71,6 +71,6 @@ class UsePrivateKeySpec extends BaseTest {
             keyFile
         );
 
-        assertThrows(RuntimeException.class, invalid.settings::settingsServiceGetGeneralSettings);
+        assertThrows(RuntimeException.class, () -> invalid.settings.getGeneralSettings(new Object()));
     }
 }
