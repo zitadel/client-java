@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.SessionServiceRequestChallengesOTPEmail;
-import com.zitadel.model.SessionServiceRequestChallengesOTPSMS;
-import com.zitadel.model.SessionServiceRequestChallengesWebAuthN;
+import com.zitadel.model.SessionServiceOTPEmail;
+import com.zitadel.model.SessionServiceOTPSMS;
+import com.zitadel.model.SessionServiceWebAuthN;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -41,20 +41,20 @@ import java.util.StringJoiner;
 public class SessionServiceRequestChallenges {
   public static final String JSON_PROPERTY_WEB_AUTH_N = "webAuthN";
   @javax.annotation.Nullable
-  private SessionServiceRequestChallengesWebAuthN webAuthN;
+  private SessionServiceWebAuthN webAuthN;
 
   public static final String JSON_PROPERTY_OTP_SMS = "otpSms";
   @javax.annotation.Nullable
-  private SessionServiceRequestChallengesOTPSMS otpSms;
+  private SessionServiceOTPSMS otpSms;
 
   public static final String JSON_PROPERTY_OTP_EMAIL = "otpEmail";
   @javax.annotation.Nullable
-  private SessionServiceRequestChallengesOTPEmail otpEmail;
+  private SessionServiceOTPEmail otpEmail;
 
   public SessionServiceRequestChallenges() {
   }
 
-  public SessionServiceRequestChallenges webAuthN(@javax.annotation.Nullable SessionServiceRequestChallengesWebAuthN webAuthN) {
+  public SessionServiceRequestChallenges webAuthN(@javax.annotation.Nullable SessionServiceWebAuthN webAuthN) {
     
     this.webAuthN = webAuthN;
     return this;
@@ -68,18 +68,18 @@ public class SessionServiceRequestChallenges {
   @JsonProperty(JSON_PROPERTY_WEB_AUTH_N)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SessionServiceRequestChallengesWebAuthN getWebAuthN() {
+  public SessionServiceWebAuthN getWebAuthN() {
     return webAuthN;
   }
 
 
   @JsonProperty(JSON_PROPERTY_WEB_AUTH_N)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWebAuthN(@javax.annotation.Nullable SessionServiceRequestChallengesWebAuthN webAuthN) {
+  public void setWebAuthN(@javax.annotation.Nullable SessionServiceWebAuthN webAuthN) {
     this.webAuthN = webAuthN;
   }
 
-  public SessionServiceRequestChallenges otpSms(@javax.annotation.Nullable SessionServiceRequestChallengesOTPSMS otpSms) {
+  public SessionServiceRequestChallenges otpSms(@javax.annotation.Nullable SessionServiceOTPSMS otpSms) {
     
     this.otpSms = otpSms;
     return this;
@@ -93,18 +93,18 @@ public class SessionServiceRequestChallenges {
   @JsonProperty(JSON_PROPERTY_OTP_SMS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SessionServiceRequestChallengesOTPSMS getOtpSms() {
+  public SessionServiceOTPSMS getOtpSms() {
     return otpSms;
   }
 
 
   @JsonProperty(JSON_PROPERTY_OTP_SMS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOtpSms(@javax.annotation.Nullable SessionServiceRequestChallengesOTPSMS otpSms) {
+  public void setOtpSms(@javax.annotation.Nullable SessionServiceOTPSMS otpSms) {
     this.otpSms = otpSms;
   }
 
-  public SessionServiceRequestChallenges otpEmail(@javax.annotation.Nullable SessionServiceRequestChallengesOTPEmail otpEmail) {
+  public SessionServiceRequestChallenges otpEmail(@javax.annotation.Nullable SessionServiceOTPEmail otpEmail) {
     
     this.otpEmail = otpEmail;
     return this;
@@ -118,14 +118,14 @@ public class SessionServiceRequestChallenges {
   @JsonProperty(JSON_PROPERTY_OTP_EMAIL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SessionServiceRequestChallengesOTPEmail getOtpEmail() {
+  public SessionServiceOTPEmail getOtpEmail() {
     return otpEmail;
   }
 
 
   @JsonProperty(JSON_PROPERTY_OTP_EMAIL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOtpEmail(@javax.annotation.Nullable SessionServiceRequestChallengesOTPEmail otpEmail) {
+  public void setOtpEmail(@javax.annotation.Nullable SessionServiceOTPEmail otpEmail) {
     this.otpEmail = otpEmail;
   }
 

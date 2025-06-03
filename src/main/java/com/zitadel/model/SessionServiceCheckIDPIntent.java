@@ -53,7 +53,7 @@ public class SessionServiceCheckIDPIntent {
   }
 
   /**
-   * ID of the idp intent, previously returned on the success response of the IDP callback
+   * Get idpIntentId
    * @return idpIntentId
    */
   @javax.annotation.Nullable
@@ -78,7 +78,7 @@ public class SessionServiceCheckIDPIntent {
   }
 
   /**
-   * token of the idp intent, previously returned on the success response of the IDP callback
+   * Get idpIntentToken
    * @return idpIntentToken
    */
   @javax.annotation.Nullable

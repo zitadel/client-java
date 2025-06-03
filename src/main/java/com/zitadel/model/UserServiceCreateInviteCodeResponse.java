@@ -21,6 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.UserServiceDetails;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -42,7 +46,7 @@ public class UserServiceCreateInviteCodeResponse {
 
   public static final String JSON_PROPERTY_INVITE_CODE = "inviteCode";
   @javax.annotation.Nullable
-  private String inviteCode;
+  private JsonNullable<String> inviteCode = JsonNullable.<String>undefined();
 
   public UserServiceCreateInviteCodeResponse() {
   }
@@ -73,8 +77,8 @@ public class UserServiceCreateInviteCodeResponse {
   }
 
   public UserServiceCreateInviteCodeResponse inviteCode(@javax.annotation.Nullable String inviteCode) {
+    this.inviteCode = JsonNullable.<String>of(inviteCode);
     
-    this.inviteCode = inviteCode;
     return this;
   }
 
@@ -83,18 +87,26 @@ public class UserServiceCreateInviteCodeResponse {
    * @return inviteCode
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INVITE_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getInviteCode() {
-    return inviteCode;
+        return inviteCode.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_INVITE_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInviteCode(@javax.annotation.Nullable String inviteCode) {
+
+  public JsonNullable<String> getInviteCode_JsonNullable() {
+    return inviteCode;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_INVITE_CODE)
+  public void setInviteCode_JsonNullable(JsonNullable<String> inviteCode) {
     this.inviteCode = inviteCode;
+  }
+
+  public void setInviteCode(@javax.annotation.Nullable String inviteCode) {
+    this.inviteCode = JsonNullable.<String>of(inviteCode);
   }
 
   @Override
@@ -107,12 +119,23 @@ public class UserServiceCreateInviteCodeResponse {
     }
     UserServiceCreateInviteCodeResponse userServiceCreateInviteCodeResponse = (UserServiceCreateInviteCodeResponse) o;
     return Objects.equals(this.details, userServiceCreateInviteCodeResponse.details) &&
-        Objects.equals(this.inviteCode, userServiceCreateInviteCodeResponse.inviteCode);
+        equalsNullable(this.inviteCode, userServiceCreateInviteCodeResponse.inviteCode);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(details, inviteCode);
+    return Objects.hash(details, hashCodeNullable(inviteCode));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

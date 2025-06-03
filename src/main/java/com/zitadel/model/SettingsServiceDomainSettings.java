@@ -52,7 +52,7 @@ public class SettingsServiceDomainSettings {
 
   public static final String JSON_PROPERTY_RESOURCE_OWNER_TYPE = "resourceOwnerType";
   @javax.annotation.Nullable
-  private SettingsServiceResourceOwnerType resourceOwnerType = SettingsServiceResourceOwnerType.RESOURCE_OWNER_TYPE_UNSPECIFIED;
+  private SettingsServiceResourceOwnerType resourceOwnerType;
 
   public SettingsServiceDomainSettings() {
   }
@@ -64,7 +64,7 @@ public class SettingsServiceDomainSettings {
   }
 
   /**
-   * the username has to end with the domain of its organization
+   * Get loginNameIncludesDomain
    * @return loginNameIncludesDomain
    */
   @javax.annotation.Nullable
@@ -89,7 +89,7 @@ public class SettingsServiceDomainSettings {
   }
 
   /**
-   * defines if organization domains should be verified upon creation, otherwise will be created already verified
+   * Get requireOrgDomainVerification
    * @return requireOrgDomainVerification
    */
   @javax.annotation.Nullable
@@ -114,7 +114,7 @@ public class SettingsServiceDomainSettings {
   }
 
   /**
-   * defines if the SMTP sender address domain should match an existing domain on the instance
+   * Get smtpSenderAddressMatchesInstanceDomain
    * @return smtpSenderAddressMatchesInstanceDomain
    */
   @javax.annotation.Nullable

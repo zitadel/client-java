@@ -20,6 +20,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -41,7 +45,7 @@ public class FeatureServiceLoginV2 {
 
   public static final String JSON_PROPERTY_BASE_URI = "baseUri";
   @javax.annotation.Nullable
-  private String baseUri;
+  private JsonNullable<String> baseUri = JsonNullable.<String>undefined();
 
   public FeatureServiceLoginV2() {
   }
@@ -72,8 +76,8 @@ public class FeatureServiceLoginV2 {
   }
 
   public FeatureServiceLoginV2 baseUri(@javax.annotation.Nullable String baseUri) {
+    this.baseUri = JsonNullable.<String>of(baseUri);
     
-    this.baseUri = baseUri;
     return this;
   }
 
@@ -82,18 +86,26 @@ public class FeatureServiceLoginV2 {
    * @return baseUri
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_BASE_URI)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getBaseUri() {
-    return baseUri;
+        return baseUri.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_BASE_URI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBaseUri(@javax.annotation.Nullable String baseUri) {
+
+  public JsonNullable<String> getBaseUri_JsonNullable() {
+    return baseUri;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_BASE_URI)
+  public void setBaseUri_JsonNullable(JsonNullable<String> baseUri) {
     this.baseUri = baseUri;
+  }
+
+  public void setBaseUri(@javax.annotation.Nullable String baseUri) {
+    this.baseUri = JsonNullable.<String>of(baseUri);
   }
 
   @Override
@@ -106,12 +118,23 @@ public class FeatureServiceLoginV2 {
     }
     FeatureServiceLoginV2 featureServiceLoginV2 = (FeatureServiceLoginV2) o;
     return Objects.equals(this.required, featureServiceLoginV2.required) &&
-        Objects.equals(this.baseUri, featureServiceLoginV2.baseUri);
+        equalsNullable(this.baseUri, featureServiceLoginV2.baseUri);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(required, baseUri);
+    return Objects.hash(required, hashCodeNullable(baseUri));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -65,11 +65,11 @@ public class SettingsServiceBrandingSettings {
 
   public static final String JSON_PROPERTY_RESOURCE_OWNER_TYPE = "resourceOwnerType";
   @javax.annotation.Nullable
-  private SettingsServiceResourceOwnerType resourceOwnerType = SettingsServiceResourceOwnerType.RESOURCE_OWNER_TYPE_UNSPECIFIED;
+  private SettingsServiceResourceOwnerType resourceOwnerType;
 
   public static final String JSON_PROPERTY_THEME_MODE = "themeMode";
   @javax.annotation.Nullable
-  private SettingsServiceThemeMode themeMode = SettingsServiceThemeMode.THEME_MODE_UNSPECIFIED;
+  private SettingsServiceThemeMode themeMode;
 
   public SettingsServiceBrandingSettings() {
   }
@@ -131,7 +131,7 @@ public class SettingsServiceBrandingSettings {
   }
 
   /**
-   * url to the font used
+   * Get fontUrl
    * @return fontUrl
    */
   @javax.annotation.Nullable
@@ -156,7 +156,7 @@ public class SettingsServiceBrandingSettings {
   }
 
   /**
-   * hides the org suffix on the login form if the scope \&quot;urn:zitadel:iam:org:domain:primary:{domainname}\&quot; is set
+   * hides the org suffix on the login form if the scope \\\&quot;urn:zitadel:iam:org:domain:primary:{domainname}\\\&quot; is set
    * @return hideLoginNameSuffix
    */
   @javax.annotation.Nullable
@@ -181,7 +181,7 @@ public class SettingsServiceBrandingSettings {
   }
 
   /**
-   * boolean to disable the watermark
+   * Get disableWatermark
    * @return disableWatermark
    */
   @javax.annotation.Nullable

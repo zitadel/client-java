@@ -21,6 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.UserServiceDetails;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -48,11 +52,11 @@ public class UserServiceAddHumanUserResponse {
 
   public static final String JSON_PROPERTY_EMAIL_CODE = "emailCode";
   @javax.annotation.Nullable
-  private String emailCode;
+  private JsonNullable<String> emailCode = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_PHONE_CODE = "phoneCode";
   @javax.annotation.Nullable
-  private String phoneCode;
+  private JsonNullable<String> phoneCode = JsonNullable.<String>undefined();
 
   public UserServiceAddHumanUserResponse() {
   }
@@ -108,8 +112,8 @@ public class UserServiceAddHumanUserResponse {
   }
 
   public UserServiceAddHumanUserResponse emailCode(@javax.annotation.Nullable String emailCode) {
+    this.emailCode = JsonNullable.<String>of(emailCode);
     
-    this.emailCode = emailCode;
     return this;
   }
 
@@ -118,23 +122,31 @@ public class UserServiceAddHumanUserResponse {
    * @return emailCode
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EMAIL_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getEmailCode() {
-    return emailCode;
+        return emailCode.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_EMAIL_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmailCode(@javax.annotation.Nullable String emailCode) {
+
+  public JsonNullable<String> getEmailCode_JsonNullable() {
+    return emailCode;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_EMAIL_CODE)
+  public void setEmailCode_JsonNullable(JsonNullable<String> emailCode) {
     this.emailCode = emailCode;
   }
 
+  public void setEmailCode(@javax.annotation.Nullable String emailCode) {
+    this.emailCode = JsonNullable.<String>of(emailCode);
+  }
+
   public UserServiceAddHumanUserResponse phoneCode(@javax.annotation.Nullable String phoneCode) {
+    this.phoneCode = JsonNullable.<String>of(phoneCode);
     
-    this.phoneCode = phoneCode;
     return this;
   }
 
@@ -143,18 +155,26 @@ public class UserServiceAddHumanUserResponse {
    * @return phoneCode
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PHONE_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getPhoneCode() {
-    return phoneCode;
+        return phoneCode.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_PHONE_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPhoneCode(@javax.annotation.Nullable String phoneCode) {
+
+  public JsonNullable<String> getPhoneCode_JsonNullable() {
+    return phoneCode;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_PHONE_CODE)
+  public void setPhoneCode_JsonNullable(JsonNullable<String> phoneCode) {
     this.phoneCode = phoneCode;
+  }
+
+  public void setPhoneCode(@javax.annotation.Nullable String phoneCode) {
+    this.phoneCode = JsonNullable.<String>of(phoneCode);
   }
 
   @Override
@@ -168,13 +188,24 @@ public class UserServiceAddHumanUserResponse {
     UserServiceAddHumanUserResponse userServiceAddHumanUserResponse = (UserServiceAddHumanUserResponse) o;
     return Objects.equals(this.userId, userServiceAddHumanUserResponse.userId) &&
         Objects.equals(this.details, userServiceAddHumanUserResponse.details) &&
-        Objects.equals(this.emailCode, userServiceAddHumanUserResponse.emailCode) &&
-        Objects.equals(this.phoneCode, userServiceAddHumanUserResponse.phoneCode);
+        equalsNullable(this.emailCode, userServiceAddHumanUserResponse.emailCode) &&
+        equalsNullable(this.phoneCode, userServiceAddHumanUserResponse.phoneCode);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, details, emailCode, phoneCode);
+    return Objects.hash(userId, details, hashCodeNullable(emailCode), hashCodeNullable(phoneCode));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -78,7 +78,7 @@ public class SettingsServiceLoginSettings {
 
   public static final String JSON_PROPERTY_PASSKEYS_TYPE = "passkeysType";
   @javax.annotation.Nullable
-  private SettingsServicePasskeysType passkeysType = SettingsServicePasskeysType.PASSKEYS_TYPE_NOT_ALLOWED;
+  private SettingsServicePasskeysType passkeysType;
 
   public static final String JSON_PROPERTY_HIDE_PASSWORD_RESET = "hidePasswordReset";
   @javax.annotation.Nullable
@@ -134,7 +134,7 @@ public class SettingsServiceLoginSettings {
 
   public static final String JSON_PROPERTY_RESOURCE_OWNER_TYPE = "resourceOwnerType";
   @javax.annotation.Nullable
-  private SettingsServiceResourceOwnerType resourceOwnerType = SettingsServiceResourceOwnerType.RESOURCE_OWNER_TYPE_UNSPECIFIED;
+  private SettingsServiceResourceOwnerType resourceOwnerType;
 
   public static final String JSON_PROPERTY_FORCE_MFA_LOCAL_ONLY = "forceMfaLocalOnly";
   @javax.annotation.Nullable
@@ -150,7 +150,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * defines if a user is allowed to log in with username and password
+   * Get allowUsernamePassword
    * @return allowUsernamePassword
    */
   @javax.annotation.Nullable
@@ -175,7 +175,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * defines if a person is allowed to register a user on this organization
+   * Get allowRegister
    * @return allowRegister
    */
   @javax.annotation.Nullable
@@ -200,7 +200,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * defines if a user is allowed to add a defined identity provider. E.g. Google auth
+   * Get allowExternalIdp
    * @return allowExternalIdp
    */
   @javax.annotation.Nullable
@@ -225,7 +225,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * defines if a user MUST use a multi-factor to log in
+   * Get forceMfa
    * @return forceMfa
    */
   @javax.annotation.Nullable
@@ -275,7 +275,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * defines if password reset link should be shown in the login screen
+   * Get hidePasswordReset
    * @return hidePasswordReset
    */
   @javax.annotation.Nullable
@@ -300,7 +300,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * defines if unknown username on login screen directly returns an error or always displays the password screen
+   * Get ignoreUnknownUsernames
    * @return ignoreUnknownUsernames
    */
   @javax.annotation.Nullable
@@ -325,7 +325,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * defines where the user will be redirected to if the login is started without app context (e.g. from mail)
+   * Get defaultRedirectUri
    * @return defaultRedirectUri
    */
   @javax.annotation.Nullable
@@ -350,7 +350,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Defines after how much time the user has to re-authenticate with the password.
+   * A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like \&quot;day\&quot;  or \&quot;month\&quot;. It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start &#x3D; ...;      Timestamp end &#x3D; ...;      Duration duration &#x3D; ...;       duration.seconds &#x3D; end.seconds - start.seconds;      duration.nanos &#x3D; end.nanos - start.nanos;       if (duration.seconds &lt; 0 &amp;&amp; duration.nanos &gt; 0) {        duration.seconds +&#x3D; 1;        duration.nanos -&#x3D; 1000000000;      } else if (duration.seconds &gt; 0 &amp;&amp; duration.nanos &lt; 0) {        duration.seconds -&#x3D; 1;        duration.nanos +&#x3D; 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start &#x3D; ...;      Duration duration &#x3D; ...;      Timestamp end &#x3D; ...;       end.seconds &#x3D; start.seconds + duration.seconds;      end.nanos &#x3D; start.nanos + duration.nanos;       if (end.nanos &lt; 0) {        end.seconds -&#x3D; 1;        end.nanos +&#x3D; 1000000000;      } else if (end.nanos &gt;&#x3D; 1000000000) {        end.seconds +&#x3D; 1;        end.nanos -&#x3D; 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td &#x3D; datetime.timedelta(days&#x3D;3, minutes&#x3D;10)      duration &#x3D; Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix \&quot;s\&quot; (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as \&quot;3s\&quot;, while 3 seconds and 1 nanosecond should  be expressed in JSON format as \&quot;3.000000001s\&quot;, and 3 seconds and 1  microsecond should be expressed in JSON format as \&quot;3.000001s\&quot;.
    * @return passwordCheckLifetime
    */
   @javax.annotation.Nullable
@@ -375,7 +375,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Defines after how much time the user has to re-authenticate with an external provider.
+   * A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like \&quot;day\&quot;  or \&quot;month\&quot;. It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start &#x3D; ...;      Timestamp end &#x3D; ...;      Duration duration &#x3D; ...;       duration.seconds &#x3D; end.seconds - start.seconds;      duration.nanos &#x3D; end.nanos - start.nanos;       if (duration.seconds &lt; 0 &amp;&amp; duration.nanos &gt; 0) {        duration.seconds +&#x3D; 1;        duration.nanos -&#x3D; 1000000000;      } else if (duration.seconds &gt; 0 &amp;&amp; duration.nanos &lt; 0) {        duration.seconds -&#x3D; 1;        duration.nanos +&#x3D; 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start &#x3D; ...;      Duration duration &#x3D; ...;      Timestamp end &#x3D; ...;       end.seconds &#x3D; start.seconds + duration.seconds;      end.nanos &#x3D; start.nanos + duration.nanos;       if (end.nanos &lt; 0) {        end.seconds -&#x3D; 1;        end.nanos +&#x3D; 1000000000;      } else if (end.nanos &gt;&#x3D; 1000000000) {        end.seconds +&#x3D; 1;        end.nanos -&#x3D; 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td &#x3D; datetime.timedelta(days&#x3D;3, minutes&#x3D;10)      duration &#x3D; Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix \&quot;s\&quot; (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as \&quot;3s\&quot;, while 3 seconds and 1 nanosecond should  be expressed in JSON format as \&quot;3.000000001s\&quot;, and 3 seconds and 1  microsecond should be expressed in JSON format as \&quot;3.000001s\&quot;.
    * @return externalLoginCheckLifetime
    */
   @javax.annotation.Nullable
@@ -400,7 +400,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Defines after how much time the mfa prompt will be shown again.
+   * A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like \&quot;day\&quot;  or \&quot;month\&quot;. It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start &#x3D; ...;      Timestamp end &#x3D; ...;      Duration duration &#x3D; ...;       duration.seconds &#x3D; end.seconds - start.seconds;      duration.nanos &#x3D; end.nanos - start.nanos;       if (duration.seconds &lt; 0 &amp;&amp; duration.nanos &gt; 0) {        duration.seconds +&#x3D; 1;        duration.nanos -&#x3D; 1000000000;      } else if (duration.seconds &gt; 0 &amp;&amp; duration.nanos &lt; 0) {        duration.seconds -&#x3D; 1;        duration.nanos +&#x3D; 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start &#x3D; ...;      Duration duration &#x3D; ...;      Timestamp end &#x3D; ...;       end.seconds &#x3D; start.seconds + duration.seconds;      end.nanos &#x3D; start.nanos + duration.nanos;       if (end.nanos &lt; 0) {        end.seconds -&#x3D; 1;        end.nanos +&#x3D; 1000000000;      } else if (end.nanos &gt;&#x3D; 1000000000) {        end.seconds +&#x3D; 1;        end.nanos -&#x3D; 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td &#x3D; datetime.timedelta(days&#x3D;3, minutes&#x3D;10)      duration &#x3D; Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix \&quot;s\&quot; (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as \&quot;3s\&quot;, while 3 seconds and 1 nanosecond should  be expressed in JSON format as \&quot;3.000000001s\&quot;, and 3 seconds and 1  microsecond should be expressed in JSON format as \&quot;3.000001s\&quot;.
    * @return mfaInitSkipLifetime
    */
   @javax.annotation.Nullable
@@ -425,7 +425,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Defines after how long the second factor check is valid.
+   * A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like \&quot;day\&quot;  or \&quot;month\&quot;. It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start &#x3D; ...;      Timestamp end &#x3D; ...;      Duration duration &#x3D; ...;       duration.seconds &#x3D; end.seconds - start.seconds;      duration.nanos &#x3D; end.nanos - start.nanos;       if (duration.seconds &lt; 0 &amp;&amp; duration.nanos &gt; 0) {        duration.seconds +&#x3D; 1;        duration.nanos -&#x3D; 1000000000;      } else if (duration.seconds &gt; 0 &amp;&amp; duration.nanos &lt; 0) {        duration.seconds -&#x3D; 1;        duration.nanos +&#x3D; 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start &#x3D; ...;      Duration duration &#x3D; ...;      Timestamp end &#x3D; ...;       end.seconds &#x3D; start.seconds + duration.seconds;      end.nanos &#x3D; start.nanos + duration.nanos;       if (end.nanos &lt; 0) {        end.seconds -&#x3D; 1;        end.nanos +&#x3D; 1000000000;      } else if (end.nanos &gt;&#x3D; 1000000000) {        end.seconds +&#x3D; 1;        end.nanos -&#x3D; 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td &#x3D; datetime.timedelta(days&#x3D;3, minutes&#x3D;10)      duration &#x3D; Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix \&quot;s\&quot; (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as \&quot;3s\&quot;, while 3 seconds and 1 nanosecond should  be expressed in JSON format as \&quot;3.000000001s\&quot;, and 3 seconds and 1  microsecond should be expressed in JSON format as \&quot;3.000001s\&quot;.
    * @return secondFactorCheckLifetime
    */
   @javax.annotation.Nullable
@@ -450,7 +450,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Defines how long the multi-factor check is valid.
+   * A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like \&quot;day\&quot;  or \&quot;month\&quot;. It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start &#x3D; ...;      Timestamp end &#x3D; ...;      Duration duration &#x3D; ...;       duration.seconds &#x3D; end.seconds - start.seconds;      duration.nanos &#x3D; end.nanos - start.nanos;       if (duration.seconds &lt; 0 &amp;&amp; duration.nanos &gt; 0) {        duration.seconds +&#x3D; 1;        duration.nanos -&#x3D; 1000000000;      } else if (duration.seconds &gt; 0 &amp;&amp; duration.nanos &lt; 0) {        duration.seconds -&#x3D; 1;        duration.nanos +&#x3D; 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start &#x3D; ...;      Duration duration &#x3D; ...;      Timestamp end &#x3D; ...;       end.seconds &#x3D; start.seconds + duration.seconds;      end.nanos &#x3D; start.nanos + duration.nanos;       if (end.nanos &lt; 0) {        end.seconds -&#x3D; 1;        end.nanos +&#x3D; 1000000000;      } else if (end.nanos &gt;&#x3D; 1000000000) {        end.seconds +&#x3D; 1;        end.nanos -&#x3D; 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td &#x3D; datetime.timedelta(days&#x3D;3, minutes&#x3D;10)      duration &#x3D; Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix \&quot;s\&quot; (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as \&quot;3s\&quot;, while 3 seconds and 1 nanosecond should  be expressed in JSON format as \&quot;3.000000001s\&quot;, and 3 seconds and 1  microsecond should be expressed in JSON format as \&quot;3.000001s\&quot;.
    * @return multiFactorCheckLifetime
    */
   @javax.annotation.Nullable
@@ -566,7 +566,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * defines if the user can additionally (to the login name) be identified by their verified email address
+   * Get disableLoginWithEmail
    * @return disableLoginWithEmail
    */
   @javax.annotation.Nullable
@@ -591,7 +591,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * defines if the user can additionally (to the login name) be identified by their verified phone number
+   * Get disableLoginWithPhone
    * @return disableLoginWithPhone
    */
   @javax.annotation.Nullable
@@ -641,7 +641,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * if activated, only local authenticated users are forced to use MFA. Authentication through IDPs won&#39;t prompt a MFA step in the login.
+   * Get forceMfaLocalOnly
    * @return forceMfaLocalOnly
    */
   @javax.annotation.Nullable

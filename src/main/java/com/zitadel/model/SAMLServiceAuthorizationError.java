@@ -21,6 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.SAMLServiceErrorReason;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -38,11 +42,11 @@ import java.util.StringJoiner;
 public class SAMLServiceAuthorizationError {
   public static final String JSON_PROPERTY_ERROR = "error";
   @javax.annotation.Nullable
-  private SAMLServiceErrorReason error = SAMLServiceErrorReason.ERROR_REASON_UNSPECIFIED;
+  private SAMLServiceErrorReason error;
 
   public static final String JSON_PROPERTY_ERROR_DESCRIPTION = "errorDescription";
   @javax.annotation.Nullable
-  private String errorDescription;
+  private JsonNullable<String> errorDescription = JsonNullable.<String>undefined();
 
   public SAMLServiceAuthorizationError() {
   }
@@ -73,8 +77,8 @@ public class SAMLServiceAuthorizationError {
   }
 
   public SAMLServiceAuthorizationError errorDescription(@javax.annotation.Nullable String errorDescription) {
+    this.errorDescription = JsonNullable.<String>of(errorDescription);
     
-    this.errorDescription = errorDescription;
     return this;
   }
 
@@ -83,18 +87,26 @@ public class SAMLServiceAuthorizationError {
    * @return errorDescription
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getErrorDescription() {
-    return errorDescription;
+        return errorDescription.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorDescription(@javax.annotation.Nullable String errorDescription) {
+
+  public JsonNullable<String> getErrorDescription_JsonNullable() {
+    return errorDescription;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
+  public void setErrorDescription_JsonNullable(JsonNullable<String> errorDescription) {
     this.errorDescription = errorDescription;
+  }
+
+  public void setErrorDescription(@javax.annotation.Nullable String errorDescription) {
+    this.errorDescription = JsonNullable.<String>of(errorDescription);
   }
 
   @Override
@@ -107,12 +119,23 @@ public class SAMLServiceAuthorizationError {
     }
     SAMLServiceAuthorizationError saMLServiceAuthorizationError = (SAMLServiceAuthorizationError) o;
     return Objects.equals(this.error, saMLServiceAuthorizationError.error) &&
-        Objects.equals(this.errorDescription, saMLServiceAuthorizationError.errorDescription);
+        equalsNullable(this.errorDescription, saMLServiceAuthorizationError.errorDescription);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(error, errorDescription);
+    return Objects.hash(error, hashCodeNullable(errorDescription));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

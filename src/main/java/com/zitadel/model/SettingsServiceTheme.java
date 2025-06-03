@@ -123,7 +123,7 @@ public class SettingsServiceTheme {
   }
 
   /**
-   * hex value for warn color
+   * hex value for warning color
    * @return warnColor
    */
   @javax.annotation.Nullable
@@ -173,7 +173,7 @@ public class SettingsServiceTheme {
   }
 
   /**
-   * url to the logo
+   * url where the logo is served
    * @return logoUrl
    */
   @javax.annotation.Nullable
@@ -198,7 +198,7 @@ public class SettingsServiceTheme {
   }
 
   /**
-   * url to the icon
+   * url where the icon is served
    * @return iconUrl
    */
   @javax.annotation.Nullable

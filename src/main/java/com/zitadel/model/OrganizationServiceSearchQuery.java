@@ -20,10 +20,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.DefaultQuery;
+import com.zitadel.model.DomainQuery;
+import com.zitadel.model.IdQuery;
+import com.zitadel.model.NameQuery;
 import com.zitadel.model.OrganizationServiceOrganizationDomainQuery;
 import com.zitadel.model.OrganizationServiceOrganizationIDQuery;
 import com.zitadel.model.OrganizationServiceOrganizationNameQuery;
 import com.zitadel.model.OrganizationServiceOrganizationStateQuery;
+import com.zitadel.model.StateQuery1;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -34,138 +39,38 @@ import java.util.StringJoiner;
  * OrganizationServiceSearchQuery
  */
 @JsonPropertyOrder({
-  OrganizationServiceSearchQuery.JSON_PROPERTY_NAME_QUERY,
+  OrganizationServiceSearchQuery.JSON_PROPERTY_DEFAULT_QUERY,
   OrganizationServiceSearchQuery.JSON_PROPERTY_DOMAIN_QUERY,
-  OrganizationServiceSearchQuery.JSON_PROPERTY_STATE_QUERY,
   OrganizationServiceSearchQuery.JSON_PROPERTY_ID_QUERY,
-  OrganizationServiceSearchQuery.JSON_PROPERTY_DEFAULT_QUERY
+  OrganizationServiceSearchQuery.JSON_PROPERTY_NAME_QUERY,
+  OrganizationServiceSearchQuery.JSON_PROPERTY_STATE_QUERY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class OrganizationServiceSearchQuery {
-  public static final String JSON_PROPERTY_NAME_QUERY = "nameQuery";
-  @javax.annotation.Nullable
-  private OrganizationServiceOrganizationNameQuery nameQuery;
+  public static final String JSON_PROPERTY_DEFAULT_QUERY = "defaultQuery";
+  @javax.annotation.Nonnull
+  private Object defaultQuery;
 
   public static final String JSON_PROPERTY_DOMAIN_QUERY = "domainQuery";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private OrganizationServiceOrganizationDomainQuery domainQuery;
 
-  public static final String JSON_PROPERTY_STATE_QUERY = "stateQuery";
-  @javax.annotation.Nullable
-  private OrganizationServiceOrganizationStateQuery stateQuery;
-
   public static final String JSON_PROPERTY_ID_QUERY = "idQuery";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private OrganizationServiceOrganizationIDQuery idQuery;
 
-  public static final String JSON_PROPERTY_DEFAULT_QUERY = "defaultQuery";
-  @javax.annotation.Nullable
-  private Object defaultQuery;
+  public static final String JSON_PROPERTY_NAME_QUERY = "nameQuery";
+  @javax.annotation.Nonnull
+  private OrganizationServiceOrganizationNameQuery nameQuery;
+
+  public static final String JSON_PROPERTY_STATE_QUERY = "stateQuery";
+  @javax.annotation.Nonnull
+  private OrganizationServiceOrganizationStateQuery stateQuery;
 
   public OrganizationServiceSearchQuery() {
   }
 
-  public OrganizationServiceSearchQuery nameQuery(@javax.annotation.Nullable OrganizationServiceOrganizationNameQuery nameQuery) {
-    
-    this.nameQuery = nameQuery;
-    return this;
-  }
-
-  /**
-   * Get nameQuery
-   * @return nameQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public OrganizationServiceOrganizationNameQuery getNameQuery() {
-    return nameQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNameQuery(@javax.annotation.Nullable OrganizationServiceOrganizationNameQuery nameQuery) {
-    this.nameQuery = nameQuery;
-  }
-
-  public OrganizationServiceSearchQuery domainQuery(@javax.annotation.Nullable OrganizationServiceOrganizationDomainQuery domainQuery) {
-    
-    this.domainQuery = domainQuery;
-    return this;
-  }
-
-  /**
-   * Get domainQuery
-   * @return domainQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DOMAIN_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public OrganizationServiceOrganizationDomainQuery getDomainQuery() {
-    return domainQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DOMAIN_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDomainQuery(@javax.annotation.Nullable OrganizationServiceOrganizationDomainQuery domainQuery) {
-    this.domainQuery = domainQuery;
-  }
-
-  public OrganizationServiceSearchQuery stateQuery(@javax.annotation.Nullable OrganizationServiceOrganizationStateQuery stateQuery) {
-    
-    this.stateQuery = stateQuery;
-    return this;
-  }
-
-  /**
-   * Get stateQuery
-   * @return stateQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STATE_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public OrganizationServiceOrganizationStateQuery getStateQuery() {
-    return stateQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_STATE_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStateQuery(@javax.annotation.Nullable OrganizationServiceOrganizationStateQuery stateQuery) {
-    this.stateQuery = stateQuery;
-  }
-
-  public OrganizationServiceSearchQuery idQuery(@javax.annotation.Nullable OrganizationServiceOrganizationIDQuery idQuery) {
-    
-    this.idQuery = idQuery;
-    return this;
-  }
-
-  /**
-   * Get idQuery
-   * @return idQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ID_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public OrganizationServiceOrganizationIDQuery getIdQuery() {
-    return idQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ID_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIdQuery(@javax.annotation.Nullable OrganizationServiceOrganizationIDQuery idQuery) {
-    this.idQuery = idQuery;
-  }
-
-  public OrganizationServiceSearchQuery defaultQuery(@javax.annotation.Nullable Object defaultQuery) {
+  public OrganizationServiceSearchQuery defaultQuery(@javax.annotation.Nonnull Object defaultQuery) {
     
     this.defaultQuery = defaultQuery;
     return this;
@@ -175,9 +80,9 @@ public class OrganizationServiceSearchQuery {
    * Get defaultQuery
    * @return defaultQuery
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_DEFAULT_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getDefaultQuery() {
     return defaultQuery;
@@ -185,9 +90,109 @@ public class OrganizationServiceSearchQuery {
 
 
   @JsonProperty(JSON_PROPERTY_DEFAULT_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultQuery(@javax.annotation.Nullable Object defaultQuery) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDefaultQuery(@javax.annotation.Nonnull Object defaultQuery) {
     this.defaultQuery = defaultQuery;
+  }
+
+  public OrganizationServiceSearchQuery domainQuery(@javax.annotation.Nonnull OrganizationServiceOrganizationDomainQuery domainQuery) {
+    
+    this.domainQuery = domainQuery;
+    return this;
+  }
+
+  /**
+   * Get domainQuery
+   * @return domainQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_DOMAIN_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public OrganizationServiceOrganizationDomainQuery getDomainQuery() {
+    return domainQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DOMAIN_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDomainQuery(@javax.annotation.Nonnull OrganizationServiceOrganizationDomainQuery domainQuery) {
+    this.domainQuery = domainQuery;
+  }
+
+  public OrganizationServiceSearchQuery idQuery(@javax.annotation.Nonnull OrganizationServiceOrganizationIDQuery idQuery) {
+    
+    this.idQuery = idQuery;
+    return this;
+  }
+
+  /**
+   * Get idQuery
+   * @return idQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ID_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public OrganizationServiceOrganizationIDQuery getIdQuery() {
+    return idQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ID_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setIdQuery(@javax.annotation.Nonnull OrganizationServiceOrganizationIDQuery idQuery) {
+    this.idQuery = idQuery;
+  }
+
+  public OrganizationServiceSearchQuery nameQuery(@javax.annotation.Nonnull OrganizationServiceOrganizationNameQuery nameQuery) {
+    
+    this.nameQuery = nameQuery;
+    return this;
+  }
+
+  /**
+   * Get nameQuery
+   * @return nameQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public OrganizationServiceOrganizationNameQuery getNameQuery() {
+    return nameQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setNameQuery(@javax.annotation.Nonnull OrganizationServiceOrganizationNameQuery nameQuery) {
+    this.nameQuery = nameQuery;
+  }
+
+  public OrganizationServiceSearchQuery stateQuery(@javax.annotation.Nonnull OrganizationServiceOrganizationStateQuery stateQuery) {
+    
+    this.stateQuery = stateQuery;
+    return this;
+  }
+
+  /**
+   * Get stateQuery
+   * @return stateQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_STATE_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public OrganizationServiceOrganizationStateQuery getStateQuery() {
+    return stateQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_STATE_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setStateQuery(@javax.annotation.Nonnull OrganizationServiceOrganizationStateQuery stateQuery) {
+    this.stateQuery = stateQuery;
   }
 
   @Override
@@ -199,27 +204,27 @@ public class OrganizationServiceSearchQuery {
       return false;
     }
     OrganizationServiceSearchQuery organizationServiceSearchQuery = (OrganizationServiceSearchQuery) o;
-    return Objects.equals(this.nameQuery, organizationServiceSearchQuery.nameQuery) &&
+    return Objects.equals(this.defaultQuery, organizationServiceSearchQuery.defaultQuery) &&
         Objects.equals(this.domainQuery, organizationServiceSearchQuery.domainQuery) &&
-        Objects.equals(this.stateQuery, organizationServiceSearchQuery.stateQuery) &&
         Objects.equals(this.idQuery, organizationServiceSearchQuery.idQuery) &&
-        Objects.equals(this.defaultQuery, organizationServiceSearchQuery.defaultQuery);
+        Objects.equals(this.nameQuery, organizationServiceSearchQuery.nameQuery) &&
+        Objects.equals(this.stateQuery, organizationServiceSearchQuery.stateQuery);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(nameQuery, domainQuery, stateQuery, idQuery, defaultQuery);
+    return Objects.hash(defaultQuery, domainQuery, idQuery, nameQuery, stateQuery);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrganizationServiceSearchQuery {\n");
-    sb.append("    nameQuery: ").append(toIndentedString(nameQuery)).append("\n");
-    sb.append("    domainQuery: ").append(toIndentedString(domainQuery)).append("\n");
-    sb.append("    stateQuery: ").append(toIndentedString(stateQuery)).append("\n");
-    sb.append("    idQuery: ").append(toIndentedString(idQuery)).append("\n");
     sb.append("    defaultQuery: ").append(toIndentedString(defaultQuery)).append("\n");
+    sb.append("    domainQuery: ").append(toIndentedString(domainQuery)).append("\n");
+    sb.append("    idQuery: ").append(toIndentedString(idQuery)).append("\n");
+    sb.append("    nameQuery: ").append(toIndentedString(nameQuery)).append("\n");
+    sb.append("    stateQuery: ").append(toIndentedString(stateQuery)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -266,6 +271,36 @@ public class OrganizationServiceSearchQuery {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `defaultQuery` to the URL query string
+    if (getDefaultQuery() != null) {
+      try {
+        joiner.add(String.format("%sdefaultQuery%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDefaultQuery()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `domainQuery` to the URL query string
+    if (getDomainQuery() != null) {
+      joiner.add(getDomainQuery().toUrlQueryString(prefix + "domainQuery" + suffix));
+    }
+
+    // add `idQuery` to the URL query string
+    if (getIdQuery() != null) {
+      joiner.add(getIdQuery().toUrlQueryString(prefix + "idQuery" + suffix));
+    }
+
+    // add `nameQuery` to the URL query string
+    if (getNameQuery() != null) {
+      joiner.add(getNameQuery().toUrlQueryString(prefix + "nameQuery" + suffix));
+    }
+
+    // add `stateQuery` to the URL query string
+    if (getStateQuery() != null) {
+      joiner.add(getStateQuery().toUrlQueryString(prefix + "stateQuery" + suffix));
+    }
 
     return joiner.toString();
   }

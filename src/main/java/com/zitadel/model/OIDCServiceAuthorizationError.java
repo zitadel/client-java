@@ -21,6 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.OIDCServiceErrorReason;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -39,15 +43,15 @@ import java.util.StringJoiner;
 public class OIDCServiceAuthorizationError {
   public static final String JSON_PROPERTY_ERROR = "error";
   @javax.annotation.Nullable
-  private OIDCServiceErrorReason error = OIDCServiceErrorReason.ERROR_REASON_UNSPECIFIED;
+  private OIDCServiceErrorReason error;
 
   public static final String JSON_PROPERTY_ERROR_DESCRIPTION = "errorDescription";
   @javax.annotation.Nullable
-  private String errorDescription;
+  private JsonNullable<String> errorDescription = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_ERROR_URI = "errorUri";
   @javax.annotation.Nullable
-  private String errorUri;
+  private JsonNullable<String> errorUri = JsonNullable.<String>undefined();
 
   public OIDCServiceAuthorizationError() {
   }
@@ -78,8 +82,8 @@ public class OIDCServiceAuthorizationError {
   }
 
   public OIDCServiceAuthorizationError errorDescription(@javax.annotation.Nullable String errorDescription) {
+    this.errorDescription = JsonNullable.<String>of(errorDescription);
     
-    this.errorDescription = errorDescription;
     return this;
   }
 
@@ -88,23 +92,31 @@ public class OIDCServiceAuthorizationError {
    * @return errorDescription
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getErrorDescription() {
-    return errorDescription;
+        return errorDescription.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorDescription(@javax.annotation.Nullable String errorDescription) {
+
+  public JsonNullable<String> getErrorDescription_JsonNullable() {
+    return errorDescription;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
+  public void setErrorDescription_JsonNullable(JsonNullable<String> errorDescription) {
     this.errorDescription = errorDescription;
   }
 
+  public void setErrorDescription(@javax.annotation.Nullable String errorDescription) {
+    this.errorDescription = JsonNullable.<String>of(errorDescription);
+  }
+
   public OIDCServiceAuthorizationError errorUri(@javax.annotation.Nullable String errorUri) {
+    this.errorUri = JsonNullable.<String>of(errorUri);
     
-    this.errorUri = errorUri;
     return this;
   }
 
@@ -113,18 +125,26 @@ public class OIDCServiceAuthorizationError {
    * @return errorUri
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ERROR_URI)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getErrorUri() {
-    return errorUri;
+        return errorUri.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_ERROR_URI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorUri(@javax.annotation.Nullable String errorUri) {
+
+  public JsonNullable<String> getErrorUri_JsonNullable() {
+    return errorUri;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_ERROR_URI)
+  public void setErrorUri_JsonNullable(JsonNullable<String> errorUri) {
     this.errorUri = errorUri;
+  }
+
+  public void setErrorUri(@javax.annotation.Nullable String errorUri) {
+    this.errorUri = JsonNullable.<String>of(errorUri);
   }
 
   @Override
@@ -137,13 +157,24 @@ public class OIDCServiceAuthorizationError {
     }
     OIDCServiceAuthorizationError oiDCServiceAuthorizationError = (OIDCServiceAuthorizationError) o;
     return Objects.equals(this.error, oiDCServiceAuthorizationError.error) &&
-        Objects.equals(this.errorDescription, oiDCServiceAuthorizationError.errorDescription) &&
-        Objects.equals(this.errorUri, oiDCServiceAuthorizationError.errorUri);
+        equalsNullable(this.errorDescription, oiDCServiceAuthorizationError.errorDescription) &&
+        equalsNullable(this.errorUri, oiDCServiceAuthorizationError.errorUri);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(error, errorDescription, errorUri);
+    return Objects.hash(error, hashCodeNullable(errorDescription), hashCodeNullable(errorUri));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -8,17 +8,25 @@ import com.zitadel.BaseApi;
 import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
+import com.zitadel.model.SettingsServiceConnectError;
+import com.zitadel.model.SettingsServiceGetActiveIdentityProvidersRequest;
 import com.zitadel.model.SettingsServiceGetActiveIdentityProvidersResponse;
+import com.zitadel.model.SettingsServiceGetBrandingSettingsRequest;
 import com.zitadel.model.SettingsServiceGetBrandingSettingsResponse;
+import com.zitadel.model.SettingsServiceGetDomainSettingsRequest;
 import com.zitadel.model.SettingsServiceGetDomainSettingsResponse;
 import com.zitadel.model.SettingsServiceGetGeneralSettingsResponse;
+import com.zitadel.model.SettingsServiceGetLegalAndSupportSettingsRequest;
 import com.zitadel.model.SettingsServiceGetLegalAndSupportSettingsResponse;
+import com.zitadel.model.SettingsServiceGetLockoutSettingsRequest;
 import com.zitadel.model.SettingsServiceGetLockoutSettingsResponse;
+import com.zitadel.model.SettingsServiceGetLoginSettingsRequest;
 import com.zitadel.model.SettingsServiceGetLoginSettingsResponse;
+import com.zitadel.model.SettingsServiceGetPasswordComplexitySettingsRequest;
 import com.zitadel.model.SettingsServiceGetPasswordComplexitySettingsResponse;
+import com.zitadel.model.SettingsServiceGetPasswordExpirySettingsRequest;
 import com.zitadel.model.SettingsServiceGetPasswordExpirySettingsResponse;
 import com.zitadel.model.SettingsServiceGetSecuritySettingsResponse;
-import com.zitadel.model.SettingsServiceRpcStatus;
 import com.zitadel.model.SettingsServiceSetSecuritySettingsRequest;
 import com.zitadel.model.SettingsServiceSetSecuritySettingsResponse;
 
@@ -42,39 +50,33 @@ public class SettingsServiceApi extends BaseApi {
   }
 
   /**
+   * GetActiveIdentityProviders
    * Get the current active identity providers
-   * Return the current active identity providers for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @param creationAllowed  (optional)
-   * @param linkingAllowed  (optional)
-   * @param autoCreation  (optional)
-   * @param autoLinking  (optional)
+   * @param settingsServiceGetActiveIdentityProvidersRequest  (required)
    * @return SettingsServiceGetActiveIdentityProvidersResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetActiveIdentityProvidersResponse settingsServiceGetActiveIdentityProviders(String ctxOrgId, Boolean ctxInstance, Boolean creationAllowed, Boolean linkingAllowed, Boolean autoCreation, Boolean autoLinking) throws ApiException {
-    return this.settingsServiceGetActiveIdentityProviders(ctxOrgId, ctxInstance, creationAllowed, linkingAllowed, autoCreation, autoLinking, Collections.emptyMap());
+  public SettingsServiceGetActiveIdentityProvidersResponse getActiveIdentityProviders(SettingsServiceGetActiveIdentityProvidersRequest settingsServiceGetActiveIdentityProvidersRequest) throws ApiException {
+    return this.getActiveIdentityProviders(settingsServiceGetActiveIdentityProvidersRequest, Collections.emptyMap());
   }
 
 
   /**
+   * GetActiveIdentityProviders
    * Get the current active identity providers
-   * Return the current active identity providers for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
-   * @param creationAllowed  (optional)
-   * @param linkingAllowed  (optional)
-   * @param autoCreation  (optional)
-   * @param autoLinking  (optional)
+   * @param settingsServiceGetActiveIdentityProvidersRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetActiveIdentityProvidersResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetActiveIdentityProvidersResponse settingsServiceGetActiveIdentityProviders(String ctxOrgId, Boolean ctxInstance, Boolean creationAllowed, Boolean linkingAllowed, Boolean autoCreation, Boolean autoLinking, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public SettingsServiceGetActiveIdentityProvidersResponse getActiveIdentityProviders(SettingsServiceGetActiveIdentityProvidersRequest settingsServiceGetActiveIdentityProvidersRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = settingsServiceGetActiveIdentityProvidersRequest;
     
-    String localVarPath = "/v2/settings/login/idps";
+    if (settingsServiceGetActiveIdentityProvidersRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'settingsServiceGetActiveIdentityProvidersRequest' when calling getActiveIdentityProviders");
+    }
+    
+    String localVarPath = "/zitadel.settings.v2.SettingsService/GetActiveIdentityProviders";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -84,12 +86,6 @@ public class SettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
-    localVarQueryParams.addAll(apiClient.parameterToPair("creationAllowed", creationAllowed));
-    localVarQueryParams.addAll(apiClient.parameterToPair("linkingAllowed", linkingAllowed));
-    localVarQueryParams.addAll(apiClient.parameterToPair("autoCreation", autoCreation));
-    localVarQueryParams.addAll(apiClient.parameterToPair("autoLinking", autoLinking));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -101,7 +97,7 @@ public class SettingsServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -110,7 +106,7 @@ public class SettingsServiceApi extends BaseApi {
     TypeReference<SettingsServiceGetActiveIdentityProvidersResponse> localVarReturnType = new TypeReference<SettingsServiceGetActiveIdentityProvidersResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -126,31 +122,33 @@ public class SettingsServiceApi extends BaseApi {
   }
 
   /**
+   * GetBrandingSettings
    * Get the current active branding settings
-   * Return the current active branding settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetBrandingSettingsRequest  (required)
    * @return SettingsServiceGetBrandingSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetBrandingSettingsResponse settingsServiceGetBrandingSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetBrandingSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public SettingsServiceGetBrandingSettingsResponse getBrandingSettings(SettingsServiceGetBrandingSettingsRequest settingsServiceGetBrandingSettingsRequest) throws ApiException {
+    return this.getBrandingSettings(settingsServiceGetBrandingSettingsRequest, Collections.emptyMap());
   }
 
 
   /**
+   * GetBrandingSettings
    * Get the current active branding settings
-   * Return the current active branding settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetBrandingSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetBrandingSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetBrandingSettingsResponse settingsServiceGetBrandingSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public SettingsServiceGetBrandingSettingsResponse getBrandingSettings(SettingsServiceGetBrandingSettingsRequest settingsServiceGetBrandingSettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = settingsServiceGetBrandingSettingsRequest;
     
-    String localVarPath = "/v2/settings/branding";
+    if (settingsServiceGetBrandingSettingsRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'settingsServiceGetBrandingSettingsRequest' when calling getBrandingSettings");
+    }
+    
+    String localVarPath = "/zitadel.settings.v2.SettingsService/GetBrandingSettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -160,8 +158,6 @@ public class SettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -173,7 +169,7 @@ public class SettingsServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -182,7 +178,7 @@ public class SettingsServiceApi extends BaseApi {
     TypeReference<SettingsServiceGetBrandingSettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetBrandingSettingsResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -198,31 +194,33 @@ public class SettingsServiceApi extends BaseApi {
   }
 
   /**
+   * GetDomainSettings
    * Get the domain settings
-   * Return the domain settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetDomainSettingsRequest  (required)
    * @return SettingsServiceGetDomainSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetDomainSettingsResponse settingsServiceGetDomainSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetDomainSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public SettingsServiceGetDomainSettingsResponse getDomainSettings(SettingsServiceGetDomainSettingsRequest settingsServiceGetDomainSettingsRequest) throws ApiException {
+    return this.getDomainSettings(settingsServiceGetDomainSettingsRequest, Collections.emptyMap());
   }
 
 
   /**
+   * GetDomainSettings
    * Get the domain settings
-   * Return the domain settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetDomainSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetDomainSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetDomainSettingsResponse settingsServiceGetDomainSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public SettingsServiceGetDomainSettingsResponse getDomainSettings(SettingsServiceGetDomainSettingsRequest settingsServiceGetDomainSettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = settingsServiceGetDomainSettingsRequest;
     
-    String localVarPath = "/v2/settings/domain";
+    if (settingsServiceGetDomainSettingsRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'settingsServiceGetDomainSettingsRequest' when calling getDomainSettings");
+    }
+    
+    String localVarPath = "/zitadel.settings.v2.SettingsService/GetDomainSettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -232,8 +230,6 @@ public class SettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -245,7 +241,7 @@ public class SettingsServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -254,7 +250,7 @@ public class SettingsServiceApi extends BaseApi {
     TypeReference<SettingsServiceGetDomainSettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetDomainSettingsResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -270,27 +266,33 @@ public class SettingsServiceApi extends BaseApi {
   }
 
   /**
+   * GetGeneralSettings
    * Get basic information over the instance
-   * Return the basic information of the instance for the requested context
+   * @param body  (required)
    * @return SettingsServiceGetGeneralSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetGeneralSettingsResponse settingsServiceGetGeneralSettings() throws ApiException {
-    return this.settingsServiceGetGeneralSettings(Collections.emptyMap());
+  public SettingsServiceGetGeneralSettingsResponse getGeneralSettings(Object body) throws ApiException {
+    return this.getGeneralSettings(body, Collections.emptyMap());
   }
 
 
   /**
+   * GetGeneralSettings
    * Get basic information over the instance
-   * Return the basic information of the instance for the requested context
+   * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetGeneralSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetGeneralSettingsResponse settingsServiceGetGeneralSettings(Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public SettingsServiceGetGeneralSettingsResponse getGeneralSettings(Object body, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = body;
     
-    String localVarPath = "/v2/settings";
+    if (body == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'body' when calling getGeneralSettings");
+    }
+    
+    String localVarPath = "/zitadel.settings.v2.SettingsService/GetGeneralSettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -311,7 +313,7 @@ public class SettingsServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -320,7 +322,7 @@ public class SettingsServiceApi extends BaseApi {
     TypeReference<SettingsServiceGetGeneralSettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetGeneralSettingsResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -336,31 +338,33 @@ public class SettingsServiceApi extends BaseApi {
   }
 
   /**
+   * GetLegalAndSupportSettings
    * Get the legal and support settings
-   * Return the legal settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetLegalAndSupportSettingsRequest  (required)
    * @return SettingsServiceGetLegalAndSupportSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetLegalAndSupportSettingsResponse settingsServiceGetLegalAndSupportSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetLegalAndSupportSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public SettingsServiceGetLegalAndSupportSettingsResponse getLegalAndSupportSettings(SettingsServiceGetLegalAndSupportSettingsRequest settingsServiceGetLegalAndSupportSettingsRequest) throws ApiException {
+    return this.getLegalAndSupportSettings(settingsServiceGetLegalAndSupportSettingsRequest, Collections.emptyMap());
   }
 
 
   /**
+   * GetLegalAndSupportSettings
    * Get the legal and support settings
-   * Return the legal settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetLegalAndSupportSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetLegalAndSupportSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetLegalAndSupportSettingsResponse settingsServiceGetLegalAndSupportSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public SettingsServiceGetLegalAndSupportSettingsResponse getLegalAndSupportSettings(SettingsServiceGetLegalAndSupportSettingsRequest settingsServiceGetLegalAndSupportSettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = settingsServiceGetLegalAndSupportSettingsRequest;
     
-    String localVarPath = "/v2/settings/legal_support";
+    if (settingsServiceGetLegalAndSupportSettingsRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'settingsServiceGetLegalAndSupportSettingsRequest' when calling getLegalAndSupportSettings");
+    }
+    
+    String localVarPath = "/zitadel.settings.v2.SettingsService/GetLegalAndSupportSettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -370,8 +374,6 @@ public class SettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -383,7 +385,7 @@ public class SettingsServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -392,7 +394,7 @@ public class SettingsServiceApi extends BaseApi {
     TypeReference<SettingsServiceGetLegalAndSupportSettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetLegalAndSupportSettingsResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -408,31 +410,33 @@ public class SettingsServiceApi extends BaseApi {
   }
 
   /**
+   * GetLockoutSettings
    * Get the lockout settings
-   * Return the lockout settings for the requested context, which define when a user will be locked
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetLockoutSettingsRequest  (required)
    * @return SettingsServiceGetLockoutSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetLockoutSettingsResponse settingsServiceGetLockoutSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetLockoutSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public SettingsServiceGetLockoutSettingsResponse getLockoutSettings(SettingsServiceGetLockoutSettingsRequest settingsServiceGetLockoutSettingsRequest) throws ApiException {
+    return this.getLockoutSettings(settingsServiceGetLockoutSettingsRequest, Collections.emptyMap());
   }
 
 
   /**
+   * GetLockoutSettings
    * Get the lockout settings
-   * Return the lockout settings for the requested context, which define when a user will be locked
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetLockoutSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetLockoutSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetLockoutSettingsResponse settingsServiceGetLockoutSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public SettingsServiceGetLockoutSettingsResponse getLockoutSettings(SettingsServiceGetLockoutSettingsRequest settingsServiceGetLockoutSettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = settingsServiceGetLockoutSettingsRequest;
     
-    String localVarPath = "/v2/settings/lockout";
+    if (settingsServiceGetLockoutSettingsRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'settingsServiceGetLockoutSettingsRequest' when calling getLockoutSettings");
+    }
+    
+    String localVarPath = "/zitadel.settings.v2.SettingsService/GetLockoutSettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -442,8 +446,6 @@ public class SettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -455,7 +457,7 @@ public class SettingsServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -464,7 +466,7 @@ public class SettingsServiceApi extends BaseApi {
     TypeReference<SettingsServiceGetLockoutSettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetLockoutSettingsResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -480,31 +482,33 @@ public class SettingsServiceApi extends BaseApi {
   }
 
   /**
+   * GetLoginSettings
    * Get the login settings
-   * Return the settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetLoginSettingsRequest  (required)
    * @return SettingsServiceGetLoginSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetLoginSettingsResponse settingsServiceGetLoginSettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetLoginSettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public SettingsServiceGetLoginSettingsResponse getLoginSettings(SettingsServiceGetLoginSettingsRequest settingsServiceGetLoginSettingsRequest) throws ApiException {
+    return this.getLoginSettings(settingsServiceGetLoginSettingsRequest, Collections.emptyMap());
   }
 
 
   /**
+   * GetLoginSettings
    * Get the login settings
-   * Return the settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetLoginSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetLoginSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetLoginSettingsResponse settingsServiceGetLoginSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public SettingsServiceGetLoginSettingsResponse getLoginSettings(SettingsServiceGetLoginSettingsRequest settingsServiceGetLoginSettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = settingsServiceGetLoginSettingsRequest;
     
-    String localVarPath = "/v2/settings/login";
+    if (settingsServiceGetLoginSettingsRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'settingsServiceGetLoginSettingsRequest' when calling getLoginSettings");
+    }
+    
+    String localVarPath = "/zitadel.settings.v2.SettingsService/GetLoginSettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -514,8 +518,6 @@ public class SettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -527,7 +529,7 @@ public class SettingsServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -536,7 +538,7 @@ public class SettingsServiceApi extends BaseApi {
     TypeReference<SettingsServiceGetLoginSettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetLoginSettingsResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -552,31 +554,33 @@ public class SettingsServiceApi extends BaseApi {
   }
 
   /**
+   * GetPasswordComplexitySettings
    * Get the password complexity settings
-   * Return the password complexity settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetPasswordComplexitySettingsRequest  (required)
    * @return SettingsServiceGetPasswordComplexitySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetPasswordComplexitySettingsResponse settingsServiceGetPasswordComplexitySettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetPasswordComplexitySettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public SettingsServiceGetPasswordComplexitySettingsResponse getPasswordComplexitySettings(SettingsServiceGetPasswordComplexitySettingsRequest settingsServiceGetPasswordComplexitySettingsRequest) throws ApiException {
+    return this.getPasswordComplexitySettings(settingsServiceGetPasswordComplexitySettingsRequest, Collections.emptyMap());
   }
 
 
   /**
+   * GetPasswordComplexitySettings
    * Get the password complexity settings
-   * Return the password complexity settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetPasswordComplexitySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetPasswordComplexitySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetPasswordComplexitySettingsResponse settingsServiceGetPasswordComplexitySettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public SettingsServiceGetPasswordComplexitySettingsResponse getPasswordComplexitySettings(SettingsServiceGetPasswordComplexitySettingsRequest settingsServiceGetPasswordComplexitySettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = settingsServiceGetPasswordComplexitySettingsRequest;
     
-    String localVarPath = "/v2/settings/password/complexity";
+    if (settingsServiceGetPasswordComplexitySettingsRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'settingsServiceGetPasswordComplexitySettingsRequest' when calling getPasswordComplexitySettings");
+    }
+    
+    String localVarPath = "/zitadel.settings.v2.SettingsService/GetPasswordComplexitySettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -586,8 +590,6 @@ public class SettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -599,7 +601,7 @@ public class SettingsServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -608,7 +610,7 @@ public class SettingsServiceApi extends BaseApi {
     TypeReference<SettingsServiceGetPasswordComplexitySettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetPasswordComplexitySettingsResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -624,31 +626,33 @@ public class SettingsServiceApi extends BaseApi {
   }
 
   /**
+   * GetPasswordExpirySettings
    * Get the password expiry settings
-   * Return the password expiry settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetPasswordExpirySettingsRequest  (required)
    * @return SettingsServiceGetPasswordExpirySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetPasswordExpirySettingsResponse settingsServiceGetPasswordExpirySettings(String ctxOrgId, Boolean ctxInstance) throws ApiException {
-    return this.settingsServiceGetPasswordExpirySettings(ctxOrgId, ctxInstance, Collections.emptyMap());
+  public SettingsServiceGetPasswordExpirySettingsResponse getPasswordExpirySettings(SettingsServiceGetPasswordExpirySettingsRequest settingsServiceGetPasswordExpirySettingsRequest) throws ApiException {
+    return this.getPasswordExpirySettings(settingsServiceGetPasswordExpirySettingsRequest, Collections.emptyMap());
   }
 
 
   /**
+   * GetPasswordExpirySettings
    * Get the password expiry settings
-   * Return the password expiry settings for the requested context
-   * @param ctxOrgId  (optional)
-   * @param ctxInstance  (optional)
+   * @param settingsServiceGetPasswordExpirySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetPasswordExpirySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetPasswordExpirySettingsResponse settingsServiceGetPasswordExpirySettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public SettingsServiceGetPasswordExpirySettingsResponse getPasswordExpirySettings(SettingsServiceGetPasswordExpirySettingsRequest settingsServiceGetPasswordExpirySettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = settingsServiceGetPasswordExpirySettingsRequest;
     
-    String localVarPath = "/v2/settings/password/expiry";
+    if (settingsServiceGetPasswordExpirySettingsRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'settingsServiceGetPasswordExpirySettingsRequest' when calling getPasswordExpirySettings");
+    }
+    
+    String localVarPath = "/zitadel.settings.v2.SettingsService/GetPasswordExpirySettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -658,8 +662,6 @@ public class SettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.orgId", ctxOrgId));
-    localVarQueryParams.addAll(apiClient.parameterToPair("ctx.instance", ctxInstance));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -671,7 +673,7 @@ public class SettingsServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -680,7 +682,7 @@ public class SettingsServiceApi extends BaseApi {
     TypeReference<SettingsServiceGetPasswordExpirySettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetPasswordExpirySettingsResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -696,27 +698,33 @@ public class SettingsServiceApi extends BaseApi {
   }
 
   /**
-   * Get Security Settings
-   * Returns the security settings of the ZITADEL instance.
+   * GetSecuritySettings
+   * Get the security settings
+   * @param body  (required)
    * @return SettingsServiceGetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetSecuritySettingsResponse settingsServiceGetSecuritySettings() throws ApiException {
-    return this.settingsServiceGetSecuritySettings(Collections.emptyMap());
+  public SettingsServiceGetSecuritySettingsResponse getSecuritySettings(Object body) throws ApiException {
+    return this.getSecuritySettings(body, Collections.emptyMap());
   }
 
 
   /**
-   * Get Security Settings
-   * Returns the security settings of the ZITADEL instance.
+   * GetSecuritySettings
+   * Get the security settings
+   * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetSecuritySettingsResponse settingsServiceGetSecuritySettings(Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public SettingsServiceGetSecuritySettingsResponse getSecuritySettings(Object body, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = body;
     
-    String localVarPath = "/v2/settings/security";
+    if (body == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'body' when calling getSecuritySettings");
+    }
+    
+    String localVarPath = "/zitadel.settings.v2.SettingsService/GetSecuritySettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -737,7 +745,7 @@ public class SettingsServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -746,7 +754,7 @@ public class SettingsServiceApi extends BaseApi {
     TypeReference<SettingsServiceGetSecuritySettingsResponse> localVarReturnType = new TypeReference<SettingsServiceGetSecuritySettingsResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -762,33 +770,33 @@ public class SettingsServiceApi extends BaseApi {
   }
 
   /**
-   * Set Security Settings
-   * Set the security settings of the ZITADEL instance.
+   * SetSecuritySettings
+   * Set the security settings
    * @param settingsServiceSetSecuritySettingsRequest  (required)
    * @return SettingsServiceSetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceSetSecuritySettingsResponse settingsServiceSetSecuritySettings(SettingsServiceSetSecuritySettingsRequest settingsServiceSetSecuritySettingsRequest) throws ApiException {
-    return this.settingsServiceSetSecuritySettings(settingsServiceSetSecuritySettingsRequest, Collections.emptyMap());
+  public SettingsServiceSetSecuritySettingsResponse setSecuritySettings(SettingsServiceSetSecuritySettingsRequest settingsServiceSetSecuritySettingsRequest) throws ApiException {
+    return this.setSecuritySettings(settingsServiceSetSecuritySettingsRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Set Security Settings
-   * Set the security settings of the ZITADEL instance.
+   * SetSecuritySettings
+   * Set the security settings
    * @param settingsServiceSetSecuritySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceSetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceSetSecuritySettingsResponse settingsServiceSetSecuritySettings(SettingsServiceSetSecuritySettingsRequest settingsServiceSetSecuritySettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public SettingsServiceSetSecuritySettingsResponse setSecuritySettings(SettingsServiceSetSecuritySettingsRequest settingsServiceSetSecuritySettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = settingsServiceSetSecuritySettingsRequest;
     
     if (settingsServiceSetSecuritySettingsRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'settingsServiceSetSecuritySettingsRequest' when calling settingsServiceSetSecuritySettings");
+      throw new IllegalArgumentException("Missing the required parameter 'settingsServiceSetSecuritySettingsRequest' when calling setSecuritySettings");
     }
     
-    String localVarPath = "/v2/policies/security";
+    String localVarPath = "/zitadel.settings.v2.SettingsService/SetSecuritySettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -818,7 +826,7 @@ public class SettingsServiceApi extends BaseApi {
     TypeReference<SettingsServiceSetSecuritySettingsResponse> localVarReturnType = new TypeReference<SettingsServiceSetSecuritySettingsResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "PUT",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),

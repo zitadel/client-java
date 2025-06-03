@@ -61,7 +61,7 @@ public class SettingsServiceGetGeneralSettingsResponse {
   }
 
   /**
-   * default organization for the current context
+   * Get defaultOrgId
    * @return defaultOrgId
    */
   @javax.annotation.Nullable
@@ -86,7 +86,7 @@ public class SettingsServiceGetGeneralSettingsResponse {
   }
 
   /**
-   * default language for the current context
+   * Get defaultLanguage
    * @return defaultLanguage
    */
   @javax.annotation.Nullable

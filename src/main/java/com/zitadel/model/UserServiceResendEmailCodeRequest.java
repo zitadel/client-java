@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.ReturnCode2;
+import com.zitadel.model.SendCode2;
 import com.zitadel.model.UserServiceSendEmailVerificationCode;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -31,48 +33,53 @@ import java.util.StringJoiner;
  * UserServiceResendEmailCodeRequest
  */
 @JsonPropertyOrder({
-  UserServiceResendEmailCodeRequest.JSON_PROPERTY_SEND_CODE,
-  UserServiceResendEmailCodeRequest.JSON_PROPERTY_RETURN_CODE
+  UserServiceResendEmailCodeRequest.JSON_PROPERTY_USER_ID,
+  UserServiceResendEmailCodeRequest.JSON_PROPERTY_RETURN_CODE,
+  UserServiceResendEmailCodeRequest.JSON_PROPERTY_SEND_CODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class UserServiceResendEmailCodeRequest {
-  public static final String JSON_PROPERTY_SEND_CODE = "sendCode";
-  @javax.annotation.Nullable
-  private UserServiceSendEmailVerificationCode sendCode;
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
+  private String userId;
 
   public static final String JSON_PROPERTY_RETURN_CODE = "returnCode";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private Object returnCode;
+
+  public static final String JSON_PROPERTY_SEND_CODE = "sendCode";
+  @javax.annotation.Nonnull
+  private UserServiceSendEmailVerificationCode sendCode;
 
   public UserServiceResendEmailCodeRequest() {
   }
 
-  public UserServiceResendEmailCodeRequest sendCode(@javax.annotation.Nullable UserServiceSendEmailVerificationCode sendCode) {
+  public UserServiceResendEmailCodeRequest userId(@javax.annotation.Nonnull String userId) {
     
-    this.sendCode = sendCode;
+    this.userId = userId;
     return this;
   }
 
   /**
-   * Get sendCode
-   * @return sendCode
+   * Get userId
+   * @return userId
    */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SEND_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public UserServiceSendEmailVerificationCode getSendCode() {
-    return sendCode;
+  public String getUserId() {
+    return userId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SEND_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSendCode(@javax.annotation.Nullable UserServiceSendEmailVerificationCode sendCode) {
-    this.sendCode = sendCode;
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserId(@javax.annotation.Nonnull String userId) {
+    this.userId = userId;
   }
 
-  public UserServiceResendEmailCodeRequest returnCode(@javax.annotation.Nullable Object returnCode) {
+  public UserServiceResendEmailCodeRequest returnCode(@javax.annotation.Nonnull Object returnCode) {
     
     this.returnCode = returnCode;
     return this;
@@ -82,9 +89,9 @@ public class UserServiceResendEmailCodeRequest {
    * Get returnCode
    * @return returnCode
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_RETURN_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getReturnCode() {
     return returnCode;
@@ -92,9 +99,34 @@ public class UserServiceResendEmailCodeRequest {
 
 
   @JsonProperty(JSON_PROPERTY_RETURN_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReturnCode(@javax.annotation.Nullable Object returnCode) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setReturnCode(@javax.annotation.Nonnull Object returnCode) {
     this.returnCode = returnCode;
+  }
+
+  public UserServiceResendEmailCodeRequest sendCode(@javax.annotation.Nonnull UserServiceSendEmailVerificationCode sendCode) {
+    
+    this.sendCode = sendCode;
+    return this;
+  }
+
+  /**
+   * Get sendCode
+   * @return sendCode
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_SEND_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceSendEmailVerificationCode getSendCode() {
+    return sendCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SEND_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSendCode(@javax.annotation.Nonnull UserServiceSendEmailVerificationCode sendCode) {
+    this.sendCode = sendCode;
   }
 
   @Override
@@ -106,21 +138,23 @@ public class UserServiceResendEmailCodeRequest {
       return false;
     }
     UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest = (UserServiceResendEmailCodeRequest) o;
-    return Objects.equals(this.sendCode, userServiceResendEmailCodeRequest.sendCode) &&
-        Objects.equals(this.returnCode, userServiceResendEmailCodeRequest.returnCode);
+    return Objects.equals(this.userId, userServiceResendEmailCodeRequest.userId) &&
+        Objects.equals(this.returnCode, userServiceResendEmailCodeRequest.returnCode) &&
+        Objects.equals(this.sendCode, userServiceResendEmailCodeRequest.sendCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sendCode, returnCode);
+    return Objects.hash(userId, returnCode, sendCode);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceResendEmailCodeRequest {\n");
-    sb.append("    sendCode: ").append(toIndentedString(sendCode)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    returnCode: ").append(toIndentedString(returnCode)).append("\n");
+    sb.append("    sendCode: ").append(toIndentedString(sendCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -167,6 +201,21 @@ public class UserServiceResendEmailCodeRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `returnCode` to the URL query string
+    if (getReturnCode() != null) {
+      try {
+        joiner.add(String.format("%sreturnCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getReturnCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `sendCode` to the URL query string
+    if (getSendCode() != null) {
+      joiner.add(getSendCode().toUrlQueryString(prefix + "sendCode" + suffix));
+    }
 
     return joiner.toString();
   }

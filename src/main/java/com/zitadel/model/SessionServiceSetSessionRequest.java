@@ -34,6 +34,7 @@ import java.util.StringJoiner;
  * SessionServiceSetSessionRequest
  */
 @JsonPropertyOrder({
+  SessionServiceSetSessionRequest.JSON_PROPERTY_SESSION_ID,
   SessionServiceSetSessionRequest.JSON_PROPERTY_SESSION_TOKEN,
   SessionServiceSetSessionRequest.JSON_PROPERTY_CHECKS,
   SessionServiceSetSessionRequest.JSON_PROPERTY_METADATA,
@@ -42,6 +43,10 @@ import java.util.StringJoiner;
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class SessionServiceSetSessionRequest {
+  public static final String JSON_PROPERTY_SESSION_ID = "sessionId";
+  @javax.annotation.Nullable
+  private String sessionId;
+
   public static final String JSON_PROPERTY_SESSION_TOKEN = "sessionToken";
   @javax.annotation.Nullable
   private String sessionToken;
@@ -65,6 +70,31 @@ public class SessionServiceSetSessionRequest {
   public SessionServiceSetSessionRequest() {
   }
 
+  public SessionServiceSetSessionRequest sessionId(@javax.annotation.Nullable String sessionId) {
+    
+    this.sessionId = sessionId;
+    return this;
+  }
+
+  /**
+   * Get sessionId
+   * @return sessionId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SESSION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getSessionId() {
+    return sessionId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SESSION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSessionId(@javax.annotation.Nullable String sessionId) {
+    this.sessionId = sessionId;
+  }
+
   public SessionServiceSetSessionRequest sessionToken(@javax.annotation.Nullable String sessionToken) {
     
     this.sessionToken = sessionToken;
@@ -72,7 +102,7 @@ public class SessionServiceSetSessionRequest {
   }
 
   /**
-   * \&quot;DEPRECATED: this field is ignored.\&quot;
+   * Get sessionToken
    * @return sessionToken
    */
   @javax.annotation.Nullable
@@ -130,7 +160,7 @@ public class SessionServiceSetSessionRequest {
   }
 
   /**
-   * \&quot;custom key value list to be stored on the session\&quot;
+   * Get metadata
    * @return metadata
    */
   @javax.annotation.Nullable
@@ -180,7 +210,7 @@ public class SessionServiceSetSessionRequest {
   }
 
   /**
-   * \&quot;duration (in seconds) after which the session will be automatically invalidated\&quot;
+   * A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like \&quot;day\&quot;  or \&quot;month\&quot;. It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start &#x3D; ...;      Timestamp end &#x3D; ...;      Duration duration &#x3D; ...;       duration.seconds &#x3D; end.seconds - start.seconds;      duration.nanos &#x3D; end.nanos - start.nanos;       if (duration.seconds &lt; 0 &amp;&amp; duration.nanos &gt; 0) {        duration.seconds +&#x3D; 1;        duration.nanos -&#x3D; 1000000000;      } else if (duration.seconds &gt; 0 &amp;&amp; duration.nanos &lt; 0) {        duration.seconds -&#x3D; 1;        duration.nanos +&#x3D; 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start &#x3D; ...;      Duration duration &#x3D; ...;      Timestamp end &#x3D; ...;       end.seconds &#x3D; start.seconds + duration.seconds;      end.nanos &#x3D; start.nanos + duration.nanos;       if (end.nanos &lt; 0) {        end.seconds -&#x3D; 1;        end.nanos +&#x3D; 1000000000;      } else if (end.nanos &gt;&#x3D; 1000000000) {        end.seconds +&#x3D; 1;        end.nanos -&#x3D; 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td &#x3D; datetime.timedelta(days&#x3D;3, minutes&#x3D;10)      duration &#x3D; Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix \&quot;s\&quot; (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as \&quot;3s\&quot;, while 3 seconds and 1 nanosecond should  be expressed in JSON format as \&quot;3.000000001s\&quot;, and 3 seconds and 1  microsecond should be expressed in JSON format as \&quot;3.000001s\&quot;.
    * @return lifetime
    */
   @javax.annotation.Nullable
@@ -207,7 +237,8 @@ public class SessionServiceSetSessionRequest {
       return false;
     }
     SessionServiceSetSessionRequest sessionServiceSetSessionRequest = (SessionServiceSetSessionRequest) o;
-    return Objects.equals(this.sessionToken, sessionServiceSetSessionRequest.sessionToken) &&
+    return Objects.equals(this.sessionId, sessionServiceSetSessionRequest.sessionId) &&
+        Objects.equals(this.sessionToken, sessionServiceSetSessionRequest.sessionToken) &&
         Objects.equals(this.checks, sessionServiceSetSessionRequest.checks) &&
         Objects.equals(this.metadata, sessionServiceSetSessionRequest.metadata) &&
         Objects.equals(this.challenges, sessionServiceSetSessionRequest.challenges) &&
@@ -216,13 +247,14 @@ public class SessionServiceSetSessionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(sessionToken, checks, metadata, challenges, lifetime);
+    return Objects.hash(sessionId, sessionToken, checks, metadata, challenges, lifetime);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SessionServiceSetSessionRequest {\n");
+    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("    sessionToken: ").append(toIndentedString(sessionToken)).append("\n");
     sb.append("    checks: ").append(toIndentedString(checks)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
@@ -274,6 +306,16 @@ public class SessionServiceSetSessionRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `sessionId` to the URL query string
+    if (getSessionId() != null) {
+      try {
+        joiner.add(String.format("%ssessionId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSessionId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     // add `sessionToken` to the URL query string
     if (getSessionToken() != null) {

@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.ReturnCode3;
+import com.zitadel.model.SendCode3;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -30,48 +32,53 @@ import java.util.StringJoiner;
  * UserServiceResendPhoneCodeRequest
  */
 @JsonPropertyOrder({
-  UserServiceResendPhoneCodeRequest.JSON_PROPERTY_SEND_CODE,
-  UserServiceResendPhoneCodeRequest.JSON_PROPERTY_RETURN_CODE
+  UserServiceResendPhoneCodeRequest.JSON_PROPERTY_USER_ID,
+  UserServiceResendPhoneCodeRequest.JSON_PROPERTY_RETURN_CODE,
+  UserServiceResendPhoneCodeRequest.JSON_PROPERTY_SEND_CODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class UserServiceResendPhoneCodeRequest {
-  public static final String JSON_PROPERTY_SEND_CODE = "sendCode";
-  @javax.annotation.Nullable
-  private Object sendCode;
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
+  private String userId;
 
   public static final String JSON_PROPERTY_RETURN_CODE = "returnCode";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private Object returnCode;
+
+  public static final String JSON_PROPERTY_SEND_CODE = "sendCode";
+  @javax.annotation.Nonnull
+  private Object sendCode;
 
   public UserServiceResendPhoneCodeRequest() {
   }
 
-  public UserServiceResendPhoneCodeRequest sendCode(@javax.annotation.Nullable Object sendCode) {
+  public UserServiceResendPhoneCodeRequest userId(@javax.annotation.Nonnull String userId) {
     
-    this.sendCode = sendCode;
+    this.userId = userId;
     return this;
   }
 
   /**
-   * Get sendCode
-   * @return sendCode
+   * Get userId
+   * @return userId
    */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SEND_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Object getSendCode() {
-    return sendCode;
+  public String getUserId() {
+    return userId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SEND_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSendCode(@javax.annotation.Nullable Object sendCode) {
-    this.sendCode = sendCode;
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserId(@javax.annotation.Nonnull String userId) {
+    this.userId = userId;
   }
 
-  public UserServiceResendPhoneCodeRequest returnCode(@javax.annotation.Nullable Object returnCode) {
+  public UserServiceResendPhoneCodeRequest returnCode(@javax.annotation.Nonnull Object returnCode) {
     
     this.returnCode = returnCode;
     return this;
@@ -81,9 +88,9 @@ public class UserServiceResendPhoneCodeRequest {
    * Get returnCode
    * @return returnCode
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_RETURN_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getReturnCode() {
     return returnCode;
@@ -91,9 +98,34 @@ public class UserServiceResendPhoneCodeRequest {
 
 
   @JsonProperty(JSON_PROPERTY_RETURN_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReturnCode(@javax.annotation.Nullable Object returnCode) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setReturnCode(@javax.annotation.Nonnull Object returnCode) {
     this.returnCode = returnCode;
+  }
+
+  public UserServiceResendPhoneCodeRequest sendCode(@javax.annotation.Nonnull Object sendCode) {
+    
+    this.sendCode = sendCode;
+    return this;
+  }
+
+  /**
+   * Get sendCode
+   * @return sendCode
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_SEND_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Object getSendCode() {
+    return sendCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SEND_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSendCode(@javax.annotation.Nonnull Object sendCode) {
+    this.sendCode = sendCode;
   }
 
   @Override
@@ -105,21 +137,23 @@ public class UserServiceResendPhoneCodeRequest {
       return false;
     }
     UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest = (UserServiceResendPhoneCodeRequest) o;
-    return Objects.equals(this.sendCode, userServiceResendPhoneCodeRequest.sendCode) &&
-        Objects.equals(this.returnCode, userServiceResendPhoneCodeRequest.returnCode);
+    return Objects.equals(this.userId, userServiceResendPhoneCodeRequest.userId) &&
+        Objects.equals(this.returnCode, userServiceResendPhoneCodeRequest.returnCode) &&
+        Objects.equals(this.sendCode, userServiceResendPhoneCodeRequest.sendCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sendCode, returnCode);
+    return Objects.hash(userId, returnCode, sendCode);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceResendPhoneCodeRequest {\n");
-    sb.append("    sendCode: ").append(toIndentedString(sendCode)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    returnCode: ").append(toIndentedString(returnCode)).append("\n");
+    sb.append("    sendCode: ").append(toIndentedString(sendCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -166,6 +200,26 @@ public class UserServiceResendPhoneCodeRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `returnCode` to the URL query string
+    if (getReturnCode() != null) {
+      try {
+        joiner.add(String.format("%sreturnCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getReturnCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `sendCode` to the URL query string
+    if (getSendCode() != null) {
+      try {
+        joiner.add(String.format("%ssendCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSendCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     return joiner.toString();
   }

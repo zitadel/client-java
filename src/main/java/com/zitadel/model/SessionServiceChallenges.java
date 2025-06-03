@@ -20,7 +20,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.SessionServiceChallengesWebAuthN;
+import com.zitadel.model.SessionServiceWebAuthN;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -39,20 +43,20 @@ import java.util.StringJoiner;
 public class SessionServiceChallenges {
   public static final String JSON_PROPERTY_WEB_AUTH_N = "webAuthN";
   @javax.annotation.Nullable
-  private SessionServiceChallengesWebAuthN webAuthN;
+  private SessionServiceWebAuthN webAuthN;
 
   public static final String JSON_PROPERTY_OTP_SMS = "otpSms";
   @javax.annotation.Nullable
-  private String otpSms;
+  private JsonNullable<String> otpSms = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_OTP_EMAIL = "otpEmail";
   @javax.annotation.Nullable
-  private String otpEmail;
+  private JsonNullable<String> otpEmail = JsonNullable.<String>undefined();
 
   public SessionServiceChallenges() {
   }
 
-  public SessionServiceChallenges webAuthN(@javax.annotation.Nullable SessionServiceChallengesWebAuthN webAuthN) {
+  public SessionServiceChallenges webAuthN(@javax.annotation.Nullable SessionServiceWebAuthN webAuthN) {
     
     this.webAuthN = webAuthN;
     return this;
@@ -66,20 +70,20 @@ public class SessionServiceChallenges {
   @JsonProperty(JSON_PROPERTY_WEB_AUTH_N)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SessionServiceChallengesWebAuthN getWebAuthN() {
+  public SessionServiceWebAuthN getWebAuthN() {
     return webAuthN;
   }
 
 
   @JsonProperty(JSON_PROPERTY_WEB_AUTH_N)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWebAuthN(@javax.annotation.Nullable SessionServiceChallengesWebAuthN webAuthN) {
+  public void setWebAuthN(@javax.annotation.Nullable SessionServiceWebAuthN webAuthN) {
     this.webAuthN = webAuthN;
   }
 
   public SessionServiceChallenges otpSms(@javax.annotation.Nullable String otpSms) {
+    this.otpSms = JsonNullable.<String>of(otpSms);
     
-    this.otpSms = otpSms;
     return this;
   }
 
@@ -88,23 +92,31 @@ public class SessionServiceChallenges {
    * @return otpSms
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OTP_SMS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getOtpSms() {
-    return otpSms;
+        return otpSms.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_OTP_SMS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOtpSms(@javax.annotation.Nullable String otpSms) {
+
+  public JsonNullable<String> getOtpSms_JsonNullable() {
+    return otpSms;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_OTP_SMS)
+  public void setOtpSms_JsonNullable(JsonNullable<String> otpSms) {
     this.otpSms = otpSms;
   }
 
+  public void setOtpSms(@javax.annotation.Nullable String otpSms) {
+    this.otpSms = JsonNullable.<String>of(otpSms);
+  }
+
   public SessionServiceChallenges otpEmail(@javax.annotation.Nullable String otpEmail) {
+    this.otpEmail = JsonNullable.<String>of(otpEmail);
     
-    this.otpEmail = otpEmail;
     return this;
   }
 
@@ -113,18 +125,26 @@ public class SessionServiceChallenges {
    * @return otpEmail
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OTP_EMAIL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getOtpEmail() {
-    return otpEmail;
+        return otpEmail.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_OTP_EMAIL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOtpEmail(@javax.annotation.Nullable String otpEmail) {
+
+  public JsonNullable<String> getOtpEmail_JsonNullable() {
+    return otpEmail;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_OTP_EMAIL)
+  public void setOtpEmail_JsonNullable(JsonNullable<String> otpEmail) {
     this.otpEmail = otpEmail;
+  }
+
+  public void setOtpEmail(@javax.annotation.Nullable String otpEmail) {
+    this.otpEmail = JsonNullable.<String>of(otpEmail);
   }
 
   @Override
@@ -137,13 +157,24 @@ public class SessionServiceChallenges {
     }
     SessionServiceChallenges sessionServiceChallenges = (SessionServiceChallenges) o;
     return Objects.equals(this.webAuthN, sessionServiceChallenges.webAuthN) &&
-        Objects.equals(this.otpSms, sessionServiceChallenges.otpSms) &&
-        Objects.equals(this.otpEmail, sessionServiceChallenges.otpEmail);
+        equalsNullable(this.otpSms, sessionServiceChallenges.otpSms) &&
+        equalsNullable(this.otpEmail, sessionServiceChallenges.otpEmail);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(webAuthN, otpSms, otpEmail);
+    return Objects.hash(webAuthN, hashCodeNullable(otpSms), hashCodeNullable(otpEmail));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

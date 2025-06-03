@@ -21,6 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.SettingsServiceResourceOwnerType;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -42,7 +46,7 @@ import java.util.StringJoiner;
 public class SettingsServicePasswordComplexitySettings {
   public static final String JSON_PROPERTY_MIN_LENGTH = "minLength";
   @javax.annotation.Nullable
-  private String minLength;
+  private JsonNullable<Object> minLength = JsonNullable.<Object>of(null);
 
   public static final String JSON_PROPERTY_REQUIRES_UPPERCASE = "requiresUppercase";
   @javax.annotation.Nullable
@@ -62,34 +66,42 @@ public class SettingsServicePasswordComplexitySettings {
 
   public static final String JSON_PROPERTY_RESOURCE_OWNER_TYPE = "resourceOwnerType";
   @javax.annotation.Nullable
-  private SettingsServiceResourceOwnerType resourceOwnerType = SettingsServiceResourceOwnerType.RESOURCE_OWNER_TYPE_UNSPECIFIED;
+  private SettingsServiceResourceOwnerType resourceOwnerType;
 
   public SettingsServicePasswordComplexitySettings() {
   }
 
-  public SettingsServicePasswordComplexitySettings minLength(@javax.annotation.Nullable String minLength) {
+  public SettingsServicePasswordComplexitySettings minLength(@javax.annotation.Nullable Object minLength) {
+    this.minLength = JsonNullable.<Object>of(minLength);
     
-    this.minLength = minLength;
     return this;
   }
 
   /**
-   * Defines the minimum length of a password.
+   * Get minLength
    * @return minLength
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MIN_LENGTH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
-  public String getMinLength() {
-    return minLength;
+  public Object getMinLength() {
+        return minLength.orElse(null);
   }
 
-
   @JsonProperty(JSON_PROPERTY_MIN_LENGTH)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinLength(@javax.annotation.Nullable String minLength) {
+
+  public JsonNullable<Object> getMinLength_JsonNullable() {
+    return minLength;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_MIN_LENGTH)
+  public void setMinLength_JsonNullable(JsonNullable<Object> minLength) {
     this.minLength = minLength;
+  }
+
+  public void setMinLength(@javax.annotation.Nullable Object minLength) {
+    this.minLength = JsonNullable.<Object>of(minLength);
   }
 
   public SettingsServicePasswordComplexitySettings requiresUppercase(@javax.annotation.Nullable Boolean requiresUppercase) {
@@ -99,7 +111,7 @@ public class SettingsServicePasswordComplexitySettings {
   }
 
   /**
-   * defines if the password MUST contain an upper case letter
+   * Get requiresUppercase
    * @return requiresUppercase
    */
   @javax.annotation.Nullable
@@ -124,7 +136,7 @@ public class SettingsServicePasswordComplexitySettings {
   }
 
   /**
-   * defines if the password MUST contain a lowercase letter
+   * Get requiresLowercase
    * @return requiresLowercase
    */
   @javax.annotation.Nullable
@@ -149,7 +161,7 @@ public class SettingsServicePasswordComplexitySettings {
   }
 
   /**
-   * defines if the password MUST contain a number
+   * Get requiresNumber
    * @return requiresNumber
    */
   @javax.annotation.Nullable
@@ -174,7 +186,7 @@ public class SettingsServicePasswordComplexitySettings {
   }
 
   /**
-   * defines if the password MUST contain a symbol. E.g. \&quot;$\&quot;
+   * Get requiresSymbol
    * @return requiresSymbol
    */
   @javax.annotation.Nullable
@@ -226,7 +238,7 @@ public class SettingsServicePasswordComplexitySettings {
       return false;
     }
     SettingsServicePasswordComplexitySettings settingsServicePasswordComplexitySettings = (SettingsServicePasswordComplexitySettings) o;
-    return Objects.equals(this.minLength, settingsServicePasswordComplexitySettings.minLength) &&
+    return equalsNullable(this.minLength, settingsServicePasswordComplexitySettings.minLength) &&
         Objects.equals(this.requiresUppercase, settingsServicePasswordComplexitySettings.requiresUppercase) &&
         Objects.equals(this.requiresLowercase, settingsServicePasswordComplexitySettings.requiresLowercase) &&
         Objects.equals(this.requiresNumber, settingsServicePasswordComplexitySettings.requiresNumber) &&
@@ -234,9 +246,20 @@ public class SettingsServicePasswordComplexitySettings {
         Objects.equals(this.resourceOwnerType, settingsServicePasswordComplexitySettings.resourceOwnerType);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(minLength, requiresUppercase, requiresLowercase, requiresNumber, requiresSymbol, resourceOwnerType);
+    return Objects.hash(hashCodeNullable(minLength), requiresUppercase, requiresLowercase, requiresNumber, requiresSymbol, resourceOwnerType);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

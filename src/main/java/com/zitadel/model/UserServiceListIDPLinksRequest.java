@@ -31,15 +31,45 @@ import java.util.StringJoiner;
  * UserServiceListIDPLinksRequest
  */
 @JsonPropertyOrder({
+  UserServiceListIDPLinksRequest.JSON_PROPERTY_USER_ID,
   UserServiceListIDPLinksRequest.JSON_PROPERTY_QUERY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class UserServiceListIDPLinksRequest {
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nullable
+  private String userId;
+
   public static final String JSON_PROPERTY_QUERY = "query";
   @javax.annotation.Nullable
   private UserServiceListQuery query;
 
   public UserServiceListIDPLinksRequest() {
+  }
+
+  public UserServiceListIDPLinksRequest userId(@javax.annotation.Nullable String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+  /**
+   * Get userId
+   * @return userId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserId(@javax.annotation.Nullable String userId) {
+    this.userId = userId;
   }
 
   public UserServiceListIDPLinksRequest query(@javax.annotation.Nullable UserServiceListQuery query) {
@@ -76,18 +106,20 @@ public class UserServiceListIDPLinksRequest {
       return false;
     }
     UserServiceListIDPLinksRequest userServiceListIDPLinksRequest = (UserServiceListIDPLinksRequest) o;
-    return Objects.equals(this.query, userServiceListIDPLinksRequest.query);
+    return Objects.equals(this.userId, userServiceListIDPLinksRequest.userId) &&
+        Objects.equals(this.query, userServiceListIDPLinksRequest.query);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(query);
+    return Objects.hash(userId, query);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceListIDPLinksRequest {\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    query: ").append(toIndentedString(query)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -135,6 +167,16 @@ public class UserServiceListIDPLinksRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `userId` to the URL query string
+    if (getUserId() != null) {
+      try {
+        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     // add `query` to the URL query string
     if (getQuery() != null) {

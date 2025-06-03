@@ -30,15 +30,45 @@ import java.util.StringJoiner;
  * UserServiceRegisterU2FRequest
  */
 @JsonPropertyOrder({
+  UserServiceRegisterU2FRequest.JSON_PROPERTY_USER_ID,
   UserServiceRegisterU2FRequest.JSON_PROPERTY_DOMAIN
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class UserServiceRegisterU2FRequest {
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
+  private String userId;
+
   public static final String JSON_PROPERTY_DOMAIN = "domain";
   @javax.annotation.Nullable
   private String domain;
 
   public UserServiceRegisterU2FRequest() {
+  }
+
+  public UserServiceRegisterU2FRequest userId(@javax.annotation.Nonnull String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+  /**
+   * Get userId
+   * @return userId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserId(@javax.annotation.Nonnull String userId) {
+    this.userId = userId;
   }
 
   public UserServiceRegisterU2FRequest domain(@javax.annotation.Nullable String domain) {
@@ -48,7 +78,7 @@ public class UserServiceRegisterU2FRequest {
   }
 
   /**
-   * \&quot;Domain on which the user is authenticated.\&quot;
+   * Get domain
    * @return domain
    */
   @javax.annotation.Nullable
@@ -75,18 +105,20 @@ public class UserServiceRegisterU2FRequest {
       return false;
     }
     UserServiceRegisterU2FRequest userServiceRegisterU2FRequest = (UserServiceRegisterU2FRequest) o;
-    return Objects.equals(this.domain, userServiceRegisterU2FRequest.domain);
+    return Objects.equals(this.userId, userServiceRegisterU2FRequest.userId) &&
+        Objects.equals(this.domain, userServiceRegisterU2FRequest.domain);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(domain);
+    return Objects.hash(userId, domain);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceRegisterU2FRequest {\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -134,6 +166,16 @@ public class UserServiceRegisterU2FRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `userId` to the URL query string
+    if (getUserId() != null) {
+      try {
+        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     // add `domain` to the URL query string
     if (getDomain() != null) {

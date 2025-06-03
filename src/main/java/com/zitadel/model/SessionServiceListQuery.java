@@ -20,6 +20,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -27,7 +31,7 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * Object unspecific list filters like offset, limit and asc/desc.
+ * SessionServiceListQuery
  */
 @JsonPropertyOrder({
   SessionServiceListQuery.JSON_PROPERTY_OFFSET,
@@ -38,11 +42,11 @@ import java.util.StringJoiner;
 public class SessionServiceListQuery {
   public static final String JSON_PROPERTY_OFFSET = "offset";
   @javax.annotation.Nullable
-  private String offset;
+  private JsonNullable<Object> offset = JsonNullable.<Object>of(null);
 
   public static final String JSON_PROPERTY_LIMIT = "limit";
   @javax.annotation.Nullable
-  private Long limit;
+  private Integer limit;
 
   public static final String JSON_PROPERTY_ASC = "asc";
   @javax.annotation.Nullable
@@ -51,9 +55,9 @@ public class SessionServiceListQuery {
   public SessionServiceListQuery() {
   }
 
-  public SessionServiceListQuery offset(@javax.annotation.Nullable String offset) {
+  public SessionServiceListQuery offset(@javax.annotation.Nullable Object offset) {
+    this.offset = JsonNullable.<Object>of(offset);
     
-    this.offset = offset;
     return this;
   }
 
@@ -62,42 +66,50 @@ public class SessionServiceListQuery {
    * @return offset
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OFFSET)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
-  public String getOffset() {
-    return offset;
+  public Object getOffset() {
+        return offset.orElse(null);
   }
 
-
   @JsonProperty(JSON_PROPERTY_OFFSET)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOffset(@javax.annotation.Nullable String offset) {
+
+  public JsonNullable<Object> getOffset_JsonNullable() {
+    return offset;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_OFFSET)
+  public void setOffset_JsonNullable(JsonNullable<Object> offset) {
     this.offset = offset;
   }
 
-  public SessionServiceListQuery limit(@javax.annotation.Nullable Long limit) {
+  public void setOffset(@javax.annotation.Nullable Object offset) {
+    this.offset = JsonNullable.<Object>of(offset);
+  }
+
+  public SessionServiceListQuery limit(@javax.annotation.Nullable Integer limit) {
     
     this.limit = limit;
     return this;
   }
 
   /**
-   * Maximum amount of events returned. The default is set to 1000 in https://github.com/zitadel/zitadel/blob/new-eventstore/cmd/zitadel/startup.yaml. If the limit exceeds the maximum configured ZITADEL will throw an error. If no limit is present the default is taken.
+   * Get limit
    * @return limit
    */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_LIMIT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Long getLimit() {
+  public Integer getLimit() {
     return limit;
   }
 
 
   @JsonProperty(JSON_PROPERTY_LIMIT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLimit(@javax.annotation.Nullable Long limit) {
+  public void setLimit(@javax.annotation.Nullable Integer limit) {
     this.limit = limit;
   }
 
@@ -108,7 +120,7 @@ public class SessionServiceListQuery {
   }
 
   /**
-   * default is descending
+   * Get asc
    * @return asc
    */
   @javax.annotation.Nullable
@@ -135,14 +147,25 @@ public class SessionServiceListQuery {
       return false;
     }
     SessionServiceListQuery sessionServiceListQuery = (SessionServiceListQuery) o;
-    return Objects.equals(this.offset, sessionServiceListQuery.offset) &&
+    return equalsNullable(this.offset, sessionServiceListQuery.offset) &&
         Objects.equals(this.limit, sessionServiceListQuery.limit) &&
         Objects.equals(this.asc, sessionServiceListQuery.asc);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(offset, limit, asc);
+    return Objects.hash(hashCodeNullable(offset), limit, asc);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -42,7 +42,7 @@ public class UserServiceEmailQuery {
 
   public static final String JSON_PROPERTY_METHOD = "method";
   @javax.annotation.Nullable
-  private UserServiceTextQueryMethod method = UserServiceTextQueryMethod.TEXT_QUERY_METHOD_EQUALS;
+  private UserServiceTextQueryMethod method;
 
   public UserServiceEmailQuery() {
   }
@@ -54,7 +54,7 @@ public class UserServiceEmailQuery {
   }
 
   /**
-   * email address of the user
+   * Get emailAddress
    * @return emailAddress
    */
   @javax.annotation.Nonnull

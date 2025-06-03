@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.OrgDomain;
+import com.zitadel.model.OrgId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -30,48 +32,23 @@ import java.util.StringJoiner;
  * UserServiceOrganization
  */
 @JsonPropertyOrder({
-  UserServiceOrganization.JSON_PROPERTY_ORG_ID,
-  UserServiceOrganization.JSON_PROPERTY_ORG_DOMAIN
+  UserServiceOrganization.JSON_PROPERTY_ORG_DOMAIN,
+  UserServiceOrganization.JSON_PROPERTY_ORG_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class UserServiceOrganization {
-  public static final String JSON_PROPERTY_ORG_ID = "orgId";
-  @javax.annotation.Nullable
-  private String orgId;
-
   public static final String JSON_PROPERTY_ORG_DOMAIN = "orgDomain";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String orgDomain;
+
+  public static final String JSON_PROPERTY_ORG_ID = "orgId";
+  @javax.annotation.Nonnull
+  private String orgId;
 
   public UserServiceOrganization() {
   }
 
-  public UserServiceOrganization orgId(@javax.annotation.Nullable String orgId) {
-    
-    this.orgId = orgId;
-    return this;
-  }
-
-  /**
-   * Get orgId
-   * @return orgId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ORG_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getOrgId() {
-    return orgId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_ORG_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOrgId(@javax.annotation.Nullable String orgId) {
-    this.orgId = orgId;
-  }
-
-  public UserServiceOrganization orgDomain(@javax.annotation.Nullable String orgDomain) {
+  public UserServiceOrganization orgDomain(@javax.annotation.Nonnull String orgDomain) {
     
     this.orgDomain = orgDomain;
     return this;
@@ -81,9 +58,9 @@ public class UserServiceOrganization {
    * Get orgDomain
    * @return orgDomain
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_ORG_DOMAIN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getOrgDomain() {
     return orgDomain;
@@ -91,9 +68,34 @@ public class UserServiceOrganization {
 
 
   @JsonProperty(JSON_PROPERTY_ORG_DOMAIN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOrgDomain(@javax.annotation.Nullable String orgDomain) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setOrgDomain(@javax.annotation.Nonnull String orgDomain) {
     this.orgDomain = orgDomain;
+  }
+
+  public UserServiceOrganization orgId(@javax.annotation.Nonnull String orgId) {
+    
+    this.orgId = orgId;
+    return this;
+  }
+
+  /**
+   * Get orgId
+   * @return orgId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_ORG_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getOrgId() {
+    return orgId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ORG_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setOrgId(@javax.annotation.Nonnull String orgId) {
+    this.orgId = orgId;
   }
 
   @Override
@@ -105,21 +107,21 @@ public class UserServiceOrganization {
       return false;
     }
     UserServiceOrganization userServiceOrganization = (UserServiceOrganization) o;
-    return Objects.equals(this.orgId, userServiceOrganization.orgId) &&
-        Objects.equals(this.orgDomain, userServiceOrganization.orgDomain);
+    return Objects.equals(this.orgDomain, userServiceOrganization.orgDomain) &&
+        Objects.equals(this.orgId, userServiceOrganization.orgId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orgId, orgDomain);
+    return Objects.hash(orgDomain, orgId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceOrganization {\n");
-    sb.append("    orgId: ").append(toIndentedString(orgId)).append("\n");
     sb.append("    orgDomain: ").append(toIndentedString(orgDomain)).append("\n");
+    sb.append("    orgId: ").append(toIndentedString(orgId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -166,6 +168,26 @@ public class UserServiceOrganization {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `orgDomain` to the URL query string
+    if (getOrgDomain() != null) {
+      try {
+        joiner.add(String.format("%sorgDomain%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrgDomain()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `orgId` to the URL query string
+    if (getOrgId() != null) {
+      try {
+        joiner.add(String.format("%sorgId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrgId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     return joiner.toString();
   }

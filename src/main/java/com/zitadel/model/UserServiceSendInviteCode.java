@@ -20,6 +20,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -37,63 +41,79 @@ import java.util.StringJoiner;
 public class UserServiceSendInviteCode {
   public static final String JSON_PROPERTY_URL_TEMPLATE = "urlTemplate";
   @javax.annotation.Nullable
-  private String urlTemplate;
+  private JsonNullable<String> urlTemplate = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_APPLICATION_NAME = "applicationName";
   @javax.annotation.Nullable
-  private String applicationName;
+  private JsonNullable<String> applicationName = JsonNullable.<String>undefined();
 
   public UserServiceSendInviteCode() {
   }
 
   public UserServiceSendInviteCode urlTemplate(@javax.annotation.Nullable String urlTemplate) {
+    this.urlTemplate = JsonNullable.<String>of(urlTemplate);
     
-    this.urlTemplate = urlTemplate;
     return this;
   }
 
   /**
-   * Optionally set a url_template, which will be used in the invite mail sent by ZITADEL to guide the user to your invitation page. If no template is set, the default ZITADEL url will be used.  The following placeholders can be used: UserID, OrgID, Code
+   * Optionally set a url_template, which will be used in the invite mail sent by ZITADEL to guide the user to your invitation page.  If no template is set and no previous code was created, the default ZITADEL url will be used.   The following placeholders can be used: UserID, OrgID, Code
    * @return urlTemplate
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_URL_TEMPLATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getUrlTemplate() {
-    return urlTemplate;
+        return urlTemplate.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_URL_TEMPLATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUrlTemplate(@javax.annotation.Nullable String urlTemplate) {
+
+  public JsonNullable<String> getUrlTemplate_JsonNullable() {
+    return urlTemplate;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_URL_TEMPLATE)
+  public void setUrlTemplate_JsonNullable(JsonNullable<String> urlTemplate) {
     this.urlTemplate = urlTemplate;
   }
 
+  public void setUrlTemplate(@javax.annotation.Nullable String urlTemplate) {
+    this.urlTemplate = JsonNullable.<String>of(urlTemplate);
+  }
+
   public UserServiceSendInviteCode applicationName(@javax.annotation.Nullable String applicationName) {
+    this.applicationName = JsonNullable.<String>of(applicationName);
     
-    this.applicationName = applicationName;
     return this;
   }
 
   /**
-   * Optionally set an application name, which will be used in the invite mail sent by ZITADEL. If no application name is set, ZITADEL will be used as default.
+   * Optionally set an application name, which will be used in the invite mail sent by ZITADEL.  If no application name is set and no previous code was created, ZITADEL will be used as default.
    * @return applicationName
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_APPLICATION_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getApplicationName() {
-    return applicationName;
+        return applicationName.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_APPLICATION_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setApplicationName(@javax.annotation.Nullable String applicationName) {
+
+  public JsonNullable<String> getApplicationName_JsonNullable() {
+    return applicationName;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_APPLICATION_NAME)
+  public void setApplicationName_JsonNullable(JsonNullable<String> applicationName) {
     this.applicationName = applicationName;
+  }
+
+  public void setApplicationName(@javax.annotation.Nullable String applicationName) {
+    this.applicationName = JsonNullable.<String>of(applicationName);
   }
 
   @Override
@@ -105,13 +125,24 @@ public class UserServiceSendInviteCode {
       return false;
     }
     UserServiceSendInviteCode userServiceSendInviteCode = (UserServiceSendInviteCode) o;
-    return Objects.equals(this.urlTemplate, userServiceSendInviteCode.urlTemplate) &&
-        Objects.equals(this.applicationName, userServiceSendInviteCode.applicationName);
+    return equalsNullable(this.urlTemplate, userServiceSendInviteCode.urlTemplate) &&
+        equalsNullable(this.applicationName, userServiceSendInviteCode.applicationName);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(urlTemplate, applicationName);
+    return Objects.hash(hashCodeNullable(urlTemplate), hashCodeNullable(applicationName));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

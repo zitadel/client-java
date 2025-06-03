@@ -20,6 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.SessionServiceValue;
+import java.util.HashMap;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -36,33 +39,38 @@ import java.util.StringJoiner;
 public class SessionServiceCheckWebAuthN {
   public static final String JSON_PROPERTY_CREDENTIAL_ASSERTION_DATA = "credentialAssertionData";
   @javax.annotation.Nonnull
-  private Object credentialAssertionData;
+  private Map<String, SessionServiceValue> credentialAssertionData = new HashMap<>();
 
   public SessionServiceCheckWebAuthN() {
   }
 
-  public SessionServiceCheckWebAuthN credentialAssertionData(@javax.annotation.Nonnull Object credentialAssertionData) {
+  public SessionServiceCheckWebAuthN credentialAssertionData(@javax.annotation.Nonnull Map<String, SessionServiceValue> credentialAssertionData) {
     
     this.credentialAssertionData = credentialAssertionData;
     return this;
   }
 
+  public SessionServiceCheckWebAuthN putCredentialAssertionDataItem(String key, SessionServiceValue credentialAssertionDataItem) {
+    this.credentialAssertionData.put(key, credentialAssertionDataItem);
+    return this;
+  }
+
   /**
-   * JSON representation of public key credential issued by the webAuthN client
+   * &#x60;Struct&#x60; represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, &#x60;Struct&#x60;  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for &#x60;Struct&#x60; is JSON object.
    * @return credentialAssertionData
    */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_ASSERTION_DATA)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
 
-  public Object getCredentialAssertionData() {
+  public Map<String, SessionServiceValue> getCredentialAssertionData() {
     return credentialAssertionData;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_ASSERTION_DATA)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialAssertionData(@javax.annotation.Nonnull Object credentialAssertionData) {
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
+  public void setCredentialAssertionData(@javax.annotation.Nonnull Map<String, SessionServiceValue> credentialAssertionData) {
     this.credentialAssertionData = credentialAssertionData;
   }
 
@@ -137,11 +145,11 @@ public class SessionServiceCheckWebAuthN {
 
     // add `credentialAssertionData` to the URL query string
     if (getCredentialAssertionData() != null) {
-      try {
-        joiner.add(String.format("%scredentialAssertionData%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialAssertionData()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
+      for (String _key : getCredentialAssertionData().keySet()) {
+        if (getCredentialAssertionData().get(_key) != null) {
+          joiner.add(getCredentialAssertionData().get(_key).toUrlQueryString(String.format("%scredentialAssertionData%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix))));
+        }
       }
     }
 

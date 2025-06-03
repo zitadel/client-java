@@ -20,6 +20,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -41,7 +45,7 @@ public class UserServiceIDPOAuthAccessInformation {
 
   public static final String JSON_PROPERTY_ID_TOKEN = "idToken";
   @javax.annotation.Nullable
-  private String idToken;
+  private JsonNullable<String> idToken = JsonNullable.<String>undefined();
 
   public UserServiceIDPOAuthAccessInformation() {
   }
@@ -72,8 +76,8 @@ public class UserServiceIDPOAuthAccessInformation {
   }
 
   public UserServiceIDPOAuthAccessInformation idToken(@javax.annotation.Nullable String idToken) {
+    this.idToken = JsonNullable.<String>of(idToken);
     
-    this.idToken = idToken;
     return this;
   }
 
@@ -82,18 +86,26 @@ public class UserServiceIDPOAuthAccessInformation {
    * @return idToken
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getIdToken() {
-    return idToken;
+        return idToken.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_ID_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIdToken(@javax.annotation.Nullable String idToken) {
+
+  public JsonNullable<String> getIdToken_JsonNullable() {
+    return idToken;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_ID_TOKEN)
+  public void setIdToken_JsonNullable(JsonNullable<String> idToken) {
     this.idToken = idToken;
+  }
+
+  public void setIdToken(@javax.annotation.Nullable String idToken) {
+    this.idToken = JsonNullable.<String>of(idToken);
   }
 
   @Override
@@ -106,12 +118,23 @@ public class UserServiceIDPOAuthAccessInformation {
     }
     UserServiceIDPOAuthAccessInformation userServiceIDPOAuthAccessInformation = (UserServiceIDPOAuthAccessInformation) o;
     return Objects.equals(this.accessToken, userServiceIDPOAuthAccessInformation.accessToken) &&
-        Objects.equals(this.idToken, userServiceIDPOAuthAccessInformation.idToken);
+        equalsNullable(this.idToken, userServiceIDPOAuthAccessInformation.idToken);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessToken, idToken);
+    return Objects.hash(accessToken, hashCodeNullable(idToken));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

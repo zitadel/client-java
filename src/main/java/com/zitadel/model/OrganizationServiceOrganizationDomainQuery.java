@@ -42,7 +42,7 @@ public class OrganizationServiceOrganizationDomainQuery {
 
   public static final String JSON_PROPERTY_METHOD = "method";
   @javax.annotation.Nullable
-  private OrganizationServiceTextQueryMethod method = OrganizationServiceTextQueryMethod.TEXT_QUERY_METHOD_EQUALS;
+  private OrganizationServiceTextQueryMethod method;
 
   public OrganizationServiceOrganizationDomainQuery() {
   }

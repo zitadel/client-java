@@ -32,25 +32,55 @@ import java.util.StringJoiner;
  * UserServiceRegisterPasskeyRequest
  */
 @JsonPropertyOrder({
+  UserServiceRegisterPasskeyRequest.JSON_PROPERTY_USER_ID,
   UserServiceRegisterPasskeyRequest.JSON_PROPERTY_CODE,
   UserServiceRegisterPasskeyRequest.JSON_PROPERTY_AUTHENTICATOR,
   UserServiceRegisterPasskeyRequest.JSON_PROPERTY_DOMAIN
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class UserServiceRegisterPasskeyRequest {
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
+  private String userId;
+
   public static final String JSON_PROPERTY_CODE = "code";
   @javax.annotation.Nullable
   private UserServicePasskeyRegistrationCode code;
 
   public static final String JSON_PROPERTY_AUTHENTICATOR = "authenticator";
   @javax.annotation.Nullable
-  private UserServicePasskeyAuthenticator authenticator = UserServicePasskeyAuthenticator.PASSKEY_AUTHENTICATOR_UNSPECIFIED;
+  private UserServicePasskeyAuthenticator authenticator;
 
   public static final String JSON_PROPERTY_DOMAIN = "domain";
   @javax.annotation.Nullable
   private String domain;
 
   public UserServiceRegisterPasskeyRequest() {
+  }
+
+  public UserServiceRegisterPasskeyRequest userId(@javax.annotation.Nonnull String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+  /**
+   * Get userId
+   * @return userId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserId(@javax.annotation.Nonnull String userId) {
+    this.userId = userId;
   }
 
   public UserServiceRegisterPasskeyRequest code(@javax.annotation.Nullable UserServicePasskeyRegistrationCode code) {
@@ -110,7 +140,7 @@ public class UserServiceRegisterPasskeyRequest {
   }
 
   /**
-   * \&quot;Domain on which the user is authenticated.\&quot;
+   * Get domain
    * @return domain
    */
   @javax.annotation.Nullable
@@ -137,20 +167,22 @@ public class UserServiceRegisterPasskeyRequest {
       return false;
     }
     UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest = (UserServiceRegisterPasskeyRequest) o;
-    return Objects.equals(this.code, userServiceRegisterPasskeyRequest.code) &&
+    return Objects.equals(this.userId, userServiceRegisterPasskeyRequest.userId) &&
+        Objects.equals(this.code, userServiceRegisterPasskeyRequest.code) &&
         Objects.equals(this.authenticator, userServiceRegisterPasskeyRequest.authenticator) &&
         Objects.equals(this.domain, userServiceRegisterPasskeyRequest.domain);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, authenticator, domain);
+    return Objects.hash(userId, code, authenticator, domain);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceRegisterPasskeyRequest {\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    authenticator: ").append(toIndentedString(authenticator)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
@@ -200,6 +232,16 @@ public class UserServiceRegisterPasskeyRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `userId` to the URL query string
+    if (getUserId() != null) {
+      try {
+        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     // add `code` to the URL query string
     if (getCode() != null) {

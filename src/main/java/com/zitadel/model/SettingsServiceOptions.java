@@ -57,7 +57,7 @@ public class SettingsServiceOptions {
 
   public static final String JSON_PROPERTY_AUTO_LINKING = "autoLinking";
   @javax.annotation.Nullable
-  private SettingsServiceAutoLinkingOption autoLinking = SettingsServiceAutoLinkingOption.AUTO_LINKING_OPTION_UNSPECIFIED;
+  private SettingsServiceAutoLinkingOption autoLinking;
 
   public SettingsServiceOptions() {
   }
@@ -69,7 +69,7 @@ public class SettingsServiceOptions {
   }
 
   /**
-   * Enable if users should be able to link an existing ZITADEL user with an external account.
+   * Enable if users should be able to link an existing ZITADEL user with an  external account.
    * @return isLinkingAllowed
    */
   @javax.annotation.Nullable
@@ -94,7 +94,7 @@ public class SettingsServiceOptions {
   }
 
   /**
-   * Enable if users should be able to create a new account in ZITADEL when using an external account.
+   * Enable if users should be able to create a new account in ZITADEL when  using an external account.
    * @return isCreationAllowed
    */
   @javax.annotation.Nullable
@@ -119,7 +119,7 @@ public class SettingsServiceOptions {
   }
 
   /**
-   * Enable if a new account in ZITADEL should be created automatically when login with an external account.
+   * Enable if a new account in ZITADEL should be created automatically when  login with an external account.
    * @return isAutoCreation
    */
   @javax.annotation.Nullable
@@ -144,7 +144,7 @@ public class SettingsServiceOptions {
   }
 
   /**
-   * Enable if a the ZITADEL account fields should be updated automatically on each login.
+   * Enable if a the ZITADEL account fields should be updated automatically on  each login.
    * @return isAutoUpdate
    */
   @javax.annotation.Nullable

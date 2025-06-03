@@ -25,6 +25,10 @@ import com.zitadel.model.SessionServiceUserAgent;
 import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -60,7 +64,7 @@ public class SessionServiceSession {
 
   public static final String JSON_PROPERTY_SEQUENCE = "sequence";
   @javax.annotation.Nullable
-  private String sequence;
+  private JsonNullable<Object> sequence = JsonNullable.<Object>of(null);
 
   public static final String JSON_PROPERTY_FACTORS = "factors";
   @javax.annotation.Nullable
@@ -88,7 +92,7 @@ public class SessionServiceSession {
   }
 
   /**
-   * \&quot;id of the session\&quot;
+   * Get id
    * @return id
    */
   @javax.annotation.Nullable
@@ -113,7 +117,7 @@ public class SessionServiceSession {
   }
 
   /**
-   * \&quot;time when the session was created\&quot;
+   * A Timestamp represents a point in time independent of any time zone or local  calendar, encoded as a count of seconds and fractions of seconds at  nanosecond resolution. The count is relative to an epoch at UTC midnight on  January 1, 1970, in the proleptic Gregorian calendar which extends the  Gregorian calendar backwards to year one.   All minutes are 60 seconds long. Leap seconds are \&quot;smeared\&quot; so that no leap  second table is needed for interpretation, using a [24-hour linear  smear](https://developers.google.com/time/smear).   The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By  restricting to that range, we ensure that we can convert to and from [RFC  3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.   # Examples   Example 1: Compute Timestamp from POSIX &#x60;time()&#x60;.       Timestamp timestamp;      timestamp.set_seconds(time(NULL));      timestamp.set_nanos(0);   Example 2: Compute Timestamp from POSIX &#x60;gettimeofday()&#x60;.       struct timeval tv;      gettimeofday(&amp;tv, NULL);       Timestamp timestamp;      timestamp.set_seconds(tv.tv_sec);      timestamp.set_nanos(tv.tv_usec * 1000);   Example 3: Compute Timestamp from Win32 &#x60;GetSystemTimeAsFileTime()&#x60;.       FILETIME ft;      GetSystemTimeAsFileTime(&amp;ft);      UINT64 ticks &#x3D; (((UINT64)ft.dwHighDateTime) &lt;&lt; 32) | ft.dwLowDateTime;       // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z      // is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z.      Timestamp timestamp;      timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));      timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));   Example 4: Compute Timestamp from Java &#x60;System.currentTimeMillis()&#x60;.       long millis &#x3D; System.currentTimeMillis();       Timestamp timestamp &#x3D; Timestamp.newBuilder().setSeconds(millis / 1000)          .setNanos((int) ((millis % 1000) * 1000000)).build();   Example 5: Compute Timestamp from Java &#x60;Instant.now()&#x60;.       Instant now &#x3D; Instant.now();       Timestamp timestamp &#x3D;          Timestamp.newBuilder().setSeconds(now.getEpochSecond())              .setNanos(now.getNano()).build();   Example 6: Compute Timestamp from current time in Python.       timestamp &#x3D; Timestamp()      timestamp.GetCurrentTime()   # JSON Mapping   In JSON format, the Timestamp type is encoded as a string in the  [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the  format is \&quot;{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z\&quot;  where {year} is always expressed using four digits while {month}, {day},  {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional  seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),  are optional. The \&quot;Z\&quot; suffix indicates the timezone (\&quot;UTC\&quot;); the timezone  is required. A proto3 JSON serializer should always use UTC (as indicated by  \&quot;Z\&quot;) when printing the Timestamp type and a proto3 JSON parser should be  able to accept both UTC and other timezones (as indicated by an offset).   For example, \&quot;2017-01-15T01:30:15.01Z\&quot; encodes 15.01 seconds past  01:30 UTC on January 15, 2017.   In JavaScript, one can convert a Date object to this format using the  standard  [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)  method. In Python, a standard &#x60;datetime.datetime&#x60; object can be converted  to this format using  [&#x60;strftime&#x60;](https://docs.python.org/2/library/time.html#time.strftime) with  the time format spec &#39;%Y-%m-%dT%H:%M:%S.%fZ&#39;. Likewise, in Java, one can use  the Joda Time&#39;s [&#x60;ISODateTimeFormat.dateTime()&#x60;](  http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()  ) to obtain a formatter capable of generating timestamps in this format.
    * @return creationDate
    */
   @javax.annotation.Nullable
@@ -138,7 +142,7 @@ public class SessionServiceSession {
   }
 
   /**
-   * \&quot;time when the session was last updated\&quot;
+   * A Timestamp represents a point in time independent of any time zone or local  calendar, encoded as a count of seconds and fractions of seconds at  nanosecond resolution. The count is relative to an epoch at UTC midnight on  January 1, 1970, in the proleptic Gregorian calendar which extends the  Gregorian calendar backwards to year one.   All minutes are 60 seconds long. Leap seconds are \&quot;smeared\&quot; so that no leap  second table is needed for interpretation, using a [24-hour linear  smear](https://developers.google.com/time/smear).   The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By  restricting to that range, we ensure that we can convert to and from [RFC  3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.   # Examples   Example 1: Compute Timestamp from POSIX &#x60;time()&#x60;.       Timestamp timestamp;      timestamp.set_seconds(time(NULL));      timestamp.set_nanos(0);   Example 2: Compute Timestamp from POSIX &#x60;gettimeofday()&#x60;.       struct timeval tv;      gettimeofday(&amp;tv, NULL);       Timestamp timestamp;      timestamp.set_seconds(tv.tv_sec);      timestamp.set_nanos(tv.tv_usec * 1000);   Example 3: Compute Timestamp from Win32 &#x60;GetSystemTimeAsFileTime()&#x60;.       FILETIME ft;      GetSystemTimeAsFileTime(&amp;ft);      UINT64 ticks &#x3D; (((UINT64)ft.dwHighDateTime) &lt;&lt; 32) | ft.dwLowDateTime;       // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z      // is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z.      Timestamp timestamp;      timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));      timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));   Example 4: Compute Timestamp from Java &#x60;System.currentTimeMillis()&#x60;.       long millis &#x3D; System.currentTimeMillis();       Timestamp timestamp &#x3D; Timestamp.newBuilder().setSeconds(millis / 1000)          .setNanos((int) ((millis % 1000) * 1000000)).build();   Example 5: Compute Timestamp from Java &#x60;Instant.now()&#x60;.       Instant now &#x3D; Instant.now();       Timestamp timestamp &#x3D;          Timestamp.newBuilder().setSeconds(now.getEpochSecond())              .setNanos(now.getNano()).build();   Example 6: Compute Timestamp from current time in Python.       timestamp &#x3D; Timestamp()      timestamp.GetCurrentTime()   # JSON Mapping   In JSON format, the Timestamp type is encoded as a string in the  [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the  format is \&quot;{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z\&quot;  where {year} is always expressed using four digits while {month}, {day},  {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional  seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),  are optional. The \&quot;Z\&quot; suffix indicates the timezone (\&quot;UTC\&quot;); the timezone  is required. A proto3 JSON serializer should always use UTC (as indicated by  \&quot;Z\&quot;) when printing the Timestamp type and a proto3 JSON parser should be  able to accept both UTC and other timezones (as indicated by an offset).   For example, \&quot;2017-01-15T01:30:15.01Z\&quot; encodes 15.01 seconds past  01:30 UTC on January 15, 2017.   In JavaScript, one can convert a Date object to this format using the  standard  [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)  method. In Python, a standard &#x60;datetime.datetime&#x60; object can be converted  to this format using  [&#x60;strftime&#x60;](https://docs.python.org/2/library/time.html#time.strftime) with  the time format spec &#39;%Y-%m-%dT%H:%M:%S.%fZ&#39;. Likewise, in Java, one can use  the Joda Time&#39;s [&#x60;ISODateTimeFormat.dateTime()&#x60;](  http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()  ) to obtain a formatter capable of generating timestamps in this format.
    * @return changeDate
    */
   @javax.annotation.Nullable
@@ -156,29 +160,37 @@ public class SessionServiceSession {
     this.changeDate = changeDate;
   }
 
-  public SessionServiceSession sequence(@javax.annotation.Nullable String sequence) {
+  public SessionServiceSession sequence(@javax.annotation.Nullable Object sequence) {
+    this.sequence = JsonNullable.<Object>of(sequence);
     
-    this.sequence = sequence;
     return this;
   }
 
   /**
-   * \&quot;sequence of the session\&quot;
+   * Get sequence
    * @return sequence
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SEQUENCE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
-  public String getSequence() {
-    return sequence;
+  public Object getSequence() {
+        return sequence.orElse(null);
   }
 
-
   @JsonProperty(JSON_PROPERTY_SEQUENCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSequence(@javax.annotation.Nullable String sequence) {
+
+  public JsonNullable<Object> getSequence_JsonNullable() {
+    return sequence;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_SEQUENCE)
+  public void setSequence_JsonNullable(JsonNullable<Object> sequence) {
     this.sequence = sequence;
+  }
+
+  public void setSequence(@javax.annotation.Nullable Object sequence) {
+    this.sequence = JsonNullable.<Object>of(sequence);
   }
 
   public SessionServiceSession factors(@javax.annotation.Nullable SessionServiceFactors factors) {
@@ -221,7 +233,7 @@ public class SessionServiceSession {
   }
 
   /**
-   * \&quot;custom key value list\&quot;
+   * Get metadata
    * @return metadata
    */
   @javax.annotation.Nullable
@@ -271,7 +283,7 @@ public class SessionServiceSession {
   }
 
   /**
-   * \&quot;time the session will be automatically invalidated\&quot;
+   * A Timestamp represents a point in time independent of any time zone or local  calendar, encoded as a count of seconds and fractions of seconds at  nanosecond resolution. The count is relative to an epoch at UTC midnight on  January 1, 1970, in the proleptic Gregorian calendar which extends the  Gregorian calendar backwards to year one.   All minutes are 60 seconds long. Leap seconds are \&quot;smeared\&quot; so that no leap  second table is needed for interpretation, using a [24-hour linear  smear](https://developers.google.com/time/smear).   The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By  restricting to that range, we ensure that we can convert to and from [RFC  3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.   # Examples   Example 1: Compute Timestamp from POSIX &#x60;time()&#x60;.       Timestamp timestamp;      timestamp.set_seconds(time(NULL));      timestamp.set_nanos(0);   Example 2: Compute Timestamp from POSIX &#x60;gettimeofday()&#x60;.       struct timeval tv;      gettimeofday(&amp;tv, NULL);       Timestamp timestamp;      timestamp.set_seconds(tv.tv_sec);      timestamp.set_nanos(tv.tv_usec * 1000);   Example 3: Compute Timestamp from Win32 &#x60;GetSystemTimeAsFileTime()&#x60;.       FILETIME ft;      GetSystemTimeAsFileTime(&amp;ft);      UINT64 ticks &#x3D; (((UINT64)ft.dwHighDateTime) &lt;&lt; 32) | ft.dwLowDateTime;       // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z      // is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z.      Timestamp timestamp;      timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));      timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));   Example 4: Compute Timestamp from Java &#x60;System.currentTimeMillis()&#x60;.       long millis &#x3D; System.currentTimeMillis();       Timestamp timestamp &#x3D; Timestamp.newBuilder().setSeconds(millis / 1000)          .setNanos((int) ((millis % 1000) * 1000000)).build();   Example 5: Compute Timestamp from Java &#x60;Instant.now()&#x60;.       Instant now &#x3D; Instant.now();       Timestamp timestamp &#x3D;          Timestamp.newBuilder().setSeconds(now.getEpochSecond())              .setNanos(now.getNano()).build();   Example 6: Compute Timestamp from current time in Python.       timestamp &#x3D; Timestamp()      timestamp.GetCurrentTime()   # JSON Mapping   In JSON format, the Timestamp type is encoded as a string in the  [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the  format is \&quot;{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z\&quot;  where {year} is always expressed using four digits while {month}, {day},  {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional  seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),  are optional. The \&quot;Z\&quot; suffix indicates the timezone (\&quot;UTC\&quot;); the timezone  is required. A proto3 JSON serializer should always use UTC (as indicated by  \&quot;Z\&quot;) when printing the Timestamp type and a proto3 JSON parser should be  able to accept both UTC and other timezones (as indicated by an offset).   For example, \&quot;2017-01-15T01:30:15.01Z\&quot; encodes 15.01 seconds past  01:30 UTC on January 15, 2017.   In JavaScript, one can convert a Date object to this format using the  standard  [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)  method. In Python, a standard &#x60;datetime.datetime&#x60; object can be converted  to this format using  [&#x60;strftime&#x60;](https://docs.python.org/2/library/time.html#time.strftime) with  the time format spec &#39;%Y-%m-%dT%H:%M:%S.%fZ&#39;. Likewise, in Java, one can use  the Joda Time&#39;s [&#x60;ISODateTimeFormat.dateTime()&#x60;](  http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()  ) to obtain a formatter capable of generating timestamps in this format.
    * @return expirationDate
    */
   @javax.annotation.Nullable
@@ -301,16 +313,27 @@ public class SessionServiceSession {
     return Objects.equals(this.id, sessionServiceSession.id) &&
         Objects.equals(this.creationDate, sessionServiceSession.creationDate) &&
         Objects.equals(this.changeDate, sessionServiceSession.changeDate) &&
-        Objects.equals(this.sequence, sessionServiceSession.sequence) &&
+        equalsNullable(this.sequence, sessionServiceSession.sequence) &&
         Objects.equals(this.factors, sessionServiceSession.factors) &&
         Objects.equals(this.metadata, sessionServiceSession.metadata) &&
         Objects.equals(this.userAgent, sessionServiceSession.userAgent) &&
         Objects.equals(this.expirationDate, sessionServiceSession.expirationDate);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(id, creationDate, changeDate, sequence, factors, metadata, userAgent, expirationDate);
+    return Objects.hash(id, creationDate, changeDate, hashCodeNullable(sequence), factors, metadata, userAgent, expirationDate);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

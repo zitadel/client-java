@@ -20,8 +20,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.Error;
 import com.zitadel.model.OIDCServiceAuthorizationError;
 import com.zitadel.model.OIDCServiceSession;
+import com.zitadel.model.Session;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -32,48 +34,53 @@ import java.util.StringJoiner;
  * OIDCServiceCreateCallbackRequest
  */
 @JsonPropertyOrder({
-  OIDCServiceCreateCallbackRequest.JSON_PROPERTY_SESSION,
-  OIDCServiceCreateCallbackRequest.JSON_PROPERTY_ERROR
+  OIDCServiceCreateCallbackRequest.JSON_PROPERTY_AUTH_REQUEST_ID,
+  OIDCServiceCreateCallbackRequest.JSON_PROPERTY_ERROR,
+  OIDCServiceCreateCallbackRequest.JSON_PROPERTY_SESSION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class OIDCServiceCreateCallbackRequest {
-  public static final String JSON_PROPERTY_SESSION = "session";
+  public static final String JSON_PROPERTY_AUTH_REQUEST_ID = "authRequestId";
   @javax.annotation.Nullable
-  private OIDCServiceSession session;
+  private String authRequestId;
 
   public static final String JSON_PROPERTY_ERROR = "error";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private OIDCServiceAuthorizationError error;
+
+  public static final String JSON_PROPERTY_SESSION = "session";
+  @javax.annotation.Nonnull
+  private OIDCServiceSession session;
 
   public OIDCServiceCreateCallbackRequest() {
   }
 
-  public OIDCServiceCreateCallbackRequest session(@javax.annotation.Nullable OIDCServiceSession session) {
+  public OIDCServiceCreateCallbackRequest authRequestId(@javax.annotation.Nullable String authRequestId) {
     
-    this.session = session;
+    this.authRequestId = authRequestId;
     return this;
   }
 
   /**
-   * Get session
-   * @return session
+   * Get authRequestId
+   * @return authRequestId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SESSION)
+  @JsonProperty(JSON_PROPERTY_AUTH_REQUEST_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public OIDCServiceSession getSession() {
-    return session;
+  public String getAuthRequestId() {
+    return authRequestId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SESSION)
+  @JsonProperty(JSON_PROPERTY_AUTH_REQUEST_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSession(@javax.annotation.Nullable OIDCServiceSession session) {
-    this.session = session;
+  public void setAuthRequestId(@javax.annotation.Nullable String authRequestId) {
+    this.authRequestId = authRequestId;
   }
 
-  public OIDCServiceCreateCallbackRequest error(@javax.annotation.Nullable OIDCServiceAuthorizationError error) {
+  public OIDCServiceCreateCallbackRequest error(@javax.annotation.Nonnull OIDCServiceAuthorizationError error) {
     
     this.error = error;
     return this;
@@ -83,9 +90,9 @@ public class OIDCServiceCreateCallbackRequest {
    * Get error
    * @return error
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OIDCServiceAuthorizationError getError() {
     return error;
@@ -93,9 +100,34 @@ public class OIDCServiceCreateCallbackRequest {
 
 
   @JsonProperty(JSON_PROPERTY_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(@javax.annotation.Nullable OIDCServiceAuthorizationError error) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setError(@javax.annotation.Nonnull OIDCServiceAuthorizationError error) {
     this.error = error;
+  }
+
+  public OIDCServiceCreateCallbackRequest session(@javax.annotation.Nonnull OIDCServiceSession session) {
+    
+    this.session = session;
+    return this;
+  }
+
+  /**
+   * Get session
+   * @return session
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_SESSION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public OIDCServiceSession getSession() {
+    return session;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SESSION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSession(@javax.annotation.Nonnull OIDCServiceSession session) {
+    this.session = session;
   }
 
   @Override
@@ -107,21 +139,23 @@ public class OIDCServiceCreateCallbackRequest {
       return false;
     }
     OIDCServiceCreateCallbackRequest oiDCServiceCreateCallbackRequest = (OIDCServiceCreateCallbackRequest) o;
-    return Objects.equals(this.session, oiDCServiceCreateCallbackRequest.session) &&
-        Objects.equals(this.error, oiDCServiceCreateCallbackRequest.error);
+    return Objects.equals(this.authRequestId, oiDCServiceCreateCallbackRequest.authRequestId) &&
+        Objects.equals(this.error, oiDCServiceCreateCallbackRequest.error) &&
+        Objects.equals(this.session, oiDCServiceCreateCallbackRequest.session);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(session, error);
+    return Objects.hash(authRequestId, error, session);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OIDCServiceCreateCallbackRequest {\n");
-    sb.append("    session: ").append(toIndentedString(session)).append("\n");
+    sb.append("    authRequestId: ").append(toIndentedString(authRequestId)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    session: ").append(toIndentedString(session)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -168,6 +202,16 @@ public class OIDCServiceCreateCallbackRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `error` to the URL query string
+    if (getError() != null) {
+      joiner.add(getError().toUrlQueryString(prefix + "error" + suffix));
+    }
+
+    // add `session` to the URL query string
+    if (getSession() != null) {
+      joiner.add(getSession().toUrlQueryString(prefix + "session" + suffix));
+    }
 
     return joiner.toString();
   }

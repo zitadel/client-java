@@ -22,6 +22,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.IdentityProviderServiceSAMLBinding;
 import com.zitadel.model.IdentityProviderServiceSAMLNameIDFormat;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -47,7 +51,7 @@ public class IdentityProviderServiceSAMLConfig {
 
   public static final String JSON_PROPERTY_BINDING = "binding";
   @javax.annotation.Nullable
-  private IdentityProviderServiceSAMLBinding binding = IdentityProviderServiceSAMLBinding.SAML_BINDING_UNSPECIFIED;
+  private IdentityProviderServiceSAMLBinding binding;
 
   public static final String JSON_PROPERTY_WITH_SIGNED_REQUEST = "withSignedRequest";
   @javax.annotation.Nullable
@@ -55,15 +59,15 @@ public class IdentityProviderServiceSAMLConfig {
 
   public static final String JSON_PROPERTY_NAME_ID_FORMAT = "nameIdFormat";
   @javax.annotation.Nullable
-  private IdentityProviderServiceSAMLNameIDFormat nameIdFormat = IdentityProviderServiceSAMLNameIDFormat.SAML_NAME_ID_FORMAT_UNSPECIFIED;
+  private IdentityProviderServiceSAMLNameIDFormat nameIdFormat;
 
   public static final String JSON_PROPERTY_TRANSIENT_MAPPING_ATTRIBUTE_NAME = "transientMappingAttributeName";
   @javax.annotation.Nullable
-  private String transientMappingAttributeName;
+  private JsonNullable<String> transientMappingAttributeName = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_FEDERATED_LOGOUT_ENABLED = "federatedLogoutEnabled";
   @javax.annotation.Nullable
-  private Boolean federatedLogoutEnabled;
+  private JsonNullable<Boolean> federatedLogoutEnabled = JsonNullable.<Boolean>undefined();
 
   public IdentityProviderServiceSAMLConfig() {
   }
@@ -169,53 +173,69 @@ public class IdentityProviderServiceSAMLConfig {
   }
 
   public IdentityProviderServiceSAMLConfig transientMappingAttributeName(@javax.annotation.Nullable String transientMappingAttributeName) {
+    this.transientMappingAttributeName = JsonNullable.<String>of(transientMappingAttributeName);
     
-    this.transientMappingAttributeName = transientMappingAttributeName;
     return this;
   }
 
   /**
-   * Optional name of the attribute, which will be used to map the user in case the nameid-format returned is &#x60;urn:oasis:names:tc:SAML:2.0:nameid-format:transient&#x60;.
+   * Optional name of the attribute, which will be used to map the user  in case the nameid-format returned is  &#x60;urn:oasis:names:tc:SAML:2.0:nameid-format:transient&#x60;.
    * @return transientMappingAttributeName
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TRANSIENT_MAPPING_ATTRIBUTE_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getTransientMappingAttributeName() {
-    return transientMappingAttributeName;
+        return transientMappingAttributeName.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_TRANSIENT_MAPPING_ATTRIBUTE_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTransientMappingAttributeName(@javax.annotation.Nullable String transientMappingAttributeName) {
+
+  public JsonNullable<String> getTransientMappingAttributeName_JsonNullable() {
+    return transientMappingAttributeName;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_TRANSIENT_MAPPING_ATTRIBUTE_NAME)
+  public void setTransientMappingAttributeName_JsonNullable(JsonNullable<String> transientMappingAttributeName) {
     this.transientMappingAttributeName = transientMappingAttributeName;
   }
 
+  public void setTransientMappingAttributeName(@javax.annotation.Nullable String transientMappingAttributeName) {
+    this.transientMappingAttributeName = JsonNullable.<String>of(transientMappingAttributeName);
+  }
+
   public IdentityProviderServiceSAMLConfig federatedLogoutEnabled(@javax.annotation.Nullable Boolean federatedLogoutEnabled) {
+    this.federatedLogoutEnabled = JsonNullable.<Boolean>of(federatedLogoutEnabled);
     
-    this.federatedLogoutEnabled = federatedLogoutEnabled;
     return this;
   }
 
   /**
-   * Boolean weather federated logout is enabled. If enabled, ZITADEL will send a logout request to the identity provider, if the user terminates the session in ZITADEL. Be sure to provide a SLO endpoint as part of the metadata.
+   * Boolean weather federated logout is enabled. If enabled, ZITADEL will send a logout request to the identity provider,  if the user terminates the session in ZITADEL. Be sure to provide a SLO endpoint as part of the metadata.
    * @return federatedLogoutEnabled
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FEDERATED_LOGOUT_ENABLED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getFederatedLogoutEnabled() {
-    return federatedLogoutEnabled;
+        return federatedLogoutEnabled.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_FEDERATED_LOGOUT_ENABLED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFederatedLogoutEnabled(@javax.annotation.Nullable Boolean federatedLogoutEnabled) {
+
+  public JsonNullable<Boolean> getFederatedLogoutEnabled_JsonNullable() {
+    return federatedLogoutEnabled;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_FEDERATED_LOGOUT_ENABLED)
+  public void setFederatedLogoutEnabled_JsonNullable(JsonNullable<Boolean> federatedLogoutEnabled) {
     this.federatedLogoutEnabled = federatedLogoutEnabled;
+  }
+
+  public void setFederatedLogoutEnabled(@javax.annotation.Nullable Boolean federatedLogoutEnabled) {
+    this.federatedLogoutEnabled = JsonNullable.<Boolean>of(federatedLogoutEnabled);
   }
 
   @Override
@@ -231,13 +251,24 @@ public class IdentityProviderServiceSAMLConfig {
         Objects.equals(this.binding, identityProviderServiceSAMLConfig.binding) &&
         Objects.equals(this.withSignedRequest, identityProviderServiceSAMLConfig.withSignedRequest) &&
         Objects.equals(this.nameIdFormat, identityProviderServiceSAMLConfig.nameIdFormat) &&
-        Objects.equals(this.transientMappingAttributeName, identityProviderServiceSAMLConfig.transientMappingAttributeName) &&
-        Objects.equals(this.federatedLogoutEnabled, identityProviderServiceSAMLConfig.federatedLogoutEnabled);
+        equalsNullable(this.transientMappingAttributeName, identityProviderServiceSAMLConfig.transientMappingAttributeName) &&
+        equalsNullable(this.federatedLogoutEnabled, identityProviderServiceSAMLConfig.federatedLogoutEnabled);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(Arrays.hashCode(metadataXml), binding, withSignedRequest, nameIdFormat, transientMappingAttributeName, federatedLogoutEnabled);
+    return Objects.hash(Arrays.hashCode(metadataXml), binding, withSignedRequest, nameIdFormat, hashCodeNullable(transientMappingAttributeName), hashCodeNullable(federatedLogoutEnabled));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

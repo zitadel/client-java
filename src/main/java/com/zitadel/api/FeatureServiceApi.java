@@ -8,20 +8,27 @@ import com.zitadel.BaseApi;
 import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
+import com.zitadel.model.FeatureServiceConnectError;
+import com.zitadel.model.FeatureServiceGetInstanceFeaturesRequest;
 import com.zitadel.model.FeatureServiceGetInstanceFeaturesResponse;
+import com.zitadel.model.FeatureServiceGetOrganizationFeaturesRequest;
 import com.zitadel.model.FeatureServiceGetOrganizationFeaturesResponse;
 import com.zitadel.model.FeatureServiceGetSystemFeaturesResponse;
+import com.zitadel.model.FeatureServiceGetUserFeaturesRequest;
 import com.zitadel.model.FeatureServiceGetUserFeaturesResponse;
 import com.zitadel.model.FeatureServiceResetInstanceFeaturesResponse;
+import com.zitadel.model.FeatureServiceResetOrganizationFeaturesRequest;
 import com.zitadel.model.FeatureServiceResetOrganizationFeaturesResponse;
 import com.zitadel.model.FeatureServiceResetSystemFeaturesResponse;
+import com.zitadel.model.FeatureServiceResetUserFeaturesRequest;
 import com.zitadel.model.FeatureServiceResetUserFeaturesResponse;
-import com.zitadel.model.FeatureServiceRpcStatus;
 import com.zitadel.model.FeatureServiceSetInstanceFeaturesRequest;
 import com.zitadel.model.FeatureServiceSetInstanceFeaturesResponse;
+import com.zitadel.model.FeatureServiceSetOrganizationFeaturesRequest;
 import com.zitadel.model.FeatureServiceSetOrganizationFeaturesResponse;
 import com.zitadel.model.FeatureServiceSetSystemFeaturesRequest;
 import com.zitadel.model.FeatureServiceSetSystemFeaturesResponse;
+import com.zitadel.model.FeatureServiceSetUserFeatureRequest;
 import com.zitadel.model.FeatureServiceSetUserFeaturesResponse;
 
 
@@ -44,29 +51,33 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Get Instance Features
-   * Returns all configured features for an instance. Unset fields mean the feature is the current system default.  Required permissions:  - none
-   * @param inheritance Inherit unset features from the resource owners. This option is recursive: if the flag is set, the resource&#39;s ancestors are consulted up to system defaults. If this option is disabled and the feature is not set on the instance, it will be omitted from the response or Not Found is returned when the instance has no features flags at all. (optional)
+   * GetInstanceFeatures
+   * Get Instance Features   Returns all configured features for an instance. Unset fields mean the feature is the current system default.   Required permissions:   - none
+   * @param featureServiceGetInstanceFeaturesRequest  (required)
    * @return FeatureServiceGetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceGetInstanceFeaturesResponse featureServiceGetInstanceFeatures(Boolean inheritance) throws ApiException {
-    return this.featureServiceGetInstanceFeatures(inheritance, Collections.emptyMap());
+  public FeatureServiceGetInstanceFeaturesResponse getInstanceFeatures(FeatureServiceGetInstanceFeaturesRequest featureServiceGetInstanceFeaturesRequest) throws ApiException {
+    return this.getInstanceFeatures(featureServiceGetInstanceFeaturesRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Get Instance Features
-   * Returns all configured features for an instance. Unset fields mean the feature is the current system default.  Required permissions:  - none
-   * @param inheritance Inherit unset features from the resource owners. This option is recursive: if the flag is set, the resource&#39;s ancestors are consulted up to system defaults. If this option is disabled and the feature is not set on the instance, it will be omitted from the response or Not Found is returned when the instance has no features flags at all. (optional)
+   * GetInstanceFeatures
+   * Get Instance Features   Returns all configured features for an instance. Unset fields mean the feature is the current system default.   Required permissions:   - none
+   * @param featureServiceGetInstanceFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceGetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceGetInstanceFeaturesResponse featureServiceGetInstanceFeatures(Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public FeatureServiceGetInstanceFeaturesResponse getInstanceFeatures(FeatureServiceGetInstanceFeaturesRequest featureServiceGetInstanceFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = featureServiceGetInstanceFeaturesRequest;
     
-    String localVarPath = "/v2/features/instance";
+    if (featureServiceGetInstanceFeaturesRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'featureServiceGetInstanceFeaturesRequest' when calling getInstanceFeatures");
+    }
+    
+    String localVarPath = "/zitadel.feature.v2.FeatureService/GetInstanceFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -76,7 +87,6 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("inheritance", inheritance));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -88,7 +98,7 @@ public class FeatureServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -97,7 +107,7 @@ public class FeatureServiceApi extends BaseApi {
     TypeReference<FeatureServiceGetInstanceFeaturesResponse> localVarReturnType = new TypeReference<FeatureServiceGetInstanceFeaturesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -113,36 +123,33 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Get Organization Features
-   * Returns all configured features for an organization. Unset fields mean the feature is the current instance default.  Required permissions:  - org.feature.read  - no permission required for the organization the user belongs to
-   * @param organizationId  (required)
-   * @param inheritance Inherit unset features from the resource owners. This option is recursive: if the flag is set, the resource&#39;s ancestors are consulted up to system defaults. If this option is disabled and the feature is not set on the organization, it will be omitted from the response or Not Found is returned when the organization has no features flags at all. (optional)
+   * GetOrganizationFeatures
+   * Get Organization Features   Returns all configured features for an organization. Unset fields mean the feature is the current instance default.   Required permissions:   - org.feature.read   - no permission required for the organization the user belongs to
+   * @param featureServiceGetOrganizationFeaturesRequest  (required)
    * @return FeatureServiceGetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceGetOrganizationFeaturesResponse featureServiceGetOrganizationFeatures(String organizationId, Boolean inheritance) throws ApiException {
-    return this.featureServiceGetOrganizationFeatures(organizationId, inheritance, Collections.emptyMap());
+  public FeatureServiceGetOrganizationFeaturesResponse getOrganizationFeatures(FeatureServiceGetOrganizationFeaturesRequest featureServiceGetOrganizationFeaturesRequest) throws ApiException {
+    return this.getOrganizationFeatures(featureServiceGetOrganizationFeaturesRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Get Organization Features
-   * Returns all configured features for an organization. Unset fields mean the feature is the current instance default.  Required permissions:  - org.feature.read  - no permission required for the organization the user belongs to
-   * @param organizationId  (required)
-   * @param inheritance Inherit unset features from the resource owners. This option is recursive: if the flag is set, the resource&#39;s ancestors are consulted up to system defaults. If this option is disabled and the feature is not set on the organization, it will be omitted from the response or Not Found is returned when the organization has no features flags at all. (optional)
+   * GetOrganizationFeatures
+   * Get Organization Features   Returns all configured features for an organization. Unset fields mean the feature is the current instance default.   Required permissions:   - org.feature.read   - no permission required for the organization the user belongs to
+   * @param featureServiceGetOrganizationFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceGetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceGetOrganizationFeaturesResponse featureServiceGetOrganizationFeatures(String organizationId, Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public FeatureServiceGetOrganizationFeaturesResponse getOrganizationFeatures(FeatureServiceGetOrganizationFeaturesRequest featureServiceGetOrganizationFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = featureServiceGetOrganizationFeaturesRequest;
     
-    if (organizationId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'organizationId' when calling featureServiceGetOrganizationFeatures");
+    if (featureServiceGetOrganizationFeaturesRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'featureServiceGetOrganizationFeaturesRequest' when calling getOrganizationFeatures");
     }
     
-    String localVarPath = "/v2/features/organization/{organizationId}"
-      .replaceAll("\\{" + "organizationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(organizationId)));
+    String localVarPath = "/zitadel.feature.v2.FeatureService/GetOrganizationFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -152,7 +159,6 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("inheritance", inheritance));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -164,7 +170,7 @@ public class FeatureServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -173,7 +179,7 @@ public class FeatureServiceApi extends BaseApi {
     TypeReference<FeatureServiceGetOrganizationFeaturesResponse> localVarReturnType = new TypeReference<FeatureServiceGetOrganizationFeaturesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -189,27 +195,33 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Get System Features
-   * Returns all configured features for the system. Unset fields mean the feature is the current system default.  Required permissions:  - none
+   * GetSystemFeatures
+   * Get System Features   Returns all configured features for the system. Unset fields mean the feature is the current system default.   Required permissions:   - none
+   * @param body  (required)
    * @return FeatureServiceGetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceGetSystemFeaturesResponse featureServiceGetSystemFeatures() throws ApiException {
-    return this.featureServiceGetSystemFeatures(Collections.emptyMap());
+  public FeatureServiceGetSystemFeaturesResponse getSystemFeatures(Object body) throws ApiException {
+    return this.getSystemFeatures(body, Collections.emptyMap());
   }
 
 
   /**
-   * Get System Features
-   * Returns all configured features for the system. Unset fields mean the feature is the current system default.  Required permissions:  - none
+   * GetSystemFeatures
+   * Get System Features   Returns all configured features for the system. Unset fields mean the feature is the current system default.   Required permissions:   - none
+   * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceGetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceGetSystemFeaturesResponse featureServiceGetSystemFeatures(Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public FeatureServiceGetSystemFeaturesResponse getSystemFeatures(Object body, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = body;
     
-    String localVarPath = "/v2/features/system";
+    if (body == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'body' when calling getSystemFeatures");
+    }
+    
+    String localVarPath = "/zitadel.feature.v2.FeatureService/GetSystemFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -230,7 +242,7 @@ public class FeatureServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -239,7 +251,7 @@ public class FeatureServiceApi extends BaseApi {
     TypeReference<FeatureServiceGetSystemFeaturesResponse> localVarReturnType = new TypeReference<FeatureServiceGetSystemFeaturesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -255,36 +267,33 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Get User Features
-   * Returns all configured features for a user. Unset fields mean the feature is the current organization default.  Required permissions:  - user.feature.read  - no permission required for the own user
-   * @param userId  (required)
-   * @param inheritance Inherit unset features from the resource owners. This option is recursive: if the flag is set, the resource&#39;s ancestors are consulted up to system defaults. If this option is disabled and the feature is not set on the user, it will be ommitted from the response or Not Found is returned when the user has no features flags at all. (optional)
+   * GetUserFeatures
+   * Get User Features   Returns all configured features for a user. Unset fields mean the feature is the current organization default.   Required permissions:   - user.feature.read   - no permission required for the own user
+   * @param featureServiceGetUserFeaturesRequest  (required)
    * @return FeatureServiceGetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceGetUserFeaturesResponse featureServiceGetUserFeatures(String userId, Boolean inheritance) throws ApiException {
-    return this.featureServiceGetUserFeatures(userId, inheritance, Collections.emptyMap());
+  public FeatureServiceGetUserFeaturesResponse getUserFeatures(FeatureServiceGetUserFeaturesRequest featureServiceGetUserFeaturesRequest) throws ApiException {
+    return this.getUserFeatures(featureServiceGetUserFeaturesRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Get User Features
-   * Returns all configured features for a user. Unset fields mean the feature is the current organization default.  Required permissions:  - user.feature.read  - no permission required for the own user
-   * @param userId  (required)
-   * @param inheritance Inherit unset features from the resource owners. This option is recursive: if the flag is set, the resource&#39;s ancestors are consulted up to system defaults. If this option is disabled and the feature is not set on the user, it will be ommitted from the response or Not Found is returned when the user has no features flags at all. (optional)
+   * GetUserFeatures
+   * Get User Features   Returns all configured features for a user. Unset fields mean the feature is the current organization default.   Required permissions:   - user.feature.read   - no permission required for the own user
+   * @param featureServiceGetUserFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceGetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceGetUserFeaturesResponse featureServiceGetUserFeatures(String userId, Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public FeatureServiceGetUserFeaturesResponse getUserFeatures(FeatureServiceGetUserFeaturesRequest featureServiceGetUserFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = featureServiceGetUserFeaturesRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling featureServiceGetUserFeatures");
+    if (featureServiceGetUserFeaturesRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'featureServiceGetUserFeaturesRequest' when calling getUserFeatures");
     }
     
-    String localVarPath = "/v2/features/user/{userId}"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.feature.v2.FeatureService/GetUserFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -294,7 +303,6 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("inheritance", inheritance));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -306,7 +314,7 @@ public class FeatureServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -315,7 +323,7 @@ public class FeatureServiceApi extends BaseApi {
     TypeReference<FeatureServiceGetUserFeaturesResponse> localVarReturnType = new TypeReference<FeatureServiceGetUserFeaturesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -331,27 +339,33 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Reset Instance Features
-   * Deletes ALL configured features for an instance, reverting the behaviors to system defaults.  Required permissions:  - iam.feature.delete
+   * ResetInstanceFeatures
+   * Reset Instance Features   Deletes ALL configured features for an instance, reverting the behaviors to system defaults.   Required permissions:   - iam.feature.delete
+   * @param body  (required)
    * @return FeatureServiceResetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceResetInstanceFeaturesResponse featureServiceResetInstanceFeatures() throws ApiException {
-    return this.featureServiceResetInstanceFeatures(Collections.emptyMap());
+  public FeatureServiceResetInstanceFeaturesResponse resetInstanceFeatures(Object body) throws ApiException {
+    return this.resetInstanceFeatures(body, Collections.emptyMap());
   }
 
 
   /**
-   * Reset Instance Features
-   * Deletes ALL configured features for an instance, reverting the behaviors to system defaults.  Required permissions:  - iam.feature.delete
+   * ResetInstanceFeatures
+   * Reset Instance Features   Deletes ALL configured features for an instance, reverting the behaviors to system defaults.   Required permissions:   - iam.feature.delete
+   * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceResetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceResetInstanceFeaturesResponse featureServiceResetInstanceFeatures(Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public FeatureServiceResetInstanceFeaturesResponse resetInstanceFeatures(Object body, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = body;
     
-    String localVarPath = "/v2/features/instance";
+    if (body == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'body' when calling resetInstanceFeatures");
+    }
+    
+    String localVarPath = "/zitadel.feature.v2.FeatureService/ResetInstanceFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -372,7 +386,7 @@ public class FeatureServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -381,7 +395,7 @@ public class FeatureServiceApi extends BaseApi {
     TypeReference<FeatureServiceResetInstanceFeaturesResponse> localVarReturnType = new TypeReference<FeatureServiceResetInstanceFeaturesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "DELETE",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -397,34 +411,33 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Reset Organization Features
-   * Deletes ALL configured features for an organization, reverting the behaviors to instance defaults.  Required permissions:  - org.feature.delete
-   * @param organizationId  (required)
+   * ResetOrganizationFeatures
+   * Reset Organization Features   Deletes ALL configured features for an organization, reverting the behaviors to instance defaults.   Required permissions:   - org.feature.delete
+   * @param featureServiceResetOrganizationFeaturesRequest  (required)
    * @return FeatureServiceResetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceResetOrganizationFeaturesResponse featureServiceResetOrganizationFeatures(String organizationId) throws ApiException {
-    return this.featureServiceResetOrganizationFeatures(organizationId, Collections.emptyMap());
+  public FeatureServiceResetOrganizationFeaturesResponse resetOrganizationFeatures(FeatureServiceResetOrganizationFeaturesRequest featureServiceResetOrganizationFeaturesRequest) throws ApiException {
+    return this.resetOrganizationFeatures(featureServiceResetOrganizationFeaturesRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Reset Organization Features
-   * Deletes ALL configured features for an organization, reverting the behaviors to instance defaults.  Required permissions:  - org.feature.delete
-   * @param organizationId  (required)
+   * ResetOrganizationFeatures
+   * Reset Organization Features   Deletes ALL configured features for an organization, reverting the behaviors to instance defaults.   Required permissions:   - org.feature.delete
+   * @param featureServiceResetOrganizationFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceResetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceResetOrganizationFeaturesResponse featureServiceResetOrganizationFeatures(String organizationId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public FeatureServiceResetOrganizationFeaturesResponse resetOrganizationFeatures(FeatureServiceResetOrganizationFeaturesRequest featureServiceResetOrganizationFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = featureServiceResetOrganizationFeaturesRequest;
     
-    if (organizationId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'organizationId' when calling featureServiceResetOrganizationFeatures");
+    if (featureServiceResetOrganizationFeaturesRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'featureServiceResetOrganizationFeaturesRequest' when calling resetOrganizationFeatures");
     }
     
-    String localVarPath = "/v2/features/organization/{organizationId}"
-      .replaceAll("\\{" + "organizationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(organizationId)));
+    String localVarPath = "/zitadel.feature.v2.FeatureService/ResetOrganizationFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -445,7 +458,7 @@ public class FeatureServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -454,7 +467,7 @@ public class FeatureServiceApi extends BaseApi {
     TypeReference<FeatureServiceResetOrganizationFeaturesResponse> localVarReturnType = new TypeReference<FeatureServiceResetOrganizationFeaturesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "DELETE",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -470,27 +483,33 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Reset System Features
-   * Deletes ALL configured features for the system, reverting the behaviors to system defaults.  Required permissions:  - system.feature.delete
+   * ResetSystemFeatures
+   * Reset System Features   Deletes ALL configured features for the system, reverting the behaviors to system defaults.   Required permissions:   - system.feature.delete
+   * @param body  (required)
    * @return FeatureServiceResetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceResetSystemFeaturesResponse featureServiceResetSystemFeatures() throws ApiException {
-    return this.featureServiceResetSystemFeatures(Collections.emptyMap());
+  public FeatureServiceResetSystemFeaturesResponse resetSystemFeatures(Object body) throws ApiException {
+    return this.resetSystemFeatures(body, Collections.emptyMap());
   }
 
 
   /**
-   * Reset System Features
-   * Deletes ALL configured features for the system, reverting the behaviors to system defaults.  Required permissions:  - system.feature.delete
+   * ResetSystemFeatures
+   * Reset System Features   Deletes ALL configured features for the system, reverting the behaviors to system defaults.   Required permissions:   - system.feature.delete
+   * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceResetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceResetSystemFeaturesResponse featureServiceResetSystemFeatures(Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public FeatureServiceResetSystemFeaturesResponse resetSystemFeatures(Object body, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = body;
     
-    String localVarPath = "/v2/features/system";
+    if (body == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'body' when calling resetSystemFeatures");
+    }
+    
+    String localVarPath = "/zitadel.feature.v2.FeatureService/ResetSystemFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -511,7 +530,7 @@ public class FeatureServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -520,7 +539,7 @@ public class FeatureServiceApi extends BaseApi {
     TypeReference<FeatureServiceResetSystemFeaturesResponse> localVarReturnType = new TypeReference<FeatureServiceResetSystemFeaturesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "DELETE",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -536,34 +555,33 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Reset User Features
-   * Deletes ALL configured features for a user, reverting the behaviors to organization defaults.  Required permissions:  - user.feature.delete
-   * @param userId  (required)
+   * ResetUserFeatures
+   * Reset User Features   Deletes ALL configured features for a user, reverting the behaviors to organization defaults.   Required permissions:   - user.feature.delete
+   * @param featureServiceResetUserFeaturesRequest  (required)
    * @return FeatureServiceResetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceResetUserFeaturesResponse featureServiceResetUserFeatures(String userId) throws ApiException {
-    return this.featureServiceResetUserFeatures(userId, Collections.emptyMap());
+  public FeatureServiceResetUserFeaturesResponse resetUserFeatures(FeatureServiceResetUserFeaturesRequest featureServiceResetUserFeaturesRequest) throws ApiException {
+    return this.resetUserFeatures(featureServiceResetUserFeaturesRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Reset User Features
-   * Deletes ALL configured features for a user, reverting the behaviors to organization defaults.  Required permissions:  - user.feature.delete
-   * @param userId  (required)
+   * ResetUserFeatures
+   * Reset User Features   Deletes ALL configured features for a user, reverting the behaviors to organization defaults.   Required permissions:   - user.feature.delete
+   * @param featureServiceResetUserFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceResetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceResetUserFeaturesResponse featureServiceResetUserFeatures(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public FeatureServiceResetUserFeaturesResponse resetUserFeatures(FeatureServiceResetUserFeaturesRequest featureServiceResetUserFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = featureServiceResetUserFeaturesRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling featureServiceResetUserFeatures");
+    if (featureServiceResetUserFeaturesRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'featureServiceResetUserFeaturesRequest' when calling resetUserFeatures");
     }
     
-    String localVarPath = "/v2/features/user/{userId}"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.feature.v2.FeatureService/ResetUserFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -584,7 +602,7 @@ public class FeatureServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -593,7 +611,7 @@ public class FeatureServiceApi extends BaseApi {
     TypeReference<FeatureServiceResetUserFeaturesResponse> localVarReturnType = new TypeReference<FeatureServiceResetUserFeaturesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "DELETE",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -609,33 +627,33 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Set Instance Features
-   * Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.  Required permissions:  - iam.feature.write
+   * SetInstanceFeatures
+   * Set Instance Features   Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.   Required permissions:   - iam.feature.write
    * @param featureServiceSetInstanceFeaturesRequest  (required)
    * @return FeatureServiceSetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceSetInstanceFeaturesResponse featureServiceSetInstanceFeatures(FeatureServiceSetInstanceFeaturesRequest featureServiceSetInstanceFeaturesRequest) throws ApiException {
-    return this.featureServiceSetInstanceFeatures(featureServiceSetInstanceFeaturesRequest, Collections.emptyMap());
+  public FeatureServiceSetInstanceFeaturesResponse setInstanceFeatures(FeatureServiceSetInstanceFeaturesRequest featureServiceSetInstanceFeaturesRequest) throws ApiException {
+    return this.setInstanceFeatures(featureServiceSetInstanceFeaturesRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Set Instance Features
-   * Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.  Required permissions:  - iam.feature.write
+   * SetInstanceFeatures
+   * Set Instance Features   Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.   Required permissions:   - iam.feature.write
    * @param featureServiceSetInstanceFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceSetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceSetInstanceFeaturesResponse featureServiceSetInstanceFeatures(FeatureServiceSetInstanceFeaturesRequest featureServiceSetInstanceFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public FeatureServiceSetInstanceFeaturesResponse setInstanceFeatures(FeatureServiceSetInstanceFeaturesRequest featureServiceSetInstanceFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = featureServiceSetInstanceFeaturesRequest;
     
     if (featureServiceSetInstanceFeaturesRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'featureServiceSetInstanceFeaturesRequest' when calling featureServiceSetInstanceFeatures");
+      throw new IllegalArgumentException("Missing the required parameter 'featureServiceSetInstanceFeaturesRequest' when calling setInstanceFeatures");
     }
     
-    String localVarPath = "/v2/features/instance";
+    String localVarPath = "/zitadel.feature.v2.FeatureService/SetInstanceFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -665,7 +683,7 @@ public class FeatureServiceApi extends BaseApi {
     TypeReference<FeatureServiceSetInstanceFeaturesResponse> localVarReturnType = new TypeReference<FeatureServiceSetInstanceFeaturesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "PUT",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -681,34 +699,33 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Set Organization Features
-   * Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.  Required permissions:  - org.feature.write
-   * @param organizationId  (required)
+   * SetOrganizationFeatures
+   * Set Organization Features   Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.   Required permissions:   - org.feature.write
+   * @param featureServiceSetOrganizationFeaturesRequest  (required)
    * @return FeatureServiceSetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceSetOrganizationFeaturesResponse featureServiceSetOrganizationFeatures(String organizationId) throws ApiException {
-    return this.featureServiceSetOrganizationFeatures(organizationId, Collections.emptyMap());
+  public FeatureServiceSetOrganizationFeaturesResponse setOrganizationFeatures(FeatureServiceSetOrganizationFeaturesRequest featureServiceSetOrganizationFeaturesRequest) throws ApiException {
+    return this.setOrganizationFeatures(featureServiceSetOrganizationFeaturesRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Set Organization Features
-   * Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.  Required permissions:  - org.feature.write
-   * @param organizationId  (required)
+   * SetOrganizationFeatures
+   * Set Organization Features   Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.   Required permissions:   - org.feature.write
+   * @param featureServiceSetOrganizationFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceSetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceSetOrganizationFeaturesResponse featureServiceSetOrganizationFeatures(String organizationId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public FeatureServiceSetOrganizationFeaturesResponse setOrganizationFeatures(FeatureServiceSetOrganizationFeaturesRequest featureServiceSetOrganizationFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = featureServiceSetOrganizationFeaturesRequest;
     
-    if (organizationId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'organizationId' when calling featureServiceSetOrganizationFeatures");
+    if (featureServiceSetOrganizationFeaturesRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'featureServiceSetOrganizationFeaturesRequest' when calling setOrganizationFeatures");
     }
     
-    String localVarPath = "/v2/features/organization/{organizationId}"
-      .replaceAll("\\{" + "organizationId" + "\\}", apiClient.escapeString(apiClient.parameterToString(organizationId)));
+    String localVarPath = "/zitadel.feature.v2.FeatureService/SetOrganizationFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -738,7 +755,7 @@ public class FeatureServiceApi extends BaseApi {
     TypeReference<FeatureServiceSetOrganizationFeaturesResponse> localVarReturnType = new TypeReference<FeatureServiceSetOrganizationFeaturesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "PUT",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -754,33 +771,33 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Set System Features
-   * Configure and set features that apply to the complete system. Only fields present in the request are set or unset.  Required permissions:  - system.feature.write
+   * SetSystemFeatures
+   * Set System Features   Configure and set features that apply to the complete system. Only fields present in the request are set or unset.   Required permissions:   - system.feature.write
    * @param featureServiceSetSystemFeaturesRequest  (required)
    * @return FeatureServiceSetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceSetSystemFeaturesResponse featureServiceSetSystemFeatures(FeatureServiceSetSystemFeaturesRequest featureServiceSetSystemFeaturesRequest) throws ApiException {
-    return this.featureServiceSetSystemFeatures(featureServiceSetSystemFeaturesRequest, Collections.emptyMap());
+  public FeatureServiceSetSystemFeaturesResponse setSystemFeatures(FeatureServiceSetSystemFeaturesRequest featureServiceSetSystemFeaturesRequest) throws ApiException {
+    return this.setSystemFeatures(featureServiceSetSystemFeaturesRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Set System Features
-   * Configure and set features that apply to the complete system. Only fields present in the request are set or unset.  Required permissions:  - system.feature.write
+   * SetSystemFeatures
+   * Set System Features   Configure and set features that apply to the complete system. Only fields present in the request are set or unset.   Required permissions:   - system.feature.write
    * @param featureServiceSetSystemFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceSetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceSetSystemFeaturesResponse featureServiceSetSystemFeatures(FeatureServiceSetSystemFeaturesRequest featureServiceSetSystemFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public FeatureServiceSetSystemFeaturesResponse setSystemFeatures(FeatureServiceSetSystemFeaturesRequest featureServiceSetSystemFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = featureServiceSetSystemFeaturesRequest;
     
     if (featureServiceSetSystemFeaturesRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'featureServiceSetSystemFeaturesRequest' when calling featureServiceSetSystemFeatures");
+      throw new IllegalArgumentException("Missing the required parameter 'featureServiceSetSystemFeaturesRequest' when calling setSystemFeatures");
     }
     
-    String localVarPath = "/v2/features/system";
+    String localVarPath = "/zitadel.feature.v2.FeatureService/SetSystemFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -810,7 +827,7 @@ public class FeatureServiceApi extends BaseApi {
     TypeReference<FeatureServiceSetSystemFeaturesResponse> localVarReturnType = new TypeReference<FeatureServiceSetSystemFeaturesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "PUT",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -826,34 +843,33 @@ public class FeatureServiceApi extends BaseApi {
   }
 
   /**
-   * Set User Features
-   * Configure and set features that apply to an user. Only fields present in the request are set or unset.  Required permissions:  - user.feature.write
-   * @param userId  (required)
+   * SetUserFeatures
+   * Set User Features   Configure and set features that apply to an user. Only fields present in the request are set or unset.   Required permissions:   - user.feature.write
+   * @param featureServiceSetUserFeatureRequest  (required)
    * @return FeatureServiceSetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceSetUserFeaturesResponse featureServiceSetUserFeatures(String userId) throws ApiException {
-    return this.featureServiceSetUserFeatures(userId, Collections.emptyMap());
+  public FeatureServiceSetUserFeaturesResponse setUserFeatures(FeatureServiceSetUserFeatureRequest featureServiceSetUserFeatureRequest) throws ApiException {
+    return this.setUserFeatures(featureServiceSetUserFeatureRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Set User Features
-   * Configure and set features that apply to an user. Only fields present in the request are set or unset.  Required permissions:  - user.feature.write
-   * @param userId  (required)
+   * SetUserFeatures
+   * Set User Features   Configure and set features that apply to an user. Only fields present in the request are set or unset.   Required permissions:   - user.feature.write
+   * @param featureServiceSetUserFeatureRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return FeatureServiceSetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceSetUserFeaturesResponse featureServiceSetUserFeatures(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public FeatureServiceSetUserFeaturesResponse setUserFeatures(FeatureServiceSetUserFeatureRequest featureServiceSetUserFeatureRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = featureServiceSetUserFeatureRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling featureServiceSetUserFeatures");
+    if (featureServiceSetUserFeatureRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'featureServiceSetUserFeatureRequest' when calling setUserFeatures");
     }
     
-    String localVarPath = "/v2/features/user/{userId}"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.feature.v2.FeatureService/SetUserFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -883,7 +899,7 @@ public class FeatureServiceApi extends BaseApi {
     TypeReference<FeatureServiceSetUserFeaturesResponse> localVarReturnType = new TypeReference<FeatureServiceSetUserFeaturesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "PUT",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),

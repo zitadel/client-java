@@ -48,7 +48,7 @@ public class OrganizationServiceListOrganizationsRequest {
 
   public static final String JSON_PROPERTY_SORTING_COLUMN = "sortingColumn";
   @javax.annotation.Nullable
-  private OrganizationServiceOrganizationFieldName sortingColumn = OrganizationServiceOrganizationFieldName.ORGANIZATION_FIELD_NAME_UNSPECIFIED;
+  private OrganizationServiceOrganizationFieldName sortingColumn;
 
   public static final String JSON_PROPERTY_QUERIES = "queries";
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class OrganizationServiceListOrganizationsRequest {
   }
 
   /**
-   * Get queries
+   * criteria the client is looking for
    * @return queries
    */
   @javax.annotation.Nullable

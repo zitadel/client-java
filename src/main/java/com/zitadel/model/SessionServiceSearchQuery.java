@@ -20,11 +20,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.CreationDateQuery1;
+import com.zitadel.model.CreatorQuery;
+import com.zitadel.model.IdsQuery1;
 import com.zitadel.model.SessionServiceCreationDateQuery;
 import com.zitadel.model.SessionServiceCreatorQuery;
 import com.zitadel.model.SessionServiceIDsQuery;
 import com.zitadel.model.SessionServiceUserAgentQuery;
 import com.zitadel.model.SessionServiceUserIDQuery;
+import com.zitadel.model.UserAgentQuery;
+import com.zitadel.model.UserIdQuery1;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -35,88 +40,38 @@ import java.util.StringJoiner;
  * SessionServiceSearchQuery
  */
 @JsonPropertyOrder({
-  SessionServiceSearchQuery.JSON_PROPERTY_IDS_QUERY,
-  SessionServiceSearchQuery.JSON_PROPERTY_USER_ID_QUERY,
   SessionServiceSearchQuery.JSON_PROPERTY_CREATION_DATE_QUERY,
   SessionServiceSearchQuery.JSON_PROPERTY_CREATOR_QUERY,
-  SessionServiceSearchQuery.JSON_PROPERTY_USER_AGENT_QUERY
+  SessionServiceSearchQuery.JSON_PROPERTY_IDS_QUERY,
+  SessionServiceSearchQuery.JSON_PROPERTY_USER_AGENT_QUERY,
+  SessionServiceSearchQuery.JSON_PROPERTY_USER_ID_QUERY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class SessionServiceSearchQuery {
-  public static final String JSON_PROPERTY_IDS_QUERY = "idsQuery";
-  @javax.annotation.Nullable
-  private SessionServiceIDsQuery idsQuery;
-
-  public static final String JSON_PROPERTY_USER_ID_QUERY = "userIdQuery";
-  @javax.annotation.Nullable
-  private SessionServiceUserIDQuery userIdQuery;
-
   public static final String JSON_PROPERTY_CREATION_DATE_QUERY = "creationDateQuery";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private SessionServiceCreationDateQuery creationDateQuery;
 
   public static final String JSON_PROPERTY_CREATOR_QUERY = "creatorQuery";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private SessionServiceCreatorQuery creatorQuery;
 
+  public static final String JSON_PROPERTY_IDS_QUERY = "idsQuery";
+  @javax.annotation.Nonnull
+  private SessionServiceIDsQuery idsQuery;
+
   public static final String JSON_PROPERTY_USER_AGENT_QUERY = "userAgentQuery";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private SessionServiceUserAgentQuery userAgentQuery;
+
+  public static final String JSON_PROPERTY_USER_ID_QUERY = "userIdQuery";
+  @javax.annotation.Nonnull
+  private SessionServiceUserIDQuery userIdQuery;
 
   public SessionServiceSearchQuery() {
   }
 
-  public SessionServiceSearchQuery idsQuery(@javax.annotation.Nullable SessionServiceIDsQuery idsQuery) {
-    
-    this.idsQuery = idsQuery;
-    return this;
-  }
-
-  /**
-   * Get idsQuery
-   * @return idsQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IDS_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public SessionServiceIDsQuery getIdsQuery() {
-    return idsQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_IDS_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIdsQuery(@javax.annotation.Nullable SessionServiceIDsQuery idsQuery) {
-    this.idsQuery = idsQuery;
-  }
-
-  public SessionServiceSearchQuery userIdQuery(@javax.annotation.Nullable SessionServiceUserIDQuery userIdQuery) {
-    
-    this.userIdQuery = userIdQuery;
-    return this;
-  }
-
-  /**
-   * Get userIdQuery
-   * @return userIdQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USER_ID_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public SessionServiceUserIDQuery getUserIdQuery() {
-    return userIdQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USER_ID_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserIdQuery(@javax.annotation.Nullable SessionServiceUserIDQuery userIdQuery) {
-    this.userIdQuery = userIdQuery;
-  }
-
-  public SessionServiceSearchQuery creationDateQuery(@javax.annotation.Nullable SessionServiceCreationDateQuery creationDateQuery) {
+  public SessionServiceSearchQuery creationDateQuery(@javax.annotation.Nonnull SessionServiceCreationDateQuery creationDateQuery) {
     
     this.creationDateQuery = creationDateQuery;
     return this;
@@ -126,9 +81,9 @@ public class SessionServiceSearchQuery {
    * Get creationDateQuery
    * @return creationDateQuery
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_CREATION_DATE_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public SessionServiceCreationDateQuery getCreationDateQuery() {
     return creationDateQuery;
@@ -136,12 +91,12 @@ public class SessionServiceSearchQuery {
 
 
   @JsonProperty(JSON_PROPERTY_CREATION_DATE_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreationDateQuery(@javax.annotation.Nullable SessionServiceCreationDateQuery creationDateQuery) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setCreationDateQuery(@javax.annotation.Nonnull SessionServiceCreationDateQuery creationDateQuery) {
     this.creationDateQuery = creationDateQuery;
   }
 
-  public SessionServiceSearchQuery creatorQuery(@javax.annotation.Nullable SessionServiceCreatorQuery creatorQuery) {
+  public SessionServiceSearchQuery creatorQuery(@javax.annotation.Nonnull SessionServiceCreatorQuery creatorQuery) {
     
     this.creatorQuery = creatorQuery;
     return this;
@@ -151,9 +106,9 @@ public class SessionServiceSearchQuery {
    * Get creatorQuery
    * @return creatorQuery
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_CREATOR_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public SessionServiceCreatorQuery getCreatorQuery() {
     return creatorQuery;
@@ -161,12 +116,37 @@ public class SessionServiceSearchQuery {
 
 
   @JsonProperty(JSON_PROPERTY_CREATOR_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreatorQuery(@javax.annotation.Nullable SessionServiceCreatorQuery creatorQuery) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setCreatorQuery(@javax.annotation.Nonnull SessionServiceCreatorQuery creatorQuery) {
     this.creatorQuery = creatorQuery;
   }
 
-  public SessionServiceSearchQuery userAgentQuery(@javax.annotation.Nullable SessionServiceUserAgentQuery userAgentQuery) {
+  public SessionServiceSearchQuery idsQuery(@javax.annotation.Nonnull SessionServiceIDsQuery idsQuery) {
+    
+    this.idsQuery = idsQuery;
+    return this;
+  }
+
+  /**
+   * Get idsQuery
+   * @return idsQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_IDS_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public SessionServiceIDsQuery getIdsQuery() {
+    return idsQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IDS_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setIdsQuery(@javax.annotation.Nonnull SessionServiceIDsQuery idsQuery) {
+    this.idsQuery = idsQuery;
+  }
+
+  public SessionServiceSearchQuery userAgentQuery(@javax.annotation.Nonnull SessionServiceUserAgentQuery userAgentQuery) {
     
     this.userAgentQuery = userAgentQuery;
     return this;
@@ -176,9 +156,9 @@ public class SessionServiceSearchQuery {
    * Get userAgentQuery
    * @return userAgentQuery
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_USER_AGENT_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public SessionServiceUserAgentQuery getUserAgentQuery() {
     return userAgentQuery;
@@ -186,9 +166,34 @@ public class SessionServiceSearchQuery {
 
 
   @JsonProperty(JSON_PROPERTY_USER_AGENT_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserAgentQuery(@javax.annotation.Nullable SessionServiceUserAgentQuery userAgentQuery) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserAgentQuery(@javax.annotation.Nonnull SessionServiceUserAgentQuery userAgentQuery) {
     this.userAgentQuery = userAgentQuery;
+  }
+
+  public SessionServiceSearchQuery userIdQuery(@javax.annotation.Nonnull SessionServiceUserIDQuery userIdQuery) {
+    
+    this.userIdQuery = userIdQuery;
+    return this;
+  }
+
+  /**
+   * Get userIdQuery
+   * @return userIdQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USER_ID_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public SessionServiceUserIDQuery getUserIdQuery() {
+    return userIdQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_ID_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserIdQuery(@javax.annotation.Nonnull SessionServiceUserIDQuery userIdQuery) {
+    this.userIdQuery = userIdQuery;
   }
 
   @Override
@@ -200,27 +205,27 @@ public class SessionServiceSearchQuery {
       return false;
     }
     SessionServiceSearchQuery sessionServiceSearchQuery = (SessionServiceSearchQuery) o;
-    return Objects.equals(this.idsQuery, sessionServiceSearchQuery.idsQuery) &&
-        Objects.equals(this.userIdQuery, sessionServiceSearchQuery.userIdQuery) &&
-        Objects.equals(this.creationDateQuery, sessionServiceSearchQuery.creationDateQuery) &&
+    return Objects.equals(this.creationDateQuery, sessionServiceSearchQuery.creationDateQuery) &&
         Objects.equals(this.creatorQuery, sessionServiceSearchQuery.creatorQuery) &&
-        Objects.equals(this.userAgentQuery, sessionServiceSearchQuery.userAgentQuery);
+        Objects.equals(this.idsQuery, sessionServiceSearchQuery.idsQuery) &&
+        Objects.equals(this.userAgentQuery, sessionServiceSearchQuery.userAgentQuery) &&
+        Objects.equals(this.userIdQuery, sessionServiceSearchQuery.userIdQuery);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idsQuery, userIdQuery, creationDateQuery, creatorQuery, userAgentQuery);
+    return Objects.hash(creationDateQuery, creatorQuery, idsQuery, userAgentQuery, userIdQuery);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SessionServiceSearchQuery {\n");
-    sb.append("    idsQuery: ").append(toIndentedString(idsQuery)).append("\n");
-    sb.append("    userIdQuery: ").append(toIndentedString(userIdQuery)).append("\n");
     sb.append("    creationDateQuery: ").append(toIndentedString(creationDateQuery)).append("\n");
     sb.append("    creatorQuery: ").append(toIndentedString(creatorQuery)).append("\n");
+    sb.append("    idsQuery: ").append(toIndentedString(idsQuery)).append("\n");
     sb.append("    userAgentQuery: ").append(toIndentedString(userAgentQuery)).append("\n");
+    sb.append("    userIdQuery: ").append(toIndentedString(userIdQuery)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -267,6 +272,31 @@ public class SessionServiceSearchQuery {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `creationDateQuery` to the URL query string
+    if (getCreationDateQuery() != null) {
+      joiner.add(getCreationDateQuery().toUrlQueryString(prefix + "creationDateQuery" + suffix));
+    }
+
+    // add `creatorQuery` to the URL query string
+    if (getCreatorQuery() != null) {
+      joiner.add(getCreatorQuery().toUrlQueryString(prefix + "creatorQuery" + suffix));
+    }
+
+    // add `idsQuery` to the URL query string
+    if (getIdsQuery() != null) {
+      joiner.add(getIdsQuery().toUrlQueryString(prefix + "idsQuery" + suffix));
+    }
+
+    // add `userAgentQuery` to the URL query string
+    if (getUserAgentQuery() != null) {
+      joiner.add(getUserAgentQuery().toUrlQueryString(prefix + "userAgentQuery" + suffix));
+    }
+
+    // add `userIdQuery` to the URL query string
+    if (getUserIdQuery() != null) {
+      joiner.add(getUserIdQuery().toUrlQueryString(prefix + "userIdQuery" + suffix));
+    }
 
     return joiner.toString();
   }

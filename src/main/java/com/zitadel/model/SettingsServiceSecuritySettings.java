@@ -79,7 +79,7 @@ public class SettingsServiceSecuritySettings {
   }
 
   /**
-   * default language for the current context
+   * Get enableImpersonation
    * @return enableImpersonation
    */
   @javax.annotation.Nullable

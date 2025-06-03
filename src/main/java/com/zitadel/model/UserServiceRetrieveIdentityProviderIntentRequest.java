@@ -30,15 +30,45 @@ import java.util.StringJoiner;
  * UserServiceRetrieveIdentityProviderIntentRequest
  */
 @JsonPropertyOrder({
+  UserServiceRetrieveIdentityProviderIntentRequest.JSON_PROPERTY_IDP_INTENT_ID,
   UserServiceRetrieveIdentityProviderIntentRequest.JSON_PROPERTY_IDP_INTENT_TOKEN
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class UserServiceRetrieveIdentityProviderIntentRequest {
+  public static final String JSON_PROPERTY_IDP_INTENT_ID = "idpIntentId";
+  @javax.annotation.Nullable
+  private String idpIntentId;
+
   public static final String JSON_PROPERTY_IDP_INTENT_TOKEN = "idpIntentToken";
   @javax.annotation.Nullable
   private String idpIntentToken;
 
   public UserServiceRetrieveIdentityProviderIntentRequest() {
+  }
+
+  public UserServiceRetrieveIdentityProviderIntentRequest idpIntentId(@javax.annotation.Nullable String idpIntentId) {
+    
+    this.idpIntentId = idpIntentId;
+    return this;
+  }
+
+  /**
+   * Get idpIntentId
+   * @return idpIntentId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IDP_INTENT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getIdpIntentId() {
+    return idpIntentId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IDP_INTENT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIdpIntentId(@javax.annotation.Nullable String idpIntentId) {
+    this.idpIntentId = idpIntentId;
   }
 
   public UserServiceRetrieveIdentityProviderIntentRequest idpIntentToken(@javax.annotation.Nullable String idpIntentToken) {
@@ -48,7 +78,7 @@ public class UserServiceRetrieveIdentityProviderIntentRequest {
   }
 
   /**
-   * token of the idp intent, previously returned on the success response of the IDP callback
+   * Get idpIntentToken
    * @return idpIntentToken
    */
   @javax.annotation.Nullable
@@ -75,18 +105,20 @@ public class UserServiceRetrieveIdentityProviderIntentRequest {
       return false;
     }
     UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest = (UserServiceRetrieveIdentityProviderIntentRequest) o;
-    return Objects.equals(this.idpIntentToken, userServiceRetrieveIdentityProviderIntentRequest.idpIntentToken);
+    return Objects.equals(this.idpIntentId, userServiceRetrieveIdentityProviderIntentRequest.idpIntentId) &&
+        Objects.equals(this.idpIntentToken, userServiceRetrieveIdentityProviderIntentRequest.idpIntentToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idpIntentToken);
+    return Objects.hash(idpIntentId, idpIntentToken);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceRetrieveIdentityProviderIntentRequest {\n");
+    sb.append("    idpIntentId: ").append(toIndentedString(idpIntentId)).append("\n");
     sb.append("    idpIntentToken: ").append(toIndentedString(idpIntentToken)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -134,6 +166,16 @@ public class UserServiceRetrieveIdentityProviderIntentRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `idpIntentId` to the URL query string
+    if (getIdpIntentId() != null) {
+      try {
+        joiner.add(String.format("%sidpIntentId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdpIntentId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     // add `idpIntentToken` to the URL query string
     if (getIdpIntentToken() != null) {

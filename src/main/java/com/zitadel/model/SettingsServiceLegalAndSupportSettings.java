@@ -60,7 +60,7 @@ public class SettingsServiceLegalAndSupportSettings {
 
   public static final String JSON_PROPERTY_RESOURCE_OWNER_TYPE = "resourceOwnerType";
   @javax.annotation.Nullable
-  private SettingsServiceResourceOwnerType resourceOwnerType = SettingsServiceResourceOwnerType.RESOURCE_OWNER_TYPE_UNSPECIFIED;
+  private SettingsServiceResourceOwnerType resourceOwnerType;
 
   public static final String JSON_PROPERTY_DOCS_LINK = "docsLink";
   @javax.annotation.Nullable
@@ -159,7 +159,7 @@ public class SettingsServiceLegalAndSupportSettings {
   }
 
   /**
-   * help / support email address.
+   * Get supportEmail
    * @return supportEmail
    */
   @javax.annotation.Nullable
@@ -209,7 +209,7 @@ public class SettingsServiceLegalAndSupportSettings {
   }
 
   /**
-   * Link to documentation to be shown in the console.
+   * Get docsLink
    * @return docsLink
    */
   @javax.annotation.Nullable
@@ -234,7 +234,7 @@ public class SettingsServiceLegalAndSupportSettings {
   }
 
   /**
-   * Link to an external resource that will be available to users in the console.
+   * Get customLink
    * @return customLink
    */
   @javax.annotation.Nullable
@@ -259,7 +259,7 @@ public class SettingsServiceLegalAndSupportSettings {
   }
 
   /**
-   * The button text that would be shown in console pointing to custom link.
+   * Get customLinkText
    * @return customLinkText
    */
   @javax.annotation.Nullable

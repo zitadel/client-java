@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.OrganizationServiceAddOrganizationRequestAdmin;
+import com.zitadel.model.OrganizationServiceAdmin;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -45,7 +45,7 @@ public class OrganizationServiceAddOrganizationRequest {
 
   public static final String JSON_PROPERTY_ADMINS = "admins";
   @javax.annotation.Nullable
-  private List<OrganizationServiceAddOrganizationRequestAdmin> admins = new ArrayList<>();
+  private List<OrganizationServiceAdmin> admins = new ArrayList<>();
 
   public OrganizationServiceAddOrganizationRequest() {
   }
@@ -75,13 +75,13 @@ public class OrganizationServiceAddOrganizationRequest {
     this.name = name;
   }
 
-  public OrganizationServiceAddOrganizationRequest admins(@javax.annotation.Nullable List<OrganizationServiceAddOrganizationRequestAdmin> admins) {
+  public OrganizationServiceAddOrganizationRequest admins(@javax.annotation.Nullable List<OrganizationServiceAdmin> admins) {
     
     this.admins = admins;
     return this;
   }
 
-  public OrganizationServiceAddOrganizationRequest addAdminsItem(OrganizationServiceAddOrganizationRequestAdmin adminsItem) {
+  public OrganizationServiceAddOrganizationRequest addAdminsItem(OrganizationServiceAdmin adminsItem) {
     if (this.admins == null) {
       this.admins = new ArrayList<>();
     }
@@ -97,14 +97,14 @@ public class OrganizationServiceAddOrganizationRequest {
   @JsonProperty(JSON_PROPERTY_ADMINS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<OrganizationServiceAddOrganizationRequestAdmin> getAdmins() {
+  public List<OrganizationServiceAdmin> getAdmins() {
     return admins;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ADMINS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdmins(@javax.annotation.Nullable List<OrganizationServiceAddOrganizationRequestAdmin> admins) {
+  public void setAdmins(@javax.annotation.Nullable List<OrganizationServiceAdmin> admins) {
     this.admins = admins;
   }
 

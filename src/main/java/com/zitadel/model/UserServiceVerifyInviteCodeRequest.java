@@ -30,15 +30,45 @@ import java.util.StringJoiner;
  * UserServiceVerifyInviteCodeRequest
  */
 @JsonPropertyOrder({
+  UserServiceVerifyInviteCodeRequest.JSON_PROPERTY_USER_ID,
   UserServiceVerifyInviteCodeRequest.JSON_PROPERTY_VERIFICATION_CODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class UserServiceVerifyInviteCodeRequest {
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
+  private String userId;
+
   public static final String JSON_PROPERTY_VERIFICATION_CODE = "verificationCode";
   @javax.annotation.Nonnull
   private String verificationCode;
 
   public UserServiceVerifyInviteCodeRequest() {
+  }
+
+  public UserServiceVerifyInviteCodeRequest userId(@javax.annotation.Nonnull String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+  /**
+   * Get userId
+   * @return userId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserId(@javax.annotation.Nonnull String userId) {
+    this.userId = userId;
   }
 
   public UserServiceVerifyInviteCodeRequest verificationCode(@javax.annotation.Nonnull String verificationCode) {
@@ -48,7 +78,7 @@ public class UserServiceVerifyInviteCodeRequest {
   }
 
   /**
-   * \&quot;the verification code generated during the invite code request\&quot;
+   * Get verificationCode
    * @return verificationCode
    */
   @javax.annotation.Nonnull
@@ -75,18 +105,20 @@ public class UserServiceVerifyInviteCodeRequest {
       return false;
     }
     UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest = (UserServiceVerifyInviteCodeRequest) o;
-    return Objects.equals(this.verificationCode, userServiceVerifyInviteCodeRequest.verificationCode);
+    return Objects.equals(this.userId, userServiceVerifyInviteCodeRequest.userId) &&
+        Objects.equals(this.verificationCode, userServiceVerifyInviteCodeRequest.verificationCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(verificationCode);
+    return Objects.hash(userId, verificationCode);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceVerifyInviteCodeRequest {\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    verificationCode: ").append(toIndentedString(verificationCode)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -134,6 +166,16 @@ public class UserServiceVerifyInviteCodeRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `userId` to the URL query string
+    if (getUserId() != null) {
+      try {
+        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     // add `verificationCode` to the URL query string
     if (getVerificationCode() != null) {

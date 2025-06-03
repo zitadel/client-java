@@ -8,51 +8,72 @@ import com.zitadel.BaseApi;
 import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
+import com.zitadel.model.NoOp200Response4;
 import com.zitadel.model.UserServiceAddHumanUserRequest;
 import com.zitadel.model.UserServiceAddHumanUserResponse;
 import com.zitadel.model.UserServiceAddIDPLinkRequest;
 import com.zitadel.model.UserServiceAddIDPLinkResponse;
+import com.zitadel.model.UserServiceAddOTPEmailRequest;
 import com.zitadel.model.UserServiceAddOTPEmailResponse;
+import com.zitadel.model.UserServiceAddOTPSMSRequest;
 import com.zitadel.model.UserServiceAddOTPSMSResponse;
+import com.zitadel.model.UserServiceConnectError;
 import com.zitadel.model.UserServiceCreateInviteCodeRequest;
 import com.zitadel.model.UserServiceCreateInviteCodeResponse;
 import com.zitadel.model.UserServiceCreatePasskeyRegistrationLinkRequest;
 import com.zitadel.model.UserServiceCreatePasskeyRegistrationLinkResponse;
+import com.zitadel.model.UserServiceDeactivateUserRequest;
 import com.zitadel.model.UserServiceDeactivateUserResponse;
+import com.zitadel.model.UserServiceDeleteUserRequest;
 import com.zitadel.model.UserServiceDeleteUserResponse;
+import com.zitadel.model.UserServiceGetUserByIDRequest;
 import com.zitadel.model.UserServiceGetUserByIDResponse;
+import com.zitadel.model.UserServiceHumanMFAInitSkippedRequest;
 import com.zitadel.model.UserServiceHumanMFAInitSkippedResponse;
+import com.zitadel.model.UserServiceListAuthenticationFactorsRequest;
 import com.zitadel.model.UserServiceListAuthenticationFactorsResponse;
+import com.zitadel.model.UserServiceListAuthenticationMethodTypesRequest;
 import com.zitadel.model.UserServiceListAuthenticationMethodTypesResponse;
 import com.zitadel.model.UserServiceListIDPLinksRequest;
 import com.zitadel.model.UserServiceListIDPLinksResponse;
+import com.zitadel.model.UserServiceListPasskeysRequest;
 import com.zitadel.model.UserServiceListPasskeysResponse;
 import com.zitadel.model.UserServiceListUsersRequest;
 import com.zitadel.model.UserServiceListUsersResponse;
+import com.zitadel.model.UserServiceLockUserRequest;
 import com.zitadel.model.UserServiceLockUserResponse;
 import com.zitadel.model.UserServicePasswordResetRequest;
 import com.zitadel.model.UserServicePasswordResetResponse;
+import com.zitadel.model.UserServiceReactivateUserRequest;
 import com.zitadel.model.UserServiceReactivateUserResponse;
 import com.zitadel.model.UserServiceRegisterPasskeyRequest;
 import com.zitadel.model.UserServiceRegisterPasskeyResponse;
+import com.zitadel.model.UserServiceRegisterTOTPRequest;
 import com.zitadel.model.UserServiceRegisterTOTPResponse;
 import com.zitadel.model.UserServiceRegisterU2FRequest;
 import com.zitadel.model.UserServiceRegisterU2FResponse;
+import com.zitadel.model.UserServiceRemoveIDPLinkRequest;
 import com.zitadel.model.UserServiceRemoveIDPLinkResponse;
+import com.zitadel.model.UserServiceRemoveOTPEmailRequest;
 import com.zitadel.model.UserServiceRemoveOTPEmailResponse;
+import com.zitadel.model.UserServiceRemoveOTPSMSRequest;
 import com.zitadel.model.UserServiceRemoveOTPSMSResponse;
+import com.zitadel.model.UserServiceRemovePasskeyRequest;
 import com.zitadel.model.UserServiceRemovePasskeyResponse;
+import com.zitadel.model.UserServiceRemovePhoneRequest;
 import com.zitadel.model.UserServiceRemovePhoneResponse;
+import com.zitadel.model.UserServiceRemoveTOTPRequest;
 import com.zitadel.model.UserServiceRemoveTOTPResponse;
+import com.zitadel.model.UserServiceRemoveU2FRequest;
 import com.zitadel.model.UserServiceRemoveU2FResponse;
 import com.zitadel.model.UserServiceResendEmailCodeRequest;
 import com.zitadel.model.UserServiceResendEmailCodeResponse;
+import com.zitadel.model.UserServiceResendInviteCodeRequest;
 import com.zitadel.model.UserServiceResendInviteCodeResponse;
 import com.zitadel.model.UserServiceResendPhoneCodeRequest;
 import com.zitadel.model.UserServiceResendPhoneCodeResponse;
 import com.zitadel.model.UserServiceRetrieveIdentityProviderIntentRequest;
 import com.zitadel.model.UserServiceRetrieveIdentityProviderIntentResponse;
-import com.zitadel.model.UserServiceRpcStatus;
 import com.zitadel.model.UserServiceSendEmailCodeRequest;
 import com.zitadel.model.UserServiceSendEmailCodeResponse;
 import com.zitadel.model.UserServiceSetEmailRequest;
@@ -63,6 +84,7 @@ import com.zitadel.model.UserServiceSetPhoneRequest;
 import com.zitadel.model.UserServiceSetPhoneResponse;
 import com.zitadel.model.UserServiceStartIdentityProviderIntentRequest;
 import com.zitadel.model.UserServiceStartIdentityProviderIntentResponse;
+import com.zitadel.model.UserServiceUnlockUserRequest;
 import com.zitadel.model.UserServiceUnlockUserResponse;
 import com.zitadel.model.UserServiceUpdateHumanUserRequest;
 import com.zitadel.model.UserServiceUpdateHumanUserResponse;
@@ -99,33 +121,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Create a new human user
-   * Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.
+   * AddHumanUser
+   * Create a new human user   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.
    * @param userServiceAddHumanUserRequest  (required)
    * @return UserServiceAddHumanUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceAddHumanUserResponse userServiceAddHumanUser(UserServiceAddHumanUserRequest userServiceAddHumanUserRequest) throws ApiException {
-    return this.userServiceAddHumanUser(userServiceAddHumanUserRequest, Collections.emptyMap());
+  public UserServiceAddHumanUserResponse addHumanUser(UserServiceAddHumanUserRequest userServiceAddHumanUserRequest) throws ApiException {
+    return this.addHumanUser(userServiceAddHumanUserRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Create a new human user
-   * Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.
+   * AddHumanUser
+   * Create a new human user   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.
    * @param userServiceAddHumanUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceAddHumanUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceAddHumanUserResponse userServiceAddHumanUser(UserServiceAddHumanUserRequest userServiceAddHumanUserRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceAddHumanUserResponse addHumanUser(UserServiceAddHumanUserRequest userServiceAddHumanUserRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceAddHumanUserRequest;
     
     if (userServiceAddHumanUserRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceAddHumanUserRequest' when calling userServiceAddHumanUser");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceAddHumanUserRequest' when calling addHumanUser");
     }
     
-    String localVarPath = "/v2/users/human";
+    String localVarPath = "/zitadel.user.v2.UserService/AddHumanUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -171,40 +193,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Add link to an identity provider to an user
-   * Add link to an identity provider to an user..
-   * @param userId  (required)
+   * AddIDPLink
+   * Add link to an identity provider to an user   Add link to an identity provider to an user..
    * @param userServiceAddIDPLinkRequest  (required)
    * @return UserServiceAddIDPLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceAddIDPLinkResponse userServiceAddIDPLink(String userId, UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest) throws ApiException {
-    return this.userServiceAddIDPLink(userId, userServiceAddIDPLinkRequest, Collections.emptyMap());
+  public UserServiceAddIDPLinkResponse addIDPLink(UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest) throws ApiException {
+    return this.addIDPLink(userServiceAddIDPLinkRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Add link to an identity provider to an user
-   * Add link to an identity provider to an user..
-   * @param userId  (required)
+   * AddIDPLink
+   * Add link to an identity provider to an user   Add link to an identity provider to an user..
    * @param userServiceAddIDPLinkRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceAddIDPLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceAddIDPLinkResponse userServiceAddIDPLink(String userId, UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceAddIDPLinkResponse addIDPLink(UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceAddIDPLinkRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceAddIDPLink");
-    }
-    
     if (userServiceAddIDPLinkRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceAddIDPLinkRequest' when calling userServiceAddIDPLink");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceAddIDPLinkRequest' when calling addIDPLink");
     }
     
-    String localVarPath = "/v2/users/{userId}/links"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/AddIDPLink";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -250,34 +265,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Add OTP Email for a user
-   * Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor..
-   * @param userId  (required)
+   * AddOTPEmail
+   * Add OTP Email for a user   Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor..
+   * @param userServiceAddOTPEmailRequest  (required)
    * @return UserServiceAddOTPEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceAddOTPEmailResponse userServiceAddOTPEmail(String userId) throws ApiException {
-    return this.userServiceAddOTPEmail(userId, Collections.emptyMap());
+  public UserServiceAddOTPEmailResponse addOTPEmail(UserServiceAddOTPEmailRequest userServiceAddOTPEmailRequest) throws ApiException {
+    return this.addOTPEmail(userServiceAddOTPEmailRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Add OTP Email for a user
-   * Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor..
-   * @param userId  (required)
+   * AddOTPEmail
+   * Add OTP Email for a user   Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor..
+   * @param userServiceAddOTPEmailRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceAddOTPEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceAddOTPEmailResponse userServiceAddOTPEmail(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceAddOTPEmailResponse addOTPEmail(UserServiceAddOTPEmailRequest userServiceAddOTPEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceAddOTPEmailRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceAddOTPEmail");
+    if (userServiceAddOTPEmailRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceAddOTPEmailRequest' when calling addOTPEmail");
     }
     
-    String localVarPath = "/v2/users/{userId}/otp_email"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/AddOTPEmail";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -323,34 +337,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Add OTP SMS for a user
-   * Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor..
-   * @param userId  (required)
+   * AddOTPSMS
+   * Add OTP SMS for a user   Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor..
+   * @param userServiceAddOTPSMSRequest  (required)
    * @return UserServiceAddOTPSMSResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceAddOTPSMSResponse userServiceAddOTPSMS(String userId) throws ApiException {
-    return this.userServiceAddOTPSMS(userId, Collections.emptyMap());
+  public UserServiceAddOTPSMSResponse addOTPSMS(UserServiceAddOTPSMSRequest userServiceAddOTPSMSRequest) throws ApiException {
+    return this.addOTPSMS(userServiceAddOTPSMSRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Add OTP SMS for a user
-   * Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor..
-   * @param userId  (required)
+   * AddOTPSMS
+   * Add OTP SMS for a user   Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor..
+   * @param userServiceAddOTPSMSRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceAddOTPSMSResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceAddOTPSMSResponse userServiceAddOTPSMS(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceAddOTPSMSResponse addOTPSMS(UserServiceAddOTPSMSRequest userServiceAddOTPSMSRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceAddOTPSMSRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceAddOTPSMS");
+    if (userServiceAddOTPSMSRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceAddOTPSMSRequest' when calling addOTPSMS");
     }
     
-    String localVarPath = "/v2/users/{userId}/otp_sms"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/AddOTPSMS";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -396,40 +409,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Create an invite code for a user
-   * Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.
-   * @param userId  (required)
+   * CreateInviteCode
+   * Create an invite code for a user   Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  If an invite code has been created previously, it&#39;s url template and application name will be used as defaults for the new code.  The new code will overwrite the previous one and make it invalid.
    * @param userServiceCreateInviteCodeRequest  (required)
    * @return UserServiceCreateInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceCreateInviteCodeResponse userServiceCreateInviteCode(String userId, UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest) throws ApiException {
-    return this.userServiceCreateInviteCode(userId, userServiceCreateInviteCodeRequest, Collections.emptyMap());
+  public UserServiceCreateInviteCodeResponse createInviteCode(UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest) throws ApiException {
+    return this.createInviteCode(userServiceCreateInviteCodeRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Create an invite code for a user
-   * Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.
-   * @param userId  (required)
+   * CreateInviteCode
+   * Create an invite code for a user   Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  If an invite code has been created previously, it&#39;s url template and application name will be used as defaults for the new code.  The new code will overwrite the previous one and make it invalid.
    * @param userServiceCreateInviteCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceCreateInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceCreateInviteCodeResponse userServiceCreateInviteCode(String userId, UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceCreateInviteCodeResponse createInviteCode(UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceCreateInviteCodeRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceCreateInviteCode");
-    }
-    
     if (userServiceCreateInviteCodeRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceCreateInviteCodeRequest' when calling userServiceCreateInviteCode");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceCreateInviteCodeRequest' when calling createInviteCode");
     }
     
-    String localVarPath = "/v2/users/{userId}/invite_code"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/CreateInviteCode";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -475,40 +481,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Create a passkey registration link for a user
-   * Create a passkey registration link which includes a code and either return it or send it to the user..
-   * @param userId  (required)
+   * CreatePasskeyRegistrationLink
+   * Create a passkey registration link for a user   Create a passkey registration link which includes a code and either return it or send it to the user..
    * @param userServiceCreatePasskeyRegistrationLinkRequest  (required)
    * @return UserServiceCreatePasskeyRegistrationLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceCreatePasskeyRegistrationLinkResponse userServiceCreatePasskeyRegistrationLink(String userId, UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest) throws ApiException {
-    return this.userServiceCreatePasskeyRegistrationLink(userId, userServiceCreatePasskeyRegistrationLinkRequest, Collections.emptyMap());
+  public UserServiceCreatePasskeyRegistrationLinkResponse createPasskeyRegistrationLink(UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest) throws ApiException {
+    return this.createPasskeyRegistrationLink(userServiceCreatePasskeyRegistrationLinkRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Create a passkey registration link for a user
-   * Create a passkey registration link which includes a code and either return it or send it to the user..
-   * @param userId  (required)
+   * CreatePasskeyRegistrationLink
+   * Create a passkey registration link for a user   Create a passkey registration link which includes a code and either return it or send it to the user..
    * @param userServiceCreatePasskeyRegistrationLinkRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceCreatePasskeyRegistrationLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceCreatePasskeyRegistrationLinkResponse userServiceCreatePasskeyRegistrationLink(String userId, UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceCreatePasskeyRegistrationLinkResponse createPasskeyRegistrationLink(UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceCreatePasskeyRegistrationLinkRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceCreatePasskeyRegistrationLink");
-    }
-    
     if (userServiceCreatePasskeyRegistrationLinkRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceCreatePasskeyRegistrationLinkRequest' when calling userServiceCreatePasskeyRegistrationLink");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceCreatePasskeyRegistrationLinkRequest' when calling createPasskeyRegistrationLink");
     }
     
-    String localVarPath = "/v2/users/{userId}/passkeys/registration_link"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/CreatePasskeyRegistrationLink";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -554,34 +553,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Deactivate user
-   * The state of the user will be changed to &#39;deactivated&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;deactivated&#39;. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data..
-   * @param userId  (required)
+   * DeactivateUser
+   * Deactivate user   The state of the user will be changed to &#39;deactivated&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;deactivated&#39;. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data..
+   * @param userServiceDeactivateUserRequest  (required)
    * @return UserServiceDeactivateUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceDeactivateUserResponse userServiceDeactivateUser(String userId) throws ApiException {
-    return this.userServiceDeactivateUser(userId, Collections.emptyMap());
+  public UserServiceDeactivateUserResponse deactivateUser(UserServiceDeactivateUserRequest userServiceDeactivateUserRequest) throws ApiException {
+    return this.deactivateUser(userServiceDeactivateUserRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Deactivate user
-   * The state of the user will be changed to &#39;deactivated&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;deactivated&#39;. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data..
-   * @param userId  (required)
+   * DeactivateUser
+   * Deactivate user   The state of the user will be changed to &#39;deactivated&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;deactivated&#39;. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data..
+   * @param userServiceDeactivateUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceDeactivateUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceDeactivateUserResponse userServiceDeactivateUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceDeactivateUserResponse deactivateUser(UserServiceDeactivateUserRequest userServiceDeactivateUserRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceDeactivateUserRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceDeactivateUser");
+    if (userServiceDeactivateUserRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceDeactivateUserRequest' when calling deactivateUser");
     }
     
-    String localVarPath = "/v2/users/{userId}/deactivate"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/DeactivateUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -627,34 +625,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Delete user
-   * The state of the user will be changed to &#39;deleted&#39;. The user will not be able to log in anymore. Endpoints requesting this user will return an error &#39;User not found..
-   * @param userId  (required)
+   * DeleteUser
+   * Delete user   The state of the user will be changed to &#39;deleted&#39;. The user will not be able to log in anymore. Endpoints requesting this user will return an error &#39;User not found..
+   * @param userServiceDeleteUserRequest  (required)
    * @return UserServiceDeleteUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceDeleteUserResponse userServiceDeleteUser(String userId) throws ApiException {
-    return this.userServiceDeleteUser(userId, Collections.emptyMap());
+  public UserServiceDeleteUserResponse deleteUser(UserServiceDeleteUserRequest userServiceDeleteUserRequest) throws ApiException {
+    return this.deleteUser(userServiceDeleteUserRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Delete user
-   * The state of the user will be changed to &#39;deleted&#39;. The user will not be able to log in anymore. Endpoints requesting this user will return an error &#39;User not found..
-   * @param userId  (required)
+   * DeleteUser
+   * Delete user   The state of the user will be changed to &#39;deleted&#39;. The user will not be able to log in anymore. Endpoints requesting this user will return an error &#39;User not found..
+   * @param userServiceDeleteUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceDeleteUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceDeleteUserResponse userServiceDeleteUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceDeleteUserResponse deleteUser(UserServiceDeleteUserRequest userServiceDeleteUserRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceDeleteUserRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceDeleteUser");
+    if (userServiceDeleteUserRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceDeleteUserRequest' when calling deleteUser");
     }
     
-    String localVarPath = "/v2/users/{userId}"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/DeleteUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -675,7 +672,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -684,7 +681,7 @@ public class UserServiceApi extends BaseApi {
     TypeReference<UserServiceDeleteUserResponse> localVarReturnType = new TypeReference<UserServiceDeleteUserResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "DELETE",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -700,34 +697,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * User by ID
-   * Returns the full user object (human or machine) including the profile, email, etc..
-   * @param userId User ID of the user you like to get. (required)
+   * GetUserByID
+   * User by ID   Returns the full user object (human or machine) including the profile, email, etc..
+   * @param userServiceGetUserByIDRequest  (required)
    * @return UserServiceGetUserByIDResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceGetUserByIDResponse userServiceGetUserByID(String userId) throws ApiException {
-    return this.userServiceGetUserByID(userId, Collections.emptyMap());
+  public UserServiceGetUserByIDResponse getUserByID(UserServiceGetUserByIDRequest userServiceGetUserByIDRequest) throws ApiException {
+    return this.getUserByID(userServiceGetUserByIDRequest, Collections.emptyMap());
   }
 
 
   /**
-   * User by ID
-   * Returns the full user object (human or machine) including the profile, email, etc..
-   * @param userId User ID of the user you like to get. (required)
+   * GetUserByID
+   * User by ID   Returns the full user object (human or machine) including the profile, email, etc..
+   * @param userServiceGetUserByIDRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceGetUserByIDResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceGetUserByIDResponse userServiceGetUserByID(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceGetUserByIDResponse getUserByID(UserServiceGetUserByIDRequest userServiceGetUserByIDRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceGetUserByIDRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceGetUserByID");
+    if (userServiceGetUserByIDRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceGetUserByIDRequest' when calling getUserByID");
     }
     
-    String localVarPath = "/v2/users/{userId}"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/GetUserByID";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -748,7 +744,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -757,7 +753,7 @@ public class UserServiceApi extends BaseApi {
     TypeReference<UserServiceGetUserByIDResponse> localVarReturnType = new TypeReference<UserServiceGetUserByIDResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -773,34 +769,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * MFA Init Skipped
-   * Update the last time the user has skipped MFA initialization. The server timestamp is used.
-   * @param userId  (required)
+   * HumanMFAInitSkipped
+   * MFA Init Skipped   Update the last time the user has skipped MFA initialization. The server timestamp is used.
+   * @param userServiceHumanMFAInitSkippedRequest  (required)
    * @return UserServiceHumanMFAInitSkippedResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceHumanMFAInitSkippedResponse userServiceHumanMFAInitSkipped(String userId) throws ApiException {
-    return this.userServiceHumanMFAInitSkipped(userId, Collections.emptyMap());
+  public UserServiceHumanMFAInitSkippedResponse humanMFAInitSkipped(UserServiceHumanMFAInitSkippedRequest userServiceHumanMFAInitSkippedRequest) throws ApiException {
+    return this.humanMFAInitSkipped(userServiceHumanMFAInitSkippedRequest, Collections.emptyMap());
   }
 
 
   /**
-   * MFA Init Skipped
-   * Update the last time the user has skipped MFA initialization. The server timestamp is used.
-   * @param userId  (required)
+   * HumanMFAInitSkipped
+   * MFA Init Skipped   Update the last time the user has skipped MFA initialization. The server timestamp is used.
+   * @param userServiceHumanMFAInitSkippedRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceHumanMFAInitSkippedResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceHumanMFAInitSkippedResponse userServiceHumanMFAInitSkipped(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceHumanMFAInitSkippedResponse humanMFAInitSkipped(UserServiceHumanMFAInitSkippedRequest userServiceHumanMFAInitSkippedRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceHumanMFAInitSkippedRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceHumanMFAInitSkipped");
+    if (userServiceHumanMFAInitSkippedRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceHumanMFAInitSkippedRequest' when calling humanMFAInitSkipped");
     }
     
-    String localVarPath = "/v2/users/{userId}/mfa_init_skipped"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/HumanMFAInitSkipped";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -846,38 +841,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
+   * ListAuthenticationFactors
    * 
-   * 
-   * @param userId  (required)
-   * @param authFactors Specify the Auth Factors you are interested in (optional)
-   * @param states Specify the state of the Auth Factors (optional)
+   * @param userServiceListAuthenticationFactorsRequest  (required)
    * @return UserServiceListAuthenticationFactorsResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListAuthenticationFactorsResponse userServiceListAuthenticationFactors(String userId, List<String> authFactors, List<String> states) throws ApiException {
-    return this.userServiceListAuthenticationFactors(userId, authFactors, states, Collections.emptyMap());
+  public UserServiceListAuthenticationFactorsResponse listAuthenticationFactors(UserServiceListAuthenticationFactorsRequest userServiceListAuthenticationFactorsRequest) throws ApiException {
+    return this.listAuthenticationFactors(userServiceListAuthenticationFactorsRequest, Collections.emptyMap());
   }
 
 
   /**
+   * ListAuthenticationFactors
    * 
-   * 
-   * @param userId  (required)
-   * @param authFactors Specify the Auth Factors you are interested in (optional)
-   * @param states Specify the state of the Auth Factors (optional)
+   * @param userServiceListAuthenticationFactorsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceListAuthenticationFactorsResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListAuthenticationFactorsResponse userServiceListAuthenticationFactors(String userId, List<String> authFactors, List<String> states, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceListAuthenticationFactorsResponse listAuthenticationFactors(UserServiceListAuthenticationFactorsRequest userServiceListAuthenticationFactorsRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceListAuthenticationFactorsRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceListAuthenticationFactors");
+    if (userServiceListAuthenticationFactorsRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceListAuthenticationFactorsRequest' when calling listAuthenticationFactors");
     }
     
-    String localVarPath = "/v2/users/{userId}/authentication_factors/_search"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/ListAuthenticationFactors";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -887,8 +877,6 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "authFactors", authFactors));
-    localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "states", states));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -900,7 +888,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -925,38 +913,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * List all possible authentication methods of a user
-   * List all possible authentication methods of a user like password, passwordless, (T)OTP and more..
-   * @param userId  (required)
-   * @param domainQueryIncludeWithoutDomain List also auth method types without domain information like passkey and U2F added through V1 APIs / Login UI. (optional)
-   * @param domainQueryDomain List only auth methods with specific domain. (optional)
+   * ListAuthenticationMethodTypes
+   * List all possible authentication methods of a user   List all possible authentication methods of a user like password, passwordless, (T)OTP and more..
+   * @param userServiceListAuthenticationMethodTypesRequest  (required)
    * @return UserServiceListAuthenticationMethodTypesResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListAuthenticationMethodTypesResponse userServiceListAuthenticationMethodTypes(String userId, Boolean domainQueryIncludeWithoutDomain, String domainQueryDomain) throws ApiException {
-    return this.userServiceListAuthenticationMethodTypes(userId, domainQueryIncludeWithoutDomain, domainQueryDomain, Collections.emptyMap());
+  public UserServiceListAuthenticationMethodTypesResponse listAuthenticationMethodTypes(UserServiceListAuthenticationMethodTypesRequest userServiceListAuthenticationMethodTypesRequest) throws ApiException {
+    return this.listAuthenticationMethodTypes(userServiceListAuthenticationMethodTypesRequest, Collections.emptyMap());
   }
 
 
   /**
-   * List all possible authentication methods of a user
-   * List all possible authentication methods of a user like password, passwordless, (T)OTP and more..
-   * @param userId  (required)
-   * @param domainQueryIncludeWithoutDomain List also auth method types without domain information like passkey and U2F added through V1 APIs / Login UI. (optional)
-   * @param domainQueryDomain List only auth methods with specific domain. (optional)
+   * ListAuthenticationMethodTypes
+   * List all possible authentication methods of a user   List all possible authentication methods of a user like password, passwordless, (T)OTP and more..
+   * @param userServiceListAuthenticationMethodTypesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceListAuthenticationMethodTypesResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListAuthenticationMethodTypesResponse userServiceListAuthenticationMethodTypes(String userId, Boolean domainQueryIncludeWithoutDomain, String domainQueryDomain, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceListAuthenticationMethodTypesResponse listAuthenticationMethodTypes(UserServiceListAuthenticationMethodTypesRequest userServiceListAuthenticationMethodTypesRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceListAuthenticationMethodTypesRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceListAuthenticationMethodTypes");
+    if (userServiceListAuthenticationMethodTypesRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceListAuthenticationMethodTypesRequest' when calling listAuthenticationMethodTypes");
     }
     
-    String localVarPath = "/v2/users/{userId}/authentication_methods"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/ListAuthenticationMethodTypes";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -966,8 +949,6 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("domainQuery.includeWithoutDomain", domainQueryIncludeWithoutDomain));
-    localVarQueryParams.addAll(apiClient.parameterToPair("domainQuery.domain", domainQueryDomain));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
@@ -979,7 +960,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -988,7 +969,7 @@ public class UserServiceApi extends BaseApi {
     TypeReference<UserServiceListAuthenticationMethodTypesResponse> localVarReturnType = new TypeReference<UserServiceListAuthenticationMethodTypesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -1004,40 +985,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * List links to an identity provider of an user
-   * List links to an identity provider of an user.
-   * @param userId  (required)
+   * ListIDPLinks
+   * List links to an identity provider of an user   List links to an identity provider of an user.
    * @param userServiceListIDPLinksRequest  (required)
    * @return UserServiceListIDPLinksResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListIDPLinksResponse userServiceListIDPLinks(String userId, UserServiceListIDPLinksRequest userServiceListIDPLinksRequest) throws ApiException {
-    return this.userServiceListIDPLinks(userId, userServiceListIDPLinksRequest, Collections.emptyMap());
+  public UserServiceListIDPLinksResponse listIDPLinks(UserServiceListIDPLinksRequest userServiceListIDPLinksRequest) throws ApiException {
+    return this.listIDPLinks(userServiceListIDPLinksRequest, Collections.emptyMap());
   }
 
 
   /**
-   * List links to an identity provider of an user
-   * List links to an identity provider of an user.
-   * @param userId  (required)
+   * ListIDPLinks
+   * List links to an identity provider of an user   List links to an identity provider of an user.
    * @param userServiceListIDPLinksRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceListIDPLinksResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListIDPLinksResponse userServiceListIDPLinks(String userId, UserServiceListIDPLinksRequest userServiceListIDPLinksRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceListIDPLinksResponse listIDPLinks(UserServiceListIDPLinksRequest userServiceListIDPLinksRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceListIDPLinksRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceListIDPLinks");
-    }
-    
     if (userServiceListIDPLinksRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceListIDPLinksRequest' when calling userServiceListIDPLinks");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceListIDPLinksRequest' when calling listIDPLinks");
     }
     
-    String localVarPath = "/v2/users/{userId}/links/_search"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/ListIDPLinks";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -1083,34 +1057,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * List passkeys of an user
-   * List passkeys of an user
-   * @param userId  (required)
+   * ListPasskeys
+   * List passkeys of an user   List passkeys of an user
+   * @param userServiceListPasskeysRequest  (required)
    * @return UserServiceListPasskeysResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListPasskeysResponse userServiceListPasskeys(String userId) throws ApiException {
-    return this.userServiceListPasskeys(userId, Collections.emptyMap());
+  public UserServiceListPasskeysResponse listPasskeys(UserServiceListPasskeysRequest userServiceListPasskeysRequest) throws ApiException {
+    return this.listPasskeys(userServiceListPasskeysRequest, Collections.emptyMap());
   }
 
 
   /**
-   * List passkeys of an user
-   * List passkeys of an user
-   * @param userId  (required)
+   * ListPasskeys
+   * List passkeys of an user   List passkeys of an user
+   * @param userServiceListPasskeysRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceListPasskeysResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListPasskeysResponse userServiceListPasskeys(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceListPasskeysResponse listPasskeys(UserServiceListPasskeysRequest userServiceListPasskeysRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceListPasskeysRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceListPasskeys");
+    if (userServiceListPasskeysRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceListPasskeysRequest' when calling listPasskeys");
     }
     
-    String localVarPath = "/v2/users/{userId}/passkeys/_search"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/ListPasskeys";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -1156,33 +1129,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Search Users
-   * Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.
+   * ListUsers
+   * Search Users   Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.
    * @param userServiceListUsersRequest  (required)
    * @return UserServiceListUsersResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListUsersResponse userServiceListUsers(UserServiceListUsersRequest userServiceListUsersRequest) throws ApiException {
-    return this.userServiceListUsers(userServiceListUsersRequest, Collections.emptyMap());
+  public UserServiceListUsersResponse listUsers(UserServiceListUsersRequest userServiceListUsersRequest) throws ApiException {
+    return this.listUsers(userServiceListUsersRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Search Users
-   * Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.
+   * ListUsers
+   * Search Users   Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.
    * @param userServiceListUsersRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceListUsersResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListUsersResponse userServiceListUsers(UserServiceListUsersRequest userServiceListUsersRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceListUsersResponse listUsers(UserServiceListUsersRequest userServiceListUsersRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceListUsersRequest;
     
     if (userServiceListUsersRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceListUsersRequest' when calling userServiceListUsers");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceListUsersRequest' when calling listUsers");
     }
     
-    String localVarPath = "/v2/users";
+    String localVarPath = "/zitadel.user.v2.UserService/ListUsers";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -1228,34 +1201,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Lock user
-   * The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..
-   * @param userId  (required)
+   * LockUser
+   * Lock user   The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..
+   * @param userServiceLockUserRequest  (required)
    * @return UserServiceLockUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceLockUserResponse userServiceLockUser(String userId) throws ApiException {
-    return this.userServiceLockUser(userId, Collections.emptyMap());
+  public UserServiceLockUserResponse lockUser(UserServiceLockUserRequest userServiceLockUserRequest) throws ApiException {
+    return this.lockUser(userServiceLockUserRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Lock user
-   * The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..
-   * @param userId  (required)
+   * LockUser
+   * Lock user   The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..
+   * @param userServiceLockUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceLockUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceLockUserResponse userServiceLockUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceLockUserResponse lockUser(UserServiceLockUserRequest userServiceLockUserRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceLockUserRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceLockUser");
+    if (userServiceLockUserRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceLockUserRequest' when calling lockUser");
     }
     
-    String localVarPath = "/v2/users/{userId}/lock"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/LockUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -1301,40 +1273,99 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Request a code to reset a password
-   * Request a code to reset a password..
-   * @param userId  (required)
-   * @param userServicePasswordResetRequest  (required)
-   * @return UserServicePasswordResetResponse
+   * Dummy endpoint to retain union-member schemas
+   * 
+   * @return NoOp200Response4
    * @throws ApiException if fails to make API call
    */
-  public UserServicePasswordResetResponse userServicePasswordReset(String userId, UserServicePasswordResetRequest userServicePasswordResetRequest) throws ApiException {
-    return this.userServicePasswordReset(userId, userServicePasswordResetRequest, Collections.emptyMap());
+  public NoOp200Response4 noOp() throws ApiException {
+    return this.noOp(Collections.emptyMap());
   }
 
 
   /**
-   * Request a code to reset a password
-   * Request a code to reset a password..
-   * @param userId  (required)
+   * Dummy endpoint to retain union-member schemas
+   * 
+   * @param additionalHeaders additionalHeaders for this call
+   * @return NoOp200Response4
+   * @throws ApiException if fails to make API call
+   */
+  public NoOp200Response4 noOp(Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    String localVarPath = "/df395562";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<NoOp200Response4> localVarReturnType = new TypeReference<NoOp200Response4>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * PasswordReset
+   * Request a code to reset a password   Request a code to reset a password..
+   * @param userServicePasswordResetRequest  (required)
+   * @return UserServicePasswordResetResponse
+   * @throws ApiException if fails to make API call
+   */
+  public UserServicePasswordResetResponse passwordReset(UserServicePasswordResetRequest userServicePasswordResetRequest) throws ApiException {
+    return this.passwordReset(userServicePasswordResetRequest, Collections.emptyMap());
+  }
+
+
+  /**
+   * PasswordReset
+   * Request a code to reset a password   Request a code to reset a password..
    * @param userServicePasswordResetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServicePasswordResetResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServicePasswordResetResponse userServicePasswordReset(String userId, UserServicePasswordResetRequest userServicePasswordResetRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServicePasswordResetResponse passwordReset(UserServicePasswordResetRequest userServicePasswordResetRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServicePasswordResetRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServicePasswordReset");
-    }
-    
     if (userServicePasswordResetRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServicePasswordResetRequest' when calling userServicePasswordReset");
+      throw new IllegalArgumentException("Missing the required parameter 'userServicePasswordResetRequest' when calling passwordReset");
     }
     
-    String localVarPath = "/v2/users/{userId}/password_reset"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/PasswordReset";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -1380,34 +1411,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Reactivate user
-   * Reactivate a user with the state &#39;deactivated&#39;. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state &#39;deactivated&#39;..
-   * @param userId  (required)
+   * ReactivateUser
+   * Reactivate user   Reactivate a user with the state &#39;deactivated&#39;. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state &#39;deactivated&#39;..
+   * @param userServiceReactivateUserRequest  (required)
    * @return UserServiceReactivateUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceReactivateUserResponse userServiceReactivateUser(String userId) throws ApiException {
-    return this.userServiceReactivateUser(userId, Collections.emptyMap());
+  public UserServiceReactivateUserResponse reactivateUser(UserServiceReactivateUserRequest userServiceReactivateUserRequest) throws ApiException {
+    return this.reactivateUser(userServiceReactivateUserRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Reactivate user
-   * Reactivate a user with the state &#39;deactivated&#39;. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state &#39;deactivated&#39;..
-   * @param userId  (required)
+   * ReactivateUser
+   * Reactivate user   Reactivate a user with the state &#39;deactivated&#39;. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state &#39;deactivated&#39;..
+   * @param userServiceReactivateUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceReactivateUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceReactivateUserResponse userServiceReactivateUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceReactivateUserResponse reactivateUser(UserServiceReactivateUserRequest userServiceReactivateUserRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceReactivateUserRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceReactivateUser");
+    if (userServiceReactivateUserRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceReactivateUserRequest' when calling reactivateUser");
     }
     
-    String localVarPath = "/v2/users/{userId}/reactivate"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/ReactivateUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -1453,40 +1483,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Start the registration of passkey for a user
-   * Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey..
-   * @param userId  (required)
+   * RegisterPasskey
+   * Start the registration of passkey for a user   Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey..
    * @param userServiceRegisterPasskeyRequest  (required)
    * @return UserServiceRegisterPasskeyResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRegisterPasskeyResponse userServiceRegisterPasskey(String userId, UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest) throws ApiException {
-    return this.userServiceRegisterPasskey(userId, userServiceRegisterPasskeyRequest, Collections.emptyMap());
+  public UserServiceRegisterPasskeyResponse registerPasskey(UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest) throws ApiException {
+    return this.registerPasskey(userServiceRegisterPasskeyRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Start the registration of passkey for a user
-   * Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey..
-   * @param userId  (required)
+   * RegisterPasskey
+   * Start the registration of passkey for a user   Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey..
    * @param userServiceRegisterPasskeyRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRegisterPasskeyResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRegisterPasskeyResponse userServiceRegisterPasskey(String userId, UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceRegisterPasskeyResponse registerPasskey(UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRegisterPasskeyRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceRegisterPasskey");
-    }
-    
     if (userServiceRegisterPasskeyRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceRegisterPasskeyRequest' when calling userServiceRegisterPasskey");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceRegisterPasskeyRequest' when calling registerPasskey");
     }
     
-    String localVarPath = "/v2/users/{userId}/passkeys"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/RegisterPasskey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -1532,34 +1555,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Start the registration of a TOTP generator for a user
-   * Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device..
-   * @param userId  (required)
+   * RegisterTOTP
+   * Start the registration of a TOTP generator for a user   Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device..
+   * @param userServiceRegisterTOTPRequest  (required)
    * @return UserServiceRegisterTOTPResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRegisterTOTPResponse userServiceRegisterTOTP(String userId) throws ApiException {
-    return this.userServiceRegisterTOTP(userId, Collections.emptyMap());
+  public UserServiceRegisterTOTPResponse registerTOTP(UserServiceRegisterTOTPRequest userServiceRegisterTOTPRequest) throws ApiException {
+    return this.registerTOTP(userServiceRegisterTOTPRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Start the registration of a TOTP generator for a user
-   * Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device..
-   * @param userId  (required)
+   * RegisterTOTP
+   * Start the registration of a TOTP generator for a user   Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device..
+   * @param userServiceRegisterTOTPRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRegisterTOTPResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRegisterTOTPResponse userServiceRegisterTOTP(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceRegisterTOTPResponse registerTOTP(UserServiceRegisterTOTPRequest userServiceRegisterTOTPRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceRegisterTOTPRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceRegisterTOTP");
+    if (userServiceRegisterTOTPRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceRegisterTOTPRequest' when calling registerTOTP");
     }
     
-    String localVarPath = "/v2/users/{userId}/totp"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/RegisterTOTP";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -1605,40 +1627,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Start the registration of a u2f token for a user
-   * Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token..
-   * @param userId  (required)
+   * RegisterU2F
+   * Start the registration of a u2f token for a user   Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token..
    * @param userServiceRegisterU2FRequest  (required)
    * @return UserServiceRegisterU2FResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRegisterU2FResponse userServiceRegisterU2F(String userId, UserServiceRegisterU2FRequest userServiceRegisterU2FRequest) throws ApiException {
-    return this.userServiceRegisterU2F(userId, userServiceRegisterU2FRequest, Collections.emptyMap());
+  public UserServiceRegisterU2FResponse registerU2F(UserServiceRegisterU2FRequest userServiceRegisterU2FRequest) throws ApiException {
+    return this.registerU2F(userServiceRegisterU2FRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Start the registration of a u2f token for a user
-   * Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token..
-   * @param userId  (required)
+   * RegisterU2F
+   * Start the registration of a u2f token for a user   Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token..
    * @param userServiceRegisterU2FRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRegisterU2FResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRegisterU2FResponse userServiceRegisterU2F(String userId, UserServiceRegisterU2FRequest userServiceRegisterU2FRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceRegisterU2FResponse registerU2F(UserServiceRegisterU2FRequest userServiceRegisterU2FRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRegisterU2FRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceRegisterU2F");
-    }
-    
     if (userServiceRegisterU2FRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceRegisterU2FRequest' when calling userServiceRegisterU2F");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceRegisterU2FRequest' when calling registerU2F");
     }
     
-    String localVarPath = "/v2/users/{userId}/u2f"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/RegisterU2F";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -1684,48 +1699,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Remove link of an identity provider to an user
-   * Remove link of an identity provider to an user.
-   * @param userId  (required)
-   * @param idpId  (required)
-   * @param linkedUserId  (required)
+   * RemoveIDPLink
+   * Remove link of an identity provider to an user   Remove link of an identity provider to an user.
+   * @param userServiceRemoveIDPLinkRequest  (required)
    * @return UserServiceRemoveIDPLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveIDPLinkResponse userServiceRemoveIDPLink(String userId, String idpId, String linkedUserId) throws ApiException {
-    return this.userServiceRemoveIDPLink(userId, idpId, linkedUserId, Collections.emptyMap());
+  public UserServiceRemoveIDPLinkResponse removeIDPLink(UserServiceRemoveIDPLinkRequest userServiceRemoveIDPLinkRequest) throws ApiException {
+    return this.removeIDPLink(userServiceRemoveIDPLinkRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Remove link of an identity provider to an user
-   * Remove link of an identity provider to an user.
-   * @param userId  (required)
-   * @param idpId  (required)
-   * @param linkedUserId  (required)
+   * RemoveIDPLink
+   * Remove link of an identity provider to an user   Remove link of an identity provider to an user.
+   * @param userServiceRemoveIDPLinkRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemoveIDPLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveIDPLinkResponse userServiceRemoveIDPLink(String userId, String idpId, String linkedUserId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceRemoveIDPLinkResponse removeIDPLink(UserServiceRemoveIDPLinkRequest userServiceRemoveIDPLinkRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceRemoveIDPLinkRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceRemoveIDPLink");
+    if (userServiceRemoveIDPLinkRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceRemoveIDPLinkRequest' when calling removeIDPLink");
     }
     
-    if (idpId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'idpId' when calling userServiceRemoveIDPLink");
-    }
-    
-    if (linkedUserId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'linkedUserId' when calling userServiceRemoveIDPLink");
-    }
-    
-    String localVarPath = "/v2/users/{userId}/links/{idpId}/{linkedUserId}"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)))
-      .replaceAll("\\{" + "idpId" + "\\}", apiClient.escapeString(apiClient.parameterToString(idpId)))
-      .replaceAll("\\{" + "linkedUserId" + "\\}", apiClient.escapeString(apiClient.parameterToString(linkedUserId)));
+    String localVarPath = "/zitadel.user.v2.UserService/RemoveIDPLink";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -1755,7 +1755,7 @@ public class UserServiceApi extends BaseApi {
     TypeReference<UserServiceRemoveIDPLinkResponse> localVarReturnType = new TypeReference<UserServiceRemoveIDPLinkResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "DELETE",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -1771,34 +1771,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Remove One-Time Password (OTP) Email from a user
-   * Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.
-   * @param userId  (required)
+   * RemoveOTPEmail
+   * Remove One-Time Password (OTP) Email from a user   Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.
+   * @param userServiceRemoveOTPEmailRequest  (required)
    * @return UserServiceRemoveOTPEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveOTPEmailResponse userServiceRemoveOTPEmail(String userId) throws ApiException {
-    return this.userServiceRemoveOTPEmail(userId, Collections.emptyMap());
+  public UserServiceRemoveOTPEmailResponse removeOTPEmail(UserServiceRemoveOTPEmailRequest userServiceRemoveOTPEmailRequest) throws ApiException {
+    return this.removeOTPEmail(userServiceRemoveOTPEmailRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Remove One-Time Password (OTP) Email from a user
-   * Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.
-   * @param userId  (required)
+   * RemoveOTPEmail
+   * Remove One-Time Password (OTP) Email from a user   Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.
+   * @param userServiceRemoveOTPEmailRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemoveOTPEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveOTPEmailResponse userServiceRemoveOTPEmail(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceRemoveOTPEmailResponse removeOTPEmail(UserServiceRemoveOTPEmailRequest userServiceRemoveOTPEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceRemoveOTPEmailRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceRemoveOTPEmail");
+    if (userServiceRemoveOTPEmailRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceRemoveOTPEmailRequest' when calling removeOTPEmail");
     }
     
-    String localVarPath = "/v2/users/{userId}/otp_email"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/RemoveOTPEmail";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -1819,7 +1818,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -1828,7 +1827,7 @@ public class UserServiceApi extends BaseApi {
     TypeReference<UserServiceRemoveOTPEmailResponse> localVarReturnType = new TypeReference<UserServiceRemoveOTPEmailResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "DELETE",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -1844,34 +1843,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Remove One-Time Password (OTP) SMS from a user
-   * Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.
-   * @param userId  (required)
+   * RemoveOTPSMS
+   * Remove One-Time Password (OTP) SMS from a user   Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.
+   * @param userServiceRemoveOTPSMSRequest  (required)
    * @return UserServiceRemoveOTPSMSResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveOTPSMSResponse userServiceRemoveOTPSMS(String userId) throws ApiException {
-    return this.userServiceRemoveOTPSMS(userId, Collections.emptyMap());
+  public UserServiceRemoveOTPSMSResponse removeOTPSMS(UserServiceRemoveOTPSMSRequest userServiceRemoveOTPSMSRequest) throws ApiException {
+    return this.removeOTPSMS(userServiceRemoveOTPSMSRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Remove One-Time Password (OTP) SMS from a user
-   * Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.
-   * @param userId  (required)
+   * RemoveOTPSMS
+   * Remove One-Time Password (OTP) SMS from a user   Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.
+   * @param userServiceRemoveOTPSMSRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemoveOTPSMSResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveOTPSMSResponse userServiceRemoveOTPSMS(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceRemoveOTPSMSResponse removeOTPSMS(UserServiceRemoveOTPSMSRequest userServiceRemoveOTPSMSRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceRemoveOTPSMSRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceRemoveOTPSMS");
+    if (userServiceRemoveOTPSMSRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceRemoveOTPSMSRequest' when calling removeOTPSMS");
     }
     
-    String localVarPath = "/v2/users/{userId}/otp_sms"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/RemoveOTPSMS";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -1892,7 +1890,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -1901,7 +1899,7 @@ public class UserServiceApi extends BaseApi {
     TypeReference<UserServiceRemoveOTPSMSResponse> localVarReturnType = new TypeReference<UserServiceRemoveOTPSMSResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "DELETE",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -1917,41 +1915,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Remove passkey from a user
-   * Remove passkey from a user.
-   * @param userId  (required)
-   * @param passkeyId  (required)
+   * RemovePasskey
+   * Remove passkey from a user   Remove passkey from a user.
+   * @param userServiceRemovePasskeyRequest  (required)
    * @return UserServiceRemovePasskeyResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemovePasskeyResponse userServiceRemovePasskey(String userId, String passkeyId) throws ApiException {
-    return this.userServiceRemovePasskey(userId, passkeyId, Collections.emptyMap());
+  public UserServiceRemovePasskeyResponse removePasskey(UserServiceRemovePasskeyRequest userServiceRemovePasskeyRequest) throws ApiException {
+    return this.removePasskey(userServiceRemovePasskeyRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Remove passkey from a user
-   * Remove passkey from a user.
-   * @param userId  (required)
-   * @param passkeyId  (required)
+   * RemovePasskey
+   * Remove passkey from a user   Remove passkey from a user.
+   * @param userServiceRemovePasskeyRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemovePasskeyResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemovePasskeyResponse userServiceRemovePasskey(String userId, String passkeyId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceRemovePasskeyResponse removePasskey(UserServiceRemovePasskeyRequest userServiceRemovePasskeyRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceRemovePasskeyRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceRemovePasskey");
+    if (userServiceRemovePasskeyRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceRemovePasskeyRequest' when calling removePasskey");
     }
     
-    if (passkeyId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'passkeyId' when calling userServiceRemovePasskey");
-    }
-    
-    String localVarPath = "/v2/users/{userId}/passkeys/{passkeyId}"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)))
-      .replaceAll("\\{" + "passkeyId" + "\\}", apiClient.escapeString(apiClient.parameterToString(passkeyId)));
+    String localVarPath = "/zitadel.user.v2.UserService/RemovePasskey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -1972,7 +1962,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -1981,7 +1971,7 @@ public class UserServiceApi extends BaseApi {
     TypeReference<UserServiceRemovePasskeyResponse> localVarReturnType = new TypeReference<UserServiceRemovePasskeyResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "DELETE",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -1997,34 +1987,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Delete the user phone
-   * Delete the phone number of a user.
-   * @param userId  (required)
+   * RemovePhone
+   * Remove the user phone   Remove the user phone
+   * @param userServiceRemovePhoneRequest  (required)
    * @return UserServiceRemovePhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemovePhoneResponse userServiceRemovePhone(String userId) throws ApiException {
-    return this.userServiceRemovePhone(userId, Collections.emptyMap());
+  public UserServiceRemovePhoneResponse removePhone(UserServiceRemovePhoneRequest userServiceRemovePhoneRequest) throws ApiException {
+    return this.removePhone(userServiceRemovePhoneRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Delete the user phone
-   * Delete the phone number of a user.
-   * @param userId  (required)
+   * RemovePhone
+   * Remove the user phone   Remove the user phone
+   * @param userServiceRemovePhoneRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemovePhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemovePhoneResponse userServiceRemovePhone(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceRemovePhoneResponse removePhone(UserServiceRemovePhoneRequest userServiceRemovePhoneRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceRemovePhoneRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceRemovePhone");
+    if (userServiceRemovePhoneRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceRemovePhoneRequest' when calling removePhone");
     }
     
-    String localVarPath = "/v2/users/{userId}/phone"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/RemovePhone";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -2054,7 +2043,7 @@ public class UserServiceApi extends BaseApi {
     TypeReference<UserServiceRemovePhoneResponse> localVarReturnType = new TypeReference<UserServiceRemovePhoneResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "DELETE",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -2070,34 +2059,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Remove TOTP generator from a user
-   * Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.
-   * @param userId  (required)
+   * RemoveTOTP
+   * Remove TOTP generator from a user   Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.
+   * @param userServiceRemoveTOTPRequest  (required)
    * @return UserServiceRemoveTOTPResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveTOTPResponse userServiceRemoveTOTP(String userId) throws ApiException {
-    return this.userServiceRemoveTOTP(userId, Collections.emptyMap());
+  public UserServiceRemoveTOTPResponse removeTOTP(UserServiceRemoveTOTPRequest userServiceRemoveTOTPRequest) throws ApiException {
+    return this.removeTOTP(userServiceRemoveTOTPRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Remove TOTP generator from a user
-   * Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.
-   * @param userId  (required)
+   * RemoveTOTP
+   * Remove TOTP generator from a user   Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.
+   * @param userServiceRemoveTOTPRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemoveTOTPResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveTOTPResponse userServiceRemoveTOTP(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceRemoveTOTPResponse removeTOTP(UserServiceRemoveTOTPRequest userServiceRemoveTOTPRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceRemoveTOTPRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceRemoveTOTP");
+    if (userServiceRemoveTOTPRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceRemoveTOTPRequest' when calling removeTOTP");
     }
     
-    String localVarPath = "/v2/users/{userId}/totp"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/RemoveTOTP";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -2118,7 +2106,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -2127,7 +2115,7 @@ public class UserServiceApi extends BaseApi {
     TypeReference<UserServiceRemoveTOTPResponse> localVarReturnType = new TypeReference<UserServiceRemoveTOTPResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "DELETE",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -2143,41 +2131,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Remove u2f token from a user
-   * Remove u2f token from a user
-   * @param userId  (required)
-   * @param u2fId  (required)
+   * RemoveU2F
+   * Remove u2f token from a user   Remove u2f token from a user.
+   * @param userServiceRemoveU2FRequest  (required)
    * @return UserServiceRemoveU2FResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveU2FResponse userServiceRemoveU2F(String userId, String u2fId) throws ApiException {
-    return this.userServiceRemoveU2F(userId, u2fId, Collections.emptyMap());
+  public UserServiceRemoveU2FResponse removeU2F(UserServiceRemoveU2FRequest userServiceRemoveU2FRequest) throws ApiException {
+    return this.removeU2F(userServiceRemoveU2FRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Remove u2f token from a user
-   * Remove u2f token from a user
-   * @param userId  (required)
-   * @param u2fId  (required)
+   * RemoveU2F
+   * Remove u2f token from a user   Remove u2f token from a user.
+   * @param userServiceRemoveU2FRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemoveU2FResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveU2FResponse userServiceRemoveU2F(String userId, String u2fId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceRemoveU2FResponse removeU2F(UserServiceRemoveU2FRequest userServiceRemoveU2FRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceRemoveU2FRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceRemoveU2F");
+    if (userServiceRemoveU2FRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceRemoveU2FRequest' when calling removeU2F");
     }
     
-    if (u2fId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'u2fId' when calling userServiceRemoveU2F");
-    }
-    
-    String localVarPath = "/v2/users/{userId}/u2f/{u2fId}"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)))
-      .replaceAll("\\{" + "u2fId" + "\\}", apiClient.escapeString(apiClient.parameterToString(u2fId)));
+    String localVarPath = "/zitadel.user.v2.UserService/RemoveU2F";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -2198,7 +2178,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -2207,7 +2187,7 @@ public class UserServiceApi extends BaseApi {
     TypeReference<UserServiceRemoveU2FResponse> localVarReturnType = new TypeReference<UserServiceRemoveU2FResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "DELETE",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -2223,40 +2203,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Resend code to verify user email
-   * Resend code to verify user email.
-   * @param userId  (required)
+   * ResendEmailCode
+   * Resend code to verify user email   Resend code to verify user email.
    * @param userServiceResendEmailCodeRequest  (required)
    * @return UserServiceResendEmailCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceResendEmailCodeResponse userServiceResendEmailCode(String userId, UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest) throws ApiException {
-    return this.userServiceResendEmailCode(userId, userServiceResendEmailCodeRequest, Collections.emptyMap());
+  public UserServiceResendEmailCodeResponse resendEmailCode(UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest) throws ApiException {
+    return this.resendEmailCode(userServiceResendEmailCodeRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Resend code to verify user email
-   * Resend code to verify user email.
-   * @param userId  (required)
+   * ResendEmailCode
+   * Resend code to verify user email   Resend code to verify user email.
    * @param userServiceResendEmailCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceResendEmailCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceResendEmailCodeResponse userServiceResendEmailCode(String userId, UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceResendEmailCodeResponse resendEmailCode(UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceResendEmailCodeRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceResendEmailCode");
-    }
-    
     if (userServiceResendEmailCodeRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceResendEmailCodeRequest' when calling userServiceResendEmailCode");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceResendEmailCodeRequest' when calling resendEmailCode");
     }
     
-    String localVarPath = "/v2/users/{userId}/email/resend"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/ResendEmailCode";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -2302,34 +2275,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Resend an invite code for a user
-   * Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods. A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.
-   * @param userId  (required)
+   * ResendInviteCode
+   * Resend an invite code for a user   Deprecated: Use [CreateInviteCode](apis/resources/user_service_v2/user-service-create-invite-code.api.mdx) instead.   Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.
+   * @param userServiceResendInviteCodeRequest  (required)
    * @return UserServiceResendInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceResendInviteCodeResponse userServiceResendInviteCode(String userId) throws ApiException {
-    return this.userServiceResendInviteCode(userId, Collections.emptyMap());
+  public UserServiceResendInviteCodeResponse resendInviteCode(UserServiceResendInviteCodeRequest userServiceResendInviteCodeRequest) throws ApiException {
+    return this.resendInviteCode(userServiceResendInviteCodeRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Resend an invite code for a user
-   * Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods. A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.
-   * @param userId  (required)
+   * ResendInviteCode
+   * Resend an invite code for a user   Deprecated: Use [CreateInviteCode](apis/resources/user_service_v2/user-service-create-invite-code.api.mdx) instead.   Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.
+   * @param userServiceResendInviteCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceResendInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceResendInviteCodeResponse userServiceResendInviteCode(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceResendInviteCodeResponse resendInviteCode(UserServiceResendInviteCodeRequest userServiceResendInviteCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceResendInviteCodeRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceResendInviteCode");
+    if (userServiceResendInviteCodeRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceResendInviteCodeRequest' when calling resendInviteCode");
     }
     
-    String localVarPath = "/v2/users/{userId}/invite_code/resend"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/ResendInviteCode";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -2350,7 +2322,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -2375,40 +2347,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Resend code to verify user phone
-   * Resend code to verify user phone.
-   * @param userId  (required)
+   * ResendPhoneCode
+   * Resend code to verify user phone   Resend code to verify user phone.
    * @param userServiceResendPhoneCodeRequest  (required)
    * @return UserServiceResendPhoneCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceResendPhoneCodeResponse userServiceResendPhoneCode(String userId, UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest) throws ApiException {
-    return this.userServiceResendPhoneCode(userId, userServiceResendPhoneCodeRequest, Collections.emptyMap());
+  public UserServiceResendPhoneCodeResponse resendPhoneCode(UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest) throws ApiException {
+    return this.resendPhoneCode(userServiceResendPhoneCodeRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Resend code to verify user phone
-   * Resend code to verify user phone.
-   * @param userId  (required)
+   * ResendPhoneCode
+   * Resend code to verify user phone   Resend code to verify user phone.
    * @param userServiceResendPhoneCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceResendPhoneCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceResendPhoneCodeResponse userServiceResendPhoneCode(String userId, UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceResendPhoneCodeResponse resendPhoneCode(UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceResendPhoneCodeRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceResendPhoneCode");
-    }
-    
     if (userServiceResendPhoneCodeRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceResendPhoneCodeRequest' when calling userServiceResendPhoneCode");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceResendPhoneCodeRequest' when calling resendPhoneCode");
     }
     
-    String localVarPath = "/v2/users/{userId}/phone/resend"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/ResendPhoneCode";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -2454,40 +2419,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Retrieve the information returned by the identity provider
-   * Retrieve the information returned by the identity provider for registration or updating an existing user with new information..
-   * @param idpIntentId ID of the idp intent, previously returned on the success response of the IDP callback (required)
+   * RetrieveIdentityProviderIntent
+   * Retrieve the information returned by the identity provider   Retrieve the information returned by the identity provider for registration or updating an existing user with new information..
    * @param userServiceRetrieveIdentityProviderIntentRequest  (required)
    * @return UserServiceRetrieveIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRetrieveIdentityProviderIntentResponse userServiceRetrieveIdentityProviderIntent(String idpIntentId, UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest) throws ApiException {
-    return this.userServiceRetrieveIdentityProviderIntent(idpIntentId, userServiceRetrieveIdentityProviderIntentRequest, Collections.emptyMap());
+  public UserServiceRetrieveIdentityProviderIntentResponse retrieveIdentityProviderIntent(UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest) throws ApiException {
+    return this.retrieveIdentityProviderIntent(userServiceRetrieveIdentityProviderIntentRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Retrieve the information returned by the identity provider
-   * Retrieve the information returned by the identity provider for registration or updating an existing user with new information..
-   * @param idpIntentId ID of the idp intent, previously returned on the success response of the IDP callback (required)
+   * RetrieveIdentityProviderIntent
+   * Retrieve the information returned by the identity provider   Retrieve the information returned by the identity provider for registration or updating an existing user with new information..
    * @param userServiceRetrieveIdentityProviderIntentRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRetrieveIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRetrieveIdentityProviderIntentResponse userServiceRetrieveIdentityProviderIntent(String idpIntentId, UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceRetrieveIdentityProviderIntentResponse retrieveIdentityProviderIntent(UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRetrieveIdentityProviderIntentRequest;
     
-    if (idpIntentId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'idpIntentId' when calling userServiceRetrieveIdentityProviderIntent");
-    }
-    
     if (userServiceRetrieveIdentityProviderIntentRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceRetrieveIdentityProviderIntentRequest' when calling userServiceRetrieveIdentityProviderIntent");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceRetrieveIdentityProviderIntentRequest' when calling retrieveIdentityProviderIntent");
     }
     
-    String localVarPath = "/v2/idp_intents/{idpIntentId}"
-      .replaceAll("\\{" + "idpIntentId" + "\\}", apiClient.escapeString(apiClient.parameterToString(idpIntentId)));
+    String localVarPath = "/zitadel.user.v2.UserService/RetrieveIdentityProviderIntent";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -2533,40 +2491,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Send code to verify user email
-   * Send code to verify user email.
-   * @param userId  (required)
+   * SendEmailCode
+   * Send code to verify user email   Send code to verify user email.
    * @param userServiceSendEmailCodeRequest  (required)
    * @return UserServiceSendEmailCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceSendEmailCodeResponse userServiceSendEmailCode(String userId, UserServiceSendEmailCodeRequest userServiceSendEmailCodeRequest) throws ApiException {
-    return this.userServiceSendEmailCode(userId, userServiceSendEmailCodeRequest, Collections.emptyMap());
+  public UserServiceSendEmailCodeResponse sendEmailCode(UserServiceSendEmailCodeRequest userServiceSendEmailCodeRequest) throws ApiException {
+    return this.sendEmailCode(userServiceSendEmailCodeRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Send code to verify user email
-   * Send code to verify user email.
-   * @param userId  (required)
+   * SendEmailCode
+   * Send code to verify user email   Send code to verify user email.
    * @param userServiceSendEmailCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceSendEmailCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceSendEmailCodeResponse userServiceSendEmailCode(String userId, UserServiceSendEmailCodeRequest userServiceSendEmailCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceSendEmailCodeResponse sendEmailCode(UserServiceSendEmailCodeRequest userServiceSendEmailCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceSendEmailCodeRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceSendEmailCode");
-    }
-    
     if (userServiceSendEmailCodeRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceSendEmailCodeRequest' when calling userServiceSendEmailCode");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceSendEmailCodeRequest' when calling sendEmailCode");
     }
     
-    String localVarPath = "/v2/users/{userId}/email/send"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/SendEmailCode";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -2612,40 +2563,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Change the user email
-   * Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..
-   * @param userId  (required)
+   * SetEmail
+   * Change the user email   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..
    * @param userServiceSetEmailRequest  (required)
    * @return UserServiceSetEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceSetEmailResponse userServiceSetEmail(String userId, UserServiceSetEmailRequest userServiceSetEmailRequest) throws ApiException {
-    return this.userServiceSetEmail(userId, userServiceSetEmailRequest, Collections.emptyMap());
+  public UserServiceSetEmailResponse setEmail(UserServiceSetEmailRequest userServiceSetEmailRequest) throws ApiException {
+    return this.setEmail(userServiceSetEmailRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Change the user email
-   * Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..
-   * @param userId  (required)
+   * SetEmail
+   * Change the user email   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..
    * @param userServiceSetEmailRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceSetEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceSetEmailResponse userServiceSetEmail(String userId, UserServiceSetEmailRequest userServiceSetEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceSetEmailResponse setEmail(UserServiceSetEmailRequest userServiceSetEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceSetEmailRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceSetEmail");
-    }
-    
     if (userServiceSetEmailRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceSetEmailRequest' when calling userServiceSetEmail");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceSetEmailRequest' when calling setEmail");
     }
     
-    String localVarPath = "/v2/users/{userId}/email"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/SetEmail";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -2691,40 +2635,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Change password
-   * Change the password of a user with either a verification code or the current password..
-   * @param userId  (required)
+   * SetPassword
+   * Change password   Change the password of a user with either a verification code or the current password..
    * @param userServiceSetPasswordRequest  (required)
    * @return UserServiceSetPasswordResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceSetPasswordResponse userServiceSetPassword(String userId, UserServiceSetPasswordRequest userServiceSetPasswordRequest) throws ApiException {
-    return this.userServiceSetPassword(userId, userServiceSetPasswordRequest, Collections.emptyMap());
+  public UserServiceSetPasswordResponse setPassword(UserServiceSetPasswordRequest userServiceSetPasswordRequest) throws ApiException {
+    return this.setPassword(userServiceSetPasswordRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Change password
-   * Change the password of a user with either a verification code or the current password..
-   * @param userId  (required)
+   * SetPassword
+   * Change password   Change the password of a user with either a verification code or the current password..
    * @param userServiceSetPasswordRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceSetPasswordResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceSetPasswordResponse userServiceSetPassword(String userId, UserServiceSetPasswordRequest userServiceSetPasswordRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceSetPasswordResponse setPassword(UserServiceSetPasswordRequest userServiceSetPasswordRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceSetPasswordRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceSetPassword");
-    }
-    
     if (userServiceSetPasswordRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceSetPasswordRequest' when calling userServiceSetPassword");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceSetPasswordRequest' when calling setPassword");
     }
     
-    String localVarPath = "/v2/users/{userId}/password"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/SetPassword";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -2770,40 +2707,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Set the user phone
-   * Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..
-   * @param userId  (required)
+   * SetPhone
+   * Set the user phone   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..
    * @param userServiceSetPhoneRequest  (required)
    * @return UserServiceSetPhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceSetPhoneResponse userServiceSetPhone(String userId, UserServiceSetPhoneRequest userServiceSetPhoneRequest) throws ApiException {
-    return this.userServiceSetPhone(userId, userServiceSetPhoneRequest, Collections.emptyMap());
+  public UserServiceSetPhoneResponse setPhone(UserServiceSetPhoneRequest userServiceSetPhoneRequest) throws ApiException {
+    return this.setPhone(userServiceSetPhoneRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Set the user phone
-   * Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..
-   * @param userId  (required)
+   * SetPhone
+   * Set the user phone   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..
    * @param userServiceSetPhoneRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceSetPhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceSetPhoneResponse userServiceSetPhone(String userId, UserServiceSetPhoneRequest userServiceSetPhoneRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceSetPhoneResponse setPhone(UserServiceSetPhoneRequest userServiceSetPhoneRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceSetPhoneRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceSetPhone");
-    }
-    
     if (userServiceSetPhoneRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceSetPhoneRequest' when calling userServiceSetPhone");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceSetPhoneRequest' when calling setPhone");
     }
     
-    String localVarPath = "/v2/users/{userId}/phone"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/SetPhone";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -2849,33 +2779,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Start flow with an identity provider
-   * Start a flow with an identity provider, for external login, registration or linking..
+   * StartIdentityProviderIntent
+   * Start flow with an identity provider   Start a flow with an identity provider, for external login, registration or linking..
    * @param userServiceStartIdentityProviderIntentRequest  (required)
    * @return UserServiceStartIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceStartIdentityProviderIntentResponse userServiceStartIdentityProviderIntent(UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest) throws ApiException {
-    return this.userServiceStartIdentityProviderIntent(userServiceStartIdentityProviderIntentRequest, Collections.emptyMap());
+  public UserServiceStartIdentityProviderIntentResponse startIdentityProviderIntent(UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest) throws ApiException {
+    return this.startIdentityProviderIntent(userServiceStartIdentityProviderIntentRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Start flow with an identity provider
-   * Start a flow with an identity provider, for external login, registration or linking..
+   * StartIdentityProviderIntent
+   * Start flow with an identity provider   Start a flow with an identity provider, for external login, registration or linking..
    * @param userServiceStartIdentityProviderIntentRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceStartIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceStartIdentityProviderIntentResponse userServiceStartIdentityProviderIntent(UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceStartIdentityProviderIntentResponse startIdentityProviderIntent(UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceStartIdentityProviderIntentRequest;
     
     if (userServiceStartIdentityProviderIntentRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceStartIdentityProviderIntentRequest' when calling userServiceStartIdentityProviderIntent");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceStartIdentityProviderIntentRequest' when calling startIdentityProviderIntent");
     }
     
-    String localVarPath = "/v2/idp_intents";
+    String localVarPath = "/zitadel.user.v2.UserService/StartIdentityProviderIntent";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -2921,34 +2851,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Unlock user
-   * The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..
-   * @param userId  (required)
+   * UnlockUser
+   * Unlock user   The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..
+   * @param userServiceUnlockUserRequest  (required)
    * @return UserServiceUnlockUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceUnlockUserResponse userServiceUnlockUser(String userId) throws ApiException {
-    return this.userServiceUnlockUser(userId, Collections.emptyMap());
+  public UserServiceUnlockUserResponse unlockUser(UserServiceUnlockUserRequest userServiceUnlockUserRequest) throws ApiException {
+    return this.unlockUser(userServiceUnlockUserRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Unlock user
-   * The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..
-   * @param userId  (required)
+   * UnlockUser
+   * Unlock user   The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..
+   * @param userServiceUnlockUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceUnlockUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceUnlockUserResponse userServiceUnlockUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public UserServiceUnlockUserResponse unlockUser(UserServiceUnlockUserRequest userServiceUnlockUserRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceUnlockUserRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceUnlockUser");
+    if (userServiceUnlockUserRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceUnlockUserRequest' when calling unlockUser");
     }
     
-    String localVarPath = "/v2/users/{userId}/unlock"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/UnlockUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -2994,40 +2923,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Update User
-   * Update all information from a user..
-   * @param userId  (required)
+   * UpdateHumanUser
+   * Update User   Update all information from a user..
    * @param userServiceUpdateHumanUserRequest  (required)
    * @return UserServiceUpdateHumanUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceUpdateHumanUserResponse userServiceUpdateHumanUser(String userId, UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest) throws ApiException {
-    return this.userServiceUpdateHumanUser(userId, userServiceUpdateHumanUserRequest, Collections.emptyMap());
+  public UserServiceUpdateHumanUserResponse updateHumanUser(UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest) throws ApiException {
+    return this.updateHumanUser(userServiceUpdateHumanUserRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Update User
-   * Update all information from a user..
-   * @param userId  (required)
+   * UpdateHumanUser
+   * Update User   Update all information from a user..
    * @param userServiceUpdateHumanUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceUpdateHumanUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceUpdateHumanUserResponse userServiceUpdateHumanUser(String userId, UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceUpdateHumanUserResponse updateHumanUser(UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceUpdateHumanUserRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceUpdateHumanUser");
-    }
-    
     if (userServiceUpdateHumanUserRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceUpdateHumanUserRequest' when calling userServiceUpdateHumanUser");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceUpdateHumanUserRequest' when calling updateHumanUser");
     }
     
-    String localVarPath = "/v2/users/human/{userId}"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/UpdateHumanUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -3057,7 +2979,7 @@ public class UserServiceApi extends BaseApi {
     TypeReference<UserServiceUpdateHumanUserResponse> localVarReturnType = new TypeReference<UserServiceUpdateHumanUserResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "PUT",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -3073,40 +2995,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Verify the email
-   * Verify the email with the generated code.
-   * @param userId  (required)
+   * VerifyEmail
+   * Verify the email   Verify the email with the generated code.
    * @param userServiceVerifyEmailRequest  (required)
    * @return UserServiceVerifyEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyEmailResponse userServiceVerifyEmail(String userId, UserServiceVerifyEmailRequest userServiceVerifyEmailRequest) throws ApiException {
-    return this.userServiceVerifyEmail(userId, userServiceVerifyEmailRequest, Collections.emptyMap());
+  public UserServiceVerifyEmailResponse verifyEmail(UserServiceVerifyEmailRequest userServiceVerifyEmailRequest) throws ApiException {
+    return this.verifyEmail(userServiceVerifyEmailRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Verify the email
-   * Verify the email with the generated code.
-   * @param userId  (required)
+   * VerifyEmail
+   * Verify the email   Verify the email with the generated code.
    * @param userServiceVerifyEmailRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceVerifyEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyEmailResponse userServiceVerifyEmail(String userId, UserServiceVerifyEmailRequest userServiceVerifyEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceVerifyEmailResponse verifyEmail(UserServiceVerifyEmailRequest userServiceVerifyEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyEmailRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceVerifyEmail");
-    }
-    
     if (userServiceVerifyEmailRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyEmailRequest' when calling userServiceVerifyEmail");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyEmailRequest' when calling verifyEmail");
     }
     
-    String localVarPath = "/v2/users/{userId}/email/verify"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/VerifyEmail";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -3152,40 +3067,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Verify an invite code for a user
-   * Verify the invite code of a user previously issued. This will set their email to a verified state and allow the user to set up their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.
-   * @param userId  (required)
+   * VerifyInviteCode
+   * Verify an invite code for a user   Verify the invite code of a user previously issued. This will set their email to a verified state and  allow the user to set up their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.
    * @param userServiceVerifyInviteCodeRequest  (required)
    * @return UserServiceVerifyInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyInviteCodeResponse userServiceVerifyInviteCode(String userId, UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest) throws ApiException {
-    return this.userServiceVerifyInviteCode(userId, userServiceVerifyInviteCodeRequest, Collections.emptyMap());
+  public UserServiceVerifyInviteCodeResponse verifyInviteCode(UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest) throws ApiException {
+    return this.verifyInviteCode(userServiceVerifyInviteCodeRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Verify an invite code for a user
-   * Verify the invite code of a user previously issued. This will set their email to a verified state and allow the user to set up their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.
-   * @param userId  (required)
+   * VerifyInviteCode
+   * Verify an invite code for a user   Verify the invite code of a user previously issued. This will set their email to a verified state and  allow the user to set up their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.
    * @param userServiceVerifyInviteCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceVerifyInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyInviteCodeResponse userServiceVerifyInviteCode(String userId, UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceVerifyInviteCodeResponse verifyInviteCode(UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyInviteCodeRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceVerifyInviteCode");
-    }
-    
     if (userServiceVerifyInviteCodeRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyInviteCodeRequest' when calling userServiceVerifyInviteCode");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyInviteCodeRequest' when calling verifyInviteCode");
     }
     
-    String localVarPath = "/v2/users/{userId}/invite_code/verify"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/VerifyInviteCode";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -3231,47 +3139,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Verify a passkey for a user
-   * Verify the passkey registration with the public key credential..
-   * @param userId  (required)
-   * @param passkeyId  (required)
+   * VerifyPasskeyRegistration
+   * Verify a passkey for a user   Verify the passkey registration with the public key credential..
    * @param userServiceVerifyPasskeyRegistrationRequest  (required)
    * @return UserServiceVerifyPasskeyRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyPasskeyRegistrationResponse userServiceVerifyPasskeyRegistration(String userId, String passkeyId, UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest) throws ApiException {
-    return this.userServiceVerifyPasskeyRegistration(userId, passkeyId, userServiceVerifyPasskeyRegistrationRequest, Collections.emptyMap());
+  public UserServiceVerifyPasskeyRegistrationResponse verifyPasskeyRegistration(UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest) throws ApiException {
+    return this.verifyPasskeyRegistration(userServiceVerifyPasskeyRegistrationRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Verify a passkey for a user
-   * Verify the passkey registration with the public key credential..
-   * @param userId  (required)
-   * @param passkeyId  (required)
+   * VerifyPasskeyRegistration
+   * Verify a passkey for a user   Verify the passkey registration with the public key credential..
    * @param userServiceVerifyPasskeyRegistrationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceVerifyPasskeyRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyPasskeyRegistrationResponse userServiceVerifyPasskeyRegistration(String userId, String passkeyId, UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceVerifyPasskeyRegistrationResponse verifyPasskeyRegistration(UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyPasskeyRegistrationRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceVerifyPasskeyRegistration");
-    }
-    
-    if (passkeyId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'passkeyId' when calling userServiceVerifyPasskeyRegistration");
-    }
-    
     if (userServiceVerifyPasskeyRegistrationRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyPasskeyRegistrationRequest' when calling userServiceVerifyPasskeyRegistration");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyPasskeyRegistrationRequest' when calling verifyPasskeyRegistration");
     }
     
-    String localVarPath = "/v2/users/{userId}/passkeys/{passkeyId}"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)))
-      .replaceAll("\\{" + "passkeyId" + "\\}", apiClient.escapeString(apiClient.parameterToString(passkeyId)));
+    String localVarPath = "/zitadel.user.v2.UserService/VerifyPasskeyRegistration";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -3317,40 +3211,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Verify the phone
-   * Verify the phone with the generated code..
-   * @param userId  (required)
+   * VerifyPhone
+   * Verify the phone   Verify the phone with the generated code..
    * @param userServiceVerifyPhoneRequest  (required)
    * @return UserServiceVerifyPhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyPhoneResponse userServiceVerifyPhone(String userId, UserServiceVerifyPhoneRequest userServiceVerifyPhoneRequest) throws ApiException {
-    return this.userServiceVerifyPhone(userId, userServiceVerifyPhoneRequest, Collections.emptyMap());
+  public UserServiceVerifyPhoneResponse verifyPhone(UserServiceVerifyPhoneRequest userServiceVerifyPhoneRequest) throws ApiException {
+    return this.verifyPhone(userServiceVerifyPhoneRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Verify the phone
-   * Verify the phone with the generated code..
-   * @param userId  (required)
+   * VerifyPhone
+   * Verify the phone   Verify the phone with the generated code..
    * @param userServiceVerifyPhoneRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceVerifyPhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyPhoneResponse userServiceVerifyPhone(String userId, UserServiceVerifyPhoneRequest userServiceVerifyPhoneRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceVerifyPhoneResponse verifyPhone(UserServiceVerifyPhoneRequest userServiceVerifyPhoneRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyPhoneRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceVerifyPhone");
-    }
-    
     if (userServiceVerifyPhoneRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyPhoneRequest' when calling userServiceVerifyPhone");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyPhoneRequest' when calling verifyPhone");
     }
     
-    String localVarPath = "/v2/users/{userId}/phone/verify"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/VerifyPhone";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -3396,40 +3283,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Verify a TOTP generator for a user
-   * Verify the TOTP registration with a generated code..
-   * @param userId  (required)
+   * VerifyTOTPRegistration
+   * Verify a TOTP generator for a user   Verify the TOTP registration with a generated code..
    * @param userServiceVerifyTOTPRegistrationRequest  (required)
    * @return UserServiceVerifyTOTPRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyTOTPRegistrationResponse userServiceVerifyTOTPRegistration(String userId, UserServiceVerifyTOTPRegistrationRequest userServiceVerifyTOTPRegistrationRequest) throws ApiException {
-    return this.userServiceVerifyTOTPRegistration(userId, userServiceVerifyTOTPRegistrationRequest, Collections.emptyMap());
+  public UserServiceVerifyTOTPRegistrationResponse verifyTOTPRegistration(UserServiceVerifyTOTPRegistrationRequest userServiceVerifyTOTPRegistrationRequest) throws ApiException {
+    return this.verifyTOTPRegistration(userServiceVerifyTOTPRegistrationRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Verify a TOTP generator for a user
-   * Verify the TOTP registration with a generated code..
-   * @param userId  (required)
+   * VerifyTOTPRegistration
+   * Verify a TOTP generator for a user   Verify the TOTP registration with a generated code..
    * @param userServiceVerifyTOTPRegistrationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceVerifyTOTPRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyTOTPRegistrationResponse userServiceVerifyTOTPRegistration(String userId, UserServiceVerifyTOTPRegistrationRequest userServiceVerifyTOTPRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceVerifyTOTPRegistrationResponse verifyTOTPRegistration(UserServiceVerifyTOTPRegistrationRequest userServiceVerifyTOTPRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyTOTPRegistrationRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceVerifyTOTPRegistration");
-    }
-    
     if (userServiceVerifyTOTPRegistrationRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyTOTPRegistrationRequest' when calling userServiceVerifyTOTPRegistration");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyTOTPRegistrationRequest' when calling verifyTOTPRegistration");
     }
     
-    String localVarPath = "/v2/users/{userId}/totp/verify"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)));
+    String localVarPath = "/zitadel.user.v2.UserService/VerifyTOTPRegistration";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -3475,47 +3355,33 @@ public class UserServiceApi extends BaseApi {
   }
 
   /**
-   * Verify a u2f token for a user
-   * Verify the u2f token registration with the public key credential..
-   * @param userId  (required)
-   * @param u2fId  (required)
+   * VerifyU2FRegistration
+   * Verify a u2f token for a user   Verify the u2f token registration with the public key credential..
    * @param userServiceVerifyU2FRegistrationRequest  (required)
    * @return UserServiceVerifyU2FRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyU2FRegistrationResponse userServiceVerifyU2FRegistration(String userId, String u2fId, UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest) throws ApiException {
-    return this.userServiceVerifyU2FRegistration(userId, u2fId, userServiceVerifyU2FRegistrationRequest, Collections.emptyMap());
+  public UserServiceVerifyU2FRegistrationResponse verifyU2FRegistration(UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest) throws ApiException {
+    return this.verifyU2FRegistration(userServiceVerifyU2FRegistrationRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Verify a u2f token for a user
-   * Verify the u2f token registration with the public key credential..
-   * @param userId  (required)
-   * @param u2fId  (required)
+   * VerifyU2FRegistration
+   * Verify a u2f token for a user   Verify the u2f token registration with the public key credential..
    * @param userServiceVerifyU2FRegistrationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceVerifyU2FRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyU2FRegistrationResponse userServiceVerifyU2FRegistration(String userId, String u2fId, UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public UserServiceVerifyU2FRegistrationResponse verifyU2FRegistration(UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyU2FRegistrationRequest;
     
-    if (userId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userId' when calling userServiceVerifyU2FRegistration");
-    }
-    
-    if (u2fId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'u2fId' when calling userServiceVerifyU2FRegistration");
-    }
-    
     if (userServiceVerifyU2FRegistrationRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyU2FRegistrationRequest' when calling userServiceVerifyU2FRegistration");
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyU2FRegistrationRequest' when calling verifyU2FRegistration");
     }
     
-    String localVarPath = "/v2/users/{userId}/u2f/{u2fId}"
-      .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(apiClient.parameterToString(userId)))
-      .replaceAll("\\{" + "u2fId" + "\\}", apiClient.escapeString(apiClient.parameterToString(u2fId)));
+    String localVarPath = "/zitadel.user.v2.UserService/VerifyU2FRegistration";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;

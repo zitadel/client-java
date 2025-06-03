@@ -116,7 +116,7 @@ public class UserServiceRetrieveIdentityProviderIntentResponse {
   }
 
   /**
-   * ID of the user in ZITADEL if external user is linked
+   * Get userId
    * @return userId
    */
   @javax.annotation.Nullable

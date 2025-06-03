@@ -8,8 +8,10 @@ import com.zitadel.BaseApi;
 import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
+import com.zitadel.model.IdentityProviderServiceConnectError;
+import com.zitadel.model.IdentityProviderServiceGetIDPByIDRequest;
 import com.zitadel.model.IdentityProviderServiceGetIDPByIDResponse;
-import com.zitadel.model.IdentityProviderServiceRpcStatus;
+import com.zitadel.model.NoOp200Response;
 
 
 import java.util.ArrayList;
@@ -31,34 +33,99 @@ public class IdentityProviderServiceApi extends BaseApi {
   }
 
   /**
-   * Get identity provider (IdP) by ID
-   * Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.
-   * @param id  (required)
+   * GetIDPByID
+   * Get identity provider (IdP) by ID   Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.
+   * @param identityProviderServiceGetIDPByIDRequest  (required)
    * @return IdentityProviderServiceGetIDPByIDResponse
    * @throws ApiException if fails to make API call
    */
-  public IdentityProviderServiceGetIDPByIDResponse identityProviderServiceGetIDPByID(String id) throws ApiException {
-    return this.identityProviderServiceGetIDPByID(id, Collections.emptyMap());
+  public IdentityProviderServiceGetIDPByIDResponse getIDPByID(IdentityProviderServiceGetIDPByIDRequest identityProviderServiceGetIDPByIDRequest) throws ApiException {
+    return this.getIDPByID(identityProviderServiceGetIDPByIDRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Get identity provider (IdP) by ID
-   * Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.
-   * @param id  (required)
+   * GetIDPByID
+   * Get identity provider (IdP) by ID   Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.
+   * @param identityProviderServiceGetIDPByIDRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return IdentityProviderServiceGetIDPByIDResponse
    * @throws ApiException if fails to make API call
    */
-  public IdentityProviderServiceGetIDPByIDResponse identityProviderServiceGetIDPByID(String id, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public IdentityProviderServiceGetIDPByIDResponse getIDPByID(IdentityProviderServiceGetIDPByIDRequest identityProviderServiceGetIDPByIDRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = identityProviderServiceGetIDPByIDRequest;
     
-    if (id == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'id' when calling identityProviderServiceGetIDPByID");
+    if (identityProviderServiceGetIDPByIDRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'identityProviderServiceGetIDPByIDRequest' when calling getIDPByID");
     }
     
-    String localVarPath = "/v2/idps/{id}"
-      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(apiClient.parameterToString(id)));
+    String localVarPath = "/zitadel.idp.v2.IdentityProviderService/GetIDPByID";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<IdentityProviderServiceGetIDPByIDResponse> localVarReturnType = new TypeReference<IdentityProviderServiceGetIDPByIDResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Dummy endpoint to retain union-member schemas
+   * 
+   * @return NoOp200Response
+   * @throws ApiException if fails to make API call
+   */
+  public NoOp200Response noOp() throws ApiException {
+    return this.noOp(Collections.emptyMap());
+  }
+
+
+  /**
+   * Dummy endpoint to retain union-member schemas
+   * 
+   * @param additionalHeaders additionalHeaders for this call
+   * @return NoOp200Response
+   * @throws ApiException if fails to make API call
+   */
+  public NoOp200Response noOp(Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    String localVarPath = "/8f3c9d63";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -85,7 +152,7 @@ public class IdentityProviderServiceApi extends BaseApi {
 
     String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
 
-    TypeReference<IdentityProviderServiceGetIDPByIDResponse> localVarReturnType = new TypeReference<IdentityProviderServiceGetIDPByIDResponse>() {};
+    TypeReference<NoOp200Response> localVarReturnType = new TypeReference<NoOp200Response>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "GET",

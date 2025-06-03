@@ -43,7 +43,7 @@ public class UserServicePasskey {
 
   public static final String JSON_PROPERTY_STATE = "state";
   @javax.annotation.Nullable
-  private UserServiceAuthFactorState state = UserServiceAuthFactorState.AUTH_FACTOR_STATE_UNSPECIFIED;
+  private UserServiceAuthFactorState state;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable

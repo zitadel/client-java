@@ -60,7 +60,7 @@ public class UserServiceOrQuery {
   }
 
   /**
-   * the sub queries to &#39;OR&#39;
+   * Get queries
    * @return queries
    */
   @javax.annotation.Nullable

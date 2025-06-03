@@ -25,6 +25,10 @@ import com.zitadel.model.FeatureServiceLoginV2;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -54,23 +58,23 @@ import java.util.StringJoiner;
 public class FeatureServiceSetInstanceFeaturesRequest {
   public static final String JSON_PROPERTY_LOGIN_DEFAULT_ORG = "loginDefaultOrg";
   @javax.annotation.Nullable
-  private Boolean loginDefaultOrg;
+  private JsonNullable<Boolean> loginDefaultOrg = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS = "oidcTriggerIntrospectionProjections";
   @javax.annotation.Nullable
-  private Boolean oidcTriggerIntrospectionProjections;
+  private JsonNullable<Boolean> oidcTriggerIntrospectionProjections = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION = "oidcLegacyIntrospection";
   @javax.annotation.Nullable
-  private Boolean oidcLegacyIntrospection;
+  private JsonNullable<Boolean> oidcLegacyIntrospection = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_USER_SCHEMA = "userSchema";
   @javax.annotation.Nullable
-  private Boolean userSchema;
+  private JsonNullable<Boolean> userSchema = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_OIDC_TOKEN_EXCHANGE = "oidcTokenExchange";
   @javax.annotation.Nullable
-  private Boolean oidcTokenExchange;
+  private JsonNullable<Boolean> oidcTokenExchange = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_IMPROVED_PERFORMANCE = "improvedPerformance";
   @javax.annotation.Nullable
@@ -78,23 +82,23 @@ public class FeatureServiceSetInstanceFeaturesRequest {
 
   public static final String JSON_PROPERTY_WEB_KEY = "webKey";
   @javax.annotation.Nullable
-  private Boolean webKey;
+  private JsonNullable<Boolean> webKey = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_DEBUG_OIDC_PARENT_ERROR = "debugOidcParentError";
   @javax.annotation.Nullable
-  private Boolean debugOidcParentError;
+  private JsonNullable<Boolean> debugOidcParentError = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION = "oidcSingleV1SessionTermination";
   @javax.annotation.Nullable
-  private Boolean oidcSingleV1SessionTermination;
+  private JsonNullable<Boolean> oidcSingleV1SessionTermination = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT = "disableUserTokenEvent";
   @javax.annotation.Nullable
-  private Boolean disableUserTokenEvent;
+  private JsonNullable<Boolean> disableUserTokenEvent = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT = "enableBackChannelLogout";
   @javax.annotation.Nullable
-  private Boolean enableBackChannelLogout;
+  private JsonNullable<Boolean> enableBackChannelLogout = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_LOGIN_V2 = "loginV2";
   @javax.annotation.Nullable
@@ -102,138 +106,178 @@ public class FeatureServiceSetInstanceFeaturesRequest {
 
   public static final String JSON_PROPERTY_PERMISSION_CHECK_V2 = "permissionCheckV2";
   @javax.annotation.Nullable
-  private Boolean permissionCheckV2;
+  private JsonNullable<Boolean> permissionCheckV2 = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_CONSOLE_USE_V2_USER_API = "consoleUseV2UserApi";
   @javax.annotation.Nullable
-  private Boolean consoleUseV2UserApi;
+  private JsonNullable<Boolean> consoleUseV2UserApi = JsonNullable.<Boolean>undefined();
 
   public FeatureServiceSetInstanceFeaturesRequest() {
   }
 
   public FeatureServiceSetInstanceFeaturesRequest loginDefaultOrg(@javax.annotation.Nullable Boolean loginDefaultOrg) {
+    this.loginDefaultOrg = JsonNullable.<Boolean>of(loginDefaultOrg);
     
-    this.loginDefaultOrg = loginDefaultOrg;
     return this;
   }
 
   /**
-   * The login UI will use the settings of the default org (and not from the instance) if no organization context is set
+   * Get loginDefaultOrg
    * @return loginDefaultOrg
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOGIN_DEFAULT_ORG)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getLoginDefaultOrg() {
-    return loginDefaultOrg;
+        return loginDefaultOrg.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_LOGIN_DEFAULT_ORG)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoginDefaultOrg(@javax.annotation.Nullable Boolean loginDefaultOrg) {
+
+  public JsonNullable<Boolean> getLoginDefaultOrg_JsonNullable() {
+    return loginDefaultOrg;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_LOGIN_DEFAULT_ORG)
+  public void setLoginDefaultOrg_JsonNullable(JsonNullable<Boolean> loginDefaultOrg) {
     this.loginDefaultOrg = loginDefaultOrg;
   }
 
+  public void setLoginDefaultOrg(@javax.annotation.Nullable Boolean loginDefaultOrg) {
+    this.loginDefaultOrg = JsonNullable.<Boolean>of(loginDefaultOrg);
+  }
+
   public FeatureServiceSetInstanceFeaturesRequest oidcTriggerIntrospectionProjections(@javax.annotation.Nullable Boolean oidcTriggerIntrospectionProjections) {
+    this.oidcTriggerIntrospectionProjections = JsonNullable.<Boolean>of(oidcTriggerIntrospectionProjections);
     
-    this.oidcTriggerIntrospectionProjections = oidcTriggerIntrospectionProjections;
     return this;
   }
 
   /**
-   * Enable projection triggers during an introspection request. This can act as workaround if there are noticeable consistency issues in the introspection response but can have an impact on performance. We are planning to remove triggers for introspection requests in the future. Please raise an issue if you needed to enable this feature.
+   * Get oidcTriggerIntrospectionProjections
    * @return oidcTriggerIntrospectionProjections
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getOidcTriggerIntrospectionProjections() {
-    return oidcTriggerIntrospectionProjections;
+        return oidcTriggerIntrospectionProjections.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOidcTriggerIntrospectionProjections(@javax.annotation.Nullable Boolean oidcTriggerIntrospectionProjections) {
+
+  public JsonNullable<Boolean> getOidcTriggerIntrospectionProjections_JsonNullable() {
+    return oidcTriggerIntrospectionProjections;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS)
+  public void setOidcTriggerIntrospectionProjections_JsonNullable(JsonNullable<Boolean> oidcTriggerIntrospectionProjections) {
     this.oidcTriggerIntrospectionProjections = oidcTriggerIntrospectionProjections;
   }
 
+  public void setOidcTriggerIntrospectionProjections(@javax.annotation.Nullable Boolean oidcTriggerIntrospectionProjections) {
+    this.oidcTriggerIntrospectionProjections = JsonNullable.<Boolean>of(oidcTriggerIntrospectionProjections);
+  }
+
   public FeatureServiceSetInstanceFeaturesRequest oidcLegacyIntrospection(@javax.annotation.Nullable Boolean oidcLegacyIntrospection) {
+    this.oidcLegacyIntrospection = JsonNullable.<Boolean>of(oidcLegacyIntrospection);
     
-    this.oidcLegacyIntrospection = oidcLegacyIntrospection;
     return this;
   }
 
   /**
-   * We have recently refactored the introspection endpoint for performance reasons. This feature can be used to rollback to the legacy implementation if unexpected bugs arise. Please raise an issue if you needed to enable this feature.
+   * Get oidcLegacyIntrospection
    * @return oidcLegacyIntrospection
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getOidcLegacyIntrospection() {
-    return oidcLegacyIntrospection;
+        return oidcLegacyIntrospection.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOidcLegacyIntrospection(@javax.annotation.Nullable Boolean oidcLegacyIntrospection) {
+
+  public JsonNullable<Boolean> getOidcLegacyIntrospection_JsonNullable() {
+    return oidcLegacyIntrospection;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION)
+  public void setOidcLegacyIntrospection_JsonNullable(JsonNullable<Boolean> oidcLegacyIntrospection) {
     this.oidcLegacyIntrospection = oidcLegacyIntrospection;
   }
 
+  public void setOidcLegacyIntrospection(@javax.annotation.Nullable Boolean oidcLegacyIntrospection) {
+    this.oidcLegacyIntrospection = JsonNullable.<Boolean>of(oidcLegacyIntrospection);
+  }
+
   public FeatureServiceSetInstanceFeaturesRequest userSchema(@javax.annotation.Nullable Boolean userSchema) {
+    this.userSchema = JsonNullable.<Boolean>of(userSchema);
     
-    this.userSchema = userSchema;
     return this;
   }
 
   /**
-   * User Schemas allow to manage data schemas of user. If the flag is enabled, you&#39;ll be able to use the new API and its features. Note that it is still in an early stage.
+   * Get userSchema
    * @return userSchema
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USER_SCHEMA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getUserSchema() {
-    return userSchema;
+        return userSchema.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_USER_SCHEMA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserSchema(@javax.annotation.Nullable Boolean userSchema) {
+
+  public JsonNullable<Boolean> getUserSchema_JsonNullable() {
+    return userSchema;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_USER_SCHEMA)
+  public void setUserSchema_JsonNullable(JsonNullable<Boolean> userSchema) {
     this.userSchema = userSchema;
   }
 
+  public void setUserSchema(@javax.annotation.Nullable Boolean userSchema) {
+    this.userSchema = JsonNullable.<Boolean>of(userSchema);
+  }
+
   public FeatureServiceSetInstanceFeaturesRequest oidcTokenExchange(@javax.annotation.Nullable Boolean oidcTokenExchange) {
+    this.oidcTokenExchange = JsonNullable.<Boolean>of(oidcTokenExchange);
     
-    this.oidcTokenExchange = oidcTokenExchange;
     return this;
   }
 
   /**
-   * Enable the experimental &#x60;urn:ietf:params:oauth:grant-type:token-exchange&#x60; grant type for the OIDC token endpoint. Token exchange can be used to request tokens with a lesser scope or impersonate other users. See the security policy to allow impersonation on an instance.
+   * Get oidcTokenExchange
    * @return oidcTokenExchange
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OIDC_TOKEN_EXCHANGE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getOidcTokenExchange() {
-    return oidcTokenExchange;
+        return oidcTokenExchange.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_OIDC_TOKEN_EXCHANGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOidcTokenExchange(@javax.annotation.Nullable Boolean oidcTokenExchange) {
+
+  public JsonNullable<Boolean> getOidcTokenExchange_JsonNullable() {
+    return oidcTokenExchange;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_OIDC_TOKEN_EXCHANGE)
+  public void setOidcTokenExchange_JsonNullable(JsonNullable<Boolean> oidcTokenExchange) {
     this.oidcTokenExchange = oidcTokenExchange;
+  }
+
+  public void setOidcTokenExchange(@javax.annotation.Nullable Boolean oidcTokenExchange) {
+    this.oidcTokenExchange = JsonNullable.<Boolean>of(oidcTokenExchange);
   }
 
   public FeatureServiceSetInstanceFeaturesRequest improvedPerformance(@javax.annotation.Nullable List<FeatureServiceImprovedPerformance> improvedPerformance) {
@@ -251,7 +295,7 @@ public class FeatureServiceSetInstanceFeaturesRequest {
   }
 
   /**
-   * Improves performance of specified execution paths.
+   * Get improvedPerformance
    * @return improvedPerformance
    */
   @javax.annotation.Nullable
@@ -270,128 +314,168 @@ public class FeatureServiceSetInstanceFeaturesRequest {
   }
 
   public FeatureServiceSetInstanceFeaturesRequest webKey(@javax.annotation.Nullable Boolean webKey) {
+    this.webKey = JsonNullable.<Boolean>of(webKey);
     
-    this.webKey = webKey;
     return this;
   }
 
   /**
-   * Enable the webkey/v3alpha API. The first time this feature is enabled, web keys are generated and activated.
+   * Get webKey
    * @return webKey
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WEB_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getWebKey() {
-    return webKey;
+        return webKey.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_WEB_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWebKey(@javax.annotation.Nullable Boolean webKey) {
+
+  public JsonNullable<Boolean> getWebKey_JsonNullable() {
+    return webKey;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_WEB_KEY)
+  public void setWebKey_JsonNullable(JsonNullable<Boolean> webKey) {
     this.webKey = webKey;
   }
 
+  public void setWebKey(@javax.annotation.Nullable Boolean webKey) {
+    this.webKey = JsonNullable.<Boolean>of(webKey);
+  }
+
   public FeatureServiceSetInstanceFeaturesRequest debugOidcParentError(@javax.annotation.Nullable Boolean debugOidcParentError) {
+    this.debugOidcParentError = JsonNullable.<Boolean>of(debugOidcParentError);
     
-    this.debugOidcParentError = debugOidcParentError;
     return this;
   }
 
   /**
-   * Return parent errors to OIDC clients for debugging purposes. Parent errors may contain sensitive data or unwanted details about the system status of zitadel. Only enable if really needed.
+   * Get debugOidcParentError
    * @return debugOidcParentError
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DEBUG_OIDC_PARENT_ERROR)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getDebugOidcParentError() {
-    return debugOidcParentError;
+        return debugOidcParentError.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_DEBUG_OIDC_PARENT_ERROR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDebugOidcParentError(@javax.annotation.Nullable Boolean debugOidcParentError) {
+
+  public JsonNullable<Boolean> getDebugOidcParentError_JsonNullable() {
+    return debugOidcParentError;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_DEBUG_OIDC_PARENT_ERROR)
+  public void setDebugOidcParentError_JsonNullable(JsonNullable<Boolean> debugOidcParentError) {
     this.debugOidcParentError = debugOidcParentError;
   }
 
+  public void setDebugOidcParentError(@javax.annotation.Nullable Boolean debugOidcParentError) {
+    this.debugOidcParentError = JsonNullable.<Boolean>of(debugOidcParentError);
+  }
+
   public FeatureServiceSetInstanceFeaturesRequest oidcSingleV1SessionTermination(@javax.annotation.Nullable Boolean oidcSingleV1SessionTermination) {
+    this.oidcSingleV1SessionTermination = JsonNullable.<Boolean>of(oidcSingleV1SessionTermination);
     
-    this.oidcSingleV1SessionTermination = oidcSingleV1SessionTermination;
     return this;
   }
 
   /**
-   * If the flag is enabled, you&#39;ll be able to terminate a single session from the login UI by providing an id_token with a &#x60;sid&#x60; claim as id_token_hint on the end_session endpoint. Note that currently all sessions from the same user agent (browser) are terminated in the login UI. Sessions managed through the Session API already allow the termination of single sessions.
+   * Get oidcSingleV1SessionTermination
    * @return oidcSingleV1SessionTermination
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getOidcSingleV1SessionTermination() {
-    return oidcSingleV1SessionTermination;
+        return oidcSingleV1SessionTermination.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOidcSingleV1SessionTermination(@javax.annotation.Nullable Boolean oidcSingleV1SessionTermination) {
+
+  public JsonNullable<Boolean> getOidcSingleV1SessionTermination_JsonNullable() {
+    return oidcSingleV1SessionTermination;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION)
+  public void setOidcSingleV1SessionTermination_JsonNullable(JsonNullable<Boolean> oidcSingleV1SessionTermination) {
     this.oidcSingleV1SessionTermination = oidcSingleV1SessionTermination;
   }
 
+  public void setOidcSingleV1SessionTermination(@javax.annotation.Nullable Boolean oidcSingleV1SessionTermination) {
+    this.oidcSingleV1SessionTermination = JsonNullable.<Boolean>of(oidcSingleV1SessionTermination);
+  }
+
   public FeatureServiceSetInstanceFeaturesRequest disableUserTokenEvent(@javax.annotation.Nullable Boolean disableUserTokenEvent) {
+    this.disableUserTokenEvent = JsonNullable.<Boolean>of(disableUserTokenEvent);
     
-    this.disableUserTokenEvent = disableUserTokenEvent;
     return this;
   }
 
   /**
-   * Do not push user token meta-event user.token.v2.added to improve performance on many concurrent single (machine-)user logins
+   * Get disableUserTokenEvent
    * @return disableUserTokenEvent
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getDisableUserTokenEvent() {
-    return disableUserTokenEvent;
+        return disableUserTokenEvent.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDisableUserTokenEvent(@javax.annotation.Nullable Boolean disableUserTokenEvent) {
+
+  public JsonNullable<Boolean> getDisableUserTokenEvent_JsonNullable() {
+    return disableUserTokenEvent;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
+  public void setDisableUserTokenEvent_JsonNullable(JsonNullable<Boolean> disableUserTokenEvent) {
     this.disableUserTokenEvent = disableUserTokenEvent;
   }
 
+  public void setDisableUserTokenEvent(@javax.annotation.Nullable Boolean disableUserTokenEvent) {
+    this.disableUserTokenEvent = JsonNullable.<Boolean>of(disableUserTokenEvent);
+  }
+
   public FeatureServiceSetInstanceFeaturesRequest enableBackChannelLogout(@javax.annotation.Nullable Boolean enableBackChannelLogout) {
+    this.enableBackChannelLogout = JsonNullable.<Boolean>of(enableBackChannelLogout);
     
-    this.enableBackChannelLogout = enableBackChannelLogout;
     return this;
   }
 
   /**
-   * If the flag is enabled, you&#39;ll be able to use the OIDC Back-Channel Logout to be notified in your application about terminated user sessions.
+   * Get enableBackChannelLogout
    * @return enableBackChannelLogout
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getEnableBackChannelLogout() {
-    return enableBackChannelLogout;
+        return enableBackChannelLogout.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnableBackChannelLogout(@javax.annotation.Nullable Boolean enableBackChannelLogout) {
+
+  public JsonNullable<Boolean> getEnableBackChannelLogout_JsonNullable() {
+    return enableBackChannelLogout;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT)
+  public void setEnableBackChannelLogout_JsonNullable(JsonNullable<Boolean> enableBackChannelLogout) {
     this.enableBackChannelLogout = enableBackChannelLogout;
+  }
+
+  public void setEnableBackChannelLogout(@javax.annotation.Nullable Boolean enableBackChannelLogout) {
+    this.enableBackChannelLogout = JsonNullable.<Boolean>of(enableBackChannelLogout);
   }
 
   public FeatureServiceSetInstanceFeaturesRequest loginV2(@javax.annotation.Nullable FeatureServiceLoginV2 loginV2) {
@@ -420,53 +504,69 @@ public class FeatureServiceSetInstanceFeaturesRequest {
   }
 
   public FeatureServiceSetInstanceFeaturesRequest permissionCheckV2(@javax.annotation.Nullable Boolean permissionCheckV2) {
+    this.permissionCheckV2 = JsonNullable.<Boolean>of(permissionCheckV2);
     
-    this.permissionCheckV2 = permissionCheckV2;
     return this;
   }
 
   /**
-   * Enable a newer, more performant, permission check used for v2 and v3 resource based APIs.
+   * Get permissionCheckV2
    * @return permissionCheckV2
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PERMISSION_CHECK_V2)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getPermissionCheckV2() {
-    return permissionCheckV2;
+        return permissionCheckV2.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_PERMISSION_CHECK_V2)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPermissionCheckV2(@javax.annotation.Nullable Boolean permissionCheckV2) {
+
+  public JsonNullable<Boolean> getPermissionCheckV2_JsonNullable() {
+    return permissionCheckV2;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_PERMISSION_CHECK_V2)
+  public void setPermissionCheckV2_JsonNullable(JsonNullable<Boolean> permissionCheckV2) {
     this.permissionCheckV2 = permissionCheckV2;
   }
 
+  public void setPermissionCheckV2(@javax.annotation.Nullable Boolean permissionCheckV2) {
+    this.permissionCheckV2 = JsonNullable.<Boolean>of(permissionCheckV2);
+  }
+
   public FeatureServiceSetInstanceFeaturesRequest consoleUseV2UserApi(@javax.annotation.Nullable Boolean consoleUseV2UserApi) {
+    this.consoleUseV2UserApi = JsonNullable.<Boolean>of(consoleUseV2UserApi);
     
-    this.consoleUseV2UserApi = consoleUseV2UserApi;
     return this;
   }
 
   /**
-   * If this is enabled the console web client will use the new User v2 API for certain calls
+   * Get consoleUseV2UserApi
    * @return consoleUseV2UserApi
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CONSOLE_USE_V2_USER_API)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getConsoleUseV2UserApi() {
-    return consoleUseV2UserApi;
+        return consoleUseV2UserApi.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_CONSOLE_USE_V2_USER_API)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConsoleUseV2UserApi(@javax.annotation.Nullable Boolean consoleUseV2UserApi) {
+
+  public JsonNullable<Boolean> getConsoleUseV2UserApi_JsonNullable() {
+    return consoleUseV2UserApi;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_CONSOLE_USE_V2_USER_API)
+  public void setConsoleUseV2UserApi_JsonNullable(JsonNullable<Boolean> consoleUseV2UserApi) {
     this.consoleUseV2UserApi = consoleUseV2UserApi;
+  }
+
+  public void setConsoleUseV2UserApi(@javax.annotation.Nullable Boolean consoleUseV2UserApi) {
+    this.consoleUseV2UserApi = JsonNullable.<Boolean>of(consoleUseV2UserApi);
   }
 
   @Override
@@ -478,25 +578,36 @@ public class FeatureServiceSetInstanceFeaturesRequest {
       return false;
     }
     FeatureServiceSetInstanceFeaturesRequest featureServiceSetInstanceFeaturesRequest = (FeatureServiceSetInstanceFeaturesRequest) o;
-    return Objects.equals(this.loginDefaultOrg, featureServiceSetInstanceFeaturesRequest.loginDefaultOrg) &&
-        Objects.equals(this.oidcTriggerIntrospectionProjections, featureServiceSetInstanceFeaturesRequest.oidcTriggerIntrospectionProjections) &&
-        Objects.equals(this.oidcLegacyIntrospection, featureServiceSetInstanceFeaturesRequest.oidcLegacyIntrospection) &&
-        Objects.equals(this.userSchema, featureServiceSetInstanceFeaturesRequest.userSchema) &&
-        Objects.equals(this.oidcTokenExchange, featureServiceSetInstanceFeaturesRequest.oidcTokenExchange) &&
+    return equalsNullable(this.loginDefaultOrg, featureServiceSetInstanceFeaturesRequest.loginDefaultOrg) &&
+        equalsNullable(this.oidcTriggerIntrospectionProjections, featureServiceSetInstanceFeaturesRequest.oidcTriggerIntrospectionProjections) &&
+        equalsNullable(this.oidcLegacyIntrospection, featureServiceSetInstanceFeaturesRequest.oidcLegacyIntrospection) &&
+        equalsNullable(this.userSchema, featureServiceSetInstanceFeaturesRequest.userSchema) &&
+        equalsNullable(this.oidcTokenExchange, featureServiceSetInstanceFeaturesRequest.oidcTokenExchange) &&
         Objects.equals(this.improvedPerformance, featureServiceSetInstanceFeaturesRequest.improvedPerformance) &&
-        Objects.equals(this.webKey, featureServiceSetInstanceFeaturesRequest.webKey) &&
-        Objects.equals(this.debugOidcParentError, featureServiceSetInstanceFeaturesRequest.debugOidcParentError) &&
-        Objects.equals(this.oidcSingleV1SessionTermination, featureServiceSetInstanceFeaturesRequest.oidcSingleV1SessionTermination) &&
-        Objects.equals(this.disableUserTokenEvent, featureServiceSetInstanceFeaturesRequest.disableUserTokenEvent) &&
-        Objects.equals(this.enableBackChannelLogout, featureServiceSetInstanceFeaturesRequest.enableBackChannelLogout) &&
+        equalsNullable(this.webKey, featureServiceSetInstanceFeaturesRequest.webKey) &&
+        equalsNullable(this.debugOidcParentError, featureServiceSetInstanceFeaturesRequest.debugOidcParentError) &&
+        equalsNullable(this.oidcSingleV1SessionTermination, featureServiceSetInstanceFeaturesRequest.oidcSingleV1SessionTermination) &&
+        equalsNullable(this.disableUserTokenEvent, featureServiceSetInstanceFeaturesRequest.disableUserTokenEvent) &&
+        equalsNullable(this.enableBackChannelLogout, featureServiceSetInstanceFeaturesRequest.enableBackChannelLogout) &&
         Objects.equals(this.loginV2, featureServiceSetInstanceFeaturesRequest.loginV2) &&
-        Objects.equals(this.permissionCheckV2, featureServiceSetInstanceFeaturesRequest.permissionCheckV2) &&
-        Objects.equals(this.consoleUseV2UserApi, featureServiceSetInstanceFeaturesRequest.consoleUseV2UserApi);
+        equalsNullable(this.permissionCheckV2, featureServiceSetInstanceFeaturesRequest.permissionCheckV2) &&
+        equalsNullable(this.consoleUseV2UserApi, featureServiceSetInstanceFeaturesRequest.consoleUseV2UserApi);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(loginDefaultOrg, oidcTriggerIntrospectionProjections, oidcLegacyIntrospection, userSchema, oidcTokenExchange, improvedPerformance, webKey, debugOidcParentError, oidcSingleV1SessionTermination, disableUserTokenEvent, enableBackChannelLogout, loginV2, permissionCheckV2, consoleUseV2UserApi);
+    return Objects.hash(hashCodeNullable(loginDefaultOrg), hashCodeNullable(oidcTriggerIntrospectionProjections), hashCodeNullable(oidcLegacyIntrospection), hashCodeNullable(userSchema), hashCodeNullable(oidcTokenExchange), improvedPerformance, hashCodeNullable(webKey), hashCodeNullable(debugOidcParentError), hashCodeNullable(oidcSingleV1SessionTermination), hashCodeNullable(disableUserTokenEvent), hashCodeNullable(enableBackChannelLogout), loginV2, hashCodeNullable(permissionCheckV2), hashCodeNullable(consoleUseV2UserApi));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

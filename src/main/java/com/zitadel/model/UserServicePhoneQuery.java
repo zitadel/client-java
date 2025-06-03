@@ -42,7 +42,7 @@ public class UserServicePhoneQuery {
 
   public static final String JSON_PROPERTY_METHOD = "method";
   @javax.annotation.Nullable
-  private UserServiceTextQueryMethod method = UserServiceTextQueryMethod.TEXT_QUERY_METHOD_EQUALS;
+  private UserServiceTextQueryMethod method;
 
   public UserServicePhoneQuery() {
   }
@@ -54,7 +54,7 @@ public class UserServicePhoneQuery {
   }
 
   /**
-   * Phone number of the user
+   * Get number
    * @return number
    */
   @javax.annotation.Nonnull

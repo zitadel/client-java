@@ -21,6 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.SettingsServiceResourceOwnerType;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -39,22 +43,22 @@ import java.util.StringJoiner;
 public class SettingsServicePasswordExpirySettings {
   public static final String JSON_PROPERTY_MAX_AGE_DAYS = "maxAgeDays";
   @javax.annotation.Nullable
-  private String maxAgeDays;
+  private JsonNullable<Object> maxAgeDays = JsonNullable.<Object>of(null);
 
   public static final String JSON_PROPERTY_EXPIRE_WARN_DAYS = "expireWarnDays";
   @javax.annotation.Nullable
-  private String expireWarnDays;
+  private JsonNullable<Object> expireWarnDays = JsonNullable.<Object>of(null);
 
   public static final String JSON_PROPERTY_RESOURCE_OWNER_TYPE = "resourceOwnerType";
   @javax.annotation.Nullable
-  private SettingsServiceResourceOwnerType resourceOwnerType = SettingsServiceResourceOwnerType.RESOURCE_OWNER_TYPE_UNSPECIFIED;
+  private SettingsServiceResourceOwnerType resourceOwnerType;
 
   public SettingsServicePasswordExpirySettings() {
   }
 
-  public SettingsServicePasswordExpirySettings maxAgeDays(@javax.annotation.Nullable String maxAgeDays) {
+  public SettingsServicePasswordExpirySettings maxAgeDays(@javax.annotation.Nullable Object maxAgeDays) {
+    this.maxAgeDays = JsonNullable.<Object>of(maxAgeDays);
     
-    this.maxAgeDays = maxAgeDays;
     return this;
   }
 
@@ -63,23 +67,31 @@ public class SettingsServicePasswordExpirySettings {
    * @return maxAgeDays
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MAX_AGE_DAYS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
-  public String getMaxAgeDays() {
-    return maxAgeDays;
+  public Object getMaxAgeDays() {
+        return maxAgeDays.orElse(null);
   }
 
-
   @JsonProperty(JSON_PROPERTY_MAX_AGE_DAYS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxAgeDays(@javax.annotation.Nullable String maxAgeDays) {
+
+  public JsonNullable<Object> getMaxAgeDays_JsonNullable() {
+    return maxAgeDays;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_MAX_AGE_DAYS)
+  public void setMaxAgeDays_JsonNullable(JsonNullable<Object> maxAgeDays) {
     this.maxAgeDays = maxAgeDays;
   }
 
-  public SettingsServicePasswordExpirySettings expireWarnDays(@javax.annotation.Nullable String expireWarnDays) {
+  public void setMaxAgeDays(@javax.annotation.Nullable Object maxAgeDays) {
+    this.maxAgeDays = JsonNullable.<Object>of(maxAgeDays);
+  }
+
+  public SettingsServicePasswordExpirySettings expireWarnDays(@javax.annotation.Nullable Object expireWarnDays) {
+    this.expireWarnDays = JsonNullable.<Object>of(expireWarnDays);
     
-    this.expireWarnDays = expireWarnDays;
     return this;
   }
 
@@ -88,18 +100,26 @@ public class SettingsServicePasswordExpirySettings {
    * @return expireWarnDays
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EXPIRE_WARN_DAYS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
-  public String getExpireWarnDays() {
-    return expireWarnDays;
+  public Object getExpireWarnDays() {
+        return expireWarnDays.orElse(null);
   }
 
-
   @JsonProperty(JSON_PROPERTY_EXPIRE_WARN_DAYS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExpireWarnDays(@javax.annotation.Nullable String expireWarnDays) {
+
+  public JsonNullable<Object> getExpireWarnDays_JsonNullable() {
+    return expireWarnDays;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_EXPIRE_WARN_DAYS)
+  public void setExpireWarnDays_JsonNullable(JsonNullable<Object> expireWarnDays) {
     this.expireWarnDays = expireWarnDays;
+  }
+
+  public void setExpireWarnDays(@javax.annotation.Nullable Object expireWarnDays) {
+    this.expireWarnDays = JsonNullable.<Object>of(expireWarnDays);
   }
 
   public SettingsServicePasswordExpirySettings resourceOwnerType(@javax.annotation.Nullable SettingsServiceResourceOwnerType resourceOwnerType) {
@@ -136,14 +156,25 @@ public class SettingsServicePasswordExpirySettings {
       return false;
     }
     SettingsServicePasswordExpirySettings settingsServicePasswordExpirySettings = (SettingsServicePasswordExpirySettings) o;
-    return Objects.equals(this.maxAgeDays, settingsServicePasswordExpirySettings.maxAgeDays) &&
-        Objects.equals(this.expireWarnDays, settingsServicePasswordExpirySettings.expireWarnDays) &&
+    return equalsNullable(this.maxAgeDays, settingsServicePasswordExpirySettings.maxAgeDays) &&
+        equalsNullable(this.expireWarnDays, settingsServicePasswordExpirySettings.expireWarnDays) &&
         Objects.equals(this.resourceOwnerType, settingsServicePasswordExpirySettings.resourceOwnerType);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(maxAgeDays, expireWarnDays, resourceOwnerType);
+    return Objects.hash(hashCodeNullable(maxAgeDays), hashCodeNullable(expireWarnDays), resourceOwnerType);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

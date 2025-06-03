@@ -8,10 +8,12 @@ import com.zitadel.BaseApi;
 import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
+import com.zitadel.model.NoOp200Response7;
+import com.zitadel.model.SAMLServiceConnectError;
 import com.zitadel.model.SAMLServiceCreateResponseRequest;
 import com.zitadel.model.SAMLServiceCreateResponseResponse;
+import com.zitadel.model.SAMLServiceGetSAMLRequestRequest;
 import com.zitadel.model.SAMLServiceGetSAMLRequestResponse;
-import com.zitadel.model.SAMLServiceRpcStatus;
 
 
 import java.util.ArrayList;
@@ -33,40 +35,33 @@ public class SamlServiceApi extends BaseApi {
   }
 
   /**
-   * Finalize a SAML Request and get the response.
-   * Finalize a SAML Request and get the response definition for success or failure. The response must be handled as per the SAML definition to inform the application about the success or failure. On success, the response contains details for the application to obtain the SAMLResponse. This method can only be called once for an SAML request.
-   * @param samlRequestId ID of the SAML Request. (required)
+   * CreateResponse
+   * 
    * @param saMLServiceCreateResponseRequest  (required)
    * @return SAMLServiceCreateResponseResponse
    * @throws ApiException if fails to make API call
    */
-  public SAMLServiceCreateResponseResponse sAMLServiceCreateResponse(String samlRequestId, SAMLServiceCreateResponseRequest saMLServiceCreateResponseRequest) throws ApiException {
-    return this.sAMLServiceCreateResponse(samlRequestId, saMLServiceCreateResponseRequest, Collections.emptyMap());
+  public SAMLServiceCreateResponseResponse createResponse(SAMLServiceCreateResponseRequest saMLServiceCreateResponseRequest) throws ApiException {
+    return this.createResponse(saMLServiceCreateResponseRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Finalize a SAML Request and get the response.
-   * Finalize a SAML Request and get the response definition for success or failure. The response must be handled as per the SAML definition to inform the application about the success or failure. On success, the response contains details for the application to obtain the SAMLResponse. This method can only be called once for an SAML request.
-   * @param samlRequestId ID of the SAML Request. (required)
+   * CreateResponse
+   * 
    * @param saMLServiceCreateResponseRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SAMLServiceCreateResponseResponse
    * @throws ApiException if fails to make API call
    */
-  public SAMLServiceCreateResponseResponse sAMLServiceCreateResponse(String samlRequestId, SAMLServiceCreateResponseRequest saMLServiceCreateResponseRequest, Map<String, String> additionalHeaders) throws ApiException {
+  public SAMLServiceCreateResponseResponse createResponse(SAMLServiceCreateResponseRequest saMLServiceCreateResponseRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = saMLServiceCreateResponseRequest;
     
-    if (samlRequestId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'samlRequestId' when calling sAMLServiceCreateResponse");
-    }
-    
     if (saMLServiceCreateResponseRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'saMLServiceCreateResponseRequest' when calling sAMLServiceCreateResponse");
+      throw new IllegalArgumentException("Missing the required parameter 'saMLServiceCreateResponseRequest' when calling createResponse");
     }
     
-    String localVarPath = "/v2/saml/saml_requests/{samlRequestId}"
-      .replaceAll("\\{" + "samlRequestId" + "\\}", apiClient.escapeString(apiClient.parameterToString(samlRequestId)));
+    String localVarPath = "/zitadel.saml.v2.SAMLService/CreateResponse";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -112,34 +107,99 @@ public class SamlServiceApi extends BaseApi {
   }
 
   /**
-   * Get SAML Request details
-   * Get SAML Request details by ID. Returns details that are parsed from the application&#39;s SAML Request.
-   * @param samlRequestId ID of the SAML Request, as obtained from the redirect URL. (required)
+   * GetSAMLRequest
+   * 
+   * @param saMLServiceGetSAMLRequestRequest  (required)
    * @return SAMLServiceGetSAMLRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public SAMLServiceGetSAMLRequestResponse sAMLServiceGetSAMLRequest(String samlRequestId) throws ApiException {
-    return this.sAMLServiceGetSAMLRequest(samlRequestId, Collections.emptyMap());
+  public SAMLServiceGetSAMLRequestResponse getSAMLRequest(SAMLServiceGetSAMLRequestRequest saMLServiceGetSAMLRequestRequest) throws ApiException {
+    return this.getSAMLRequest(saMLServiceGetSAMLRequestRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Get SAML Request details
-   * Get SAML Request details by ID. Returns details that are parsed from the application&#39;s SAML Request.
-   * @param samlRequestId ID of the SAML Request, as obtained from the redirect URL. (required)
+   * GetSAMLRequest
+   * 
+   * @param saMLServiceGetSAMLRequestRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SAMLServiceGetSAMLRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public SAMLServiceGetSAMLRequestResponse sAMLServiceGetSAMLRequest(String samlRequestId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  public SAMLServiceGetSAMLRequestResponse getSAMLRequest(SAMLServiceGetSAMLRequestRequest saMLServiceGetSAMLRequestRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = saMLServiceGetSAMLRequestRequest;
     
-    if (samlRequestId == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'samlRequestId' when calling sAMLServiceGetSAMLRequest");
+    if (saMLServiceGetSAMLRequestRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'saMLServiceGetSAMLRequestRequest' when calling getSAMLRequest");
     }
     
-    String localVarPath = "/v2/saml/saml_requests/{samlRequestId}"
-      .replaceAll("\\{" + "samlRequestId" + "\\}", apiClient.escapeString(apiClient.parameterToString(samlRequestId)));
+    String localVarPath = "/zitadel.saml.v2.SAMLService/GetSAMLRequest";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<SAMLServiceGetSAMLRequestResponse> localVarReturnType = new TypeReference<SAMLServiceGetSAMLRequestResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Dummy endpoint to retain union-member schemas
+   * 
+   * @return NoOp200Response7
+   * @throws ApiException if fails to make API call
+   */
+  public NoOp200Response7 noOp() throws ApiException {
+    return this.noOp(Collections.emptyMap());
+  }
+
+
+  /**
+   * Dummy endpoint to retain union-member schemas
+   * 
+   * @param additionalHeaders additionalHeaders for this call
+   * @return NoOp200Response7
+   * @throws ApiException if fails to make API call
+   */
+  public NoOp200Response7 noOp(Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    String localVarPath = "/d3bdecb1";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -166,7 +226,7 @@ public class SamlServiceApi extends BaseApi {
 
     String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
 
-    TypeReference<SAMLServiceGetSAMLRequestResponse> localVarReturnType = new TypeReference<SAMLServiceGetSAMLRequestResponse>() {};
+    TypeReference<NoOp200Response7> localVarReturnType = new TypeReference<NoOp200Response7>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "GET",
