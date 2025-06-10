@@ -1,16 +1,10 @@
 package com.zitadel.auth;
 
+import com.zitadel.AbstractIntegrationTest;
 import com.zitadel.ApiException;
-import com.zitadel.BaseTest;
 import com.zitadel.Zitadel;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -23,28 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SuppressWarnings("NewClassNamingConvention")
-class UsePrivateKeySpec extends BaseTest {
-
-    private String keyFile;
-
-    /**
-     * Prepare a temporary JWT key file before each test.
-     * Reads the raw key from the JWT_KEY system property and writes it to a temp file.
-     * Exits if the key is missing.
-     *
-     * @throws IOException on file I/O errors
-     */
-    @BeforeAll
-    void setUp() throws Exception {
-        String k = System.getProperty("JWT_KEY");
-        if (k != null) {
-            k = k.replace("\\\"", "\"");
-        }
-        if (k == null) System.exit(1);
-        File f = File.createTempFile("jwt_", null);
-        Files.write(f.toPath(), k.getBytes(StandardCharsets.UTF_8));
-        keyFile = f.getAbsolutePath();
-    }
+class UsePrivateKeySpec extends AbstractIntegrationTest {
 
     /**
      * Retrieves general settings successfully with a valid private key.
@@ -53,11 +26,7 @@ class UsePrivateKeySpec extends BaseTest {
      */
     @Test
     void testRetrievesGeneralSettingsWithValidAuth() throws ApiException {
-        Zitadel client = Zitadel.withPrivateKey(
-            System.getProperty("BASE_URL"),
-            keyFile
-        );
-
+        Zitadel client = Zitadel.withPrivateKey(getBaseUrl(), getJwtKeyPath());
         client.settings.settingsServiceGetGeneralSettings();
     }
 
@@ -66,10 +35,7 @@ class UsePrivateKeySpec extends BaseTest {
      */
     @Test
     void testRaisesApiExceptionWithInvalidAuth() {
-        Zitadel invalid = Zitadel.withPrivateKey(
-            "https://zitadel.cloud",
-            keyFile
-        );
+        Zitadel invalid = Zitadel.withPrivateKey("https://zitadel.cloud", getJwtKeyPath());
 
         assertThrows(RuntimeException.class, invalid.settings::settingsServiceGetGeneralSettings);
     }

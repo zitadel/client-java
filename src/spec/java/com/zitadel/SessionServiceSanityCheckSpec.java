@@ -5,7 +5,6 @@ import org.junit.jupiter.api.*;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,28 +26,33 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @SuppressWarnings("NewClassNamingConvention")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class SessionServiceSanityCheckSpec extends BaseTest {
+class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
 
-    @SuppressWarnings("UnnecessaryLambda")
-    private final Supplier<String> validToken = () -> System.getProperty("AUTH_TOKEN");
-    @SuppressWarnings("UnnecessaryLambda")
-    private final Supplier<String> baseUrl = () -> System.getProperty("BASE_URL");
     private Zitadel client;
     private SessionServiceCreateSessionResponse session;
 
     @BeforeAll
     void initClient() {
-        client = Zitadel.withAccessToken(baseUrl.get(), validToken.get());
+        client = Zitadel.withAccessToken(getBaseUrl(), getAuthToken());
     }
 
     @BeforeEach
     void setUp() throws ApiException {
-        SessionServiceCreateSessionRequest request = new SessionServiceCreateSessionRequest()
-            .checks(new SessionServiceChecks()
-                .user(new SessionServiceCheckUser().loginName("johndoe")))
-            .lifetime("18000s");
+        String userName = UUID.randomUUID().toString();
 
-        session = client.sessions.sessionServiceCreateSession(request);
+        client.users.userServiceAddHumanUser(new UserServiceAddHumanUserRequest()
+            .username(userName)
+            .profile(new UserServiceSetHumanProfile()
+                .givenName("John")
+                .familyName("Doe"))
+            .email(new UserServiceSetHumanEmail()
+                .email("johndoe" + UUID.randomUUID() + "@example.com")));
+
+        session = client.sessions.sessionServiceCreateSession(new SessionServiceCreateSessionRequest()
+            .checks(new SessionServiceChecks()
+                .user(new SessionServiceCheckUser()
+                    .loginName(userName)))
+            .lifetime("18000s"));
     }
 
     @AfterEach
