@@ -41,7 +41,7 @@ import java.util.StringJoiner;
   UserServiceIDPInformation.JSON_PROPERTY_USER_NAME,
   UserServiceIDPInformation.JSON_PROPERTY_RAW_INFORMATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceIDPInformation {
   public static final String JSON_PROPERTY_OAUTH = "oauth";
   @javax.annotation.Nullable

@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   UserServiceCreateInviteCodeRequest.JSON_PROPERTY_SEND_CODE,
   UserServiceCreateInviteCodeRequest.JSON_PROPERTY_RETURN_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceCreateInviteCodeRequest {
   public static final String JSON_PROPERTY_SEND_CODE = "sendCode";
   @javax.annotation.Nullable

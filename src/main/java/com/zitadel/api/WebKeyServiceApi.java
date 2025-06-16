@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class WebKeyServiceApi extends BaseApi {
 
   public WebKeyServiceApi() {
@@ -54,7 +54,7 @@ public class WebKeyServiceApi extends BaseApi {
    * @return WebKeyServiceBetaActivateWebKeyResponse
    * @throws ApiException if fails to make API call
    */
-  public WebKeyServiceBetaActivateWebKeyResponse webKeyServiceActivateWebKey(String id, Map<String, String> additionalHeaders) throws ApiException {
+  private WebKeyServiceBetaActivateWebKeyResponse webKeyServiceActivateWebKey(String id, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (id == null) {
@@ -127,7 +127,7 @@ public class WebKeyServiceApi extends BaseApi {
    * @return WebKeyServiceBetaCreateWebKeyResponse
    * @throws ApiException if fails to make API call
    */
-  public WebKeyServiceBetaCreateWebKeyResponse webKeyServiceCreateWebKey(WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private WebKeyServiceBetaCreateWebKeyResponse webKeyServiceCreateWebKey(WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = webKeyServiceCreateWebKeyRequest;
     
     if (webKeyServiceCreateWebKeyRequest == null) {
@@ -199,7 +199,7 @@ public class WebKeyServiceApi extends BaseApi {
    * @return WebKeyServiceBetaDeleteWebKeyResponse
    * @throws ApiException if fails to make API call
    */
-  public WebKeyServiceBetaDeleteWebKeyResponse webKeyServiceDeleteWebKey(String id, Map<String, String> additionalHeaders) throws ApiException {
+  private WebKeyServiceBetaDeleteWebKeyResponse webKeyServiceDeleteWebKey(String id, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (id == null) {
@@ -270,7 +270,7 @@ public class WebKeyServiceApi extends BaseApi {
    * @return WebKeyServiceBetaListWebKeysResponse
    * @throws ApiException if fails to make API call
    */
-  public WebKeyServiceBetaListWebKeysResponse webKeyServiceListWebKeys(Map<String, String> additionalHeaders) throws ApiException {
+  private WebKeyServiceBetaListWebKeysResponse webKeyServiceListWebKeys(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2beta/web_keys";

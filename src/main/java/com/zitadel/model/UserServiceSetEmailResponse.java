@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   UserServiceSetEmailResponse.JSON_PROPERTY_DETAILS,
   UserServiceSetEmailResponse.JSON_PROPERTY_VERIFICATION_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceSetEmailResponse {
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable

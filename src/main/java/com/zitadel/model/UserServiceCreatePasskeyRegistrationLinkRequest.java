@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   UserServiceCreatePasskeyRegistrationLinkRequest.JSON_PROPERTY_SEND_LINK,
   UserServiceCreatePasskeyRegistrationLinkRequest.JSON_PROPERTY_RETURN_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceCreatePasskeyRegistrationLinkRequest {
   public static final String JSON_PROPERTY_SEND_LINK = "sendLink";
   @javax.annotation.Nullable

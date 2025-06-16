@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   SettingsServiceGetLegalAndSupportSettingsResponse.JSON_PROPERTY_DETAILS,
   SettingsServiceGetLegalAndSupportSettingsResponse.JSON_PROPERTY_SETTINGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SettingsServiceGetLegalAndSupportSettingsResponse {
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable

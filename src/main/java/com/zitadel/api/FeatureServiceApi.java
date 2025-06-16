@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class FeatureServiceApi extends BaseApi {
 
   public FeatureServiceApi() {
@@ -63,7 +63,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return FeatureServiceGetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceGetInstanceFeaturesResponse featureServiceGetInstanceFeatures(Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
+  private FeatureServiceGetInstanceFeaturesResponse featureServiceGetInstanceFeatures(Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/features/instance";
@@ -134,7 +134,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return FeatureServiceGetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceGetOrganizationFeaturesResponse featureServiceGetOrganizationFeatures(String organizationId, Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
+  private FeatureServiceGetOrganizationFeaturesResponse featureServiceGetOrganizationFeatures(String organizationId, Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (organizationId == null) {
@@ -206,7 +206,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return FeatureServiceGetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceGetSystemFeaturesResponse featureServiceGetSystemFeatures(Map<String, String> additionalHeaders) throws ApiException {
+  private FeatureServiceGetSystemFeaturesResponse featureServiceGetSystemFeatures(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/features/system";
@@ -276,7 +276,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return FeatureServiceGetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceGetUserFeaturesResponse featureServiceGetUserFeatures(String userId, Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
+  private FeatureServiceGetUserFeaturesResponse featureServiceGetUserFeatures(String userId, Boolean inheritance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -348,7 +348,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return FeatureServiceResetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceResetInstanceFeaturesResponse featureServiceResetInstanceFeatures(Map<String, String> additionalHeaders) throws ApiException {
+  private FeatureServiceResetInstanceFeaturesResponse featureServiceResetInstanceFeatures(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/features/instance";
@@ -416,7 +416,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return FeatureServiceResetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceResetOrganizationFeaturesResponse featureServiceResetOrganizationFeatures(String organizationId, Map<String, String> additionalHeaders) throws ApiException {
+  private FeatureServiceResetOrganizationFeaturesResponse featureServiceResetOrganizationFeatures(String organizationId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (organizationId == null) {
@@ -487,7 +487,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return FeatureServiceResetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceResetSystemFeaturesResponse featureServiceResetSystemFeatures(Map<String, String> additionalHeaders) throws ApiException {
+  private FeatureServiceResetSystemFeaturesResponse featureServiceResetSystemFeatures(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/features/system";
@@ -555,7 +555,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return FeatureServiceResetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceResetUserFeaturesResponse featureServiceResetUserFeatures(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private FeatureServiceResetUserFeaturesResponse featureServiceResetUserFeatures(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -628,7 +628,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return FeatureServiceSetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceSetInstanceFeaturesResponse featureServiceSetInstanceFeatures(FeatureServiceSetInstanceFeaturesRequest featureServiceSetInstanceFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private FeatureServiceSetInstanceFeaturesResponse featureServiceSetInstanceFeatures(FeatureServiceSetInstanceFeaturesRequest featureServiceSetInstanceFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = featureServiceSetInstanceFeaturesRequest;
     
     if (featureServiceSetInstanceFeaturesRequest == null) {
@@ -700,7 +700,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return FeatureServiceSetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceSetOrganizationFeaturesResponse featureServiceSetOrganizationFeatures(String organizationId, Map<String, String> additionalHeaders) throws ApiException {
+  private FeatureServiceSetOrganizationFeaturesResponse featureServiceSetOrganizationFeatures(String organizationId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (organizationId == null) {
@@ -729,7 +729,7 @@ public class FeatureServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -773,7 +773,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return FeatureServiceSetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceSetSystemFeaturesResponse featureServiceSetSystemFeatures(FeatureServiceSetSystemFeaturesRequest featureServiceSetSystemFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private FeatureServiceSetSystemFeaturesResponse featureServiceSetSystemFeatures(FeatureServiceSetSystemFeaturesRequest featureServiceSetSystemFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = featureServiceSetSystemFeaturesRequest;
     
     if (featureServiceSetSystemFeaturesRequest == null) {
@@ -845,7 +845,7 @@ public class FeatureServiceApi extends BaseApi {
    * @return FeatureServiceSetUserFeaturesResponse
    * @throws ApiException if fails to make API call
    */
-  public FeatureServiceSetUserFeaturesResponse featureServiceSetUserFeatures(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private FeatureServiceSetUserFeaturesResponse featureServiceSetUserFeatures(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -874,7 +874,7 @@ public class FeatureServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -916,7 +916,7 @@ public class FeatureServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 

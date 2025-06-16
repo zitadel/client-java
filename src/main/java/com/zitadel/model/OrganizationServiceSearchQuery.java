@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   OrganizationServiceSearchQuery.JSON_PROPERTY_ID_QUERY,
   OrganizationServiceSearchQuery.JSON_PROPERTY_DEFAULT_QUERY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OrganizationServiceSearchQuery {
   public static final String JSON_PROPERTY_NAME_QUERY = "nameQuery";
   @javax.annotation.Nullable

@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   IdentityProviderServiceSAMLConfig.JSON_PROPERTY_TRANSIENT_MAPPING_ATTRIBUTE_NAME,
   IdentityProviderServiceSAMLConfig.JSON_PROPERTY_FEDERATED_LOGOUT_ENABLED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IdentityProviderServiceSAMLConfig {
   public static final String JSON_PROPERTY_METADATA_XML = "metadataXml";
   @javax.annotation.Nullable

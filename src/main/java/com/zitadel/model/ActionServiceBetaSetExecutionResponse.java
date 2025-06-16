@@ -33,7 +33,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ActionServiceBetaSetExecutionResponse.JSON_PROPERTY_SET_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ActionServiceBetaSetExecutionResponse {
   public static final String JSON_PROPERTY_SET_DATE = "setDate";
   @javax.annotation.Nullable

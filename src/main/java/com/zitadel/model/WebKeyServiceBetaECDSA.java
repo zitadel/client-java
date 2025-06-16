@@ -33,7 +33,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   WebKeyServiceBetaECDSA.JSON_PROPERTY_CURVE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class WebKeyServiceBetaECDSA {
   public static final String JSON_PROPERTY_CURVE = "curve";
   @javax.annotation.Nullable

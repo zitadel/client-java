@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SettingsServiceApi extends BaseApi {
 
   public SettingsServiceApi() {
@@ -71,7 +71,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return SettingsServiceGetActiveIdentityProvidersResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetActiveIdentityProvidersResponse settingsServiceGetActiveIdentityProviders(String ctxOrgId, Boolean ctxInstance, Boolean creationAllowed, Boolean linkingAllowed, Boolean autoCreation, Boolean autoLinking, Map<String, String> additionalHeaders) throws ApiException {
+  private SettingsServiceGetActiveIdentityProvidersResponse settingsServiceGetActiveIdentityProviders(String ctxOrgId, Boolean ctxInstance, Boolean creationAllowed, Boolean linkingAllowed, Boolean autoCreation, Boolean autoLinking, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/settings/login/idps";
@@ -147,7 +147,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return SettingsServiceGetBrandingSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetBrandingSettingsResponse settingsServiceGetBrandingSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  private SettingsServiceGetBrandingSettingsResponse settingsServiceGetBrandingSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/settings/branding";
@@ -219,7 +219,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return SettingsServiceGetDomainSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetDomainSettingsResponse settingsServiceGetDomainSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  private SettingsServiceGetDomainSettingsResponse settingsServiceGetDomainSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/settings/domain";
@@ -287,7 +287,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return SettingsServiceGetGeneralSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetGeneralSettingsResponse settingsServiceGetGeneralSettings(Map<String, String> additionalHeaders) throws ApiException {
+  private SettingsServiceGetGeneralSettingsResponse settingsServiceGetGeneralSettings(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/settings";
@@ -357,7 +357,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return SettingsServiceGetLegalAndSupportSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetLegalAndSupportSettingsResponse settingsServiceGetLegalAndSupportSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  private SettingsServiceGetLegalAndSupportSettingsResponse settingsServiceGetLegalAndSupportSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/settings/legal_support";
@@ -429,7 +429,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return SettingsServiceGetLockoutSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetLockoutSettingsResponse settingsServiceGetLockoutSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  private SettingsServiceGetLockoutSettingsResponse settingsServiceGetLockoutSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/settings/lockout";
@@ -501,7 +501,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return SettingsServiceGetLoginSettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetLoginSettingsResponse settingsServiceGetLoginSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  private SettingsServiceGetLoginSettingsResponse settingsServiceGetLoginSettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/settings/login";
@@ -573,7 +573,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return SettingsServiceGetPasswordComplexitySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetPasswordComplexitySettingsResponse settingsServiceGetPasswordComplexitySettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  private SettingsServiceGetPasswordComplexitySettingsResponse settingsServiceGetPasswordComplexitySettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/settings/password/complexity";
@@ -645,7 +645,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return SettingsServiceGetPasswordExpirySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetPasswordExpirySettingsResponse settingsServiceGetPasswordExpirySettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
+  private SettingsServiceGetPasswordExpirySettingsResponse settingsServiceGetPasswordExpirySettings(String ctxOrgId, Boolean ctxInstance, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/settings/password/expiry";
@@ -713,7 +713,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return SettingsServiceGetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceGetSecuritySettingsResponse settingsServiceGetSecuritySettings(Map<String, String> additionalHeaders) throws ApiException {
+  private SettingsServiceGetSecuritySettingsResponse settingsServiceGetSecuritySettings(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2/settings/security";
@@ -781,7 +781,7 @@ public class SettingsServiceApi extends BaseApi {
    * @return SettingsServiceSetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
    */
-  public SettingsServiceSetSecuritySettingsResponse settingsServiceSetSecuritySettings(SettingsServiceSetSecuritySettingsRequest settingsServiceSetSecuritySettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private SettingsServiceSetSecuritySettingsResponse settingsServiceSetSecuritySettings(SettingsServiceSetSecuritySettingsRequest settingsServiceSetSecuritySettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = settingsServiceSetSecuritySettingsRequest;
     
     if (settingsServiceSetSecuritySettingsRequest == null) {

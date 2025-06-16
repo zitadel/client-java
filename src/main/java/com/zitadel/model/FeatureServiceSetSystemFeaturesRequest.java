@@ -47,7 +47,7 @@ import java.util.StringJoiner;
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_LOGIN_V2,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_PERMISSION_CHECK_V2
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class FeatureServiceSetSystemFeaturesRequest {
   public static final String JSON_PROPERTY_LOGIN_DEFAULT_ORG = "loginDefaultOrg";
   @javax.annotation.Nullable

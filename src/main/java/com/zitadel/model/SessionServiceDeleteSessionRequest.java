@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SessionServiceDeleteSessionRequest.JSON_PROPERTY_SESSION_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SessionServiceDeleteSessionRequest {
   public static final String JSON_PROPERTY_SESSION_TOKEN = "sessionToken";
   @javax.annotation.Nullable

@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   UserServiceIDPOAuthAccessInformation.JSON_PROPERTY_ACCESS_TOKEN,
   UserServiceIDPOAuthAccessInformation.JSON_PROPERTY_ID_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceIDPOAuthAccessInformation {
   public static final String JSON_PROPERTY_ACCESS_TOKEN = "accessToken";
   @javax.annotation.Nullable

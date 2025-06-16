@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   IdentityProviderServiceGitHubConfig.JSON_PROPERTY_CLIENT_ID,
   IdentityProviderServiceGitHubConfig.JSON_PROPERTY_SCOPES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IdentityProviderServiceGitHubConfig {
   public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
   @javax.annotation.Nullable

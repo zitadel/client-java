@@ -53,7 +53,7 @@ import java.util.StringJoiner;
   UserServiceAddHumanUserRequest.JSON_PROPERTY_IDP_LINKS,
   UserServiceAddHumanUserRequest.JSON_PROPERTY_TOTP_SECRET
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceAddHumanUserRequest {
   public static final String JSON_PROPERTY_USER_ID = "userId";
   @javax.annotation.Nullable

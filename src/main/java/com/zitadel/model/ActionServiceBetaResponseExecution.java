@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   ActionServiceBetaResponseExecution.JSON_PROPERTY_SERVICE,
   ActionServiceBetaResponseExecution.JSON_PROPERTY_ALL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ActionServiceBetaResponseExecution {
   public static final String JSON_PROPERTY_METHOD = "method";
   @javax.annotation.Nullable

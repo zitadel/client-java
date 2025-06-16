@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   UserServicePasswordResetRequest.JSON_PROPERTY_SEND_LINK,
   UserServicePasswordResetRequest.JSON_PROPERTY_RETURN_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServicePasswordResetRequest {
   public static final String JSON_PROPERTY_SEND_LINK = "sendLink";
   @javax.annotation.Nullable

@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   ActionServiceCreateTargetRequest.JSON_PROPERTY_TIMEOUT,
   ActionServiceCreateTargetRequest.JSON_PROPERTY_ENDPOINT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ActionServiceCreateTargetRequest {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable

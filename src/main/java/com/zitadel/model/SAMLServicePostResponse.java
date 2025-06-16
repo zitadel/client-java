@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   SAMLServicePostResponse.JSON_PROPERTY_RELAY_STATE,
   SAMLServicePostResponse.JSON_PROPERTY_SAML_RESPONSE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SAMLServicePostResponse {
   public static final String JSON_PROPERTY_RELAY_STATE = "relayState";
   @javax.annotation.Nullable

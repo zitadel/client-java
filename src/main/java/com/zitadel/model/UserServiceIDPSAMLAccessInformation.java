@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   UserServiceIDPSAMLAccessInformation.JSON_PROPERTY_ASSERTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceIDPSAMLAccessInformation {
   public static final String JSON_PROPERTY_ASSERTION = "assertion";
   @javax.annotation.Nullable

@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   OIDCServiceSession.JSON_PROPERTY_SESSION_ID,
   OIDCServiceSession.JSON_PROPERTY_SESSION_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OIDCServiceSession {
   public static final String JSON_PROPERTY_SESSION_ID = "sessionId";
   @javax.annotation.Nullable
