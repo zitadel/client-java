@@ -63,7 +63,7 @@ import java.util.StringJoiner;
   UserServiceSearchQuery.JSON_PROPERTY_ORGANIZATION_ID_QUERY,
   UserServiceSearchQuery.JSON_PROPERTY_PHONE_QUERY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceSearchQuery {
   public static final String JSON_PROPERTY_USER_NAME_QUERY = "userNameQuery";
   @javax.annotation.Nullable

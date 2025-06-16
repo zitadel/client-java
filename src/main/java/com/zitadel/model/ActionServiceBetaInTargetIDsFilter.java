@@ -35,7 +35,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ActionServiceBetaInTargetIDsFilter.JSON_PROPERTY_TARGET_IDS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ActionServiceBetaInTargetIDsFilter {
   public static final String JSON_PROPERTY_TARGET_IDS = "targetIds";
   @javax.annotation.Nullable

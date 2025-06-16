@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SessionServiceApi extends BaseApi {
 
   public SessionServiceApi() {
@@ -58,7 +58,7 @@ public class SessionServiceApi extends BaseApi {
    * @return SessionServiceCreateSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceCreateSessionResponse sessionServiceCreateSession(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private SessionServiceCreateSessionResponse sessionServiceCreateSession(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = sessionServiceCreateSessionRequest;
     
     if (sessionServiceCreateSessionRequest == null) {
@@ -132,7 +132,7 @@ public class SessionServiceApi extends BaseApi {
    * @return SessionServiceDeleteSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceDeleteSessionResponse sessionServiceDeleteSession(String sessionId, SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private SessionServiceDeleteSessionResponse sessionServiceDeleteSession(String sessionId, SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = sessionServiceDeleteSessionRequest;
     
     if (sessionId == null) {
@@ -211,7 +211,7 @@ public class SessionServiceApi extends BaseApi {
    * @return SessionServiceGetSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceGetSessionResponse sessionServiceGetSession(String sessionId, String sessionToken, Map<String, String> additionalHeaders) throws ApiException {
+  private SessionServiceGetSessionResponse sessionServiceGetSession(String sessionId, String sessionToken, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (sessionId == null) {
@@ -285,7 +285,7 @@ public class SessionServiceApi extends BaseApi {
    * @return SessionServiceListSessionsResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceListSessionsResponse sessionServiceListSessions(SessionServiceListSessionsRequest sessionServiceListSessionsRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private SessionServiceListSessionsResponse sessionServiceListSessions(SessionServiceListSessionsRequest sessionServiceListSessionsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = sessionServiceListSessionsRequest;
     
     if (sessionServiceListSessionsRequest == null) {
@@ -359,7 +359,7 @@ public class SessionServiceApi extends BaseApi {
    * @return SessionServiceSetSessionResponse
    * @throws ApiException if fails to make API call
    */
-  public SessionServiceSetSessionResponse sessionServiceSetSession(String sessionId, SessionServiceSetSessionRequest sessionServiceSetSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private SessionServiceSetSessionResponse sessionServiceSetSession(String sessionId, SessionServiceSetSessionRequest sessionServiceSetSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = sessionServiceSetSessionRequest;
     
     if (sessionId == null) {

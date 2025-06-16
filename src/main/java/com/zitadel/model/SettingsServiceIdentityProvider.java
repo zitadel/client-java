@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   SettingsServiceIdentityProvider.JSON_PROPERTY_TYPE,
   SettingsServiceIdentityProvider.JSON_PROPERTY_OPTIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SettingsServiceIdentityProvider {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

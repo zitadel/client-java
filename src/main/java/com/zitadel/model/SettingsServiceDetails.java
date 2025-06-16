@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   SettingsServiceDetails.JSON_PROPERTY_RESOURCE_OWNER,
   SettingsServiceDetails.JSON_PROPERTY_CREATION_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SettingsServiceDetails {
   public static final String JSON_PROPERTY_SEQUENCE = "sequence";
   @javax.annotation.Nullable

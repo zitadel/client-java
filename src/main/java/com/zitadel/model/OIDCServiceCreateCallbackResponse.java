@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   OIDCServiceCreateCallbackResponse.JSON_PROPERTY_DETAILS,
   OIDCServiceCreateCallbackResponse.JSON_PROPERTY_CALLBACK_URL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OIDCServiceCreateCallbackResponse {
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable

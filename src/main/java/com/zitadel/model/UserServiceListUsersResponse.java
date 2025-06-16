@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   UserServiceListUsersResponse.JSON_PROPERTY_SORTING_COLUMN,
   UserServiceListUsersResponse.JSON_PROPERTY_RESULT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceListUsersResponse {
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable

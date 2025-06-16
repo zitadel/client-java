@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   Zitadelorgv2Organization.JSON_PROPERTY_PRIMARY_DOMAIN
 })
 @JsonTypeName("zitadelorgv2Organization")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Zitadelorgv2Organization {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

@@ -33,7 +33,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ActionServiceBetaDeleteTargetResponse.JSON_PROPERTY_DELETION_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ActionServiceBetaDeleteTargetResponse {
   public static final String JSON_PROPERTY_DELETION_DATE = "deletionDate";
   @javax.annotation.Nullable

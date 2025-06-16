@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   UserServiceUserNameQuery.JSON_PROPERTY_USER_NAME,
   UserServiceUserNameQuery.JSON_PROPERTY_METHOD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceUserNameQuery {
   public static final String JSON_PROPERTY_USER_NAME = "userName";
   @javax.annotation.Nonnull

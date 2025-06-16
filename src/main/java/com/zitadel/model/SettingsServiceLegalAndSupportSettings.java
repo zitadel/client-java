@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   SettingsServiceLegalAndSupportSettings.JSON_PROPERTY_CUSTOM_LINK,
   SettingsServiceLegalAndSupportSettings.JSON_PROPERTY_CUSTOM_LINK_TEXT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SettingsServiceLegalAndSupportSettings {
   public static final String JSON_PROPERTY_TOS_LINK = "tosLink";
   @javax.annotation.Nullable

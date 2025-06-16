@@ -87,7 +87,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceApi extends BaseApi {
 
   public UserServiceApi() {
@@ -118,7 +118,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceAddHumanUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceAddHumanUserResponse userServiceAddHumanUser(UserServiceAddHumanUserRequest userServiceAddHumanUserRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceAddHumanUserResponse userServiceAddHumanUser(UserServiceAddHumanUserRequest userServiceAddHumanUserRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceAddHumanUserRequest;
     
     if (userServiceAddHumanUserRequest == null) {
@@ -192,7 +192,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceAddIDPLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceAddIDPLinkResponse userServiceAddIDPLink(String userId, UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceAddIDPLinkResponse userServiceAddIDPLink(String userId, UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceAddIDPLinkRequest;
     
     if (userId == null) {
@@ -269,7 +269,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceAddOTPEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceAddOTPEmailResponse userServiceAddOTPEmail(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceAddOTPEmailResponse userServiceAddOTPEmail(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -298,7 +298,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -342,7 +342,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceAddOTPSMSResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceAddOTPSMSResponse userServiceAddOTPSMS(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceAddOTPSMSResponse userServiceAddOTPSMS(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -371,7 +371,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -417,7 +417,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceCreateInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceCreateInviteCodeResponse userServiceCreateInviteCode(String userId, UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceCreateInviteCodeResponse userServiceCreateInviteCode(String userId, UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceCreateInviteCodeRequest;
     
     if (userId == null) {
@@ -496,7 +496,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceCreatePasskeyRegistrationLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceCreatePasskeyRegistrationLinkResponse userServiceCreatePasskeyRegistrationLink(String userId, UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceCreatePasskeyRegistrationLinkResponse userServiceCreatePasskeyRegistrationLink(String userId, UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceCreatePasskeyRegistrationLinkRequest;
     
     if (userId == null) {
@@ -573,7 +573,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceDeactivateUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceDeactivateUserResponse userServiceDeactivateUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceDeactivateUserResponse userServiceDeactivateUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -602,7 +602,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -646,7 +646,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceDeleteUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceDeleteUserResponse userServiceDeleteUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceDeleteUserResponse userServiceDeleteUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -719,7 +719,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceGetUserByIDResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceGetUserByIDResponse userServiceGetUserByID(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceGetUserByIDResponse userServiceGetUserByID(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -792,7 +792,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceHumanMFAInitSkippedResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceHumanMFAInitSkippedResponse userServiceHumanMFAInitSkipped(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceHumanMFAInitSkippedResponse userServiceHumanMFAInitSkipped(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -821,7 +821,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -869,7 +869,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceListAuthenticationFactorsResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListAuthenticationFactorsResponse userServiceListAuthenticationFactors(String userId, List<String> authFactors, List<String> states, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceListAuthenticationFactorsResponse userServiceListAuthenticationFactors(String userId, List<String> authFactors, List<String> states, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -948,7 +948,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceListAuthenticationMethodTypesResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListAuthenticationMethodTypesResponse userServiceListAuthenticationMethodTypes(String userId, Boolean domainQueryIncludeWithoutDomain, String domainQueryDomain, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceListAuthenticationMethodTypesResponse userServiceListAuthenticationMethodTypes(String userId, Boolean domainQueryIncludeWithoutDomain, String domainQueryDomain, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -1025,7 +1025,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceListIDPLinksResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListIDPLinksResponse userServiceListIDPLinks(String userId, UserServiceListIDPLinksRequest userServiceListIDPLinksRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceListIDPLinksResponse userServiceListIDPLinks(String userId, UserServiceListIDPLinksRequest userServiceListIDPLinksRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceListIDPLinksRequest;
     
     if (userId == null) {
@@ -1102,7 +1102,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceListPasskeysResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListPasskeysResponse userServiceListPasskeys(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceListPasskeysResponse userServiceListPasskeys(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -1131,7 +1131,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -1175,7 +1175,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceListUsersResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceListUsersResponse userServiceListUsers(UserServiceListUsersRequest userServiceListUsersRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceListUsersResponse userServiceListUsers(UserServiceListUsersRequest userServiceListUsersRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceListUsersRequest;
     
     if (userServiceListUsersRequest == null) {
@@ -1247,7 +1247,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceLockUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceLockUserResponse userServiceLockUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceLockUserResponse userServiceLockUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -1276,7 +1276,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -1322,7 +1322,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServicePasswordResetResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServicePasswordResetResponse userServicePasswordReset(String userId, UserServicePasswordResetRequest userServicePasswordResetRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServicePasswordResetResponse userServicePasswordReset(String userId, UserServicePasswordResetRequest userServicePasswordResetRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServicePasswordResetRequest;
     
     if (userId == null) {
@@ -1399,7 +1399,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceReactivateUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceReactivateUserResponse userServiceReactivateUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceReactivateUserResponse userServiceReactivateUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -1428,7 +1428,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -1474,7 +1474,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceRegisterPasskeyResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRegisterPasskeyResponse userServiceRegisterPasskey(String userId, UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceRegisterPasskeyResponse userServiceRegisterPasskey(String userId, UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRegisterPasskeyRequest;
     
     if (userId == null) {
@@ -1551,7 +1551,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceRegisterTOTPResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRegisterTOTPResponse userServiceRegisterTOTP(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceRegisterTOTPResponse userServiceRegisterTOTP(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -1580,7 +1580,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -1626,7 +1626,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceRegisterU2FResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRegisterU2FResponse userServiceRegisterU2F(String userId, UserServiceRegisterU2FRequest userServiceRegisterU2FRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceRegisterU2FResponse userServiceRegisterU2F(String userId, UserServiceRegisterU2FRequest userServiceRegisterU2FRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRegisterU2FRequest;
     
     if (userId == null) {
@@ -1707,7 +1707,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceRemoveIDPLinkResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveIDPLinkResponse userServiceRemoveIDPLink(String userId, String idpId, String linkedUserId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceRemoveIDPLinkResponse userServiceRemoveIDPLink(String userId, String idpId, String linkedUserId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -1746,7 +1746,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -1790,7 +1790,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceRemoveOTPEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveOTPEmailResponse userServiceRemoveOTPEmail(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceRemoveOTPEmailResponse userServiceRemoveOTPEmail(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -1863,7 +1863,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceRemoveOTPSMSResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveOTPSMSResponse userServiceRemoveOTPSMS(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceRemoveOTPSMSResponse userServiceRemoveOTPSMS(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -1938,7 +1938,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceRemovePasskeyResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemovePasskeyResponse userServiceRemovePasskey(String userId, String passkeyId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceRemovePasskeyResponse userServiceRemovePasskey(String userId, String passkeyId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -2016,7 +2016,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceRemovePhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemovePhoneResponse userServiceRemovePhone(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceRemovePhoneResponse userServiceRemovePhone(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -2045,7 +2045,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -2089,7 +2089,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceRemoveTOTPResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveTOTPResponse userServiceRemoveTOTP(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceRemoveTOTPResponse userServiceRemoveTOTP(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -2164,7 +2164,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceRemoveU2FResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRemoveU2FResponse userServiceRemoveU2F(String userId, String u2fId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceRemoveU2FResponse userServiceRemoveU2F(String userId, String u2fId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -2244,7 +2244,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceResendEmailCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceResendEmailCodeResponse userServiceResendEmailCode(String userId, UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceResendEmailCodeResponse userServiceResendEmailCode(String userId, UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceResendEmailCodeRequest;
     
     if (userId == null) {
@@ -2321,7 +2321,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceResendInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceResendInviteCodeResponse userServiceResendInviteCode(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceResendInviteCodeResponse userServiceResendInviteCode(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -2396,7 +2396,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceResendPhoneCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceResendPhoneCodeResponse userServiceResendPhoneCode(String userId, UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceResendPhoneCodeResponse userServiceResendPhoneCode(String userId, UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceResendPhoneCodeRequest;
     
     if (userId == null) {
@@ -2475,7 +2475,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceRetrieveIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceRetrieveIdentityProviderIntentResponse userServiceRetrieveIdentityProviderIntent(String idpIntentId, UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceRetrieveIdentityProviderIntentResponse userServiceRetrieveIdentityProviderIntent(String idpIntentId, UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRetrieveIdentityProviderIntentRequest;
     
     if (idpIntentId == null) {
@@ -2554,7 +2554,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceSendEmailCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceSendEmailCodeResponse userServiceSendEmailCode(String userId, UserServiceSendEmailCodeRequest userServiceSendEmailCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceSendEmailCodeResponse userServiceSendEmailCode(String userId, UserServiceSendEmailCodeRequest userServiceSendEmailCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceSendEmailCodeRequest;
     
     if (userId == null) {
@@ -2633,7 +2633,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceSetEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceSetEmailResponse userServiceSetEmail(String userId, UserServiceSetEmailRequest userServiceSetEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceSetEmailResponse userServiceSetEmail(String userId, UserServiceSetEmailRequest userServiceSetEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceSetEmailRequest;
     
     if (userId == null) {
@@ -2712,7 +2712,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceSetPasswordResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceSetPasswordResponse userServiceSetPassword(String userId, UserServiceSetPasswordRequest userServiceSetPasswordRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceSetPasswordResponse userServiceSetPassword(String userId, UserServiceSetPasswordRequest userServiceSetPasswordRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceSetPasswordRequest;
     
     if (userId == null) {
@@ -2791,7 +2791,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceSetPhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceSetPhoneResponse userServiceSetPhone(String userId, UserServiceSetPhoneRequest userServiceSetPhoneRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceSetPhoneResponse userServiceSetPhone(String userId, UserServiceSetPhoneRequest userServiceSetPhoneRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceSetPhoneRequest;
     
     if (userId == null) {
@@ -2868,7 +2868,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceStartIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceStartIdentityProviderIntentResponse userServiceStartIdentityProviderIntent(UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceStartIdentityProviderIntentResponse userServiceStartIdentityProviderIntent(UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceStartIdentityProviderIntentRequest;
     
     if (userServiceStartIdentityProviderIntentRequest == null) {
@@ -2940,7 +2940,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceUnlockUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceUnlockUserResponse userServiceUnlockUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceUnlockUserResponse userServiceUnlockUser(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userId == null) {
@@ -2969,7 +2969,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      "application/json"
+      
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -3015,7 +3015,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceUpdateHumanUserResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceUpdateHumanUserResponse userServiceUpdateHumanUser(String userId, UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceUpdateHumanUserResponse userServiceUpdateHumanUser(String userId, UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceUpdateHumanUserRequest;
     
     if (userId == null) {
@@ -3094,7 +3094,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceVerifyEmailResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyEmailResponse userServiceVerifyEmail(String userId, UserServiceVerifyEmailRequest userServiceVerifyEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceVerifyEmailResponse userServiceVerifyEmail(String userId, UserServiceVerifyEmailRequest userServiceVerifyEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyEmailRequest;
     
     if (userId == null) {
@@ -3173,7 +3173,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceVerifyInviteCodeResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyInviteCodeResponse userServiceVerifyInviteCode(String userId, UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceVerifyInviteCodeResponse userServiceVerifyInviteCode(String userId, UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyInviteCodeRequest;
     
     if (userId == null) {
@@ -3254,7 +3254,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceVerifyPasskeyRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyPasskeyRegistrationResponse userServiceVerifyPasskeyRegistration(String userId, String passkeyId, UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceVerifyPasskeyRegistrationResponse userServiceVerifyPasskeyRegistration(String userId, String passkeyId, UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyPasskeyRegistrationRequest;
     
     if (userId == null) {
@@ -3338,7 +3338,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceVerifyPhoneResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyPhoneResponse userServiceVerifyPhone(String userId, UserServiceVerifyPhoneRequest userServiceVerifyPhoneRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceVerifyPhoneResponse userServiceVerifyPhone(String userId, UserServiceVerifyPhoneRequest userServiceVerifyPhoneRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyPhoneRequest;
     
     if (userId == null) {
@@ -3417,7 +3417,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceVerifyTOTPRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyTOTPRegistrationResponse userServiceVerifyTOTPRegistration(String userId, UserServiceVerifyTOTPRegistrationRequest userServiceVerifyTOTPRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceVerifyTOTPRegistrationResponse userServiceVerifyTOTPRegistration(String userId, UserServiceVerifyTOTPRegistrationRequest userServiceVerifyTOTPRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyTOTPRegistrationRequest;
     
     if (userId == null) {
@@ -3498,7 +3498,7 @@ public class UserServiceApi extends BaseApi {
    * @return UserServiceVerifyU2FRegistrationResponse
    * @throws ApiException if fails to make API call
    */
-  public UserServiceVerifyU2FRegistrationResponse userServiceVerifyU2FRegistration(String userId, String u2fId, UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private UserServiceVerifyU2FRegistrationResponse userServiceVerifyU2FRegistration(String userId, String u2fId, UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyU2FRegistrationRequest;
     
     if (userId == null) {

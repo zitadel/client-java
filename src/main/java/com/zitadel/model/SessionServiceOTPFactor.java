@@ -33,7 +33,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SessionServiceOTPFactor.JSON_PROPERTY_VERIFIED_AT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SessionServiceOTPFactor {
   public static final String JSON_PROPERTY_VERIFIED_AT = "verifiedAt";
   @javax.annotation.Nullable

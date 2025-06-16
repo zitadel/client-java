@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   IdentityProviderServiceAzureADTenant.JSON_PROPERTY_TENANT_TYPE,
   IdentityProviderServiceAzureADTenant.JSON_PROPERTY_TENANT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IdentityProviderServiceAzureADTenant {
   public static final String JSON_PROPERTY_TENANT_TYPE = "tenantType";
   @javax.annotation.Nullable

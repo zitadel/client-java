@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   UserServiceSetPasswordRequest.JSON_PROPERTY_CURRENT_PASSWORD,
   UserServiceSetPasswordRequest.JSON_PROPERTY_VERIFICATION_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceSetPasswordRequest {
   public static final String JSON_PROPERTY_NEW_PASSWORD = "newPassword";
   @javax.annotation.Nullable

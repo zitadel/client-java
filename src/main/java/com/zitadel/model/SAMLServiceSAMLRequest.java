@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   SAMLServiceSAMLRequest.JSON_PROPERTY_RELAY_STATE,
   SAMLServiceSAMLRequest.JSON_PROPERTY_BINDING
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SAMLServiceSAMLRequest {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

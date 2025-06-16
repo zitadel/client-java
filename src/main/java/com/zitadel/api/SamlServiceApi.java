@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SamlServiceApi extends BaseApi {
 
   public SamlServiceApi() {
@@ -54,7 +54,7 @@ public class SamlServiceApi extends BaseApi {
    * @return SAMLServiceCreateResponseResponse
    * @throws ApiException if fails to make API call
    */
-  public SAMLServiceCreateResponseResponse sAMLServiceCreateResponse(String samlRequestId, SAMLServiceCreateResponseRequest saMLServiceCreateResponseRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private SAMLServiceCreateResponseResponse sAMLServiceCreateResponse(String samlRequestId, SAMLServiceCreateResponseRequest saMLServiceCreateResponseRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = saMLServiceCreateResponseRequest;
     
     if (samlRequestId == null) {
@@ -131,7 +131,7 @@ public class SamlServiceApi extends BaseApi {
    * @return SAMLServiceGetSAMLRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public SAMLServiceGetSAMLRequestResponse sAMLServiceGetSAMLRequest(String samlRequestId, Map<String, String> additionalHeaders) throws ApiException {
+  private SAMLServiceGetSAMLRequestResponse sAMLServiceGetSAMLRequest(String samlRequestId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (samlRequestId == null) {

@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ActionServiceApi extends BaseApi {
 
   public ActionServiceApi() {
@@ -63,7 +63,7 @@ public class ActionServiceApi extends BaseApi {
    * @return ActionServiceBetaCreateTargetResponse
    * @throws ApiException if fails to make API call
    */
-  public ActionServiceBetaCreateTargetResponse actionServiceCreateTarget(ActionServiceCreateTargetRequest actionServiceCreateTargetRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private ActionServiceBetaCreateTargetResponse actionServiceCreateTarget(ActionServiceCreateTargetRequest actionServiceCreateTargetRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = actionServiceCreateTargetRequest;
     
     if (actionServiceCreateTargetRequest == null) {
@@ -135,7 +135,7 @@ public class ActionServiceApi extends BaseApi {
    * @return ActionServiceBetaDeleteTargetResponse
    * @throws ApiException if fails to make API call
    */
-  public ActionServiceBetaDeleteTargetResponse actionServiceDeleteTarget(String id, Map<String, String> additionalHeaders) throws ApiException {
+  private ActionServiceBetaDeleteTargetResponse actionServiceDeleteTarget(String id, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (id == null) {
@@ -208,7 +208,7 @@ public class ActionServiceApi extends BaseApi {
    * @return ActionServiceBetaGetTargetResponse
    * @throws ApiException if fails to make API call
    */
-  public ActionServiceBetaGetTargetResponse actionServiceGetTarget(String id, Map<String, String> additionalHeaders) throws ApiException {
+  private ActionServiceBetaGetTargetResponse actionServiceGetTarget(String id, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (id == null) {
@@ -279,7 +279,7 @@ public class ActionServiceApi extends BaseApi {
    * @return ActionServiceBetaListExecutionFunctionsResponse
    * @throws ApiException if fails to make API call
    */
-  public ActionServiceBetaListExecutionFunctionsResponse actionServiceListExecutionFunctions(Map<String, String> additionalHeaders) throws ApiException {
+  private ActionServiceBetaListExecutionFunctionsResponse actionServiceListExecutionFunctions(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2beta/actions/executions/functions";
@@ -345,7 +345,7 @@ public class ActionServiceApi extends BaseApi {
    * @return ActionServiceBetaListExecutionMethodsResponse
    * @throws ApiException if fails to make API call
    */
-  public ActionServiceBetaListExecutionMethodsResponse actionServiceListExecutionMethods(Map<String, String> additionalHeaders) throws ApiException {
+  private ActionServiceBetaListExecutionMethodsResponse actionServiceListExecutionMethods(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2beta/actions/executions/methods";
@@ -411,7 +411,7 @@ public class ActionServiceApi extends BaseApi {
    * @return ActionServiceBetaListExecutionServicesResponse
    * @throws ApiException if fails to make API call
    */
-  public ActionServiceBetaListExecutionServicesResponse actionServiceListExecutionServices(Map<String, String> additionalHeaders) throws ApiException {
+  private ActionServiceBetaListExecutionServicesResponse actionServiceListExecutionServices(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2beta/actions/executions/services";
@@ -485,7 +485,7 @@ public class ActionServiceApi extends BaseApi {
    * @return ActionServiceBetaListExecutionsResponse
    * @throws ApiException if fails to make API call
    */
-  public ActionServiceBetaListExecutionsResponse actionServiceListExecutions(String paginationOffset, Long paginationLimit, Boolean paginationAsc, String sortingColumn, Map<String, String> additionalHeaders) throws ApiException {
+  private ActionServiceBetaListExecutionsResponse actionServiceListExecutions(String paginationOffset, Long paginationLimit, Boolean paginationAsc, String sortingColumn, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     String localVarPath = "/v2beta/actions/executions/_search";
@@ -557,7 +557,7 @@ public class ActionServiceApi extends BaseApi {
    * @return ActionServiceBetaListTargetsResponse
    * @throws ApiException if fails to make API call
    */
-  public ActionServiceBetaListTargetsResponse actionServiceListTargets(ActionServiceListTargetsRequest actionServiceListTargetsRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private ActionServiceBetaListTargetsResponse actionServiceListTargets(ActionServiceListTargetsRequest actionServiceListTargetsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = actionServiceListTargetsRequest;
     
     if (actionServiceListTargetsRequest == null) {
@@ -629,7 +629,7 @@ public class ActionServiceApi extends BaseApi {
    * @return ActionServiceBetaSetExecutionResponse
    * @throws ApiException if fails to make API call
    */
-  public ActionServiceBetaSetExecutionResponse actionServiceSetExecution(ActionServiceSetExecutionRequest actionServiceSetExecutionRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private ActionServiceBetaSetExecutionResponse actionServiceSetExecution(ActionServiceSetExecutionRequest actionServiceSetExecutionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = actionServiceSetExecutionRequest;
     
     if (actionServiceSetExecutionRequest == null) {
@@ -703,7 +703,7 @@ public class ActionServiceApi extends BaseApi {
    * @return ActionServiceBetaUpdateTargetResponse
    * @throws ApiException if fails to make API call
    */
-  public ActionServiceBetaUpdateTargetResponse actionServiceUpdateTarget(String id, ActionServiceUpdateTargetRequest actionServiceUpdateTargetRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private ActionServiceBetaUpdateTargetResponse actionServiceUpdateTarget(String id, ActionServiceUpdateTargetRequest actionServiceUpdateTargetRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = actionServiceUpdateTargetRequest;
     
     if (id == null) {

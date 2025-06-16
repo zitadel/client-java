@@ -46,7 +46,7 @@ import java.util.StringJoiner;
   UserServiceUser.JSON_PROPERTY_HUMAN,
   UserServiceUser.JSON_PROPERTY_MACHINE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceUser {
   public static final String JSON_PROPERTY_USER_ID = "userId";
   @javax.annotation.Nullable

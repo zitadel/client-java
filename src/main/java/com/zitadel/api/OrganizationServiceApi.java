@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OrganizationServiceApi extends BaseApi {
 
   public OrganizationServiceApi() {
@@ -53,7 +53,7 @@ public class OrganizationServiceApi extends BaseApi {
    * @return OrganizationServiceAddOrganizationResponse
    * @throws ApiException if fails to make API call
    */
-  public OrganizationServiceAddOrganizationResponse organizationServiceAddOrganization(OrganizationServiceAddOrganizationRequest organizationServiceAddOrganizationRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private OrganizationServiceAddOrganizationResponse organizationServiceAddOrganization(OrganizationServiceAddOrganizationRequest organizationServiceAddOrganizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = organizationServiceAddOrganizationRequest;
     
     if (organizationServiceAddOrganizationRequest == null) {
@@ -125,7 +125,7 @@ public class OrganizationServiceApi extends BaseApi {
    * @return OrganizationServiceListOrganizationsResponse
    * @throws ApiException if fails to make API call
    */
-  public OrganizationServiceListOrganizationsResponse organizationServiceListOrganizations(OrganizationServiceListOrganizationsRequest organizationServiceListOrganizationsRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private OrganizationServiceListOrganizationsResponse organizationServiceListOrganizations(OrganizationServiceListOrganizationsRequest organizationServiceListOrganizationsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = organizationServiceListOrganizationsRequest;
     
     if (organizationServiceListOrganizationsRequest == null) {

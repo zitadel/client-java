@@ -35,7 +35,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SessionServiceUserAgentHeaderValues.JSON_PROPERTY_VALUES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SessionServiceUserAgentHeaderValues {
   public static final String JSON_PROPERTY_VALUES = "values";
   @javax.annotation.Nullable

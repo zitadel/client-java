@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   ActionServiceBetaPaginationResponse.JSON_PROPERTY_TOTAL_RESULT,
   ActionServiceBetaPaginationResponse.JSON_PROPERTY_APPLIED_LIMIT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ActionServiceBetaPaginationResponse {
   public static final String JSON_PROPERTY_TOTAL_RESULT = "totalResult";
   @javax.annotation.Nullable

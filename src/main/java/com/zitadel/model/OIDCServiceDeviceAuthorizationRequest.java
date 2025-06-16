@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   OIDCServiceDeviceAuthorizationRequest.JSON_PROPERTY_APP_NAME,
   OIDCServiceDeviceAuthorizationRequest.JSON_PROPERTY_PROJECT_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OIDCServiceDeviceAuthorizationRequest {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

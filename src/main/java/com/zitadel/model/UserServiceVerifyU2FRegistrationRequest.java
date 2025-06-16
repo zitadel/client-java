@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   UserServiceVerifyU2FRegistrationRequest.JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL,
   UserServiceVerifyU2FRegistrationRequest.JSON_PROPERTY_TOKEN_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceVerifyU2FRegistrationRequest {
   public static final String JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL = "publicKeyCredential";
   @javax.annotation.Nonnull

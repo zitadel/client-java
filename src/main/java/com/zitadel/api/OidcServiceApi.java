@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OidcServiceApi extends BaseApi {
 
   public OidcServiceApi() {
@@ -56,7 +56,7 @@ public class OidcServiceApi extends BaseApi {
    * @return Object
    * @throws ApiException if fails to make API call
    */
-  public Object oIDCServiceAuthorizeOrDenyDeviceAuthorization(String deviceAuthorizationId, OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private Object oIDCServiceAuthorizeOrDenyDeviceAuthorization(String deviceAuthorizationId, OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest;
     
     if (deviceAuthorizationId == null) {
@@ -135,7 +135,7 @@ public class OidcServiceApi extends BaseApi {
    * @return OIDCServiceCreateCallbackResponse
    * @throws ApiException if fails to make API call
    */
-  public OIDCServiceCreateCallbackResponse oIDCServiceCreateCallback(String authRequestId, OIDCServiceCreateCallbackRequest oiDCServiceCreateCallbackRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private OIDCServiceCreateCallbackResponse oIDCServiceCreateCallback(String authRequestId, OIDCServiceCreateCallbackRequest oiDCServiceCreateCallbackRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = oiDCServiceCreateCallbackRequest;
     
     if (authRequestId == null) {
@@ -212,7 +212,7 @@ public class OidcServiceApi extends BaseApi {
    * @return OIDCServiceGetAuthRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public OIDCServiceGetAuthRequestResponse oIDCServiceGetAuthRequest(String authRequestId, Map<String, String> additionalHeaders) throws ApiException {
+  private OIDCServiceGetAuthRequestResponse oIDCServiceGetAuthRequest(String authRequestId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (authRequestId == null) {
@@ -285,7 +285,7 @@ public class OidcServiceApi extends BaseApi {
    * @return OIDCServiceGetDeviceAuthorizationRequestResponse
    * @throws ApiException if fails to make API call
    */
-  public OIDCServiceGetDeviceAuthorizationRequestResponse oIDCServiceGetDeviceAuthorizationRequest(String userCode, Map<String, String> additionalHeaders) throws ApiException {
+  private OIDCServiceGetDeviceAuthorizationRequestResponse oIDCServiceGetDeviceAuthorizationRequest(String userCode, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (userCode == null) {

@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IdentityProviderServiceApi extends BaseApi {
 
   public IdentityProviderServiceApi() {
@@ -50,7 +50,7 @@ public class IdentityProviderServiceApi extends BaseApi {
    * @return IdentityProviderServiceGetIDPByIDResponse
    * @throws ApiException if fails to make API call
    */
-  public IdentityProviderServiceGetIDPByIDResponse identityProviderServiceGetIDPByID(String id, Map<String, String> additionalHeaders) throws ApiException {
+  private IdentityProviderServiceGetIDPByIDResponse identityProviderServiceGetIDPByID(String id, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     if (id == null) {

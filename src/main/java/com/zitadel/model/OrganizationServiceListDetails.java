@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   OrganizationServiceListDetails.JSON_PROPERTY_PROCESSED_SEQUENCE,
   OrganizationServiceListDetails.JSON_PROPERTY_TIMESTAMP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OrganizationServiceListDetails {
   public static final String JSON_PROPERTY_TOTAL_RESULT = "totalResult";
   @javax.annotation.Nullable

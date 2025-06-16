@@ -57,7 +57,7 @@ import java.util.StringJoiner;
   IdentityProviderServiceIDPConfig.JSON_PROPERTY_APPLE,
   IdentityProviderServiceIDPConfig.JSON_PROPERTY_SAML
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IdentityProviderServiceIDPConfig {
   public static final String JSON_PROPERTY_OPTIONS = "options";
   @javax.annotation.Nullable

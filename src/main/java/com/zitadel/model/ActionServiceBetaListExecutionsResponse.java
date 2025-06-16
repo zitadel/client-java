@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   ActionServiceBetaListExecutionsResponse.JSON_PROPERTY_PAGINATION,
   ActionServiceBetaListExecutionsResponse.JSON_PROPERTY_RESULT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ActionServiceBetaListExecutionsResponse {
   public static final String JSON_PROPERTY_PAGINATION = "pagination";
   @javax.annotation.Nullable
