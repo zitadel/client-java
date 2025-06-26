@@ -24,7 +24,6 @@ import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.security.PrivateKey;
-import java.text.ParseException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
@@ -89,7 +88,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> config;
         try {
-            config = mapper.readValue(new File(jsonPath), new TypeReference<Map<String, Object>>() {
+            config = mapper.readValue(new File(jsonPath), new TypeReference<>() {
             });
         } catch (IOException e) {
             throw new RuntimeException(
@@ -170,9 +169,9 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
                         .build());
 
             signedJWT.sign(keySigner);
-            return new JWTBearerGrant(SignedJWT.parse(signedJWT.serialize()));
+            return new JWTBearerGrant(signedJWT);
 
-        } catch (JOSEException | ParseException e) {
+        } catch (JOSEException e) {
             throw new RuntimeException("Failed to generate JWT assertion: " + e.getMessage(), e);
         }
     }

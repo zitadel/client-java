@@ -29,7 +29,6 @@ import org.openapitools.jackson.nullable.JsonNullableModule;
 import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
@@ -322,11 +321,7 @@ public class ApiClient {
      * @return Escaped string
      */
     public String escapeString(String str) {
-        try {
-            return URLEncoder.encode(str, "utf8").replaceAll("\\+", "%20");
-        } catch (UnsupportedEncodingException e) {
-            return str;
-        }
+        return URLEncoder.encode(str, StandardCharsets.UTF_8).replaceAll("\\+", "%20");
     }
 
     /**

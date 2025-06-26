@@ -9,6 +9,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.util.function.Consumer;
 
+@SuppressWarnings("unused")
 @SuppressFBWarnings("URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD")
 public class Zitadel {
     public final ApiClient apiClient;

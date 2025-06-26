@@ -68,7 +68,7 @@ public class ApiClientTest {
             if (is == null) {
                 throw new IllegalArgumentException("Resource not found: " + resourcePath);
             }
-            try (Scanner scanner = new Scanner(is, StandardCharsets.UTF_8.name())) {
+            try (Scanner scanner = new Scanner(is, StandardCharsets.UTF_8)) {
                 scanner.useDelimiter("\\A");
                 return scanner.hasNext() ? scanner.next() : "";
             }
@@ -111,7 +111,7 @@ public class ApiClientTest {
                 "application/json",
                 "application/json",
                 new String[0],
-                new TypeReference<Map<String, Object>>() {
+                new TypeReference<>() {
                 });
         assertNotNull(apiResponse);
         assertEquals("value", apiResponse.get("key"));

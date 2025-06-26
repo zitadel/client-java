@@ -42,6 +42,7 @@ public abstract class AbstractIntegrationTest {
     /**
      * The authentication token loaded from file.
      */
+    @SuppressWarnings("CanBeFinal")
     protected static String authToken = "";
 
     /**
@@ -124,7 +125,7 @@ public abstract class AbstractIntegrationTest {
     @AfterAll
     public static void tearDownAfterAll() {
         System.out.println("Tearing down Docker Compose stack...");
-        if (COMPOSE_FILE_PATH != null && Files.exists(COMPOSE_FILE_PATH)) {
+        if (Files.exists(COMPOSE_FILE_PATH)) {
             try {
                 ProcessBuilder pb = new ProcessBuilder(
                     "docker", "compose", "-f", COMPOSE_FILE_PATH.toString(), "down", "-v"
@@ -170,7 +171,7 @@ public abstract class AbstractIntegrationTest {
      * @throws RuntimeException If the file is not found or cannot be read.
      */
     private static void loadFileContentIntoProperty(
-        String relativePath, String propertyName) {
+        @SuppressWarnings("SameParameterValue") String relativePath, @SuppressWarnings("SameParameterValue") String propertyName) {
         Path filePath = composeFileDir.resolve(relativePath);
 
         if (Files.exists(filePath)) {

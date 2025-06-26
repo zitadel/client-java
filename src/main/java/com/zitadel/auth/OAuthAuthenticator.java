@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
@@ -33,7 +34,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
      * The OAuth token.
      */
     @Nullable
-    protected Token token;
+    protected volatile Token token;
 
     /**
      * Constructs an OAuthAuthenticator.
@@ -49,14 +50,22 @@ public abstract class OAuthAuthenticator extends Authenticator {
     }
 
     public String getAuthToken() throws ZitadelException {
+        //noinspection DataFlowIssue
         if (token == null || token.isExpired()) {
-            refreshToken();
+            synchronized (this) {
+                //noinspection DataFlowIssue
+                if (token == null || token.isExpired()) {
+                    refreshToken();
+                }
+            }
         }
 
         if (token == null) {
-            throw new RuntimeException();
+            throw new IllegalStateException("Token could not be refreshed successfully.");
+        } else {
+            //noinspection DataFlowIssue
+            return token.accessToken;
         }
-        return token.accessToken;
     }
 
     /**
@@ -129,7 +138,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
          * @return true if expired; false otherwise.
          */
         private boolean isExpired() {
-            return Instant.now().isAfter(expiresAt);
+            return Instant.now().isAfter(expiresAt.minus(5, ChronoUnit.MINUTES));
         }
     }
 
