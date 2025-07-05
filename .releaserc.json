@@ -46,6 +46,7 @@
         ]
       }
     ],
+    "semantic-release-maven",
     [
       "@semantic-release/git",
       {
