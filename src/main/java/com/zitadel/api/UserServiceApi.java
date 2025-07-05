@@ -298,7 +298,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -371,7 +371,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -397,7 +397,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * Create an invite code for a user
-   * Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.
+   * Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods. If an invite code has been created previously, it&#39;s url template and application name will be used as defaults for the new code. The new code will overwrite the previous one and make it invalid.
    * @param userId  (required)
    * @param userServiceCreateInviteCodeRequest  (required)
    * @return UserServiceCreateInviteCodeResponse
@@ -410,7 +410,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * Create an invite code for a user
-   * Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.
+   * Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods. If an invite code has been created previously, it&#39;s url template and application name will be used as defaults for the new code. The new code will overwrite the previous one and make it invalid.
    * @param userId  (required)
    * @param userServiceCreateInviteCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -602,7 +602,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -821,7 +821,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -1131,7 +1131,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -1276,7 +1276,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -1428,7 +1428,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -1580,7 +1580,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -1746,7 +1746,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -2045,7 +2045,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -2303,11 +2303,13 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * Resend an invite code for a user
-   * Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods. A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.
+   * Deprecated: Use [CreateInviteCode](apis/resources/user_service_v2/user-service-create-invite-code.api.mdx) instead.  Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods. A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.
    * @param userId  (required)
    * @return UserServiceResendInviteCodeResponse
    * @throws ApiException if fails to make API call
+   * @deprecated
    */
+  @Deprecated
   public UserServiceResendInviteCodeResponse userServiceResendInviteCode(String userId) throws ApiException {
     return this.userServiceResendInviteCode(userId, Collections.emptyMap());
   }
@@ -2315,12 +2317,14 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * Resend an invite code for a user
-   * Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods. A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.
+   * Deprecated: Use [CreateInviteCode](apis/resources/user_service_v2/user-service-create-invite-code.api.mdx) instead.  Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods. A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.
    * @param userId  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceResendInviteCodeResponse
    * @throws ApiException if fails to make API call
+   * @deprecated
    */
+  @Deprecated
   private UserServiceResendInviteCodeResponse userServiceResendInviteCode(String userId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
@@ -2969,7 +2973,7 @@ public class UserServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
