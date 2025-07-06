@@ -3,6 +3,7 @@ package com.zitadel.auth;
 import com.zitadel.AbstractIntegrationTest;
 import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
+import com.zitadel.ZitadelException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -27,7 +28,7 @@ class UsePrivateKeySpec extends AbstractIntegrationTest {
     @Test
     void testRetrievesGeneralSettingsWithValidAuth() throws ApiException {
         Zitadel client = Zitadel.withPrivateKey(getBaseUrl(), getJwtKeyPath());
-        client.settings.settingsServiceGetGeneralSettings();
+        client.settings.getGeneralSettings();
     }
 
     /**
@@ -37,6 +38,6 @@ class UsePrivateKeySpec extends AbstractIntegrationTest {
     void testRaisesApiExceptionWithInvalidAuth() {
         Zitadel invalid = Zitadel.withPrivateKey("https://zitadel.cloud", getJwtKeyPath());
 
-        assertThrows(RuntimeException.class, invalid.settings::settingsServiceGetGeneralSettings);
+        assertThrows(ZitadelException.class, invalid.settings::getGeneralSettings);
     }
 }

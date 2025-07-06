@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zitadel.AbstractIntegrationTest;
 import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
+import com.zitadel.ZitadelException;
 import com.zitadel.model.SettingsServiceGetGeneralSettingsResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -66,8 +67,8 @@ class UseClientCredentialsSpec extends AbstractIntegrationTest {
                 if (secretResponse != null && secretResponse.statusCode() < 300) {
                     Map<String, Object> secretData = objectMapper.readValue(secretResponse.body(), new TypeReference<>() {
                     });
-                    String clientId = (String)secretData.get("clientId");
-                    String clientSecret = (String)secretData.get("clientSecret");
+                    String clientId = (String) secretData.get("clientId");
+                    String clientSecret = (String) secretData.get("clientSecret");
 
                     if (clientId != null && !clientId.isEmpty() && clientSecret != null && !clientSecret.isEmpty()) {
                         return Map.of("clientId", clientId, "clientSecret", clientSecret);
@@ -98,7 +99,7 @@ class UseClientCredentialsSpec extends AbstractIntegrationTest {
         Zitadel client = Zitadel.withClientCredentials(getBaseUrl(), credentials.getOrDefault("clientId", ""), credentials.getOrDefault("clientSecret", ""));
 
         SettingsServiceGetGeneralSettingsResponse response =
-            client.settings.settingsServiceGetGeneralSettings();
+            client.settings.getGeneralSettings();
         assertNotNull(response);
     }
 
@@ -109,7 +110,7 @@ class UseClientCredentialsSpec extends AbstractIntegrationTest {
     void testRaisesApiExceptionWithInvalidAuth() {
         Zitadel invalid = Zitadel.withClientCredentials(getBaseUrl(), "invalid", "invalid");
 
-        assertThrows(RuntimeException.class, invalid.settings::settingsServiceGetGeneralSettings
+        assertThrows(ZitadelException.class, invalid.settings::getGeneralSettings
         );
     }
 }

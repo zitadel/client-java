@@ -13,18 +13,29 @@ import java.util.function.Consumer;
 @SuppressFBWarnings("URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD")
 public class Zitadel {
     public final ApiClient apiClient;
-    public final ActionServiceApi actions;
+    public final BetaProjectServiceApi betaProjects;
+    public final BetaAppServiceApi betaApps;
+    public final BetaOidcServiceApi betaOidc;
+    public final BetaUserServiceApi betaUsers;
+    public final BetaOrganizationServiceApi betaOrganizations;
+    public final BetaSettingsServiceApi betaSettings;
+    public final BetaInternalPermissionServiceApi betaPermissions;
+    public final BetaAuthorizationServiceApi betaAuthorizations;
+    public final BetaSessionServiceApi betaSessions;
+    public final BetaInstanceServiceApi betaInstance;
+    public final BetaTelemetryServiceApi betaTelemetry;
+    public final BetaFeatureServiceApi betaFeatures;
+    public final BetaWebKeyServiceApi betaWebkeys;
+    public final BetaActionServiceApi betaActions;
+    public final UserServiceApi users;
+    public final SessionServiceApi sessions;
+    public final OidcServiceApi oidc;
     public final FeatureServiceApi features;
     public final IdentityProviderServiceApi idps;
-    public final OidcServiceApi oidc;
     public final OrganizationServiceApi organizations;
-    public final SamlServiceApi saml;
-    public final SessionServiceApi sessions;
     public final SettingsServiceApi settings;
+    public final SamlServiceApi saml;
     public final WebKeyServiceApi webkeys;
-
-    @SuppressWarnings("unused")
-    public final UserServiceApi users;
 
     public Zitadel(Authenticator authenticator) {
         this(
@@ -41,15 +52,28 @@ public class Zitadel {
             mutateApiClient.accept(this.apiClient);
         }
 
-        this.actions = new ActionServiceApi(apiClient);
+        this.betaProjects = new BetaProjectServiceApi(apiClient);
+        this.betaApps = new BetaAppServiceApi(apiClient);
+        this.betaOidc = new BetaOidcServiceApi(apiClient);
+        this.betaUsers = new BetaUserServiceApi(apiClient);
+        this.betaOrganizations = new BetaOrganizationServiceApi(apiClient);
+        this.betaSettings = new BetaSettingsServiceApi(apiClient);
+        this.betaPermissions = new BetaInternalPermissionServiceApi(apiClient);
+        this.betaAuthorizations = new BetaAuthorizationServiceApi(apiClient);
+        this.betaSessions = new BetaSessionServiceApi(apiClient);
+        this.betaInstance = new BetaInstanceServiceApi(apiClient);
+        this.betaTelemetry = new BetaTelemetryServiceApi(apiClient);
+        this.betaFeatures = new BetaFeatureServiceApi(apiClient);
+        this.betaWebkeys = new BetaWebKeyServiceApi(apiClient);
+        this.betaActions = new BetaActionServiceApi(apiClient);
+        this.users = new UserServiceApi(apiClient);
+        this.sessions = new SessionServiceApi(apiClient);
+        this.oidc = new OidcServiceApi(apiClient);
         this.features = new FeatureServiceApi(apiClient);
         this.idps = new IdentityProviderServiceApi(apiClient);
-        this.oidc = new OidcServiceApi(apiClient);
         this.organizations = new OrganizationServiceApi(apiClient);
-        this.saml = new SamlServiceApi(apiClient);
-        this.sessions = new SessionServiceApi(apiClient);
         this.settings = new SettingsServiceApi(apiClient);
-        this.users = new UserServiceApi(apiClient);
+        this.saml = new SamlServiceApi(apiClient);
         this.webkeys = new WebKeyServiceApi(apiClient);
     }
 
