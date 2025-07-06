@@ -20,6 +20,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -30,40 +34,78 @@ import java.util.StringJoiner;
  * SessionServiceDeleteSessionRequest
  */
 @JsonPropertyOrder({
+  SessionServiceDeleteSessionRequest.JSON_PROPERTY_SESSION_ID,
   SessionServiceDeleteSessionRequest.JSON_PROPERTY_SESSION_TOKEN
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SessionServiceDeleteSessionRequest {
+  public static final String JSON_PROPERTY_SESSION_ID = "sessionId";
+  @javax.annotation.Nullable
+  private String sessionId;
+
   public static final String JSON_PROPERTY_SESSION_TOKEN = "sessionToken";
   @javax.annotation.Nullable
-  private String sessionToken;
+  private JsonNullable<String> sessionToken = JsonNullable.<String>undefined();
 
   public SessionServiceDeleteSessionRequest() {
   }
 
-  public SessionServiceDeleteSessionRequest sessionToken(@javax.annotation.Nullable String sessionToken) {
+  public SessionServiceDeleteSessionRequest sessionId(@javax.annotation.Nullable String sessionId) {
     
-    this.sessionToken = sessionToken;
+    this.sessionId = sessionId;
     return this;
   }
 
   /**
-   * \&quot;The current token of the session, previously returned on the create / update request. The token is required unless the authenticated user terminates the own session or is granted the &#x60;session.delete&#x60; permission.\&quot;
-   * @return sessionToken
+   * Get sessionId
+   * @return sessionId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
+  @JsonProperty(JSON_PROPERTY_SESSION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getSessionToken() {
-    return sessionToken;
+  public String getSessionId() {
+    return sessionId;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_SESSION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSessionId(@javax.annotation.Nullable String sessionId) {
+    this.sessionId = sessionId;
+  }
+
+  public SessionServiceDeleteSessionRequest sessionToken(@javax.annotation.Nullable String sessionToken) {
+    this.sessionToken = JsonNullable.<String>of(sessionToken);
+    
+    return this;
+  }
+
+  /**
+   * Get sessionToken
+   * @return sessionToken
+   */
+  @javax.annotation.Nullable
+  @JsonIgnore
+
+  public String getSessionToken() {
+        return sessionToken.orElse(null);
+  }
+
   @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSessionToken(@javax.annotation.Nullable String sessionToken) {
+
+  public JsonNullable<String> getSessionToken_JsonNullable() {
+    return sessionToken;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
+  public void setSessionToken_JsonNullable(JsonNullable<String> sessionToken) {
     this.sessionToken = sessionToken;
+  }
+
+  public void setSessionToken(@javax.annotation.Nullable String sessionToken) {
+    this.sessionToken = JsonNullable.<String>of(sessionToken);
   }
 
   @Override
@@ -75,18 +117,31 @@ public class SessionServiceDeleteSessionRequest {
       return false;
     }
     SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest = (SessionServiceDeleteSessionRequest) o;
-    return Objects.equals(this.sessionToken, sessionServiceDeleteSessionRequest.sessionToken);
+    return Objects.equals(this.sessionId, sessionServiceDeleteSessionRequest.sessionId) &&
+        equalsNullable(this.sessionToken, sessionServiceDeleteSessionRequest.sessionToken);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sessionToken);
+    return Objects.hash(sessionId, hashCodeNullable(sessionToken));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SessionServiceDeleteSessionRequest {\n");
+    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("    sessionToken: ").append(toIndentedString(sessionToken)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -134,6 +189,16 @@ public class SessionServiceDeleteSessionRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `sessionId` to the URL query string
+    if (getSessionId() != null) {
+      try {
+        joiner.add(String.format("%ssessionId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSessionId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     // add `sessionToken` to the URL query string
     if (getSessionToken() != null) {

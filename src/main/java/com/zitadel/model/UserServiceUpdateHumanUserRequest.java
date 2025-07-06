@@ -24,6 +24,10 @@ import com.zitadel.model.UserServiceSetHumanEmail;
 import com.zitadel.model.UserServiceSetHumanPhone;
 import com.zitadel.model.UserServiceSetHumanProfile;
 import com.zitadel.model.UserServiceSetPassword;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -34,6 +38,7 @@ import java.util.StringJoiner;
  * UserServiceUpdateHumanUserRequest
  */
 @JsonPropertyOrder({
+  UserServiceUpdateHumanUserRequest.JSON_PROPERTY_USER_ID,
   UserServiceUpdateHumanUserRequest.JSON_PROPERTY_USERNAME,
   UserServiceUpdateHumanUserRequest.JSON_PROPERTY_PROFILE,
   UserServiceUpdateHumanUserRequest.JSON_PROPERTY_EMAIL,
@@ -42,9 +47,13 @@ import java.util.StringJoiner;
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceUpdateHumanUserRequest {
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nullable
+  private String userId;
+
   public static final String JSON_PROPERTY_USERNAME = "username";
   @javax.annotation.Nullable
-  private String username;
+  private JsonNullable<String> username = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_PROFILE = "profile";
   @javax.annotation.Nullable
@@ -65,9 +74,34 @@ public class UserServiceUpdateHumanUserRequest {
   public UserServiceUpdateHumanUserRequest() {
   }
 
-  public UserServiceUpdateHumanUserRequest username(@javax.annotation.Nullable String username) {
+  public UserServiceUpdateHumanUserRequest userId(@javax.annotation.Nullable String userId) {
     
-    this.username = username;
+    this.userId = userId;
+    return this;
+  }
+
+  /**
+   * Get userId
+   * @return userId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserId(@javax.annotation.Nullable String userId) {
+    this.userId = userId;
+  }
+
+  public UserServiceUpdateHumanUserRequest username(@javax.annotation.Nullable String username) {
+    this.username = JsonNullable.<String>of(username);
+    
     return this;
   }
 
@@ -76,18 +110,26 @@ public class UserServiceUpdateHumanUserRequest {
    * @return username
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USERNAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getUsername() {
-    return username;
+        return username.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_USERNAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsername(@javax.annotation.Nullable String username) {
+
+  public JsonNullable<String> getUsername_JsonNullable() {
+    return username;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_USERNAME)
+  public void setUsername_JsonNullable(JsonNullable<String> username) {
     this.username = username;
+  }
+
+  public void setUsername(@javax.annotation.Nullable String username) {
+    this.username = JsonNullable.<String>of(username);
   }
 
   public UserServiceUpdateHumanUserRequest profile(@javax.annotation.Nullable UserServiceSetHumanProfile profile) {
@@ -199,22 +241,35 @@ public class UserServiceUpdateHumanUserRequest {
       return false;
     }
     UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest = (UserServiceUpdateHumanUserRequest) o;
-    return Objects.equals(this.username, userServiceUpdateHumanUserRequest.username) &&
+    return Objects.equals(this.userId, userServiceUpdateHumanUserRequest.userId) &&
+        equalsNullable(this.username, userServiceUpdateHumanUserRequest.username) &&
         Objects.equals(this.profile, userServiceUpdateHumanUserRequest.profile) &&
         Objects.equals(this.email, userServiceUpdateHumanUserRequest.email) &&
         Objects.equals(this.phone, userServiceUpdateHumanUserRequest.phone) &&
         Objects.equals(this.password, userServiceUpdateHumanUserRequest.password);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(username, profile, email, phone, password);
+    return Objects.hash(userId, hashCodeNullable(username), profile, email, phone, password);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceUpdateHumanUserRequest {\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    profile: ").append(toIndentedString(profile)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
@@ -266,6 +321,16 @@ public class UserServiceUpdateHumanUserRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `userId` to the URL query string
+    if (getUserId() != null) {
+      try {
+        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     // add `username` to the URL query string
     if (getUsername() != null) {

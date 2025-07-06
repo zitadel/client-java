@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.Ldap1;
+import com.zitadel.model.Urls;
 import com.zitadel.model.UserServiceLDAPCredentials;
 import com.zitadel.model.UserServiceRedirectURLs;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -33,8 +35,8 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   UserServiceStartIdentityProviderIntentRequest.JSON_PROPERTY_IDP_ID,
-  UserServiceStartIdentityProviderIntentRequest.JSON_PROPERTY_URLS,
-  UserServiceStartIdentityProviderIntentRequest.JSON_PROPERTY_LDAP
+  UserServiceStartIdentityProviderIntentRequest.JSON_PROPERTY_LDAP,
+  UserServiceStartIdentityProviderIntentRequest.JSON_PROPERTY_URLS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceStartIdentityProviderIntentRequest {
@@ -42,13 +44,13 @@ public class UserServiceStartIdentityProviderIntentRequest {
   @javax.annotation.Nullable
   private String idpId;
 
-  public static final String JSON_PROPERTY_URLS = "urls";
-  @javax.annotation.Nullable
-  private UserServiceRedirectURLs urls;
-
   public static final String JSON_PROPERTY_LDAP = "ldap";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private UserServiceLDAPCredentials ldap;
+
+  public static final String JSON_PROPERTY_URLS = "urls";
+  @javax.annotation.Nonnull
+  private UserServiceRedirectURLs urls;
 
   public UserServiceStartIdentityProviderIntentRequest() {
   }
@@ -60,7 +62,7 @@ public class UserServiceStartIdentityProviderIntentRequest {
   }
 
   /**
-   * ID for existing identity provider
+   * Get idpId
    * @return idpId
    */
   @javax.annotation.Nullable
@@ -78,32 +80,7 @@ public class UserServiceStartIdentityProviderIntentRequest {
     this.idpId = idpId;
   }
 
-  public UserServiceStartIdentityProviderIntentRequest urls(@javax.annotation.Nullable UserServiceRedirectURLs urls) {
-    
-    this.urls = urls;
-    return this;
-  }
-
-  /**
-   * Get urls
-   * @return urls
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_URLS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceRedirectURLs getUrls() {
-    return urls;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_URLS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUrls(@javax.annotation.Nullable UserServiceRedirectURLs urls) {
-    this.urls = urls;
-  }
-
-  public UserServiceStartIdentityProviderIntentRequest ldap(@javax.annotation.Nullable UserServiceLDAPCredentials ldap) {
+  public UserServiceStartIdentityProviderIntentRequest ldap(@javax.annotation.Nonnull UserServiceLDAPCredentials ldap) {
     
     this.ldap = ldap;
     return this;
@@ -113,9 +90,9 @@ public class UserServiceStartIdentityProviderIntentRequest {
    * Get ldap
    * @return ldap
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_LDAP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public UserServiceLDAPCredentials getLdap() {
     return ldap;
@@ -123,9 +100,34 @@ public class UserServiceStartIdentityProviderIntentRequest {
 
 
   @JsonProperty(JSON_PROPERTY_LDAP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLdap(@javax.annotation.Nullable UserServiceLDAPCredentials ldap) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setLdap(@javax.annotation.Nonnull UserServiceLDAPCredentials ldap) {
     this.ldap = ldap;
+  }
+
+  public UserServiceStartIdentityProviderIntentRequest urls(@javax.annotation.Nonnull UserServiceRedirectURLs urls) {
+    
+    this.urls = urls;
+    return this;
+  }
+
+  /**
+   * Get urls
+   * @return urls
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_URLS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceRedirectURLs getUrls() {
+    return urls;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_URLS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUrls(@javax.annotation.Nonnull UserServiceRedirectURLs urls) {
+    this.urls = urls;
   }
 
   @Override
@@ -138,13 +140,13 @@ public class UserServiceStartIdentityProviderIntentRequest {
     }
     UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest = (UserServiceStartIdentityProviderIntentRequest) o;
     return Objects.equals(this.idpId, userServiceStartIdentityProviderIntentRequest.idpId) &&
-        Objects.equals(this.urls, userServiceStartIdentityProviderIntentRequest.urls) &&
-        Objects.equals(this.ldap, userServiceStartIdentityProviderIntentRequest.ldap);
+        Objects.equals(this.ldap, userServiceStartIdentityProviderIntentRequest.ldap) &&
+        Objects.equals(this.urls, userServiceStartIdentityProviderIntentRequest.urls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idpId, urls, ldap);
+    return Objects.hash(idpId, ldap, urls);
   }
 
   @Override
@@ -152,8 +154,8 @@ public class UserServiceStartIdentityProviderIntentRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceStartIdentityProviderIntentRequest {\n");
     sb.append("    idpId: ").append(toIndentedString(idpId)).append("\n");
-    sb.append("    urls: ").append(toIndentedString(urls)).append("\n");
     sb.append("    ldap: ").append(toIndentedString(ldap)).append("\n");
+    sb.append("    urls: ").append(toIndentedString(urls)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -200,6 +202,16 @@ public class UserServiceStartIdentityProviderIntentRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `ldap` to the URL query string
+    if (getLdap() != null) {
+      joiner.add(getLdap().toUrlQueryString(prefix + "ldap" + suffix));
+    }
+
+    // add `urls` to the URL query string
+    if (getUrls() != null) {
+      joiner.add(getUrls().toUrlQueryString(prefix + "urls" + suffix));
+    }
 
     return joiner.toString();
   }

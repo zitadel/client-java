@@ -21,6 +21,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.UserServiceDetails;
+import com.zitadel.model.UserServiceValue;
+import java.util.HashMap;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -47,7 +50,7 @@ public class UserServiceRegisterPasskeyResponse {
 
   public static final String JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL_CREATION_OPTIONS = "publicKeyCredentialCreationOptions";
   @javax.annotation.Nullable
-  private Object publicKeyCredentialCreationOptions;
+  private Map<String, UserServiceValue> publicKeyCredentialCreationOptions = new HashMap<>();
 
   public UserServiceRegisterPasskeyResponse() {
   }
@@ -102,28 +105,36 @@ public class UserServiceRegisterPasskeyResponse {
     this.passkeyId = passkeyId;
   }
 
-  public UserServiceRegisterPasskeyResponse publicKeyCredentialCreationOptions(@javax.annotation.Nullable Object publicKeyCredentialCreationOptions) {
+  public UserServiceRegisterPasskeyResponse publicKeyCredentialCreationOptions(@javax.annotation.Nullable Map<String, UserServiceValue> publicKeyCredentialCreationOptions) {
     
     this.publicKeyCredentialCreationOptions = publicKeyCredentialCreationOptions;
     return this;
   }
 
+  public UserServiceRegisterPasskeyResponse putPublicKeyCredentialCreationOptionsItem(String key, UserServiceValue publicKeyCredentialCreationOptionsItem) {
+    if (this.publicKeyCredentialCreationOptions == null) {
+      this.publicKeyCredentialCreationOptions = new HashMap<>();
+    }
+    this.publicKeyCredentialCreationOptions.put(key, publicKeyCredentialCreationOptionsItem);
+    return this;
+  }
+
   /**
-   * Options for Credential Creation (dictionary PublicKeyCredentialCreationOptions). Generated helper methods transform the field to JSON, for use in a WebauthN client. See also:  https://www.w3.org/TR/webauthn/#dictdef-publickeycredentialcreationoptions
+   * &#x60;Struct&#x60; represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, &#x60;Struct&#x60;  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for &#x60;Struct&#x60; is JSON object.
    * @return publicKeyCredentialCreationOptions
    */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL_CREATION_OPTIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Object getPublicKeyCredentialCreationOptions() {
+  public Map<String, UserServiceValue> getPublicKeyCredentialCreationOptions() {
     return publicKeyCredentialCreationOptions;
   }
 
 
   @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL_CREATION_OPTIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPublicKeyCredentialCreationOptions(@javax.annotation.Nullable Object publicKeyCredentialCreationOptions) {
+  public void setPublicKeyCredentialCreationOptions(@javax.annotation.Nullable Map<String, UserServiceValue> publicKeyCredentialCreationOptions) {
     this.publicKeyCredentialCreationOptions = publicKeyCredentialCreationOptions;
   }
 
@@ -217,11 +228,11 @@ public class UserServiceRegisterPasskeyResponse {
 
     // add `publicKeyCredentialCreationOptions` to the URL query string
     if (getPublicKeyCredentialCreationOptions() != null) {
-      try {
-        joiner.add(String.format("%spublicKeyCredentialCreationOptions%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPublicKeyCredentialCreationOptions()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
+      for (String _key : getPublicKeyCredentialCreationOptions().keySet()) {
+        if (getPublicKeyCredentialCreationOptions().get(_key) != null) {
+          joiner.add(getPublicKeyCredentialCreationOptions().get(_key).toUrlQueryString(String.format("%spublicKeyCredentialCreationOptions%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix))));
+        }
       }
     }
 

@@ -20,6 +20,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -36,34 +40,42 @@ import java.util.StringJoiner;
 public class OrganizationServiceSendEmailVerificationCode {
   public static final String JSON_PROPERTY_URL_TEMPLATE = "urlTemplate";
   @javax.annotation.Nullable
-  private String urlTemplate;
+  private JsonNullable<String> urlTemplate = JsonNullable.<String>undefined();
 
   public OrganizationServiceSendEmailVerificationCode() {
   }
 
   public OrganizationServiceSendEmailVerificationCode urlTemplate(@javax.annotation.Nullable String urlTemplate) {
+    this.urlTemplate = JsonNullable.<String>of(urlTemplate);
     
-    this.urlTemplate = urlTemplate;
     return this;
   }
 
   /**
-   * Optionally set a url_template, which will be used in the verification mail sent by ZITADEL to guide the user to your verification page. If no template is set, the default ZITADEL url will be used.  The following placeholders can be used: UserID, OrgID, Code
+   * Optionally set a url_template, which will be used in the verification mail sent by ZITADEL to guide the user to your verification page.  If no template is set, the default ZITADEL url will be used.   The following placeholders can be used: UserID, OrgID, Code
    * @return urlTemplate
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_URL_TEMPLATE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getUrlTemplate() {
-    return urlTemplate;
+        return urlTemplate.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_URL_TEMPLATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUrlTemplate(@javax.annotation.Nullable String urlTemplate) {
+
+  public JsonNullable<String> getUrlTemplate_JsonNullable() {
+    return urlTemplate;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_URL_TEMPLATE)
+  public void setUrlTemplate_JsonNullable(JsonNullable<String> urlTemplate) {
     this.urlTemplate = urlTemplate;
+  }
+
+  public void setUrlTemplate(@javax.annotation.Nullable String urlTemplate) {
+    this.urlTemplate = JsonNullable.<String>of(urlTemplate);
   }
 
   @Override
@@ -75,12 +87,23 @@ public class OrganizationServiceSendEmailVerificationCode {
       return false;
     }
     OrganizationServiceSendEmailVerificationCode organizationServiceSendEmailVerificationCode = (OrganizationServiceSendEmailVerificationCode) o;
-    return Objects.equals(this.urlTemplate, organizationServiceSendEmailVerificationCode.urlTemplate);
+    return equalsNullable(this.urlTemplate, organizationServiceSendEmailVerificationCode.urlTemplate);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(urlTemplate);
+    return Objects.hash(hashCodeNullable(urlTemplate));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

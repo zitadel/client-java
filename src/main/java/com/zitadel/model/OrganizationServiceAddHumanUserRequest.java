@@ -20,17 +20,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.HashedPassword1;
 import com.zitadel.model.OrganizationServiceHashedPassword;
 import com.zitadel.model.OrganizationServiceIDPLink;
+import com.zitadel.model.OrganizationServiceOrganization;
 import com.zitadel.model.OrganizationServicePassword;
 import com.zitadel.model.OrganizationServiceSetHumanEmail;
 import com.zitadel.model.OrganizationServiceSetHumanPhone;
 import com.zitadel.model.OrganizationServiceSetHumanProfile;
 import com.zitadel.model.OrganizationServiceSetMetadataEntry;
-import com.zitadel.model.Zitadelobjectv2Organization;
+import com.zitadel.model.Password1;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -48,24 +54,24 @@ import java.util.StringJoiner;
   OrganizationServiceAddHumanUserRequest.JSON_PROPERTY_EMAIL,
   OrganizationServiceAddHumanUserRequest.JSON_PROPERTY_PHONE,
   OrganizationServiceAddHumanUserRequest.JSON_PROPERTY_METADATA,
-  OrganizationServiceAddHumanUserRequest.JSON_PROPERTY_PASSWORD,
-  OrganizationServiceAddHumanUserRequest.JSON_PROPERTY_HASHED_PASSWORD,
   OrganizationServiceAddHumanUserRequest.JSON_PROPERTY_IDP_LINKS,
-  OrganizationServiceAddHumanUserRequest.JSON_PROPERTY_TOTP_SECRET
+  OrganizationServiceAddHumanUserRequest.JSON_PROPERTY_TOTP_SECRET,
+  OrganizationServiceAddHumanUserRequest.JSON_PROPERTY_HASHED_PASSWORD,
+  OrganizationServiceAddHumanUserRequest.JSON_PROPERTY_PASSWORD
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OrganizationServiceAddHumanUserRequest {
   public static final String JSON_PROPERTY_USER_ID = "userId";
   @javax.annotation.Nullable
-  private String userId;
+  private JsonNullable<String> userId = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_USERNAME = "username";
   @javax.annotation.Nullable
-  private String username;
+  private JsonNullable<String> username = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_ORGANIZATION = "organization";
   @javax.annotation.Nullable
-  private Zitadelobjectv2Organization organization;
+  private OrganizationServiceOrganization organization;
 
   public static final String JSON_PROPERTY_PROFILE = "profile";
   @javax.annotation.Nonnull
@@ -83,28 +89,28 @@ public class OrganizationServiceAddHumanUserRequest {
   @javax.annotation.Nullable
   private List<OrganizationServiceSetMetadataEntry> metadata = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_PASSWORD = "password";
-  @javax.annotation.Nullable
-  private OrganizationServicePassword password;
-
-  public static final String JSON_PROPERTY_HASHED_PASSWORD = "hashedPassword";
-  @javax.annotation.Nullable
-  private OrganizationServiceHashedPassword hashedPassword;
-
   public static final String JSON_PROPERTY_IDP_LINKS = "idpLinks";
   @javax.annotation.Nullable
   private List<OrganizationServiceIDPLink> idpLinks = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TOTP_SECRET = "totpSecret";
   @javax.annotation.Nullable
-  private String totpSecret;
+  private JsonNullable<String> totpSecret = JsonNullable.<String>undefined();
+
+  public static final String JSON_PROPERTY_HASHED_PASSWORD = "hashedPassword";
+  @javax.annotation.Nonnull
+  private OrganizationServiceHashedPassword hashedPassword;
+
+  public static final String JSON_PROPERTY_PASSWORD = "password";
+  @javax.annotation.Nonnull
+  private OrganizationServicePassword password;
 
   public OrganizationServiceAddHumanUserRequest() {
   }
 
   public OrganizationServiceAddHumanUserRequest userId(@javax.annotation.Nullable String userId) {
+    this.userId = JsonNullable.<String>of(userId);
     
-    this.userId = userId;
     return this;
   }
 
@@ -113,23 +119,31 @@ public class OrganizationServiceAddHumanUserRequest {
    * @return userId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getUserId() {
-    return userId;
+        return userId.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_USER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserId(@javax.annotation.Nullable String userId) {
+
+  public JsonNullable<String> getUserId_JsonNullable() {
+    return userId;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  public void setUserId_JsonNullable(JsonNullable<String> userId) {
     this.userId = userId;
   }
 
+  public void setUserId(@javax.annotation.Nullable String userId) {
+    this.userId = JsonNullable.<String>of(userId);
+  }
+
   public OrganizationServiceAddHumanUserRequest username(@javax.annotation.Nullable String username) {
+    this.username = JsonNullable.<String>of(username);
     
-    this.username = username;
     return this;
   }
 
@@ -138,21 +152,29 @@ public class OrganizationServiceAddHumanUserRequest {
    * @return username
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USERNAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getUsername() {
-    return username;
+        return username.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_USERNAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsername(@javax.annotation.Nullable String username) {
+
+  public JsonNullable<String> getUsername_JsonNullable() {
+    return username;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_USERNAME)
+  public void setUsername_JsonNullable(JsonNullable<String> username) {
     this.username = username;
   }
 
-  public OrganizationServiceAddHumanUserRequest organization(@javax.annotation.Nullable Zitadelobjectv2Organization organization) {
+  public void setUsername(@javax.annotation.Nullable String username) {
+    this.username = JsonNullable.<String>of(username);
+  }
+
+  public OrganizationServiceAddHumanUserRequest organization(@javax.annotation.Nullable OrganizationServiceOrganization organization) {
     
     this.organization = organization;
     return this;
@@ -166,14 +188,14 @@ public class OrganizationServiceAddHumanUserRequest {
   @JsonProperty(JSON_PROPERTY_ORGANIZATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Zitadelobjectv2Organization getOrganization() {
+  public OrganizationServiceOrganization getOrganization() {
     return organization;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ORGANIZATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOrganization(@javax.annotation.Nullable Zitadelobjectv2Organization organization) {
+  public void setOrganization(@javax.annotation.Nullable OrganizationServiceOrganization organization) {
     this.organization = organization;
   }
 
@@ -285,56 +307,6 @@ public class OrganizationServiceAddHumanUserRequest {
     this.metadata = metadata;
   }
 
-  public OrganizationServiceAddHumanUserRequest password(@javax.annotation.Nullable OrganizationServicePassword password) {
-    
-    this.password = password;
-    return this;
-  }
-
-  /**
-   * Get password
-   * @return password
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public OrganizationServicePassword getPassword() {
-    return password;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPassword(@javax.annotation.Nullable OrganizationServicePassword password) {
-    this.password = password;
-  }
-
-  public OrganizationServiceAddHumanUserRequest hashedPassword(@javax.annotation.Nullable OrganizationServiceHashedPassword hashedPassword) {
-    
-    this.hashedPassword = hashedPassword;
-    return this;
-  }
-
-  /**
-   * Get hashedPassword
-   * @return hashedPassword
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HASHED_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public OrganizationServiceHashedPassword getHashedPassword() {
-    return hashedPassword;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_HASHED_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHashedPassword(@javax.annotation.Nullable OrganizationServiceHashedPassword hashedPassword) {
-    this.hashedPassword = hashedPassword;
-  }
-
   public OrganizationServiceAddHumanUserRequest idpLinks(@javax.annotation.Nullable List<OrganizationServiceIDPLink> idpLinks) {
     
     this.idpLinks = idpLinks;
@@ -369,28 +341,86 @@ public class OrganizationServiceAddHumanUserRequest {
   }
 
   public OrganizationServiceAddHumanUserRequest totpSecret(@javax.annotation.Nullable String totpSecret) {
+    this.totpSecret = JsonNullable.<String>of(totpSecret);
     
-    this.totpSecret = totpSecret;
     return this;
   }
 
   /**
-   * An Implementation of RFC 6238 is used, with HMAC-SHA-1 and time-step of 30 seconds. Currently no other options are supported, and if anything different is used the validation will fail.
+   * An Implementation of RFC 6238 is used, with HMAC-SHA-1 and time-step of 30 seconds.  Currently no other options are supported, and if anything different is used the validation will fail.
    * @return totpSecret
    */
   @javax.annotation.Nullable
+  @JsonIgnore
+
+  public String getTotpSecret() {
+        return totpSecret.orElse(null);
+  }
+
   @JsonProperty(JSON_PROPERTY_TOTP_SECRET)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getTotpSecret() {
+  public JsonNullable<String> getTotpSecret_JsonNullable() {
     return totpSecret;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_TOTP_SECRET)
+  public void setTotpSecret_JsonNullable(JsonNullable<String> totpSecret) {
+    this.totpSecret = totpSecret;
+  }
+
+  public void setTotpSecret(@javax.annotation.Nullable String totpSecret) {
+    this.totpSecret = JsonNullable.<String>of(totpSecret);
+  }
+
+  public OrganizationServiceAddHumanUserRequest hashedPassword(@javax.annotation.Nonnull OrganizationServiceHashedPassword hashedPassword) {
+    
+    this.hashedPassword = hashedPassword;
+    return this;
+  }
+
+  /**
+   * Get hashedPassword
+   * @return hashedPassword
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_HASHED_PASSWORD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public OrganizationServiceHashedPassword getHashedPassword() {
+    return hashedPassword;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOTP_SECRET)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTotpSecret(@javax.annotation.Nullable String totpSecret) {
-    this.totpSecret = totpSecret;
+  @JsonProperty(JSON_PROPERTY_HASHED_PASSWORD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setHashedPassword(@javax.annotation.Nonnull OrganizationServiceHashedPassword hashedPassword) {
+    this.hashedPassword = hashedPassword;
+  }
+
+  public OrganizationServiceAddHumanUserRequest password(@javax.annotation.Nonnull OrganizationServicePassword password) {
+    
+    this.password = password;
+    return this;
+  }
+
+  /**
+   * Get password
+   * @return password
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_PASSWORD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public OrganizationServicePassword getPassword() {
+    return password;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PASSWORD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setPassword(@javax.annotation.Nonnull OrganizationServicePassword password) {
+    this.password = password;
   }
 
   @Override
@@ -402,22 +432,33 @@ public class OrganizationServiceAddHumanUserRequest {
       return false;
     }
     OrganizationServiceAddHumanUserRequest organizationServiceAddHumanUserRequest = (OrganizationServiceAddHumanUserRequest) o;
-    return Objects.equals(this.userId, organizationServiceAddHumanUserRequest.userId) &&
-        Objects.equals(this.username, organizationServiceAddHumanUserRequest.username) &&
+    return equalsNullable(this.userId, organizationServiceAddHumanUserRequest.userId) &&
+        equalsNullable(this.username, organizationServiceAddHumanUserRequest.username) &&
         Objects.equals(this.organization, organizationServiceAddHumanUserRequest.organization) &&
         Objects.equals(this.profile, organizationServiceAddHumanUserRequest.profile) &&
         Objects.equals(this.email, organizationServiceAddHumanUserRequest.email) &&
         Objects.equals(this.phone, organizationServiceAddHumanUserRequest.phone) &&
         Objects.equals(this.metadata, organizationServiceAddHumanUserRequest.metadata) &&
-        Objects.equals(this.password, organizationServiceAddHumanUserRequest.password) &&
-        Objects.equals(this.hashedPassword, organizationServiceAddHumanUserRequest.hashedPassword) &&
         Objects.equals(this.idpLinks, organizationServiceAddHumanUserRequest.idpLinks) &&
-        Objects.equals(this.totpSecret, organizationServiceAddHumanUserRequest.totpSecret);
+        equalsNullable(this.totpSecret, organizationServiceAddHumanUserRequest.totpSecret) &&
+        Objects.equals(this.hashedPassword, organizationServiceAddHumanUserRequest.hashedPassword) &&
+        Objects.equals(this.password, organizationServiceAddHumanUserRequest.password);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, username, organization, profile, email, phone, metadata, password, hashedPassword, idpLinks, totpSecret);
+    return Objects.hash(hashCodeNullable(userId), hashCodeNullable(username), organization, profile, email, phone, metadata, idpLinks, hashCodeNullable(totpSecret), hashedPassword, password);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -431,10 +472,10 @@ public class OrganizationServiceAddHumanUserRequest {
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    hashedPassword: ").append(toIndentedString(hashedPassword)).append("\n");
     sb.append("    idpLinks: ").append(toIndentedString(idpLinks)).append("\n");
     sb.append("    totpSecret: ").append(toIndentedString(totpSecret)).append("\n");
+    sb.append("    hashedPassword: ").append(toIndentedString(hashedPassword)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -481,6 +522,16 @@ public class OrganizationServiceAddHumanUserRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `hashedPassword` to the URL query string
+    if (getHashedPassword() != null) {
+      joiner.add(getHashedPassword().toUrlQueryString(prefix + "hashedPassword" + suffix));
+    }
+
+    // add `password` to the URL query string
+    if (getPassword() != null) {
+      joiner.add(getPassword().toUrlQueryString(prefix + "password" + suffix));
+    }
 
     return joiner.toString();
   }

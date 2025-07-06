@@ -20,6 +20,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.Apple;
+import com.zitadel.model.AzureAd;
+import com.zitadel.model.Github;
+import com.zitadel.model.GithubEs;
+import com.zitadel.model.Gitlab;
+import com.zitadel.model.GitlabSelfHosted;
+import com.zitadel.model.Google;
 import com.zitadel.model.IdentityProviderServiceAppleConfig;
 import com.zitadel.model.IdentityProviderServiceAzureADConfig;
 import com.zitadel.model.IdentityProviderServiceGenericOIDCConfig;
@@ -33,6 +40,11 @@ import com.zitadel.model.IdentityProviderServiceLDAPConfig;
 import com.zitadel.model.IdentityProviderServiceOAuthConfig;
 import com.zitadel.model.IdentityProviderServiceOptions;
 import com.zitadel.model.IdentityProviderServiceSAMLConfig;
+import com.zitadel.model.Jwt;
+import com.zitadel.model.Ldap;
+import com.zitadel.model.Oauth;
+import com.zitadel.model.Oidc;
+import com.zitadel.model.Saml;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -44,17 +56,17 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   IdentityProviderServiceIDPConfig.JSON_PROPERTY_OPTIONS,
-  IdentityProviderServiceIDPConfig.JSON_PROPERTY_LDAP,
-  IdentityProviderServiceIDPConfig.JSON_PROPERTY_GOOGLE,
-  IdentityProviderServiceIDPConfig.JSON_PROPERTY_OAUTH,
-  IdentityProviderServiceIDPConfig.JSON_PROPERTY_OIDC,
-  IdentityProviderServiceIDPConfig.JSON_PROPERTY_JWT,
+  IdentityProviderServiceIDPConfig.JSON_PROPERTY_APPLE,
+  IdentityProviderServiceIDPConfig.JSON_PROPERTY_AZURE_AD,
   IdentityProviderServiceIDPConfig.JSON_PROPERTY_GITHUB,
   IdentityProviderServiceIDPConfig.JSON_PROPERTY_GITHUB_ES,
   IdentityProviderServiceIDPConfig.JSON_PROPERTY_GITLAB,
   IdentityProviderServiceIDPConfig.JSON_PROPERTY_GITLAB_SELF_HOSTED,
-  IdentityProviderServiceIDPConfig.JSON_PROPERTY_AZURE_AD,
-  IdentityProviderServiceIDPConfig.JSON_PROPERTY_APPLE,
+  IdentityProviderServiceIDPConfig.JSON_PROPERTY_GOOGLE,
+  IdentityProviderServiceIDPConfig.JSON_PROPERTY_JWT,
+  IdentityProviderServiceIDPConfig.JSON_PROPERTY_LDAP,
+  IdentityProviderServiceIDPConfig.JSON_PROPERTY_OAUTH,
+  IdentityProviderServiceIDPConfig.JSON_PROPERTY_OIDC,
   IdentityProviderServiceIDPConfig.JSON_PROPERTY_SAML
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
@@ -63,52 +75,52 @@ public class IdentityProviderServiceIDPConfig {
   @javax.annotation.Nullable
   private IdentityProviderServiceOptions options;
 
-  public static final String JSON_PROPERTY_LDAP = "ldap";
-  @javax.annotation.Nullable
-  private IdentityProviderServiceLDAPConfig ldap;
+  public static final String JSON_PROPERTY_APPLE = "apple";
+  @javax.annotation.Nonnull
+  private IdentityProviderServiceAppleConfig apple;
 
-  public static final String JSON_PROPERTY_GOOGLE = "google";
-  @javax.annotation.Nullable
-  private IdentityProviderServiceGoogleConfig google;
-
-  public static final String JSON_PROPERTY_OAUTH = "oauth";
-  @javax.annotation.Nullable
-  private IdentityProviderServiceOAuthConfig oauth;
-
-  public static final String JSON_PROPERTY_OIDC = "oidc";
-  @javax.annotation.Nullable
-  private IdentityProviderServiceGenericOIDCConfig oidc;
-
-  public static final String JSON_PROPERTY_JWT = "jwt";
-  @javax.annotation.Nullable
-  private IdentityProviderServiceJWTConfig jwt;
+  public static final String JSON_PROPERTY_AZURE_AD = "azureAd";
+  @javax.annotation.Nonnull
+  private IdentityProviderServiceAzureADConfig azureAd;
 
   public static final String JSON_PROPERTY_GITHUB = "github";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private IdentityProviderServiceGitHubConfig github;
 
   public static final String JSON_PROPERTY_GITHUB_ES = "githubEs";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private IdentityProviderServiceGitHubEnterpriseServerConfig githubEs;
 
   public static final String JSON_PROPERTY_GITLAB = "gitlab";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private IdentityProviderServiceGitLabConfig gitlab;
 
   public static final String JSON_PROPERTY_GITLAB_SELF_HOSTED = "gitlabSelfHosted";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private IdentityProviderServiceGitLabSelfHostedConfig gitlabSelfHosted;
 
-  public static final String JSON_PROPERTY_AZURE_AD = "azureAd";
-  @javax.annotation.Nullable
-  private IdentityProviderServiceAzureADConfig azureAd;
+  public static final String JSON_PROPERTY_GOOGLE = "google";
+  @javax.annotation.Nonnull
+  private IdentityProviderServiceGoogleConfig google;
 
-  public static final String JSON_PROPERTY_APPLE = "apple";
-  @javax.annotation.Nullable
-  private IdentityProviderServiceAppleConfig apple;
+  public static final String JSON_PROPERTY_JWT = "jwt";
+  @javax.annotation.Nonnull
+  private IdentityProviderServiceJWTConfig jwt;
+
+  public static final String JSON_PROPERTY_LDAP = "ldap";
+  @javax.annotation.Nonnull
+  private IdentityProviderServiceLDAPConfig ldap;
+
+  public static final String JSON_PROPERTY_OAUTH = "oauth";
+  @javax.annotation.Nonnull
+  private IdentityProviderServiceOAuthConfig oauth;
+
+  public static final String JSON_PROPERTY_OIDC = "oidc";
+  @javax.annotation.Nonnull
+  private IdentityProviderServiceGenericOIDCConfig oidc;
 
   public static final String JSON_PROPERTY_SAML = "saml";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private IdentityProviderServiceSAMLConfig saml;
 
   public IdentityProviderServiceIDPConfig() {
@@ -139,257 +151,7 @@ public class IdentityProviderServiceIDPConfig {
     this.options = options;
   }
 
-  public IdentityProviderServiceIDPConfig ldap(@javax.annotation.Nullable IdentityProviderServiceLDAPConfig ldap) {
-    
-    this.ldap = ldap;
-    return this;
-  }
-
-  /**
-   * Get ldap
-   * @return ldap
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LDAP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public IdentityProviderServiceLDAPConfig getLdap() {
-    return ldap;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LDAP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLdap(@javax.annotation.Nullable IdentityProviderServiceLDAPConfig ldap) {
-    this.ldap = ldap;
-  }
-
-  public IdentityProviderServiceIDPConfig google(@javax.annotation.Nullable IdentityProviderServiceGoogleConfig google) {
-    
-    this.google = google;
-    return this;
-  }
-
-  /**
-   * Get google
-   * @return google
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GOOGLE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public IdentityProviderServiceGoogleConfig getGoogle() {
-    return google;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_GOOGLE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGoogle(@javax.annotation.Nullable IdentityProviderServiceGoogleConfig google) {
-    this.google = google;
-  }
-
-  public IdentityProviderServiceIDPConfig oauth(@javax.annotation.Nullable IdentityProviderServiceOAuthConfig oauth) {
-    
-    this.oauth = oauth;
-    return this;
-  }
-
-  /**
-   * Get oauth
-   * @return oauth
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OAUTH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public IdentityProviderServiceOAuthConfig getOauth() {
-    return oauth;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OAUTH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOauth(@javax.annotation.Nullable IdentityProviderServiceOAuthConfig oauth) {
-    this.oauth = oauth;
-  }
-
-  public IdentityProviderServiceIDPConfig oidc(@javax.annotation.Nullable IdentityProviderServiceGenericOIDCConfig oidc) {
-    
-    this.oidc = oidc;
-    return this;
-  }
-
-  /**
-   * Get oidc
-   * @return oidc
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OIDC)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public IdentityProviderServiceGenericOIDCConfig getOidc() {
-    return oidc;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OIDC)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOidc(@javax.annotation.Nullable IdentityProviderServiceGenericOIDCConfig oidc) {
-    this.oidc = oidc;
-  }
-
-  public IdentityProviderServiceIDPConfig jwt(@javax.annotation.Nullable IdentityProviderServiceJWTConfig jwt) {
-    
-    this.jwt = jwt;
-    return this;
-  }
-
-  /**
-   * Get jwt
-   * @return jwt
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_JWT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public IdentityProviderServiceJWTConfig getJwt() {
-    return jwt;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_JWT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setJwt(@javax.annotation.Nullable IdentityProviderServiceJWTConfig jwt) {
-    this.jwt = jwt;
-  }
-
-  public IdentityProviderServiceIDPConfig github(@javax.annotation.Nullable IdentityProviderServiceGitHubConfig github) {
-    
-    this.github = github;
-    return this;
-  }
-
-  /**
-   * Get github
-   * @return github
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GITHUB)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public IdentityProviderServiceGitHubConfig getGithub() {
-    return github;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_GITHUB)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGithub(@javax.annotation.Nullable IdentityProviderServiceGitHubConfig github) {
-    this.github = github;
-  }
-
-  public IdentityProviderServiceIDPConfig githubEs(@javax.annotation.Nullable IdentityProviderServiceGitHubEnterpriseServerConfig githubEs) {
-    
-    this.githubEs = githubEs;
-    return this;
-  }
-
-  /**
-   * Get githubEs
-   * @return githubEs
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GITHUB_ES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public IdentityProviderServiceGitHubEnterpriseServerConfig getGithubEs() {
-    return githubEs;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_GITHUB_ES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGithubEs(@javax.annotation.Nullable IdentityProviderServiceGitHubEnterpriseServerConfig githubEs) {
-    this.githubEs = githubEs;
-  }
-
-  public IdentityProviderServiceIDPConfig gitlab(@javax.annotation.Nullable IdentityProviderServiceGitLabConfig gitlab) {
-    
-    this.gitlab = gitlab;
-    return this;
-  }
-
-  /**
-   * Get gitlab
-   * @return gitlab
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GITLAB)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public IdentityProviderServiceGitLabConfig getGitlab() {
-    return gitlab;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_GITLAB)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGitlab(@javax.annotation.Nullable IdentityProviderServiceGitLabConfig gitlab) {
-    this.gitlab = gitlab;
-  }
-
-  public IdentityProviderServiceIDPConfig gitlabSelfHosted(@javax.annotation.Nullable IdentityProviderServiceGitLabSelfHostedConfig gitlabSelfHosted) {
-    
-    this.gitlabSelfHosted = gitlabSelfHosted;
-    return this;
-  }
-
-  /**
-   * Get gitlabSelfHosted
-   * @return gitlabSelfHosted
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GITLAB_SELF_HOSTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public IdentityProviderServiceGitLabSelfHostedConfig getGitlabSelfHosted() {
-    return gitlabSelfHosted;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_GITLAB_SELF_HOSTED)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGitlabSelfHosted(@javax.annotation.Nullable IdentityProviderServiceGitLabSelfHostedConfig gitlabSelfHosted) {
-    this.gitlabSelfHosted = gitlabSelfHosted;
-  }
-
-  public IdentityProviderServiceIDPConfig azureAd(@javax.annotation.Nullable IdentityProviderServiceAzureADConfig azureAd) {
-    
-    this.azureAd = azureAd;
-    return this;
-  }
-
-  /**
-   * Get azureAd
-   * @return azureAd
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AZURE_AD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public IdentityProviderServiceAzureADConfig getAzureAd() {
-    return azureAd;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_AZURE_AD)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAzureAd(@javax.annotation.Nullable IdentityProviderServiceAzureADConfig azureAd) {
-    this.azureAd = azureAd;
-  }
-
-  public IdentityProviderServiceIDPConfig apple(@javax.annotation.Nullable IdentityProviderServiceAppleConfig apple) {
+  public IdentityProviderServiceIDPConfig apple(@javax.annotation.Nonnull IdentityProviderServiceAppleConfig apple) {
     
     this.apple = apple;
     return this;
@@ -399,9 +161,9 @@ public class IdentityProviderServiceIDPConfig {
    * Get apple
    * @return apple
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_APPLE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public IdentityProviderServiceAppleConfig getApple() {
     return apple;
@@ -409,12 +171,262 @@ public class IdentityProviderServiceIDPConfig {
 
 
   @JsonProperty(JSON_PROPERTY_APPLE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setApple(@javax.annotation.Nullable IdentityProviderServiceAppleConfig apple) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setApple(@javax.annotation.Nonnull IdentityProviderServiceAppleConfig apple) {
     this.apple = apple;
   }
 
-  public IdentityProviderServiceIDPConfig saml(@javax.annotation.Nullable IdentityProviderServiceSAMLConfig saml) {
+  public IdentityProviderServiceIDPConfig azureAd(@javax.annotation.Nonnull IdentityProviderServiceAzureADConfig azureAd) {
+    
+    this.azureAd = azureAd;
+    return this;
+  }
+
+  /**
+   * Get azureAd
+   * @return azureAd
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_AZURE_AD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public IdentityProviderServiceAzureADConfig getAzureAd() {
+    return azureAd;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_AZURE_AD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAzureAd(@javax.annotation.Nonnull IdentityProviderServiceAzureADConfig azureAd) {
+    this.azureAd = azureAd;
+  }
+
+  public IdentityProviderServiceIDPConfig github(@javax.annotation.Nonnull IdentityProviderServiceGitHubConfig github) {
+    
+    this.github = github;
+    return this;
+  }
+
+  /**
+   * Get github
+   * @return github
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_GITHUB)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public IdentityProviderServiceGitHubConfig getGithub() {
+    return github;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_GITHUB)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setGithub(@javax.annotation.Nonnull IdentityProviderServiceGitHubConfig github) {
+    this.github = github;
+  }
+
+  public IdentityProviderServiceIDPConfig githubEs(@javax.annotation.Nonnull IdentityProviderServiceGitHubEnterpriseServerConfig githubEs) {
+    
+    this.githubEs = githubEs;
+    return this;
+  }
+
+  /**
+   * Get githubEs
+   * @return githubEs
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_GITHUB_ES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public IdentityProviderServiceGitHubEnterpriseServerConfig getGithubEs() {
+    return githubEs;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_GITHUB_ES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setGithubEs(@javax.annotation.Nonnull IdentityProviderServiceGitHubEnterpriseServerConfig githubEs) {
+    this.githubEs = githubEs;
+  }
+
+  public IdentityProviderServiceIDPConfig gitlab(@javax.annotation.Nonnull IdentityProviderServiceGitLabConfig gitlab) {
+    
+    this.gitlab = gitlab;
+    return this;
+  }
+
+  /**
+   * Get gitlab
+   * @return gitlab
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_GITLAB)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public IdentityProviderServiceGitLabConfig getGitlab() {
+    return gitlab;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_GITLAB)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setGitlab(@javax.annotation.Nonnull IdentityProviderServiceGitLabConfig gitlab) {
+    this.gitlab = gitlab;
+  }
+
+  public IdentityProviderServiceIDPConfig gitlabSelfHosted(@javax.annotation.Nonnull IdentityProviderServiceGitLabSelfHostedConfig gitlabSelfHosted) {
+    
+    this.gitlabSelfHosted = gitlabSelfHosted;
+    return this;
+  }
+
+  /**
+   * Get gitlabSelfHosted
+   * @return gitlabSelfHosted
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_GITLAB_SELF_HOSTED)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public IdentityProviderServiceGitLabSelfHostedConfig getGitlabSelfHosted() {
+    return gitlabSelfHosted;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_GITLAB_SELF_HOSTED)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setGitlabSelfHosted(@javax.annotation.Nonnull IdentityProviderServiceGitLabSelfHostedConfig gitlabSelfHosted) {
+    this.gitlabSelfHosted = gitlabSelfHosted;
+  }
+
+  public IdentityProviderServiceIDPConfig google(@javax.annotation.Nonnull IdentityProviderServiceGoogleConfig google) {
+    
+    this.google = google;
+    return this;
+  }
+
+  /**
+   * Get google
+   * @return google
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_GOOGLE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public IdentityProviderServiceGoogleConfig getGoogle() {
+    return google;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_GOOGLE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setGoogle(@javax.annotation.Nonnull IdentityProviderServiceGoogleConfig google) {
+    this.google = google;
+  }
+
+  public IdentityProviderServiceIDPConfig jwt(@javax.annotation.Nonnull IdentityProviderServiceJWTConfig jwt) {
+    
+    this.jwt = jwt;
+    return this;
+  }
+
+  /**
+   * Get jwt
+   * @return jwt
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_JWT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public IdentityProviderServiceJWTConfig getJwt() {
+    return jwt;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_JWT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setJwt(@javax.annotation.Nonnull IdentityProviderServiceJWTConfig jwt) {
+    this.jwt = jwt;
+  }
+
+  public IdentityProviderServiceIDPConfig ldap(@javax.annotation.Nonnull IdentityProviderServiceLDAPConfig ldap) {
+    
+    this.ldap = ldap;
+    return this;
+  }
+
+  /**
+   * Get ldap
+   * @return ldap
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_LDAP)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public IdentityProviderServiceLDAPConfig getLdap() {
+    return ldap;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LDAP)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setLdap(@javax.annotation.Nonnull IdentityProviderServiceLDAPConfig ldap) {
+    this.ldap = ldap;
+  }
+
+  public IdentityProviderServiceIDPConfig oauth(@javax.annotation.Nonnull IdentityProviderServiceOAuthConfig oauth) {
+    
+    this.oauth = oauth;
+    return this;
+  }
+
+  /**
+   * Get oauth
+   * @return oauth
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_OAUTH)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public IdentityProviderServiceOAuthConfig getOauth() {
+    return oauth;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OAUTH)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setOauth(@javax.annotation.Nonnull IdentityProviderServiceOAuthConfig oauth) {
+    this.oauth = oauth;
+  }
+
+  public IdentityProviderServiceIDPConfig oidc(@javax.annotation.Nonnull IdentityProviderServiceGenericOIDCConfig oidc) {
+    
+    this.oidc = oidc;
+    return this;
+  }
+
+  /**
+   * Get oidc
+   * @return oidc
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_OIDC)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public IdentityProviderServiceGenericOIDCConfig getOidc() {
+    return oidc;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OIDC)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setOidc(@javax.annotation.Nonnull IdentityProviderServiceGenericOIDCConfig oidc) {
+    this.oidc = oidc;
+  }
+
+  public IdentityProviderServiceIDPConfig saml(@javax.annotation.Nonnull IdentityProviderServiceSAMLConfig saml) {
     
     this.saml = saml;
     return this;
@@ -424,9 +436,9 @@ public class IdentityProviderServiceIDPConfig {
    * Get saml
    * @return saml
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_SAML)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public IdentityProviderServiceSAMLConfig getSaml() {
     return saml;
@@ -434,8 +446,8 @@ public class IdentityProviderServiceIDPConfig {
 
 
   @JsonProperty(JSON_PROPERTY_SAML)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaml(@javax.annotation.Nullable IdentityProviderServiceSAMLConfig saml) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSaml(@javax.annotation.Nonnull IdentityProviderServiceSAMLConfig saml) {
     this.saml = saml;
   }
 
@@ -449,23 +461,23 @@ public class IdentityProviderServiceIDPConfig {
     }
     IdentityProviderServiceIDPConfig identityProviderServiceIDPConfig = (IdentityProviderServiceIDPConfig) o;
     return Objects.equals(this.options, identityProviderServiceIDPConfig.options) &&
-        Objects.equals(this.ldap, identityProviderServiceIDPConfig.ldap) &&
-        Objects.equals(this.google, identityProviderServiceIDPConfig.google) &&
-        Objects.equals(this.oauth, identityProviderServiceIDPConfig.oauth) &&
-        Objects.equals(this.oidc, identityProviderServiceIDPConfig.oidc) &&
-        Objects.equals(this.jwt, identityProviderServiceIDPConfig.jwt) &&
+        Objects.equals(this.apple, identityProviderServiceIDPConfig.apple) &&
+        Objects.equals(this.azureAd, identityProviderServiceIDPConfig.azureAd) &&
         Objects.equals(this.github, identityProviderServiceIDPConfig.github) &&
         Objects.equals(this.githubEs, identityProviderServiceIDPConfig.githubEs) &&
         Objects.equals(this.gitlab, identityProviderServiceIDPConfig.gitlab) &&
         Objects.equals(this.gitlabSelfHosted, identityProviderServiceIDPConfig.gitlabSelfHosted) &&
-        Objects.equals(this.azureAd, identityProviderServiceIDPConfig.azureAd) &&
-        Objects.equals(this.apple, identityProviderServiceIDPConfig.apple) &&
+        Objects.equals(this.google, identityProviderServiceIDPConfig.google) &&
+        Objects.equals(this.jwt, identityProviderServiceIDPConfig.jwt) &&
+        Objects.equals(this.ldap, identityProviderServiceIDPConfig.ldap) &&
+        Objects.equals(this.oauth, identityProviderServiceIDPConfig.oauth) &&
+        Objects.equals(this.oidc, identityProviderServiceIDPConfig.oidc) &&
         Objects.equals(this.saml, identityProviderServiceIDPConfig.saml);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(options, ldap, google, oauth, oidc, jwt, github, githubEs, gitlab, gitlabSelfHosted, azureAd, apple, saml);
+    return Objects.hash(options, apple, azureAd, github, githubEs, gitlab, gitlabSelfHosted, google, jwt, ldap, oauth, oidc, saml);
   }
 
   @Override
@@ -473,17 +485,17 @@ public class IdentityProviderServiceIDPConfig {
     StringBuilder sb = new StringBuilder();
     sb.append("class IdentityProviderServiceIDPConfig {\n");
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
-    sb.append("    ldap: ").append(toIndentedString(ldap)).append("\n");
-    sb.append("    google: ").append(toIndentedString(google)).append("\n");
-    sb.append("    oauth: ").append(toIndentedString(oauth)).append("\n");
-    sb.append("    oidc: ").append(toIndentedString(oidc)).append("\n");
-    sb.append("    jwt: ").append(toIndentedString(jwt)).append("\n");
+    sb.append("    apple: ").append(toIndentedString(apple)).append("\n");
+    sb.append("    azureAd: ").append(toIndentedString(azureAd)).append("\n");
     sb.append("    github: ").append(toIndentedString(github)).append("\n");
     sb.append("    githubEs: ").append(toIndentedString(githubEs)).append("\n");
     sb.append("    gitlab: ").append(toIndentedString(gitlab)).append("\n");
     sb.append("    gitlabSelfHosted: ").append(toIndentedString(gitlabSelfHosted)).append("\n");
-    sb.append("    azureAd: ").append(toIndentedString(azureAd)).append("\n");
-    sb.append("    apple: ").append(toIndentedString(apple)).append("\n");
+    sb.append("    google: ").append(toIndentedString(google)).append("\n");
+    sb.append("    jwt: ").append(toIndentedString(jwt)).append("\n");
+    sb.append("    ldap: ").append(toIndentedString(ldap)).append("\n");
+    sb.append("    oauth: ").append(toIndentedString(oauth)).append("\n");
+    sb.append("    oidc: ").append(toIndentedString(oidc)).append("\n");
     sb.append("    saml: ").append(toIndentedString(saml)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -531,6 +543,66 @@ public class IdentityProviderServiceIDPConfig {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `apple` to the URL query string
+    if (getApple() != null) {
+      joiner.add(getApple().toUrlQueryString(prefix + "apple" + suffix));
+    }
+
+    // add `azureAd` to the URL query string
+    if (getAzureAd() != null) {
+      joiner.add(getAzureAd().toUrlQueryString(prefix + "azureAd" + suffix));
+    }
+
+    // add `github` to the URL query string
+    if (getGithub() != null) {
+      joiner.add(getGithub().toUrlQueryString(prefix + "github" + suffix));
+    }
+
+    // add `githubEs` to the URL query string
+    if (getGithubEs() != null) {
+      joiner.add(getGithubEs().toUrlQueryString(prefix + "githubEs" + suffix));
+    }
+
+    // add `gitlab` to the URL query string
+    if (getGitlab() != null) {
+      joiner.add(getGitlab().toUrlQueryString(prefix + "gitlab" + suffix));
+    }
+
+    // add `gitlabSelfHosted` to the URL query string
+    if (getGitlabSelfHosted() != null) {
+      joiner.add(getGitlabSelfHosted().toUrlQueryString(prefix + "gitlabSelfHosted" + suffix));
+    }
+
+    // add `google` to the URL query string
+    if (getGoogle() != null) {
+      joiner.add(getGoogle().toUrlQueryString(prefix + "google" + suffix));
+    }
+
+    // add `jwt` to the URL query string
+    if (getJwt() != null) {
+      joiner.add(getJwt().toUrlQueryString(prefix + "jwt" + suffix));
+    }
+
+    // add `ldap` to the URL query string
+    if (getLdap() != null) {
+      joiner.add(getLdap().toUrlQueryString(prefix + "ldap" + suffix));
+    }
+
+    // add `oauth` to the URL query string
+    if (getOauth() != null) {
+      joiner.add(getOauth().toUrlQueryString(prefix + "oauth" + suffix));
+    }
+
+    // add `oidc` to the URL query string
+    if (getOidc() != null) {
+      joiner.add(getOidc().toUrlQueryString(prefix + "oidc" + suffix));
+    }
+
+    // add `saml` to the URL query string
+    if (getSaml() != null) {
+      joiner.add(getSaml().toUrlQueryString(prefix + "saml" + suffix));
+    }
 
     return joiner.toString();
   }

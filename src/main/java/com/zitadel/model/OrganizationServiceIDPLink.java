@@ -58,7 +58,7 @@ public class OrganizationServiceIDPLink {
   }
 
   /**
-   * ID of the identity provider
+   * Get idpId
    * @return idpId
    */
   @javax.annotation.Nullable
@@ -83,7 +83,7 @@ public class OrganizationServiceIDPLink {
   }
 
   /**
-   * ID of the user of the identity provider
+   * Get userId
    * @return userId
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class OrganizationServiceIDPLink {
   }
 
   /**
-   * username of the user of the identity provider
+   * Get userName
    * @return userName
    */
   @javax.annotation.Nullable

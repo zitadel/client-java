@@ -20,6 +20,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -36,34 +40,42 @@ import java.util.StringJoiner;
 public class SessionServiceUserAgentQuery {
   public static final String JSON_PROPERTY_FINGERPRINT_ID = "fingerprintId";
   @javax.annotation.Nullable
-  private String fingerprintId;
+  private JsonNullable<String> fingerprintId = JsonNullable.<String>undefined();
 
   public SessionServiceUserAgentQuery() {
   }
 
   public SessionServiceUserAgentQuery fingerprintId(@javax.annotation.Nullable String fingerprintId) {
+    this.fingerprintId = JsonNullable.<String>of(fingerprintId);
     
-    this.fingerprintId = fingerprintId;
     return this;
   }
 
   /**
-   * Finger print id of the user agent used for the session. Set an empty fingerprint_id to use the user agent from the call. If the user agent is not available from the current token, an error will be returned.
+   * Finger print id of the user agent used for the session.  Set an empty fingerprint_id to use the user agent from the call.  If the user agent is not available from the current token, an error will be returned.
    * @return fingerprintId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FINGERPRINT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getFingerprintId() {
-    return fingerprintId;
+        return fingerprintId.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_FINGERPRINT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFingerprintId(@javax.annotation.Nullable String fingerprintId) {
+
+  public JsonNullable<String> getFingerprintId_JsonNullable() {
+    return fingerprintId;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_FINGERPRINT_ID)
+  public void setFingerprintId_JsonNullable(JsonNullable<String> fingerprintId) {
     this.fingerprintId = fingerprintId;
+  }
+
+  public void setFingerprintId(@javax.annotation.Nullable String fingerprintId) {
+    this.fingerprintId = JsonNullable.<String>of(fingerprintId);
   }
 
   @Override
@@ -75,12 +87,23 @@ public class SessionServiceUserAgentQuery {
       return false;
     }
     SessionServiceUserAgentQuery sessionServiceUserAgentQuery = (SessionServiceUserAgentQuery) o;
-    return Objects.equals(this.fingerprintId, sessionServiceUserAgentQuery.fingerprintId);
+    return equalsNullable(this.fingerprintId, sessionServiceUserAgentQuery.fingerprintId);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fingerprintId);
+    return Objects.hash(hashCodeNullable(fingerprintId));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

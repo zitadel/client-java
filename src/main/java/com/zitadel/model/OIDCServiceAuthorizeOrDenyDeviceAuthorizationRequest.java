@@ -20,7 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.Deny;
 import com.zitadel.model.OIDCServiceSession;
+import com.zitadel.model.Session;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -31,48 +33,53 @@ import java.util.StringJoiner;
  * OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest
  */
 @JsonPropertyOrder({
-  OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest.JSON_PROPERTY_SESSION,
-  OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest.JSON_PROPERTY_DENY
+  OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest.JSON_PROPERTY_DEVICE_AUTHORIZATION_ID,
+  OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest.JSON_PROPERTY_DENY,
+  OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest.JSON_PROPERTY_SESSION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest {
-  public static final String JSON_PROPERTY_SESSION = "session";
+  public static final String JSON_PROPERTY_DEVICE_AUTHORIZATION_ID = "deviceAuthorizationId";
   @javax.annotation.Nullable
-  private OIDCServiceSession session;
+  private String deviceAuthorizationId;
 
   public static final String JSON_PROPERTY_DENY = "deny";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private Object deny;
+
+  public static final String JSON_PROPERTY_SESSION = "session";
+  @javax.annotation.Nonnull
+  private OIDCServiceSession session;
 
   public OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest() {
   }
 
-  public OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest session(@javax.annotation.Nullable OIDCServiceSession session) {
+  public OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest deviceAuthorizationId(@javax.annotation.Nullable String deviceAuthorizationId) {
     
-    this.session = session;
+    this.deviceAuthorizationId = deviceAuthorizationId;
     return this;
   }
 
   /**
-   * Get session
-   * @return session
+   * The device authorization id returned when submitting the user code.
+   * @return deviceAuthorizationId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SESSION)
+  @JsonProperty(JSON_PROPERTY_DEVICE_AUTHORIZATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public OIDCServiceSession getSession() {
-    return session;
+  public String getDeviceAuthorizationId() {
+    return deviceAuthorizationId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SESSION)
+  @JsonProperty(JSON_PROPERTY_DEVICE_AUTHORIZATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSession(@javax.annotation.Nullable OIDCServiceSession session) {
-    this.session = session;
+  public void setDeviceAuthorizationId(@javax.annotation.Nullable String deviceAuthorizationId) {
+    this.deviceAuthorizationId = deviceAuthorizationId;
   }
 
-  public OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest deny(@javax.annotation.Nullable Object deny) {
+  public OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest deny(@javax.annotation.Nonnull Object deny) {
     
     this.deny = deny;
     return this;
@@ -82,9 +89,9 @@ public class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest {
    * Get deny
    * @return deny
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_DENY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getDeny() {
     return deny;
@@ -92,9 +99,34 @@ public class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_DENY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeny(@javax.annotation.Nullable Object deny) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDeny(@javax.annotation.Nonnull Object deny) {
     this.deny = deny;
+  }
+
+  public OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest session(@javax.annotation.Nonnull OIDCServiceSession session) {
+    
+    this.session = session;
+    return this;
+  }
+
+  /**
+   * Get session
+   * @return session
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_SESSION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public OIDCServiceSession getSession() {
+    return session;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SESSION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSession(@javax.annotation.Nonnull OIDCServiceSession session) {
+    this.session = session;
   }
 
   @Override
@@ -106,21 +138,23 @@ public class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest {
       return false;
     }
     OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest = (OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest) o;
-    return Objects.equals(this.session, oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest.session) &&
-        Objects.equals(this.deny, oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest.deny);
+    return Objects.equals(this.deviceAuthorizationId, oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest.deviceAuthorizationId) &&
+        Objects.equals(this.deny, oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest.deny) &&
+        Objects.equals(this.session, oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest.session);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(session, deny);
+    return Objects.hash(deviceAuthorizationId, deny, session);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest {\n");
-    sb.append("    session: ").append(toIndentedString(session)).append("\n");
+    sb.append("    deviceAuthorizationId: ").append(toIndentedString(deviceAuthorizationId)).append("\n");
     sb.append("    deny: ").append(toIndentedString(deny)).append("\n");
+    sb.append("    session: ").append(toIndentedString(session)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -167,6 +201,21 @@ public class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `deny` to the URL query string
+    if (getDeny() != null) {
+      try {
+        joiner.add(String.format("%sdeny%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDeny()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `session` to the URL query string
+    if (getSession() != null) {
+      joiner.add(getSession().toUrlQueryString(prefix + "session" + suffix));
+    }
 
     return joiner.toString();
   }

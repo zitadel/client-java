@@ -21,6 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.FeatureServiceSource;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -43,11 +47,11 @@ public class FeatureServiceLoginV2FeatureFlag {
 
   public static final String JSON_PROPERTY_BASE_URI = "baseUri";
   @javax.annotation.Nullable
-  private String baseUri;
+  private JsonNullable<String> baseUri = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_SOURCE = "source";
   @javax.annotation.Nullable
-  private FeatureServiceSource source = FeatureServiceSource.SOURCE_UNSPECIFIED;
+  private FeatureServiceSource source;
 
   public FeatureServiceLoginV2FeatureFlag() {
   }
@@ -78,8 +82,8 @@ public class FeatureServiceLoginV2FeatureFlag {
   }
 
   public FeatureServiceLoginV2FeatureFlag baseUri(@javax.annotation.Nullable String baseUri) {
+    this.baseUri = JsonNullable.<String>of(baseUri);
     
-    this.baseUri = baseUri;
     return this;
   }
 
@@ -88,18 +92,26 @@ public class FeatureServiceLoginV2FeatureFlag {
    * @return baseUri
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_BASE_URI)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getBaseUri() {
-    return baseUri;
+        return baseUri.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_BASE_URI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBaseUri(@javax.annotation.Nullable String baseUri) {
+
+  public JsonNullable<String> getBaseUri_JsonNullable() {
+    return baseUri;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_BASE_URI)
+  public void setBaseUri_JsonNullable(JsonNullable<String> baseUri) {
     this.baseUri = baseUri;
+  }
+
+  public void setBaseUri(@javax.annotation.Nullable String baseUri) {
+    this.baseUri = JsonNullable.<String>of(baseUri);
   }
 
   public FeatureServiceLoginV2FeatureFlag source(@javax.annotation.Nullable FeatureServiceSource source) {
@@ -137,13 +149,24 @@ public class FeatureServiceLoginV2FeatureFlag {
     }
     FeatureServiceLoginV2FeatureFlag featureServiceLoginV2FeatureFlag = (FeatureServiceLoginV2FeatureFlag) o;
     return Objects.equals(this.required, featureServiceLoginV2FeatureFlag.required) &&
-        Objects.equals(this.baseUri, featureServiceLoginV2FeatureFlag.baseUri) &&
+        equalsNullable(this.baseUri, featureServiceLoginV2FeatureFlag.baseUri) &&
         Objects.equals(this.source, featureServiceLoginV2FeatureFlag.source);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(required, baseUri, source);
+    return Objects.hash(required, hashCodeNullable(baseUri), source);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -184,7 +184,7 @@ public class IdentityProviderServiceOAuthConfig {
   }
 
   /**
-   * The scopes requested by ZITADEL during the request on the identity provider.
+   * The scopes requested by ZITADEL during the request on the identity  provider.
    * @return scopes
    */
   @javax.annotation.Nullable
@@ -209,7 +209,7 @@ public class IdentityProviderServiceOAuthConfig {
   }
 
   /**
-   * Defines how the attribute is called where ZITADEL can get the id of the user.
+   * Defines how the attribute is called where ZITADEL can get the id of the  user.
    * @return idAttribute
    */
   @javax.annotation.Nullable

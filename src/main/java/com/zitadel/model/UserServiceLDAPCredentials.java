@@ -53,7 +53,7 @@ public class UserServiceLDAPCredentials {
   }
 
   /**
-   * Username used to login through LDAP
+   * Get username
    * @return username
    */
   @javax.annotation.Nullable
@@ -78,7 +78,7 @@ public class UserServiceLDAPCredentials {
   }
 
   /**
-   * Password used to login through LDAP
+   * Get password
    * @return password
    */
   @javax.annotation.Nullable

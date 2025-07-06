@@ -20,6 +20,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.AndQuery;
+import com.zitadel.model.DisplayNameQuery;
+import com.zitadel.model.EmailQuery;
+import com.zitadel.model.FirstNameQuery;
+import com.zitadel.model.InUserEmailsQuery;
+import com.zitadel.model.InUserIdsQuery;
+import com.zitadel.model.LastNameQuery;
+import com.zitadel.model.LoginNameQuery;
+import com.zitadel.model.NickNameQuery;
+import com.zitadel.model.NotQuery;
+import com.zitadel.model.OrQuery;
+import com.zitadel.model.OrganizationIdQuery;
+import com.zitadel.model.PhoneQuery;
+import com.zitadel.model.StateQuery;
+import com.zitadel.model.TypeQuery;
+import com.zitadel.model.UserNameQuery;
 import com.zitadel.model.UserServiceAndQuery;
 import com.zitadel.model.UserServiceDisplayNameQuery;
 import com.zitadel.model.UserServiceEmailQuery;
@@ -46,368 +62,93 @@ import java.util.StringJoiner;
  * UserServiceSearchQuery
  */
 @JsonPropertyOrder({
-  UserServiceSearchQuery.JSON_PROPERTY_USER_NAME_QUERY,
-  UserServiceSearchQuery.JSON_PROPERTY_FIRST_NAME_QUERY,
-  UserServiceSearchQuery.JSON_PROPERTY_LAST_NAME_QUERY,
-  UserServiceSearchQuery.JSON_PROPERTY_NICK_NAME_QUERY,
+  UserServiceSearchQuery.JSON_PROPERTY_AND_QUERY,
   UserServiceSearchQuery.JSON_PROPERTY_DISPLAY_NAME_QUERY,
   UserServiceSearchQuery.JSON_PROPERTY_EMAIL_QUERY,
+  UserServiceSearchQuery.JSON_PROPERTY_FIRST_NAME_QUERY,
+  UserServiceSearchQuery.JSON_PROPERTY_IN_USER_EMAILS_QUERY,
+  UserServiceSearchQuery.JSON_PROPERTY_IN_USER_IDS_QUERY,
+  UserServiceSearchQuery.JSON_PROPERTY_LAST_NAME_QUERY,
+  UserServiceSearchQuery.JSON_PROPERTY_LOGIN_NAME_QUERY,
+  UserServiceSearchQuery.JSON_PROPERTY_NICK_NAME_QUERY,
+  UserServiceSearchQuery.JSON_PROPERTY_NOT_QUERY,
+  UserServiceSearchQuery.JSON_PROPERTY_OR_QUERY,
+  UserServiceSearchQuery.JSON_PROPERTY_ORGANIZATION_ID_QUERY,
+  UserServiceSearchQuery.JSON_PROPERTY_PHONE_QUERY,
   UserServiceSearchQuery.JSON_PROPERTY_STATE_QUERY,
   UserServiceSearchQuery.JSON_PROPERTY_TYPE_QUERY,
-  UserServiceSearchQuery.JSON_PROPERTY_LOGIN_NAME_QUERY,
-  UserServiceSearchQuery.JSON_PROPERTY_IN_USER_IDS_QUERY,
-  UserServiceSearchQuery.JSON_PROPERTY_OR_QUERY,
-  UserServiceSearchQuery.JSON_PROPERTY_AND_QUERY,
-  UserServiceSearchQuery.JSON_PROPERTY_NOT_QUERY,
-  UserServiceSearchQuery.JSON_PROPERTY_IN_USER_EMAILS_QUERY,
-  UserServiceSearchQuery.JSON_PROPERTY_ORGANIZATION_ID_QUERY,
-  UserServiceSearchQuery.JSON_PROPERTY_PHONE_QUERY
+  UserServiceSearchQuery.JSON_PROPERTY_USER_NAME_QUERY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceSearchQuery {
-  public static final String JSON_PROPERTY_USER_NAME_QUERY = "userNameQuery";
-  @javax.annotation.Nullable
-  private UserServiceUserNameQuery userNameQuery;
-
-  public static final String JSON_PROPERTY_FIRST_NAME_QUERY = "firstNameQuery";
-  @javax.annotation.Nullable
-  private UserServiceFirstNameQuery firstNameQuery;
-
-  public static final String JSON_PROPERTY_LAST_NAME_QUERY = "lastNameQuery";
-  @javax.annotation.Nullable
-  private UserServiceLastNameQuery lastNameQuery;
-
-  public static final String JSON_PROPERTY_NICK_NAME_QUERY = "nickNameQuery";
-  @javax.annotation.Nullable
-  private UserServiceNickNameQuery nickNameQuery;
+  public static final String JSON_PROPERTY_AND_QUERY = "andQuery";
+  @javax.annotation.Nonnull
+  private UserServiceAndQuery andQuery;
 
   public static final String JSON_PROPERTY_DISPLAY_NAME_QUERY = "displayNameQuery";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private UserServiceDisplayNameQuery displayNameQuery;
 
   public static final String JSON_PROPERTY_EMAIL_QUERY = "emailQuery";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private UserServiceEmailQuery emailQuery;
 
-  public static final String JSON_PROPERTY_STATE_QUERY = "stateQuery";
-  @javax.annotation.Nullable
-  private UserServiceStateQuery stateQuery;
-
-  public static final String JSON_PROPERTY_TYPE_QUERY = "typeQuery";
-  @javax.annotation.Nullable
-  private UserServiceTypeQuery typeQuery;
-
-  public static final String JSON_PROPERTY_LOGIN_NAME_QUERY = "loginNameQuery";
-  @javax.annotation.Nullable
-  private UserServiceLoginNameQuery loginNameQuery;
-
-  public static final String JSON_PROPERTY_IN_USER_IDS_QUERY = "inUserIdsQuery";
-  @javax.annotation.Nullable
-  private UserServiceInUserIDQuery inUserIdsQuery;
-
-  public static final String JSON_PROPERTY_OR_QUERY = "orQuery";
-  @javax.annotation.Nullable
-  private UserServiceOrQuery orQuery;
-
-  public static final String JSON_PROPERTY_AND_QUERY = "andQuery";
-  @javax.annotation.Nullable
-  private UserServiceAndQuery andQuery;
-
-  public static final String JSON_PROPERTY_NOT_QUERY = "notQuery";
-  @javax.annotation.Nullable
-  private UserServiceNotQuery notQuery;
+  public static final String JSON_PROPERTY_FIRST_NAME_QUERY = "firstNameQuery";
+  @javax.annotation.Nonnull
+  private UserServiceFirstNameQuery firstNameQuery;
 
   public static final String JSON_PROPERTY_IN_USER_EMAILS_QUERY = "inUserEmailsQuery";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private UserServiceInUserEmailsQuery inUserEmailsQuery;
 
+  public static final String JSON_PROPERTY_IN_USER_IDS_QUERY = "inUserIdsQuery";
+  @javax.annotation.Nonnull
+  private UserServiceInUserIDQuery inUserIdsQuery;
+
+  public static final String JSON_PROPERTY_LAST_NAME_QUERY = "lastNameQuery";
+  @javax.annotation.Nonnull
+  private UserServiceLastNameQuery lastNameQuery;
+
+  public static final String JSON_PROPERTY_LOGIN_NAME_QUERY = "loginNameQuery";
+  @javax.annotation.Nonnull
+  private UserServiceLoginNameQuery loginNameQuery;
+
+  public static final String JSON_PROPERTY_NICK_NAME_QUERY = "nickNameQuery";
+  @javax.annotation.Nonnull
+  private UserServiceNickNameQuery nickNameQuery;
+
+  public static final String JSON_PROPERTY_NOT_QUERY = "notQuery";
+  @javax.annotation.Nonnull
+  private UserServiceNotQuery notQuery;
+
+  public static final String JSON_PROPERTY_OR_QUERY = "orQuery";
+  @javax.annotation.Nonnull
+  private UserServiceOrQuery orQuery;
+
   public static final String JSON_PROPERTY_ORGANIZATION_ID_QUERY = "organizationIdQuery";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private UserServiceOrganizationIdQuery organizationIdQuery;
 
   public static final String JSON_PROPERTY_PHONE_QUERY = "phoneQuery";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private UserServicePhoneQuery phoneQuery;
+
+  public static final String JSON_PROPERTY_STATE_QUERY = "stateQuery";
+  @javax.annotation.Nonnull
+  private UserServiceStateQuery stateQuery;
+
+  public static final String JSON_PROPERTY_TYPE_QUERY = "typeQuery";
+  @javax.annotation.Nonnull
+  private UserServiceTypeQuery typeQuery;
+
+  public static final String JSON_PROPERTY_USER_NAME_QUERY = "userNameQuery";
+  @javax.annotation.Nonnull
+  private UserServiceUserNameQuery userNameQuery;
 
   public UserServiceSearchQuery() {
   }
 
-  public UserServiceSearchQuery userNameQuery(@javax.annotation.Nullable UserServiceUserNameQuery userNameQuery) {
-    
-    this.userNameQuery = userNameQuery;
-    return this;
-  }
-
-  /**
-   * Get userNameQuery
-   * @return userNameQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USER_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceUserNameQuery getUserNameQuery() {
-    return userNameQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USER_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserNameQuery(@javax.annotation.Nullable UserServiceUserNameQuery userNameQuery) {
-    this.userNameQuery = userNameQuery;
-  }
-
-  public UserServiceSearchQuery firstNameQuery(@javax.annotation.Nullable UserServiceFirstNameQuery firstNameQuery) {
-    
-    this.firstNameQuery = firstNameQuery;
-    return this;
-  }
-
-  /**
-   * Get firstNameQuery
-   * @return firstNameQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FIRST_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceFirstNameQuery getFirstNameQuery() {
-    return firstNameQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_FIRST_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFirstNameQuery(@javax.annotation.Nullable UserServiceFirstNameQuery firstNameQuery) {
-    this.firstNameQuery = firstNameQuery;
-  }
-
-  public UserServiceSearchQuery lastNameQuery(@javax.annotation.Nullable UserServiceLastNameQuery lastNameQuery) {
-    
-    this.lastNameQuery = lastNameQuery;
-    return this;
-  }
-
-  /**
-   * Get lastNameQuery
-   * @return lastNameQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LAST_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceLastNameQuery getLastNameQuery() {
-    return lastNameQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LAST_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastNameQuery(@javax.annotation.Nullable UserServiceLastNameQuery lastNameQuery) {
-    this.lastNameQuery = lastNameQuery;
-  }
-
-  public UserServiceSearchQuery nickNameQuery(@javax.annotation.Nullable UserServiceNickNameQuery nickNameQuery) {
-    
-    this.nickNameQuery = nickNameQuery;
-    return this;
-  }
-
-  /**
-   * Get nickNameQuery
-   * @return nickNameQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NICK_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceNickNameQuery getNickNameQuery() {
-    return nickNameQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_NICK_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNickNameQuery(@javax.annotation.Nullable UserServiceNickNameQuery nickNameQuery) {
-    this.nickNameQuery = nickNameQuery;
-  }
-
-  public UserServiceSearchQuery displayNameQuery(@javax.annotation.Nullable UserServiceDisplayNameQuery displayNameQuery) {
-    
-    this.displayNameQuery = displayNameQuery;
-    return this;
-  }
-
-  /**
-   * Get displayNameQuery
-   * @return displayNameQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceDisplayNameQuery getDisplayNameQuery() {
-    return displayNameQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDisplayNameQuery(@javax.annotation.Nullable UserServiceDisplayNameQuery displayNameQuery) {
-    this.displayNameQuery = displayNameQuery;
-  }
-
-  public UserServiceSearchQuery emailQuery(@javax.annotation.Nullable UserServiceEmailQuery emailQuery) {
-    
-    this.emailQuery = emailQuery;
-    return this;
-  }
-
-  /**
-   * Get emailQuery
-   * @return emailQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EMAIL_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceEmailQuery getEmailQuery() {
-    return emailQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_EMAIL_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmailQuery(@javax.annotation.Nullable UserServiceEmailQuery emailQuery) {
-    this.emailQuery = emailQuery;
-  }
-
-  public UserServiceSearchQuery stateQuery(@javax.annotation.Nullable UserServiceStateQuery stateQuery) {
-    
-    this.stateQuery = stateQuery;
-    return this;
-  }
-
-  /**
-   * Get stateQuery
-   * @return stateQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STATE_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceStateQuery getStateQuery() {
-    return stateQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_STATE_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStateQuery(@javax.annotation.Nullable UserServiceStateQuery stateQuery) {
-    this.stateQuery = stateQuery;
-  }
-
-  public UserServiceSearchQuery typeQuery(@javax.annotation.Nullable UserServiceTypeQuery typeQuery) {
-    
-    this.typeQuery = typeQuery;
-    return this;
-  }
-
-  /**
-   * Get typeQuery
-   * @return typeQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TYPE_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceTypeQuery getTypeQuery() {
-    return typeQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TYPE_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTypeQuery(@javax.annotation.Nullable UserServiceTypeQuery typeQuery) {
-    this.typeQuery = typeQuery;
-  }
-
-  public UserServiceSearchQuery loginNameQuery(@javax.annotation.Nullable UserServiceLoginNameQuery loginNameQuery) {
-    
-    this.loginNameQuery = loginNameQuery;
-    return this;
-  }
-
-  /**
-   * Get loginNameQuery
-   * @return loginNameQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOGIN_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceLoginNameQuery getLoginNameQuery() {
-    return loginNameQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LOGIN_NAME_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoginNameQuery(@javax.annotation.Nullable UserServiceLoginNameQuery loginNameQuery) {
-    this.loginNameQuery = loginNameQuery;
-  }
-
-  public UserServiceSearchQuery inUserIdsQuery(@javax.annotation.Nullable UserServiceInUserIDQuery inUserIdsQuery) {
-    
-    this.inUserIdsQuery = inUserIdsQuery;
-    return this;
-  }
-
-  /**
-   * Get inUserIdsQuery
-   * @return inUserIdsQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IN_USER_IDS_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceInUserIDQuery getInUserIdsQuery() {
-    return inUserIdsQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_IN_USER_IDS_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInUserIdsQuery(@javax.annotation.Nullable UserServiceInUserIDQuery inUserIdsQuery) {
-    this.inUserIdsQuery = inUserIdsQuery;
-  }
-
-  public UserServiceSearchQuery orQuery(@javax.annotation.Nullable UserServiceOrQuery orQuery) {
-    
-    this.orQuery = orQuery;
-    return this;
-  }
-
-  /**
-   * Get orQuery
-   * @return orQuery
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OR_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceOrQuery getOrQuery() {
-    return orQuery;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OR_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOrQuery(@javax.annotation.Nullable UserServiceOrQuery orQuery) {
-    this.orQuery = orQuery;
-  }
-
-  public UserServiceSearchQuery andQuery(@javax.annotation.Nullable UserServiceAndQuery andQuery) {
+  public UserServiceSearchQuery andQuery(@javax.annotation.Nonnull UserServiceAndQuery andQuery) {
     
     this.andQuery = andQuery;
     return this;
@@ -417,9 +158,9 @@ public class UserServiceSearchQuery {
    * Get andQuery
    * @return andQuery
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_AND_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public UserServiceAndQuery getAndQuery() {
     return andQuery;
@@ -427,37 +168,87 @@ public class UserServiceSearchQuery {
 
 
   @JsonProperty(JSON_PROPERTY_AND_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAndQuery(@javax.annotation.Nullable UserServiceAndQuery andQuery) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAndQuery(@javax.annotation.Nonnull UserServiceAndQuery andQuery) {
     this.andQuery = andQuery;
   }
 
-  public UserServiceSearchQuery notQuery(@javax.annotation.Nullable UserServiceNotQuery notQuery) {
+  public UserServiceSearchQuery displayNameQuery(@javax.annotation.Nonnull UserServiceDisplayNameQuery displayNameQuery) {
     
-    this.notQuery = notQuery;
+    this.displayNameQuery = displayNameQuery;
     return this;
   }
 
   /**
-   * Get notQuery
-   * @return notQuery
+   * Get displayNameQuery
+   * @return displayNameQuery
    */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NOT_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public UserServiceNotQuery getNotQuery() {
-    return notQuery;
+  public UserServiceDisplayNameQuery getDisplayNameQuery() {
+    return displayNameQuery;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NOT_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNotQuery(@javax.annotation.Nullable UserServiceNotQuery notQuery) {
-    this.notQuery = notQuery;
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDisplayNameQuery(@javax.annotation.Nonnull UserServiceDisplayNameQuery displayNameQuery) {
+    this.displayNameQuery = displayNameQuery;
   }
 
-  public UserServiceSearchQuery inUserEmailsQuery(@javax.annotation.Nullable UserServiceInUserEmailsQuery inUserEmailsQuery) {
+  public UserServiceSearchQuery emailQuery(@javax.annotation.Nonnull UserServiceEmailQuery emailQuery) {
+    
+    this.emailQuery = emailQuery;
+    return this;
+  }
+
+  /**
+   * Get emailQuery
+   * @return emailQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_EMAIL_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceEmailQuery getEmailQuery() {
+    return emailQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EMAIL_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setEmailQuery(@javax.annotation.Nonnull UserServiceEmailQuery emailQuery) {
+    this.emailQuery = emailQuery;
+  }
+
+  public UserServiceSearchQuery firstNameQuery(@javax.annotation.Nonnull UserServiceFirstNameQuery firstNameQuery) {
+    
+    this.firstNameQuery = firstNameQuery;
+    return this;
+  }
+
+  /**
+   * Get firstNameQuery
+   * @return firstNameQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_FIRST_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceFirstNameQuery getFirstNameQuery() {
+    return firstNameQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FIRST_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setFirstNameQuery(@javax.annotation.Nonnull UserServiceFirstNameQuery firstNameQuery) {
+    this.firstNameQuery = firstNameQuery;
+  }
+
+  public UserServiceSearchQuery inUserEmailsQuery(@javax.annotation.Nonnull UserServiceInUserEmailsQuery inUserEmailsQuery) {
     
     this.inUserEmailsQuery = inUserEmailsQuery;
     return this;
@@ -467,9 +258,9 @@ public class UserServiceSearchQuery {
    * Get inUserEmailsQuery
    * @return inUserEmailsQuery
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_IN_USER_EMAILS_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public UserServiceInUserEmailsQuery getInUserEmailsQuery() {
     return inUserEmailsQuery;
@@ -477,12 +268,162 @@ public class UserServiceSearchQuery {
 
 
   @JsonProperty(JSON_PROPERTY_IN_USER_EMAILS_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInUserEmailsQuery(@javax.annotation.Nullable UserServiceInUserEmailsQuery inUserEmailsQuery) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setInUserEmailsQuery(@javax.annotation.Nonnull UserServiceInUserEmailsQuery inUserEmailsQuery) {
     this.inUserEmailsQuery = inUserEmailsQuery;
   }
 
-  public UserServiceSearchQuery organizationIdQuery(@javax.annotation.Nullable UserServiceOrganizationIdQuery organizationIdQuery) {
+  public UserServiceSearchQuery inUserIdsQuery(@javax.annotation.Nonnull UserServiceInUserIDQuery inUserIdsQuery) {
+    
+    this.inUserIdsQuery = inUserIdsQuery;
+    return this;
+  }
+
+  /**
+   * Get inUserIdsQuery
+   * @return inUserIdsQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_IN_USER_IDS_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceInUserIDQuery getInUserIdsQuery() {
+    return inUserIdsQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IN_USER_IDS_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setInUserIdsQuery(@javax.annotation.Nonnull UserServiceInUserIDQuery inUserIdsQuery) {
+    this.inUserIdsQuery = inUserIdsQuery;
+  }
+
+  public UserServiceSearchQuery lastNameQuery(@javax.annotation.Nonnull UserServiceLastNameQuery lastNameQuery) {
+    
+    this.lastNameQuery = lastNameQuery;
+    return this;
+  }
+
+  /**
+   * Get lastNameQuery
+   * @return lastNameQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_LAST_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceLastNameQuery getLastNameQuery() {
+    return lastNameQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LAST_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setLastNameQuery(@javax.annotation.Nonnull UserServiceLastNameQuery lastNameQuery) {
+    this.lastNameQuery = lastNameQuery;
+  }
+
+  public UserServiceSearchQuery loginNameQuery(@javax.annotation.Nonnull UserServiceLoginNameQuery loginNameQuery) {
+    
+    this.loginNameQuery = loginNameQuery;
+    return this;
+  }
+
+  /**
+   * Get loginNameQuery
+   * @return loginNameQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_LOGIN_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceLoginNameQuery getLoginNameQuery() {
+    return loginNameQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LOGIN_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setLoginNameQuery(@javax.annotation.Nonnull UserServiceLoginNameQuery loginNameQuery) {
+    this.loginNameQuery = loginNameQuery;
+  }
+
+  public UserServiceSearchQuery nickNameQuery(@javax.annotation.Nonnull UserServiceNickNameQuery nickNameQuery) {
+    
+    this.nickNameQuery = nickNameQuery;
+    return this;
+  }
+
+  /**
+   * Get nickNameQuery
+   * @return nickNameQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_NICK_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceNickNameQuery getNickNameQuery() {
+    return nickNameQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NICK_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setNickNameQuery(@javax.annotation.Nonnull UserServiceNickNameQuery nickNameQuery) {
+    this.nickNameQuery = nickNameQuery;
+  }
+
+  public UserServiceSearchQuery notQuery(@javax.annotation.Nonnull UserServiceNotQuery notQuery) {
+    
+    this.notQuery = notQuery;
+    return this;
+  }
+
+  /**
+   * Get notQuery
+   * @return notQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_NOT_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceNotQuery getNotQuery() {
+    return notQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_NOT_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setNotQuery(@javax.annotation.Nonnull UserServiceNotQuery notQuery) {
+    this.notQuery = notQuery;
+  }
+
+  public UserServiceSearchQuery orQuery(@javax.annotation.Nonnull UserServiceOrQuery orQuery) {
+    
+    this.orQuery = orQuery;
+    return this;
+  }
+
+  /**
+   * Get orQuery
+   * @return orQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_OR_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceOrQuery getOrQuery() {
+    return orQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OR_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setOrQuery(@javax.annotation.Nonnull UserServiceOrQuery orQuery) {
+    this.orQuery = orQuery;
+  }
+
+  public UserServiceSearchQuery organizationIdQuery(@javax.annotation.Nonnull UserServiceOrganizationIdQuery organizationIdQuery) {
     
     this.organizationIdQuery = organizationIdQuery;
     return this;
@@ -492,9 +433,9 @@ public class UserServiceSearchQuery {
    * Get organizationIdQuery
    * @return organizationIdQuery
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public UserServiceOrganizationIdQuery getOrganizationIdQuery() {
     return organizationIdQuery;
@@ -502,12 +443,12 @@ public class UserServiceSearchQuery {
 
 
   @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOrganizationIdQuery(@javax.annotation.Nullable UserServiceOrganizationIdQuery organizationIdQuery) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setOrganizationIdQuery(@javax.annotation.Nonnull UserServiceOrganizationIdQuery organizationIdQuery) {
     this.organizationIdQuery = organizationIdQuery;
   }
 
-  public UserServiceSearchQuery phoneQuery(@javax.annotation.Nullable UserServicePhoneQuery phoneQuery) {
+  public UserServiceSearchQuery phoneQuery(@javax.annotation.Nonnull UserServicePhoneQuery phoneQuery) {
     
     this.phoneQuery = phoneQuery;
     return this;
@@ -517,9 +458,9 @@ public class UserServiceSearchQuery {
    * Get phoneQuery
    * @return phoneQuery
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_PHONE_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public UserServicePhoneQuery getPhoneQuery() {
     return phoneQuery;
@@ -527,9 +468,84 @@ public class UserServiceSearchQuery {
 
 
   @JsonProperty(JSON_PROPERTY_PHONE_QUERY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPhoneQuery(@javax.annotation.Nullable UserServicePhoneQuery phoneQuery) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setPhoneQuery(@javax.annotation.Nonnull UserServicePhoneQuery phoneQuery) {
     this.phoneQuery = phoneQuery;
+  }
+
+  public UserServiceSearchQuery stateQuery(@javax.annotation.Nonnull UserServiceStateQuery stateQuery) {
+    
+    this.stateQuery = stateQuery;
+    return this;
+  }
+
+  /**
+   * Get stateQuery
+   * @return stateQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_STATE_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceStateQuery getStateQuery() {
+    return stateQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_STATE_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setStateQuery(@javax.annotation.Nonnull UserServiceStateQuery stateQuery) {
+    this.stateQuery = stateQuery;
+  }
+
+  public UserServiceSearchQuery typeQuery(@javax.annotation.Nonnull UserServiceTypeQuery typeQuery) {
+    
+    this.typeQuery = typeQuery;
+    return this;
+  }
+
+  /**
+   * Get typeQuery
+   * @return typeQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TYPE_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceTypeQuery getTypeQuery() {
+    return typeQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TYPE_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTypeQuery(@javax.annotation.Nonnull UserServiceTypeQuery typeQuery) {
+    this.typeQuery = typeQuery;
+  }
+
+  public UserServiceSearchQuery userNameQuery(@javax.annotation.Nonnull UserServiceUserNameQuery userNameQuery) {
+    
+    this.userNameQuery = userNameQuery;
+    return this;
+  }
+
+  /**
+   * Get userNameQuery
+   * @return userNameQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USER_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceUserNameQuery getUserNameQuery() {
+    return userNameQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_NAME_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserNameQuery(@javax.annotation.Nonnull UserServiceUserNameQuery userNameQuery) {
+    this.userNameQuery = userNameQuery;
   }
 
   @Override
@@ -541,49 +557,49 @@ public class UserServiceSearchQuery {
       return false;
     }
     UserServiceSearchQuery userServiceSearchQuery = (UserServiceSearchQuery) o;
-    return Objects.equals(this.userNameQuery, userServiceSearchQuery.userNameQuery) &&
-        Objects.equals(this.firstNameQuery, userServiceSearchQuery.firstNameQuery) &&
-        Objects.equals(this.lastNameQuery, userServiceSearchQuery.lastNameQuery) &&
-        Objects.equals(this.nickNameQuery, userServiceSearchQuery.nickNameQuery) &&
+    return Objects.equals(this.andQuery, userServiceSearchQuery.andQuery) &&
         Objects.equals(this.displayNameQuery, userServiceSearchQuery.displayNameQuery) &&
         Objects.equals(this.emailQuery, userServiceSearchQuery.emailQuery) &&
+        Objects.equals(this.firstNameQuery, userServiceSearchQuery.firstNameQuery) &&
+        Objects.equals(this.inUserEmailsQuery, userServiceSearchQuery.inUserEmailsQuery) &&
+        Objects.equals(this.inUserIdsQuery, userServiceSearchQuery.inUserIdsQuery) &&
+        Objects.equals(this.lastNameQuery, userServiceSearchQuery.lastNameQuery) &&
+        Objects.equals(this.loginNameQuery, userServiceSearchQuery.loginNameQuery) &&
+        Objects.equals(this.nickNameQuery, userServiceSearchQuery.nickNameQuery) &&
+        Objects.equals(this.notQuery, userServiceSearchQuery.notQuery) &&
+        Objects.equals(this.orQuery, userServiceSearchQuery.orQuery) &&
+        Objects.equals(this.organizationIdQuery, userServiceSearchQuery.organizationIdQuery) &&
+        Objects.equals(this.phoneQuery, userServiceSearchQuery.phoneQuery) &&
         Objects.equals(this.stateQuery, userServiceSearchQuery.stateQuery) &&
         Objects.equals(this.typeQuery, userServiceSearchQuery.typeQuery) &&
-        Objects.equals(this.loginNameQuery, userServiceSearchQuery.loginNameQuery) &&
-        Objects.equals(this.inUserIdsQuery, userServiceSearchQuery.inUserIdsQuery) &&
-        Objects.equals(this.orQuery, userServiceSearchQuery.orQuery) &&
-        Objects.equals(this.andQuery, userServiceSearchQuery.andQuery) &&
-        Objects.equals(this.notQuery, userServiceSearchQuery.notQuery) &&
-        Objects.equals(this.inUserEmailsQuery, userServiceSearchQuery.inUserEmailsQuery) &&
-        Objects.equals(this.organizationIdQuery, userServiceSearchQuery.organizationIdQuery) &&
-        Objects.equals(this.phoneQuery, userServiceSearchQuery.phoneQuery);
+        Objects.equals(this.userNameQuery, userServiceSearchQuery.userNameQuery);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userNameQuery, firstNameQuery, lastNameQuery, nickNameQuery, displayNameQuery, emailQuery, stateQuery, typeQuery, loginNameQuery, inUserIdsQuery, orQuery, andQuery, notQuery, inUserEmailsQuery, organizationIdQuery, phoneQuery);
+    return Objects.hash(andQuery, displayNameQuery, emailQuery, firstNameQuery, inUserEmailsQuery, inUserIdsQuery, lastNameQuery, loginNameQuery, nickNameQuery, notQuery, orQuery, organizationIdQuery, phoneQuery, stateQuery, typeQuery, userNameQuery);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceSearchQuery {\n");
-    sb.append("    userNameQuery: ").append(toIndentedString(userNameQuery)).append("\n");
-    sb.append("    firstNameQuery: ").append(toIndentedString(firstNameQuery)).append("\n");
-    sb.append("    lastNameQuery: ").append(toIndentedString(lastNameQuery)).append("\n");
-    sb.append("    nickNameQuery: ").append(toIndentedString(nickNameQuery)).append("\n");
+    sb.append("    andQuery: ").append(toIndentedString(andQuery)).append("\n");
     sb.append("    displayNameQuery: ").append(toIndentedString(displayNameQuery)).append("\n");
     sb.append("    emailQuery: ").append(toIndentedString(emailQuery)).append("\n");
-    sb.append("    stateQuery: ").append(toIndentedString(stateQuery)).append("\n");
-    sb.append("    typeQuery: ").append(toIndentedString(typeQuery)).append("\n");
-    sb.append("    loginNameQuery: ").append(toIndentedString(loginNameQuery)).append("\n");
-    sb.append("    inUserIdsQuery: ").append(toIndentedString(inUserIdsQuery)).append("\n");
-    sb.append("    orQuery: ").append(toIndentedString(orQuery)).append("\n");
-    sb.append("    andQuery: ").append(toIndentedString(andQuery)).append("\n");
-    sb.append("    notQuery: ").append(toIndentedString(notQuery)).append("\n");
+    sb.append("    firstNameQuery: ").append(toIndentedString(firstNameQuery)).append("\n");
     sb.append("    inUserEmailsQuery: ").append(toIndentedString(inUserEmailsQuery)).append("\n");
+    sb.append("    inUserIdsQuery: ").append(toIndentedString(inUserIdsQuery)).append("\n");
+    sb.append("    lastNameQuery: ").append(toIndentedString(lastNameQuery)).append("\n");
+    sb.append("    loginNameQuery: ").append(toIndentedString(loginNameQuery)).append("\n");
+    sb.append("    nickNameQuery: ").append(toIndentedString(nickNameQuery)).append("\n");
+    sb.append("    notQuery: ").append(toIndentedString(notQuery)).append("\n");
+    sb.append("    orQuery: ").append(toIndentedString(orQuery)).append("\n");
     sb.append("    organizationIdQuery: ").append(toIndentedString(organizationIdQuery)).append("\n");
     sb.append("    phoneQuery: ").append(toIndentedString(phoneQuery)).append("\n");
+    sb.append("    stateQuery: ").append(toIndentedString(stateQuery)).append("\n");
+    sb.append("    typeQuery: ").append(toIndentedString(typeQuery)).append("\n");
+    sb.append("    userNameQuery: ").append(toIndentedString(userNameQuery)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -630,6 +646,86 @@ public class UserServiceSearchQuery {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `andQuery` to the URL query string
+    if (getAndQuery() != null) {
+      joiner.add(getAndQuery().toUrlQueryString(prefix + "andQuery" + suffix));
+    }
+
+    // add `displayNameQuery` to the URL query string
+    if (getDisplayNameQuery() != null) {
+      joiner.add(getDisplayNameQuery().toUrlQueryString(prefix + "displayNameQuery" + suffix));
+    }
+
+    // add `emailQuery` to the URL query string
+    if (getEmailQuery() != null) {
+      joiner.add(getEmailQuery().toUrlQueryString(prefix + "emailQuery" + suffix));
+    }
+
+    // add `firstNameQuery` to the URL query string
+    if (getFirstNameQuery() != null) {
+      joiner.add(getFirstNameQuery().toUrlQueryString(prefix + "firstNameQuery" + suffix));
+    }
+
+    // add `inUserEmailsQuery` to the URL query string
+    if (getInUserEmailsQuery() != null) {
+      joiner.add(getInUserEmailsQuery().toUrlQueryString(prefix + "inUserEmailsQuery" + suffix));
+    }
+
+    // add `inUserIdsQuery` to the URL query string
+    if (getInUserIdsQuery() != null) {
+      joiner.add(getInUserIdsQuery().toUrlQueryString(prefix + "inUserIdsQuery" + suffix));
+    }
+
+    // add `lastNameQuery` to the URL query string
+    if (getLastNameQuery() != null) {
+      joiner.add(getLastNameQuery().toUrlQueryString(prefix + "lastNameQuery" + suffix));
+    }
+
+    // add `loginNameQuery` to the URL query string
+    if (getLoginNameQuery() != null) {
+      joiner.add(getLoginNameQuery().toUrlQueryString(prefix + "loginNameQuery" + suffix));
+    }
+
+    // add `nickNameQuery` to the URL query string
+    if (getNickNameQuery() != null) {
+      joiner.add(getNickNameQuery().toUrlQueryString(prefix + "nickNameQuery" + suffix));
+    }
+
+    // add `notQuery` to the URL query string
+    if (getNotQuery() != null) {
+      joiner.add(getNotQuery().toUrlQueryString(prefix + "notQuery" + suffix));
+    }
+
+    // add `orQuery` to the URL query string
+    if (getOrQuery() != null) {
+      joiner.add(getOrQuery().toUrlQueryString(prefix + "orQuery" + suffix));
+    }
+
+    // add `organizationIdQuery` to the URL query string
+    if (getOrganizationIdQuery() != null) {
+      joiner.add(getOrganizationIdQuery().toUrlQueryString(prefix + "organizationIdQuery" + suffix));
+    }
+
+    // add `phoneQuery` to the URL query string
+    if (getPhoneQuery() != null) {
+      joiner.add(getPhoneQuery().toUrlQueryString(prefix + "phoneQuery" + suffix));
+    }
+
+    // add `stateQuery` to the URL query string
+    if (getStateQuery() != null) {
+      joiner.add(getStateQuery().toUrlQueryString(prefix + "stateQuery" + suffix));
+    }
+
+    // add `typeQuery` to the URL query string
+    if (getTypeQuery() != null) {
+      joiner.add(getTypeQuery().toUrlQueryString(prefix + "typeQuery" + suffix));
+    }
+
+    // add `userNameQuery` to the URL query string
+    if (getUserNameQuery() != null) {
+      joiner.add(getUserNameQuery().toUrlQueryString(prefix + "userNameQuery" + suffix));
+    }
 
     return joiner.toString();
   }

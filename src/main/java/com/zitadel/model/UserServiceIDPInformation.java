@@ -20,9 +20,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.Ldap2;
+import com.zitadel.model.Oauth1;
+import com.zitadel.model.Saml1;
 import com.zitadel.model.UserServiceIDPLDAPAccessInformation;
 import com.zitadel.model.UserServiceIDPOAuthAccessInformation;
 import com.zitadel.model.UserServiceIDPSAMLAccessInformation;
+import com.zitadel.model.UserServiceValue;
+import java.util.HashMap;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -33,28 +39,16 @@ import java.util.StringJoiner;
  * UserServiceIDPInformation
  */
 @JsonPropertyOrder({
-  UserServiceIDPInformation.JSON_PROPERTY_OAUTH,
-  UserServiceIDPInformation.JSON_PROPERTY_LDAP,
-  UserServiceIDPInformation.JSON_PROPERTY_SAML,
   UserServiceIDPInformation.JSON_PROPERTY_IDP_ID,
   UserServiceIDPInformation.JSON_PROPERTY_USER_ID,
   UserServiceIDPInformation.JSON_PROPERTY_USER_NAME,
-  UserServiceIDPInformation.JSON_PROPERTY_RAW_INFORMATION
+  UserServiceIDPInformation.JSON_PROPERTY_RAW_INFORMATION,
+  UserServiceIDPInformation.JSON_PROPERTY_LDAP,
+  UserServiceIDPInformation.JSON_PROPERTY_OAUTH,
+  UserServiceIDPInformation.JSON_PROPERTY_SAML
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceIDPInformation {
-  public static final String JSON_PROPERTY_OAUTH = "oauth";
-  @javax.annotation.Nullable
-  private UserServiceIDPOAuthAccessInformation oauth;
-
-  public static final String JSON_PROPERTY_LDAP = "ldap";
-  @javax.annotation.Nullable
-  private UserServiceIDPLDAPAccessInformation ldap;
-
-  public static final String JSON_PROPERTY_SAML = "saml";
-  @javax.annotation.Nullable
-  private UserServiceIDPSAMLAccessInformation saml;
-
   public static final String JSON_PROPERTY_IDP_ID = "idpId";
   @javax.annotation.Nullable
   private String idpId;
@@ -69,84 +63,21 @@ public class UserServiceIDPInformation {
 
   public static final String JSON_PROPERTY_RAW_INFORMATION = "rawInformation";
   @javax.annotation.Nullable
-  private Object rawInformation;
+  private Map<String, UserServiceValue> rawInformation = new HashMap<>();
+
+  public static final String JSON_PROPERTY_LDAP = "ldap";
+  @javax.annotation.Nonnull
+  private UserServiceIDPLDAPAccessInformation ldap;
+
+  public static final String JSON_PROPERTY_OAUTH = "oauth";
+  @javax.annotation.Nonnull
+  private UserServiceIDPOAuthAccessInformation oauth;
+
+  public static final String JSON_PROPERTY_SAML = "saml";
+  @javax.annotation.Nonnull
+  private UserServiceIDPSAMLAccessInformation saml;
 
   public UserServiceIDPInformation() {
-  }
-
-  public UserServiceIDPInformation oauth(@javax.annotation.Nullable UserServiceIDPOAuthAccessInformation oauth) {
-    
-    this.oauth = oauth;
-    return this;
-  }
-
-  /**
-   * Get oauth
-   * @return oauth
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OAUTH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceIDPOAuthAccessInformation getOauth() {
-    return oauth;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OAUTH)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOauth(@javax.annotation.Nullable UserServiceIDPOAuthAccessInformation oauth) {
-    this.oauth = oauth;
-  }
-
-  public UserServiceIDPInformation ldap(@javax.annotation.Nullable UserServiceIDPLDAPAccessInformation ldap) {
-    
-    this.ldap = ldap;
-    return this;
-  }
-
-  /**
-   * Get ldap
-   * @return ldap
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LDAP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceIDPLDAPAccessInformation getLdap() {
-    return ldap;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_LDAP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLdap(@javax.annotation.Nullable UserServiceIDPLDAPAccessInformation ldap) {
-    this.ldap = ldap;
-  }
-
-  public UserServiceIDPInformation saml(@javax.annotation.Nullable UserServiceIDPSAMLAccessInformation saml) {
-    
-    this.saml = saml;
-    return this;
-  }
-
-  /**
-   * Get saml
-   * @return saml
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SAML)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceIDPSAMLAccessInformation getSaml() {
-    return saml;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SAML)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaml(@javax.annotation.Nullable UserServiceIDPSAMLAccessInformation saml) {
-    this.saml = saml;
   }
 
   public UserServiceIDPInformation idpId(@javax.annotation.Nullable String idpId) {
@@ -156,7 +87,7 @@ public class UserServiceIDPInformation {
   }
 
   /**
-   * ID of the identity provider
+   * Get idpId
    * @return idpId
    */
   @javax.annotation.Nullable
@@ -181,7 +112,7 @@ public class UserServiceIDPInformation {
   }
 
   /**
-   * ID of the user of the identity provider
+   * Get userId
    * @return userId
    */
   @javax.annotation.Nullable
@@ -206,7 +137,7 @@ public class UserServiceIDPInformation {
   }
 
   /**
-   * username of the user of the identity provider
+   * Get userName
    * @return userName
    */
   @javax.annotation.Nullable
@@ -224,29 +155,112 @@ public class UserServiceIDPInformation {
     this.userName = userName;
   }
 
-  public UserServiceIDPInformation rawInformation(@javax.annotation.Nullable Object rawInformation) {
+  public UserServiceIDPInformation rawInformation(@javax.annotation.Nullable Map<String, UserServiceValue> rawInformation) {
     
     this.rawInformation = rawInformation;
     return this;
   }
 
+  public UserServiceIDPInformation putRawInformationItem(String key, UserServiceValue rawInformationItem) {
+    if (this.rawInformation == null) {
+      this.rawInformation = new HashMap<>();
+    }
+    this.rawInformation.put(key, rawInformationItem);
+    return this;
+  }
+
   /**
-   * complete information returned by the identity provider
+   * &#x60;Struct&#x60; represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, &#x60;Struct&#x60;  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for &#x60;Struct&#x60; is JSON object.
    * @return rawInformation
    */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_RAW_INFORMATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Object getRawInformation() {
+  public Map<String, UserServiceValue> getRawInformation() {
     return rawInformation;
   }
 
 
   @JsonProperty(JSON_PROPERTY_RAW_INFORMATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRawInformation(@javax.annotation.Nullable Object rawInformation) {
+  public void setRawInformation(@javax.annotation.Nullable Map<String, UserServiceValue> rawInformation) {
     this.rawInformation = rawInformation;
+  }
+
+  public UserServiceIDPInformation ldap(@javax.annotation.Nonnull UserServiceIDPLDAPAccessInformation ldap) {
+    
+    this.ldap = ldap;
+    return this;
+  }
+
+  /**
+   * Get ldap
+   * @return ldap
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_LDAP)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceIDPLDAPAccessInformation getLdap() {
+    return ldap;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LDAP)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setLdap(@javax.annotation.Nonnull UserServiceIDPLDAPAccessInformation ldap) {
+    this.ldap = ldap;
+  }
+
+  public UserServiceIDPInformation oauth(@javax.annotation.Nonnull UserServiceIDPOAuthAccessInformation oauth) {
+    
+    this.oauth = oauth;
+    return this;
+  }
+
+  /**
+   * Get oauth
+   * @return oauth
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_OAUTH)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceIDPOAuthAccessInformation getOauth() {
+    return oauth;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OAUTH)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setOauth(@javax.annotation.Nonnull UserServiceIDPOAuthAccessInformation oauth) {
+    this.oauth = oauth;
+  }
+
+  public UserServiceIDPInformation saml(@javax.annotation.Nonnull UserServiceIDPSAMLAccessInformation saml) {
+    
+    this.saml = saml;
+    return this;
+  }
+
+  /**
+   * Get saml
+   * @return saml
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_SAML)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceIDPSAMLAccessInformation getSaml() {
+    return saml;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SAML)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSaml(@javax.annotation.Nonnull UserServiceIDPSAMLAccessInformation saml) {
+    this.saml = saml;
   }
 
   @Override
@@ -258,31 +272,31 @@ public class UserServiceIDPInformation {
       return false;
     }
     UserServiceIDPInformation userServiceIDPInformation = (UserServiceIDPInformation) o;
-    return Objects.equals(this.oauth, userServiceIDPInformation.oauth) &&
-        Objects.equals(this.ldap, userServiceIDPInformation.ldap) &&
-        Objects.equals(this.saml, userServiceIDPInformation.saml) &&
-        Objects.equals(this.idpId, userServiceIDPInformation.idpId) &&
+    return Objects.equals(this.idpId, userServiceIDPInformation.idpId) &&
         Objects.equals(this.userId, userServiceIDPInformation.userId) &&
         Objects.equals(this.userName, userServiceIDPInformation.userName) &&
-        Objects.equals(this.rawInformation, userServiceIDPInformation.rawInformation);
+        Objects.equals(this.rawInformation, userServiceIDPInformation.rawInformation) &&
+        Objects.equals(this.ldap, userServiceIDPInformation.ldap) &&
+        Objects.equals(this.oauth, userServiceIDPInformation.oauth) &&
+        Objects.equals(this.saml, userServiceIDPInformation.saml);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(oauth, ldap, saml, idpId, userId, userName, rawInformation);
+    return Objects.hash(idpId, userId, userName, rawInformation, ldap, oauth, saml);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceIDPInformation {\n");
-    sb.append("    oauth: ").append(toIndentedString(oauth)).append("\n");
-    sb.append("    ldap: ").append(toIndentedString(ldap)).append("\n");
-    sb.append("    saml: ").append(toIndentedString(saml)).append("\n");
     sb.append("    idpId: ").append(toIndentedString(idpId)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
     sb.append("    rawInformation: ").append(toIndentedString(rawInformation)).append("\n");
+    sb.append("    ldap: ").append(toIndentedString(ldap)).append("\n");
+    sb.append("    oauth: ").append(toIndentedString(oauth)).append("\n");
+    sb.append("    saml: ").append(toIndentedString(saml)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -329,6 +343,21 @@ public class UserServiceIDPInformation {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `ldap` to the URL query string
+    if (getLdap() != null) {
+      joiner.add(getLdap().toUrlQueryString(prefix + "ldap" + suffix));
+    }
+
+    // add `oauth` to the URL query string
+    if (getOauth() != null) {
+      joiner.add(getOauth().toUrlQueryString(prefix + "oauth" + suffix));
+    }
+
+    // add `saml` to the URL query string
+    if (getSaml() != null) {
+      joiner.add(getSaml().toUrlQueryString(prefix + "saml" + suffix));
+    }
 
     return joiner.toString();
   }

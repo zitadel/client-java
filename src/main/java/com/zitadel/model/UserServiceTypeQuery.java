@@ -37,7 +37,7 @@ import java.util.StringJoiner;
 public class UserServiceTypeQuery {
   public static final String JSON_PROPERTY_TYPE = "type";
   @javax.annotation.Nonnull
-  private UserServiceType type = UserServiceType.TYPE_UNSPECIFIED;
+  private UserServiceType type;
 
   public UserServiceTypeQuery() {
   }

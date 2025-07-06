@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.Human1;
+import com.zitadel.model.Machine1;
 import com.zitadel.model.UserServiceDetails;
 import com.zitadel.model.UserServiceHumanUser;
 import com.zitadel.model.UserServiceMachineUser;
@@ -58,7 +60,7 @@ public class UserServiceUser {
 
   public static final String JSON_PROPERTY_STATE = "state";
   @javax.annotation.Nullable
-  private UserServiceUserState state = UserServiceUserState.USER_STATE_UNSPECIFIED;
+  private UserServiceUserState state;
 
   public static final String JSON_PROPERTY_USERNAME = "username";
   @javax.annotation.Nullable
@@ -73,11 +75,11 @@ public class UserServiceUser {
   private String preferredLoginName;
 
   public static final String JSON_PROPERTY_HUMAN = "human";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private UserServiceHumanUser human;
 
   public static final String JSON_PROPERTY_MACHINE = "machine";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private UserServiceMachineUser machine;
 
   public UserServiceUser() {
@@ -241,7 +243,7 @@ public class UserServiceUser {
     this.preferredLoginName = preferredLoginName;
   }
 
-  public UserServiceUser human(@javax.annotation.Nullable UserServiceHumanUser human) {
+  public UserServiceUser human(@javax.annotation.Nonnull UserServiceHumanUser human) {
     
     this.human = human;
     return this;
@@ -251,9 +253,9 @@ public class UserServiceUser {
    * Get human
    * @return human
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_HUMAN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public UserServiceHumanUser getHuman() {
     return human;
@@ -261,12 +263,12 @@ public class UserServiceUser {
 
 
   @JsonProperty(JSON_PROPERTY_HUMAN)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHuman(@javax.annotation.Nullable UserServiceHumanUser human) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setHuman(@javax.annotation.Nonnull UserServiceHumanUser human) {
     this.human = human;
   }
 
-  public UserServiceUser machine(@javax.annotation.Nullable UserServiceMachineUser machine) {
+  public UserServiceUser machine(@javax.annotation.Nonnull UserServiceMachineUser machine) {
     
     this.machine = machine;
     return this;
@@ -276,9 +278,9 @@ public class UserServiceUser {
    * Get machine
    * @return machine
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_MACHINE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public UserServiceMachineUser getMachine() {
     return machine;
@@ -286,8 +288,8 @@ public class UserServiceUser {
 
 
   @JsonProperty(JSON_PROPERTY_MACHINE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMachine(@javax.annotation.Nullable UserServiceMachineUser machine) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setMachine(@javax.annotation.Nonnull UserServiceMachineUser machine) {
     this.machine = machine;
   }
 
@@ -373,6 +375,16 @@ public class UserServiceUser {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `human` to the URL query string
+    if (getHuman() != null) {
+      joiner.add(getHuman().toUrlQueryString(prefix + "human" + suffix));
+    }
+
+    // add `machine` to the URL query string
+    if (getMachine() != null) {
+      joiner.add(getMachine().toUrlQueryString(prefix + "machine" + suffix));
+    }
 
     return joiner.toString();
   }

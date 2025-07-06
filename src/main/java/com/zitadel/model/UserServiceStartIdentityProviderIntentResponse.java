@@ -20,7 +20,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.AuthUrl;
+import com.zitadel.model.FormData;
+import com.zitadel.model.IdpIntent;
+import com.zitadel.model.PostForm;
 import com.zitadel.model.UserServiceDetails;
+import com.zitadel.model.UserServiceFormData;
 import com.zitadel.model.UserServiceIDPIntent;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -34,6 +39,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   UserServiceStartIdentityProviderIntentResponse.JSON_PROPERTY_DETAILS,
   UserServiceStartIdentityProviderIntentResponse.JSON_PROPERTY_AUTH_URL,
+  UserServiceStartIdentityProviderIntentResponse.JSON_PROPERTY_FORM_DATA,
   UserServiceStartIdentityProviderIntentResponse.JSON_PROPERTY_IDP_INTENT,
   UserServiceStartIdentityProviderIntentResponse.JSON_PROPERTY_POST_FORM
 })
@@ -44,15 +50,19 @@ public class UserServiceStartIdentityProviderIntentResponse {
   private UserServiceDetails details;
 
   public static final String JSON_PROPERTY_AUTH_URL = "authUrl";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String authUrl;
 
+  public static final String JSON_PROPERTY_FORM_DATA = "formData";
+  @javax.annotation.Nonnull
+  private UserServiceFormData formData;
+
   public static final String JSON_PROPERTY_IDP_INTENT = "idpIntent";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private UserServiceIDPIntent idpIntent;
 
   public static final String JSON_PROPERTY_POST_FORM = "postForm";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private byte[] postForm;
 
   public UserServiceStartIdentityProviderIntentResponse() {
@@ -83,19 +93,19 @@ public class UserServiceStartIdentityProviderIntentResponse {
     this.details = details;
   }
 
-  public UserServiceStartIdentityProviderIntentResponse authUrl(@javax.annotation.Nullable String authUrl) {
+  public UserServiceStartIdentityProviderIntentResponse authUrl(@javax.annotation.Nonnull String authUrl) {
     
     this.authUrl = authUrl;
     return this;
   }
 
   /**
-   * URL to which the client should redirect
+   * Get authUrl
    * @return authUrl
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_AUTH_URL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAuthUrl() {
     return authUrl;
@@ -103,12 +113,37 @@ public class UserServiceStartIdentityProviderIntentResponse {
 
 
   @JsonProperty(JSON_PROPERTY_AUTH_URL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAuthUrl(@javax.annotation.Nullable String authUrl) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAuthUrl(@javax.annotation.Nonnull String authUrl) {
     this.authUrl = authUrl;
   }
 
-  public UserServiceStartIdentityProviderIntentResponse idpIntent(@javax.annotation.Nullable UserServiceIDPIntent idpIntent) {
+  public UserServiceStartIdentityProviderIntentResponse formData(@javax.annotation.Nonnull UserServiceFormData formData) {
+    
+    this.formData = formData;
+    return this;
+  }
+
+  /**
+   * Get formData
+   * @return formData
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_FORM_DATA)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceFormData getFormData() {
+    return formData;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_FORM_DATA)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setFormData(@javax.annotation.Nonnull UserServiceFormData formData) {
+    this.formData = formData;
+  }
+
+  public UserServiceStartIdentityProviderIntentResponse idpIntent(@javax.annotation.Nonnull UserServiceIDPIntent idpIntent) {
     
     this.idpIntent = idpIntent;
     return this;
@@ -118,9 +153,9 @@ public class UserServiceStartIdentityProviderIntentResponse {
    * Get idpIntent
    * @return idpIntent
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_IDP_INTENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public UserServiceIDPIntent getIdpIntent() {
     return idpIntent;
@@ -128,24 +163,24 @@ public class UserServiceStartIdentityProviderIntentResponse {
 
 
   @JsonProperty(JSON_PROPERTY_IDP_INTENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIdpIntent(@javax.annotation.Nullable UserServiceIDPIntent idpIntent) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setIdpIntent(@javax.annotation.Nonnull UserServiceIDPIntent idpIntent) {
     this.idpIntent = idpIntent;
   }
 
-  public UserServiceStartIdentityProviderIntentResponse postForm(@javax.annotation.Nullable byte[] postForm) {
+  public UserServiceStartIdentityProviderIntentResponse postForm(@javax.annotation.Nonnull byte[] postForm) {
     
     this.postForm = postForm;
     return this;
   }
 
   /**
-   * POST call information
+   * POST call information  Deprecated: Use form_data instead
    * @return postForm
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_POST_FORM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public byte[] getPostForm() {
     return postForm;
@@ -153,8 +188,8 @@ public class UserServiceStartIdentityProviderIntentResponse {
 
 
   @JsonProperty(JSON_PROPERTY_POST_FORM)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPostForm(@javax.annotation.Nullable byte[] postForm) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setPostForm(@javax.annotation.Nonnull byte[] postForm) {
     this.postForm = postForm;
   }
 
@@ -169,13 +204,14 @@ public class UserServiceStartIdentityProviderIntentResponse {
     UserServiceStartIdentityProviderIntentResponse userServiceStartIdentityProviderIntentResponse = (UserServiceStartIdentityProviderIntentResponse) o;
     return Objects.equals(this.details, userServiceStartIdentityProviderIntentResponse.details) &&
         Objects.equals(this.authUrl, userServiceStartIdentityProviderIntentResponse.authUrl) &&
+        Objects.equals(this.formData, userServiceStartIdentityProviderIntentResponse.formData) &&
         Objects.equals(this.idpIntent, userServiceStartIdentityProviderIntentResponse.idpIntent) &&
         Arrays.equals(this.postForm, userServiceStartIdentityProviderIntentResponse.postForm);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(details, authUrl, idpIntent, Arrays.hashCode(postForm));
+    return Objects.hash(details, authUrl, formData, idpIntent, Arrays.hashCode(postForm));
   }
 
   @Override
@@ -184,6 +220,7 @@ public class UserServiceStartIdentityProviderIntentResponse {
     sb.append("class UserServiceStartIdentityProviderIntentResponse {\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    authUrl: ").append(toIndentedString(authUrl)).append("\n");
+    sb.append("    formData: ").append(toIndentedString(formData)).append("\n");
     sb.append("    idpIntent: ").append(toIndentedString(idpIntent)).append("\n");
     sb.append("    postForm: ").append(toIndentedString(postForm)).append("\n");
     sb.append("}");
@@ -232,6 +269,36 @@ public class UserServiceStartIdentityProviderIntentResponse {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `authUrl` to the URL query string
+    if (getAuthUrl() != null) {
+      try {
+        joiner.add(String.format("%sauthUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAuthUrl()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `formData` to the URL query string
+    if (getFormData() != null) {
+      joiner.add(getFormData().toUrlQueryString(prefix + "formData" + suffix));
+    }
+
+    // add `idpIntent` to the URL query string
+    if (getIdpIntent() != null) {
+      joiner.add(getIdpIntent().toUrlQueryString(prefix + "idpIntent" + suffix));
+    }
+
+    // add `postForm` to the URL query string
+    if (getPostForm() != null) {
+      try {
+        joiner.add(String.format("%spostForm%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPostForm()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     return joiner.toString();
   }

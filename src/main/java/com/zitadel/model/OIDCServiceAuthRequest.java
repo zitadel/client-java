@@ -25,6 +25,10 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -78,7 +82,7 @@ public class OIDCServiceAuthRequest {
 
   public static final String JSON_PROPERTY_LOGIN_HINT = "loginHint";
   @javax.annotation.Nullable
-  private String loginHint;
+  private JsonNullable<String> loginHint = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_MAX_AGE = "maxAge";
   @javax.annotation.Nullable
@@ -86,7 +90,7 @@ public class OIDCServiceAuthRequest {
 
   public static final String JSON_PROPERTY_HINT_USER_ID = "hintUserId";
   @javax.annotation.Nullable
-  private String hintUserId;
+  private JsonNullable<String> hintUserId = JsonNullable.<String>undefined();
 
   public OIDCServiceAuthRequest() {
   }
@@ -98,7 +102,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * ID of the authorization request
+   * Get id
    * @return id
    */
   @javax.annotation.Nullable
@@ -123,7 +127,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * Time when the auth request was created
+   * A Timestamp represents a point in time independent of any time zone or local  calendar, encoded as a count of seconds and fractions of seconds at  nanosecond resolution. The count is relative to an epoch at UTC midnight on  January 1, 1970, in the proleptic Gregorian calendar which extends the  Gregorian calendar backwards to year one.   All minutes are 60 seconds long. Leap seconds are \&quot;smeared\&quot; so that no leap  second table is needed for interpretation, using a [24-hour linear  smear](https://developers.google.com/time/smear).   The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By  restricting to that range, we ensure that we can convert to and from [RFC  3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.   # Examples   Example 1: Compute Timestamp from POSIX &#x60;time()&#x60;.       Timestamp timestamp;      timestamp.set_seconds(time(NULL));      timestamp.set_nanos(0);   Example 2: Compute Timestamp from POSIX &#x60;gettimeofday()&#x60;.       struct timeval tv;      gettimeofday(&amp;tv, NULL);       Timestamp timestamp;      timestamp.set_seconds(tv.tv_sec);      timestamp.set_nanos(tv.tv_usec * 1000);   Example 3: Compute Timestamp from Win32 &#x60;GetSystemTimeAsFileTime()&#x60;.       FILETIME ft;      GetSystemTimeAsFileTime(&amp;ft);      UINT64 ticks &#x3D; (((UINT64)ft.dwHighDateTime) &lt;&lt; 32) | ft.dwLowDateTime;       // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z      // is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z.      Timestamp timestamp;      timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));      timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));   Example 4: Compute Timestamp from Java &#x60;System.currentTimeMillis()&#x60;.       long millis &#x3D; System.currentTimeMillis();       Timestamp timestamp &#x3D; Timestamp.newBuilder().setSeconds(millis / 1000)          .setNanos((int) ((millis % 1000) * 1000000)).build();   Example 5: Compute Timestamp from Java &#x60;Instant.now()&#x60;.       Instant now &#x3D; Instant.now();       Timestamp timestamp &#x3D;          Timestamp.newBuilder().setSeconds(now.getEpochSecond())              .setNanos(now.getNano()).build();   Example 6: Compute Timestamp from current time in Python.       timestamp &#x3D; Timestamp()      timestamp.GetCurrentTime()   # JSON Mapping   In JSON format, the Timestamp type is encoded as a string in the  [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the  format is \&quot;{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z\&quot;  where {year} is always expressed using four digits while {month}, {day},  {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional  seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),  are optional. The \&quot;Z\&quot; suffix indicates the timezone (\&quot;UTC\&quot;); the timezone  is required. A proto3 JSON serializer should always use UTC (as indicated by  \&quot;Z\&quot;) when printing the Timestamp type and a proto3 JSON parser should be  able to accept both UTC and other timezones (as indicated by an offset).   For example, \&quot;2017-01-15T01:30:15.01Z\&quot; encodes 15.01 seconds past  01:30 UTC on January 15, 2017.   In JavaScript, one can convert a Date object to this format using the  standard  [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)  method. In Python, a standard &#x60;datetime.datetime&#x60; object can be converted  to this format using  [&#x60;strftime&#x60;](https://docs.python.org/2/library/time.html#time.strftime) with  the time format spec &#39;%Y-%m-%dT%H:%M:%S.%fZ&#39;. Likewise, in Java, one can use  the Joda Time&#39;s [&#x60;ISODateTimeFormat.dateTime()&#x60;](  http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()  ) to obtain a formatter capable of generating timestamps in this format.
    * @return creationDate
    */
   @javax.annotation.Nullable
@@ -148,7 +152,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * OIDC client ID of the application that created the auth request
+   * Get clientId
    * @return clientId
    */
   @javax.annotation.Nullable
@@ -181,7 +185,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * Requested scopes by the application, which the user must consent to.
+   * Get scope
    * @return scope
    */
   @javax.annotation.Nullable
@@ -206,7 +210,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * Base URI that points back to the application
+   * Get redirectUri
    * @return redirectUri
    */
   @javax.annotation.Nullable
@@ -239,7 +243,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * Prompts that must be displayed to the user
+   * Get prompt
    * @return prompt
    */
   @javax.annotation.Nullable
@@ -272,7 +276,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * End-User&#39;s preferred languages and scripts for the user interface, represented as a list of BCP47 [RFC5646] language tag values, ordered by preference. For instance, the value [fr-CA, fr, en] represents a preference for French as spoken in Canada, then French (without a region designation), followed by English (without a region designation). An error SHOULD NOT result if some or all of the requested locales are not supported.
+   * Get uiLocales
    * @return uiLocales
    */
   @javax.annotation.Nullable
@@ -291,28 +295,36 @@ public class OIDCServiceAuthRequest {
   }
 
   public OIDCServiceAuthRequest loginHint(@javax.annotation.Nullable String loginHint) {
+    this.loginHint = JsonNullable.<String>of(loginHint);
     
-    this.loginHint = loginHint;
     return this;
   }
 
   /**
-   * Login hint can be set by the application with a user identifier such as an email or phone number.
+   * Get loginHint
    * @return loginHint
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOGIN_HINT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getLoginHint() {
-    return loginHint;
+        return loginHint.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_LOGIN_HINT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoginHint(@javax.annotation.Nullable String loginHint) {
+
+  public JsonNullable<String> getLoginHint_JsonNullable() {
+    return loginHint;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_LOGIN_HINT)
+  public void setLoginHint_JsonNullable(JsonNullable<String> loginHint) {
     this.loginHint = loginHint;
+  }
+
+  public void setLoginHint(@javax.annotation.Nullable String loginHint) {
+    this.loginHint = JsonNullable.<String>of(loginHint);
   }
 
   public OIDCServiceAuthRequest maxAge(@javax.annotation.Nullable String maxAge) {
@@ -322,7 +334,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * Specifies the allowable elapsed time in seconds since the last time the End-User was actively authenticated. If the elapsed time is greater than this value, or the field is present with 0 duration, the user must be re-authenticated.
+   * A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like \&quot;day\&quot;  or \&quot;month\&quot;. It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start &#x3D; ...;      Timestamp end &#x3D; ...;      Duration duration &#x3D; ...;       duration.seconds &#x3D; end.seconds - start.seconds;      duration.nanos &#x3D; end.nanos - start.nanos;       if (duration.seconds &lt; 0 &amp;&amp; duration.nanos &gt; 0) {        duration.seconds +&#x3D; 1;        duration.nanos -&#x3D; 1000000000;      } else if (duration.seconds &gt; 0 &amp;&amp; duration.nanos &lt; 0) {        duration.seconds -&#x3D; 1;        duration.nanos +&#x3D; 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start &#x3D; ...;      Duration duration &#x3D; ...;      Timestamp end &#x3D; ...;       end.seconds &#x3D; start.seconds + duration.seconds;      end.nanos &#x3D; start.nanos + duration.nanos;       if (end.nanos &lt; 0) {        end.seconds -&#x3D; 1;        end.nanos +&#x3D; 1000000000;      } else if (end.nanos &gt;&#x3D; 1000000000) {        end.seconds +&#x3D; 1;        end.nanos -&#x3D; 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td &#x3D; datetime.timedelta(days&#x3D;3, minutes&#x3D;10)      duration &#x3D; Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix \&quot;s\&quot; (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as \&quot;3s\&quot;, while 3 seconds and 1 nanosecond should  be expressed in JSON format as \&quot;3.000000001s\&quot;, and 3 seconds and 1  microsecond should be expressed in JSON format as \&quot;3.000001s\&quot;.
    * @return maxAge
    */
   @javax.annotation.Nullable
@@ -341,28 +353,36 @@ public class OIDCServiceAuthRequest {
   }
 
   public OIDCServiceAuthRequest hintUserId(@javax.annotation.Nullable String hintUserId) {
+    this.hintUserId = JsonNullable.<String>of(hintUserId);
     
-    this.hintUserId = hintUserId;
     return this;
   }
 
   /**
-   * User ID taken from a ID Token Hint if it was present and valid.
+   * Get hintUserId
    * @return hintUserId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HINT_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getHintUserId() {
-    return hintUserId;
+        return hintUserId.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_HINT_USER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHintUserId(@javax.annotation.Nullable String hintUserId) {
+
+  public JsonNullable<String> getHintUserId_JsonNullable() {
+    return hintUserId;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_HINT_USER_ID)
+  public void setHintUserId_JsonNullable(JsonNullable<String> hintUserId) {
     this.hintUserId = hintUserId;
+  }
+
+  public void setHintUserId(@javax.annotation.Nullable String hintUserId) {
+    this.hintUserId = JsonNullable.<String>of(hintUserId);
   }
 
   @Override
@@ -381,14 +401,25 @@ public class OIDCServiceAuthRequest {
         Objects.equals(this.redirectUri, oiDCServiceAuthRequest.redirectUri) &&
         Objects.equals(this.prompt, oiDCServiceAuthRequest.prompt) &&
         Objects.equals(this.uiLocales, oiDCServiceAuthRequest.uiLocales) &&
-        Objects.equals(this.loginHint, oiDCServiceAuthRequest.loginHint) &&
+        equalsNullable(this.loginHint, oiDCServiceAuthRequest.loginHint) &&
         Objects.equals(this.maxAge, oiDCServiceAuthRequest.maxAge) &&
-        Objects.equals(this.hintUserId, oiDCServiceAuthRequest.hintUserId);
+        equalsNullable(this.hintUserId, oiDCServiceAuthRequest.hintUserId);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, creationDate, clientId, scope, redirectUri, prompt, uiLocales, loginHint, maxAge, hintUserId);
+    return Objects.hash(id, creationDate, clientId, scope, redirectUri, prompt, uiLocales, hashCodeNullable(loginHint), maxAge, hashCodeNullable(hintUserId));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

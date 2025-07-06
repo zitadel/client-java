@@ -59,7 +59,7 @@ public class UserServiceInUserEmailsQuery {
   }
 
   /**
-   * the emails of the users to include
+   * Get userEmails
    * @return userEmails
    */
   @javax.annotation.Nullable

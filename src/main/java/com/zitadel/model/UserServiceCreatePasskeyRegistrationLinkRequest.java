@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.ReturnCode4;
+import com.zitadel.model.SendLink;
 import com.zitadel.model.UserServiceSendPasskeyRegistrationLink;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -31,48 +33,53 @@ import java.util.StringJoiner;
  * UserServiceCreatePasskeyRegistrationLinkRequest
  */
 @JsonPropertyOrder({
-  UserServiceCreatePasskeyRegistrationLinkRequest.JSON_PROPERTY_SEND_LINK,
-  UserServiceCreatePasskeyRegistrationLinkRequest.JSON_PROPERTY_RETURN_CODE
+  UserServiceCreatePasskeyRegistrationLinkRequest.JSON_PROPERTY_USER_ID,
+  UserServiceCreatePasskeyRegistrationLinkRequest.JSON_PROPERTY_RETURN_CODE,
+  UserServiceCreatePasskeyRegistrationLinkRequest.JSON_PROPERTY_SEND_LINK
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceCreatePasskeyRegistrationLinkRequest {
-  public static final String JSON_PROPERTY_SEND_LINK = "sendLink";
-  @javax.annotation.Nullable
-  private UserServiceSendPasskeyRegistrationLink sendLink;
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
+  private String userId;
 
   public static final String JSON_PROPERTY_RETURN_CODE = "returnCode";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private Object returnCode;
+
+  public static final String JSON_PROPERTY_SEND_LINK = "sendLink";
+  @javax.annotation.Nonnull
+  private UserServiceSendPasskeyRegistrationLink sendLink;
 
   public UserServiceCreatePasskeyRegistrationLinkRequest() {
   }
 
-  public UserServiceCreatePasskeyRegistrationLinkRequest sendLink(@javax.annotation.Nullable UserServiceSendPasskeyRegistrationLink sendLink) {
+  public UserServiceCreatePasskeyRegistrationLinkRequest userId(@javax.annotation.Nonnull String userId) {
     
-    this.sendLink = sendLink;
+    this.userId = userId;
     return this;
   }
 
   /**
-   * Get sendLink
-   * @return sendLink
+   * Get userId
+   * @return userId
    */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SEND_LINK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public UserServiceSendPasskeyRegistrationLink getSendLink() {
-    return sendLink;
+  public String getUserId() {
+    return userId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SEND_LINK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSendLink(@javax.annotation.Nullable UserServiceSendPasskeyRegistrationLink sendLink) {
-    this.sendLink = sendLink;
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserId(@javax.annotation.Nonnull String userId) {
+    this.userId = userId;
   }
 
-  public UserServiceCreatePasskeyRegistrationLinkRequest returnCode(@javax.annotation.Nullable Object returnCode) {
+  public UserServiceCreatePasskeyRegistrationLinkRequest returnCode(@javax.annotation.Nonnull Object returnCode) {
     
     this.returnCode = returnCode;
     return this;
@@ -82,9 +89,9 @@ public class UserServiceCreatePasskeyRegistrationLinkRequest {
    * Get returnCode
    * @return returnCode
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_RETURN_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getReturnCode() {
     return returnCode;
@@ -92,9 +99,34 @@ public class UserServiceCreatePasskeyRegistrationLinkRequest {
 
 
   @JsonProperty(JSON_PROPERTY_RETURN_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReturnCode(@javax.annotation.Nullable Object returnCode) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setReturnCode(@javax.annotation.Nonnull Object returnCode) {
     this.returnCode = returnCode;
+  }
+
+  public UserServiceCreatePasskeyRegistrationLinkRequest sendLink(@javax.annotation.Nonnull UserServiceSendPasskeyRegistrationLink sendLink) {
+    
+    this.sendLink = sendLink;
+    return this;
+  }
+
+  /**
+   * Get sendLink
+   * @return sendLink
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_SEND_LINK)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public UserServiceSendPasskeyRegistrationLink getSendLink() {
+    return sendLink;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SEND_LINK)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSendLink(@javax.annotation.Nonnull UserServiceSendPasskeyRegistrationLink sendLink) {
+    this.sendLink = sendLink;
   }
 
   @Override
@@ -106,21 +138,23 @@ public class UserServiceCreatePasskeyRegistrationLinkRequest {
       return false;
     }
     UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest = (UserServiceCreatePasskeyRegistrationLinkRequest) o;
-    return Objects.equals(this.sendLink, userServiceCreatePasskeyRegistrationLinkRequest.sendLink) &&
-        Objects.equals(this.returnCode, userServiceCreatePasskeyRegistrationLinkRequest.returnCode);
+    return Objects.equals(this.userId, userServiceCreatePasskeyRegistrationLinkRequest.userId) &&
+        Objects.equals(this.returnCode, userServiceCreatePasskeyRegistrationLinkRequest.returnCode) &&
+        Objects.equals(this.sendLink, userServiceCreatePasskeyRegistrationLinkRequest.sendLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sendLink, returnCode);
+    return Objects.hash(userId, returnCode, sendLink);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceCreatePasskeyRegistrationLinkRequest {\n");
-    sb.append("    sendLink: ").append(toIndentedString(sendLink)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    returnCode: ").append(toIndentedString(returnCode)).append("\n");
+    sb.append("    sendLink: ").append(toIndentedString(sendLink)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -167,6 +201,21 @@ public class UserServiceCreatePasskeyRegistrationLinkRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `returnCode` to the URL query string
+    if (getReturnCode() != null) {
+      try {
+        joiner.add(String.format("%sreturnCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getReturnCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `sendLink` to the URL query string
+    if (getSendLink() != null) {
+      joiner.add(getSendLink().toUrlQueryString(prefix + "sendLink" + suffix));
+    }
 
     return joiner.toString();
   }

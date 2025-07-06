@@ -58,7 +58,7 @@ public class UserServiceIDPIntent {
   }
 
   /**
-   * ID of the IDP intent
+   * Get idpIntentId
    * @return idpIntentId
    */
   @javax.annotation.Nullable
@@ -83,7 +83,7 @@ public class UserServiceIDPIntent {
   }
 
   /**
-   * token of the IDP intent
+   * Get idpIntentToken
    * @return idpIntentToken
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class UserServiceIDPIntent {
   }
 
   /**
-   * ID of the ZITADEL user if external user already linked
+   * Get userId
    * @return userId
    */
   @javax.annotation.Nullable

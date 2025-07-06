@@ -25,6 +25,10 @@ import com.zitadel.model.FeatureServiceLoginV2;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -36,8 +40,6 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_LOGIN_DEFAULT_ORG,
-  FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS,
-  FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_USER_SCHEMA,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_OIDC_TOKEN_EXCHANGE,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_IMPROVED_PERFORMANCE,
@@ -51,23 +53,15 @@ import java.util.StringJoiner;
 public class FeatureServiceSetSystemFeaturesRequest {
   public static final String JSON_PROPERTY_LOGIN_DEFAULT_ORG = "loginDefaultOrg";
   @javax.annotation.Nullable
-  private Boolean loginDefaultOrg;
-
-  public static final String JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS = "oidcTriggerIntrospectionProjections";
-  @javax.annotation.Nullable
-  private Boolean oidcTriggerIntrospectionProjections;
-
-  public static final String JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION = "oidcLegacyIntrospection";
-  @javax.annotation.Nullable
-  private Boolean oidcLegacyIntrospection;
+  private JsonNullable<Boolean> loginDefaultOrg = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_USER_SCHEMA = "userSchema";
   @javax.annotation.Nullable
-  private Boolean userSchema;
+  private JsonNullable<Boolean> userSchema = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_OIDC_TOKEN_EXCHANGE = "oidcTokenExchange";
   @javax.annotation.Nullable
-  private Boolean oidcTokenExchange;
+  private JsonNullable<Boolean> oidcTokenExchange = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_IMPROVED_PERFORMANCE = "improvedPerformance";
   @javax.annotation.Nullable
@@ -75,15 +69,15 @@ public class FeatureServiceSetSystemFeaturesRequest {
 
   public static final String JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION = "oidcSingleV1SessionTermination";
   @javax.annotation.Nullable
-  private Boolean oidcSingleV1SessionTermination;
+  private JsonNullable<Boolean> oidcSingleV1SessionTermination = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT = "disableUserTokenEvent";
   @javax.annotation.Nullable
-  private Boolean disableUserTokenEvent;
+  private JsonNullable<Boolean> disableUserTokenEvent = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT = "enableBackChannelLogout";
   @javax.annotation.Nullable
-  private Boolean enableBackChannelLogout;
+  private JsonNullable<Boolean> enableBackChannelLogout = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_LOGIN_V2 = "loginV2";
   @javax.annotation.Nullable
@@ -91,134 +85,108 @@ public class FeatureServiceSetSystemFeaturesRequest {
 
   public static final String JSON_PROPERTY_PERMISSION_CHECK_V2 = "permissionCheckV2";
   @javax.annotation.Nullable
-  private Boolean permissionCheckV2;
+  private JsonNullable<Boolean> permissionCheckV2 = JsonNullable.<Boolean>undefined();
 
   public FeatureServiceSetSystemFeaturesRequest() {
   }
 
   public FeatureServiceSetSystemFeaturesRequest loginDefaultOrg(@javax.annotation.Nullable Boolean loginDefaultOrg) {
+    this.loginDefaultOrg = JsonNullable.<Boolean>of(loginDefaultOrg);
     
-    this.loginDefaultOrg = loginDefaultOrg;
     return this;
   }
 
   /**
-   * The login UI will use the settings of the default org (and not from the instance) if no organization context is set
+   * Get loginDefaultOrg
    * @return loginDefaultOrg
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOGIN_DEFAULT_ORG)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getLoginDefaultOrg() {
-    return loginDefaultOrg;
+        return loginDefaultOrg.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_LOGIN_DEFAULT_ORG)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoginDefaultOrg(@javax.annotation.Nullable Boolean loginDefaultOrg) {
+
+  public JsonNullable<Boolean> getLoginDefaultOrg_JsonNullable() {
+    return loginDefaultOrg;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_LOGIN_DEFAULT_ORG)
+  public void setLoginDefaultOrg_JsonNullable(JsonNullable<Boolean> loginDefaultOrg) {
     this.loginDefaultOrg = loginDefaultOrg;
   }
 
-  public FeatureServiceSetSystemFeaturesRequest oidcTriggerIntrospectionProjections(@javax.annotation.Nullable Boolean oidcTriggerIntrospectionProjections) {
-    
-    this.oidcTriggerIntrospectionProjections = oidcTriggerIntrospectionProjections;
-    return this;
-  }
-
-  /**
-   * Enable projection triggers during an introspection request. This can act as workaround if there are noticeable consistency issues in the introspection response but can have an impact on performance. We are planning to remove triggers for introspection requests in the future. Please raise an issue if you needed to enable this feature.
-   * @return oidcTriggerIntrospectionProjections
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getOidcTriggerIntrospectionProjections() {
-    return oidcTriggerIntrospectionProjections;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOidcTriggerIntrospectionProjections(@javax.annotation.Nullable Boolean oidcTriggerIntrospectionProjections) {
-    this.oidcTriggerIntrospectionProjections = oidcTriggerIntrospectionProjections;
-  }
-
-  public FeatureServiceSetSystemFeaturesRequest oidcLegacyIntrospection(@javax.annotation.Nullable Boolean oidcLegacyIntrospection) {
-    
-    this.oidcLegacyIntrospection = oidcLegacyIntrospection;
-    return this;
-  }
-
-  /**
-   * We have recently refactored the introspection endpoint for performance reasons. This feature can be used to rollback to the legacy implementation if unexpected bugs arise. Please raise an issue if you needed to enable this feature.
-   * @return oidcLegacyIntrospection
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Boolean getOidcLegacyIntrospection() {
-    return oidcLegacyIntrospection;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOidcLegacyIntrospection(@javax.annotation.Nullable Boolean oidcLegacyIntrospection) {
-    this.oidcLegacyIntrospection = oidcLegacyIntrospection;
+  public void setLoginDefaultOrg(@javax.annotation.Nullable Boolean loginDefaultOrg) {
+    this.loginDefaultOrg = JsonNullable.<Boolean>of(loginDefaultOrg);
   }
 
   public FeatureServiceSetSystemFeaturesRequest userSchema(@javax.annotation.Nullable Boolean userSchema) {
+    this.userSchema = JsonNullable.<Boolean>of(userSchema);
     
-    this.userSchema = userSchema;
     return this;
   }
 
   /**
-   * User Schemas allow to manage data schemas of user. If the flag is enabled, you&#39;ll be able to use the new API and its features. Note that it is still in an early stage.
+   * Get userSchema
    * @return userSchema
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USER_SCHEMA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getUserSchema() {
-    return userSchema;
+        return userSchema.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_USER_SCHEMA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserSchema(@javax.annotation.Nullable Boolean userSchema) {
+
+  public JsonNullable<Boolean> getUserSchema_JsonNullable() {
+    return userSchema;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_USER_SCHEMA)
+  public void setUserSchema_JsonNullable(JsonNullable<Boolean> userSchema) {
     this.userSchema = userSchema;
   }
 
+  public void setUserSchema(@javax.annotation.Nullable Boolean userSchema) {
+    this.userSchema = JsonNullable.<Boolean>of(userSchema);
+  }
+
   public FeatureServiceSetSystemFeaturesRequest oidcTokenExchange(@javax.annotation.Nullable Boolean oidcTokenExchange) {
+    this.oidcTokenExchange = JsonNullable.<Boolean>of(oidcTokenExchange);
     
-    this.oidcTokenExchange = oidcTokenExchange;
     return this;
   }
 
   /**
-   * Enable the experimental &#x60;urn:ietf:params:oauth:grant-type:token-exchange&#x60; grant type for the OIDC token endpoint. Token exchange can be used to request tokens with a lesser scope or impersonate other users. See the security policy to allow impersonation on an instance.
+   * Get oidcTokenExchange
    * @return oidcTokenExchange
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OIDC_TOKEN_EXCHANGE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getOidcTokenExchange() {
-    return oidcTokenExchange;
+        return oidcTokenExchange.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_OIDC_TOKEN_EXCHANGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOidcTokenExchange(@javax.annotation.Nullable Boolean oidcTokenExchange) {
+
+  public JsonNullable<Boolean> getOidcTokenExchange_JsonNullable() {
+    return oidcTokenExchange;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_OIDC_TOKEN_EXCHANGE)
+  public void setOidcTokenExchange_JsonNullable(JsonNullable<Boolean> oidcTokenExchange) {
     this.oidcTokenExchange = oidcTokenExchange;
+  }
+
+  public void setOidcTokenExchange(@javax.annotation.Nullable Boolean oidcTokenExchange) {
+    this.oidcTokenExchange = JsonNullable.<Boolean>of(oidcTokenExchange);
   }
 
   public FeatureServiceSetSystemFeaturesRequest improvedPerformance(@javax.annotation.Nullable List<FeatureServiceImprovedPerformance> improvedPerformance) {
@@ -236,7 +204,7 @@ public class FeatureServiceSetSystemFeaturesRequest {
   }
 
   /**
-   * Improves performance of specified execution paths.
+   * Get improvedPerformance
    * @return improvedPerformance
    */
   @javax.annotation.Nullable
@@ -255,78 +223,102 @@ public class FeatureServiceSetSystemFeaturesRequest {
   }
 
   public FeatureServiceSetSystemFeaturesRequest oidcSingleV1SessionTermination(@javax.annotation.Nullable Boolean oidcSingleV1SessionTermination) {
+    this.oidcSingleV1SessionTermination = JsonNullable.<Boolean>of(oidcSingleV1SessionTermination);
     
-    this.oidcSingleV1SessionTermination = oidcSingleV1SessionTermination;
     return this;
   }
 
   /**
-   * If the flag is enabled, you&#39;ll be able to terminate a single session from the login UI by providing an id_token with a &#x60;sid&#x60; claim as id_token_hint on the end_session endpoint. Note that currently all sessions from the same user agent (browser) are terminated in the login UI. Sessions managed through the Session API already allow the termination of single sessions.
+   * Get oidcSingleV1SessionTermination
    * @return oidcSingleV1SessionTermination
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getOidcSingleV1SessionTermination() {
-    return oidcSingleV1SessionTermination;
+        return oidcSingleV1SessionTermination.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOidcSingleV1SessionTermination(@javax.annotation.Nullable Boolean oidcSingleV1SessionTermination) {
+
+  public JsonNullable<Boolean> getOidcSingleV1SessionTermination_JsonNullable() {
+    return oidcSingleV1SessionTermination;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION)
+  public void setOidcSingleV1SessionTermination_JsonNullable(JsonNullable<Boolean> oidcSingleV1SessionTermination) {
     this.oidcSingleV1SessionTermination = oidcSingleV1SessionTermination;
   }
 
+  public void setOidcSingleV1SessionTermination(@javax.annotation.Nullable Boolean oidcSingleV1SessionTermination) {
+    this.oidcSingleV1SessionTermination = JsonNullable.<Boolean>of(oidcSingleV1SessionTermination);
+  }
+
   public FeatureServiceSetSystemFeaturesRequest disableUserTokenEvent(@javax.annotation.Nullable Boolean disableUserTokenEvent) {
+    this.disableUserTokenEvent = JsonNullable.<Boolean>of(disableUserTokenEvent);
     
-    this.disableUserTokenEvent = disableUserTokenEvent;
     return this;
   }
 
   /**
-   * Do not push user token meta-event user.token.v2.added to improve performance on many concurrent single (machine-)user logins
+   * Get disableUserTokenEvent
    * @return disableUserTokenEvent
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getDisableUserTokenEvent() {
-    return disableUserTokenEvent;
+        return disableUserTokenEvent.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDisableUserTokenEvent(@javax.annotation.Nullable Boolean disableUserTokenEvent) {
+
+  public JsonNullable<Boolean> getDisableUserTokenEvent_JsonNullable() {
+    return disableUserTokenEvent;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
+  public void setDisableUserTokenEvent_JsonNullable(JsonNullable<Boolean> disableUserTokenEvent) {
     this.disableUserTokenEvent = disableUserTokenEvent;
   }
 
+  public void setDisableUserTokenEvent(@javax.annotation.Nullable Boolean disableUserTokenEvent) {
+    this.disableUserTokenEvent = JsonNullable.<Boolean>of(disableUserTokenEvent);
+  }
+
   public FeatureServiceSetSystemFeaturesRequest enableBackChannelLogout(@javax.annotation.Nullable Boolean enableBackChannelLogout) {
+    this.enableBackChannelLogout = JsonNullable.<Boolean>of(enableBackChannelLogout);
     
-    this.enableBackChannelLogout = enableBackChannelLogout;
     return this;
   }
 
   /**
-   * If the flag is enabled, you&#39;ll be able to use the OIDC Back-Channel Logout to be notified in your application about terminated user sessions.
+   * Get enableBackChannelLogout
    * @return enableBackChannelLogout
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getEnableBackChannelLogout() {
-    return enableBackChannelLogout;
+        return enableBackChannelLogout.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnableBackChannelLogout(@javax.annotation.Nullable Boolean enableBackChannelLogout) {
+
+  public JsonNullable<Boolean> getEnableBackChannelLogout_JsonNullable() {
+    return enableBackChannelLogout;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT)
+  public void setEnableBackChannelLogout_JsonNullable(JsonNullable<Boolean> enableBackChannelLogout) {
     this.enableBackChannelLogout = enableBackChannelLogout;
+  }
+
+  public void setEnableBackChannelLogout(@javax.annotation.Nullable Boolean enableBackChannelLogout) {
+    this.enableBackChannelLogout = JsonNullable.<Boolean>of(enableBackChannelLogout);
   }
 
   public FeatureServiceSetSystemFeaturesRequest loginV2(@javax.annotation.Nullable FeatureServiceLoginV2 loginV2) {
@@ -355,28 +347,36 @@ public class FeatureServiceSetSystemFeaturesRequest {
   }
 
   public FeatureServiceSetSystemFeaturesRequest permissionCheckV2(@javax.annotation.Nullable Boolean permissionCheckV2) {
+    this.permissionCheckV2 = JsonNullable.<Boolean>of(permissionCheckV2);
     
-    this.permissionCheckV2 = permissionCheckV2;
     return this;
   }
 
   /**
-   * Enable a newer, more performant, permission check used for v2 and v3 resource based APIs.
+   * Get permissionCheckV2
    * @return permissionCheckV2
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PERMISSION_CHECK_V2)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Boolean getPermissionCheckV2() {
-    return permissionCheckV2;
+        return permissionCheckV2.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_PERMISSION_CHECK_V2)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPermissionCheckV2(@javax.annotation.Nullable Boolean permissionCheckV2) {
+
+  public JsonNullable<Boolean> getPermissionCheckV2_JsonNullable() {
+    return permissionCheckV2;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_PERMISSION_CHECK_V2)
+  public void setPermissionCheckV2_JsonNullable(JsonNullable<Boolean> permissionCheckV2) {
     this.permissionCheckV2 = permissionCheckV2;
+  }
+
+  public void setPermissionCheckV2(@javax.annotation.Nullable Boolean permissionCheckV2) {
+    this.permissionCheckV2 = JsonNullable.<Boolean>of(permissionCheckV2);
   }
 
   @Override
@@ -388,22 +388,31 @@ public class FeatureServiceSetSystemFeaturesRequest {
       return false;
     }
     FeatureServiceSetSystemFeaturesRequest featureServiceSetSystemFeaturesRequest = (FeatureServiceSetSystemFeaturesRequest) o;
-    return Objects.equals(this.loginDefaultOrg, featureServiceSetSystemFeaturesRequest.loginDefaultOrg) &&
-        Objects.equals(this.oidcTriggerIntrospectionProjections, featureServiceSetSystemFeaturesRequest.oidcTriggerIntrospectionProjections) &&
-        Objects.equals(this.oidcLegacyIntrospection, featureServiceSetSystemFeaturesRequest.oidcLegacyIntrospection) &&
-        Objects.equals(this.userSchema, featureServiceSetSystemFeaturesRequest.userSchema) &&
-        Objects.equals(this.oidcTokenExchange, featureServiceSetSystemFeaturesRequest.oidcTokenExchange) &&
+    return equalsNullable(this.loginDefaultOrg, featureServiceSetSystemFeaturesRequest.loginDefaultOrg) &&
+        equalsNullable(this.userSchema, featureServiceSetSystemFeaturesRequest.userSchema) &&
+        equalsNullable(this.oidcTokenExchange, featureServiceSetSystemFeaturesRequest.oidcTokenExchange) &&
         Objects.equals(this.improvedPerformance, featureServiceSetSystemFeaturesRequest.improvedPerformance) &&
-        Objects.equals(this.oidcSingleV1SessionTermination, featureServiceSetSystemFeaturesRequest.oidcSingleV1SessionTermination) &&
-        Objects.equals(this.disableUserTokenEvent, featureServiceSetSystemFeaturesRequest.disableUserTokenEvent) &&
-        Objects.equals(this.enableBackChannelLogout, featureServiceSetSystemFeaturesRequest.enableBackChannelLogout) &&
+        equalsNullable(this.oidcSingleV1SessionTermination, featureServiceSetSystemFeaturesRequest.oidcSingleV1SessionTermination) &&
+        equalsNullable(this.disableUserTokenEvent, featureServiceSetSystemFeaturesRequest.disableUserTokenEvent) &&
+        equalsNullable(this.enableBackChannelLogout, featureServiceSetSystemFeaturesRequest.enableBackChannelLogout) &&
         Objects.equals(this.loginV2, featureServiceSetSystemFeaturesRequest.loginV2) &&
-        Objects.equals(this.permissionCheckV2, featureServiceSetSystemFeaturesRequest.permissionCheckV2);
+        equalsNullable(this.permissionCheckV2, featureServiceSetSystemFeaturesRequest.permissionCheckV2);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(loginDefaultOrg, oidcTriggerIntrospectionProjections, oidcLegacyIntrospection, userSchema, oidcTokenExchange, improvedPerformance, oidcSingleV1SessionTermination, disableUserTokenEvent, enableBackChannelLogout, loginV2, permissionCheckV2);
+    return Objects.hash(hashCodeNullable(loginDefaultOrg), hashCodeNullable(userSchema), hashCodeNullable(oidcTokenExchange), improvedPerformance, hashCodeNullable(oidcSingleV1SessionTermination), hashCodeNullable(disableUserTokenEvent), hashCodeNullable(enableBackChannelLogout), loginV2, hashCodeNullable(permissionCheckV2));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -411,8 +420,6 @@ public class FeatureServiceSetSystemFeaturesRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeatureServiceSetSystemFeaturesRequest {\n");
     sb.append("    loginDefaultOrg: ").append(toIndentedString(loginDefaultOrg)).append("\n");
-    sb.append("    oidcTriggerIntrospectionProjections: ").append(toIndentedString(oidcTriggerIntrospectionProjections)).append("\n");
-    sb.append("    oidcLegacyIntrospection: ").append(toIndentedString(oidcLegacyIntrospection)).append("\n");
     sb.append("    userSchema: ").append(toIndentedString(userSchema)).append("\n");
     sb.append("    oidcTokenExchange: ").append(toIndentedString(oidcTokenExchange)).append("\n");
     sb.append("    improvedPerformance: ").append(toIndentedString(improvedPerformance)).append("\n");
@@ -472,26 +479,6 @@ public class FeatureServiceSetSystemFeaturesRequest {
     if (getLoginDefaultOrg() != null) {
       try {
         joiner.add(String.format("%sloginDefaultOrg%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLoginDefaultOrg()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `oidcTriggerIntrospectionProjections` to the URL query string
-    if (getOidcTriggerIntrospectionProjections() != null) {
-      try {
-        joiner.add(String.format("%soidcTriggerIntrospectionProjections%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOidcTriggerIntrospectionProjections()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `oidcLegacyIntrospection` to the URL query string
-    if (getOidcLegacyIntrospection() != null) {
-      try {
-        joiner.add(String.format("%soidcLegacyIntrospection%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOidcLegacyIntrospection()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

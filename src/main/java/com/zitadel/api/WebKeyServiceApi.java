@@ -8,12 +8,15 @@ import com.zitadel.BaseApi;
 import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
-import com.zitadel.model.WebKeyServiceBetaActivateWebKeyResponse;
-import com.zitadel.model.WebKeyServiceBetaCreateWebKeyResponse;
-import com.zitadel.model.WebKeyServiceBetaDeleteWebKeyResponse;
-import com.zitadel.model.WebKeyServiceBetaListWebKeysResponse;
+import com.zitadel.model.NoOp200Response17;
+import com.zitadel.model.WebKeyServiceActivateWebKeyRequest;
+import com.zitadel.model.WebKeyServiceActivateWebKeyResponse;
+import com.zitadel.model.WebKeyServiceConnectError;
 import com.zitadel.model.WebKeyServiceCreateWebKeyRequest;
-import com.zitadel.model.WebKeyServiceRpcStatus;
+import com.zitadel.model.WebKeyServiceCreateWebKeyResponse;
+import com.zitadel.model.WebKeyServiceDeleteWebKeyRequest;
+import com.zitadel.model.WebKeyServiceDeleteWebKeyResponse;
+import com.zitadel.model.WebKeyServiceListWebKeysResponse;
 
 
 import java.util.ArrayList;
@@ -34,35 +37,37 @@ public class WebKeyServiceApi extends BaseApi {
     super(apiClient);
   }
 
+
+
+
   /**
-   * Activate Web Key
-   * Switch the active signing web key. The previously active key will be deactivated. Note that the JWKs OIDC endpoint returns a cacheable response. Therefore it is not advised to activate a key that has been created within the cache duration (default is 5min), as the public key may not have been propagated to caches and clients yet.  Required permission:   - &#x60;iam.web_key.write&#x60;  Required feature flag:   - &#x60;web_key&#x60;
-   * @param id  (required)
-   * @return WebKeyServiceBetaActivateWebKeyResponse
+   * ActivateWebKey
+   * Activate Web Key   Switch the active signing web key. The previously active key will be deactivated.  Note that the JWKs OIDC endpoint returns a cacheable response.  Therefore it is not advised to activate a key that has been created within the cache duration (default is 5min),  as the public key may not have been propagated to caches and clients yet.   Required permission:    - &#x60;iam.web_key.write&#x60;   Required feature flag:    - &#x60;web_key&#x60;
+   * @param webKeyServiceActivateWebKeyRequest  (required)
+   * @return WebKeyServiceActivateWebKeyResponse
    * @throws ApiException if fails to make API call
    */
-  public WebKeyServiceBetaActivateWebKeyResponse webKeyServiceActivateWebKey(String id) throws ApiException {
-    return this.webKeyServiceActivateWebKey(id, Collections.emptyMap());
+  public WebKeyServiceActivateWebKeyResponse activateWebKey(WebKeyServiceActivateWebKeyRequest webKeyServiceActivateWebKeyRequest) throws ApiException {
+    return this.activateWebKey(webKeyServiceActivateWebKeyRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Activate Web Key
-   * Switch the active signing web key. The previously active key will be deactivated. Note that the JWKs OIDC endpoint returns a cacheable response. Therefore it is not advised to activate a key that has been created within the cache duration (default is 5min), as the public key may not have been propagated to caches and clients yet.  Required permission:   - &#x60;iam.web_key.write&#x60;  Required feature flag:   - &#x60;web_key&#x60;
-   * @param id  (required)
+   * ActivateWebKey
+   * Activate Web Key   Switch the active signing web key. The previously active key will be deactivated.  Note that the JWKs OIDC endpoint returns a cacheable response.  Therefore it is not advised to activate a key that has been created within the cache duration (default is 5min),  as the public key may not have been propagated to caches and clients yet.   Required permission:    - &#x60;iam.web_key.write&#x60;   Required feature flag:    - &#x60;web_key&#x60;
+   * @param webKeyServiceActivateWebKeyRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
-   * @return WebKeyServiceBetaActivateWebKeyResponse
+   * @return WebKeyServiceActivateWebKeyResponse
    * @throws ApiException if fails to make API call
    */
-  private WebKeyServiceBetaActivateWebKeyResponse webKeyServiceActivateWebKey(String id, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  private WebKeyServiceActivateWebKeyResponse activateWebKey(WebKeyServiceActivateWebKeyRequest webKeyServiceActivateWebKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = webKeyServiceActivateWebKeyRequest;
     
-    if (id == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'id' when calling webKeyServiceActivateWebKey");
+    if (webKeyServiceActivateWebKeyRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'webKeyServiceActivateWebKeyRequest' when calling activateWebKey");
     }
     
-    String localVarPath = "/v2beta/web_keys/{id}/activate"
-      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(apiClient.parameterToString(id)));
+    String localVarPath = "/zitadel.webkey.v2.WebKeyService/ActivateWebKey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -83,13 +88,13 @@ public class WebKeyServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
 
-    TypeReference<WebKeyServiceBetaActivateWebKeyResponse> localVarReturnType = new TypeReference<WebKeyServiceBetaActivateWebKeyResponse>() {};
+    TypeReference<WebKeyServiceActivateWebKeyResponse> localVarReturnType = new TypeReference<WebKeyServiceActivateWebKeyResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "POST",
@@ -107,34 +112,47 @@ public class WebKeyServiceApi extends BaseApi {
     );
   }
 
+
+
+              /**
+              * CreateWebKey (Convenience Method)
+              * Create Web Key   Generate a private and public key pair. The private key can be used to sign OIDC tokens after activation.  The public key can be used to validate OIDC tokens.  The newly created key will have the state &#x60;STATE_INITIAL&#x60; and is published to the public key endpoint.  Note that the JWKs OIDC endpoint returns a cacheable response.   If no key type is provided, a RSA key pair with 2048 bits and SHA256 hashing will be created.   Required permission:    - &#x60;iam.web_key.write&#x60;   Required feature flag:    - &#x60;web_key&#x60;
+                * @return WebKeyServiceCreateWebKeyResponse
+              * @throws ApiException if fails to make API call
+              */
+              public WebKeyServiceCreateWebKeyResponse createWebKey() throws ApiException {
+              return this.createWebKey(new WebKeyServiceCreateWebKeyRequest());
+              }
+
+
   /**
-   * Create Web Key
-   * Generate a private and public key pair. The private key can be used to sign OIDC tokens after activation. The public key can be used to validate OIDC tokens. The newly created key will have the state &#x60;STATE_INITIAL&#x60; and is published to the public key endpoint. Note that the JWKs OIDC endpoint returns a cacheable response.  If no key type is provided, a RSA key pair with 2048 bits and SHA256 hashing will be created.  Required permission:   - &#x60;iam.web_key.write&#x60;  Required feature flag:   - &#x60;web_key&#x60;
+   * CreateWebKey
+   * Create Web Key   Generate a private and public key pair. The private key can be used to sign OIDC tokens after activation.  The public key can be used to validate OIDC tokens.  The newly created key will have the state &#x60;STATE_INITIAL&#x60; and is published to the public key endpoint.  Note that the JWKs OIDC endpoint returns a cacheable response.   If no key type is provided, a RSA key pair with 2048 bits and SHA256 hashing will be created.   Required permission:    - &#x60;iam.web_key.write&#x60;   Required feature flag:    - &#x60;web_key&#x60;
    * @param webKeyServiceCreateWebKeyRequest  (required)
-   * @return WebKeyServiceBetaCreateWebKeyResponse
+   * @return WebKeyServiceCreateWebKeyResponse
    * @throws ApiException if fails to make API call
    */
-  public WebKeyServiceBetaCreateWebKeyResponse webKeyServiceCreateWebKey(WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest) throws ApiException {
-    return this.webKeyServiceCreateWebKey(webKeyServiceCreateWebKeyRequest, Collections.emptyMap());
+  public WebKeyServiceCreateWebKeyResponse createWebKey(WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest) throws ApiException {
+    return this.createWebKey(webKeyServiceCreateWebKeyRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Create Web Key
-   * Generate a private and public key pair. The private key can be used to sign OIDC tokens after activation. The public key can be used to validate OIDC tokens. The newly created key will have the state &#x60;STATE_INITIAL&#x60; and is published to the public key endpoint. Note that the JWKs OIDC endpoint returns a cacheable response.  If no key type is provided, a RSA key pair with 2048 bits and SHA256 hashing will be created.  Required permission:   - &#x60;iam.web_key.write&#x60;  Required feature flag:   - &#x60;web_key&#x60;
+   * CreateWebKey
+   * Create Web Key   Generate a private and public key pair. The private key can be used to sign OIDC tokens after activation.  The public key can be used to validate OIDC tokens.  The newly created key will have the state &#x60;STATE_INITIAL&#x60; and is published to the public key endpoint.  Note that the JWKs OIDC endpoint returns a cacheable response.   If no key type is provided, a RSA key pair with 2048 bits and SHA256 hashing will be created.   Required permission:    - &#x60;iam.web_key.write&#x60;   Required feature flag:    - &#x60;web_key&#x60;
    * @param webKeyServiceCreateWebKeyRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
-   * @return WebKeyServiceBetaCreateWebKeyResponse
+   * @return WebKeyServiceCreateWebKeyResponse
    * @throws ApiException if fails to make API call
    */
-  private WebKeyServiceBetaCreateWebKeyResponse webKeyServiceCreateWebKey(WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private WebKeyServiceCreateWebKeyResponse createWebKey(WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = webKeyServiceCreateWebKeyRequest;
     
     if (webKeyServiceCreateWebKeyRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'webKeyServiceCreateWebKeyRequest' when calling webKeyServiceCreateWebKey");
+      throw new IllegalArgumentException("Missing the required parameter 'webKeyServiceCreateWebKeyRequest' when calling createWebKey");
     }
     
-    String localVarPath = "/v2beta/web_keys";
+    String localVarPath = "/zitadel.webkey.v2.WebKeyService/CreateWebKey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -161,7 +179,7 @@ public class WebKeyServiceApi extends BaseApi {
 
     String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
 
-    TypeReference<WebKeyServiceBetaCreateWebKeyResponse> localVarReturnType = new TypeReference<WebKeyServiceBetaCreateWebKeyResponse>() {};
+    TypeReference<WebKeyServiceCreateWebKeyResponse> localVarReturnType = new TypeReference<WebKeyServiceCreateWebKeyResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "POST",
@@ -179,35 +197,37 @@ public class WebKeyServiceApi extends BaseApi {
     );
   }
 
+
+
+
   /**
-   * Delete Web Key
-   * Delete a web key pair. Only inactive keys can be deleted. Once a key is deleted, any tokens signed by this key will be invalid. Note that the JWKs OIDC endpoint returns a cacheable response. In case the web key is not found, the request will return a successful response as the desired state is already achieved. You can check the change date in the response to verify if the web key was deleted during the request.  Required permission:   - &#x60;iam.web_key.delete&#x60;  Required feature flag:   - &#x60;web_key&#x60;
-   * @param id  (required)
-   * @return WebKeyServiceBetaDeleteWebKeyResponse
+   * DeleteWebKey
+   * Delete Web Key   Delete a web key pair. Only inactive keys can be deleted. Once a key is deleted,  any tokens signed by this key will be invalid.  Note that the JWKs OIDC endpoint returns a cacheable response.  In case the web key is not found, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the web key was deleted during the request.   Required permission:    - &#x60;iam.web_key.delete&#x60;   Required feature flag:    - &#x60;web_key&#x60;
+   * @param webKeyServiceDeleteWebKeyRequest  (required)
+   * @return WebKeyServiceDeleteWebKeyResponse
    * @throws ApiException if fails to make API call
    */
-  public WebKeyServiceBetaDeleteWebKeyResponse webKeyServiceDeleteWebKey(String id) throws ApiException {
-    return this.webKeyServiceDeleteWebKey(id, Collections.emptyMap());
+  public WebKeyServiceDeleteWebKeyResponse deleteWebKey(WebKeyServiceDeleteWebKeyRequest webKeyServiceDeleteWebKeyRequest) throws ApiException {
+    return this.deleteWebKey(webKeyServiceDeleteWebKeyRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Delete Web Key
-   * Delete a web key pair. Only inactive keys can be deleted. Once a key is deleted, any tokens signed by this key will be invalid. Note that the JWKs OIDC endpoint returns a cacheable response. In case the web key is not found, the request will return a successful response as the desired state is already achieved. You can check the change date in the response to verify if the web key was deleted during the request.  Required permission:   - &#x60;iam.web_key.delete&#x60;  Required feature flag:   - &#x60;web_key&#x60;
-   * @param id  (required)
+   * DeleteWebKey
+   * Delete Web Key   Delete a web key pair. Only inactive keys can be deleted. Once a key is deleted,  any tokens signed by this key will be invalid.  Note that the JWKs OIDC endpoint returns a cacheable response.  In case the web key is not found, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the web key was deleted during the request.   Required permission:    - &#x60;iam.web_key.delete&#x60;   Required feature flag:    - &#x60;web_key&#x60;
+   * @param webKeyServiceDeleteWebKeyRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
-   * @return WebKeyServiceBetaDeleteWebKeyResponse
+   * @return WebKeyServiceDeleteWebKeyResponse
    * @throws ApiException if fails to make API call
    */
-  private WebKeyServiceBetaDeleteWebKeyResponse webKeyServiceDeleteWebKey(String id, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  private WebKeyServiceDeleteWebKeyResponse deleteWebKey(WebKeyServiceDeleteWebKeyRequest webKeyServiceDeleteWebKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = webKeyServiceDeleteWebKeyRequest;
     
-    if (id == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'id' when calling webKeyServiceDeleteWebKey");
+    if (webKeyServiceDeleteWebKeyRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'webKeyServiceDeleteWebKeyRequest' when calling deleteWebKey");
     }
     
-    String localVarPath = "/v2beta/web_keys/{id}"
-      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(apiClient.parameterToString(id)));
+    String localVarPath = "/zitadel.webkey.v2.WebKeyService/DeleteWebKey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -228,16 +248,16 @@ public class WebKeyServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
     String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
 
-    TypeReference<WebKeyServiceBetaDeleteWebKeyResponse> localVarReturnType = new TypeReference<WebKeyServiceBetaDeleteWebKeyResponse>() {};
+    TypeReference<WebKeyServiceDeleteWebKeyResponse> localVarReturnType = new TypeReference<WebKeyServiceDeleteWebKeyResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "DELETE",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -252,28 +272,116 @@ public class WebKeyServiceApi extends BaseApi {
     );
   }
 
+
+
+              /**
+              * ListWebKeys (Convenience Method)
+              * List Web Keys   List all web keys and their states.   Required permission:    - &#x60;iam.web_key.read&#x60;   Required feature flag:    - &#x60;web_key&#x60;
+                * @return WebKeyServiceListWebKeysResponse
+              * @throws ApiException if fails to make API call
+              */
+              public WebKeyServiceListWebKeysResponse listWebKeys() throws ApiException {
+              return this.listWebKeys(new Object());
+              }
+
+
   /**
-   * List Web Keys
-   * List all web keys and their states.  Required permission:   - &#x60;iam.web_key.read&#x60;  Required feature flag:   - &#x60;web_key&#x60;
-   * @return WebKeyServiceBetaListWebKeysResponse
+   * ListWebKeys
+   * List Web Keys   List all web keys and their states.   Required permission:    - &#x60;iam.web_key.read&#x60;   Required feature flag:    - &#x60;web_key&#x60;
+   * @param body  (required)
+   * @return WebKeyServiceListWebKeysResponse
    * @throws ApiException if fails to make API call
    */
-  public WebKeyServiceBetaListWebKeysResponse webKeyServiceListWebKeys() throws ApiException {
-    return this.webKeyServiceListWebKeys(Collections.emptyMap());
+  public WebKeyServiceListWebKeysResponse listWebKeys(Object body) throws ApiException {
+    return this.listWebKeys(body, Collections.emptyMap());
   }
 
 
   /**
-   * List Web Keys
-   * List all web keys and their states.  Required permission:   - &#x60;iam.web_key.read&#x60;  Required feature flag:   - &#x60;web_key&#x60;
+   * ListWebKeys
+   * List Web Keys   List all web keys and their states.   Required permission:    - &#x60;iam.web_key.read&#x60;   Required feature flag:    - &#x60;web_key&#x60;
+   * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
-   * @return WebKeyServiceBetaListWebKeysResponse
+   * @return WebKeyServiceListWebKeysResponse
    * @throws ApiException if fails to make API call
    */
-  private WebKeyServiceBetaListWebKeysResponse webKeyServiceListWebKeys(Map<String, String> additionalHeaders) throws ApiException {
+  private WebKeyServiceListWebKeysResponse listWebKeys(Object body, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = body;
+    
+    if (body == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'body' when calling listWebKeys");
+    }
+    
+    String localVarPath = "/zitadel.webkey.v2.WebKeyService/ListWebKeys";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<WebKeyServiceListWebKeysResponse> localVarReturnType = new TypeReference<WebKeyServiceListWebKeysResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+
+
+
+  /**
+   * Dummy endpoint to retain union-member schemas
+   * 
+   * @return NoOp200Response17
+   * @throws ApiException if fails to make API call
+   */
+  public NoOp200Response17 noOp() throws ApiException {
+    return this.noOp(Collections.emptyMap());
+  }
+
+
+  /**
+   * Dummy endpoint to retain union-member schemas
+   * 
+   * @param additionalHeaders additionalHeaders for this call
+   * @return NoOp200Response17
+   * @throws ApiException if fails to make API call
+   */
+  private NoOp200Response17 noOp(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
-    String localVarPath = "/v2beta/web_keys";
+    String localVarPath = "/ef545a74";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -300,7 +408,7 @@ public class WebKeyServiceApi extends BaseApi {
 
     String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
 
-    TypeReference<WebKeyServiceBetaListWebKeysResponse> localVarReturnType = new TypeReference<WebKeyServiceBetaListWebKeysResponse>() {};
+    TypeReference<NoOp200Response17> localVarReturnType = new TypeReference<NoOp200Response17>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "GET",
