@@ -46,7 +46,15 @@
         ]
       }
     ],
-    "semantic-release-maven",
+    [
+      "semantic-release-maven",
+      {
+        "serverId": "central",
+        "profiles": [
+          "deployment"
+        ]
+      }
+    ],
     [
       "@semantic-release/git",
       {
