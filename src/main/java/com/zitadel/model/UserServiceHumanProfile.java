@@ -21,6 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.UserServiceGender;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -51,19 +55,19 @@ public class UserServiceHumanProfile {
 
   public static final String JSON_PROPERTY_NICK_NAME = "nickName";
   @javax.annotation.Nullable
-  private String nickName;
+  private JsonNullable<String> nickName = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   @javax.annotation.Nullable
-  private String displayName;
+  private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_PREFERRED_LANGUAGE = "preferredLanguage";
   @javax.annotation.Nullable
-  private String preferredLanguage;
+  private JsonNullable<String> preferredLanguage = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_GENDER = "gender";
   @javax.annotation.Nullable
-  private UserServiceGender gender = UserServiceGender.GENDER_UNSPECIFIED;
+  private UserServiceGender gender;
 
   public static final String JSON_PROPERTY_AVATAR_URL = "avatarUrl";
   @javax.annotation.Nullable
@@ -123,8 +127,8 @@ public class UserServiceHumanProfile {
   }
 
   public UserServiceHumanProfile nickName(@javax.annotation.Nullable String nickName) {
+    this.nickName = JsonNullable.<String>of(nickName);
     
-    this.nickName = nickName;
     return this;
   }
 
@@ -133,23 +137,31 @@ public class UserServiceHumanProfile {
    * @return nickName
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NICK_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getNickName() {
-    return nickName;
+        return nickName.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_NICK_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNickName(@javax.annotation.Nullable String nickName) {
+
+  public JsonNullable<String> getNickName_JsonNullable() {
+    return nickName;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_NICK_NAME)
+  public void setNickName_JsonNullable(JsonNullable<String> nickName) {
     this.nickName = nickName;
   }
 
+  public void setNickName(@javax.annotation.Nullable String nickName) {
+    this.nickName = JsonNullable.<String>of(nickName);
+  }
+
   public UserServiceHumanProfile displayName(@javax.annotation.Nullable String displayName) {
+    this.displayName = JsonNullable.<String>of(displayName);
     
-    this.displayName = displayName;
     return this;
   }
 
@@ -158,23 +170,31 @@ public class UserServiceHumanProfile {
    * @return displayName
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getDisplayName() {
-    return displayName;
+        return displayName.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDisplayName(@javax.annotation.Nullable String displayName) {
+
+  public JsonNullable<String> getDisplayName_JsonNullable() {
+    return displayName;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  public void setDisplayName_JsonNullable(JsonNullable<String> displayName) {
     this.displayName = displayName;
   }
 
+  public void setDisplayName(@javax.annotation.Nullable String displayName) {
+    this.displayName = JsonNullable.<String>of(displayName);
+  }
+
   public UserServiceHumanProfile preferredLanguage(@javax.annotation.Nullable String preferredLanguage) {
+    this.preferredLanguage = JsonNullable.<String>of(preferredLanguage);
     
-    this.preferredLanguage = preferredLanguage;
     return this;
   }
 
@@ -183,18 +203,26 @@ public class UserServiceHumanProfile {
    * @return preferredLanguage
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PREFERRED_LANGUAGE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getPreferredLanguage() {
-    return preferredLanguage;
+        return preferredLanguage.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_PREFERRED_LANGUAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPreferredLanguage(@javax.annotation.Nullable String preferredLanguage) {
+
+  public JsonNullable<String> getPreferredLanguage_JsonNullable() {
+    return preferredLanguage;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_PREFERRED_LANGUAGE)
+  public void setPreferredLanguage_JsonNullable(JsonNullable<String> preferredLanguage) {
     this.preferredLanguage = preferredLanguage;
+  }
+
+  public void setPreferredLanguage(@javax.annotation.Nullable String preferredLanguage) {
+    this.preferredLanguage = JsonNullable.<String>of(preferredLanguage);
   }
 
   public UserServiceHumanProfile gender(@javax.annotation.Nullable UserServiceGender gender) {
@@ -229,7 +257,7 @@ public class UserServiceHumanProfile {
   }
 
   /**
-   * avatar URL of the user
+   * Get avatarUrl
    * @return avatarUrl
    */
   @javax.annotation.Nullable
@@ -258,16 +286,27 @@ public class UserServiceHumanProfile {
     UserServiceHumanProfile userServiceHumanProfile = (UserServiceHumanProfile) o;
     return Objects.equals(this.givenName, userServiceHumanProfile.givenName) &&
         Objects.equals(this.familyName, userServiceHumanProfile.familyName) &&
-        Objects.equals(this.nickName, userServiceHumanProfile.nickName) &&
-        Objects.equals(this.displayName, userServiceHumanProfile.displayName) &&
-        Objects.equals(this.preferredLanguage, userServiceHumanProfile.preferredLanguage) &&
+        equalsNullable(this.nickName, userServiceHumanProfile.nickName) &&
+        equalsNullable(this.displayName, userServiceHumanProfile.displayName) &&
+        equalsNullable(this.preferredLanguage, userServiceHumanProfile.preferredLanguage) &&
         Objects.equals(this.gender, userServiceHumanProfile.gender) &&
         Objects.equals(this.avatarUrl, userServiceHumanProfile.avatarUrl);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(givenName, familyName, nickName, displayName, preferredLanguage, gender, avatarUrl);
+    return Objects.hash(givenName, familyName, hashCodeNullable(nickName), hashCodeNullable(displayName), hashCodeNullable(preferredLanguage), gender, avatarUrl);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

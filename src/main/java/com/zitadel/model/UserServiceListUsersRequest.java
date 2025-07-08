@@ -48,7 +48,7 @@ public class UserServiceListUsersRequest {
 
   public static final String JSON_PROPERTY_SORTING_COLUMN = "sortingColumn";
   @javax.annotation.Nullable
-  private UserServiceUserFieldName sortingColumn = UserServiceUserFieldName.USER_FIELD_NAME_UNSPECIFIED;
+  private UserServiceUserFieldName sortingColumn;
 
   public static final String JSON_PROPERTY_QUERIES = "queries";
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class UserServiceListUsersRequest {
   }
 
   /**
-   * Get queries
+   * criteria the client is looking for
    * @return queries
    */
   @javax.annotation.Nullable

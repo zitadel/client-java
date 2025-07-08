@@ -20,9 +20,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.SessionServiceUserAgentHeaderValues;
+import com.zitadel.model.SessionServiceHeaderValues;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -42,26 +46,26 @@ import java.util.StringJoiner;
 public class SessionServiceUserAgent {
   public static final String JSON_PROPERTY_FINGERPRINT_ID = "fingerprintId";
   @javax.annotation.Nullable
-  private String fingerprintId;
+  private JsonNullable<String> fingerprintId = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_IP = "ip";
   @javax.annotation.Nullable
-  private String ip;
+  private JsonNullable<String> ip = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   @javax.annotation.Nullable
-  private String description;
+  private JsonNullable<String> description = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_HEADER = "header";
   @javax.annotation.Nullable
-  private Map<String, SessionServiceUserAgentHeaderValues> header = new HashMap<>();
+  private Map<String, SessionServiceHeaderValues> header = new HashMap<>();
 
   public SessionServiceUserAgent() {
   }
 
   public SessionServiceUserAgent fingerprintId(@javax.annotation.Nullable String fingerprintId) {
+    this.fingerprintId = JsonNullable.<String>of(fingerprintId);
     
-    this.fingerprintId = fingerprintId;
     return this;
   }
 
@@ -70,23 +74,31 @@ public class SessionServiceUserAgent {
    * @return fingerprintId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FINGERPRINT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getFingerprintId() {
-    return fingerprintId;
+        return fingerprintId.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_FINGERPRINT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFingerprintId(@javax.annotation.Nullable String fingerprintId) {
+
+  public JsonNullable<String> getFingerprintId_JsonNullable() {
+    return fingerprintId;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_FINGERPRINT_ID)
+  public void setFingerprintId_JsonNullable(JsonNullable<String> fingerprintId) {
     this.fingerprintId = fingerprintId;
   }
 
+  public void setFingerprintId(@javax.annotation.Nullable String fingerprintId) {
+    this.fingerprintId = JsonNullable.<String>of(fingerprintId);
+  }
+
   public SessionServiceUserAgent ip(@javax.annotation.Nullable String ip) {
+    this.ip = JsonNullable.<String>of(ip);
     
-    this.ip = ip;
     return this;
   }
 
@@ -95,23 +107,31 @@ public class SessionServiceUserAgent {
    * @return ip
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IP)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getIp() {
-    return ip;
+        return ip.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_IP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIp(@javax.annotation.Nullable String ip) {
+
+  public JsonNullable<String> getIp_JsonNullable() {
+    return ip;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_IP)
+  public void setIp_JsonNullable(JsonNullable<String> ip) {
     this.ip = ip;
   }
 
+  public void setIp(@javax.annotation.Nullable String ip) {
+    this.ip = JsonNullable.<String>of(ip);
+  }
+
   public SessionServiceUserAgent description(@javax.annotation.Nullable String description) {
+    this.description = JsonNullable.<String>of(description);
     
-    this.description = description;
     return this;
   }
 
@@ -120,27 +140,35 @@ public class SessionServiceUserAgent {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getDescription() {
-    return description;
+        return description.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(@javax.annotation.Nullable String description) {
+
+  public JsonNullable<String> getDescription_JsonNullable() {
+    return description;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  public void setDescription_JsonNullable(JsonNullable<String> description) {
     this.description = description;
   }
 
-  public SessionServiceUserAgent header(@javax.annotation.Nullable Map<String, SessionServiceUserAgentHeaderValues> header) {
+  public void setDescription(@javax.annotation.Nullable String description) {
+    this.description = JsonNullable.<String>of(description);
+  }
+
+  public SessionServiceUserAgent header(@javax.annotation.Nullable Map<String, SessionServiceHeaderValues> header) {
     
     this.header = header;
     return this;
   }
 
-  public SessionServiceUserAgent putHeaderItem(String key, SessionServiceUserAgentHeaderValues headerItem) {
+  public SessionServiceUserAgent putHeaderItem(String key, SessionServiceHeaderValues headerItem) {
     if (this.header == null) {
       this.header = new HashMap<>();
     }
@@ -156,14 +184,14 @@ public class SessionServiceUserAgent {
   @JsonProperty(JSON_PROPERTY_HEADER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Map<String, SessionServiceUserAgentHeaderValues> getHeader() {
+  public Map<String, SessionServiceHeaderValues> getHeader() {
     return header;
   }
 
 
   @JsonProperty(JSON_PROPERTY_HEADER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHeader(@javax.annotation.Nullable Map<String, SessionServiceUserAgentHeaderValues> header) {
+  public void setHeader(@javax.annotation.Nullable Map<String, SessionServiceHeaderValues> header) {
     this.header = header;
   }
 
@@ -176,15 +204,26 @@ public class SessionServiceUserAgent {
       return false;
     }
     SessionServiceUserAgent sessionServiceUserAgent = (SessionServiceUserAgent) o;
-    return Objects.equals(this.fingerprintId, sessionServiceUserAgent.fingerprintId) &&
-        Objects.equals(this.ip, sessionServiceUserAgent.ip) &&
-        Objects.equals(this.description, sessionServiceUserAgent.description) &&
+    return equalsNullable(this.fingerprintId, sessionServiceUserAgent.fingerprintId) &&
+        equalsNullable(this.ip, sessionServiceUserAgent.ip) &&
+        equalsNullable(this.description, sessionServiceUserAgent.description) &&
         Objects.equals(this.header, sessionServiceUserAgent.header);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fingerprintId, ip, description, header);
+    return Objects.hash(hashCodeNullable(fingerprintId), hashCodeNullable(ip), hashCodeNullable(description), header);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

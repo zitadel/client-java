@@ -67,7 +67,7 @@ public class IdentityProviderServiceAzureADConfig {
   }
 
   /**
-   * Get clientId
+   * Client id of the Azure AD application
    * @return clientId
    */
   @javax.annotation.Nullable
@@ -117,7 +117,7 @@ public class IdentityProviderServiceAzureADConfig {
   }
 
   /**
-   * Azure AD doesn&#39;t send if the email has been verified. Enable this if the user email should always be added verified in ZITADEL (no verification emails will be sent).
+   * Azure AD doesn&#39;t send if the email has been verified. Enable this if the  user email should always be added verified in ZITADEL (no verification  emails will be sent).
    * @return emailVerified
    */
   @javax.annotation.Nullable

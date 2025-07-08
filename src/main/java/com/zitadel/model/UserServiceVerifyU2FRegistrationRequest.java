@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.HashMap;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -30,14 +32,24 @@ import java.util.StringJoiner;
  * UserServiceVerifyU2FRegistrationRequest
  */
 @JsonPropertyOrder({
+  UserServiceVerifyU2FRegistrationRequest.JSON_PROPERTY_USER_ID,
+  UserServiceVerifyU2FRegistrationRequest.JSON_PROPERTY_U2F_ID,
   UserServiceVerifyU2FRegistrationRequest.JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL,
   UserServiceVerifyU2FRegistrationRequest.JSON_PROPERTY_TOKEN_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceVerifyU2FRegistrationRequest {
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
+  private String userId;
+
+  public static final String JSON_PROPERTY_U2F_ID = "u2fId";
+  @javax.annotation.Nonnull
+  private String u2fId;
+
   public static final String JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL = "publicKeyCredential";
   @javax.annotation.Nonnull
-  private Object publicKeyCredential;
+  private Map<String, Object> publicKeyCredential = new HashMap<>();
 
   public static final String JSON_PROPERTY_TOKEN_NAME = "tokenName";
   @javax.annotation.Nonnull
@@ -46,28 +58,83 @@ public class UserServiceVerifyU2FRegistrationRequest {
   public UserServiceVerifyU2FRegistrationRequest() {
   }
 
-  public UserServiceVerifyU2FRegistrationRequest publicKeyCredential(@javax.annotation.Nonnull Object publicKeyCredential) {
+  public UserServiceVerifyU2FRegistrationRequest userId(@javax.annotation.Nonnull String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+  /**
+   * Get userId
+   * @return userId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserId(@javax.annotation.Nonnull String userId) {
+    this.userId = userId;
+  }
+
+  public UserServiceVerifyU2FRegistrationRequest u2fId(@javax.annotation.Nonnull String u2fId) {
+    
+    this.u2fId = u2fId;
+    return this;
+  }
+
+  /**
+   * Get u2fId
+   * @return u2fId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_U2F_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getU2fId() {
+    return u2fId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_U2F_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setU2fId(@javax.annotation.Nonnull String u2fId) {
+    this.u2fId = u2fId;
+  }
+
+  public UserServiceVerifyU2FRegistrationRequest publicKeyCredential(@javax.annotation.Nonnull Map<String, Object> publicKeyCredential) {
     
     this.publicKeyCredential = publicKeyCredential;
     return this;
   }
 
+  public UserServiceVerifyU2FRegistrationRequest putPublicKeyCredentialItem(String key, Object publicKeyCredentialItem) {
+    this.publicKeyCredential.put(key, publicKeyCredentialItem);
+    return this;
+  }
+
   /**
-   * PublicKeyCredential Interface. Generated helper methods populate the field from JSON created by a WebauthN client. See also:  https://www.w3.org/TR/webauthn/#publickeycredential
+   * &#x60;Struct&#x60; represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, &#x60;Struct&#x60;  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for &#x60;Struct&#x60; is JSON object.
    * @return publicKeyCredential
    */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
 
-  public Object getPublicKeyCredential() {
+  public Map<String, Object> getPublicKeyCredential() {
     return publicKeyCredential;
   }
 
 
   @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPublicKeyCredential(@javax.annotation.Nonnull Object publicKeyCredential) {
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
+  public void setPublicKeyCredential(@javax.annotation.Nonnull Map<String, Object> publicKeyCredential) {
     this.publicKeyCredential = publicKeyCredential;
   }
 
@@ -105,19 +172,23 @@ public class UserServiceVerifyU2FRegistrationRequest {
       return false;
     }
     UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest = (UserServiceVerifyU2FRegistrationRequest) o;
-    return Objects.equals(this.publicKeyCredential, userServiceVerifyU2FRegistrationRequest.publicKeyCredential) &&
+    return Objects.equals(this.userId, userServiceVerifyU2FRegistrationRequest.userId) &&
+        Objects.equals(this.u2fId, userServiceVerifyU2FRegistrationRequest.u2fId) &&
+        Objects.equals(this.publicKeyCredential, userServiceVerifyU2FRegistrationRequest.publicKeyCredential) &&
         Objects.equals(this.tokenName, userServiceVerifyU2FRegistrationRequest.tokenName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(publicKeyCredential, tokenName);
+    return Objects.hash(userId, u2fId, publicKeyCredential, tokenName);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceVerifyU2FRegistrationRequest {\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    u2fId: ").append(toIndentedString(u2fId)).append("\n");
     sb.append("    publicKeyCredential: ").append(toIndentedString(publicKeyCredential)).append("\n");
     sb.append("    tokenName: ").append(toIndentedString(tokenName)).append("\n");
     sb.append("}");
@@ -167,13 +238,37 @@ public class UserServiceVerifyU2FRegistrationRequest {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `publicKeyCredential` to the URL query string
-    if (getPublicKeyCredential() != null) {
+    // add `userId` to the URL query string
+    if (getUserId() != null) {
       try {
-        joiner.add(String.format("%spublicKeyCredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPublicKeyCredential()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
+      }
+    }
+
+    // add `u2fId` to the URL query string
+    if (getU2fId() != null) {
+      try {
+        joiner.add(String.format("%su2fId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getU2fId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `publicKeyCredential` to the URL query string
+    if (getPublicKeyCredential() != null) {
+      for (String _key : getPublicKeyCredential().keySet()) {
+        try {
+          joiner.add(String.format("%spublicKeyCredential%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+              getPublicKeyCredential().get(_key), URLEncoder.encode(String.valueOf(getPublicKeyCredential().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
       }
     }
 

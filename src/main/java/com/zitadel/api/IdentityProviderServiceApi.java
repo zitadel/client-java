@@ -8,8 +8,9 @@ import com.zitadel.BaseApi;
 import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
+import com.zitadel.model.IdentityProviderServiceConnectError;
+import com.zitadel.model.IdentityProviderServiceGetIDPByIDRequest;
 import com.zitadel.model.IdentityProviderServiceGetIDPByIDResponse;
-import com.zitadel.model.IdentityProviderServiceRpcStatus;
 
 
 import java.util.ArrayList;
@@ -30,35 +31,37 @@ public class IdentityProviderServiceApi extends BaseApi {
     super(apiClient);
   }
 
+
+
+
   /**
-   * Get identity provider (IdP) by ID
-   * Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.
-   * @param id  (required)
+   * GetIDPByID
+   * Get identity provider (IdP) by ID   Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.
+   * @param identityProviderServiceGetIDPByIDRequest  (required)
    * @return IdentityProviderServiceGetIDPByIDResponse
    * @throws ApiException if fails to make API call
    */
-  public IdentityProviderServiceGetIDPByIDResponse identityProviderServiceGetIDPByID(String id) throws ApiException {
-    return this.identityProviderServiceGetIDPByID(id, Collections.emptyMap());
+  public IdentityProviderServiceGetIDPByIDResponse getIDPByID(IdentityProviderServiceGetIDPByIDRequest identityProviderServiceGetIDPByIDRequest) throws ApiException {
+    return this.getIDPByID(identityProviderServiceGetIDPByIDRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Get identity provider (IdP) by ID
-   * Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.
-   * @param id  (required)
+   * GetIDPByID
+   * Get identity provider (IdP) by ID   Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.
+   * @param identityProviderServiceGetIDPByIDRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return IdentityProviderServiceGetIDPByIDResponse
    * @throws ApiException if fails to make API call
    */
-  private IdentityProviderServiceGetIDPByIDResponse identityProviderServiceGetIDPByID(String id, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
+  private IdentityProviderServiceGetIDPByIDResponse getIDPByID(IdentityProviderServiceGetIDPByIDRequest identityProviderServiceGetIDPByIDRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = identityProviderServiceGetIDPByIDRequest;
     
-    if (id == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'id' when calling identityProviderServiceGetIDPByID");
+    if (identityProviderServiceGetIDPByIDRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'identityProviderServiceGetIDPByIDRequest' when calling getIDPByID");
     }
     
-    String localVarPath = "/v2/idps/{id}"
-      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(apiClient.parameterToString(id)));
+    String localVarPath = "/zitadel.idp.v2.IdentityProviderService/GetIDPByID";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -79,7 +82,7 @@ public class IdentityProviderServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -88,7 +91,7 @@ public class IdentityProviderServiceApi extends BaseApi {
     TypeReference<IdentityProviderServiceGetIDPByIDResponse> localVarReturnType = new TypeReference<IdentityProviderServiceGetIDPByIDResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
-        "GET",
+        "POST",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
@@ -121,7 +124,7 @@ public class IdentityProviderServiceApi extends BaseApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 

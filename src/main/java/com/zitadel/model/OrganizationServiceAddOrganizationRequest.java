@@ -20,10 +20,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.OrganizationServiceAddOrganizationRequestAdmin;
+import com.zitadel.model.OrganizationServiceAdmin;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -35,7 +39,8 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   OrganizationServiceAddOrganizationRequest.JSON_PROPERTY_NAME,
-  OrganizationServiceAddOrganizationRequest.JSON_PROPERTY_ADMINS
+  OrganizationServiceAddOrganizationRequest.JSON_PROPERTY_ADMINS,
+  OrganizationServiceAddOrganizationRequest.JSON_PROPERTY_ORG_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OrganizationServiceAddOrganizationRequest {
@@ -45,7 +50,11 @@ public class OrganizationServiceAddOrganizationRequest {
 
   public static final String JSON_PROPERTY_ADMINS = "admins";
   @javax.annotation.Nullable
-  private List<OrganizationServiceAddOrganizationRequestAdmin> admins = new ArrayList<>();
+  private List<OrganizationServiceAdmin> admins = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ORG_ID = "orgId";
+  @javax.annotation.Nullable
+  private JsonNullable<String> orgId = JsonNullable.<String>undefined();
 
   public OrganizationServiceAddOrganizationRequest() {
   }
@@ -75,13 +84,13 @@ public class OrganizationServiceAddOrganizationRequest {
     this.name = name;
   }
 
-  public OrganizationServiceAddOrganizationRequest admins(@javax.annotation.Nullable List<OrganizationServiceAddOrganizationRequestAdmin> admins) {
+  public OrganizationServiceAddOrganizationRequest admins(@javax.annotation.Nullable List<OrganizationServiceAdmin> admins) {
     
     this.admins = admins;
     return this;
   }
 
-  public OrganizationServiceAddOrganizationRequest addAdminsItem(OrganizationServiceAddOrganizationRequestAdmin adminsItem) {
+  public OrganizationServiceAddOrganizationRequest addAdminsItem(OrganizationServiceAdmin adminsItem) {
     if (this.admins == null) {
       this.admins = new ArrayList<>();
     }
@@ -97,15 +106,48 @@ public class OrganizationServiceAddOrganizationRequest {
   @JsonProperty(JSON_PROPERTY_ADMINS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<OrganizationServiceAddOrganizationRequestAdmin> getAdmins() {
+  public List<OrganizationServiceAdmin> getAdmins() {
     return admins;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ADMINS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdmins(@javax.annotation.Nullable List<OrganizationServiceAddOrganizationRequestAdmin> admins) {
+  public void setAdmins(@javax.annotation.Nullable List<OrganizationServiceAdmin> admins) {
     this.admins = admins;
+  }
+
+  public OrganizationServiceAddOrganizationRequest orgId(@javax.annotation.Nullable String orgId) {
+    this.orgId = JsonNullable.<String>of(orgId);
+    
+    return this;
+  }
+
+  /**
+   * optionally set your own id unique for the organization.
+   * @return orgId
+   */
+  @javax.annotation.Nullable
+  @JsonIgnore
+
+  public String getOrgId() {
+        return orgId.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_ORG_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getOrgId_JsonNullable() {
+    return orgId;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_ORG_ID)
+  public void setOrgId_JsonNullable(JsonNullable<String> orgId) {
+    this.orgId = orgId;
+  }
+
+  public void setOrgId(@javax.annotation.Nullable String orgId) {
+    this.orgId = JsonNullable.<String>of(orgId);
   }
 
   @Override
@@ -118,12 +160,24 @@ public class OrganizationServiceAddOrganizationRequest {
     }
     OrganizationServiceAddOrganizationRequest organizationServiceAddOrganizationRequest = (OrganizationServiceAddOrganizationRequest) o;
     return Objects.equals(this.name, organizationServiceAddOrganizationRequest.name) &&
-        Objects.equals(this.admins, organizationServiceAddOrganizationRequest.admins);
+        Objects.equals(this.admins, organizationServiceAddOrganizationRequest.admins) &&
+        equalsNullable(this.orgId, organizationServiceAddOrganizationRequest.orgId);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, admins);
+    return Objects.hash(name, admins, hashCodeNullable(orgId));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -132,6 +186,7 @@ public class OrganizationServiceAddOrganizationRequest {
     sb.append("class OrganizationServiceAddOrganizationRequest {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    admins: ").append(toIndentedString(admins)).append("\n");
+    sb.append("    orgId: ").append(toIndentedString(orgId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -196,6 +251,16 @@ public class OrganizationServiceAddOrganizationRequest {
           joiner.add(getAdmins().get(i).toUrlQueryString(String.format("%sadmins%s%s", prefix, suffix,
               "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
         }
+      }
+    }
+
+    // add `orgId` to the URL query string
+    if (getOrgId() != null) {
+      try {
+        joiner.add(String.format("%sorgId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrgId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
       }
     }
 

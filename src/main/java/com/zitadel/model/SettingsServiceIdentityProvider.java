@@ -49,7 +49,7 @@ public class SettingsServiceIdentityProvider {
 
   public static final String JSON_PROPERTY_TYPE = "type";
   @javax.annotation.Nullable
-  private SettingsServiceIdentityProviderType type = SettingsServiceIdentityProviderType.IDENTITY_PROVIDER_TYPE_UNSPECIFIED;
+  private SettingsServiceIdentityProviderType type;
 
   public static final String JSON_PROPERTY_OPTIONS = "options";
   @javax.annotation.Nullable

@@ -20,8 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.WebKeyServiceBetaECDSA;
-import com.zitadel.model.WebKeyServiceBetaRSA;
+import com.zitadel.model.WebKeyServiceECDSA;
+import com.zitadel.model.WebKeyServiceRSA;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -32,53 +32,28 @@ import java.util.StringJoiner;
  * WebKeyServiceCreateWebKeyRequest
  */
 @JsonPropertyOrder({
-  WebKeyServiceCreateWebKeyRequest.JSON_PROPERTY_RSA,
   WebKeyServiceCreateWebKeyRequest.JSON_PROPERTY_ECDSA,
-  WebKeyServiceCreateWebKeyRequest.JSON_PROPERTY_ED25519
+  WebKeyServiceCreateWebKeyRequest.JSON_PROPERTY_ED25519,
+  WebKeyServiceCreateWebKeyRequest.JSON_PROPERTY_RSA
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class WebKeyServiceCreateWebKeyRequest {
-  public static final String JSON_PROPERTY_RSA = "rsa";
-  @javax.annotation.Nullable
-  private WebKeyServiceBetaRSA rsa;
-
   public static final String JSON_PROPERTY_ECDSA = "ecdsa";
   @javax.annotation.Nullable
-  private WebKeyServiceBetaECDSA ecdsa;
+  private WebKeyServiceECDSA ecdsa;
 
   public static final String JSON_PROPERTY_ED25519 = "ed25519";
   @javax.annotation.Nullable
   private Object ed25519;
 
+  public static final String JSON_PROPERTY_RSA = "rsa";
+  @javax.annotation.Nullable
+  private WebKeyServiceRSA rsa;
+
   public WebKeyServiceCreateWebKeyRequest() {
   }
 
-  public WebKeyServiceCreateWebKeyRequest rsa(@javax.annotation.Nullable WebKeyServiceBetaRSA rsa) {
-    
-    this.rsa = rsa;
-    return this;
-  }
-
-  /**
-   * Get rsa
-   * @return rsa
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RSA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public WebKeyServiceBetaRSA getRsa() {
-    return rsa;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_RSA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRsa(@javax.annotation.Nullable WebKeyServiceBetaRSA rsa) {
-    this.rsa = rsa;
-  }
-
-  public WebKeyServiceCreateWebKeyRequest ecdsa(@javax.annotation.Nullable WebKeyServiceBetaECDSA ecdsa) {
+  public WebKeyServiceCreateWebKeyRequest ecdsa(@javax.annotation.Nullable WebKeyServiceECDSA ecdsa) {
     
     this.ecdsa = ecdsa;
     return this;
@@ -92,14 +67,14 @@ public class WebKeyServiceCreateWebKeyRequest {
   @JsonProperty(JSON_PROPERTY_ECDSA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public WebKeyServiceBetaECDSA getEcdsa() {
+  public WebKeyServiceECDSA getEcdsa() {
     return ecdsa;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ECDSA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEcdsa(@javax.annotation.Nullable WebKeyServiceBetaECDSA ecdsa) {
+  public void setEcdsa(@javax.annotation.Nullable WebKeyServiceECDSA ecdsa) {
     this.ecdsa = ecdsa;
   }
 
@@ -128,6 +103,31 @@ public class WebKeyServiceCreateWebKeyRequest {
     this.ed25519 = ed25519;
   }
 
+  public WebKeyServiceCreateWebKeyRequest rsa(@javax.annotation.Nullable WebKeyServiceRSA rsa) {
+    
+    this.rsa = rsa;
+    return this;
+  }
+
+  /**
+   * Get rsa
+   * @return rsa
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RSA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public WebKeyServiceRSA getRsa() {
+    return rsa;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RSA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRsa(@javax.annotation.Nullable WebKeyServiceRSA rsa) {
+    this.rsa = rsa;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -137,23 +137,23 @@ public class WebKeyServiceCreateWebKeyRequest {
       return false;
     }
     WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest = (WebKeyServiceCreateWebKeyRequest) o;
-    return Objects.equals(this.rsa, webKeyServiceCreateWebKeyRequest.rsa) &&
-        Objects.equals(this.ecdsa, webKeyServiceCreateWebKeyRequest.ecdsa) &&
-        Objects.equals(this.ed25519, webKeyServiceCreateWebKeyRequest.ed25519);
+    return Objects.equals(this.ecdsa, webKeyServiceCreateWebKeyRequest.ecdsa) &&
+        Objects.equals(this.ed25519, webKeyServiceCreateWebKeyRequest.ed25519) &&
+        Objects.equals(this.rsa, webKeyServiceCreateWebKeyRequest.rsa);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(rsa, ecdsa, ed25519);
+    return Objects.hash(ecdsa, ed25519, rsa);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class WebKeyServiceCreateWebKeyRequest {\n");
-    sb.append("    rsa: ").append(toIndentedString(rsa)).append("\n");
     sb.append("    ecdsa: ").append(toIndentedString(ecdsa)).append("\n");
     sb.append("    ed25519: ").append(toIndentedString(ed25519)).append("\n");
+    sb.append("    rsa: ").append(toIndentedString(rsa)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -200,6 +200,26 @@ public class WebKeyServiceCreateWebKeyRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `ecdsa` to the URL query string
+    if (getEcdsa() != null) {
+      joiner.add(getEcdsa().toUrlQueryString(prefix + "ecdsa" + suffix));
+    }
+
+    // add `ed25519` to the URL query string
+    if (getEd25519() != null) {
+      try {
+        joiner.add(String.format("%sed25519%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEd25519()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `rsa` to the URL query string
+    if (getRsa() != null) {
+      joiner.add(getRsa().toUrlQueryString(prefix + "rsa" + suffix));
+    }
 
     return joiner.toString();
   }

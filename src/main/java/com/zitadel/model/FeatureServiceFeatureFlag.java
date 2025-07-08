@@ -42,7 +42,7 @@ public class FeatureServiceFeatureFlag {
 
   public static final String JSON_PROPERTY_SOURCE = "source";
   @javax.annotation.Nullable
-  private FeatureServiceSource source = FeatureServiceSource.SOURCE_UNSPECIFIED;
+  private FeatureServiceSource source;
 
   public FeatureServiceFeatureFlag() {
   }
@@ -54,7 +54,7 @@ public class FeatureServiceFeatureFlag {
   }
 
   /**
-   * Whether a feature is enabled.
+   * Get enabled
    * @return enabled
    */
   @javax.annotation.Nullable

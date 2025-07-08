@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.OrganizationServiceAddOrganizationResponseCreatedAdmin;
+import com.zitadel.model.OrganizationServiceCreatedAdmin;
 import com.zitadel.model.OrganizationServiceDetails;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,7 +51,7 @@ public class OrganizationServiceAddOrganizationResponse {
 
   public static final String JSON_PROPERTY_CREATED_ADMINS = "createdAdmins";
   @javax.annotation.Nullable
-  private List<OrganizationServiceAddOrganizationResponseCreatedAdmin> createdAdmins = new ArrayList<>();
+  private List<OrganizationServiceCreatedAdmin> createdAdmins = new ArrayList<>();
 
   public OrganizationServiceAddOrganizationResponse() {
   }
@@ -106,13 +106,13 @@ public class OrganizationServiceAddOrganizationResponse {
     this.organizationId = organizationId;
   }
 
-  public OrganizationServiceAddOrganizationResponse createdAdmins(@javax.annotation.Nullable List<OrganizationServiceAddOrganizationResponseCreatedAdmin> createdAdmins) {
+  public OrganizationServiceAddOrganizationResponse createdAdmins(@javax.annotation.Nullable List<OrganizationServiceCreatedAdmin> createdAdmins) {
     
     this.createdAdmins = createdAdmins;
     return this;
   }
 
-  public OrganizationServiceAddOrganizationResponse addCreatedAdminsItem(OrganizationServiceAddOrganizationResponseCreatedAdmin createdAdminsItem) {
+  public OrganizationServiceAddOrganizationResponse addCreatedAdminsItem(OrganizationServiceCreatedAdmin createdAdminsItem) {
     if (this.createdAdmins == null) {
       this.createdAdmins = new ArrayList<>();
     }
@@ -128,14 +128,14 @@ public class OrganizationServiceAddOrganizationResponse {
   @JsonProperty(JSON_PROPERTY_CREATED_ADMINS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<OrganizationServiceAddOrganizationResponseCreatedAdmin> getCreatedAdmins() {
+  public List<OrganizationServiceCreatedAdmin> getCreatedAdmins() {
     return createdAdmins;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CREATED_ADMINS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreatedAdmins(@javax.annotation.Nullable List<OrganizationServiceAddOrganizationResponseCreatedAdmin> createdAdmins) {
+  public void setCreatedAdmins(@javax.annotation.Nullable List<OrganizationServiceCreatedAdmin> createdAdmins) {
     this.createdAdmins = createdAdmins;
   }
 

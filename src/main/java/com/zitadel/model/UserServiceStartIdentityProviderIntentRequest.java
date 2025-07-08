@@ -33,8 +33,8 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   UserServiceStartIdentityProviderIntentRequest.JSON_PROPERTY_IDP_ID,
-  UserServiceStartIdentityProviderIntentRequest.JSON_PROPERTY_URLS,
-  UserServiceStartIdentityProviderIntentRequest.JSON_PROPERTY_LDAP
+  UserServiceStartIdentityProviderIntentRequest.JSON_PROPERTY_LDAP,
+  UserServiceStartIdentityProviderIntentRequest.JSON_PROPERTY_URLS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceStartIdentityProviderIntentRequest {
@@ -42,13 +42,13 @@ public class UserServiceStartIdentityProviderIntentRequest {
   @javax.annotation.Nullable
   private String idpId;
 
-  public static final String JSON_PROPERTY_URLS = "urls";
-  @javax.annotation.Nullable
-  private UserServiceRedirectURLs urls;
-
   public static final String JSON_PROPERTY_LDAP = "ldap";
   @javax.annotation.Nullable
   private UserServiceLDAPCredentials ldap;
+
+  public static final String JSON_PROPERTY_URLS = "urls";
+  @javax.annotation.Nullable
+  private UserServiceRedirectURLs urls;
 
   public UserServiceStartIdentityProviderIntentRequest() {
   }
@@ -60,7 +60,7 @@ public class UserServiceStartIdentityProviderIntentRequest {
   }
 
   /**
-   * ID for existing identity provider
+   * Get idpId
    * @return idpId
    */
   @javax.annotation.Nullable
@@ -76,31 +76,6 @@ public class UserServiceStartIdentityProviderIntentRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIdpId(@javax.annotation.Nullable String idpId) {
     this.idpId = idpId;
-  }
-
-  public UserServiceStartIdentityProviderIntentRequest urls(@javax.annotation.Nullable UserServiceRedirectURLs urls) {
-    
-    this.urls = urls;
-    return this;
-  }
-
-  /**
-   * Get urls
-   * @return urls
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_URLS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public UserServiceRedirectURLs getUrls() {
-    return urls;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_URLS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUrls(@javax.annotation.Nullable UserServiceRedirectURLs urls) {
-    this.urls = urls;
   }
 
   public UserServiceStartIdentityProviderIntentRequest ldap(@javax.annotation.Nullable UserServiceLDAPCredentials ldap) {
@@ -128,6 +103,31 @@ public class UserServiceStartIdentityProviderIntentRequest {
     this.ldap = ldap;
   }
 
+  public UserServiceStartIdentityProviderIntentRequest urls(@javax.annotation.Nullable UserServiceRedirectURLs urls) {
+    
+    this.urls = urls;
+    return this;
+  }
+
+  /**
+   * Get urls
+   * @return urls
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_URLS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UserServiceRedirectURLs getUrls() {
+    return urls;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_URLS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUrls(@javax.annotation.Nullable UserServiceRedirectURLs urls) {
+    this.urls = urls;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -138,13 +138,13 @@ public class UserServiceStartIdentityProviderIntentRequest {
     }
     UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest = (UserServiceStartIdentityProviderIntentRequest) o;
     return Objects.equals(this.idpId, userServiceStartIdentityProviderIntentRequest.idpId) &&
-        Objects.equals(this.urls, userServiceStartIdentityProviderIntentRequest.urls) &&
-        Objects.equals(this.ldap, userServiceStartIdentityProviderIntentRequest.ldap);
+        Objects.equals(this.ldap, userServiceStartIdentityProviderIntentRequest.ldap) &&
+        Objects.equals(this.urls, userServiceStartIdentityProviderIntentRequest.urls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idpId, urls, ldap);
+    return Objects.hash(idpId, ldap, urls);
   }
 
   @Override
@@ -152,8 +152,8 @@ public class UserServiceStartIdentityProviderIntentRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceStartIdentityProviderIntentRequest {\n");
     sb.append("    idpId: ").append(toIndentedString(idpId)).append("\n");
-    sb.append("    urls: ").append(toIndentedString(urls)).append("\n");
     sb.append("    ldap: ").append(toIndentedString(ldap)).append("\n");
+    sb.append("    urls: ").append(toIndentedString(urls)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -200,6 +200,26 @@ public class UserServiceStartIdentityProviderIntentRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `idpId` to the URL query string
+    if (getIdpId() != null) {
+      try {
+        joiner.add(String.format("%sidpId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdpId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `ldap` to the URL query string
+    if (getLdap() != null) {
+      joiner.add(getLdap().toUrlQueryString(prefix + "ldap" + suffix));
+    }
+
+    // add `urls` to the URL query string
+    if (getUrls() != null) {
+      joiner.add(getUrls().toUrlQueryString(prefix + "urls" + suffix));
+    }
 
     return joiner.toString();
   }

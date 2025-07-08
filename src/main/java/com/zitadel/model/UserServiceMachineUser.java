@@ -52,7 +52,7 @@ public class UserServiceMachineUser {
 
   public static final String JSON_PROPERTY_ACCESS_TOKEN_TYPE = "accessTokenType";
   @javax.annotation.Nullable
-  private UserServiceAccessTokenType accessTokenType = UserServiceAccessTokenType.ACCESS_TOKEN_TYPE_BEARER;
+  private UserServiceAccessTokenType accessTokenType;
 
   public UserServiceMachineUser() {
   }

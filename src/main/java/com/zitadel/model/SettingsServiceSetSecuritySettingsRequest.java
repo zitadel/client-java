@@ -79,7 +79,7 @@ public class SettingsServiceSetSecuritySettingsRequest {
   }
 
   /**
-   * allows users to impersonate other users. The impersonator needs the appropriate &#x60;*_IMPERSONATOR&#x60; roles assigned as well
+   * Get enableImpersonation
    * @return enableImpersonation
    */
   @javax.annotation.Nullable

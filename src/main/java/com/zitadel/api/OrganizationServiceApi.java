@@ -10,9 +10,9 @@ import com.zitadel.Pair;
 
 import com.zitadel.model.OrganizationServiceAddOrganizationRequest;
 import com.zitadel.model.OrganizationServiceAddOrganizationResponse;
+import com.zitadel.model.OrganizationServiceConnectError;
 import com.zitadel.model.OrganizationServiceListOrganizationsRequest;
 import com.zitadel.model.OrganizationServiceListOrganizationsResponse;
-import com.zitadel.model.OrganizationServiceRpcStatus;
 
 
 import java.util.ArrayList;
@@ -33,34 +33,37 @@ public class OrganizationServiceApi extends BaseApi {
     super(apiClient);
   }
 
+
+
+
   /**
-   * Create an Organization
-   * Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.
+   * AddOrganization
+   * Create an Organization   Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.
    * @param organizationServiceAddOrganizationRequest  (required)
    * @return OrganizationServiceAddOrganizationResponse
    * @throws ApiException if fails to make API call
    */
-  public OrganizationServiceAddOrganizationResponse organizationServiceAddOrganization(OrganizationServiceAddOrganizationRequest organizationServiceAddOrganizationRequest) throws ApiException {
-    return this.organizationServiceAddOrganization(organizationServiceAddOrganizationRequest, Collections.emptyMap());
+  public OrganizationServiceAddOrganizationResponse addOrganization(OrganizationServiceAddOrganizationRequest organizationServiceAddOrganizationRequest) throws ApiException {
+    return this.addOrganization(organizationServiceAddOrganizationRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Create an Organization
-   * Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.
+   * AddOrganization
+   * Create an Organization   Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.
    * @param organizationServiceAddOrganizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return OrganizationServiceAddOrganizationResponse
    * @throws ApiException if fails to make API call
    */
-  private OrganizationServiceAddOrganizationResponse organizationServiceAddOrganization(OrganizationServiceAddOrganizationRequest organizationServiceAddOrganizationRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private OrganizationServiceAddOrganizationResponse addOrganization(OrganizationServiceAddOrganizationRequest organizationServiceAddOrganizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = organizationServiceAddOrganizationRequest;
     
     if (organizationServiceAddOrganizationRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'organizationServiceAddOrganizationRequest' when calling organizationServiceAddOrganization");
+      throw new IllegalArgumentException("Missing the required parameter 'organizationServiceAddOrganizationRequest' when calling addOrganization");
     }
     
-    String localVarPath = "/v2/organizations";
+    String localVarPath = "/zitadel.org.v2.OrganizationService/AddOrganization";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -105,34 +108,37 @@ public class OrganizationServiceApi extends BaseApi {
     );
   }
 
+
+
+
   /**
-   * Search Organizations
-   * Search for Organizations. By default, we will return all organization of the instance. Make sure to include a limit and sorting for pagination..
+   * ListOrganizations
+   * Search Organizations   Search for Organizations. By default, we will return all organization of the instance. Make sure to include a limit and sorting for pagination..
    * @param organizationServiceListOrganizationsRequest  (required)
    * @return OrganizationServiceListOrganizationsResponse
    * @throws ApiException if fails to make API call
    */
-  public OrganizationServiceListOrganizationsResponse organizationServiceListOrganizations(OrganizationServiceListOrganizationsRequest organizationServiceListOrganizationsRequest) throws ApiException {
-    return this.organizationServiceListOrganizations(organizationServiceListOrganizationsRequest, Collections.emptyMap());
+  public OrganizationServiceListOrganizationsResponse listOrganizations(OrganizationServiceListOrganizationsRequest organizationServiceListOrganizationsRequest) throws ApiException {
+    return this.listOrganizations(organizationServiceListOrganizationsRequest, Collections.emptyMap());
   }
 
 
   /**
-   * Search Organizations
-   * Search for Organizations. By default, we will return all organization of the instance. Make sure to include a limit and sorting for pagination..
+   * ListOrganizations
+   * Search Organizations   Search for Organizations. By default, we will return all organization of the instance. Make sure to include a limit and sorting for pagination..
    * @param organizationServiceListOrganizationsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return OrganizationServiceListOrganizationsResponse
    * @throws ApiException if fails to make API call
    */
-  private OrganizationServiceListOrganizationsResponse organizationServiceListOrganizations(OrganizationServiceListOrganizationsRequest organizationServiceListOrganizationsRequest, Map<String, String> additionalHeaders) throws ApiException {
+  private OrganizationServiceListOrganizationsResponse listOrganizations(OrganizationServiceListOrganizationsRequest organizationServiceListOrganizationsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = organizationServiceListOrganizationsRequest;
     
     if (organizationServiceListOrganizationsRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'organizationServiceListOrganizationsRequest' when calling organizationServiceListOrganizations");
+      throw new IllegalArgumentException("Missing the required parameter 'organizationServiceListOrganizationsRequest' when calling listOrganizations");
     }
     
-    String localVarPath = "/v2/organizations/_search";
+    String localVarPath = "/zitadel.org.v2.OrganizationService/ListOrganizations";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;

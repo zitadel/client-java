@@ -53,7 +53,7 @@ public class OrganizationServiceHashedPassword {
   }
 
   /**
-   * \&quot;Encoded hash of a password in Modular Crypt Format: https://zitadel.com/docs/concepts/architecture/secrets#hashed-secrets\&quot;
+   * Get hash
    * @return hash
    */
   @javax.annotation.Nonnull
