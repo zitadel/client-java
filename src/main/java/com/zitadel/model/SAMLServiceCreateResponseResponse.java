@@ -34,8 +34,8 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SAMLServiceCreateResponseResponse.JSON_PROPERTY_DETAILS,
   SAMLServiceCreateResponseResponse.JSON_PROPERTY_URL,
-  SAMLServiceCreateResponseResponse.JSON_PROPERTY_REDIRECT,
-  SAMLServiceCreateResponseResponse.JSON_PROPERTY_POST
+  SAMLServiceCreateResponseResponse.JSON_PROPERTY_POST,
+  SAMLServiceCreateResponseResponse.JSON_PROPERTY_REDIRECT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SAMLServiceCreateResponseResponse {
@@ -47,13 +47,13 @@ public class SAMLServiceCreateResponseResponse {
   @javax.annotation.Nullable
   private String url;
 
-  public static final String JSON_PROPERTY_REDIRECT = "redirect";
-  @javax.annotation.Nullable
-  private Object redirect;
-
   public static final String JSON_PROPERTY_POST = "post";
   @javax.annotation.Nullable
   private SAMLServicePostResponse post;
+
+  public static final String JSON_PROPERTY_REDIRECT = "redirect";
+  @javax.annotation.Nullable
+  private Object redirect;
 
   public SAMLServiceCreateResponseResponse() {
   }
@@ -108,31 +108,6 @@ public class SAMLServiceCreateResponseResponse {
     this.url = url;
   }
 
-  public SAMLServiceCreateResponseResponse redirect(@javax.annotation.Nullable Object redirect) {
-    
-    this.redirect = redirect;
-    return this;
-  }
-
-  /**
-   * Get redirect
-   * @return redirect
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REDIRECT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Object getRedirect() {
-    return redirect;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_REDIRECT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRedirect(@javax.annotation.Nullable Object redirect) {
-    this.redirect = redirect;
-  }
-
   public SAMLServiceCreateResponseResponse post(@javax.annotation.Nullable SAMLServicePostResponse post) {
     
     this.post = post;
@@ -158,6 +133,31 @@ public class SAMLServiceCreateResponseResponse {
     this.post = post;
   }
 
+  public SAMLServiceCreateResponseResponse redirect(@javax.annotation.Nullable Object redirect) {
+    
+    this.redirect = redirect;
+    return this;
+  }
+
+  /**
+   * Get redirect
+   * @return redirect
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_REDIRECT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Object getRedirect() {
+    return redirect;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REDIRECT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRedirect(@javax.annotation.Nullable Object redirect) {
+    this.redirect = redirect;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -169,13 +169,13 @@ public class SAMLServiceCreateResponseResponse {
     SAMLServiceCreateResponseResponse saMLServiceCreateResponseResponse = (SAMLServiceCreateResponseResponse) o;
     return Objects.equals(this.details, saMLServiceCreateResponseResponse.details) &&
         Objects.equals(this.url, saMLServiceCreateResponseResponse.url) &&
-        Objects.equals(this.redirect, saMLServiceCreateResponseResponse.redirect) &&
-        Objects.equals(this.post, saMLServiceCreateResponseResponse.post);
+        Objects.equals(this.post, saMLServiceCreateResponseResponse.post) &&
+        Objects.equals(this.redirect, saMLServiceCreateResponseResponse.redirect);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(details, url, redirect, post);
+    return Objects.hash(details, url, post, redirect);
   }
 
   @Override
@@ -184,8 +184,8 @@ public class SAMLServiceCreateResponseResponse {
     sb.append("class SAMLServiceCreateResponseResponse {\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("    redirect: ").append(toIndentedString(redirect)).append("\n");
     sb.append("    post: ").append(toIndentedString(post)).append("\n");
+    sb.append("    redirect: ").append(toIndentedString(redirect)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -232,6 +232,36 @@ public class SAMLServiceCreateResponseResponse {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `details` to the URL query string
+    if (getDetails() != null) {
+      joiner.add(getDetails().toUrlQueryString(prefix + "details" + suffix));
+    }
+
+    // add `url` to the URL query string
+    if (getUrl() != null) {
+      try {
+        joiner.add(String.format("%surl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUrl()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `post` to the URL query string
+    if (getPost() != null) {
+      joiner.add(getPost().toUrlQueryString(prefix + "post" + suffix));
+    }
+
+    // add `redirect` to the URL query string
+    if (getRedirect() != null) {
+      try {
+        joiner.add(String.format("%sredirect%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRedirect()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     return joiner.toString();
   }

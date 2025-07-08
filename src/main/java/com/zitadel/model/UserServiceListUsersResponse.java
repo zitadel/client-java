@@ -48,7 +48,7 @@ public class UserServiceListUsersResponse {
 
   public static final String JSON_PROPERTY_SORTING_COLUMN = "sortingColumn";
   @javax.annotation.Nullable
-  private UserServiceUserFieldName sortingColumn = UserServiceUserFieldName.USER_FIELD_NAME_UNSPECIFIED;
+  private UserServiceUserFieldName sortingColumn;
 
   public static final String JSON_PROPERTY_RESULT = "result";
   @javax.annotation.Nullable

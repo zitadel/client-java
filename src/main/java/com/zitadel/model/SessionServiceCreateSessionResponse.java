@@ -90,7 +90,7 @@ public class SessionServiceCreateSessionResponse {
   }
 
   /**
-   * \&quot;id of the session\&quot;
+   * Get sessionId
    * @return sessionId
    */
   @javax.annotation.Nullable
@@ -115,7 +115,7 @@ public class SessionServiceCreateSessionResponse {
   }
 
   /**
-   * \&quot;The current token of the session, which is required for delete session, get session or the request of other resources.\&quot;
+   * Get sessionToken
    * @return sessionToken
    */
   @javax.annotation.Nullable

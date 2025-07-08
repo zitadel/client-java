@@ -21,6 +21,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.IdentityProviderServiceAzureADTenantType;
+import com.zitadel.model.TenantId;
+import com.zitadel.model.TenantType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -31,48 +33,23 @@ import java.util.StringJoiner;
  * IdentityProviderServiceAzureADTenant
  */
 @JsonPropertyOrder({
-  IdentityProviderServiceAzureADTenant.JSON_PROPERTY_TENANT_TYPE,
-  IdentityProviderServiceAzureADTenant.JSON_PROPERTY_TENANT_ID
+  IdentityProviderServiceAzureADTenant.JSON_PROPERTY_TENANT_ID,
+  IdentityProviderServiceAzureADTenant.JSON_PROPERTY_TENANT_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IdentityProviderServiceAzureADTenant {
-  public static final String JSON_PROPERTY_TENANT_TYPE = "tenantType";
-  @javax.annotation.Nullable
-  private IdentityProviderServiceAzureADTenantType tenantType = IdentityProviderServiceAzureADTenantType.AZURE_AD_TENANT_TYPE_COMMON;
-
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String tenantId;
+
+  public static final String JSON_PROPERTY_TENANT_TYPE = "tenantType";
+  @javax.annotation.Nonnull
+  private IdentityProviderServiceAzureADTenantType tenantType;
 
   public IdentityProviderServiceAzureADTenant() {
   }
 
-  public IdentityProviderServiceAzureADTenant tenantType(@javax.annotation.Nullable IdentityProviderServiceAzureADTenantType tenantType) {
-    
-    this.tenantType = tenantType;
-    return this;
-  }
-
-  /**
-   * Get tenantType
-   * @return tenantType
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TENANT_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public IdentityProviderServiceAzureADTenantType getTenantType() {
-    return tenantType;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_TENANT_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantType(@javax.annotation.Nullable IdentityProviderServiceAzureADTenantType tenantType) {
-    this.tenantType = tenantType;
-  }
-
-  public IdentityProviderServiceAzureADTenant tenantId(@javax.annotation.Nullable String tenantId) {
+  public IdentityProviderServiceAzureADTenant tenantId(@javax.annotation.Nonnull String tenantId) {
     
     this.tenantId = tenantId;
     return this;
@@ -82,9 +59,9 @@ public class IdentityProviderServiceAzureADTenant {
    * Get tenantId
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_TENANT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getTenantId() {
     return tenantId;
@@ -92,9 +69,34 @@ public class IdentityProviderServiceAzureADTenant {
 
 
   @JsonProperty(JSON_PROPERTY_TENANT_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable String tenantId) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTenantId(@javax.annotation.Nonnull String tenantId) {
     this.tenantId = tenantId;
+  }
+
+  public IdentityProviderServiceAzureADTenant tenantType(@javax.annotation.Nonnull IdentityProviderServiceAzureADTenantType tenantType) {
+    
+    this.tenantType = tenantType;
+    return this;
+  }
+
+  /**
+   * Get tenantType
+   * @return tenantType
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_TENANT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public IdentityProviderServiceAzureADTenantType getTenantType() {
+    return tenantType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TENANT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTenantType(@javax.annotation.Nonnull IdentityProviderServiceAzureADTenantType tenantType) {
+    this.tenantType = tenantType;
   }
 
   @Override
@@ -106,21 +108,21 @@ public class IdentityProviderServiceAzureADTenant {
       return false;
     }
     IdentityProviderServiceAzureADTenant identityProviderServiceAzureADTenant = (IdentityProviderServiceAzureADTenant) o;
-    return Objects.equals(this.tenantType, identityProviderServiceAzureADTenant.tenantType) &&
-        Objects.equals(this.tenantId, identityProviderServiceAzureADTenant.tenantId);
+    return Objects.equals(this.tenantId, identityProviderServiceAzureADTenant.tenantId) &&
+        Objects.equals(this.tenantType, identityProviderServiceAzureADTenant.tenantType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tenantType, tenantId);
+    return Objects.hash(tenantId, tenantType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IdentityProviderServiceAzureADTenant {\n");
-    sb.append("    tenantType: ").append(toIndentedString(tenantType)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
+    sb.append("    tenantType: ").append(toIndentedString(tenantType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -167,6 +169,26 @@ public class IdentityProviderServiceAzureADTenant {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `tenantId` to the URL query string
+    if (getTenantId() != null) {
+      try {
+        joiner.add(String.format("%stenantId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTenantId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `tenantType` to the URL query string
+    if (getTenantType() != null) {
+      try {
+        joiner.add(String.format("%stenantType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTenantType()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     return joiner.toString();
   }

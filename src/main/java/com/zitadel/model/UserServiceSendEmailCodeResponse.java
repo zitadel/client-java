@@ -21,6 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.UserServiceDetails;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -42,7 +46,7 @@ public class UserServiceSendEmailCodeResponse {
 
   public static final String JSON_PROPERTY_VERIFICATION_CODE = "verificationCode";
   @javax.annotation.Nullable
-  private String verificationCode;
+  private JsonNullable<String> verificationCode = JsonNullable.<String>undefined();
 
   public UserServiceSendEmailCodeResponse() {
   }
@@ -73,28 +77,36 @@ public class UserServiceSendEmailCodeResponse {
   }
 
   public UserServiceSendEmailCodeResponse verificationCode(@javax.annotation.Nullable String verificationCode) {
+    this.verificationCode = JsonNullable.<String>of(verificationCode);
     
-    this.verificationCode = verificationCode;
     return this;
   }
 
   /**
-   * Get verificationCode
+   * in case the verification was set to return_code, the code will be returned
    * @return verificationCode
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VERIFICATION_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public String getVerificationCode() {
-    return verificationCode;
+        return verificationCode.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_VERIFICATION_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVerificationCode(@javax.annotation.Nullable String verificationCode) {
+
+  public JsonNullable<String> getVerificationCode_JsonNullable() {
+    return verificationCode;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_VERIFICATION_CODE)
+  public void setVerificationCode_JsonNullable(JsonNullable<String> verificationCode) {
     this.verificationCode = verificationCode;
+  }
+
+  public void setVerificationCode(@javax.annotation.Nullable String verificationCode) {
+    this.verificationCode = JsonNullable.<String>of(verificationCode);
   }
 
   @Override
@@ -107,12 +119,23 @@ public class UserServiceSendEmailCodeResponse {
     }
     UserServiceSendEmailCodeResponse userServiceSendEmailCodeResponse = (UserServiceSendEmailCodeResponse) o;
     return Objects.equals(this.details, userServiceSendEmailCodeResponse.details) &&
-        Objects.equals(this.verificationCode, userServiceSendEmailCodeResponse.verificationCode);
+        equalsNullable(this.verificationCode, userServiceSendEmailCodeResponse.verificationCode);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(details, verificationCode);
+    return Objects.hash(details, hashCodeNullable(verificationCode));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

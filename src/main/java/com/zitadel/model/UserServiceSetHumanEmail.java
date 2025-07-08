@@ -32,9 +32,9 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   UserServiceSetHumanEmail.JSON_PROPERTY_EMAIL,
-  UserServiceSetHumanEmail.JSON_PROPERTY_SEND_CODE,
+  UserServiceSetHumanEmail.JSON_PROPERTY_IS_VERIFIED,
   UserServiceSetHumanEmail.JSON_PROPERTY_RETURN_CODE,
-  UserServiceSetHumanEmail.JSON_PROPERTY_IS_VERIFIED
+  UserServiceSetHumanEmail.JSON_PROPERTY_SEND_CODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceSetHumanEmail {
@@ -42,17 +42,17 @@ public class UserServiceSetHumanEmail {
   @javax.annotation.Nonnull
   private String email;
 
-  public static final String JSON_PROPERTY_SEND_CODE = "sendCode";
+  public static final String JSON_PROPERTY_IS_VERIFIED = "isVerified";
   @javax.annotation.Nullable
-  private UserServiceSendEmailVerificationCode sendCode;
+  private Boolean isVerified;
 
   public static final String JSON_PROPERTY_RETURN_CODE = "returnCode";
   @javax.annotation.Nullable
   private Object returnCode;
 
-  public static final String JSON_PROPERTY_IS_VERIFIED = "isVerified";
+  public static final String JSON_PROPERTY_SEND_CODE = "sendCode";
   @javax.annotation.Nullable
-  private Boolean isVerified;
+  private UserServiceSendEmailVerificationCode sendCode;
 
   public UserServiceSetHumanEmail() {
   }
@@ -82,29 +82,29 @@ public class UserServiceSetHumanEmail {
     this.email = email;
   }
 
-  public UserServiceSetHumanEmail sendCode(@javax.annotation.Nullable UserServiceSendEmailVerificationCode sendCode) {
+  public UserServiceSetHumanEmail isVerified(@javax.annotation.Nullable Boolean isVerified) {
     
-    this.sendCode = sendCode;
+    this.isVerified = isVerified;
     return this;
   }
 
   /**
-   * Get sendCode
-   * @return sendCode
+   * Get isVerified
+   * @return isVerified
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SEND_CODE)
+  @JsonProperty(JSON_PROPERTY_IS_VERIFIED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public UserServiceSendEmailVerificationCode getSendCode() {
-    return sendCode;
+  public Boolean getIsVerified() {
+    return isVerified;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SEND_CODE)
+  @JsonProperty(JSON_PROPERTY_IS_VERIFIED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSendCode(@javax.annotation.Nullable UserServiceSendEmailVerificationCode sendCode) {
-    this.sendCode = sendCode;
+  public void setIsVerified(@javax.annotation.Nullable Boolean isVerified) {
+    this.isVerified = isVerified;
   }
 
   public UserServiceSetHumanEmail returnCode(@javax.annotation.Nullable Object returnCode) {
@@ -132,29 +132,29 @@ public class UserServiceSetHumanEmail {
     this.returnCode = returnCode;
   }
 
-  public UserServiceSetHumanEmail isVerified(@javax.annotation.Nullable Boolean isVerified) {
+  public UserServiceSetHumanEmail sendCode(@javax.annotation.Nullable UserServiceSendEmailVerificationCode sendCode) {
     
-    this.isVerified = isVerified;
+    this.sendCode = sendCode;
     return this;
   }
 
   /**
-   * Get isVerified
-   * @return isVerified
+   * Get sendCode
+   * @return sendCode
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IS_VERIFIED)
+  @JsonProperty(JSON_PROPERTY_SEND_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Boolean getIsVerified() {
-    return isVerified;
+  public UserServiceSendEmailVerificationCode getSendCode() {
+    return sendCode;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IS_VERIFIED)
+  @JsonProperty(JSON_PROPERTY_SEND_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsVerified(@javax.annotation.Nullable Boolean isVerified) {
-    this.isVerified = isVerified;
+  public void setSendCode(@javax.annotation.Nullable UserServiceSendEmailVerificationCode sendCode) {
+    this.sendCode = sendCode;
   }
 
   @Override
@@ -167,14 +167,14 @@ public class UserServiceSetHumanEmail {
     }
     UserServiceSetHumanEmail userServiceSetHumanEmail = (UserServiceSetHumanEmail) o;
     return Objects.equals(this.email, userServiceSetHumanEmail.email) &&
-        Objects.equals(this.sendCode, userServiceSetHumanEmail.sendCode) &&
+        Objects.equals(this.isVerified, userServiceSetHumanEmail.isVerified) &&
         Objects.equals(this.returnCode, userServiceSetHumanEmail.returnCode) &&
-        Objects.equals(this.isVerified, userServiceSetHumanEmail.isVerified);
+        Objects.equals(this.sendCode, userServiceSetHumanEmail.sendCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, sendCode, returnCode, isVerified);
+    return Objects.hash(email, isVerified, returnCode, sendCode);
   }
 
   @Override
@@ -182,9 +182,9 @@ public class UserServiceSetHumanEmail {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceSetHumanEmail {\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    sendCode: ").append(toIndentedString(sendCode)).append("\n");
-    sb.append("    returnCode: ").append(toIndentedString(returnCode)).append("\n");
     sb.append("    isVerified: ").append(toIndentedString(isVerified)).append("\n");
+    sb.append("    returnCode: ").append(toIndentedString(returnCode)).append("\n");
+    sb.append("    sendCode: ").append(toIndentedString(sendCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -231,6 +231,41 @@ public class UserServiceSetHumanEmail {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `email` to the URL query string
+    if (getEmail() != null) {
+      try {
+        joiner.add(String.format("%semail%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEmail()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `isVerified` to the URL query string
+    if (getIsVerified() != null) {
+      try {
+        joiner.add(String.format("%sisVerified%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIsVerified()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `returnCode` to the URL query string
+    if (getReturnCode() != null) {
+      try {
+        joiner.add(String.format("%sreturnCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getReturnCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `sendCode` to the URL query string
+    if (getSendCode() != null) {
+      joiner.add(getSendCode().toUrlQueryString(prefix + "sendCode" + suffix));
+    }
 
     return joiner.toString();
   }

@@ -36,8 +36,6 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   FeatureServiceGetSystemFeaturesResponse.JSON_PROPERTY_DETAILS,
   FeatureServiceGetSystemFeaturesResponse.JSON_PROPERTY_LOGIN_DEFAULT_ORG,
-  FeatureServiceGetSystemFeaturesResponse.JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS,
-  FeatureServiceGetSystemFeaturesResponse.JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION,
   FeatureServiceGetSystemFeaturesResponse.JSON_PROPERTY_USER_SCHEMA,
   FeatureServiceGetSystemFeaturesResponse.JSON_PROPERTY_OIDC_TOKEN_EXCHANGE,
   FeatureServiceGetSystemFeaturesResponse.JSON_PROPERTY_IMPROVED_PERFORMANCE,
@@ -56,14 +54,6 @@ public class FeatureServiceGetSystemFeaturesResponse {
   public static final String JSON_PROPERTY_LOGIN_DEFAULT_ORG = "loginDefaultOrg";
   @javax.annotation.Nullable
   private FeatureServiceFeatureFlag loginDefaultOrg;
-
-  public static final String JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS = "oidcTriggerIntrospectionProjections";
-  @javax.annotation.Nullable
-  private FeatureServiceFeatureFlag oidcTriggerIntrospectionProjections;
-
-  public static final String JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION = "oidcLegacyIntrospection";
-  @javax.annotation.Nullable
-  private FeatureServiceFeatureFlag oidcLegacyIntrospection;
 
   public static final String JSON_PROPERTY_USER_SCHEMA = "userSchema";
   @javax.annotation.Nullable
@@ -148,56 +138,6 @@ public class FeatureServiceGetSystemFeaturesResponse {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLoginDefaultOrg(@javax.annotation.Nullable FeatureServiceFeatureFlag loginDefaultOrg) {
     this.loginDefaultOrg = loginDefaultOrg;
-  }
-
-  public FeatureServiceGetSystemFeaturesResponse oidcTriggerIntrospectionProjections(@javax.annotation.Nullable FeatureServiceFeatureFlag oidcTriggerIntrospectionProjections) {
-    
-    this.oidcTriggerIntrospectionProjections = oidcTriggerIntrospectionProjections;
-    return this;
-  }
-
-  /**
-   * Get oidcTriggerIntrospectionProjections
-   * @return oidcTriggerIntrospectionProjections
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FeatureServiceFeatureFlag getOidcTriggerIntrospectionProjections() {
-    return oidcTriggerIntrospectionProjections;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOidcTriggerIntrospectionProjections(@javax.annotation.Nullable FeatureServiceFeatureFlag oidcTriggerIntrospectionProjections) {
-    this.oidcTriggerIntrospectionProjections = oidcTriggerIntrospectionProjections;
-  }
-
-  public FeatureServiceGetSystemFeaturesResponse oidcLegacyIntrospection(@javax.annotation.Nullable FeatureServiceFeatureFlag oidcLegacyIntrospection) {
-    
-    this.oidcLegacyIntrospection = oidcLegacyIntrospection;
-    return this;
-  }
-
-  /**
-   * Get oidcLegacyIntrospection
-   * @return oidcLegacyIntrospection
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FeatureServiceFeatureFlag getOidcLegacyIntrospection() {
-    return oidcLegacyIntrospection;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOidcLegacyIntrospection(@javax.annotation.Nullable FeatureServiceFeatureFlag oidcLegacyIntrospection) {
-    this.oidcLegacyIntrospection = oidcLegacyIntrospection;
   }
 
   public FeatureServiceGetSystemFeaturesResponse userSchema(@javax.annotation.Nullable FeatureServiceFeatureFlag userSchema) {
@@ -411,8 +351,6 @@ public class FeatureServiceGetSystemFeaturesResponse {
     FeatureServiceGetSystemFeaturesResponse featureServiceGetSystemFeaturesResponse = (FeatureServiceGetSystemFeaturesResponse) o;
     return Objects.equals(this.details, featureServiceGetSystemFeaturesResponse.details) &&
         Objects.equals(this.loginDefaultOrg, featureServiceGetSystemFeaturesResponse.loginDefaultOrg) &&
-        Objects.equals(this.oidcTriggerIntrospectionProjections, featureServiceGetSystemFeaturesResponse.oidcTriggerIntrospectionProjections) &&
-        Objects.equals(this.oidcLegacyIntrospection, featureServiceGetSystemFeaturesResponse.oidcLegacyIntrospection) &&
         Objects.equals(this.userSchema, featureServiceGetSystemFeaturesResponse.userSchema) &&
         Objects.equals(this.oidcTokenExchange, featureServiceGetSystemFeaturesResponse.oidcTokenExchange) &&
         Objects.equals(this.improvedPerformance, featureServiceGetSystemFeaturesResponse.improvedPerformance) &&
@@ -425,7 +363,7 @@ public class FeatureServiceGetSystemFeaturesResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(details, loginDefaultOrg, oidcTriggerIntrospectionProjections, oidcLegacyIntrospection, userSchema, oidcTokenExchange, improvedPerformance, oidcSingleV1SessionTermination, disableUserTokenEvent, enableBackChannelLogout, loginV2, permissionCheckV2);
+    return Objects.hash(details, loginDefaultOrg, userSchema, oidcTokenExchange, improvedPerformance, oidcSingleV1SessionTermination, disableUserTokenEvent, enableBackChannelLogout, loginV2, permissionCheckV2);
   }
 
   @Override
@@ -434,8 +372,6 @@ public class FeatureServiceGetSystemFeaturesResponse {
     sb.append("class FeatureServiceGetSystemFeaturesResponse {\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    loginDefaultOrg: ").append(toIndentedString(loginDefaultOrg)).append("\n");
-    sb.append("    oidcTriggerIntrospectionProjections: ").append(toIndentedString(oidcTriggerIntrospectionProjections)).append("\n");
-    sb.append("    oidcLegacyIntrospection: ").append(toIndentedString(oidcLegacyIntrospection)).append("\n");
     sb.append("    userSchema: ").append(toIndentedString(userSchema)).append("\n");
     sb.append("    oidcTokenExchange: ").append(toIndentedString(oidcTokenExchange)).append("\n");
     sb.append("    improvedPerformance: ").append(toIndentedString(improvedPerformance)).append("\n");
@@ -499,16 +435,6 @@ public class FeatureServiceGetSystemFeaturesResponse {
     // add `loginDefaultOrg` to the URL query string
     if (getLoginDefaultOrg() != null) {
       joiner.add(getLoginDefaultOrg().toUrlQueryString(prefix + "loginDefaultOrg" + suffix));
-    }
-
-    // add `oidcTriggerIntrospectionProjections` to the URL query string
-    if (getOidcTriggerIntrospectionProjections() != null) {
-      joiner.add(getOidcTriggerIntrospectionProjections().toUrlQueryString(prefix + "oidcTriggerIntrospectionProjections" + suffix));
-    }
-
-    // add `oidcLegacyIntrospection` to the URL query string
-    if (getOidcLegacyIntrospection() != null) {
-      joiner.add(getOidcLegacyIntrospection().toUrlQueryString(prefix + "oidcLegacyIntrospection" + suffix));
     }
 
     // add `userSchema` to the URL query string

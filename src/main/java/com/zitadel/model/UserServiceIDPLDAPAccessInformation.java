@@ -20,6 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.UserServiceValue;
+import java.util.HashMap;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -36,33 +39,41 @@ import java.util.StringJoiner;
 public class UserServiceIDPLDAPAccessInformation {
   public static final String JSON_PROPERTY_ATTRIBUTES = "attributes";
   @javax.annotation.Nullable
-  private Object attributes;
+  private Map<String, UserServiceValue> attributes = new HashMap<>();
 
   public UserServiceIDPLDAPAccessInformation() {
   }
 
-  public UserServiceIDPLDAPAccessInformation attributes(@javax.annotation.Nullable Object attributes) {
+  public UserServiceIDPLDAPAccessInformation attributes(@javax.annotation.Nullable Map<String, UserServiceValue> attributes) {
     
     this.attributes = attributes;
     return this;
   }
 
+  public UserServiceIDPLDAPAccessInformation putAttributesItem(String key, UserServiceValue attributesItem) {
+    if (this.attributes == null) {
+      this.attributes = new HashMap<>();
+    }
+    this.attributes.put(key, attributesItem);
+    return this;
+  }
+
   /**
-   * Get attributes
+   * &#x60;Struct&#x60; represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, &#x60;Struct&#x60;  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for &#x60;Struct&#x60; is JSON object.
    * @return attributes
    */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ATTRIBUTES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Object getAttributes() {
+  public Map<String, UserServiceValue> getAttributes() {
     return attributes;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ATTRIBUTES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAttributes(@javax.annotation.Nullable Object attributes) {
+  public void setAttributes(@javax.annotation.Nullable Map<String, UserServiceValue> attributes) {
     this.attributes = attributes;
   }
 
@@ -137,11 +148,11 @@ public class UserServiceIDPLDAPAccessInformation {
 
     // add `attributes` to the URL query string
     if (getAttributes() != null) {
-      try {
-        joiner.add(String.format("%sattributes%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAttributes()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
+      for (String _key : getAttributes().keySet()) {
+        if (getAttributes().get(_key) != null) {
+          joiner.add(getAttributes().get(_key).toUrlQueryString(String.format("%sattributes%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix))));
+        }
       }
     }
 

@@ -53,7 +53,7 @@ public class IdentityProviderServiceIDP {
 
   public static final String JSON_PROPERTY_STATE = "state";
   @javax.annotation.Nullable
-  private IdentityProviderServiceIDPState state = IdentityProviderServiceIDPState.IDP_STATE_UNSPECIFIED;
+  private IdentityProviderServiceIDPState state;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
@@ -61,7 +61,7 @@ public class IdentityProviderServiceIDP {
 
   public static final String JSON_PROPERTY_TYPE = "type";
   @javax.annotation.Nullable
-  private IdentityProviderServiceIDPType type = IdentityProviderServiceIDPType.IDP_TYPE_UNSPECIFIED;
+  private IdentityProviderServiceIDPType type;
 
   public static final String JSON_PROPERTY_CONFIG = "config";
   @javax.annotation.Nullable

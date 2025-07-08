@@ -78,7 +78,7 @@ public class OrganizationServiceSetMetadataEntry {
   }
 
   /**
-   * The value has to be base64 encoded.
+   * Get value
    * @return value
    */
   @javax.annotation.Nonnull

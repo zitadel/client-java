@@ -34,31 +34,31 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   UserServiceAuthFactor.JSON_PROPERTY_STATE,
   UserServiceAuthFactor.JSON_PROPERTY_OTP,
-  UserServiceAuthFactor.JSON_PROPERTY_U2F,
+  UserServiceAuthFactor.JSON_PROPERTY_OTP_EMAIL,
   UserServiceAuthFactor.JSON_PROPERTY_OTP_SMS,
-  UserServiceAuthFactor.JSON_PROPERTY_OTP_EMAIL
+  UserServiceAuthFactor.JSON_PROPERTY_U2F
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceAuthFactor {
   public static final String JSON_PROPERTY_STATE = "state";
   @javax.annotation.Nullable
-  private UserServiceAuthFactorState state = UserServiceAuthFactorState.AUTH_FACTOR_STATE_UNSPECIFIED;
+  private UserServiceAuthFactorState state;
 
   public static final String JSON_PROPERTY_OTP = "otp";
   @javax.annotation.Nullable
   private Object otp;
 
-  public static final String JSON_PROPERTY_U2F = "u2f";
+  public static final String JSON_PROPERTY_OTP_EMAIL = "otpEmail";
   @javax.annotation.Nullable
-  private UserServiceAuthFactorU2F u2f;
+  private Object otpEmail;
 
   public static final String JSON_PROPERTY_OTP_SMS = "otpSms";
   @javax.annotation.Nullable
   private Object otpSms;
 
-  public static final String JSON_PROPERTY_OTP_EMAIL = "otpEmail";
+  public static final String JSON_PROPERTY_U2F = "u2f";
   @javax.annotation.Nullable
-  private Object otpEmail;
+  private UserServiceAuthFactorU2F u2f;
 
   public UserServiceAuthFactor() {
   }
@@ -113,29 +113,29 @@ public class UserServiceAuthFactor {
     this.otp = otp;
   }
 
-  public UserServiceAuthFactor u2f(@javax.annotation.Nullable UserServiceAuthFactorU2F u2f) {
+  public UserServiceAuthFactor otpEmail(@javax.annotation.Nullable Object otpEmail) {
     
-    this.u2f = u2f;
+    this.otpEmail = otpEmail;
     return this;
   }
 
   /**
-   * Get u2f
-   * @return u2f
+   * Get otpEmail
+   * @return otpEmail
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_U2F)
+  @JsonProperty(JSON_PROPERTY_OTP_EMAIL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public UserServiceAuthFactorU2F getU2f() {
-    return u2f;
+  public Object getOtpEmail() {
+    return otpEmail;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_U2F)
+  @JsonProperty(JSON_PROPERTY_OTP_EMAIL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setU2f(@javax.annotation.Nullable UserServiceAuthFactorU2F u2f) {
-    this.u2f = u2f;
+  public void setOtpEmail(@javax.annotation.Nullable Object otpEmail) {
+    this.otpEmail = otpEmail;
   }
 
   public UserServiceAuthFactor otpSms(@javax.annotation.Nullable Object otpSms) {
@@ -163,29 +163,29 @@ public class UserServiceAuthFactor {
     this.otpSms = otpSms;
   }
 
-  public UserServiceAuthFactor otpEmail(@javax.annotation.Nullable Object otpEmail) {
+  public UserServiceAuthFactor u2f(@javax.annotation.Nullable UserServiceAuthFactorU2F u2f) {
     
-    this.otpEmail = otpEmail;
+    this.u2f = u2f;
     return this;
   }
 
   /**
-   * Get otpEmail
-   * @return otpEmail
+   * Get u2f
+   * @return u2f
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OTP_EMAIL)
+  @JsonProperty(JSON_PROPERTY_U2F)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Object getOtpEmail() {
-    return otpEmail;
+  public UserServiceAuthFactorU2F getU2f() {
+    return u2f;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_OTP_EMAIL)
+  @JsonProperty(JSON_PROPERTY_U2F)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOtpEmail(@javax.annotation.Nullable Object otpEmail) {
-    this.otpEmail = otpEmail;
+  public void setU2f(@javax.annotation.Nullable UserServiceAuthFactorU2F u2f) {
+    this.u2f = u2f;
   }
 
   @Override
@@ -199,14 +199,14 @@ public class UserServiceAuthFactor {
     UserServiceAuthFactor userServiceAuthFactor = (UserServiceAuthFactor) o;
     return Objects.equals(this.state, userServiceAuthFactor.state) &&
         Objects.equals(this.otp, userServiceAuthFactor.otp) &&
-        Objects.equals(this.u2f, userServiceAuthFactor.u2f) &&
+        Objects.equals(this.otpEmail, userServiceAuthFactor.otpEmail) &&
         Objects.equals(this.otpSms, userServiceAuthFactor.otpSms) &&
-        Objects.equals(this.otpEmail, userServiceAuthFactor.otpEmail);
+        Objects.equals(this.u2f, userServiceAuthFactor.u2f);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(state, otp, u2f, otpSms, otpEmail);
+    return Objects.hash(state, otp, otpEmail, otpSms, u2f);
   }
 
   @Override
@@ -215,9 +215,9 @@ public class UserServiceAuthFactor {
     sb.append("class UserServiceAuthFactor {\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    otp: ").append(toIndentedString(otp)).append("\n");
-    sb.append("    u2f: ").append(toIndentedString(u2f)).append("\n");
-    sb.append("    otpSms: ").append(toIndentedString(otpSms)).append("\n");
     sb.append("    otpEmail: ").append(toIndentedString(otpEmail)).append("\n");
+    sb.append("    otpSms: ").append(toIndentedString(otpSms)).append("\n");
+    sb.append("    u2f: ").append(toIndentedString(u2f)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -264,6 +264,51 @@ public class UserServiceAuthFactor {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `state` to the URL query string
+    if (getState() != null) {
+      try {
+        joiner.add(String.format("%sstate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getState()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `otp` to the URL query string
+    if (getOtp() != null) {
+      try {
+        joiner.add(String.format("%sotp%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOtp()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `otpEmail` to the URL query string
+    if (getOtpEmail() != null) {
+      try {
+        joiner.add(String.format("%sotpEmail%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOtpEmail()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `otpSms` to the URL query string
+    if (getOtpSms() != null) {
+      try {
+        joiner.add(String.format("%sotpSms%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOtpSms()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `u2f` to the URL query string
+    if (getU2f() != null) {
+      joiner.add(getU2f().toUrlQueryString(prefix + "u2f" + suffix));
+    }
 
     return joiner.toString();
   }
