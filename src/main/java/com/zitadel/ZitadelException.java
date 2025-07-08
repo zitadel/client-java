@@ -1,6 +1,6 @@
 package com.zitadel;
 
-public class ZitadelException extends Exception {
+public class ZitadelException extends RuntimeException {
 
     private static final long serialVersionUID = 13244L;
 
