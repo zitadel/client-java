@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -75,7 +76,7 @@ public abstract class AbstractIntegrationTest {
             Process process = pb.start();
 
             try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(process.getInputStream()))) {
+                new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     System.out.println("STDOUT: " + line);
@@ -134,7 +135,7 @@ public abstract class AbstractIntegrationTest {
                 Process process = pb.start();
 
                 try (BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(process.getInputStream()))) {
+                    new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8))) {
                     String line;
                     while ((line = reader.readLine()) != null) {
                         System.out.println("STDOUT: " + line);
@@ -201,7 +202,7 @@ public abstract class AbstractIntegrationTest {
      */
     private static String getProcessOutput(Process process) throws IOException {
         try (BufferedReader reader = new BufferedReader(
-            new InputStreamReader(process.getInputStream()))) {
+            new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8))) {
             StringBuilder output = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {

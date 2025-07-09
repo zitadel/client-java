@@ -31,25 +31,55 @@ import java.util.StringJoiner;
  * UserServiceSetPasswordRequest
  */
 @JsonPropertyOrder({
+  UserServiceSetPasswordRequest.JSON_PROPERTY_USER_ID,
   UserServiceSetPasswordRequest.JSON_PROPERTY_NEW_PASSWORD,
   UserServiceSetPasswordRequest.JSON_PROPERTY_CURRENT_PASSWORD,
   UserServiceSetPasswordRequest.JSON_PROPERTY_VERIFICATION_CODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceSetPasswordRequest {
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
+  private String userId;
+
   public static final String JSON_PROPERTY_NEW_PASSWORD = "newPassword";
   @javax.annotation.Nullable
   private UserServicePassword newPassword;
 
   public static final String JSON_PROPERTY_CURRENT_PASSWORD = "currentPassword";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String currentPassword;
 
   public static final String JSON_PROPERTY_VERIFICATION_CODE = "verificationCode";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String verificationCode;
 
   public UserServiceSetPasswordRequest() {
+  }
+
+  public UserServiceSetPasswordRequest userId(@javax.annotation.Nonnull String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+  /**
+   * Get userId
+   * @return userId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserId(@javax.annotation.Nonnull String userId) {
+    this.userId = userId;
   }
 
   public UserServiceSetPasswordRequest newPassword(@javax.annotation.Nullable UserServicePassword newPassword) {
@@ -77,7 +107,7 @@ public class UserServiceSetPasswordRequest {
     this.newPassword = newPassword;
   }
 
-  public UserServiceSetPasswordRequest currentPassword(@javax.annotation.Nonnull String currentPassword) {
+  public UserServiceSetPasswordRequest currentPassword(@javax.annotation.Nullable String currentPassword) {
     
     this.currentPassword = currentPassword;
     return this;
@@ -87,9 +117,9 @@ public class UserServiceSetPasswordRequest {
    * Get currentPassword
    * @return currentPassword
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CURRENT_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCurrentPassword() {
     return currentPassword;
@@ -97,24 +127,24 @@ public class UserServiceSetPasswordRequest {
 
 
   @JsonProperty(JSON_PROPERTY_CURRENT_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCurrentPassword(@javax.annotation.Nonnull String currentPassword) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCurrentPassword(@javax.annotation.Nullable String currentPassword) {
     this.currentPassword = currentPassword;
   }
 
-  public UserServiceSetPasswordRequest verificationCode(@javax.annotation.Nonnull String verificationCode) {
+  public UserServiceSetPasswordRequest verificationCode(@javax.annotation.Nullable String verificationCode) {
     
     this.verificationCode = verificationCode;
     return this;
   }
 
   /**
-   * \&quot;the verification code generated during password reset request\&quot;
+   * Get verificationCode
    * @return verificationCode
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_VERIFICATION_CODE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVerificationCode() {
     return verificationCode;
@@ -122,8 +152,8 @@ public class UserServiceSetPasswordRequest {
 
 
   @JsonProperty(JSON_PROPERTY_VERIFICATION_CODE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVerificationCode(@javax.annotation.Nonnull String verificationCode) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVerificationCode(@javax.annotation.Nullable String verificationCode) {
     this.verificationCode = verificationCode;
   }
 
@@ -136,20 +166,22 @@ public class UserServiceSetPasswordRequest {
       return false;
     }
     UserServiceSetPasswordRequest userServiceSetPasswordRequest = (UserServiceSetPasswordRequest) o;
-    return Objects.equals(this.newPassword, userServiceSetPasswordRequest.newPassword) &&
+    return Objects.equals(this.userId, userServiceSetPasswordRequest.userId) &&
+        Objects.equals(this.newPassword, userServiceSetPasswordRequest.newPassword) &&
         Objects.equals(this.currentPassword, userServiceSetPasswordRequest.currentPassword) &&
         Objects.equals(this.verificationCode, userServiceSetPasswordRequest.verificationCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(newPassword, currentPassword, verificationCode);
+    return Objects.hash(userId, newPassword, currentPassword, verificationCode);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceSetPasswordRequest {\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    newPassword: ").append(toIndentedString(newPassword)).append("\n");
     sb.append("    currentPassword: ").append(toIndentedString(currentPassword)).append("\n");
     sb.append("    verificationCode: ").append(toIndentedString(verificationCode)).append("\n");
@@ -199,6 +231,41 @@ public class UserServiceSetPasswordRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `userId` to the URL query string
+    if (getUserId() != null) {
+      try {
+        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `newPassword` to the URL query string
+    if (getNewPassword() != null) {
+      joiner.add(getNewPassword().toUrlQueryString(prefix + "newPassword" + suffix));
+    }
+
+    // add `currentPassword` to the URL query string
+    if (getCurrentPassword() != null) {
+      try {
+        joiner.add(String.format("%scurrentPassword%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCurrentPassword()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `verificationCode` to the URL query string
+    if (getVerificationCode() != null) {
+      try {
+        joiner.add(String.format("%sverificationCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVerificationCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     return joiner.toString();
   }

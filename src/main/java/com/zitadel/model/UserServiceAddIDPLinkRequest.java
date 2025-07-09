@@ -31,15 +31,45 @@ import java.util.StringJoiner;
  * UserServiceAddIDPLinkRequest
  */
 @JsonPropertyOrder({
+  UserServiceAddIDPLinkRequest.JSON_PROPERTY_USER_ID,
   UserServiceAddIDPLinkRequest.JSON_PROPERTY_IDP_LINK
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceAddIDPLinkRequest {
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
+  private String userId;
+
   public static final String JSON_PROPERTY_IDP_LINK = "idpLink";
   @javax.annotation.Nullable
   private UserServiceIDPLink idpLink;
 
   public UserServiceAddIDPLinkRequest() {
+  }
+
+  public UserServiceAddIDPLinkRequest userId(@javax.annotation.Nonnull String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+  /**
+   * Get userId
+   * @return userId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserId(@javax.annotation.Nonnull String userId) {
+    this.userId = userId;
   }
 
   public UserServiceAddIDPLinkRequest idpLink(@javax.annotation.Nullable UserServiceIDPLink idpLink) {
@@ -76,18 +106,20 @@ public class UserServiceAddIDPLinkRequest {
       return false;
     }
     UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest = (UserServiceAddIDPLinkRequest) o;
-    return Objects.equals(this.idpLink, userServiceAddIDPLinkRequest.idpLink);
+    return Objects.equals(this.userId, userServiceAddIDPLinkRequest.userId) &&
+        Objects.equals(this.idpLink, userServiceAddIDPLinkRequest.idpLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(idpLink);
+    return Objects.hash(userId, idpLink);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceAddIDPLinkRequest {\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    idpLink: ").append(toIndentedString(idpLink)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -135,6 +167,16 @@ public class UserServiceAddIDPLinkRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `userId` to the URL query string
+    if (getUserId() != null) {
+      try {
+        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     // add `idpLink` to the URL query string
     if (getIdpLink() != null) {

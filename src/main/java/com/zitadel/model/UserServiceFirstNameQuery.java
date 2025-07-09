@@ -42,7 +42,7 @@ public class UserServiceFirstNameQuery {
 
   public static final String JSON_PROPERTY_METHOD = "method";
   @javax.annotation.Nullable
-  private UserServiceTextQueryMethod method = UserServiceTextQueryMethod.TEXT_QUERY_METHOD_EQUALS;
+  private UserServiceTextQueryMethod method;
 
   public UserServiceFirstNameQuery() {
   }

@@ -32,45 +32,50 @@ import java.util.StringJoiner;
  * SAMLServiceCreateResponseRequest
  */
 @JsonPropertyOrder({
-  SAMLServiceCreateResponseRequest.JSON_PROPERTY_SESSION,
-  SAMLServiceCreateResponseRequest.JSON_PROPERTY_ERROR
+  SAMLServiceCreateResponseRequest.JSON_PROPERTY_SAML_REQUEST_ID,
+  SAMLServiceCreateResponseRequest.JSON_PROPERTY_ERROR,
+  SAMLServiceCreateResponseRequest.JSON_PROPERTY_SESSION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SAMLServiceCreateResponseRequest {
-  public static final String JSON_PROPERTY_SESSION = "session";
+  public static final String JSON_PROPERTY_SAML_REQUEST_ID = "samlRequestId";
   @javax.annotation.Nullable
-  private SAMLServiceSession session;
+  private String samlRequestId;
 
   public static final String JSON_PROPERTY_ERROR = "error";
   @javax.annotation.Nullable
   private SAMLServiceAuthorizationError error;
 
+  public static final String JSON_PROPERTY_SESSION = "session";
+  @javax.annotation.Nullable
+  private SAMLServiceSession session;
+
   public SAMLServiceCreateResponseRequest() {
   }
 
-  public SAMLServiceCreateResponseRequest session(@javax.annotation.Nullable SAMLServiceSession session) {
+  public SAMLServiceCreateResponseRequest samlRequestId(@javax.annotation.Nullable String samlRequestId) {
     
-    this.session = session;
+    this.samlRequestId = samlRequestId;
     return this;
   }
 
   /**
-   * Get session
-   * @return session
+   * ID of the SAML Request.
+   * @return samlRequestId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SESSION)
+  @JsonProperty(JSON_PROPERTY_SAML_REQUEST_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SAMLServiceSession getSession() {
-    return session;
+  public String getSamlRequestId() {
+    return samlRequestId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SESSION)
+  @JsonProperty(JSON_PROPERTY_SAML_REQUEST_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSession(@javax.annotation.Nullable SAMLServiceSession session) {
-    this.session = session;
+  public void setSamlRequestId(@javax.annotation.Nullable String samlRequestId) {
+    this.samlRequestId = samlRequestId;
   }
 
   public SAMLServiceCreateResponseRequest error(@javax.annotation.Nullable SAMLServiceAuthorizationError error) {
@@ -98,6 +103,31 @@ public class SAMLServiceCreateResponseRequest {
     this.error = error;
   }
 
+  public SAMLServiceCreateResponseRequest session(@javax.annotation.Nullable SAMLServiceSession session) {
+    
+    this.session = session;
+    return this;
+  }
+
+  /**
+   * Get session
+   * @return session
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SESSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SAMLServiceSession getSession() {
+    return session;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SESSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSession(@javax.annotation.Nullable SAMLServiceSession session) {
+    this.session = session;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -107,21 +137,23 @@ public class SAMLServiceCreateResponseRequest {
       return false;
     }
     SAMLServiceCreateResponseRequest saMLServiceCreateResponseRequest = (SAMLServiceCreateResponseRequest) o;
-    return Objects.equals(this.session, saMLServiceCreateResponseRequest.session) &&
-        Objects.equals(this.error, saMLServiceCreateResponseRequest.error);
+    return Objects.equals(this.samlRequestId, saMLServiceCreateResponseRequest.samlRequestId) &&
+        Objects.equals(this.error, saMLServiceCreateResponseRequest.error) &&
+        Objects.equals(this.session, saMLServiceCreateResponseRequest.session);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(session, error);
+    return Objects.hash(samlRequestId, error, session);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SAMLServiceCreateResponseRequest {\n");
-    sb.append("    session: ").append(toIndentedString(session)).append("\n");
+    sb.append("    samlRequestId: ").append(toIndentedString(samlRequestId)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    session: ").append(toIndentedString(session)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -168,6 +200,26 @@ public class SAMLServiceCreateResponseRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `samlRequestId` to the URL query string
+    if (getSamlRequestId() != null) {
+      try {
+        joiner.add(String.format("%ssamlRequestId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSamlRequestId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `error` to the URL query string
+    if (getError() != null) {
+      joiner.add(getError().toUrlQueryString(prefix + "error" + suffix));
+    }
+
+    // add `session` to the URL query string
+    if (getSession() != null) {
+      joiner.add(getSession().toUrlQueryString(prefix + "session" + suffix));
+    }
 
     return joiner.toString();
   }

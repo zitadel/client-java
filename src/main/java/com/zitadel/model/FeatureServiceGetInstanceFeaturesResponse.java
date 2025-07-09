@@ -36,12 +36,9 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_DETAILS,
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_LOGIN_DEFAULT_ORG,
-  FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS,
-  FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION,
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_USER_SCHEMA,
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_OIDC_TOKEN_EXCHANGE,
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_IMPROVED_PERFORMANCE,
-  FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_WEB_KEY,
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_DEBUG_OIDC_PARENT_ERROR,
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION,
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT,
@@ -60,14 +57,6 @@ public class FeatureServiceGetInstanceFeaturesResponse {
   @javax.annotation.Nullable
   private FeatureServiceFeatureFlag loginDefaultOrg;
 
-  public static final String JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS = "oidcTriggerIntrospectionProjections";
-  @javax.annotation.Nullable
-  private FeatureServiceFeatureFlag oidcTriggerIntrospectionProjections;
-
-  public static final String JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION = "oidcLegacyIntrospection";
-  @javax.annotation.Nullable
-  private FeatureServiceFeatureFlag oidcLegacyIntrospection;
-
   public static final String JSON_PROPERTY_USER_SCHEMA = "userSchema";
   @javax.annotation.Nullable
   private FeatureServiceFeatureFlag userSchema;
@@ -79,10 +68,6 @@ public class FeatureServiceGetInstanceFeaturesResponse {
   public static final String JSON_PROPERTY_IMPROVED_PERFORMANCE = "improvedPerformance";
   @javax.annotation.Nullable
   private FeatureServiceImprovedPerformanceFeatureFlag improvedPerformance;
-
-  public static final String JSON_PROPERTY_WEB_KEY = "webKey";
-  @javax.annotation.Nullable
-  private FeatureServiceFeatureFlag webKey;
 
   public static final String JSON_PROPERTY_DEBUG_OIDC_PARENT_ERROR = "debugOidcParentError";
   @javax.annotation.Nullable
@@ -165,56 +150,6 @@ public class FeatureServiceGetInstanceFeaturesResponse {
     this.loginDefaultOrg = loginDefaultOrg;
   }
 
-  public FeatureServiceGetInstanceFeaturesResponse oidcTriggerIntrospectionProjections(@javax.annotation.Nullable FeatureServiceFeatureFlag oidcTriggerIntrospectionProjections) {
-    
-    this.oidcTriggerIntrospectionProjections = oidcTriggerIntrospectionProjections;
-    return this;
-  }
-
-  /**
-   * Get oidcTriggerIntrospectionProjections
-   * @return oidcTriggerIntrospectionProjections
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FeatureServiceFeatureFlag getOidcTriggerIntrospectionProjections() {
-    return oidcTriggerIntrospectionProjections;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OIDC_TRIGGER_INTROSPECTION_PROJECTIONS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOidcTriggerIntrospectionProjections(@javax.annotation.Nullable FeatureServiceFeatureFlag oidcTriggerIntrospectionProjections) {
-    this.oidcTriggerIntrospectionProjections = oidcTriggerIntrospectionProjections;
-  }
-
-  public FeatureServiceGetInstanceFeaturesResponse oidcLegacyIntrospection(@javax.annotation.Nullable FeatureServiceFeatureFlag oidcLegacyIntrospection) {
-    
-    this.oidcLegacyIntrospection = oidcLegacyIntrospection;
-    return this;
-  }
-
-  /**
-   * Get oidcLegacyIntrospection
-   * @return oidcLegacyIntrospection
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FeatureServiceFeatureFlag getOidcLegacyIntrospection() {
-    return oidcLegacyIntrospection;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OIDC_LEGACY_INTROSPECTION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOidcLegacyIntrospection(@javax.annotation.Nullable FeatureServiceFeatureFlag oidcLegacyIntrospection) {
-    this.oidcLegacyIntrospection = oidcLegacyIntrospection;
-  }
-
   public FeatureServiceGetInstanceFeaturesResponse userSchema(@javax.annotation.Nullable FeatureServiceFeatureFlag userSchema) {
     
     this.userSchema = userSchema;
@@ -288,31 +223,6 @@ public class FeatureServiceGetInstanceFeaturesResponse {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setImprovedPerformance(@javax.annotation.Nullable FeatureServiceImprovedPerformanceFeatureFlag improvedPerformance) {
     this.improvedPerformance = improvedPerformance;
-  }
-
-  public FeatureServiceGetInstanceFeaturesResponse webKey(@javax.annotation.Nullable FeatureServiceFeatureFlag webKey) {
-    
-    this.webKey = webKey;
-    return this;
-  }
-
-  /**
-   * Get webKey
-   * @return webKey
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WEB_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FeatureServiceFeatureFlag getWebKey() {
-    return webKey;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_WEB_KEY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWebKey(@javax.annotation.Nullable FeatureServiceFeatureFlag webKey) {
-    this.webKey = webKey;
   }
 
   public FeatureServiceGetInstanceFeaturesResponse debugOidcParentError(@javax.annotation.Nullable FeatureServiceFeatureFlag debugOidcParentError) {
@@ -501,12 +411,9 @@ public class FeatureServiceGetInstanceFeaturesResponse {
     FeatureServiceGetInstanceFeaturesResponse featureServiceGetInstanceFeaturesResponse = (FeatureServiceGetInstanceFeaturesResponse) o;
     return Objects.equals(this.details, featureServiceGetInstanceFeaturesResponse.details) &&
         Objects.equals(this.loginDefaultOrg, featureServiceGetInstanceFeaturesResponse.loginDefaultOrg) &&
-        Objects.equals(this.oidcTriggerIntrospectionProjections, featureServiceGetInstanceFeaturesResponse.oidcTriggerIntrospectionProjections) &&
-        Objects.equals(this.oidcLegacyIntrospection, featureServiceGetInstanceFeaturesResponse.oidcLegacyIntrospection) &&
         Objects.equals(this.userSchema, featureServiceGetInstanceFeaturesResponse.userSchema) &&
         Objects.equals(this.oidcTokenExchange, featureServiceGetInstanceFeaturesResponse.oidcTokenExchange) &&
         Objects.equals(this.improvedPerformance, featureServiceGetInstanceFeaturesResponse.improvedPerformance) &&
-        Objects.equals(this.webKey, featureServiceGetInstanceFeaturesResponse.webKey) &&
         Objects.equals(this.debugOidcParentError, featureServiceGetInstanceFeaturesResponse.debugOidcParentError) &&
         Objects.equals(this.oidcSingleV1SessionTermination, featureServiceGetInstanceFeaturesResponse.oidcSingleV1SessionTermination) &&
         Objects.equals(this.disableUserTokenEvent, featureServiceGetInstanceFeaturesResponse.disableUserTokenEvent) &&
@@ -518,7 +425,7 @@ public class FeatureServiceGetInstanceFeaturesResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(details, loginDefaultOrg, oidcTriggerIntrospectionProjections, oidcLegacyIntrospection, userSchema, oidcTokenExchange, improvedPerformance, webKey, debugOidcParentError, oidcSingleV1SessionTermination, disableUserTokenEvent, enableBackChannelLogout, loginV2, permissionCheckV2, consoleUseV2UserApi);
+    return Objects.hash(details, loginDefaultOrg, userSchema, oidcTokenExchange, improvedPerformance, debugOidcParentError, oidcSingleV1SessionTermination, disableUserTokenEvent, enableBackChannelLogout, loginV2, permissionCheckV2, consoleUseV2UserApi);
   }
 
   @Override
@@ -527,12 +434,9 @@ public class FeatureServiceGetInstanceFeaturesResponse {
     sb.append("class FeatureServiceGetInstanceFeaturesResponse {\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    loginDefaultOrg: ").append(toIndentedString(loginDefaultOrg)).append("\n");
-    sb.append("    oidcTriggerIntrospectionProjections: ").append(toIndentedString(oidcTriggerIntrospectionProjections)).append("\n");
-    sb.append("    oidcLegacyIntrospection: ").append(toIndentedString(oidcLegacyIntrospection)).append("\n");
     sb.append("    userSchema: ").append(toIndentedString(userSchema)).append("\n");
     sb.append("    oidcTokenExchange: ").append(toIndentedString(oidcTokenExchange)).append("\n");
     sb.append("    improvedPerformance: ").append(toIndentedString(improvedPerformance)).append("\n");
-    sb.append("    webKey: ").append(toIndentedString(webKey)).append("\n");
     sb.append("    debugOidcParentError: ").append(toIndentedString(debugOidcParentError)).append("\n");
     sb.append("    oidcSingleV1SessionTermination: ").append(toIndentedString(oidcSingleV1SessionTermination)).append("\n");
     sb.append("    disableUserTokenEvent: ").append(toIndentedString(disableUserTokenEvent)).append("\n");
@@ -597,16 +501,6 @@ public class FeatureServiceGetInstanceFeaturesResponse {
       joiner.add(getLoginDefaultOrg().toUrlQueryString(prefix + "loginDefaultOrg" + suffix));
     }
 
-    // add `oidcTriggerIntrospectionProjections` to the URL query string
-    if (getOidcTriggerIntrospectionProjections() != null) {
-      joiner.add(getOidcTriggerIntrospectionProjections().toUrlQueryString(prefix + "oidcTriggerIntrospectionProjections" + suffix));
-    }
-
-    // add `oidcLegacyIntrospection` to the URL query string
-    if (getOidcLegacyIntrospection() != null) {
-      joiner.add(getOidcLegacyIntrospection().toUrlQueryString(prefix + "oidcLegacyIntrospection" + suffix));
-    }
-
     // add `userSchema` to the URL query string
     if (getUserSchema() != null) {
       joiner.add(getUserSchema().toUrlQueryString(prefix + "userSchema" + suffix));
@@ -620,11 +514,6 @@ public class FeatureServiceGetInstanceFeaturesResponse {
     // add `improvedPerformance` to the URL query string
     if (getImprovedPerformance() != null) {
       joiner.add(getImprovedPerformance().toUrlQueryString(prefix + "improvedPerformance" + suffix));
-    }
-
-    // add `webKey` to the URL query string
-    if (getWebKey() != null) {
-      joiner.add(getWebKey().toUrlQueryString(prefix + "webKey" + suffix));
     }
 
     // add `debugOidcParentError` to the URL query string

@@ -31,45 +31,50 @@ import java.util.StringJoiner;
  * UserServiceCreateInviteCodeRequest
  */
 @JsonPropertyOrder({
-  UserServiceCreateInviteCodeRequest.JSON_PROPERTY_SEND_CODE,
-  UserServiceCreateInviteCodeRequest.JSON_PROPERTY_RETURN_CODE
+  UserServiceCreateInviteCodeRequest.JSON_PROPERTY_USER_ID,
+  UserServiceCreateInviteCodeRequest.JSON_PROPERTY_RETURN_CODE,
+  UserServiceCreateInviteCodeRequest.JSON_PROPERTY_SEND_CODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceCreateInviteCodeRequest {
-  public static final String JSON_PROPERTY_SEND_CODE = "sendCode";
-  @javax.annotation.Nullable
-  private UserServiceSendInviteCode sendCode;
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
+  private String userId;
 
   public static final String JSON_PROPERTY_RETURN_CODE = "returnCode";
   @javax.annotation.Nullable
   private Object returnCode;
 
+  public static final String JSON_PROPERTY_SEND_CODE = "sendCode";
+  @javax.annotation.Nullable
+  private UserServiceSendInviteCode sendCode;
+
   public UserServiceCreateInviteCodeRequest() {
   }
 
-  public UserServiceCreateInviteCodeRequest sendCode(@javax.annotation.Nullable UserServiceSendInviteCode sendCode) {
+  public UserServiceCreateInviteCodeRequest userId(@javax.annotation.Nonnull String userId) {
     
-    this.sendCode = sendCode;
+    this.userId = userId;
     return this;
   }
 
   /**
-   * Get sendCode
-   * @return sendCode
+   * Get userId
+   * @return userId
    */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SEND_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public UserServiceSendInviteCode getSendCode() {
-    return sendCode;
+  public String getUserId() {
+    return userId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SEND_CODE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSendCode(@javax.annotation.Nullable UserServiceSendInviteCode sendCode) {
-    this.sendCode = sendCode;
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserId(@javax.annotation.Nonnull String userId) {
+    this.userId = userId;
   }
 
   public UserServiceCreateInviteCodeRequest returnCode(@javax.annotation.Nullable Object returnCode) {
@@ -97,6 +102,31 @@ public class UserServiceCreateInviteCodeRequest {
     this.returnCode = returnCode;
   }
 
+  public UserServiceCreateInviteCodeRequest sendCode(@javax.annotation.Nullable UserServiceSendInviteCode sendCode) {
+    
+    this.sendCode = sendCode;
+    return this;
+  }
+
+  /**
+   * Get sendCode
+   * @return sendCode
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SEND_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UserServiceSendInviteCode getSendCode() {
+    return sendCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SEND_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSendCode(@javax.annotation.Nullable UserServiceSendInviteCode sendCode) {
+    this.sendCode = sendCode;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -106,21 +136,23 @@ public class UserServiceCreateInviteCodeRequest {
       return false;
     }
     UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest = (UserServiceCreateInviteCodeRequest) o;
-    return Objects.equals(this.sendCode, userServiceCreateInviteCodeRequest.sendCode) &&
-        Objects.equals(this.returnCode, userServiceCreateInviteCodeRequest.returnCode);
+    return Objects.equals(this.userId, userServiceCreateInviteCodeRequest.userId) &&
+        Objects.equals(this.returnCode, userServiceCreateInviteCodeRequest.returnCode) &&
+        Objects.equals(this.sendCode, userServiceCreateInviteCodeRequest.sendCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sendCode, returnCode);
+    return Objects.hash(userId, returnCode, sendCode);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceCreateInviteCodeRequest {\n");
-    sb.append("    sendCode: ").append(toIndentedString(sendCode)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    returnCode: ").append(toIndentedString(returnCode)).append("\n");
+    sb.append("    sendCode: ").append(toIndentedString(sendCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -167,6 +199,31 @@ public class UserServiceCreateInviteCodeRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `userId` to the URL query string
+    if (getUserId() != null) {
+      try {
+        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `returnCode` to the URL query string
+    if (getReturnCode() != null) {
+      try {
+        joiner.add(String.format("%sreturnCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getReturnCode()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `sendCode` to the URL query string
+    if (getSendCode() != null) {
+      joiner.add(getSendCode().toUrlQueryString(prefix + "sendCode" + suffix));
+    }
 
     return joiner.toString();
   }

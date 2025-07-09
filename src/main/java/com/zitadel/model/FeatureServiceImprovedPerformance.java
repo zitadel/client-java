@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- *  - IMPROVED_PERFORMANCE_ORG_BY_ID: Uses the eventstore to query the org by id instead of the sql table.  - IMPROVED_PERFORMANCE_PROJECT_GRANT: Improves performance on write side by using optimized processes to query data to determine correctnes of data.  - IMPROVED_PERFORMANCE_ORG_DOMAIN_VERIFIED: Improve performance on write side when users are checked against verified domains from other organizations.
+ * Gets or Sets FeatureServiceImprovedPerformance
  */
 public enum FeatureServiceImprovedPerformance {
   

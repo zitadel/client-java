@@ -21,8 +21,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.OrganizationServiceListDetails;
+import com.zitadel.model.OrganizationServiceOrganization;
 import com.zitadel.model.OrganizationServiceOrganizationFieldName;
-import com.zitadel.model.Zitadelorgv2Organization;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,11 +48,11 @@ public class OrganizationServiceListOrganizationsResponse {
 
   public static final String JSON_PROPERTY_SORTING_COLUMN = "sortingColumn";
   @javax.annotation.Nullable
-  private OrganizationServiceOrganizationFieldName sortingColumn = OrganizationServiceOrganizationFieldName.ORGANIZATION_FIELD_NAME_UNSPECIFIED;
+  private OrganizationServiceOrganizationFieldName sortingColumn;
 
   public static final String JSON_PROPERTY_RESULT = "result";
   @javax.annotation.Nullable
-  private List<Zitadelorgv2Organization> result = new ArrayList<>();
+  private List<OrganizationServiceOrganization> result = new ArrayList<>();
 
   public OrganizationServiceListOrganizationsResponse() {
   }
@@ -107,13 +107,13 @@ public class OrganizationServiceListOrganizationsResponse {
     this.sortingColumn = sortingColumn;
   }
 
-  public OrganizationServiceListOrganizationsResponse result(@javax.annotation.Nullable List<Zitadelorgv2Organization> result) {
+  public OrganizationServiceListOrganizationsResponse result(@javax.annotation.Nullable List<OrganizationServiceOrganization> result) {
     
     this.result = result;
     return this;
   }
 
-  public OrganizationServiceListOrganizationsResponse addResultItem(Zitadelorgv2Organization resultItem) {
+  public OrganizationServiceListOrganizationsResponse addResultItem(OrganizationServiceOrganization resultItem) {
     if (this.result == null) {
       this.result = new ArrayList<>();
     }
@@ -129,14 +129,14 @@ public class OrganizationServiceListOrganizationsResponse {
   @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<Zitadelorgv2Organization> getResult() {
+  public List<OrganizationServiceOrganization> getResult() {
     return result;
   }
 
 
   @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResult(@javax.annotation.Nullable List<Zitadelorgv2Organization> result) {
+  public void setResult(@javax.annotation.Nullable List<OrganizationServiceOrganization> result) {
     this.result = result;
   }
 

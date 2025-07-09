@@ -46,7 +46,7 @@ public class FeatureServiceImprovedPerformanceFeatureFlag {
 
   public static final String JSON_PROPERTY_SOURCE = "source";
   @javax.annotation.Nullable
-  private FeatureServiceSource source = FeatureServiceSource.SOURCE_UNSPECIFIED;
+  private FeatureServiceSource source;
 
   public FeatureServiceImprovedPerformanceFeatureFlag() {
   }
@@ -66,7 +66,7 @@ public class FeatureServiceImprovedPerformanceFeatureFlag {
   }
 
   /**
-   * Which of the performance improvements is enabled
+   * Get executionPaths
    * @return executionPaths
    */
   @javax.annotation.Nullable

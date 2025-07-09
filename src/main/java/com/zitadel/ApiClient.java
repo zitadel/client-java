@@ -72,6 +72,7 @@ public class ApiClient {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, false);
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
         objectMapper.enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);
         objectMapper.enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
         objectMapper.registerModule(new JavaTimeModule());
@@ -657,14 +658,10 @@ public class ApiClient {
             builder.addHeader(keyValue.getKey(), keyValue.getValue());
         }
 
-        try {
-            for (Entry<String, String> keyValue : this.authenticator.getAuthHeaders().entrySet()) {
-                if (!headerParams.containsKey(keyValue.getKey())) {
-                    builder.addHeader(keyValue.getKey(), keyValue.getValue());
-                }
+        for (Entry<String, String> keyValue : this.authenticator.getAuthHeaders().entrySet()) {
+            if (!headerParams.containsKey(keyValue.getKey())) {
+                builder.addHeader(keyValue.getKey(), keyValue.getValue());
             }
-        } catch (ZitadelException e) {
-            throw new RuntimeException(e);
         }
 
         HttpClientContext context = HttpClientContext.create();

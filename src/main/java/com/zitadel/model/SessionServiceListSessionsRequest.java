@@ -52,7 +52,7 @@ public class SessionServiceListSessionsRequest {
 
   public static final String JSON_PROPERTY_SORTING_COLUMN = "sortingColumn";
   @javax.annotation.Nullable
-  private SessionServiceSessionFieldName sortingColumn = SessionServiceSessionFieldName.SESSION_FIELD_NAME_UNSPECIFIED;
+  private SessionServiceSessionFieldName sortingColumn;
 
   public SessionServiceListSessionsRequest() {
   }

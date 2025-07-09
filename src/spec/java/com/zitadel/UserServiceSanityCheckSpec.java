@@ -49,7 +49,7 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
             .email(new UserServiceSetHumanEmail()
                 .email("johndoe" + UUID.randomUUID() + "@example.com"));
 
-        user = client.users.userServiceAddHumanUser(request);
+        user = client.users.addHumanUser(request);
     }
 
     /**
@@ -58,7 +58,7 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
     @AfterEach
     void tearDown() {
         try {
-            client.users.userServiceDeleteUser(user.getUserId());
+            client.users.deleteUser(new UserServiceDeleteUserRequest().userId(user.getUserId()));
         } catch (ApiException ignored) {
             // cleanup errors are ignored
         }
@@ -69,8 +69,9 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
      */
     @Test
     void testRetrievesUserDetailsById() throws ApiException {
-        UserServiceGetUserByIDResponse response = client.users.userServiceGetUserByID(
-            user.getUserId()
+        UserServiceGetUserByIDResponse response = client.users.getUserByID(
+            new UserServiceGetUserByIDRequest()
+                .userId(user.getUserId())
         );
         assertNotNull(response.getUser());
         assertEquals(user.getUserId(), response.getUser().getUserId());
@@ -84,7 +85,7 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
         UserServiceListUsersRequest request = new UserServiceListUsersRequest()
             .query(new UserServiceListQuery());
 
-        UserServiceListUsersResponse response = client.users.userServiceListUsers(request);
+        UserServiceListUsersResponse response = client.users.listUsers(request);
         assertNotNull(response.getResult());
         List<String> ids = response.getResult().stream()
             .map(UserServiceUser::getUserId)
@@ -98,15 +99,16 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
     @SuppressWarnings("DataFlowIssue")
     @Test
     void testUpdatesUserEmailAndReflectsInGet() throws ApiException {
-        client.users.userServiceUpdateHumanUser(
-            user.getUserId(),
+        client.users.updateHumanUser(
             new UserServiceUpdateHumanUserRequest()
+                .userId(user.getUserId())
                 .email(new UserServiceSetHumanEmail()
                     .email("updated" + UUID.randomUUID() + "@example.com"))
         );
 
-        UserServiceGetUserByIDResponse response = client.users.userServiceGetUserByID(
-            user.getUserId()
+        UserServiceGetUserByIDResponse response = client.users.getUserByID(
+            new UserServiceGetUserByIDRequest().
+                userId(user.getUserId())
         );
         assertNotNull(response.getUser().getHuman().getEmail());
         assertTrue(response.getUser().getHuman().getEmail().getEmail().contains("updated"));
@@ -118,7 +120,9 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
     @Test
     void testRaisesApiExceptionForNonexistentUser() {
         assertThrows(ApiException.class, () ->
-            client.users.userServiceGetUserByID(UUID.randomUUID().toString())
+            client.users.getUserByID(
+                new UserServiceGetUserByIDRequest()
+                    .userId(UUID.randomUUID().toString()))
         );
     }
 }

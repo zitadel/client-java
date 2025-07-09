@@ -124,7 +124,7 @@ public class IdentityProviderServiceGenericOIDCConfig {
   }
 
   /**
-   * The scopes requested by ZITADEL during the request on the identity provider.
+   * The scopes requested by ZITADEL during the request on the identity  provider.
    * @return scopes
    */
   @javax.annotation.Nullable
@@ -149,7 +149,7 @@ public class IdentityProviderServiceGenericOIDCConfig {
   }
 
   /**
-   * If true, provider information get mapped from the id token, not from the userinfo endpoint.
+   * If true, provider information get mapped from the id token, not from the  userinfo endpoint.
    * @return isIdTokenMapping
    */
   @javax.annotation.Nullable

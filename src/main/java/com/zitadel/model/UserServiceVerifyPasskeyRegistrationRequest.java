@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.HashMap;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -30,14 +32,24 @@ import java.util.StringJoiner;
  * UserServiceVerifyPasskeyRegistrationRequest
  */
 @JsonPropertyOrder({
+  UserServiceVerifyPasskeyRegistrationRequest.JSON_PROPERTY_USER_ID,
+  UserServiceVerifyPasskeyRegistrationRequest.JSON_PROPERTY_PASSKEY_ID,
   UserServiceVerifyPasskeyRegistrationRequest.JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL,
   UserServiceVerifyPasskeyRegistrationRequest.JSON_PROPERTY_PASSKEY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UserServiceVerifyPasskeyRegistrationRequest {
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
+  private String userId;
+
+  public static final String JSON_PROPERTY_PASSKEY_ID = "passkeyId";
+  @javax.annotation.Nonnull
+  private String passkeyId;
+
   public static final String JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL = "publicKeyCredential";
   @javax.annotation.Nonnull
-  private Object publicKeyCredential;
+  private Map<String, Object> publicKeyCredential = new HashMap<>();
 
   public static final String JSON_PROPERTY_PASSKEY_NAME = "passkeyName";
   @javax.annotation.Nonnull
@@ -46,28 +58,83 @@ public class UserServiceVerifyPasskeyRegistrationRequest {
   public UserServiceVerifyPasskeyRegistrationRequest() {
   }
 
-  public UserServiceVerifyPasskeyRegistrationRequest publicKeyCredential(@javax.annotation.Nonnull Object publicKeyCredential) {
+  public UserServiceVerifyPasskeyRegistrationRequest userId(@javax.annotation.Nonnull String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+  /**
+   * Get userId
+   * @return userId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserId(@javax.annotation.Nonnull String userId) {
+    this.userId = userId;
+  }
+
+  public UserServiceVerifyPasskeyRegistrationRequest passkeyId(@javax.annotation.Nonnull String passkeyId) {
+    
+    this.passkeyId = passkeyId;
+    return this;
+  }
+
+  /**
+   * Get passkeyId
+   * @return passkeyId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_PASSKEY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getPasskeyId() {
+    return passkeyId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PASSKEY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setPasskeyId(@javax.annotation.Nonnull String passkeyId) {
+    this.passkeyId = passkeyId;
+  }
+
+  public UserServiceVerifyPasskeyRegistrationRequest publicKeyCredential(@javax.annotation.Nonnull Map<String, Object> publicKeyCredential) {
     
     this.publicKeyCredential = publicKeyCredential;
     return this;
   }
 
+  public UserServiceVerifyPasskeyRegistrationRequest putPublicKeyCredentialItem(String key, Object publicKeyCredentialItem) {
+    this.publicKeyCredential.put(key, publicKeyCredentialItem);
+    return this;
+  }
+
   /**
-   * PublicKeyCredential Interface. Generated helper methods populate the field from JSON created by a WebauthN client. See also:  https://www.w3.org/TR/webauthn/#publickeycredential
+   * &#x60;Struct&#x60; represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, &#x60;Struct&#x60;  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for &#x60;Struct&#x60; is JSON object.
    * @return publicKeyCredential
    */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
 
-  public Object getPublicKeyCredential() {
+  public Map<String, Object> getPublicKeyCredential() {
     return publicKeyCredential;
   }
 
 
   @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPublicKeyCredential(@javax.annotation.Nonnull Object publicKeyCredential) {
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
+  public void setPublicKeyCredential(@javax.annotation.Nonnull Map<String, Object> publicKeyCredential) {
     this.publicKeyCredential = publicKeyCredential;
   }
 
@@ -105,19 +172,23 @@ public class UserServiceVerifyPasskeyRegistrationRequest {
       return false;
     }
     UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest = (UserServiceVerifyPasskeyRegistrationRequest) o;
-    return Objects.equals(this.publicKeyCredential, userServiceVerifyPasskeyRegistrationRequest.publicKeyCredential) &&
+    return Objects.equals(this.userId, userServiceVerifyPasskeyRegistrationRequest.userId) &&
+        Objects.equals(this.passkeyId, userServiceVerifyPasskeyRegistrationRequest.passkeyId) &&
+        Objects.equals(this.publicKeyCredential, userServiceVerifyPasskeyRegistrationRequest.publicKeyCredential) &&
         Objects.equals(this.passkeyName, userServiceVerifyPasskeyRegistrationRequest.passkeyName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(publicKeyCredential, passkeyName);
+    return Objects.hash(userId, passkeyId, publicKeyCredential, passkeyName);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserServiceVerifyPasskeyRegistrationRequest {\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    passkeyId: ").append(toIndentedString(passkeyId)).append("\n");
     sb.append("    publicKeyCredential: ").append(toIndentedString(publicKeyCredential)).append("\n");
     sb.append("    passkeyName: ").append(toIndentedString(passkeyName)).append("\n");
     sb.append("}");
@@ -167,13 +238,37 @@ public class UserServiceVerifyPasskeyRegistrationRequest {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `publicKeyCredential` to the URL query string
-    if (getPublicKeyCredential() != null) {
+    // add `userId` to the URL query string
+    if (getUserId() != null) {
       try {
-        joiner.add(String.format("%spublicKeyCredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPublicKeyCredential()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
+      }
+    }
+
+    // add `passkeyId` to the URL query string
+    if (getPasskeyId() != null) {
+      try {
+        joiner.add(String.format("%spasskeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPasskeyId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `publicKeyCredential` to the URL query string
+    if (getPublicKeyCredential() != null) {
+      for (String _key : getPublicKeyCredential().keySet()) {
+        try {
+          joiner.add(String.format("%spublicKeyCredential%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+              getPublicKeyCredential().get(_key), URLEncoder.encode(String.valueOf(getPublicKeyCredential().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
       }
     }
 

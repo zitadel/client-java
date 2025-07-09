@@ -21,6 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.SettingsServiceResourceOwnerType;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -39,42 +43,50 @@ import java.util.StringJoiner;
 public class SettingsServiceLockoutSettings {
   public static final String JSON_PROPERTY_MAX_PASSWORD_ATTEMPTS = "maxPasswordAttempts";
   @javax.annotation.Nullable
-  private String maxPasswordAttempts;
+  private JsonNullable<Object> maxPasswordAttempts = JsonNullable.<Object>of(null);
 
   public static final String JSON_PROPERTY_RESOURCE_OWNER_TYPE = "resourceOwnerType";
   @javax.annotation.Nullable
-  private SettingsServiceResourceOwnerType resourceOwnerType = SettingsServiceResourceOwnerType.RESOURCE_OWNER_TYPE_UNSPECIFIED;
+  private SettingsServiceResourceOwnerType resourceOwnerType;
 
   public static final String JSON_PROPERTY_MAX_OTP_ATTEMPTS = "maxOtpAttempts";
   @javax.annotation.Nullable
-  private String maxOtpAttempts;
+  private JsonNullable<Object> maxOtpAttempts = JsonNullable.<Object>of(null);
 
   public SettingsServiceLockoutSettings() {
   }
 
-  public SettingsServiceLockoutSettings maxPasswordAttempts(@javax.annotation.Nullable String maxPasswordAttempts) {
+  public SettingsServiceLockoutSettings maxPasswordAttempts(@javax.annotation.Nullable Object maxPasswordAttempts) {
+    this.maxPasswordAttempts = JsonNullable.<Object>of(maxPasswordAttempts);
     
-    this.maxPasswordAttempts = maxPasswordAttempts;
     return this;
   }
 
   /**
-   * Maximum password check attempts before the account gets locked. Attempts are reset as soon as the password is entered correctly or the password is reset. If set to 0 the account will never be locked.
+   * Get maxPasswordAttempts
    * @return maxPasswordAttempts
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MAX_PASSWORD_ATTEMPTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
-  public String getMaxPasswordAttempts() {
-    return maxPasswordAttempts;
+  public Object getMaxPasswordAttempts() {
+        return maxPasswordAttempts.orElse(null);
   }
 
-
   @JsonProperty(JSON_PROPERTY_MAX_PASSWORD_ATTEMPTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxPasswordAttempts(@javax.annotation.Nullable String maxPasswordAttempts) {
+
+  public JsonNullable<Object> getMaxPasswordAttempts_JsonNullable() {
+    return maxPasswordAttempts;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_MAX_PASSWORD_ATTEMPTS)
+  public void setMaxPasswordAttempts_JsonNullable(JsonNullable<Object> maxPasswordAttempts) {
     this.maxPasswordAttempts = maxPasswordAttempts;
+  }
+
+  public void setMaxPasswordAttempts(@javax.annotation.Nullable Object maxPasswordAttempts) {
+    this.maxPasswordAttempts = JsonNullable.<Object>of(maxPasswordAttempts);
   }
 
   public SettingsServiceLockoutSettings resourceOwnerType(@javax.annotation.Nullable SettingsServiceResourceOwnerType resourceOwnerType) {
@@ -102,29 +114,37 @@ public class SettingsServiceLockoutSettings {
     this.resourceOwnerType = resourceOwnerType;
   }
 
-  public SettingsServiceLockoutSettings maxOtpAttempts(@javax.annotation.Nullable String maxOtpAttempts) {
+  public SettingsServiceLockoutSettings maxOtpAttempts(@javax.annotation.Nullable Object maxOtpAttempts) {
+    this.maxOtpAttempts = JsonNullable.<Object>of(maxOtpAttempts);
     
-    this.maxOtpAttempts = maxOtpAttempts;
     return this;
   }
 
   /**
-   * Maximum failed attempts for a single OTP type (TOTP, SMS, Email) before the account gets locked. Attempts are reset as soon as the OTP is entered correctly. If set to 0 the account will never be locked.
+   * Get maxOtpAttempts
    * @return maxOtpAttempts
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MAX_OTP_ATTEMPTS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
-  public String getMaxOtpAttempts() {
-    return maxOtpAttempts;
+  public Object getMaxOtpAttempts() {
+        return maxOtpAttempts.orElse(null);
   }
 
-
   @JsonProperty(JSON_PROPERTY_MAX_OTP_ATTEMPTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxOtpAttempts(@javax.annotation.Nullable String maxOtpAttempts) {
+
+  public JsonNullable<Object> getMaxOtpAttempts_JsonNullable() {
+    return maxOtpAttempts;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_MAX_OTP_ATTEMPTS)
+  public void setMaxOtpAttempts_JsonNullable(JsonNullable<Object> maxOtpAttempts) {
     this.maxOtpAttempts = maxOtpAttempts;
+  }
+
+  public void setMaxOtpAttempts(@javax.annotation.Nullable Object maxOtpAttempts) {
+    this.maxOtpAttempts = JsonNullable.<Object>of(maxOtpAttempts);
   }
 
   @Override
@@ -136,14 +156,25 @@ public class SettingsServiceLockoutSettings {
       return false;
     }
     SettingsServiceLockoutSettings settingsServiceLockoutSettings = (SettingsServiceLockoutSettings) o;
-    return Objects.equals(this.maxPasswordAttempts, settingsServiceLockoutSettings.maxPasswordAttempts) &&
+    return equalsNullable(this.maxPasswordAttempts, settingsServiceLockoutSettings.maxPasswordAttempts) &&
         Objects.equals(this.resourceOwnerType, settingsServiceLockoutSettings.resourceOwnerType) &&
-        Objects.equals(this.maxOtpAttempts, settingsServiceLockoutSettings.maxOtpAttempts);
+        equalsNullable(this.maxOtpAttempts, settingsServiceLockoutSettings.maxOtpAttempts);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(maxPasswordAttempts, resourceOwnerType, maxOtpAttempts);
+    return Objects.hash(hashCodeNullable(maxPasswordAttempts), resourceOwnerType, hashCodeNullable(maxOtpAttempts));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

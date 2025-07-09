@@ -53,7 +53,7 @@ public class UserServiceRedirectURLs {
   }
 
   /**
-   * URL on which the user will be redirected after a successful login
+   * Get successUrl
    * @return successUrl
    */
   @javax.annotation.Nullable
@@ -78,7 +78,7 @@ public class UserServiceRedirectURLs {
   }
 
   /**
-   * URL on which the user will be redirected after a failed login
+   * Get failureUrl
    * @return failureUrl
    */
   @javax.annotation.Nullable

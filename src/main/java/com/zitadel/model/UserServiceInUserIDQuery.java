@@ -59,7 +59,7 @@ public class UserServiceInUserIDQuery {
   }
 
   /**
-   * the ids of the users to include
+   * Get userIds
    * @return userIds
    */
   @javax.annotation.Nullable

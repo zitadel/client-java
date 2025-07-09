@@ -60,7 +60,7 @@ public class UserServiceAndQuery {
   }
 
   /**
-   * the sub queries to &#39;AND&#39;
+   * Get queries
    * @return queries
    */
   @javax.annotation.Nullable

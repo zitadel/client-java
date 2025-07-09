@@ -37,7 +37,7 @@ import java.util.StringJoiner;
 public class UserServiceStateQuery {
   public static final String JSON_PROPERTY_STATE = "state";
   @javax.annotation.Nonnull
-  private UserServiceUserState state = UserServiceUserState.USER_STATE_UNSPECIFIED;
+  private UserServiceUserState state;
 
   public UserServiceStateQuery() {
   }

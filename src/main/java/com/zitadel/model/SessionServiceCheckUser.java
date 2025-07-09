@@ -30,45 +30,20 @@ import java.util.StringJoiner;
  * SessionServiceCheckUser
  */
 @JsonPropertyOrder({
-  SessionServiceCheckUser.JSON_PROPERTY_USER_ID,
-  SessionServiceCheckUser.JSON_PROPERTY_LOGIN_NAME
+  SessionServiceCheckUser.JSON_PROPERTY_LOGIN_NAME,
+  SessionServiceCheckUser.JSON_PROPERTY_USER_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SessionServiceCheckUser {
-  public static final String JSON_PROPERTY_USER_ID = "userId";
-  @javax.annotation.Nullable
-  private String userId;
-
   public static final String JSON_PROPERTY_LOGIN_NAME = "loginName";
   @javax.annotation.Nullable
   private String loginName;
 
-  public SessionServiceCheckUser() {
-  }
-
-  public SessionServiceCheckUser userId(@javax.annotation.Nullable String userId) {
-    
-    this.userId = userId;
-    return this;
-  }
-
-  /**
-   * Get userId
-   * @return userId
-   */
+  public static final String JSON_PROPERTY_USER_ID = "userId";
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  private String userId;
 
-  public String getUserId() {
-    return userId;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserId(@javax.annotation.Nullable String userId) {
-    this.userId = userId;
+  public SessionServiceCheckUser() {
   }
 
   public SessionServiceCheckUser loginName(@javax.annotation.Nullable String loginName) {
@@ -96,6 +71,31 @@ public class SessionServiceCheckUser {
     this.loginName = loginName;
   }
 
+  public SessionServiceCheckUser userId(@javax.annotation.Nullable String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+  /**
+   * Get userId
+   * @return userId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserId(@javax.annotation.Nullable String userId) {
+    this.userId = userId;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -105,21 +105,21 @@ public class SessionServiceCheckUser {
       return false;
     }
     SessionServiceCheckUser sessionServiceCheckUser = (SessionServiceCheckUser) o;
-    return Objects.equals(this.userId, sessionServiceCheckUser.userId) &&
-        Objects.equals(this.loginName, sessionServiceCheckUser.loginName);
+    return Objects.equals(this.loginName, sessionServiceCheckUser.loginName) &&
+        Objects.equals(this.userId, sessionServiceCheckUser.userId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, loginName);
+    return Objects.hash(loginName, userId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SessionServiceCheckUser {\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    loginName: ").append(toIndentedString(loginName)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -166,6 +166,26 @@ public class SessionServiceCheckUser {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `loginName` to the URL query string
+    if (getLoginName() != null) {
+      try {
+        joiner.add(String.format("%sloginName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLoginName()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `userId` to the URL query string
+    if (getUserId() != null) {
+      try {
+        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     return joiner.toString();
   }

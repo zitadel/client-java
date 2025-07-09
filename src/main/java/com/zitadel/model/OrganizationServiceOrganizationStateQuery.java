@@ -37,7 +37,7 @@ import java.util.StringJoiner;
 public class OrganizationServiceOrganizationStateQuery {
   public static final String JSON_PROPERTY_STATE = "state";
   @javax.annotation.Nullable
-  private OrganizationServiceOrganizationState state = OrganizationServiceOrganizationState.ORGANIZATION_STATE_UNSPECIFIED;
+  private OrganizationServiceOrganizationState state;
 
   public OrganizationServiceOrganizationStateQuery() {
   }
