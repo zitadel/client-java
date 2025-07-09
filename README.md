@@ -125,7 +125,7 @@ class Demo {
     public static void main(String[] args) throws ApiException {
         Zitadel zitadel = Zitadel.withClientCredentials("https://example.us1.zitadel.cloud", "id", "secret");
 
-        UserServiceAddHumanUserResponse response = zitadel.users.userServiceAddHumanUser(
+        UserServiceAddHumanUserResponse response = zitadel.users.addHumanUser(
                 new UserServiceAddHumanUserRequest()
                         .username("john.doe")
                         .profile(new UserServiceSetHumanProfile()
@@ -170,7 +170,7 @@ class Demo {
     public static void main(String[] args) throws ApiException {
         Zitadel zitadel = Zitadel.withAccessToken("https://example.us1.zitadel.cloud", "token");
 
-        UserServiceAddHumanUserResponse response = zitadel.users.userServiceAddHumanUser(
+        UserServiceAddHumanUserResponse response = zitadel.users.addHumanUser(
                 new UserServiceAddHumanUserRequest()
                         .username("john.doe")
                         .profile(new UserServiceSetHumanProfile()
@@ -189,20 +189,6 @@ class Demo {
 Choose the authentication method that best suits your needs based on your
 environment and security requirements. For more details, please refer to the
 [Zitadel documentation on authenticating service users](https://zitadel.com/docs/guides/integrate/service-users/authenticate-service-users).
-
-### Debugging
-
-The SDK supports debug logging, which can be enabled for troubleshooting
-and debugging purposes. You can enable debug logging by setting the `debug`
-flag to `true` when initializing the `Zitadel` client, like this:
-
-```java
-Zitadel zitadel = new Zitadel("your-zitadel-base-url", 'your-valid-token', apiClient -> apiClient.setDebugging(true));
-```
-
-When enabled, the SDK will log additional information, such as HTTP request
-and response details, which can be useful for identifying issues in the
-integration or troubleshooting unexpected behavior.
 
 ## Design and Dependencies
 
