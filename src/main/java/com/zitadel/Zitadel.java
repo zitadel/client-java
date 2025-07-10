@@ -5,36 +5,178 @@ import com.zitadel.auth.Authenticator;
 import com.zitadel.auth.ClientCredentialsAuthenticator;
 import com.zitadel.auth.PersonalAccessTokenAuthenticator;
 import com.zitadel.auth.WebTokenAuthenticator;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.util.function.Consumer;
 
-@SuppressWarnings("unused")
-@SuppressFBWarnings("URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD")
+@SuppressWarnings({"unused", "DeprecatedIsStillUsed"})
 public class Zitadel {
+    /**
+     * The underlying, configured API client.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getApiClient()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final ApiClient apiClient;
+    /**
+     * Service for managing Projects (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaProjects()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaProjectServiceApi betaProjects;
+    /**
+     * Service for managing Applications (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaApps()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaAppServiceApi betaApps;
+    /**
+     * Service for OIDC operations (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaOidc()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaOidcServiceApi betaOidc;
+    /**
+     * Service for managing Users (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaUsers()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaUserServiceApi betaUsers;
+    /**
+     * Service for managing Organizations (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaOrganizations()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaOrganizationServiceApi betaOrganizations;
+    /**
+     * Service for managing Settings (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaSettings()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaSettingsServiceApi betaSettings;
+    /**
+     * Service for managing internal Permissions (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaPermissions()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaInternalPermissionServiceApi betaPermissions;
+    /**
+     * Service for managing Authorizations (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaAuthorizations()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaAuthorizationServiceApi betaAuthorizations;
+    /**
+     * Service for managing Sessions (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaSessions()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaSessionServiceApi betaSessions;
+    /**
+     * Service for managing the Instance (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaInstance()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaInstanceServiceApi betaInstance;
+    /**
+     * Service for telemetry operations (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaTelemetry()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaTelemetryServiceApi betaTelemetry;
+    /**
+     * Service for managing Features (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaFeatures()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaFeatureServiceApi betaFeatures;
+    /**
+     * Service for managing WebKeys (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaWebkeys()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaWebKeyServiceApi betaWebkeys;
+    /**
+     * Service for managing Actions (beta).
+     *
+     * @deprecated As of version 4.2.0, use {@link #getBetaActions()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final BetaActionServiceApi betaActions;
+    /**
+     * Service for managing Users.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getUsers()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final UserServiceApi users;
+    /**
+     * Service for managing Sessions.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getSessions()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final SessionServiceApi sessions;
+    /**
+     * Service for OIDC operations.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getOidc()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final OidcServiceApi oidc;
+    /**
+     * Service for managing Features.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getFeatures()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final FeatureServiceApi features;
+    /**
+     * Service for managing Identity Providers.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getIdps()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final IdentityProviderServiceApi idps;
+    /**
+     * Service for managing Organizations.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getOrganizations()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final OrganizationServiceApi organizations;
+    /**
+     * Service for managing Settings.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getSettings()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final SettingsServiceApi settings;
+    /**
+     * Service for SAML operations.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getSaml()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final SamlServiceApi saml;
+    /**
+     * Service for managing WebKeys.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getWebkeys()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
     public final WebKeyServiceApi webkeys;
 
     public Zitadel(Authenticator authenticator) {
@@ -118,5 +260,221 @@ public class Zitadel {
      */
     public static Zitadel withPrivateKey(String host, String keyFile) {
         return new Zitadel(WebTokenAuthenticator.fromJson(host, keyFile));
+    }
+
+    /**
+     * Gets the underlying API client. Recommended over direct field access for testability.
+     *
+     * @return The configured {@link ApiClient}.
+     */
+    public ApiClient getApiClient() {
+        return apiClient;
+    }
+
+    /**
+     * Gets the service for managing Projects (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaProjectServiceApi}.
+     */
+    public BetaProjectServiceApi getBetaProjects() {
+        return betaProjects;
+    }
+
+    /**
+     * Gets the service for managing Applications (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaAppServiceApi}.
+     */
+    public BetaAppServiceApi getBetaApps() {
+        return betaApps;
+    }
+
+    /**
+     * Gets the service for OIDC operations (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaOidcServiceApi}.
+     */
+    public BetaOidcServiceApi getBetaOidc() {
+        return betaOidc;
+    }
+
+    /**
+     * Gets the service for managing Users (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaUserServiceApi}.
+     */
+    public BetaUserServiceApi getBetaUsers() {
+        return betaUsers;
+    }
+
+    /**
+     * Gets the service for managing Organizations (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaOrganizationServiceApi}.
+     */
+    public BetaOrganizationServiceApi getBetaOrganizations() {
+        return betaOrganizations;
+    }
+
+    /**
+     * Gets the service for managing Settings (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaSettingsServiceApi}.
+     */
+    public BetaSettingsServiceApi getBetaSettings() {
+        return betaSettings;
+    }
+
+    /**
+     * Gets the service for managing internal Permissions (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaInternalPermissionServiceApi}.
+     */
+    public BetaInternalPermissionServiceApi getBetaPermissions() {
+        return betaPermissions;
+    }
+
+    /**
+     * Gets the service for managing Authorizations (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaAuthorizationServiceApi}.
+     */
+    public BetaAuthorizationServiceApi getBetaAuthorizations() {
+        return betaAuthorizations;
+    }
+
+    /**
+     * Gets the service for managing Sessions (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaSessionServiceApi}.
+     */
+    public BetaSessionServiceApi getBetaSessions() {
+        return betaSessions;
+    }
+
+    /**
+     * Gets the service for managing the Instance (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaInstanceServiceApi}.
+     */
+    public BetaInstanceServiceApi getBetaInstance() {
+        return betaInstance;
+    }
+
+    /**
+     * Gets the service for telemetry operations (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaTelemetryServiceApi}.
+     */
+    public BetaTelemetryServiceApi getBetaTelemetry() {
+        return betaTelemetry;
+    }
+
+    /**
+     * Gets the service for managing Features (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaFeatureServiceApi}.
+     */
+    public BetaFeatureServiceApi getBetaFeatures() {
+        return betaFeatures;
+    }
+
+    /**
+     * Gets the service for managing WebKeys (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaWebKeyServiceApi}.
+     */
+    public BetaWebKeyServiceApi getBetaWebkeys() {
+        return betaWebkeys;
+    }
+
+    /**
+     * Gets the service for managing Actions (beta). Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaActionServiceApi}.
+     */
+    public BetaActionServiceApi getBetaActions() {
+        return betaActions;
+    }
+
+    /**
+     * Gets the service for managing Users. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link UserServiceApi}.
+     */
+    public UserServiceApi getUsers() {
+        return users;
+    }
+
+    /**
+     * Gets the service for managing Sessions. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link SessionServiceApi}.
+     */
+    public SessionServiceApi getSessions() {
+        return sessions;
+    }
+
+    /**
+     * Gets the service for OIDC operations. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link OidcServiceApi}.
+     */
+    public OidcServiceApi getOidc() {
+        return oidc;
+    }
+
+    /**
+     * Gets the service for managing Features. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link FeatureServiceApi}.
+     */
+    public FeatureServiceApi getFeatures() {
+        return features;
+    }
+
+    /**
+     * Gets the service for managing Identity Providers. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link IdentityProviderServiceApi}.
+     */
+    public IdentityProviderServiceApi getIdps() {
+        return idps;
+    }
+
+    /**
+     * Gets the service for managing Organizations. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link OrganizationServiceApi}.
+     */
+    public OrganizationServiceApi getOrganizations() {
+        return organizations;
+    }
+
+    /**
+     * Gets the service for managing Settings. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link SettingsServiceApi}.
+     */
+    public SettingsServiceApi getSettings() {
+        return settings;
+    }
+
+    /**
+     * Gets the service for SAML operations. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link SamlServiceApi}.
+     */
+    public SamlServiceApi getSaml() {
+        return saml;
+    }
+
+    /**
+     * Gets the service for managing WebKeys. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link WebKeyServiceApi}.
+     */
+    public WebKeyServiceApi getWebkeys() {
+        return webkeys;
     }
 }
