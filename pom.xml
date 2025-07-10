@@ -5,7 +5,7 @@
   <artifactId>client</artifactId>
   <packaging>jar</packaging>
   <name>Official Zitadel SDK for Java</name>
-  <version>4.1.0-beta.1</version>
+  <version>4.1.0-beta.2</version>
   <inceptionYear>2025</inceptionYear>
   <url>https://github.com/zitadel/client-java</url>
   <description>Official Zitadel SDK for Java. Authenticate and access Zitadel's authentication and management APIs in
