@@ -22,7 +22,10 @@ user authentication across various platforms like web, mobile, or other
 client environments.
 
 > [!IMPORTANT]
-> Please be aware that this SDK is currently in an incubating stage. We are releasing it to the community to gather feedback and learn how it is being used. While you are welcome to use it, please note that the API and functionality may evolve based on community input. We encourage you to try it out and share your experiences, but advise caution when considering it for production environments as future updates may introduce changes.
+> Please be aware that this SDK is currently in an incubating stage. We are releasing it to the community to gather
+> feedback and learn how it is being used. While you are welcome to use it, please note that the API and functionality may
+> evolve based on community input. We encourage you to try it out and share your experiences, but advise caution when
+> considering it for production environments as future updates may introduce changes.
 
 ## Getting Started
 
@@ -78,20 +81,20 @@ import com.zitadel.model.UserServiceSetHumanEmail;
 import com.zitadel.model.UserServiceSetHumanProfile;
 
 class Demo {
-    public static void main(String[] args) throws ApiException {
-        Zitadel zitadel = Zitadel.withPrivateKey("https://example.us1.zitadel.cloud", "path/to/jwt-key.json");
+  public static void main(String[] args) throws ApiException {
+    Zitadel zitadel = Zitadel.withPrivateKey("https://example.us1.zitadel.cloud", "path/to/jwt-key.json");
 
-        UserServiceAddHumanUserResponse response = zitadel.users.userServiceAddHumanUser(
-                new UserServiceAddHumanUserRequest()
-                        .username("john.doe")
-                        .profile(new UserServiceSetHumanProfile()
-                                .givenName("John")
-                                .familyName("Doe"))
-                        .email(new UserServiceSetHumanEmail()
-                                .email("john@doe.com"))
-        );
-        System.out.println("User created: " + response);
-    }
+    UserServiceAddHumanUserResponse response = zitadel.users.addHumanUser(
+      new UserServiceAddHumanUserRequest()
+        .username("john.doe")
+        .profile(new UserServiceSetHumanProfile()
+          .givenName("John")
+          .familyName("Doe"))
+        .email(new UserServiceSetHumanEmail()
+          .email("john@doe.com"))
+    );
+    System.out.println("User created: " + response);
+  }
 }
 ```
 
@@ -122,20 +125,20 @@ import com.zitadel.model.UserServiceSetHumanEmail;
 import com.zitadel.model.UserServiceSetHumanProfile;
 
 class Demo {
-    public static void main(String[] args) throws ApiException {
-        Zitadel zitadel = Zitadel.withClientCredentials("https://example.us1.zitadel.cloud", "id", "secret");
+  public static void main(String[] args) throws ApiException {
+    Zitadel zitadel = Zitadel.withClientCredentials("https://example.us1.zitadel.cloud", "id", "secret");
 
-        UserServiceAddHumanUserResponse response = zitadel.users.addHumanUser(
-                new UserServiceAddHumanUserRequest()
-                        .username("john.doe")
-                        .profile(new UserServiceSetHumanProfile()
-                                .givenName("John")
-                                .familyName("Doe"))
-                        .email(new UserServiceSetHumanEmail()
-                                .email("john@doe.com"))
-        );
-        System.out.println("User created: " + response);
-    }
+    UserServiceAddHumanUserResponse response = zitadel.users.addHumanUser(
+      new UserServiceAddHumanUserRequest()
+        .username("john.doe")
+        .profile(new UserServiceSetHumanProfile()
+          .givenName("John")
+          .familyName("Doe"))
+        .email(new UserServiceSetHumanEmail()
+          .email("john@doe.com"))
+    );
+    System.out.println("User created: " + response);
+  }
 }
 ```
 
@@ -167,20 +170,20 @@ import com.zitadel.model.UserServiceSetHumanProfile;
 
 class Demo {
 
-    public static void main(String[] args) throws ApiException {
-        Zitadel zitadel = Zitadel.withAccessToken("https://example.us1.zitadel.cloud", "token");
+  public static void main(String[] args) throws ApiException {
+    Zitadel zitadel = Zitadel.withAccessToken("https://example.us1.zitadel.cloud", "token");
 
-        UserServiceAddHumanUserResponse response = zitadel.users.addHumanUser(
-                new UserServiceAddHumanUserRequest()
-                        .username("john.doe")
-                        .profile(new UserServiceSetHumanProfile()
-                                .givenName("John")
-                                .familyName("Doe"))
-                        .email(new UserServiceSetHumanEmail()
-                                .email("john@doe.com"))
-        );
-        System.out.println("User created: " + response);
-    }
+    UserServiceAddHumanUserResponse response = zitadel.users.addHumanUser(
+      new UserServiceAddHumanUserRequest()
+        .username("john.doe")
+        .profile(new UserServiceSetHumanProfile()
+          .givenName("John")
+          .familyName("Doe"))
+        .email(new UserServiceSetHumanEmail()
+          .email("john@doe.com"))
+    );
+    System.out.println("User created: " + response);
+  }
 }
 ```
 
@@ -200,7 +203,9 @@ in terms of request handling and error management.
 
 ## Versioning
 
-A key aspect of our strategy is that the SDK's major version is synchronized with the ZITADEL core project's major version to ensure compatibility. For a detailed explanation of this policy and our release schedule, please see our [Versioning Guide](VERSIONING.md).
+A key aspect of our strategy is that the SDK's major version is synchronized with the ZITADEL core project's major
+version to ensure compatibility. For a detailed explanation of this policy and our release schedule, please see
+our [Versioning Guide](VERSIONING.md).
 
 ## Contributing
 
