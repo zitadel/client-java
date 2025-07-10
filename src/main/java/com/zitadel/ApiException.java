@@ -1,7 +1,7 @@
 package com.zitadel;
 
+import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,12 +20,12 @@ public class ApiException extends ZitadelException {
     /**
      * HTTP response headers.
      */
-    private final Map<String, List<String>> responseHeaders;
+    private final Map<String, Collection<String>> responseHeaders;
 
     /**
      * HTTP response body (string, decoded JSON, or object).
      */
-    private final String responseBody;
+    private final Object responseBody;
 
     /**
      * Constructor.
@@ -36,8 +36,8 @@ public class ApiException extends ZitadelException {
      */
     public ApiException(
         int code,
-        Map<String, List<String>> responseHeaders,
-        String responseBody
+        Map<String, Collection<String>> responseHeaders,
+        Object responseBody
     ) {
         super("Error " + code);
         this.code = code;
@@ -59,7 +59,7 @@ public class ApiException extends ZitadelException {
      *
      * @return HTTP response headers
      */
-    public Map<String, List<String>> getResponseHeaders() {
+    public Map<String, Collection<String>> getResponseHeaders() {
         return responseHeaders;
     }
 
@@ -68,7 +68,7 @@ public class ApiException extends ZitadelException {
      *
      * @return HTTP response body
      */
-    public String getResponseBody() {
+    public Object getResponseBody() {
         return responseBody;
     }
 }

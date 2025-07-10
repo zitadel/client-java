@@ -331,10 +331,10 @@ public class ApiClient {
      * @param headers HTTP headers
      * @return a map of string array
      */
-    protected Map<String, List<String>> transformResponseHeaders(Header[] headers) {
-        Map<String, List<String>> headersMap = new HashMap<>();
+    protected Map<String, Collection<String>> transformResponseHeaders(Header[] headers) {
+        Map<String, Collection<String>> headersMap = new HashMap<>();
         for (Header header : headers) {
-            List<String> valuesList = headersMap.get(header.getName());
+            Collection<String> valuesList = headersMap.get(header.getName());
             if (valuesList != null) {
                 valuesList.add(header.getValue());
             } else {
@@ -595,7 +595,7 @@ public class ApiClient {
             return null;
         }
 
-        Map<String, List<String>> responseHeaders = transformResponseHeaders(response.getHeaders());
+        Map<String, Collection<String>> responseHeaders = transformResponseHeaders(response.getHeaders());
 
         if (isSuccessfulStatus(statusCode)) {
             return this.deserialize(response, returnType);
