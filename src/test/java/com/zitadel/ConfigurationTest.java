@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ConfigurationTest {
 
-    private static final String OAUTH_HOST = "http://zitadel.com";
+    private static final String OAUTH_HOST = "https://zitadel.com";
 
     /**
      * Test user agent getter.
@@ -53,7 +53,7 @@ public class ConfigurationTest {
         NoAuthAuthenticator authenticator = new NoAuthAuthenticator(OAUTH_HOST, "test-token");
         Configuration config = new Configuration(authenticator);
 
-        assertEquals(5, config.getConnectTimeout().getSeconds());
+        assertEquals(5, config.getConnectTimeout().toSeconds());
     }
 
     /**
@@ -64,6 +64,6 @@ public class ConfigurationTest {
         NoAuthAuthenticator authenticator = new NoAuthAuthenticator(OAUTH_HOST, "test-token");
         Configuration config = new Configuration(authenticator);
 
-        assertEquals(30, config.getTimeout().getSeconds());
+        assertEquals(30, config.getTimeout().toSeconds());
     }
 }

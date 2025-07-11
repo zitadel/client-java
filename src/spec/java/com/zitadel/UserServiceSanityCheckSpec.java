@@ -4,6 +4,7 @@ import com.zitadel.model.*;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * 1. Create a human user
  * 2. Retrieve the user by ID
  * 3. List users and ensure the created user appears
- * 4. Update the user's email and confirm the change
+ * 4. Update the user's email and confirm change
  * 5. Error when retrieving a non-existent user
  * <p>
  * Each test runs in isolation: a new session is created in @BeforeEach and deleted in
@@ -58,7 +59,7 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
     @AfterEach
     void tearDown() {
         try {
-            client.users.deleteUser(new UserServiceDeleteUserRequest().userId(user.getUserId()));
+            client.users.deleteUser(new UserServiceDeleteUserRequest().userId(Objects.requireNonNull(user.getUserId())));
         } catch (ApiException ignored) {
             // cleanup errors are ignored
         }
@@ -71,7 +72,7 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
     void testRetrievesUserDetailsById() throws ApiException {
         UserServiceGetUserByIDResponse response = client.users.getUserByID(
             new UserServiceGetUserByIDRequest()
-                .userId(user.getUserId())
+                .userId(Objects.requireNonNull(user.getUserId()))
         );
         assertNotNull(response.getUser());
         assertEquals(user.getUserId(), response.getUser().getUserId());

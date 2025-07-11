@@ -43,7 +43,7 @@ import java.util.function.Function;
  *
  * Configuration config = new Configuration(new PersonalAccessTokenAuthenticator("https://api.example.com", "test-token"));
  *
- * Function<HttpClientBuilder, HttpClientBuilder> clientConfigurator = builder -> {
+ * Function<HttpClientBuilder, <HttpClientBuilder> clientConfigurator = builder -> {
  *     try {
  *         // Disable SSL certificate verification
  *         builder.setSSLContext(new SSLContextBuilder()
@@ -65,7 +65,14 @@ import java.util.function.Function;
  * DefaultApiClient apiClient = new DefaultApiClient(config, clientConfigurator);
  * </pre>
  */
-@SuppressWarnings("unused")
+@SuppressFBWarnings(
+        value = {
+                "DE_MIGHT_IGNORE",
+                "SIC_INNER_SHOULD_BE_STATIC_ANON",
+        },
+        justification = "Intentional fallback logic in lambda; anonymous class is acceptable"
+)
+@SuppressWarnings({"unused", "JavadocLinkAsPlainText"})
 public final class DefaultApiClient implements IApiClient {
     private final CloseableHttpClient httpClient;
     private final Configuration config;
@@ -104,7 +111,6 @@ public final class DefaultApiClient implements IApiClient {
     }
 
     @SuppressWarnings("UastIncorrectHttpHeaderInspection")
-    @SuppressFBWarnings("DE_MIGHT_IGNORE")
     @Override
     public Object invokeAPI(
             String operationId,
@@ -176,7 +182,7 @@ public final class DefaultApiClient implements IApiClient {
                 }
             });
         } catch (IOException | URISyntaxException e) {
-            throw new RuntimeException(String.format("[%s] API Request failed.", operationId), e);
+            throw new ZitadelException(String.format("[%s] API Request failed.", operationId), e);
         }
     }
 

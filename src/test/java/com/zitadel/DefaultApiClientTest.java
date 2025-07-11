@@ -16,6 +16,7 @@ import org.testcontainers.utility.DockerImageName;
 
 import javax.annotation.Nullable;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collection;
@@ -42,7 +43,7 @@ class DefaultApiClientTest {
     }
 
     @BeforeAll
-    static void setUp() throws IOException {
+    static void setUp() throws IOException, InterruptedException {
         mockApiServer =
             new GenericContainer<>(DockerImageName.parse("wiremock/wiremock:3.5.2"))
                 .withExposedPorts(8080)
@@ -51,7 +52,7 @@ class DefaultApiClientTest {
         apiHost = "http://" + mockApiServer.getHost() + ":" + mockApiServer.getMappedPort(8080);
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-            String stubs = new String(Files.readAllBytes(Paths.get("src/test/resources/api.json")));
+            String stubs = new String(Files.readAllBytes(Paths.get("src/test/resources/api.json")), StandardCharsets.UTF_8);
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(stubs);
             JsonNode mappings = rootNode.get("mappings");
@@ -68,6 +69,8 @@ class DefaultApiClientTest {
                 });
             }
         }
+
+        Thread.sleep(3000L);
     }
 
     @AfterAll

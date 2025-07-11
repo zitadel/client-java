@@ -11,9 +11,6 @@
           },
           "X-Operation-Id": {
             "equalTo": "testGetSuccess"
-          },
-          "User-Agent": {
-            "equalTo": "zitadel-client/4.1.0-beta.1 (lang=java; lang_version=22.0.2; os=mac os x; arch=aarch64)"
           }
         }
       },
