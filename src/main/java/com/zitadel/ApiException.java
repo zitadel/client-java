@@ -1,5 +1,6 @@
 package com.zitadel;
 
+import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
@@ -25,6 +26,7 @@ public class ApiException extends ZitadelException {
     /**
      * HTTP response body (string, decoded JSON, or object).
      */
+    @Nullable
     private final Object responseBody;
 
     /**
@@ -37,8 +39,8 @@ public class ApiException extends ZitadelException {
     public ApiException(
         int code,
         Map<String, Collection<String>> responseHeaders,
-        Object responseBody
-    ) {
+        @Nullable Object responseBody
+        ) {
         super("Error " + code);
         this.code = code;
         this.responseHeaders = Collections.unmodifiableMap(responseHeaders);
@@ -68,6 +70,7 @@ public class ApiException extends ZitadelException {
      *
      * @return HTTP response body
      */
+    @Nullable
     public Object getResponseBody() {
         return responseBody;
     }

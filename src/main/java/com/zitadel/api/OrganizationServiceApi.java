@@ -5,12 +5,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
 import com.zitadel.model.OrganizationServiceAddOrganizationRequest;
 import com.zitadel.model.OrganizationServiceAddOrganizationResponse;
-import com.zitadel.model.OrganizationServiceConnectError;
 import com.zitadel.model.OrganizationServiceListOrganizationsRequest;
 import com.zitadel.model.OrganizationServiceListOrganizationsResponse;
 
@@ -26,7 +24,7 @@ import java.util.StringJoiner;
 public class OrganizationServiceApi extends BaseApi {
 
   public OrganizationServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public OrganizationServiceApi(ApiClient apiClient) {
@@ -58,11 +56,11 @@ public class OrganizationServiceApi extends BaseApi {
    */
   private OrganizationServiceAddOrganizationResponse addOrganization(OrganizationServiceAddOrganizationRequest organizationServiceAddOrganizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = organizationServiceAddOrganizationRequest;
-    
+
     if (organizationServiceAddOrganizationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'organizationServiceAddOrganizationRequest' when calling addOrganization");
     }
-    
+
     String localVarPath = "/zitadel.org.v2.OrganizationService/AddOrganization";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -73,11 +71,11 @@ public class OrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -133,11 +131,11 @@ public class OrganizationServiceApi extends BaseApi {
    */
   private OrganizationServiceListOrganizationsResponse listOrganizations(OrganizationServiceListOrganizationsRequest organizationServiceListOrganizationsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = organizationServiceListOrganizationsRequest;
-    
+
     if (organizationServiceListOrganizationsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'organizationServiceListOrganizationsRequest' when calling listOrganizations");
     }
-    
+
     String localVarPath = "/zitadel.org.v2.OrganizationService/ListOrganizations";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -148,11 +146,11 @@ public class OrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

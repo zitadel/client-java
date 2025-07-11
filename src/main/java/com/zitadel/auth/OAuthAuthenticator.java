@@ -49,6 +49,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
         this.openId = openId;
     }
 
+    @Override
     public String getAuthToken() throws ZitadelException {
         //noinspection DataFlowIssue
         if (token == null || token.isExpired()) {

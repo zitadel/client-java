@@ -5,10 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
-import com.zitadel.model.SAMLServiceConnectError;
 import com.zitadel.model.SAMLServiceCreateResponseRequest;
 import com.zitadel.model.SAMLServiceCreateResponseResponse;
 import com.zitadel.model.SAMLServiceGetSAMLRequestRequest;
@@ -26,7 +24,7 @@ import java.util.StringJoiner;
 public class SamlServiceApi extends BaseApi {
 
   public SamlServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public SamlServiceApi(ApiClient apiClient) {
@@ -38,7 +36,7 @@ public class SamlServiceApi extends BaseApi {
 
   /**
    * CreateResponse
-   * 
+   *
    * @param saMLServiceCreateResponseRequest  (required)
    * @return SAMLServiceCreateResponseResponse
    * @throws ApiException if fails to make API call
@@ -50,7 +48,7 @@ public class SamlServiceApi extends BaseApi {
 
   /**
    * CreateResponse
-   * 
+   *
    * @param saMLServiceCreateResponseRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SAMLServiceCreateResponseResponse
@@ -58,11 +56,11 @@ public class SamlServiceApi extends BaseApi {
    */
   private SAMLServiceCreateResponseResponse createResponse(SAMLServiceCreateResponseRequest saMLServiceCreateResponseRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = saMLServiceCreateResponseRequest;
-    
+
     if (saMLServiceCreateResponseRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'saMLServiceCreateResponseRequest' when calling createResponse");
     }
-    
+
     String localVarPath = "/zitadel.saml.v2.SAMLService/CreateResponse";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -73,11 +71,11 @@ public class SamlServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -113,7 +111,7 @@ public class SamlServiceApi extends BaseApi {
 
   /**
    * GetSAMLRequest
-   * 
+   *
    * @param saMLServiceGetSAMLRequestRequest  (required)
    * @return SAMLServiceGetSAMLRequestResponse
    * @throws ApiException if fails to make API call
@@ -125,7 +123,7 @@ public class SamlServiceApi extends BaseApi {
 
   /**
    * GetSAMLRequest
-   * 
+   *
    * @param saMLServiceGetSAMLRequestRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SAMLServiceGetSAMLRequestResponse
@@ -133,11 +131,11 @@ public class SamlServiceApi extends BaseApi {
    */
   private SAMLServiceGetSAMLRequestResponse getSAMLRequest(SAMLServiceGetSAMLRequestRequest saMLServiceGetSAMLRequestRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = saMLServiceGetSAMLRequestRequest;
-    
+
     if (saMLServiceGetSAMLRequestRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'saMLServiceGetSAMLRequestRequest' when calling getSAMLRequest");
     }
-    
+
     String localVarPath = "/zitadel.saml.v2.SAMLService/GetSAMLRequest";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -148,11 +146,11 @@ public class SamlServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

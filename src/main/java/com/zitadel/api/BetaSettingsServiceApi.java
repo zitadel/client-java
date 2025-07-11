@@ -5,10 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
-import com.zitadel.model.BetaSettingsServiceConnectError;
 import com.zitadel.model.BetaSettingsServiceGetActiveIdentityProvidersRequest;
 import com.zitadel.model.BetaSettingsServiceGetActiveIdentityProvidersResponse;
 import com.zitadel.model.BetaSettingsServiceGetBrandingSettingsRequest;
@@ -42,7 +40,7 @@ import java.util.StringJoiner;
 public class BetaSettingsServiceApi extends BaseApi {
 
   public BetaSettingsServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public BetaSettingsServiceApi(ApiClient apiClient) {
@@ -74,11 +72,11 @@ public class BetaSettingsServiceApi extends BaseApi {
    */
   private BetaSettingsServiceGetActiveIdentityProvidersResponse getActiveIdentityProviders(BetaSettingsServiceGetActiveIdentityProvidersRequest betaSettingsServiceGetActiveIdentityProvidersRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSettingsServiceGetActiveIdentityProvidersRequest;
-    
+
     if (betaSettingsServiceGetActiveIdentityProvidersRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSettingsServiceGetActiveIdentityProvidersRequest' when calling getActiveIdentityProviders");
     }
-    
+
     String localVarPath = "/zitadel.settings.v2beta.SettingsService/GetActiveIdentityProviders";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -89,11 +87,11 @@ public class BetaSettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -149,11 +147,11 @@ public class BetaSettingsServiceApi extends BaseApi {
    */
   private BetaSettingsServiceGetBrandingSettingsResponse getBrandingSettings(BetaSettingsServiceGetBrandingSettingsRequest betaSettingsServiceGetBrandingSettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSettingsServiceGetBrandingSettingsRequest;
-    
+
     if (betaSettingsServiceGetBrandingSettingsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSettingsServiceGetBrandingSettingsRequest' when calling getBrandingSettings");
     }
-    
+
     String localVarPath = "/zitadel.settings.v2beta.SettingsService/GetBrandingSettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -164,11 +162,11 @@ public class BetaSettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -224,11 +222,11 @@ public class BetaSettingsServiceApi extends BaseApi {
    */
   private BetaSettingsServiceGetDomainSettingsResponse getDomainSettings(BetaSettingsServiceGetDomainSettingsRequest betaSettingsServiceGetDomainSettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSettingsServiceGetDomainSettingsRequest;
-    
+
     if (betaSettingsServiceGetDomainSettingsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSettingsServiceGetDomainSettingsRequest' when calling getDomainSettings");
     }
-    
+
     String localVarPath = "/zitadel.settings.v2beta.SettingsService/GetDomainSettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -239,11 +237,11 @@ public class BetaSettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -309,11 +307,11 @@ public class BetaSettingsServiceApi extends BaseApi {
    */
   private BetaSettingsServiceGetGeneralSettingsResponse getGeneralSettings(Object body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
-    
+
     if (body == null) {
       throw new IllegalArgumentException("Missing the required parameter 'body' when calling getGeneralSettings");
     }
-    
+
     String localVarPath = "/zitadel.settings.v2beta.SettingsService/GetGeneralSettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -324,11 +322,11 @@ public class BetaSettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -384,11 +382,11 @@ public class BetaSettingsServiceApi extends BaseApi {
    */
   private BetaSettingsServiceGetLegalAndSupportSettingsResponse getLegalAndSupportSettings(BetaSettingsServiceGetLegalAndSupportSettingsRequest betaSettingsServiceGetLegalAndSupportSettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSettingsServiceGetLegalAndSupportSettingsRequest;
-    
+
     if (betaSettingsServiceGetLegalAndSupportSettingsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSettingsServiceGetLegalAndSupportSettingsRequest' when calling getLegalAndSupportSettings");
     }
-    
+
     String localVarPath = "/zitadel.settings.v2beta.SettingsService/GetLegalAndSupportSettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -399,11 +397,11 @@ public class BetaSettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -459,11 +457,11 @@ public class BetaSettingsServiceApi extends BaseApi {
    */
   private BetaSettingsServiceGetLockoutSettingsResponse getLockoutSettings(BetaSettingsServiceGetLockoutSettingsRequest betaSettingsServiceGetLockoutSettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSettingsServiceGetLockoutSettingsRequest;
-    
+
     if (betaSettingsServiceGetLockoutSettingsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSettingsServiceGetLockoutSettingsRequest' when calling getLockoutSettings");
     }
-    
+
     String localVarPath = "/zitadel.settings.v2beta.SettingsService/GetLockoutSettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -474,11 +472,11 @@ public class BetaSettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -534,11 +532,11 @@ public class BetaSettingsServiceApi extends BaseApi {
    */
   private BetaSettingsServiceGetLoginSettingsResponse getLoginSettings(BetaSettingsServiceGetLoginSettingsRequest betaSettingsServiceGetLoginSettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSettingsServiceGetLoginSettingsRequest;
-    
+
     if (betaSettingsServiceGetLoginSettingsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSettingsServiceGetLoginSettingsRequest' when calling getLoginSettings");
     }
-    
+
     String localVarPath = "/zitadel.settings.v2beta.SettingsService/GetLoginSettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -549,11 +547,11 @@ public class BetaSettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -609,11 +607,11 @@ public class BetaSettingsServiceApi extends BaseApi {
    */
   private BetaSettingsServiceGetPasswordComplexitySettingsResponse getPasswordComplexitySettings(BetaSettingsServiceGetPasswordComplexitySettingsRequest betaSettingsServiceGetPasswordComplexitySettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSettingsServiceGetPasswordComplexitySettingsRequest;
-    
+
     if (betaSettingsServiceGetPasswordComplexitySettingsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSettingsServiceGetPasswordComplexitySettingsRequest' when calling getPasswordComplexitySettings");
     }
-    
+
     String localVarPath = "/zitadel.settings.v2beta.SettingsService/GetPasswordComplexitySettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -624,11 +622,11 @@ public class BetaSettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -684,11 +682,11 @@ public class BetaSettingsServiceApi extends BaseApi {
    */
   private BetaSettingsServiceGetPasswordExpirySettingsResponse getPasswordExpirySettings(BetaSettingsServiceGetPasswordExpirySettingsRequest betaSettingsServiceGetPasswordExpirySettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSettingsServiceGetPasswordExpirySettingsRequest;
-    
+
     if (betaSettingsServiceGetPasswordExpirySettingsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSettingsServiceGetPasswordExpirySettingsRequest' when calling getPasswordExpirySettings");
     }
-    
+
     String localVarPath = "/zitadel.settings.v2beta.SettingsService/GetPasswordExpirySettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -699,11 +697,11 @@ public class BetaSettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -769,11 +767,11 @@ public class BetaSettingsServiceApi extends BaseApi {
    */
   private BetaSettingsServiceGetSecuritySettingsResponse getSecuritySettings(Object body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
-    
+
     if (body == null) {
       throw new IllegalArgumentException("Missing the required parameter 'body' when calling getSecuritySettings");
     }
-    
+
     String localVarPath = "/zitadel.settings.v2beta.SettingsService/GetSecuritySettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -784,11 +782,11 @@ public class BetaSettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -844,11 +842,11 @@ public class BetaSettingsServiceApi extends BaseApi {
    */
   private BetaSettingsServiceSetSecuritySettingsResponse setSecuritySettings(BetaSettingsServiceSetSecuritySettingsRequest betaSettingsServiceSetSecuritySettingsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSettingsServiceSetSecuritySettingsRequest;
-    
+
     if (betaSettingsServiceSetSecuritySettingsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSettingsServiceSetSecuritySettingsRequest' when calling setSecuritySettings");
     }
-    
+
     String localVarPath = "/zitadel.settings.v2beta.SettingsService/SetSecuritySettings";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -859,11 +857,11 @@ public class BetaSettingsServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

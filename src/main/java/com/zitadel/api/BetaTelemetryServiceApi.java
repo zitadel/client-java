@@ -5,10 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
-import com.zitadel.model.BetaTelemetryServiceConnectError;
 import com.zitadel.model.BetaTelemetryServiceReportBaseInformationRequest;
 import com.zitadel.model.BetaTelemetryServiceReportBaseInformationResponse;
 import com.zitadel.model.BetaTelemetryServiceReportResourceCountsRequest;
@@ -26,7 +24,7 @@ import java.util.StringJoiner;
 public class BetaTelemetryServiceApi extends BaseApi {
 
   public BetaTelemetryServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public BetaTelemetryServiceApi(ApiClient apiClient) {
@@ -58,11 +56,11 @@ public class BetaTelemetryServiceApi extends BaseApi {
    */
   private BetaTelemetryServiceReportBaseInformationResponse reportBaseInformation(BetaTelemetryServiceReportBaseInformationRequest betaTelemetryServiceReportBaseInformationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaTelemetryServiceReportBaseInformationRequest;
-    
+
     if (betaTelemetryServiceReportBaseInformationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaTelemetryServiceReportBaseInformationRequest' when calling reportBaseInformation");
     }
-    
+
     String localVarPath = "/zitadel.analytics.v2beta.TelemetryService/ReportBaseInformation";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -73,11 +71,11 @@ public class BetaTelemetryServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -133,11 +131,11 @@ public class BetaTelemetryServiceApi extends BaseApi {
    */
   private BetaTelemetryServiceReportResourceCountsResponse reportResourceCounts(BetaTelemetryServiceReportResourceCountsRequest betaTelemetryServiceReportResourceCountsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaTelemetryServiceReportResourceCountsRequest;
-    
+
     if (betaTelemetryServiceReportResourceCountsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaTelemetryServiceReportResourceCountsRequest' when calling reportResourceCounts");
     }
-    
+
     String localVarPath = "/zitadel.analytics.v2beta.TelemetryService/ReportResourceCounts";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -148,11 +146,11 @@ public class BetaTelemetryServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

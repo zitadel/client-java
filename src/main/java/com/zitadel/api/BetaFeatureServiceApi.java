@@ -5,10 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
-import com.zitadel.model.BetaFeatureServiceConnectError;
 import com.zitadel.model.BetaFeatureServiceGetInstanceFeaturesRequest;
 import com.zitadel.model.BetaFeatureServiceGetInstanceFeaturesResponse;
 import com.zitadel.model.BetaFeatureServiceGetOrganizationFeaturesRequest;
@@ -43,7 +41,7 @@ import java.util.StringJoiner;
 public class BetaFeatureServiceApi extends BaseApi {
 
   public BetaFeatureServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public BetaFeatureServiceApi(ApiClient apiClient) {
@@ -55,7 +53,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * GetInstanceFeatures
-   * 
+   *
    * @param betaFeatureServiceGetInstanceFeaturesRequest  (required)
    * @return BetaFeatureServiceGetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -67,7 +65,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * GetInstanceFeatures
-   * 
+   *
    * @param betaFeatureServiceGetInstanceFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaFeatureServiceGetInstanceFeaturesResponse
@@ -75,11 +73,11 @@ public class BetaFeatureServiceApi extends BaseApi {
    */
   private BetaFeatureServiceGetInstanceFeaturesResponse getInstanceFeatures(BetaFeatureServiceGetInstanceFeaturesRequest betaFeatureServiceGetInstanceFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaFeatureServiceGetInstanceFeaturesRequest;
-    
+
     if (betaFeatureServiceGetInstanceFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaFeatureServiceGetInstanceFeaturesRequest' when calling getInstanceFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2beta.FeatureService/GetInstanceFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -90,11 +88,11 @@ public class BetaFeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -130,7 +128,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * GetOrganizationFeatures
-   * 
+   *
    * @param betaFeatureServiceGetOrganizationFeaturesRequest  (required)
    * @return BetaFeatureServiceGetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -142,7 +140,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * GetOrganizationFeatures
-   * 
+   *
    * @param betaFeatureServiceGetOrganizationFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaFeatureServiceGetOrganizationFeaturesResponse
@@ -150,11 +148,11 @@ public class BetaFeatureServiceApi extends BaseApi {
    */
   private BetaFeatureServiceGetOrganizationFeaturesResponse getOrganizationFeatures(BetaFeatureServiceGetOrganizationFeaturesRequest betaFeatureServiceGetOrganizationFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaFeatureServiceGetOrganizationFeaturesRequest;
-    
+
     if (betaFeatureServiceGetOrganizationFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaFeatureServiceGetOrganizationFeaturesRequest' when calling getOrganizationFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2beta.FeatureService/GetOrganizationFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -165,11 +163,11 @@ public class BetaFeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -204,7 +202,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
               /**
               * GetSystemFeatures (Convenience Method)
-              * 
+              *
                 * @return BetaFeatureServiceGetSystemFeaturesResponse
               * @throws ApiException if fails to make API call
               */
@@ -215,7 +213,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * GetSystemFeatures
-   * 
+   *
    * @param body  (required)
    * @return BetaFeatureServiceGetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -227,7 +225,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * GetSystemFeatures
-   * 
+   *
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaFeatureServiceGetSystemFeaturesResponse
@@ -235,11 +233,11 @@ public class BetaFeatureServiceApi extends BaseApi {
    */
   private BetaFeatureServiceGetSystemFeaturesResponse getSystemFeatures(Object body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
-    
+
     if (body == null) {
       throw new IllegalArgumentException("Missing the required parameter 'body' when calling getSystemFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2beta.FeatureService/GetSystemFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -250,11 +248,11 @@ public class BetaFeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -290,7 +288,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * GetUserFeatures
-   * 
+   *
    * @param betaFeatureServiceGetUserFeaturesRequest  (required)
    * @return BetaFeatureServiceGetUserFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -302,7 +300,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * GetUserFeatures
-   * 
+   *
    * @param betaFeatureServiceGetUserFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaFeatureServiceGetUserFeaturesResponse
@@ -310,11 +308,11 @@ public class BetaFeatureServiceApi extends BaseApi {
    */
   private BetaFeatureServiceGetUserFeaturesResponse getUserFeatures(BetaFeatureServiceGetUserFeaturesRequest betaFeatureServiceGetUserFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaFeatureServiceGetUserFeaturesRequest;
-    
+
     if (betaFeatureServiceGetUserFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaFeatureServiceGetUserFeaturesRequest' when calling getUserFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2beta.FeatureService/GetUserFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -325,11 +323,11 @@ public class BetaFeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -364,7 +362,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
               /**
               * ResetInstanceFeatures (Convenience Method)
-              * 
+              *
                 * @return BetaFeatureServiceResetInstanceFeaturesResponse
               * @throws ApiException if fails to make API call
               */
@@ -375,7 +373,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * ResetInstanceFeatures
-   * 
+   *
    * @param body  (required)
    * @return BetaFeatureServiceResetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -387,7 +385,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * ResetInstanceFeatures
-   * 
+   *
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaFeatureServiceResetInstanceFeaturesResponse
@@ -395,11 +393,11 @@ public class BetaFeatureServiceApi extends BaseApi {
    */
   private BetaFeatureServiceResetInstanceFeaturesResponse resetInstanceFeatures(Object body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
-    
+
     if (body == null) {
       throw new IllegalArgumentException("Missing the required parameter 'body' when calling resetInstanceFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2beta.FeatureService/ResetInstanceFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -410,11 +408,11 @@ public class BetaFeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -450,7 +448,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * ResetOrganizationFeatures
-   * 
+   *
    * @param betaFeatureServiceResetOrganizationFeaturesRequest  (required)
    * @return BetaFeatureServiceResetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -462,7 +460,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * ResetOrganizationFeatures
-   * 
+   *
    * @param betaFeatureServiceResetOrganizationFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaFeatureServiceResetOrganizationFeaturesResponse
@@ -470,11 +468,11 @@ public class BetaFeatureServiceApi extends BaseApi {
    */
   private BetaFeatureServiceResetOrganizationFeaturesResponse resetOrganizationFeatures(BetaFeatureServiceResetOrganizationFeaturesRequest betaFeatureServiceResetOrganizationFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaFeatureServiceResetOrganizationFeaturesRequest;
-    
+
     if (betaFeatureServiceResetOrganizationFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaFeatureServiceResetOrganizationFeaturesRequest' when calling resetOrganizationFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2beta.FeatureService/ResetOrganizationFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -485,11 +483,11 @@ public class BetaFeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -524,7 +522,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
               /**
               * ResetSystemFeatures (Convenience Method)
-              * 
+              *
                 * @return BetaFeatureServiceResetSystemFeaturesResponse
               * @throws ApiException if fails to make API call
               */
@@ -535,7 +533,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * ResetSystemFeatures
-   * 
+   *
    * @param body  (required)
    * @return BetaFeatureServiceResetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -547,7 +545,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * ResetSystemFeatures
-   * 
+   *
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaFeatureServiceResetSystemFeaturesResponse
@@ -555,11 +553,11 @@ public class BetaFeatureServiceApi extends BaseApi {
    */
   private BetaFeatureServiceResetSystemFeaturesResponse resetSystemFeatures(Object body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
-    
+
     if (body == null) {
       throw new IllegalArgumentException("Missing the required parameter 'body' when calling resetSystemFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2beta.FeatureService/ResetSystemFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -570,11 +568,11 @@ public class BetaFeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -610,7 +608,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * ResetUserFeatures
-   * 
+   *
    * @param betaFeatureServiceResetUserFeaturesRequest  (required)
    * @return BetaFeatureServiceResetUserFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -622,7 +620,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * ResetUserFeatures
-   * 
+   *
    * @param betaFeatureServiceResetUserFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaFeatureServiceResetUserFeaturesResponse
@@ -630,11 +628,11 @@ public class BetaFeatureServiceApi extends BaseApi {
    */
   private BetaFeatureServiceResetUserFeaturesResponse resetUserFeatures(BetaFeatureServiceResetUserFeaturesRequest betaFeatureServiceResetUserFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaFeatureServiceResetUserFeaturesRequest;
-    
+
     if (betaFeatureServiceResetUserFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaFeatureServiceResetUserFeaturesRequest' when calling resetUserFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2beta.FeatureService/ResetUserFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -645,11 +643,11 @@ public class BetaFeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -685,7 +683,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * SetInstanceFeatures
-   * 
+   *
    * @param betaFeatureServiceSetInstanceFeaturesRequest  (required)
    * @return BetaFeatureServiceSetInstanceFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -697,7 +695,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * SetInstanceFeatures
-   * 
+   *
    * @param betaFeatureServiceSetInstanceFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaFeatureServiceSetInstanceFeaturesResponse
@@ -705,11 +703,11 @@ public class BetaFeatureServiceApi extends BaseApi {
    */
   private BetaFeatureServiceSetInstanceFeaturesResponse setInstanceFeatures(BetaFeatureServiceSetInstanceFeaturesRequest betaFeatureServiceSetInstanceFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaFeatureServiceSetInstanceFeaturesRequest;
-    
+
     if (betaFeatureServiceSetInstanceFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaFeatureServiceSetInstanceFeaturesRequest' when calling setInstanceFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2beta.FeatureService/SetInstanceFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -720,11 +718,11 @@ public class BetaFeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -760,7 +758,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * SetOrganizationFeatures
-   * 
+   *
    * @param betaFeatureServiceSetOrganizationFeaturesRequest  (required)
    * @return BetaFeatureServiceSetOrganizationFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -772,7 +770,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * SetOrganizationFeatures
-   * 
+   *
    * @param betaFeatureServiceSetOrganizationFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaFeatureServiceSetOrganizationFeaturesResponse
@@ -780,11 +778,11 @@ public class BetaFeatureServiceApi extends BaseApi {
    */
   private BetaFeatureServiceSetOrganizationFeaturesResponse setOrganizationFeatures(BetaFeatureServiceSetOrganizationFeaturesRequest betaFeatureServiceSetOrganizationFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaFeatureServiceSetOrganizationFeaturesRequest;
-    
+
     if (betaFeatureServiceSetOrganizationFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaFeatureServiceSetOrganizationFeaturesRequest' when calling setOrganizationFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2beta.FeatureService/SetOrganizationFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -795,11 +793,11 @@ public class BetaFeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -835,7 +833,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * SetSystemFeatures
-   * 
+   *
    * @param betaFeatureServiceSetSystemFeaturesRequest  (required)
    * @return BetaFeatureServiceSetSystemFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -847,7 +845,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * SetSystemFeatures
-   * 
+   *
    * @param betaFeatureServiceSetSystemFeaturesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaFeatureServiceSetSystemFeaturesResponse
@@ -855,11 +853,11 @@ public class BetaFeatureServiceApi extends BaseApi {
    */
   private BetaFeatureServiceSetSystemFeaturesResponse setSystemFeatures(BetaFeatureServiceSetSystemFeaturesRequest betaFeatureServiceSetSystemFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaFeatureServiceSetSystemFeaturesRequest;
-    
+
     if (betaFeatureServiceSetSystemFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaFeatureServiceSetSystemFeaturesRequest' when calling setSystemFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2beta.FeatureService/SetSystemFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -870,11 +868,11 @@ public class BetaFeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -910,7 +908,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * SetUserFeatures
-   * 
+   *
    * @param betaFeatureServiceSetUserFeatureRequest  (required)
    * @return BetaFeatureServiceSetUserFeaturesResponse
    * @throws ApiException if fails to make API call
@@ -922,7 +920,7 @@ public class BetaFeatureServiceApi extends BaseApi {
 
   /**
    * SetUserFeatures
-   * 
+   *
    * @param betaFeatureServiceSetUserFeatureRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaFeatureServiceSetUserFeaturesResponse
@@ -930,11 +928,11 @@ public class BetaFeatureServiceApi extends BaseApi {
    */
   private BetaFeatureServiceSetUserFeaturesResponse setUserFeatures(BetaFeatureServiceSetUserFeatureRequest betaFeatureServiceSetUserFeatureRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaFeatureServiceSetUserFeatureRequest;
-    
+
     if (betaFeatureServiceSetUserFeatureRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaFeatureServiceSetUserFeatureRequest' when calling setUserFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2beta.FeatureService/SetUserFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -945,11 +943,11 @@ public class BetaFeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

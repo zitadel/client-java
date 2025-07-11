@@ -1,30 +1,47 @@
 package com.zitadel;
 
+import com.zitadel.auth.Authenticator;
+
 import java.time.Duration;
+import java.util.Locale;
 
 public class Configuration {
 
-    private static volatile ApiClient defaultApiClient = new ApiClient();
+    private final Authenticator authenticator;
+    private final Duration timeout;
+    private final Duration connectTimeout;
+    private final String userAgent;
 
     /**
-     * Get the default API client, which would be used when creating API instances without providing
-     * an API client.
+     * Initializes a new instance of the Configuration.
      *
-     * @return Default API client
+     * @param authenticator  The authenticator for signing requests.
+     * @param timeout        The total request timeout.
+     * @param connectTimeout The connection timeout.
      */
-    public static ApiClient getDefaultApiClient() {
-        return defaultApiClient;
+    public Configuration(Authenticator authenticator, Duration timeout, Duration connectTimeout) {
+        this.authenticator = authenticator;
+        this.timeout = timeout;
+        this.connectTimeout = connectTimeout;
+        this.userAgent = myUserAgent();
     }
 
     /**
-     * Set the default API client, which would be used when creating API instances without providing
-     * an API client.
+     * Initializes a new instance with default timeouts.
      *
-     * @param apiClient API client
+     * @param authenticator The authenticator for signing requests.
      */
-    @SuppressWarnings("unused")
-    public static void setDefaultApiClient(ApiClient apiClient) {
-        defaultApiClient = apiClient;
+    public Configuration(Authenticator authenticator) {
+        this(authenticator, Duration.ofSeconds(30), Duration.ofSeconds(5));
+    }
+
+    private static String myUserAgent() {
+        return String.format("zitadel-client/%s (lang=java; lang_version=%s; os=%s; arch=%s)",
+            Version.VERSION,
+            System.getProperty("java.version"),
+            System.getProperty("os.name"),
+            System.getProperty("os.arch")
+        ).toLowerCase(Locale.ENGLISH);
     }
 
     /**
@@ -33,7 +50,7 @@ public class Configuration {
      * @return String The authentication access token.
      */
     public String getAccessToken() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.authenticator.getAuthToken();
     }
 
     /**
@@ -42,7 +59,7 @@ public class Configuration {
      * @return String The API host URL.
      */
     public String getHost() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.authenticator.getHost();
     }
 
     /**
@@ -51,7 +68,7 @@ public class Configuration {
      * @return String The User-Agent string.
      */
     public String getUserAgent() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.userAgent;
     }
 
     /**
@@ -60,7 +77,7 @@ public class Configuration {
      * @return Duration The total request timeout.
      */
     public Duration getTimeout() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.timeout;
     }
 
     /**
@@ -69,6 +86,6 @@ public class Configuration {
      * @return Duration The time to wait for a connection to be established.
      */
     public Duration getConnectTimeout() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.connectTimeout;
     }
 }

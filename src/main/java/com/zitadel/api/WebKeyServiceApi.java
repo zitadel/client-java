@@ -5,12 +5,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
 import com.zitadel.model.WebKeyServiceActivateWebKeyRequest;
 import com.zitadel.model.WebKeyServiceActivateWebKeyResponse;
-import com.zitadel.model.WebKeyServiceConnectError;
 import com.zitadel.model.WebKeyServiceCreateWebKeyRequest;
 import com.zitadel.model.WebKeyServiceCreateWebKeyResponse;
 import com.zitadel.model.WebKeyServiceDeleteWebKeyRequest;
@@ -29,7 +27,7 @@ import java.util.StringJoiner;
 public class WebKeyServiceApi extends BaseApi {
 
   public WebKeyServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public WebKeyServiceApi(ApiClient apiClient) {
@@ -61,11 +59,11 @@ public class WebKeyServiceApi extends BaseApi {
    */
   private WebKeyServiceActivateWebKeyResponse activateWebKey(WebKeyServiceActivateWebKeyRequest webKeyServiceActivateWebKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = webKeyServiceActivateWebKeyRequest;
-    
+
     if (webKeyServiceActivateWebKeyRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'webKeyServiceActivateWebKeyRequest' when calling activateWebKey");
     }
-    
+
     String localVarPath = "/zitadel.webkey.v2.WebKeyService/ActivateWebKey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -76,11 +74,11 @@ public class WebKeyServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -136,11 +134,11 @@ public class WebKeyServiceApi extends BaseApi {
    */
   private WebKeyServiceCreateWebKeyResponse createWebKey(WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = webKeyServiceCreateWebKeyRequest;
-    
+
     if (webKeyServiceCreateWebKeyRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'webKeyServiceCreateWebKeyRequest' when calling createWebKey");
     }
-    
+
     String localVarPath = "/zitadel.webkey.v2.WebKeyService/CreateWebKey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -151,11 +149,11 @@ public class WebKeyServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -211,11 +209,11 @@ public class WebKeyServiceApi extends BaseApi {
    */
   private WebKeyServiceDeleteWebKeyResponse deleteWebKey(WebKeyServiceDeleteWebKeyRequest webKeyServiceDeleteWebKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = webKeyServiceDeleteWebKeyRequest;
-    
+
     if (webKeyServiceDeleteWebKeyRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'webKeyServiceDeleteWebKeyRequest' when calling deleteWebKey");
     }
-    
+
     String localVarPath = "/zitadel.webkey.v2.WebKeyService/DeleteWebKey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -226,11 +224,11 @@ public class WebKeyServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -296,11 +294,11 @@ public class WebKeyServiceApi extends BaseApi {
    */
   private WebKeyServiceListWebKeysResponse listWebKeys(Object body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
-    
+
     if (body == null) {
       throw new IllegalArgumentException("Missing the required parameter 'body' when calling listWebKeys");
     }
-    
+
     String localVarPath = "/zitadel.webkey.v2.WebKeyService/ListWebKeys";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -311,11 +309,11 @@ public class WebKeyServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

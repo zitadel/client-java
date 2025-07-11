@@ -5,14 +5,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
 import com.zitadel.model.BetaOrganizationServiceActivateOrganizationRequest;
 import com.zitadel.model.BetaOrganizationServiceActivateOrganizationResponse;
 import com.zitadel.model.BetaOrganizationServiceAddOrganizationDomainRequest;
 import com.zitadel.model.BetaOrganizationServiceAddOrganizationDomainResponse;
-import com.zitadel.model.BetaOrganizationServiceConnectError;
 import com.zitadel.model.BetaOrganizationServiceCreateOrganizationRequest;
 import com.zitadel.model.BetaOrganizationServiceCreateOrganizationResponse;
 import com.zitadel.model.BetaOrganizationServiceDeactivateOrganizationRequest;
@@ -50,7 +48,7 @@ import java.util.StringJoiner;
 public class BetaOrganizationServiceApi extends BaseApi {
 
   public BetaOrganizationServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public BetaOrganizationServiceApi(ApiClient apiClient) {
@@ -82,11 +80,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceActivateOrganizationResponse activateOrganization(BetaOrganizationServiceActivateOrganizationRequest betaOrganizationServiceActivateOrganizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceActivateOrganizationRequest;
-    
+
     if (betaOrganizationServiceActivateOrganizationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceActivateOrganizationRequest' when calling activateOrganization");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/ActivateOrganization";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -97,11 +95,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -157,11 +155,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceAddOrganizationDomainResponse addOrganizationDomain(BetaOrganizationServiceAddOrganizationDomainRequest betaOrganizationServiceAddOrganizationDomainRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceAddOrganizationDomainRequest;
-    
+
     if (betaOrganizationServiceAddOrganizationDomainRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceAddOrganizationDomainRequest' when calling addOrganizationDomain");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/AddOrganizationDomain";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -172,11 +170,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -232,11 +230,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceCreateOrganizationResponse createOrganization(BetaOrganizationServiceCreateOrganizationRequest betaOrganizationServiceCreateOrganizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceCreateOrganizationRequest;
-    
+
     if (betaOrganizationServiceCreateOrganizationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceCreateOrganizationRequest' when calling createOrganization");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/CreateOrganization";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -247,11 +245,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -307,11 +305,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceDeactivateOrganizationResponse deactivateOrganization(BetaOrganizationServiceDeactivateOrganizationRequest betaOrganizationServiceDeactivateOrganizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceDeactivateOrganizationRequest;
-    
+
     if (betaOrganizationServiceDeactivateOrganizationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceDeactivateOrganizationRequest' when calling deactivateOrganization");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/DeactivateOrganization";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -322,11 +320,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -382,11 +380,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceDeleteOrganizationResponse deleteOrganization(BetaOrganizationServiceDeleteOrganizationRequest betaOrganizationServiceDeleteOrganizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceDeleteOrganizationRequest;
-    
+
     if (betaOrganizationServiceDeleteOrganizationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceDeleteOrganizationRequest' when calling deleteOrganization");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/DeleteOrganization";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -397,11 +395,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -457,11 +455,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceDeleteOrganizationDomainResponse deleteOrganizationDomain(BetaOrganizationServiceDeleteOrganizationDomainRequest betaOrganizationServiceDeleteOrganizationDomainRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceDeleteOrganizationDomainRequest;
-    
+
     if (betaOrganizationServiceDeleteOrganizationDomainRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceDeleteOrganizationDomainRequest' when calling deleteOrganizationDomain");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/DeleteOrganizationDomain";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -472,11 +470,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -532,11 +530,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceDeleteOrganizationMetadataResponse deleteOrganizationMetadata(BetaOrganizationServiceDeleteOrganizationMetadataRequest betaOrganizationServiceDeleteOrganizationMetadataRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceDeleteOrganizationMetadataRequest;
-    
+
     if (betaOrganizationServiceDeleteOrganizationMetadataRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceDeleteOrganizationMetadataRequest' when calling deleteOrganizationMetadata");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/DeleteOrganizationMetadata";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -547,11 +545,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -607,11 +605,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceGenerateOrganizationDomainValidationResponse generateOrganizationDomainValidation(BetaOrganizationServiceGenerateOrganizationDomainValidationRequest betaOrganizationServiceGenerateOrganizationDomainValidationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceGenerateOrganizationDomainValidationRequest;
-    
+
     if (betaOrganizationServiceGenerateOrganizationDomainValidationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceGenerateOrganizationDomainValidationRequest' when calling generateOrganizationDomainValidation");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/GenerateOrganizationDomainValidation";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -622,11 +620,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -682,11 +680,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceListOrganizationDomainsResponse listOrganizationDomains(BetaOrganizationServiceListOrganizationDomainsRequest betaOrganizationServiceListOrganizationDomainsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceListOrganizationDomainsRequest;
-    
+
     if (betaOrganizationServiceListOrganizationDomainsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceListOrganizationDomainsRequest' when calling listOrganizationDomains");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/ListOrganizationDomains";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -697,11 +695,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -757,11 +755,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceListOrganizationMetadataResponse listOrganizationMetadata(BetaOrganizationServiceListOrganizationMetadataRequest betaOrganizationServiceListOrganizationMetadataRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceListOrganizationMetadataRequest;
-    
+
     if (betaOrganizationServiceListOrganizationMetadataRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceListOrganizationMetadataRequest' when calling listOrganizationMetadata");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/ListOrganizationMetadata";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -772,11 +770,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -832,11 +830,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceListOrganizationsResponse listOrganizations(BetaOrganizationServiceListOrganizationsRequest betaOrganizationServiceListOrganizationsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceListOrganizationsRequest;
-    
+
     if (betaOrganizationServiceListOrganizationsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceListOrganizationsRequest' when calling listOrganizations");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/ListOrganizations";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -847,11 +845,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -907,11 +905,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceSetOrganizationMetadataResponse setOrganizationMetadata(BetaOrganizationServiceSetOrganizationMetadataRequest betaOrganizationServiceSetOrganizationMetadataRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceSetOrganizationMetadataRequest;
-    
+
     if (betaOrganizationServiceSetOrganizationMetadataRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceSetOrganizationMetadataRequest' when calling setOrganizationMetadata");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/SetOrganizationMetadata";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -922,11 +920,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -982,11 +980,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceUpdateOrganizationResponse updateOrganization(BetaOrganizationServiceUpdateOrganizationRequest betaOrganizationServiceUpdateOrganizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceUpdateOrganizationRequest;
-    
+
     if (betaOrganizationServiceUpdateOrganizationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceUpdateOrganizationRequest' when calling updateOrganization");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/UpdateOrganization";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -997,11 +995,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1057,11 +1055,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
    */
   private BetaOrganizationServiceVerifyOrganizationDomainResponse verifyOrganizationDomain(BetaOrganizationServiceVerifyOrganizationDomainRequest betaOrganizationServiceVerifyOrganizationDomainRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOrganizationServiceVerifyOrganizationDomainRequest;
-    
+
     if (betaOrganizationServiceVerifyOrganizationDomainRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOrganizationServiceVerifyOrganizationDomainRequest' when calling verifyOrganizationDomain");
     }
-    
+
     String localVarPath = "/zitadel.org.v2beta.OrganizationService/VerifyOrganizationDomain";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1072,11 +1070,11 @@ public class BetaOrganizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

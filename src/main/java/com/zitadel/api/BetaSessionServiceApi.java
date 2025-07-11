@@ -5,10 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
-import com.zitadel.model.BetaSessionServiceConnectError;
 import com.zitadel.model.BetaSessionServiceCreateSessionRequest;
 import com.zitadel.model.BetaSessionServiceCreateSessionResponse;
 import com.zitadel.model.BetaSessionServiceDeleteSessionRequest;
@@ -32,7 +30,7 @@ import java.util.StringJoiner;
 public class BetaSessionServiceApi extends BaseApi {
 
   public BetaSessionServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public BetaSessionServiceApi(ApiClient apiClient) {
@@ -64,11 +62,11 @@ public class BetaSessionServiceApi extends BaseApi {
    */
   private BetaSessionServiceCreateSessionResponse createSession(BetaSessionServiceCreateSessionRequest betaSessionServiceCreateSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSessionServiceCreateSessionRequest;
-    
+
     if (betaSessionServiceCreateSessionRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSessionServiceCreateSessionRequest' when calling createSession");
     }
-    
+
     String localVarPath = "/zitadel.session.v2beta.SessionService/CreateSession";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -79,11 +77,11 @@ public class BetaSessionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -139,11 +137,11 @@ public class BetaSessionServiceApi extends BaseApi {
    */
   private BetaSessionServiceDeleteSessionResponse deleteSession(BetaSessionServiceDeleteSessionRequest betaSessionServiceDeleteSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSessionServiceDeleteSessionRequest;
-    
+
     if (betaSessionServiceDeleteSessionRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSessionServiceDeleteSessionRequest' when calling deleteSession");
     }
-    
+
     String localVarPath = "/zitadel.session.v2beta.SessionService/DeleteSession";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -154,11 +152,11 @@ public class BetaSessionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -214,11 +212,11 @@ public class BetaSessionServiceApi extends BaseApi {
    */
   private BetaSessionServiceGetSessionResponse getSession(BetaSessionServiceGetSessionRequest betaSessionServiceGetSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSessionServiceGetSessionRequest;
-    
+
     if (betaSessionServiceGetSessionRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSessionServiceGetSessionRequest' when calling getSession");
     }
-    
+
     String localVarPath = "/zitadel.session.v2beta.SessionService/GetSession";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -229,11 +227,11 @@ public class BetaSessionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -289,11 +287,11 @@ public class BetaSessionServiceApi extends BaseApi {
    */
   private BetaSessionServiceListSessionsResponse listSessions(BetaSessionServiceListSessionsRequest betaSessionServiceListSessionsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSessionServiceListSessionsRequest;
-    
+
     if (betaSessionServiceListSessionsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSessionServiceListSessionsRequest' when calling listSessions");
     }
-    
+
     String localVarPath = "/zitadel.session.v2beta.SessionService/ListSessions";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -304,11 +302,11 @@ public class BetaSessionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -364,11 +362,11 @@ public class BetaSessionServiceApi extends BaseApi {
    */
   private BetaSessionServiceSetSessionResponse setSession(BetaSessionServiceSetSessionRequest betaSessionServiceSetSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaSessionServiceSetSessionRequest;
-    
+
     if (betaSessionServiceSetSessionRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaSessionServiceSetSessionRequest' when calling setSession");
     }
-    
+
     String localVarPath = "/zitadel.session.v2beta.SessionService/SetSession";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -379,11 +377,11 @@ public class BetaSessionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

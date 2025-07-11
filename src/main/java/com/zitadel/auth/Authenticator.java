@@ -32,6 +32,13 @@ public abstract class Authenticator {
     public abstract Map<String, String> getAuthHeaders() throws ZitadelException;
 
     /**
+     * Retrieve the authentication token needed for API requests.
+     *
+     * @return string The authentication token
+     */
+    public abstract String getAuthToken() throws ZitadelException;
+
+    /**
      * Returns the base host URL.
      *
      * @return The host URL.

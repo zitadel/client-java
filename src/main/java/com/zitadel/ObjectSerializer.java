@@ -7,8 +7,12 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 
+import javax.annotation.Nullable;
+
+@SuppressFBWarnings("THROWS_METHOD_THROWS_RUNTIMEEXCEPTION")
 public class ObjectSerializer {
 
     private final ObjectMapper objectMapper;
@@ -49,6 +53,7 @@ public class ObjectSerializer {
      * @param <T>          The generic type of the target object.
      * @return The deserialized object.
      */
+    @Nullable
     public <T> T deserialize(String responseBody, TypeReference<T> responseType) {
         if (responseBody == null || responseBody.isEmpty()) {
             return null;

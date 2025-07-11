@@ -5,12 +5,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
 import com.zitadel.model.BetaWebKeyServiceActivateWebKeyRequest;
 import com.zitadel.model.BetaWebKeyServiceActivateWebKeyResponse;
-import com.zitadel.model.BetaWebKeyServiceConnectError;
 import com.zitadel.model.BetaWebKeyServiceCreateWebKeyRequest;
 import com.zitadel.model.BetaWebKeyServiceCreateWebKeyResponse;
 import com.zitadel.model.BetaWebKeyServiceDeleteWebKeyRequest;
@@ -29,7 +27,7 @@ import java.util.StringJoiner;
 public class BetaWebKeyServiceApi extends BaseApi {
 
   public BetaWebKeyServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public BetaWebKeyServiceApi(ApiClient apiClient) {
@@ -61,11 +59,11 @@ public class BetaWebKeyServiceApi extends BaseApi {
    */
   private BetaWebKeyServiceActivateWebKeyResponse activateWebKey(BetaWebKeyServiceActivateWebKeyRequest betaWebKeyServiceActivateWebKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaWebKeyServiceActivateWebKeyRequest;
-    
+
     if (betaWebKeyServiceActivateWebKeyRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaWebKeyServiceActivateWebKeyRequest' when calling activateWebKey");
     }
-    
+
     String localVarPath = "/zitadel.webkey.v2beta.WebKeyService/ActivateWebKey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -76,11 +74,11 @@ public class BetaWebKeyServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -136,11 +134,11 @@ public class BetaWebKeyServiceApi extends BaseApi {
    */
   private BetaWebKeyServiceCreateWebKeyResponse createWebKey(BetaWebKeyServiceCreateWebKeyRequest betaWebKeyServiceCreateWebKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaWebKeyServiceCreateWebKeyRequest;
-    
+
     if (betaWebKeyServiceCreateWebKeyRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaWebKeyServiceCreateWebKeyRequest' when calling createWebKey");
     }
-    
+
     String localVarPath = "/zitadel.webkey.v2beta.WebKeyService/CreateWebKey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -151,11 +149,11 @@ public class BetaWebKeyServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -211,11 +209,11 @@ public class BetaWebKeyServiceApi extends BaseApi {
    */
   private BetaWebKeyServiceDeleteWebKeyResponse deleteWebKey(BetaWebKeyServiceDeleteWebKeyRequest betaWebKeyServiceDeleteWebKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaWebKeyServiceDeleteWebKeyRequest;
-    
+
     if (betaWebKeyServiceDeleteWebKeyRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaWebKeyServiceDeleteWebKeyRequest' when calling deleteWebKey");
     }
-    
+
     String localVarPath = "/zitadel.webkey.v2beta.WebKeyService/DeleteWebKey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -226,11 +224,11 @@ public class BetaWebKeyServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -296,11 +294,11 @@ public class BetaWebKeyServiceApi extends BaseApi {
    */
   private BetaWebKeyServiceListWebKeysResponse listWebKeys(Object body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
-    
+
     if (body == null) {
       throw new IllegalArgumentException("Missing the required parameter 'body' when calling listWebKeys");
     }
-    
+
     String localVarPath = "/zitadel.webkey.v2beta.WebKeyService/ListWebKeys";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -311,11 +309,11 @@ public class BetaWebKeyServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

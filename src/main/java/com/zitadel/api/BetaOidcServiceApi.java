@@ -5,10 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
-import com.zitadel.model.BetaOIDCServiceConnectError;
 import com.zitadel.model.BetaOIDCServiceCreateCallbackRequest;
 import com.zitadel.model.BetaOIDCServiceCreateCallbackResponse;
 import com.zitadel.model.BetaOIDCServiceGetAuthRequestRequest;
@@ -26,7 +24,7 @@ import java.util.StringJoiner;
 public class BetaOidcServiceApi extends BaseApi {
 
   public BetaOidcServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public BetaOidcServiceApi(ApiClient apiClient) {
@@ -38,7 +36,7 @@ public class BetaOidcServiceApi extends BaseApi {
 
   /**
    * CreateCallback
-   * 
+   *
    * @param betaOIDCServiceCreateCallbackRequest  (required)
    * @return BetaOIDCServiceCreateCallbackResponse
    * @throws ApiException if fails to make API call
@@ -50,7 +48,7 @@ public class BetaOidcServiceApi extends BaseApi {
 
   /**
    * CreateCallback
-   * 
+   *
    * @param betaOIDCServiceCreateCallbackRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOIDCServiceCreateCallbackResponse
@@ -58,11 +56,11 @@ public class BetaOidcServiceApi extends BaseApi {
    */
   private BetaOIDCServiceCreateCallbackResponse createCallback(BetaOIDCServiceCreateCallbackRequest betaOIDCServiceCreateCallbackRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOIDCServiceCreateCallbackRequest;
-    
+
     if (betaOIDCServiceCreateCallbackRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOIDCServiceCreateCallbackRequest' when calling createCallback");
     }
-    
+
     String localVarPath = "/zitadel.oidc.v2beta.OIDCService/CreateCallback";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -73,11 +71,11 @@ public class BetaOidcServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -113,7 +111,7 @@ public class BetaOidcServiceApi extends BaseApi {
 
   /**
    * GetAuthRequest
-   * 
+   *
    * @param betaOIDCServiceGetAuthRequestRequest  (required)
    * @return BetaOIDCServiceGetAuthRequestResponse
    * @throws ApiException if fails to make API call
@@ -125,7 +123,7 @@ public class BetaOidcServiceApi extends BaseApi {
 
   /**
    * GetAuthRequest
-   * 
+   *
    * @param betaOIDCServiceGetAuthRequestRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOIDCServiceGetAuthRequestResponse
@@ -133,11 +131,11 @@ public class BetaOidcServiceApi extends BaseApi {
    */
   private BetaOIDCServiceGetAuthRequestResponse getAuthRequest(BetaOIDCServiceGetAuthRequestRequest betaOIDCServiceGetAuthRequestRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaOIDCServiceGetAuthRequestRequest;
-    
+
     if (betaOIDCServiceGetAuthRequestRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaOIDCServiceGetAuthRequestRequest' when calling getAuthRequest");
     }
-    
+
     String localVarPath = "/zitadel.oidc.v2beta.OIDCService/GetAuthRequest";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -148,11 +146,11 @@ public class BetaOidcServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

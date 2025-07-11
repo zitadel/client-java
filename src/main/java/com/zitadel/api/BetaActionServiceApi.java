@@ -5,10 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
-import com.zitadel.model.BetaActionServiceConnectError;
 import com.zitadel.model.BetaActionServiceCreateTargetRequest;
 import com.zitadel.model.BetaActionServiceCreateTargetResponse;
 import com.zitadel.model.BetaActionServiceDeleteTargetRequest;
@@ -39,7 +37,7 @@ import java.util.StringJoiner;
 public class BetaActionServiceApi extends BaseApi {
 
   public BetaActionServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public BetaActionServiceApi(ApiClient apiClient) {
@@ -71,11 +69,11 @@ public class BetaActionServiceApi extends BaseApi {
    */
   private BetaActionServiceCreateTargetResponse createTarget(BetaActionServiceCreateTargetRequest betaActionServiceCreateTargetRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaActionServiceCreateTargetRequest;
-    
+
     if (betaActionServiceCreateTargetRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaActionServiceCreateTargetRequest' when calling createTarget");
     }
-    
+
     String localVarPath = "/zitadel.action.v2beta.ActionService/CreateTarget";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -86,11 +84,11 @@ public class BetaActionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -146,11 +144,11 @@ public class BetaActionServiceApi extends BaseApi {
    */
   private BetaActionServiceDeleteTargetResponse deleteTarget(BetaActionServiceDeleteTargetRequest betaActionServiceDeleteTargetRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaActionServiceDeleteTargetRequest;
-    
+
     if (betaActionServiceDeleteTargetRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaActionServiceDeleteTargetRequest' when calling deleteTarget");
     }
-    
+
     String localVarPath = "/zitadel.action.v2beta.ActionService/DeleteTarget";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -161,11 +159,11 @@ public class BetaActionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -221,11 +219,11 @@ public class BetaActionServiceApi extends BaseApi {
    */
   private BetaActionServiceGetTargetResponse getTarget(BetaActionServiceGetTargetRequest betaActionServiceGetTargetRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaActionServiceGetTargetRequest;
-    
+
     if (betaActionServiceGetTargetRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaActionServiceGetTargetRequest' when calling getTarget");
     }
-    
+
     String localVarPath = "/zitadel.action.v2beta.ActionService/GetTarget";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -236,11 +234,11 @@ public class BetaActionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -306,11 +304,11 @@ public class BetaActionServiceApi extends BaseApi {
    */
   private BetaActionServiceListExecutionFunctionsResponse listExecutionFunctions(Object body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
-    
+
     if (body == null) {
       throw new IllegalArgumentException("Missing the required parameter 'body' when calling listExecutionFunctions");
     }
-    
+
     String localVarPath = "/zitadel.action.v2beta.ActionService/ListExecutionFunctions";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -321,11 +319,11 @@ public class BetaActionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -391,11 +389,11 @@ public class BetaActionServiceApi extends BaseApi {
    */
   private BetaActionServiceListExecutionMethodsResponse listExecutionMethods(Object body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
-    
+
     if (body == null) {
       throw new IllegalArgumentException("Missing the required parameter 'body' when calling listExecutionMethods");
     }
-    
+
     String localVarPath = "/zitadel.action.v2beta.ActionService/ListExecutionMethods";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -406,11 +404,11 @@ public class BetaActionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -476,11 +474,11 @@ public class BetaActionServiceApi extends BaseApi {
    */
   private BetaActionServiceListExecutionServicesResponse listExecutionServices(Object body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
-    
+
     if (body == null) {
       throw new IllegalArgumentException("Missing the required parameter 'body' when calling listExecutionServices");
     }
-    
+
     String localVarPath = "/zitadel.action.v2beta.ActionService/ListExecutionServices";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -491,11 +489,11 @@ public class BetaActionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -551,11 +549,11 @@ public class BetaActionServiceApi extends BaseApi {
    */
   private BetaActionServiceListExecutionsResponse listExecutions(BetaActionServiceListExecutionsRequest betaActionServiceListExecutionsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaActionServiceListExecutionsRequest;
-    
+
     if (betaActionServiceListExecutionsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaActionServiceListExecutionsRequest' when calling listExecutions");
     }
-    
+
     String localVarPath = "/zitadel.action.v2beta.ActionService/ListExecutions";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -566,11 +564,11 @@ public class BetaActionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -626,11 +624,11 @@ public class BetaActionServiceApi extends BaseApi {
    */
   private BetaActionServiceListTargetsResponse listTargets(BetaActionServiceListTargetsRequest betaActionServiceListTargetsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaActionServiceListTargetsRequest;
-    
+
     if (betaActionServiceListTargetsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaActionServiceListTargetsRequest' when calling listTargets");
     }
-    
+
     String localVarPath = "/zitadel.action.v2beta.ActionService/ListTargets";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -641,11 +639,11 @@ public class BetaActionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -701,11 +699,11 @@ public class BetaActionServiceApi extends BaseApi {
    */
   private BetaActionServiceSetExecutionResponse setExecution(BetaActionServiceSetExecutionRequest betaActionServiceSetExecutionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaActionServiceSetExecutionRequest;
-    
+
     if (betaActionServiceSetExecutionRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaActionServiceSetExecutionRequest' when calling setExecution");
     }
-    
+
     String localVarPath = "/zitadel.action.v2beta.ActionService/SetExecution";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -716,11 +714,11 @@ public class BetaActionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -776,11 +774,11 @@ public class BetaActionServiceApi extends BaseApi {
    */
   private BetaActionServiceUpdateTargetResponse updateTarget(BetaActionServiceUpdateTargetRequest betaActionServiceUpdateTargetRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaActionServiceUpdateTargetRequest;
-    
+
     if (betaActionServiceUpdateTargetRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaActionServiceUpdateTargetRequest' when calling updateTarget");
     }
-    
+
     String localVarPath = "/zitadel.action.v2beta.ActionService/UpdateTarget";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -791,11 +789,11 @@ public class BetaActionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

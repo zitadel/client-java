@@ -5,14 +5,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
 import com.zitadel.model.BetaInstanceServiceAddCustomDomainRequest;
 import com.zitadel.model.BetaInstanceServiceAddCustomDomainResponse;
 import com.zitadel.model.BetaInstanceServiceAddTrustedDomainRequest;
 import com.zitadel.model.BetaInstanceServiceAddTrustedDomainResponse;
-import com.zitadel.model.BetaInstanceServiceConnectError;
 import com.zitadel.model.BetaInstanceServiceDeleteInstanceRequest;
 import com.zitadel.model.BetaInstanceServiceDeleteInstanceResponse;
 import com.zitadel.model.BetaInstanceServiceGetInstanceRequest;
@@ -42,7 +40,7 @@ import java.util.StringJoiner;
 public class BetaInstanceServiceApi extends BaseApi {
 
   public BetaInstanceServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public BetaInstanceServiceApi(ApiClient apiClient) {
@@ -74,11 +72,11 @@ public class BetaInstanceServiceApi extends BaseApi {
    */
   private BetaInstanceServiceAddCustomDomainResponse addCustomDomain(BetaInstanceServiceAddCustomDomainRequest betaInstanceServiceAddCustomDomainRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInstanceServiceAddCustomDomainRequest;
-    
+
     if (betaInstanceServiceAddCustomDomainRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInstanceServiceAddCustomDomainRequest' when calling addCustomDomain");
     }
-    
+
     String localVarPath = "/zitadel.instance.v2beta.InstanceService/AddCustomDomain";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -89,11 +87,11 @@ public class BetaInstanceServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -149,11 +147,11 @@ public class BetaInstanceServiceApi extends BaseApi {
    */
   private BetaInstanceServiceAddTrustedDomainResponse addTrustedDomain(BetaInstanceServiceAddTrustedDomainRequest betaInstanceServiceAddTrustedDomainRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInstanceServiceAddTrustedDomainRequest;
-    
+
     if (betaInstanceServiceAddTrustedDomainRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInstanceServiceAddTrustedDomainRequest' when calling addTrustedDomain");
     }
-    
+
     String localVarPath = "/zitadel.instance.v2beta.InstanceService/AddTrustedDomain";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -164,11 +162,11 @@ public class BetaInstanceServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -224,11 +222,11 @@ public class BetaInstanceServiceApi extends BaseApi {
    */
   private BetaInstanceServiceDeleteInstanceResponse deleteInstance(BetaInstanceServiceDeleteInstanceRequest betaInstanceServiceDeleteInstanceRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInstanceServiceDeleteInstanceRequest;
-    
+
     if (betaInstanceServiceDeleteInstanceRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInstanceServiceDeleteInstanceRequest' when calling deleteInstance");
     }
-    
+
     String localVarPath = "/zitadel.instance.v2beta.InstanceService/DeleteInstance";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -239,11 +237,11 @@ public class BetaInstanceServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -299,11 +297,11 @@ public class BetaInstanceServiceApi extends BaseApi {
    */
   private BetaInstanceServiceGetInstanceResponse getInstance(BetaInstanceServiceGetInstanceRequest betaInstanceServiceGetInstanceRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInstanceServiceGetInstanceRequest;
-    
+
     if (betaInstanceServiceGetInstanceRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInstanceServiceGetInstanceRequest' when calling getInstance");
     }
-    
+
     String localVarPath = "/zitadel.instance.v2beta.InstanceService/GetInstance";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -314,11 +312,11 @@ public class BetaInstanceServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -374,11 +372,11 @@ public class BetaInstanceServiceApi extends BaseApi {
    */
   private BetaInstanceServiceListCustomDomainsResponse listCustomDomains(BetaInstanceServiceListCustomDomainsRequest betaInstanceServiceListCustomDomainsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInstanceServiceListCustomDomainsRequest;
-    
+
     if (betaInstanceServiceListCustomDomainsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInstanceServiceListCustomDomainsRequest' when calling listCustomDomains");
     }
-    
+
     String localVarPath = "/zitadel.instance.v2beta.InstanceService/ListCustomDomains";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -389,11 +387,11 @@ public class BetaInstanceServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -449,11 +447,11 @@ public class BetaInstanceServiceApi extends BaseApi {
    */
   private BetaInstanceServiceListInstancesResponse listInstances(BetaInstanceServiceListInstancesRequest betaInstanceServiceListInstancesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInstanceServiceListInstancesRequest;
-    
+
     if (betaInstanceServiceListInstancesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInstanceServiceListInstancesRequest' when calling listInstances");
     }
-    
+
     String localVarPath = "/zitadel.instance.v2beta.InstanceService/ListInstances";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -464,11 +462,11 @@ public class BetaInstanceServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -524,11 +522,11 @@ public class BetaInstanceServiceApi extends BaseApi {
    */
   private BetaInstanceServiceListTrustedDomainsResponse listTrustedDomains(BetaInstanceServiceListTrustedDomainsRequest betaInstanceServiceListTrustedDomainsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInstanceServiceListTrustedDomainsRequest;
-    
+
     if (betaInstanceServiceListTrustedDomainsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInstanceServiceListTrustedDomainsRequest' when calling listTrustedDomains");
     }
-    
+
     String localVarPath = "/zitadel.instance.v2beta.InstanceService/ListTrustedDomains";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -539,11 +537,11 @@ public class BetaInstanceServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -599,11 +597,11 @@ public class BetaInstanceServiceApi extends BaseApi {
    */
   private BetaInstanceServiceRemoveCustomDomainResponse removeCustomDomain(BetaInstanceServiceRemoveCustomDomainRequest betaInstanceServiceRemoveCustomDomainRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInstanceServiceRemoveCustomDomainRequest;
-    
+
     if (betaInstanceServiceRemoveCustomDomainRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInstanceServiceRemoveCustomDomainRequest' when calling removeCustomDomain");
     }
-    
+
     String localVarPath = "/zitadel.instance.v2beta.InstanceService/RemoveCustomDomain";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -614,11 +612,11 @@ public class BetaInstanceServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -674,11 +672,11 @@ public class BetaInstanceServiceApi extends BaseApi {
    */
   private BetaInstanceServiceRemoveTrustedDomainResponse removeTrustedDomain(BetaInstanceServiceRemoveTrustedDomainRequest betaInstanceServiceRemoveTrustedDomainRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInstanceServiceRemoveTrustedDomainRequest;
-    
+
     if (betaInstanceServiceRemoveTrustedDomainRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInstanceServiceRemoveTrustedDomainRequest' when calling removeTrustedDomain");
     }
-    
+
     String localVarPath = "/zitadel.instance.v2beta.InstanceService/RemoveTrustedDomain";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -689,11 +687,11 @@ public class BetaInstanceServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -749,11 +747,11 @@ public class BetaInstanceServiceApi extends BaseApi {
    */
   private BetaInstanceServiceUpdateInstanceResponse updateInstance(BetaInstanceServiceUpdateInstanceRequest betaInstanceServiceUpdateInstanceRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInstanceServiceUpdateInstanceRequest;
-    
+
     if (betaInstanceServiceUpdateInstanceRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInstanceServiceUpdateInstanceRequest' when calling updateInstance");
     }
-    
+
     String localVarPath = "/zitadel.instance.v2beta.InstanceService/UpdateInstance";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -764,11 +762,11 @@ public class BetaInstanceServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

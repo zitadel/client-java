@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
 import com.zitadel.model.BetaProjectServiceActivateProjectGrantRequest;
@@ -14,7 +13,6 @@ import com.zitadel.model.BetaProjectServiceActivateProjectRequest;
 import com.zitadel.model.BetaProjectServiceActivateProjectResponse;
 import com.zitadel.model.BetaProjectServiceAddProjectRoleRequest;
 import com.zitadel.model.BetaProjectServiceAddProjectRoleResponse;
-import com.zitadel.model.BetaProjectServiceConnectError;
 import com.zitadel.model.BetaProjectServiceCreateProjectGrantRequest;
 import com.zitadel.model.BetaProjectServiceCreateProjectGrantResponse;
 import com.zitadel.model.BetaProjectServiceCreateProjectRequest;
@@ -56,7 +54,7 @@ import java.util.StringJoiner;
 public class BetaProjectServiceApi extends BaseApi {
 
   public BetaProjectServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public BetaProjectServiceApi(ApiClient apiClient) {
@@ -88,11 +86,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceActivateProjectResponse activateProject(BetaProjectServiceActivateProjectRequest betaProjectServiceActivateProjectRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceActivateProjectRequest;
-    
+
     if (betaProjectServiceActivateProjectRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceActivateProjectRequest' when calling activateProject");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/ActivateProject";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -103,11 +101,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -163,11 +161,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceActivateProjectGrantResponse activateProjectGrant(BetaProjectServiceActivateProjectGrantRequest betaProjectServiceActivateProjectGrantRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceActivateProjectGrantRequest;
-    
+
     if (betaProjectServiceActivateProjectGrantRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceActivateProjectGrantRequest' when calling activateProjectGrant");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/ActivateProjectGrant";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -178,11 +176,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -238,11 +236,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceAddProjectRoleResponse addProjectRole(BetaProjectServiceAddProjectRoleRequest betaProjectServiceAddProjectRoleRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceAddProjectRoleRequest;
-    
+
     if (betaProjectServiceAddProjectRoleRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceAddProjectRoleRequest' when calling addProjectRole");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/AddProjectRole";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -253,11 +251,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -313,11 +311,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceCreateProjectResponse createProject(BetaProjectServiceCreateProjectRequest betaProjectServiceCreateProjectRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceCreateProjectRequest;
-    
+
     if (betaProjectServiceCreateProjectRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceCreateProjectRequest' when calling createProject");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/CreateProject";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -328,11 +326,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -388,11 +386,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceCreateProjectGrantResponse createProjectGrant(BetaProjectServiceCreateProjectGrantRequest betaProjectServiceCreateProjectGrantRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceCreateProjectGrantRequest;
-    
+
     if (betaProjectServiceCreateProjectGrantRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceCreateProjectGrantRequest' when calling createProjectGrant");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/CreateProjectGrant";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -403,11 +401,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -463,11 +461,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceDeactivateProjectResponse deactivateProject(BetaProjectServiceDeactivateProjectRequest betaProjectServiceDeactivateProjectRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceDeactivateProjectRequest;
-    
+
     if (betaProjectServiceDeactivateProjectRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceDeactivateProjectRequest' when calling deactivateProject");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/DeactivateProject";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -478,11 +476,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -538,11 +536,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceDeactivateProjectGrantResponse deactivateProjectGrant(BetaProjectServiceDeactivateProjectGrantRequest betaProjectServiceDeactivateProjectGrantRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceDeactivateProjectGrantRequest;
-    
+
     if (betaProjectServiceDeactivateProjectGrantRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceDeactivateProjectGrantRequest' when calling deactivateProjectGrant");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/DeactivateProjectGrant";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -553,11 +551,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -613,11 +611,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceDeleteProjectResponse deleteProject(BetaProjectServiceDeleteProjectRequest betaProjectServiceDeleteProjectRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceDeleteProjectRequest;
-    
+
     if (betaProjectServiceDeleteProjectRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceDeleteProjectRequest' when calling deleteProject");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/DeleteProject";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -628,11 +626,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -688,11 +686,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceDeleteProjectGrantResponse deleteProjectGrant(BetaProjectServiceDeleteProjectGrantRequest betaProjectServiceDeleteProjectGrantRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceDeleteProjectGrantRequest;
-    
+
     if (betaProjectServiceDeleteProjectGrantRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceDeleteProjectGrantRequest' when calling deleteProjectGrant");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/DeleteProjectGrant";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -703,11 +701,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -763,11 +761,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceGetProjectResponse getProject(BetaProjectServiceGetProjectRequest betaProjectServiceGetProjectRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceGetProjectRequest;
-    
+
     if (betaProjectServiceGetProjectRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceGetProjectRequest' when calling getProject");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/GetProject";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -778,11 +776,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -838,11 +836,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceListProjectGrantsResponse listProjectGrants(BetaProjectServiceListProjectGrantsRequest betaProjectServiceListProjectGrantsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceListProjectGrantsRequest;
-    
+
     if (betaProjectServiceListProjectGrantsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceListProjectGrantsRequest' when calling listProjectGrants");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/ListProjectGrants";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -853,11 +851,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -913,11 +911,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceListProjectRolesResponse listProjectRoles(BetaProjectServiceListProjectRolesRequest betaProjectServiceListProjectRolesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceListProjectRolesRequest;
-    
+
     if (betaProjectServiceListProjectRolesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceListProjectRolesRequest' when calling listProjectRoles");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/ListProjectRoles";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -928,11 +926,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -988,11 +986,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceListProjectsResponse listProjects(BetaProjectServiceListProjectsRequest betaProjectServiceListProjectsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceListProjectsRequest;
-    
+
     if (betaProjectServiceListProjectsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceListProjectsRequest' when calling listProjects");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/ListProjects";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1003,11 +1001,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1063,11 +1061,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceRemoveProjectRoleResponse removeProjectRole(BetaProjectServiceRemoveProjectRoleRequest betaProjectServiceRemoveProjectRoleRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceRemoveProjectRoleRequest;
-    
+
     if (betaProjectServiceRemoveProjectRoleRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceRemoveProjectRoleRequest' when calling removeProjectRole");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/RemoveProjectRole";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1078,11 +1076,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1138,11 +1136,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceUpdateProjectResponse updateProject(BetaProjectServiceUpdateProjectRequest betaProjectServiceUpdateProjectRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceUpdateProjectRequest;
-    
+
     if (betaProjectServiceUpdateProjectRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceUpdateProjectRequest' when calling updateProject");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/UpdateProject";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1153,11 +1151,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1213,11 +1211,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceUpdateProjectGrantResponse updateProjectGrant(BetaProjectServiceUpdateProjectGrantRequest betaProjectServiceUpdateProjectGrantRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceUpdateProjectGrantRequest;
-    
+
     if (betaProjectServiceUpdateProjectGrantRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceUpdateProjectGrantRequest' when calling updateProjectGrant");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/UpdateProjectGrant";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1228,11 +1226,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1288,11 +1286,11 @@ public class BetaProjectServiceApi extends BaseApi {
    */
   private BetaProjectServiceUpdateProjectRoleResponse updateProjectRole(BetaProjectServiceUpdateProjectRoleRequest betaProjectServiceUpdateProjectRoleRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaProjectServiceUpdateProjectRoleRequest;
-    
+
     if (betaProjectServiceUpdateProjectRoleRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaProjectServiceUpdateProjectRoleRequest' when calling updateProjectRole");
     }
-    
+
     String localVarPath = "/zitadel.project.v2beta.ProjectService/UpdateProjectRole";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1303,11 +1301,11 @@ public class BetaProjectServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

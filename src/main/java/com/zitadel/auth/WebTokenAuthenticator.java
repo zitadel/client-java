@@ -70,10 +70,10 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
      * <p>
      * <code>
      * {
-     *   "type": "serviceaccount",
-     *   "keyId": "key-id",
-     *   "key": "private-key in PEM format",
-     *   "userId": "user-id"
+     * "type": "serviceaccount",
+     * "keyId": "key-id",
+     * "key": "private-key in PEM format",
+     * "userId": "user-id"
      * }
      * </code>
      *

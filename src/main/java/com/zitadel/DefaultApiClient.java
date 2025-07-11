@@ -1,6 +1,7 @@
 package com.zitadel;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
 import org.apache.hc.client5.http.config.ConnectionConfig;
 import org.apache.hc.client5.http.config.RequestConfig;
@@ -14,6 +15,7 @@ import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.apache.hc.core5.net.URIBuilder;
 import org.apache.hc.core5.util.Timeout;
 
+import javax.annotation.Nullable;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -25,6 +27,44 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+/**
+ * A self-contained, Apache HttpClient-based API client implementation.
+ *
+ * <p>This client supports custom HttpClient configuration via an optional configurator,
+ * allowing proxy settings, disabling TLS verification, adding custom headers, etc.</p>
+ *
+ * <p>Example:</p>
+ * <pre>
+ * import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+ * import org.apache.hc.core5.http.HttpHost;
+ * import org.apache.hc.core5.ssl.SSLContextBuilder;
+ * import org.apache.hc.core5.ssl.SSLContexts;
+ * import org.apache.hc.client5.http.ssl.NoopHostnameVerifier;
+ *
+ * Configuration config = new Configuration(new PersonalAccessTokenAuthenticator("https://api.example.com", "test-token"));
+ *
+ * Function<HttpClientBuilder, HttpClientBuilder> clientConfigurator = builder -> {
+ *     try {
+ *         // Disable SSL certificate verification
+ *         builder.setSSLContext(new SSLContextBuilder()
+ *             .loadTrustMaterial(null, (chain, authType) -> true)
+ *             .build());
+ *         builder.setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE);
+ *     } catch (Exception e) {
+ *         throw new RuntimeException("Failed to configure SSL context", e);
+ *     }
+ *
+ *     builder.setProxy(new HttpHost("proxy.example.com", 3128));
+ *     builder.addRequestInterceptorFirst((request, context) ->
+ *         request.addHeader("X-My-Custom-Header", "custom-value")
+ *     );
+ *
+ *     return builder;
+ * };
+ *
+ * DefaultApiClient apiClient = new DefaultApiClient(config, clientConfigurator);
+ * </pre>
+ */
 @SuppressWarnings("unused")
 public final class DefaultApiClient implements IApiClient {
     private final CloseableHttpClient httpClient;
@@ -36,20 +76,20 @@ public final class DefaultApiClient implements IApiClient {
         this.serializer = new ObjectSerializer();
 
         final ConnectionConfig connectionConfig = ConnectionConfig.custom()
-            .setConnectTimeout(Timeout.of(config.getConnectTimeout()))
-            .build();
+                .setConnectTimeout(Timeout.of(config.getConnectTimeout()))
+                .build();
 
         final PoolingHttpClientConnectionManager connectionManager = PoolingHttpClientConnectionManagerBuilder.create()
-            .setDefaultConnectionConfig(connectionConfig)
-            .build();
+                .setDefaultConnectionConfig(connectionConfig)
+                .build();
 
         final RequestConfig requestConfig = RequestConfig.custom()
-            .setResponseTimeout(Timeout.of(config.getTimeout()))
-            .build();
+                .setResponseTimeout(Timeout.of(config.getTimeout()))
+                .build();
 
         HttpClientBuilder builder = HttpClientBuilder.create()
-            .setConnectionManager(connectionManager)
-            .setDefaultRequestConfig(requestConfig);
+                .setConnectionManager(connectionManager)
+                .setDefaultRequestConfig(requestConfig);
 
         if (clientConfigurator != null) {
             builder = clientConfigurator.apply(builder);
@@ -64,16 +104,17 @@ public final class DefaultApiClient implements IApiClient {
     }
 
     @SuppressWarnings("UastIncorrectHttpHeaderInspection")
+    @SuppressFBWarnings("DE_MIGHT_IGNORE")
     @Override
     public Object invokeAPI(
-        String operationId,
-        String pathTemplate,
-        String method,
-        Map<String, Object> pathParams,
-        Map<String, Object> queryParams,
-        Map<String, Collection<String>> headerParams,
-        Object body,
-        Map<Integer, TypeReference<?>> responseTypes
+            String operationId,
+            String pathTemplate,
+            String method,
+            Map<String, Object> pathParams,
+            Map<String, Object> queryParams,
+            Map<String, Collection<String>> headerParams,
+            @Nullable Object body,
+            Map<Integer, TypeReference<?>> responseTypes
     ) throws ApiException {
         try {
             String finalPath = buildPath(pathTemplate, pathParams);
@@ -106,7 +147,7 @@ public final class DefaultApiClient implements IApiClient {
             return this.httpClient.execute(request, response -> {
                 final int statusCode = response.getCode();
                 final var responseEntity = response.getEntity();
-                final String responseBody = (responseEntity == null) ? "" : new String(responseEntity.getContent().readAllBytes());
+                final String responseBody = (responseEntity == null) ? "" : new String(responseEntity.getContent().readAllBytes(), StandardCharsets.UTF_8);
                 final var responseType = responseTypes.get(statusCode);
 
                 if (statusCode >= 200 && statusCode < 300) {

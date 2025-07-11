@@ -5,10 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
-import com.zitadel.model.FeatureServiceConnectError;
 import com.zitadel.model.FeatureServiceGetInstanceFeaturesRequest;
 import com.zitadel.model.FeatureServiceGetInstanceFeaturesResponse;
 import com.zitadel.model.FeatureServiceGetOrganizationFeaturesRequest;
@@ -43,7 +41,7 @@ import java.util.StringJoiner;
 public class FeatureServiceApi extends BaseApi {
 
   public FeatureServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public FeatureServiceApi(ApiClient apiClient) {
@@ -75,11 +73,11 @@ public class FeatureServiceApi extends BaseApi {
    */
   private FeatureServiceGetInstanceFeaturesResponse getInstanceFeatures(FeatureServiceGetInstanceFeaturesRequest featureServiceGetInstanceFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = featureServiceGetInstanceFeaturesRequest;
-    
+
     if (featureServiceGetInstanceFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'featureServiceGetInstanceFeaturesRequest' when calling getInstanceFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2.FeatureService/GetInstanceFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -90,11 +88,11 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -150,11 +148,11 @@ public class FeatureServiceApi extends BaseApi {
    */
   private FeatureServiceGetOrganizationFeaturesResponse getOrganizationFeatures(FeatureServiceGetOrganizationFeaturesRequest featureServiceGetOrganizationFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = featureServiceGetOrganizationFeaturesRequest;
-    
+
     if (featureServiceGetOrganizationFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'featureServiceGetOrganizationFeaturesRequest' when calling getOrganizationFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2.FeatureService/GetOrganizationFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -165,11 +163,11 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -235,11 +233,11 @@ public class FeatureServiceApi extends BaseApi {
    */
   private FeatureServiceGetSystemFeaturesResponse getSystemFeatures(Object body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
-    
+
     if (body == null) {
       throw new IllegalArgumentException("Missing the required parameter 'body' when calling getSystemFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2.FeatureService/GetSystemFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -250,11 +248,11 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -310,11 +308,11 @@ public class FeatureServiceApi extends BaseApi {
    */
   private FeatureServiceGetUserFeaturesResponse getUserFeatures(FeatureServiceGetUserFeaturesRequest featureServiceGetUserFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = featureServiceGetUserFeaturesRequest;
-    
+
     if (featureServiceGetUserFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'featureServiceGetUserFeaturesRequest' when calling getUserFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2.FeatureService/GetUserFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -325,11 +323,11 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -395,11 +393,11 @@ public class FeatureServiceApi extends BaseApi {
    */
   private FeatureServiceResetInstanceFeaturesResponse resetInstanceFeatures(Object body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
-    
+
     if (body == null) {
       throw new IllegalArgumentException("Missing the required parameter 'body' when calling resetInstanceFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2.FeatureService/ResetInstanceFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -410,11 +408,11 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -470,11 +468,11 @@ public class FeatureServiceApi extends BaseApi {
    */
   private FeatureServiceResetOrganizationFeaturesResponse resetOrganizationFeatures(FeatureServiceResetOrganizationFeaturesRequest featureServiceResetOrganizationFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = featureServiceResetOrganizationFeaturesRequest;
-    
+
     if (featureServiceResetOrganizationFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'featureServiceResetOrganizationFeaturesRequest' when calling resetOrganizationFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2.FeatureService/ResetOrganizationFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -485,11 +483,11 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -555,11 +553,11 @@ public class FeatureServiceApi extends BaseApi {
    */
   private FeatureServiceResetSystemFeaturesResponse resetSystemFeatures(Object body, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = body;
-    
+
     if (body == null) {
       throw new IllegalArgumentException("Missing the required parameter 'body' when calling resetSystemFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2.FeatureService/ResetSystemFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -570,11 +568,11 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -630,11 +628,11 @@ public class FeatureServiceApi extends BaseApi {
    */
   private FeatureServiceResetUserFeaturesResponse resetUserFeatures(FeatureServiceResetUserFeaturesRequest featureServiceResetUserFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = featureServiceResetUserFeaturesRequest;
-    
+
     if (featureServiceResetUserFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'featureServiceResetUserFeaturesRequest' when calling resetUserFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2.FeatureService/ResetUserFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -645,11 +643,11 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -705,11 +703,11 @@ public class FeatureServiceApi extends BaseApi {
    */
   private FeatureServiceSetInstanceFeaturesResponse setInstanceFeatures(FeatureServiceSetInstanceFeaturesRequest featureServiceSetInstanceFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = featureServiceSetInstanceFeaturesRequest;
-    
+
     if (featureServiceSetInstanceFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'featureServiceSetInstanceFeaturesRequest' when calling setInstanceFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2.FeatureService/SetInstanceFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -720,11 +718,11 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -780,11 +778,11 @@ public class FeatureServiceApi extends BaseApi {
    */
   private FeatureServiceSetOrganizationFeaturesResponse setOrganizationFeatures(FeatureServiceSetOrganizationFeaturesRequest featureServiceSetOrganizationFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = featureServiceSetOrganizationFeaturesRequest;
-    
+
     if (featureServiceSetOrganizationFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'featureServiceSetOrganizationFeaturesRequest' when calling setOrganizationFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2.FeatureService/SetOrganizationFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -795,11 +793,11 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -855,11 +853,11 @@ public class FeatureServiceApi extends BaseApi {
    */
   private FeatureServiceSetSystemFeaturesResponse setSystemFeatures(FeatureServiceSetSystemFeaturesRequest featureServiceSetSystemFeaturesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = featureServiceSetSystemFeaturesRequest;
-    
+
     if (featureServiceSetSystemFeaturesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'featureServiceSetSystemFeaturesRequest' when calling setSystemFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2.FeatureService/SetSystemFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -870,11 +868,11 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -930,11 +928,11 @@ public class FeatureServiceApi extends BaseApi {
    */
   private FeatureServiceSetUserFeaturesResponse setUserFeatures(FeatureServiceSetUserFeatureRequest featureServiceSetUserFeatureRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = featureServiceSetUserFeatureRequest;
-    
+
     if (featureServiceSetUserFeatureRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'featureServiceSetUserFeatureRequest' when calling setUserFeatures");
     }
-    
+
     String localVarPath = "/zitadel.feature.v2.FeatureService/SetUserFeatures";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -945,11 +943,11 @@ public class FeatureServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

@@ -5,10 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
-import com.zitadel.model.BetaInternalPermissionServiceConnectError;
 import com.zitadel.model.BetaInternalPermissionServiceCreateAdministratorRequest;
 import com.zitadel.model.BetaInternalPermissionServiceCreateAdministratorResponse;
 import com.zitadel.model.BetaInternalPermissionServiceDeleteAdministratorRequest;
@@ -30,7 +28,7 @@ import java.util.StringJoiner;
 public class BetaInternalPermissionServiceApi extends BaseApi {
 
   public BetaInternalPermissionServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public BetaInternalPermissionServiceApi(ApiClient apiClient) {
@@ -62,11 +60,11 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
    */
   private BetaInternalPermissionServiceCreateAdministratorResponse createAdministrator(BetaInternalPermissionServiceCreateAdministratorRequest betaInternalPermissionServiceCreateAdministratorRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInternalPermissionServiceCreateAdministratorRequest;
-    
+
     if (betaInternalPermissionServiceCreateAdministratorRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInternalPermissionServiceCreateAdministratorRequest' when calling createAdministrator");
     }
-    
+
     String localVarPath = "/zitadel.internal_permission.v2beta.InternalPermissionService/CreateAdministrator";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -77,11 +75,11 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -137,11 +135,11 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
    */
   private BetaInternalPermissionServiceDeleteAdministratorResponse deleteAdministrator(BetaInternalPermissionServiceDeleteAdministratorRequest betaInternalPermissionServiceDeleteAdministratorRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInternalPermissionServiceDeleteAdministratorRequest;
-    
+
     if (betaInternalPermissionServiceDeleteAdministratorRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInternalPermissionServiceDeleteAdministratorRequest' when calling deleteAdministrator");
     }
-    
+
     String localVarPath = "/zitadel.internal_permission.v2beta.InternalPermissionService/DeleteAdministrator";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -152,11 +150,11 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -212,11 +210,11 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
    */
   private BetaInternalPermissionServiceListAdministratorsResponse listAdministrators(BetaInternalPermissionServiceListAdministratorsRequest betaInternalPermissionServiceListAdministratorsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInternalPermissionServiceListAdministratorsRequest;
-    
+
     if (betaInternalPermissionServiceListAdministratorsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInternalPermissionServiceListAdministratorsRequest' when calling listAdministrators");
     }
-    
+
     String localVarPath = "/zitadel.internal_permission.v2beta.InternalPermissionService/ListAdministrators";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -227,11 +225,11 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -287,11 +285,11 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
    */
   private BetaInternalPermissionServiceUpdateAdministratorResponse updateAdministrator(BetaInternalPermissionServiceUpdateAdministratorRequest betaInternalPermissionServiceUpdateAdministratorRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaInternalPermissionServiceUpdateAdministratorRequest;
-    
+
     if (betaInternalPermissionServiceUpdateAdministratorRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaInternalPermissionServiceUpdateAdministratorRequest' when calling updateAdministrator");
     }
-    
+
     String localVarPath = "/zitadel.internal_permission.v2beta.InternalPermissionService/UpdateAdministrator";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -302,11 +300,11 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

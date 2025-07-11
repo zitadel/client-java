@@ -5,12 +5,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
 import com.zitadel.model.BetaAuthorizationServiceActivateAuthorizationRequest;
 import com.zitadel.model.BetaAuthorizationServiceActivateAuthorizationResponse;
-import com.zitadel.model.BetaAuthorizationServiceConnectError;
 import com.zitadel.model.BetaAuthorizationServiceCreateAuthorizationRequest;
 import com.zitadel.model.BetaAuthorizationServiceCreateAuthorizationResponse;
 import com.zitadel.model.BetaAuthorizationServiceDeactivateAuthorizationRequest;
@@ -34,7 +32,7 @@ import java.util.StringJoiner;
 public class BetaAuthorizationServiceApi extends BaseApi {
 
   public BetaAuthorizationServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public BetaAuthorizationServiceApi(ApiClient apiClient) {
@@ -66,11 +64,11 @@ public class BetaAuthorizationServiceApi extends BaseApi {
    */
   private BetaAuthorizationServiceActivateAuthorizationResponse activateAuthorization(BetaAuthorizationServiceActivateAuthorizationRequest betaAuthorizationServiceActivateAuthorizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaAuthorizationServiceActivateAuthorizationRequest;
-    
+
     if (betaAuthorizationServiceActivateAuthorizationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaAuthorizationServiceActivateAuthorizationRequest' when calling activateAuthorization");
     }
-    
+
     String localVarPath = "/zitadel.authorization.v2beta.AuthorizationService/ActivateAuthorization";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -81,11 +79,11 @@ public class BetaAuthorizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -141,11 +139,11 @@ public class BetaAuthorizationServiceApi extends BaseApi {
    */
   private BetaAuthorizationServiceCreateAuthorizationResponse createAuthorization(BetaAuthorizationServiceCreateAuthorizationRequest betaAuthorizationServiceCreateAuthorizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaAuthorizationServiceCreateAuthorizationRequest;
-    
+
     if (betaAuthorizationServiceCreateAuthorizationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaAuthorizationServiceCreateAuthorizationRequest' when calling createAuthorization");
     }
-    
+
     String localVarPath = "/zitadel.authorization.v2beta.AuthorizationService/CreateAuthorization";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -156,11 +154,11 @@ public class BetaAuthorizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -216,11 +214,11 @@ public class BetaAuthorizationServiceApi extends BaseApi {
    */
   private BetaAuthorizationServiceDeactivateAuthorizationResponse deactivateAuthorization(BetaAuthorizationServiceDeactivateAuthorizationRequest betaAuthorizationServiceDeactivateAuthorizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaAuthorizationServiceDeactivateAuthorizationRequest;
-    
+
     if (betaAuthorizationServiceDeactivateAuthorizationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaAuthorizationServiceDeactivateAuthorizationRequest' when calling deactivateAuthorization");
     }
-    
+
     String localVarPath = "/zitadel.authorization.v2beta.AuthorizationService/DeactivateAuthorization";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -231,11 +229,11 @@ public class BetaAuthorizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -291,11 +289,11 @@ public class BetaAuthorizationServiceApi extends BaseApi {
    */
   private BetaAuthorizationServiceDeleteAuthorizationResponse deleteAuthorization(BetaAuthorizationServiceDeleteAuthorizationRequest betaAuthorizationServiceDeleteAuthorizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaAuthorizationServiceDeleteAuthorizationRequest;
-    
+
     if (betaAuthorizationServiceDeleteAuthorizationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaAuthorizationServiceDeleteAuthorizationRequest' when calling deleteAuthorization");
     }
-    
+
     String localVarPath = "/zitadel.authorization.v2beta.AuthorizationService/DeleteAuthorization";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -306,11 +304,11 @@ public class BetaAuthorizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -366,11 +364,11 @@ public class BetaAuthorizationServiceApi extends BaseApi {
    */
   private BetaAuthorizationServiceListAuthorizationsResponse listAuthorizations(BetaAuthorizationServiceListAuthorizationsRequest betaAuthorizationServiceListAuthorizationsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaAuthorizationServiceListAuthorizationsRequest;
-    
+
     if (betaAuthorizationServiceListAuthorizationsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaAuthorizationServiceListAuthorizationsRequest' when calling listAuthorizations");
     }
-    
+
     String localVarPath = "/zitadel.authorization.v2beta.AuthorizationService/ListAuthorizations";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -381,11 +379,11 @@ public class BetaAuthorizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -441,11 +439,11 @@ public class BetaAuthorizationServiceApi extends BaseApi {
    */
   private BetaAuthorizationServiceUpdateAuthorizationResponse updateAuthorization(BetaAuthorizationServiceUpdateAuthorizationRequest betaAuthorizationServiceUpdateAuthorizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = betaAuthorizationServiceUpdateAuthorizationRequest;
-    
+
     if (betaAuthorizationServiceUpdateAuthorizationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'betaAuthorizationServiceUpdateAuthorizationRequest' when calling updateAuthorization");
     }
-    
+
     String localVarPath = "/zitadel.authorization.v2beta.AuthorizationService/UpdateAuthorization";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -456,11 +454,11 @@ public class BetaAuthorizationServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

@@ -57,12 +57,12 @@ public class ApiClient {
                 System.getProperty("os.arch"))
             .toLowerCase(Locale.ENGLISH);
     private static final List<String> bodyMethods = Arrays.asList("POST", "PUT", "DELETE", "PATCH");
+    public static volatile ApiClient defaultApiClient = new ApiClient();
     private final Authenticator authenticator;
     private final DateTimeFormatter offsetDateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
     private final DateFormat dateFormat;
     @Nullable
     protected String tempFolderPath = null;
-    private boolean debugging = false;
     private CloseableHttpClient httpClient;
     private ObjectMapper objectMapper;
 
@@ -140,28 +140,6 @@ public class ApiClient {
     @SuppressWarnings("unused")
     public ApiClient setTempFolderPath(String tempFolderPath) {
         this.tempFolderPath = tempFolderPath;
-        return this;
-    }
-
-    /**
-     * Check that whether debugging is enabled for this API client.
-     *
-     * @return True if debugging is on
-     */
-    @SuppressWarnings("unused")
-    public boolean isDebugging() {
-        return debugging;
-    }
-
-    /**
-     * Enable/disable debugging for this API client.
-     *
-     * @param debugging To enable (true) or disable (false) debugging
-     * @return API client
-     */
-    @SuppressWarnings("unused")
-    public ApiClient setDebugging(boolean debugging) {
-        this.debugging = debugging;
         return this;
     }
 
@@ -607,7 +585,8 @@ public class ApiClient {
 
     /**
      * Invoke API by sending an HTTP request with the given options.
-     *9990
+     * 9990
+     *
      * @param <T>                   Type
      * @param path                  The sub-path of the HTTP URL
      * @param method                The request method, one of "GET", "POST", "PUT", and "DELETE"

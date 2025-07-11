@@ -5,10 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
-import com.zitadel.model.IdentityProviderServiceConnectError;
 import com.zitadel.model.IdentityProviderServiceGetIDPByIDRequest;
 import com.zitadel.model.IdentityProviderServiceGetIDPByIDResponse;
 
@@ -24,7 +22,7 @@ import java.util.StringJoiner;
 public class IdentityProviderServiceApi extends BaseApi {
 
   public IdentityProviderServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public IdentityProviderServiceApi(ApiClient apiClient) {
@@ -56,11 +54,11 @@ public class IdentityProviderServiceApi extends BaseApi {
    */
   private IdentityProviderServiceGetIDPByIDResponse getIDPByID(IdentityProviderServiceGetIDPByIDRequest identityProviderServiceGetIDPByIDRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = identityProviderServiceGetIDPByIDRequest;
-    
+
     if (identityProviderServiceGetIDPByIDRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'identityProviderServiceGetIDPByIDRequest' when calling getIDPByID");
     }
-    
+
     String localVarPath = "/zitadel.idp.v2.IdentityProviderService/GetIDPByID";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -71,11 +69,11 @@ public class IdentityProviderServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

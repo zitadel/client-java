@@ -5,11 +5,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
 import com.zitadel.model.OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest;
-import com.zitadel.model.OIDCServiceConnectError;
 import com.zitadel.model.OIDCServiceCreateCallbackRequest;
 import com.zitadel.model.OIDCServiceCreateCallbackResponse;
 import com.zitadel.model.OIDCServiceGetAuthRequestRequest;
@@ -29,7 +27,7 @@ import java.util.StringJoiner;
 public class OidcServiceApi extends BaseApi {
 
   public OidcServiceApi() {
-    super(Configuration.getDefaultApiClient());
+    super(ApiClient.defaultApiClient);
   }
 
   public OidcServiceApi(ApiClient apiClient) {
@@ -61,11 +59,11 @@ public class OidcServiceApi extends BaseApi {
    */
   private Object authorizeOrDenyDeviceAuthorization(OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest;
-    
+
     if (oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest' when calling authorizeOrDenyDeviceAuthorization");
     }
-    
+
     String localVarPath = "/zitadel.oidc.v2.OIDCService/AuthorizeOrDenyDeviceAuthorization";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -76,11 +74,11 @@ public class OidcServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -116,7 +114,7 @@ public class OidcServiceApi extends BaseApi {
 
   /**
    * CreateCallback
-   * 
+   *
    * @param oiDCServiceCreateCallbackRequest  (required)
    * @return OIDCServiceCreateCallbackResponse
    * @throws ApiException if fails to make API call
@@ -128,7 +126,7 @@ public class OidcServiceApi extends BaseApi {
 
   /**
    * CreateCallback
-   * 
+   *
    * @param oiDCServiceCreateCallbackRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return OIDCServiceCreateCallbackResponse
@@ -136,11 +134,11 @@ public class OidcServiceApi extends BaseApi {
    */
   private OIDCServiceCreateCallbackResponse createCallback(OIDCServiceCreateCallbackRequest oiDCServiceCreateCallbackRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = oiDCServiceCreateCallbackRequest;
-    
+
     if (oiDCServiceCreateCallbackRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'oiDCServiceCreateCallbackRequest' when calling createCallback");
     }
-    
+
     String localVarPath = "/zitadel.oidc.v2.OIDCService/CreateCallback";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -151,11 +149,11 @@ public class OidcServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -191,7 +189,7 @@ public class OidcServiceApi extends BaseApi {
 
   /**
    * GetAuthRequest
-   * 
+   *
    * @param oiDCServiceGetAuthRequestRequest  (required)
    * @return OIDCServiceGetAuthRequestResponse
    * @throws ApiException if fails to make API call
@@ -203,7 +201,7 @@ public class OidcServiceApi extends BaseApi {
 
   /**
    * GetAuthRequest
-   * 
+   *
    * @param oiDCServiceGetAuthRequestRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return OIDCServiceGetAuthRequestResponse
@@ -211,11 +209,11 @@ public class OidcServiceApi extends BaseApi {
    */
   private OIDCServiceGetAuthRequestResponse getAuthRequest(OIDCServiceGetAuthRequestRequest oiDCServiceGetAuthRequestRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = oiDCServiceGetAuthRequestRequest;
-    
+
     if (oiDCServiceGetAuthRequestRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'oiDCServiceGetAuthRequestRequest' when calling getAuthRequest");
     }
-    
+
     String localVarPath = "/zitadel.oidc.v2.OIDCService/GetAuthRequest";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -226,11 +224,11 @@ public class OidcServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -286,11 +284,11 @@ public class OidcServiceApi extends BaseApi {
    */
   private OIDCServiceGetDeviceAuthorizationRequestResponse getDeviceAuthorizationRequest(OIDCServiceGetDeviceAuthorizationRequestRequest oiDCServiceGetDeviceAuthorizationRequestRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = oiDCServiceGetDeviceAuthorizationRequestRequest;
-    
+
     if (oiDCServiceGetDeviceAuthorizationRequestRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'oiDCServiceGetDeviceAuthorizationRequestRequest' when calling getDeviceAuthorizationRequest");
     }
-    
+
     String localVarPath = "/zitadel.oidc.v2.OIDCService/GetDeviceAuthorizationRequest";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -301,11 +299,11 @@ public class OidcServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

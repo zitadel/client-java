@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
 import com.zitadel.model.UserServiceAddHumanUserRequest;
@@ -22,7 +21,6 @@ import com.zitadel.model.UserServiceAddPersonalAccessTokenRequest;
 import com.zitadel.model.UserServiceAddPersonalAccessTokenResponse;
 import com.zitadel.model.UserServiceAddSecretRequest;
 import com.zitadel.model.UserServiceAddSecretResponse;
-import com.zitadel.model.UserServiceConnectError;
 import com.zitadel.model.UserServiceCreateInviteCodeRequest;
 import com.zitadel.model.UserServiceCreateInviteCodeResponse;
 import com.zitadel.model.UserServiceCreatePasskeyRegistrationLinkRequest;
@@ -138,7 +136,7 @@ import java.util.StringJoiner;
 public class UserServiceApi extends BaseApi {
 
   public UserServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public UserServiceApi(ApiClient apiClient) {
@@ -170,11 +168,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceAddHumanUserResponse addHumanUser(UserServiceAddHumanUserRequest userServiceAddHumanUserRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceAddHumanUserRequest;
-    
+
     if (userServiceAddHumanUserRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceAddHumanUserRequest' when calling addHumanUser");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/AddHumanUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -185,11 +183,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -245,11 +243,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceAddIDPLinkResponse addIDPLink(UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceAddIDPLinkRequest;
-    
+
     if (userServiceAddIDPLinkRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceAddIDPLinkRequest' when calling addIDPLink");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/AddIDPLink";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -260,11 +258,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -320,11 +318,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceAddKeyResponse addKey(UserServiceAddKeyRequest userServiceAddKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceAddKeyRequest;
-    
+
     if (userServiceAddKeyRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceAddKeyRequest' when calling addKey");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/AddKey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -335,11 +333,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -395,11 +393,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceAddOTPEmailResponse addOTPEmail(UserServiceAddOTPEmailRequest userServiceAddOTPEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceAddOTPEmailRequest;
-    
+
     if (userServiceAddOTPEmailRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceAddOTPEmailRequest' when calling addOTPEmail");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/AddOTPEmail";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -410,11 +408,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -470,11 +468,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceAddOTPSMSResponse addOTPSMS(UserServiceAddOTPSMSRequest userServiceAddOTPSMSRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceAddOTPSMSRequest;
-    
+
     if (userServiceAddOTPSMSRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceAddOTPSMSRequest' when calling addOTPSMS");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/AddOTPSMS";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -485,11 +483,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -545,11 +543,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceAddPersonalAccessTokenResponse addPersonalAccessToken(UserServiceAddPersonalAccessTokenRequest userServiceAddPersonalAccessTokenRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceAddPersonalAccessTokenRequest;
-    
+
     if (userServiceAddPersonalAccessTokenRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceAddPersonalAccessTokenRequest' when calling addPersonalAccessToken");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/AddPersonalAccessToken";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -560,11 +558,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -620,11 +618,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceAddSecretResponse addSecret(UserServiceAddSecretRequest userServiceAddSecretRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceAddSecretRequest;
-    
+
     if (userServiceAddSecretRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceAddSecretRequest' when calling addSecret");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/AddSecret";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -635,11 +633,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -695,11 +693,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceCreateInviteCodeResponse createInviteCode(UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceCreateInviteCodeRequest;
-    
+
     if (userServiceCreateInviteCodeRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceCreateInviteCodeRequest' when calling createInviteCode");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/CreateInviteCode";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -710,11 +708,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -770,11 +768,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceCreatePasskeyRegistrationLinkResponse createPasskeyRegistrationLink(UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceCreatePasskeyRegistrationLinkRequest;
-    
+
     if (userServiceCreatePasskeyRegistrationLinkRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceCreatePasskeyRegistrationLinkRequest' when calling createPasskeyRegistrationLink");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/CreatePasskeyRegistrationLink";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -785,11 +783,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -845,11 +843,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceCreateUserResponse createUser(UserServiceCreateUserRequest userServiceCreateUserRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceCreateUserRequest;
-    
+
     if (userServiceCreateUserRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceCreateUserRequest' when calling createUser");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/CreateUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -860,11 +858,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -920,11 +918,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceDeactivateUserResponse deactivateUser(UserServiceDeactivateUserRequest userServiceDeactivateUserRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceDeactivateUserRequest;
-    
+
     if (userServiceDeactivateUserRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceDeactivateUserRequest' when calling deactivateUser");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/DeactivateUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -935,11 +933,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -995,11 +993,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceDeleteUserResponse deleteUser(UserServiceDeleteUserRequest userServiceDeleteUserRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceDeleteUserRequest;
-    
+
     if (userServiceDeleteUserRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceDeleteUserRequest' when calling deleteUser");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/DeleteUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1010,11 +1008,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1070,11 +1068,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceDeleteUserMetadataResponse deleteUserMetadata(UserServiceDeleteUserMetadataRequest userServiceDeleteUserMetadataRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceDeleteUserMetadataRequest;
-    
+
     if (userServiceDeleteUserMetadataRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceDeleteUserMetadataRequest' when calling deleteUserMetadata");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/DeleteUserMetadata";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1085,11 +1083,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1145,11 +1143,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceGetUserByIDResponse getUserByID(UserServiceGetUserByIDRequest userServiceGetUserByIDRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceGetUserByIDRequest;
-    
+
     if (userServiceGetUserByIDRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceGetUserByIDRequest' when calling getUserByID");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/GetUserByID";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1160,11 +1158,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1220,11 +1218,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceHumanMFAInitSkippedResponse humanMFAInitSkipped(UserServiceHumanMFAInitSkippedRequest userServiceHumanMFAInitSkippedRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceHumanMFAInitSkippedRequest;
-    
+
     if (userServiceHumanMFAInitSkippedRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceHumanMFAInitSkippedRequest' when calling humanMFAInitSkipped");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/HumanMFAInitSkipped";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1235,11 +1233,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1275,7 +1273,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * ListAuthenticationFactors
-   * 
+   *
    * @param userServiceListAuthenticationFactorsRequest  (required)
    * @return UserServiceListAuthenticationFactorsResponse
    * @throws ApiException if fails to make API call
@@ -1287,7 +1285,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * ListAuthenticationFactors
-   * 
+   *
    * @param userServiceListAuthenticationFactorsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceListAuthenticationFactorsResponse
@@ -1295,11 +1293,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceListAuthenticationFactorsResponse listAuthenticationFactors(UserServiceListAuthenticationFactorsRequest userServiceListAuthenticationFactorsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceListAuthenticationFactorsRequest;
-    
+
     if (userServiceListAuthenticationFactorsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceListAuthenticationFactorsRequest' when calling listAuthenticationFactors");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/ListAuthenticationFactors";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1310,11 +1308,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1370,11 +1368,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceListAuthenticationMethodTypesResponse listAuthenticationMethodTypes(UserServiceListAuthenticationMethodTypesRequest userServiceListAuthenticationMethodTypesRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceListAuthenticationMethodTypesRequest;
-    
+
     if (userServiceListAuthenticationMethodTypesRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceListAuthenticationMethodTypesRequest' when calling listAuthenticationMethodTypes");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/ListAuthenticationMethodTypes";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1385,11 +1383,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1445,11 +1443,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceListIDPLinksResponse listIDPLinks(UserServiceListIDPLinksRequest userServiceListIDPLinksRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceListIDPLinksRequest;
-    
+
     if (userServiceListIDPLinksRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceListIDPLinksRequest' when calling listIDPLinks");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/ListIDPLinks";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1460,11 +1458,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1520,11 +1518,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceListKeysResponse listKeys(UserServiceListKeysRequest userServiceListKeysRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceListKeysRequest;
-    
+
     if (userServiceListKeysRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceListKeysRequest' when calling listKeys");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/ListKeys";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1535,11 +1533,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1595,11 +1593,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceListPasskeysResponse listPasskeys(UserServiceListPasskeysRequest userServiceListPasskeysRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceListPasskeysRequest;
-    
+
     if (userServiceListPasskeysRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceListPasskeysRequest' when calling listPasskeys");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/ListPasskeys";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1610,11 +1608,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1670,11 +1668,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceListPersonalAccessTokensResponse listPersonalAccessTokens(UserServiceListPersonalAccessTokensRequest userServiceListPersonalAccessTokensRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceListPersonalAccessTokensRequest;
-    
+
     if (userServiceListPersonalAccessTokensRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceListPersonalAccessTokensRequest' when calling listPersonalAccessTokens");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/ListPersonalAccessTokens";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1685,11 +1683,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1745,11 +1743,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceListUserMetadataResponse listUserMetadata(UserServiceListUserMetadataRequest userServiceListUserMetadataRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceListUserMetadataRequest;
-    
+
     if (userServiceListUserMetadataRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceListUserMetadataRequest' when calling listUserMetadata");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/ListUserMetadata";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1760,11 +1758,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1820,11 +1818,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceListUsersResponse listUsers(UserServiceListUsersRequest userServiceListUsersRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceListUsersRequest;
-    
+
     if (userServiceListUsersRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceListUsersRequest' when calling listUsers");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/ListUsers";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1835,11 +1833,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1895,11 +1893,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceLockUserResponse lockUser(UserServiceLockUserRequest userServiceLockUserRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceLockUserRequest;
-    
+
     if (userServiceLockUserRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceLockUserRequest' when calling lockUser");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/LockUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1910,11 +1908,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -1970,11 +1968,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServicePasswordResetResponse passwordReset(UserServicePasswordResetRequest userServicePasswordResetRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServicePasswordResetRequest;
-    
+
     if (userServicePasswordResetRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServicePasswordResetRequest' when calling passwordReset");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/PasswordReset";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -1985,11 +1983,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -2045,11 +2043,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceReactivateUserResponse reactivateUser(UserServiceReactivateUserRequest userServiceReactivateUserRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceReactivateUserRequest;
-    
+
     if (userServiceReactivateUserRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceReactivateUserRequest' when calling reactivateUser");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/ReactivateUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -2060,11 +2058,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -2120,11 +2118,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRegisterPasskeyResponse registerPasskey(UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRegisterPasskeyRequest;
-    
+
     if (userServiceRegisterPasskeyRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRegisterPasskeyRequest' when calling registerPasskey");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RegisterPasskey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -2135,11 +2133,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -2195,11 +2193,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRegisterTOTPResponse registerTOTP(UserServiceRegisterTOTPRequest userServiceRegisterTOTPRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRegisterTOTPRequest;
-    
+
     if (userServiceRegisterTOTPRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRegisterTOTPRequest' when calling registerTOTP");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RegisterTOTP";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -2210,11 +2208,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -2270,11 +2268,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRegisterU2FResponse registerU2F(UserServiceRegisterU2FRequest userServiceRegisterU2FRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRegisterU2FRequest;
-    
+
     if (userServiceRegisterU2FRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRegisterU2FRequest' when calling registerU2F");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RegisterU2F";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -2285,11 +2283,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -2345,11 +2343,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRemoveIDPLinkResponse removeIDPLink(UserServiceRemoveIDPLinkRequest userServiceRemoveIDPLinkRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRemoveIDPLinkRequest;
-    
+
     if (userServiceRemoveIDPLinkRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRemoveIDPLinkRequest' when calling removeIDPLink");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RemoveIDPLink";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -2360,11 +2358,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -2420,11 +2418,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRemoveKeyResponse removeKey(UserServiceRemoveKeyRequest userServiceRemoveKeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRemoveKeyRequest;
-    
+
     if (userServiceRemoveKeyRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRemoveKeyRequest' when calling removeKey");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RemoveKey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -2435,11 +2433,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -2495,11 +2493,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRemoveOTPEmailResponse removeOTPEmail(UserServiceRemoveOTPEmailRequest userServiceRemoveOTPEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRemoveOTPEmailRequest;
-    
+
     if (userServiceRemoveOTPEmailRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRemoveOTPEmailRequest' when calling removeOTPEmail");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RemoveOTPEmail";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -2510,11 +2508,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -2570,11 +2568,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRemoveOTPSMSResponse removeOTPSMS(UserServiceRemoveOTPSMSRequest userServiceRemoveOTPSMSRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRemoveOTPSMSRequest;
-    
+
     if (userServiceRemoveOTPSMSRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRemoveOTPSMSRequest' when calling removeOTPSMS");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RemoveOTPSMS";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -2585,11 +2583,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -2645,11 +2643,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRemovePasskeyResponse removePasskey(UserServiceRemovePasskeyRequest userServiceRemovePasskeyRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRemovePasskeyRequest;
-    
+
     if (userServiceRemovePasskeyRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRemovePasskeyRequest' when calling removePasskey");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RemovePasskey";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -2660,11 +2658,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -2720,11 +2718,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRemovePersonalAccessTokenResponse removePersonalAccessToken(UserServiceRemovePersonalAccessTokenRequest userServiceRemovePersonalAccessTokenRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRemovePersonalAccessTokenRequest;
-    
+
     if (userServiceRemovePersonalAccessTokenRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRemovePersonalAccessTokenRequest' when calling removePersonalAccessToken");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RemovePersonalAccessToken";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -2735,11 +2733,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -2795,11 +2793,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRemovePhoneResponse removePhone(UserServiceRemovePhoneRequest userServiceRemovePhoneRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRemovePhoneRequest;
-    
+
     if (userServiceRemovePhoneRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRemovePhoneRequest' when calling removePhone");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RemovePhone";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -2810,11 +2808,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -2870,11 +2868,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRemoveSecretResponse removeSecret(UserServiceRemoveSecretRequest userServiceRemoveSecretRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRemoveSecretRequest;
-    
+
     if (userServiceRemoveSecretRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRemoveSecretRequest' when calling removeSecret");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RemoveSecret";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -2885,11 +2883,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -2945,11 +2943,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRemoveTOTPResponse removeTOTP(UserServiceRemoveTOTPRequest userServiceRemoveTOTPRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRemoveTOTPRequest;
-    
+
     if (userServiceRemoveTOTPRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRemoveTOTPRequest' when calling removeTOTP");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RemoveTOTP";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -2960,11 +2958,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3020,11 +3018,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRemoveU2FResponse removeU2F(UserServiceRemoveU2FRequest userServiceRemoveU2FRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRemoveU2FRequest;
-    
+
     if (userServiceRemoveU2FRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRemoveU2FRequest' when calling removeU2F");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RemoveU2F";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -3035,11 +3033,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3095,11 +3093,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceResendEmailCodeResponse resendEmailCode(UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceResendEmailCodeRequest;
-    
+
     if (userServiceResendEmailCodeRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceResendEmailCodeRequest' when calling resendEmailCode");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/ResendEmailCode";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -3110,11 +3108,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3170,11 +3168,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceResendInviteCodeResponse resendInviteCode(UserServiceResendInviteCodeRequest userServiceResendInviteCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceResendInviteCodeRequest;
-    
+
     if (userServiceResendInviteCodeRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceResendInviteCodeRequest' when calling resendInviteCode");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/ResendInviteCode";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -3185,11 +3183,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3245,11 +3243,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceResendPhoneCodeResponse resendPhoneCode(UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceResendPhoneCodeRequest;
-    
+
     if (userServiceResendPhoneCodeRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceResendPhoneCodeRequest' when calling resendPhoneCode");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/ResendPhoneCode";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -3260,11 +3258,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3320,11 +3318,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceRetrieveIdentityProviderIntentResponse retrieveIdentityProviderIntent(UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceRetrieveIdentityProviderIntentRequest;
-    
+
     if (userServiceRetrieveIdentityProviderIntentRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceRetrieveIdentityProviderIntentRequest' when calling retrieveIdentityProviderIntent");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/RetrieveIdentityProviderIntent";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -3335,11 +3333,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3395,11 +3393,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceSendEmailCodeResponse sendEmailCode(UserServiceSendEmailCodeRequest userServiceSendEmailCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceSendEmailCodeRequest;
-    
+
     if (userServiceSendEmailCodeRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceSendEmailCodeRequest' when calling sendEmailCode");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/SendEmailCode";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -3410,11 +3408,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3470,11 +3468,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceSetEmailResponse setEmail(UserServiceSetEmailRequest userServiceSetEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceSetEmailRequest;
-    
+
     if (userServiceSetEmailRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceSetEmailRequest' when calling setEmail");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/SetEmail";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -3485,11 +3483,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3545,11 +3543,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceSetPasswordResponse setPassword(UserServiceSetPasswordRequest userServiceSetPasswordRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceSetPasswordRequest;
-    
+
     if (userServiceSetPasswordRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceSetPasswordRequest' when calling setPassword");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/SetPassword";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -3560,11 +3558,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3620,11 +3618,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceSetPhoneResponse setPhone(UserServiceSetPhoneRequest userServiceSetPhoneRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceSetPhoneRequest;
-    
+
     if (userServiceSetPhoneRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceSetPhoneRequest' when calling setPhone");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/SetPhone";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -3635,11 +3633,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3695,11 +3693,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceSetUserMetadataResponse setUserMetadata(UserServiceSetUserMetadataRequest userServiceSetUserMetadataRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceSetUserMetadataRequest;
-    
+
     if (userServiceSetUserMetadataRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceSetUserMetadataRequest' when calling setUserMetadata");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/SetUserMetadata";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -3710,11 +3708,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3770,11 +3768,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceStartIdentityProviderIntentResponse startIdentityProviderIntent(UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceStartIdentityProviderIntentRequest;
-    
+
     if (userServiceStartIdentityProviderIntentRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceStartIdentityProviderIntentRequest' when calling startIdentityProviderIntent");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/StartIdentityProviderIntent";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -3785,11 +3783,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3845,11 +3843,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceUnlockUserResponse unlockUser(UserServiceUnlockUserRequest userServiceUnlockUserRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceUnlockUserRequest;
-    
+
     if (userServiceUnlockUserRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceUnlockUserRequest' when calling unlockUser");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/UnlockUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -3860,11 +3858,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3920,11 +3918,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceUpdateHumanUserResponse updateHumanUser(UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceUpdateHumanUserRequest;
-    
+
     if (userServiceUpdateHumanUserRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceUpdateHumanUserRequest' when calling updateHumanUser");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/UpdateHumanUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -3935,11 +3933,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -3995,11 +3993,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceUpdateUserResponse updateUser(UserServiceUpdateUserRequest userServiceUpdateUserRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceUpdateUserRequest;
-    
+
     if (userServiceUpdateUserRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceUpdateUserRequest' when calling updateUser");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/UpdateUser";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -4010,11 +4008,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -4070,11 +4068,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceVerifyEmailResponse verifyEmail(UserServiceVerifyEmailRequest userServiceVerifyEmailRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyEmailRequest;
-    
+
     if (userServiceVerifyEmailRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyEmailRequest' when calling verifyEmail");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/VerifyEmail";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -4085,11 +4083,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -4145,11 +4143,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceVerifyInviteCodeResponse verifyInviteCode(UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyInviteCodeRequest;
-    
+
     if (userServiceVerifyInviteCodeRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyInviteCodeRequest' when calling verifyInviteCode");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/VerifyInviteCode";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -4160,11 +4158,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -4220,11 +4218,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceVerifyPasskeyRegistrationResponse verifyPasskeyRegistration(UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyPasskeyRegistrationRequest;
-    
+
     if (userServiceVerifyPasskeyRegistrationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyPasskeyRegistrationRequest' when calling verifyPasskeyRegistration");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/VerifyPasskeyRegistration";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -4235,11 +4233,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -4295,11 +4293,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceVerifyPhoneResponse verifyPhone(UserServiceVerifyPhoneRequest userServiceVerifyPhoneRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyPhoneRequest;
-    
+
     if (userServiceVerifyPhoneRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyPhoneRequest' when calling verifyPhone");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/VerifyPhone";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -4310,11 +4308,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -4370,11 +4368,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceVerifyTOTPRegistrationResponse verifyTOTPRegistration(UserServiceVerifyTOTPRegistrationRequest userServiceVerifyTOTPRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyTOTPRegistrationRequest;
-    
+
     if (userServiceVerifyTOTPRegistrationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyTOTPRegistrationRequest' when calling verifyTOTPRegistration");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/VerifyTOTPRegistration";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -4385,11 +4383,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -4445,11 +4443,11 @@ public class UserServiceApi extends BaseApi {
    */
   private UserServiceVerifyU2FRegistrationResponse verifyU2FRegistration(UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = userServiceVerifyU2FRegistrationRequest;
-    
+
     if (userServiceVerifyU2FRegistrationRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'userServiceVerifyU2FRegistrationRequest' when calling verifyU2FRegistration");
     }
-    
+
     String localVarPath = "/zitadel.user.v2.UserService/VerifyU2FRegistration";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -4460,11 +4458,11 @@ public class UserServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };

@@ -1,5 +1,6 @@
 package com.zitadel.auth;
 
+import com.zitadel.ZitadelException;
 import com.zitadel.utils.URLUtil;
 
 import java.util.Collections;
@@ -36,5 +37,10 @@ public class PersonalAccessTokenAuthenticator extends Authenticator {
     @Override
     public Map<String, String> getAuthHeaders() {
         return Collections.singletonMap("Authorization", "Bearer " + token);
+    }
+
+    @Override
+    public String getAuthToken() throws ZitadelException {
+        return token;
     }
 }

@@ -5,10 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
 import com.zitadel.ApiClient;
 import com.zitadel.BaseApi;
-import com.zitadel.Configuration;
 import com.zitadel.Pair;
 
-import com.zitadel.model.SessionServiceConnectError;
 import com.zitadel.model.SessionServiceCreateSessionRequest;
 import com.zitadel.model.SessionServiceCreateSessionResponse;
 import com.zitadel.model.SessionServiceDeleteSessionRequest;
@@ -32,7 +30,7 @@ import java.util.StringJoiner;
 public class SessionServiceApi extends BaseApi {
 
   public SessionServiceApi() {
-    super(Configuration.getDefaultApiClient());
+      super(ApiClient.defaultApiClient);
   }
 
   public SessionServiceApi(ApiClient apiClient) {
@@ -64,11 +62,11 @@ public class SessionServiceApi extends BaseApi {
    */
   private SessionServiceCreateSessionResponse createSession(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = sessionServiceCreateSessionRequest;
-    
+
     if (sessionServiceCreateSessionRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'sessionServiceCreateSessionRequest' when calling createSession");
     }
-    
+
     String localVarPath = "/zitadel.session.v2.SessionService/CreateSession";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -79,11 +77,11 @@ public class SessionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -139,11 +137,11 @@ public class SessionServiceApi extends BaseApi {
    */
   private SessionServiceDeleteSessionResponse deleteSession(SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = sessionServiceDeleteSessionRequest;
-    
+
     if (sessionServiceDeleteSessionRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'sessionServiceDeleteSessionRequest' when calling deleteSession");
     }
-    
+
     String localVarPath = "/zitadel.session.v2.SessionService/DeleteSession";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -154,11 +152,11 @@ public class SessionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -214,11 +212,11 @@ public class SessionServiceApi extends BaseApi {
    */
   private SessionServiceGetSessionResponse getSession(SessionServiceGetSessionRequest sessionServiceGetSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = sessionServiceGetSessionRequest;
-    
+
     if (sessionServiceGetSessionRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'sessionServiceGetSessionRequest' when calling getSession");
     }
-    
+
     String localVarPath = "/zitadel.session.v2.SessionService/GetSession";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -229,11 +227,11 @@ public class SessionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -289,11 +287,11 @@ public class SessionServiceApi extends BaseApi {
    */
   private SessionServiceListSessionsResponse listSessions(SessionServiceListSessionsRequest sessionServiceListSessionsRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = sessionServiceListSessionsRequest;
-    
+
     if (sessionServiceListSessionsRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'sessionServiceListSessionsRequest' when calling listSessions");
     }
-    
+
     String localVarPath = "/zitadel.session.v2.SessionService/ListSessions";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -304,11 +302,11 @@ public class SessionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -364,11 +362,11 @@ public class SessionServiceApi extends BaseApi {
    */
   private SessionServiceSetSessionResponse setSession(SessionServiceSetSessionRequest sessionServiceSetSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = sessionServiceSetSessionRequest;
-    
+
     if (sessionServiceSetSessionRequest == null) {
       throw new IllegalArgumentException("Missing the required parameter 'sessionServiceSetSessionRequest' when calling setSession");
     }
-    
+
     String localVarPath = "/zitadel.session.v2.SessionService/SetSession";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
@@ -379,11 +377,11 @@ public class SessionServiceApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
