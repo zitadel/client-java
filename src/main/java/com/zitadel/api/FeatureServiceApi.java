@@ -1,41 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.FeatureServiceGetInstanceFeaturesRequest;
-import com.zitadel.model.FeatureServiceGetInstanceFeaturesResponse;
-import com.zitadel.model.FeatureServiceGetOrganizationFeaturesRequest;
-import com.zitadel.model.FeatureServiceGetOrganizationFeaturesResponse;
-import com.zitadel.model.FeatureServiceGetSystemFeaturesResponse;
-import com.zitadel.model.FeatureServiceGetUserFeaturesRequest;
-import com.zitadel.model.FeatureServiceGetUserFeaturesResponse;
-import com.zitadel.model.FeatureServiceResetInstanceFeaturesResponse;
-import com.zitadel.model.FeatureServiceResetOrganizationFeaturesRequest;
-import com.zitadel.model.FeatureServiceResetOrganizationFeaturesResponse;
-import com.zitadel.model.FeatureServiceResetSystemFeaturesResponse;
-import com.zitadel.model.FeatureServiceResetUserFeaturesRequest;
-import com.zitadel.model.FeatureServiceResetUserFeaturesResponse;
-import com.zitadel.model.FeatureServiceSetInstanceFeaturesRequest;
-import com.zitadel.model.FeatureServiceSetInstanceFeaturesResponse;
-import com.zitadel.model.FeatureServiceSetOrganizationFeaturesRequest;
-import com.zitadel.model.FeatureServiceSetOrganizationFeaturesResponse;
-import com.zitadel.model.FeatureServiceSetSystemFeaturesRequest;
-import com.zitadel.model.FeatureServiceSetSystemFeaturesResponse;
-import com.zitadel.model.FeatureServiceSetUserFeatureRequest;
-import com.zitadel.model.FeatureServiceSetUserFeaturesResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class FeatureServiceApi extends BaseApi {

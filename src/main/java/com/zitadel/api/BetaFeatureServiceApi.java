@@ -1,41 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.BetaFeatureServiceGetInstanceFeaturesRequest;
-import com.zitadel.model.BetaFeatureServiceGetInstanceFeaturesResponse;
-import com.zitadel.model.BetaFeatureServiceGetOrganizationFeaturesRequest;
-import com.zitadel.model.BetaFeatureServiceGetOrganizationFeaturesResponse;
-import com.zitadel.model.BetaFeatureServiceGetSystemFeaturesResponse;
-import com.zitadel.model.BetaFeatureServiceGetUserFeaturesRequest;
-import com.zitadel.model.BetaFeatureServiceGetUserFeaturesResponse;
-import com.zitadel.model.BetaFeatureServiceResetInstanceFeaturesResponse;
-import com.zitadel.model.BetaFeatureServiceResetOrganizationFeaturesRequest;
-import com.zitadel.model.BetaFeatureServiceResetOrganizationFeaturesResponse;
-import com.zitadel.model.BetaFeatureServiceResetSystemFeaturesResponse;
-import com.zitadel.model.BetaFeatureServiceResetUserFeaturesRequest;
-import com.zitadel.model.BetaFeatureServiceResetUserFeaturesResponse;
-import com.zitadel.model.BetaFeatureServiceSetInstanceFeaturesRequest;
-import com.zitadel.model.BetaFeatureServiceSetInstanceFeaturesResponse;
-import com.zitadel.model.BetaFeatureServiceSetOrganizationFeaturesRequest;
-import com.zitadel.model.BetaFeatureServiceSetOrganizationFeaturesResponse;
-import com.zitadel.model.BetaFeatureServiceSetSystemFeaturesRequest;
-import com.zitadel.model.BetaFeatureServiceSetSystemFeaturesResponse;
-import com.zitadel.model.BetaFeatureServiceSetUserFeatureRequest;
-import com.zitadel.model.BetaFeatureServiceSetUserFeaturesResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BetaFeatureServiceApi extends BaseApi {

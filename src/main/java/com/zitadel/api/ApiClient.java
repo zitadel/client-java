@@ -1,4 +1,4 @@
-package com.zitadel;
+package com.zitadel.api;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.zitadel.ApiException;
+import com.zitadel.Version;
 import com.zitadel.auth.Authenticator;
 import com.zitadel.auth.NoAuthAuthenticator;
 import com.zitadel.utils.StringUtil;

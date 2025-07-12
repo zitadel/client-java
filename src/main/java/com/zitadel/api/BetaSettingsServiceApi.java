@@ -1,40 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.BetaSettingsServiceGetActiveIdentityProvidersRequest;
-import com.zitadel.model.BetaSettingsServiceGetActiveIdentityProvidersResponse;
-import com.zitadel.model.BetaSettingsServiceGetBrandingSettingsRequest;
-import com.zitadel.model.BetaSettingsServiceGetBrandingSettingsResponse;
-import com.zitadel.model.BetaSettingsServiceGetDomainSettingsRequest;
-import com.zitadel.model.BetaSettingsServiceGetDomainSettingsResponse;
-import com.zitadel.model.BetaSettingsServiceGetGeneralSettingsResponse;
-import com.zitadel.model.BetaSettingsServiceGetLegalAndSupportSettingsRequest;
-import com.zitadel.model.BetaSettingsServiceGetLegalAndSupportSettingsResponse;
-import com.zitadel.model.BetaSettingsServiceGetLockoutSettingsRequest;
-import com.zitadel.model.BetaSettingsServiceGetLockoutSettingsResponse;
-import com.zitadel.model.BetaSettingsServiceGetLoginSettingsRequest;
-import com.zitadel.model.BetaSettingsServiceGetLoginSettingsResponse;
-import com.zitadel.model.BetaSettingsServiceGetPasswordComplexitySettingsRequest;
-import com.zitadel.model.BetaSettingsServiceGetPasswordComplexitySettingsResponse;
-import com.zitadel.model.BetaSettingsServiceGetPasswordExpirySettingsRequest;
-import com.zitadel.model.BetaSettingsServiceGetPasswordExpirySettingsResponse;
-import com.zitadel.model.BetaSettingsServiceGetSecuritySettingsResponse;
-import com.zitadel.model.BetaSettingsServiceSetSecuritySettingsRequest;
-import com.zitadel.model.BetaSettingsServiceSetSecuritySettingsResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BetaSettingsServiceApi extends BaseApi {

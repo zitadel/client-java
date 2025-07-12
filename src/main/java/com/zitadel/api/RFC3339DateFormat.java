@@ -1,4 +1,4 @@
-package com.zitadel;
+package com.zitadel.api;
 
 import com.fasterxml.jackson.databind.util.StdDateFormat;
 

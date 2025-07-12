@@ -1,44 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.BetaAppServiceCreateApplicationKeyRequest;
-import com.zitadel.model.BetaAppServiceCreateApplicationKeyResponse;
-import com.zitadel.model.BetaAppServiceCreateApplicationRequest;
-import com.zitadel.model.BetaAppServiceCreateApplicationResponse;
-import com.zitadel.model.BetaAppServiceDeactivateApplicationRequest;
-import com.zitadel.model.BetaAppServiceDeactivateApplicationResponse;
-import com.zitadel.model.BetaAppServiceDeleteApplicationKeyRequest;
-import com.zitadel.model.BetaAppServiceDeleteApplicationKeyResponse;
-import com.zitadel.model.BetaAppServiceDeleteApplicationRequest;
-import com.zitadel.model.BetaAppServiceDeleteApplicationResponse;
-import com.zitadel.model.BetaAppServiceGetApplicationKeyRequest;
-import com.zitadel.model.BetaAppServiceGetApplicationKeyResponse;
-import com.zitadel.model.BetaAppServiceGetApplicationRequest;
-import com.zitadel.model.BetaAppServiceGetApplicationResponse;
-import com.zitadel.model.BetaAppServiceListApplicationKeysRequest;
-import com.zitadel.model.BetaAppServiceListApplicationKeysResponse;
-import com.zitadel.model.BetaAppServiceListApplicationsRequest;
-import com.zitadel.model.BetaAppServiceListApplicationsResponse;
-import com.zitadel.model.BetaAppServiceReactivateApplicationRequest;
-import com.zitadel.model.BetaAppServiceReactivateApplicationResponse;
-import com.zitadel.model.BetaAppServiceRegenerateClientSecretRequest;
-import com.zitadel.model.BetaAppServiceRegenerateClientSecretResponse;
-import com.zitadel.model.BetaAppServiceUpdateApplicationRequest;
-import com.zitadel.model.BetaAppServiceUpdateApplicationResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BetaAppServiceApi extends BaseApi {

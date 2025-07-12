@@ -1,48 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.BetaOrganizationServiceActivateOrganizationRequest;
-import com.zitadel.model.BetaOrganizationServiceActivateOrganizationResponse;
-import com.zitadel.model.BetaOrganizationServiceAddOrganizationDomainRequest;
-import com.zitadel.model.BetaOrganizationServiceAddOrganizationDomainResponse;
-import com.zitadel.model.BetaOrganizationServiceCreateOrganizationRequest;
-import com.zitadel.model.BetaOrganizationServiceCreateOrganizationResponse;
-import com.zitadel.model.BetaOrganizationServiceDeactivateOrganizationRequest;
-import com.zitadel.model.BetaOrganizationServiceDeactivateOrganizationResponse;
-import com.zitadel.model.BetaOrganizationServiceDeleteOrganizationDomainRequest;
-import com.zitadel.model.BetaOrganizationServiceDeleteOrganizationDomainResponse;
-import com.zitadel.model.BetaOrganizationServiceDeleteOrganizationMetadataRequest;
-import com.zitadel.model.BetaOrganizationServiceDeleteOrganizationMetadataResponse;
-import com.zitadel.model.BetaOrganizationServiceDeleteOrganizationRequest;
-import com.zitadel.model.BetaOrganizationServiceDeleteOrganizationResponse;
-import com.zitadel.model.BetaOrganizationServiceGenerateOrganizationDomainValidationRequest;
-import com.zitadel.model.BetaOrganizationServiceGenerateOrganizationDomainValidationResponse;
-import com.zitadel.model.BetaOrganizationServiceListOrganizationDomainsRequest;
-import com.zitadel.model.BetaOrganizationServiceListOrganizationDomainsResponse;
-import com.zitadel.model.BetaOrganizationServiceListOrganizationMetadataRequest;
-import com.zitadel.model.BetaOrganizationServiceListOrganizationMetadataResponse;
-import com.zitadel.model.BetaOrganizationServiceListOrganizationsRequest;
-import com.zitadel.model.BetaOrganizationServiceListOrganizationsResponse;
-import com.zitadel.model.BetaOrganizationServiceSetOrganizationMetadataRequest;
-import com.zitadel.model.BetaOrganizationServiceSetOrganizationMetadataResponse;
-import com.zitadel.model.BetaOrganizationServiceUpdateOrganizationRequest;
-import com.zitadel.model.BetaOrganizationServiceUpdateOrganizationResponse;
-import com.zitadel.model.BetaOrganizationServiceVerifyOrganizationDomainRequest;
-import com.zitadel.model.BetaOrganizationServiceVerifyOrganizationDomainResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BetaOrganizationServiceApi extends BaseApi {

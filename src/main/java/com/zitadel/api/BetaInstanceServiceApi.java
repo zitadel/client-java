@@ -1,40 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.BetaInstanceServiceAddCustomDomainRequest;
-import com.zitadel.model.BetaInstanceServiceAddCustomDomainResponse;
-import com.zitadel.model.BetaInstanceServiceAddTrustedDomainRequest;
-import com.zitadel.model.BetaInstanceServiceAddTrustedDomainResponse;
-import com.zitadel.model.BetaInstanceServiceDeleteInstanceRequest;
-import com.zitadel.model.BetaInstanceServiceDeleteInstanceResponse;
-import com.zitadel.model.BetaInstanceServiceGetInstanceRequest;
-import com.zitadel.model.BetaInstanceServiceGetInstanceResponse;
-import com.zitadel.model.BetaInstanceServiceListCustomDomainsRequest;
-import com.zitadel.model.BetaInstanceServiceListCustomDomainsResponse;
-import com.zitadel.model.BetaInstanceServiceListInstancesRequest;
-import com.zitadel.model.BetaInstanceServiceListInstancesResponse;
-import com.zitadel.model.BetaInstanceServiceListTrustedDomainsRequest;
-import com.zitadel.model.BetaInstanceServiceListTrustedDomainsResponse;
-import com.zitadel.model.BetaInstanceServiceRemoveCustomDomainRequest;
-import com.zitadel.model.BetaInstanceServiceRemoveCustomDomainResponse;
-import com.zitadel.model.BetaInstanceServiceRemoveTrustedDomainRequest;
-import com.zitadel.model.BetaInstanceServiceRemoveTrustedDomainResponse;
-import com.zitadel.model.BetaInstanceServiceUpdateInstanceRequest;
-import com.zitadel.model.BetaInstanceServiceUpdateInstanceResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BetaInstanceServiceApi extends BaseApi {

@@ -1,88 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.BetaUserServiceAddHumanUserRequest;
-import com.zitadel.model.BetaUserServiceAddHumanUserResponse;
-import com.zitadel.model.BetaUserServiceAddIDPLinkRequest;
-import com.zitadel.model.BetaUserServiceAddIDPLinkResponse;
-import com.zitadel.model.BetaUserServiceAddOTPEmailRequest;
-import com.zitadel.model.BetaUserServiceAddOTPEmailResponse;
-import com.zitadel.model.BetaUserServiceAddOTPSMSRequest;
-import com.zitadel.model.BetaUserServiceAddOTPSMSResponse;
-import com.zitadel.model.BetaUserServiceCreatePasskeyRegistrationLinkRequest;
-import com.zitadel.model.BetaUserServiceCreatePasskeyRegistrationLinkResponse;
-import com.zitadel.model.BetaUserServiceDeactivateUserRequest;
-import com.zitadel.model.BetaUserServiceDeactivateUserResponse;
-import com.zitadel.model.BetaUserServiceDeleteUserRequest;
-import com.zitadel.model.BetaUserServiceDeleteUserResponse;
-import com.zitadel.model.BetaUserServiceGetUserByIDRequest;
-import com.zitadel.model.BetaUserServiceGetUserByIDResponse;
-import com.zitadel.model.BetaUserServiceListAuthenticationMethodTypesRequest;
-import com.zitadel.model.BetaUserServiceListAuthenticationMethodTypesResponse;
-import com.zitadel.model.BetaUserServiceListUsersRequest;
-import com.zitadel.model.BetaUserServiceListUsersResponse;
-import com.zitadel.model.BetaUserServiceLockUserRequest;
-import com.zitadel.model.BetaUserServiceLockUserResponse;
-import com.zitadel.model.BetaUserServicePasswordResetRequest;
-import com.zitadel.model.BetaUserServicePasswordResetResponse;
-import com.zitadel.model.BetaUserServiceReactivateUserRequest;
-import com.zitadel.model.BetaUserServiceReactivateUserResponse;
-import com.zitadel.model.BetaUserServiceRegisterPasskeyRequest;
-import com.zitadel.model.BetaUserServiceRegisterPasskeyResponse;
-import com.zitadel.model.BetaUserServiceRegisterTOTPRequest;
-import com.zitadel.model.BetaUserServiceRegisterTOTPResponse;
-import com.zitadel.model.BetaUserServiceRegisterU2FRequest;
-import com.zitadel.model.BetaUserServiceRegisterU2FResponse;
-import com.zitadel.model.BetaUserServiceRemoveOTPEmailRequest;
-import com.zitadel.model.BetaUserServiceRemoveOTPEmailResponse;
-import com.zitadel.model.BetaUserServiceRemoveOTPSMSRequest;
-import com.zitadel.model.BetaUserServiceRemoveOTPSMSResponse;
-import com.zitadel.model.BetaUserServiceRemovePhoneRequest;
-import com.zitadel.model.BetaUserServiceRemovePhoneResponse;
-import com.zitadel.model.BetaUserServiceRemoveTOTPRequest;
-import com.zitadel.model.BetaUserServiceRemoveTOTPResponse;
-import com.zitadel.model.BetaUserServiceResendEmailCodeRequest;
-import com.zitadel.model.BetaUserServiceResendEmailCodeResponse;
-import com.zitadel.model.BetaUserServiceResendPhoneCodeRequest;
-import com.zitadel.model.BetaUserServiceResendPhoneCodeResponse;
-import com.zitadel.model.BetaUserServiceRetrieveIdentityProviderIntentRequest;
-import com.zitadel.model.BetaUserServiceRetrieveIdentityProviderIntentResponse;
-import com.zitadel.model.BetaUserServiceSetEmailRequest;
-import com.zitadel.model.BetaUserServiceSetEmailResponse;
-import com.zitadel.model.BetaUserServiceSetPasswordRequest;
-import com.zitadel.model.BetaUserServiceSetPasswordResponse;
-import com.zitadel.model.BetaUserServiceSetPhoneRequest;
-import com.zitadel.model.BetaUserServiceSetPhoneResponse;
-import com.zitadel.model.BetaUserServiceStartIdentityProviderIntentRequest;
-import com.zitadel.model.BetaUserServiceStartIdentityProviderIntentResponse;
-import com.zitadel.model.BetaUserServiceUnlockUserRequest;
-import com.zitadel.model.BetaUserServiceUnlockUserResponse;
-import com.zitadel.model.BetaUserServiceUpdateHumanUserRequest;
-import com.zitadel.model.BetaUserServiceUpdateHumanUserResponse;
-import com.zitadel.model.BetaUserServiceVerifyEmailRequest;
-import com.zitadel.model.BetaUserServiceVerifyEmailResponse;
-import com.zitadel.model.BetaUserServiceVerifyPasskeyRegistrationRequest;
-import com.zitadel.model.BetaUserServiceVerifyPasskeyRegistrationResponse;
-import com.zitadel.model.BetaUserServiceVerifyPhoneRequest;
-import com.zitadel.model.BetaUserServiceVerifyPhoneResponse;
-import com.zitadel.model.BetaUserServiceVerifyTOTPRegistrationRequest;
-import com.zitadel.model.BetaUserServiceVerifyTOTPRegistrationResponse;
-import com.zitadel.model.BetaUserServiceVerifyU2FRegistrationRequest;
-import com.zitadel.model.BetaUserServiceVerifyU2FRegistrationResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BetaUserServiceApi extends BaseApi {

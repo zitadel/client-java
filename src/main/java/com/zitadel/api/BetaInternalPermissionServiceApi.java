@@ -1,28 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.BetaInternalPermissionServiceCreateAdministratorRequest;
-import com.zitadel.model.BetaInternalPermissionServiceCreateAdministratorResponse;
-import com.zitadel.model.BetaInternalPermissionServiceDeleteAdministratorRequest;
-import com.zitadel.model.BetaInternalPermissionServiceDeleteAdministratorResponse;
-import com.zitadel.model.BetaInternalPermissionServiceListAdministratorsRequest;
-import com.zitadel.model.BetaInternalPermissionServiceListAdministratorsResponse;
-import com.zitadel.model.BetaInternalPermissionServiceUpdateAdministratorRequest;
-import com.zitadel.model.BetaInternalPermissionServiceUpdateAdministratorResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BetaInternalPermissionServiceApi extends BaseApi {

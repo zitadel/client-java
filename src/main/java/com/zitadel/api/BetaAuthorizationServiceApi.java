@@ -1,32 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.BetaAuthorizationServiceActivateAuthorizationRequest;
-import com.zitadel.model.BetaAuthorizationServiceActivateAuthorizationResponse;
-import com.zitadel.model.BetaAuthorizationServiceCreateAuthorizationRequest;
-import com.zitadel.model.BetaAuthorizationServiceCreateAuthorizationResponse;
-import com.zitadel.model.BetaAuthorizationServiceDeactivateAuthorizationRequest;
-import com.zitadel.model.BetaAuthorizationServiceDeactivateAuthorizationResponse;
-import com.zitadel.model.BetaAuthorizationServiceDeleteAuthorizationRequest;
-import com.zitadel.model.BetaAuthorizationServiceDeleteAuthorizationResponse;
-import com.zitadel.model.BetaAuthorizationServiceListAuthorizationsRequest;
-import com.zitadel.model.BetaAuthorizationServiceListAuthorizationsResponse;
-import com.zitadel.model.BetaAuthorizationServiceUpdateAuthorizationRequest;
-import com.zitadel.model.BetaAuthorizationServiceUpdateAuthorizationResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BetaAuthorizationServiceApi extends BaseApi {

@@ -6,11 +6,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 
 import javax.annotation.Nullable;
+import java.util.TimeZone;
 
 @SuppressFBWarnings("THROWS_METHOD_THROWS_RUNTIMEEXCEPTION")
 public class ObjectSerializer {
@@ -28,7 +30,7 @@ public class ObjectSerializer {
         this.objectMapper.enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
         this.objectMapper.registerModule(new JavaTimeModule());
         this.objectMapper.registerModule(new JsonNullableModule());
-        this.objectMapper.setDateFormat(ApiClient.buildDefaultDateFormat());
+        this.objectMapper.setDateFormat(new StdDateFormat().withTimeZone(TimeZone.getTimeZone("UTC")).withColonInTimeZone(true));
     }
 
     /**

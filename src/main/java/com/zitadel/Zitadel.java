@@ -5,14 +5,11 @@ import com.zitadel.auth.Authenticator;
 import com.zitadel.auth.ClientCredentialsAuthenticator;
 import com.zitadel.auth.PersonalAccessTokenAuthenticator;
 import com.zitadel.auth.WebTokenAuthenticator;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.util.function.Consumer;
 
 @SuppressWarnings("unused")
-@SuppressFBWarnings("URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD")
 public class Zitadel {
-    public final ApiClient apiClient;
     public final BetaProjectServiceApi betaProjects;
     public final BetaAppServiceApi betaApps;
     public final BetaOidcServiceApi betaOidc;
@@ -46,10 +43,10 @@ public class Zitadel {
     }
 
     public Zitadel(Authenticator authenticator, Consumer<ApiClient> mutateApiClient) {
-        this.apiClient = new ApiClient(authenticator);
+        var apiClient = new ApiClient(authenticator);
 
         if (mutateApiClient != null) {
-            mutateApiClient.accept(this.apiClient);
+            mutateApiClient.accept(apiClient);
         }
 
         this.betaProjects = new BetaProjectServiceApi(apiClient);

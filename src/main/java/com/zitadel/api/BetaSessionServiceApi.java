@@ -1,30 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.BetaSessionServiceCreateSessionRequest;
-import com.zitadel.model.BetaSessionServiceCreateSessionResponse;
-import com.zitadel.model.BetaSessionServiceDeleteSessionRequest;
-import com.zitadel.model.BetaSessionServiceDeleteSessionResponse;
-import com.zitadel.model.BetaSessionServiceGetSessionRequest;
-import com.zitadel.model.BetaSessionServiceGetSessionResponse;
-import com.zitadel.model.BetaSessionServiceListSessionsRequest;
-import com.zitadel.model.BetaSessionServiceListSessionsResponse;
-import com.zitadel.model.BetaSessionServiceSetSessionRequest;
-import com.zitadel.model.BetaSessionServiceSetSessionResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BetaSessionServiceApi extends BaseApi {

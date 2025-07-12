@@ -1,37 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.BetaActionServiceCreateTargetRequest;
-import com.zitadel.model.BetaActionServiceCreateTargetResponse;
-import com.zitadel.model.BetaActionServiceDeleteTargetRequest;
-import com.zitadel.model.BetaActionServiceDeleteTargetResponse;
-import com.zitadel.model.BetaActionServiceGetTargetRequest;
-import com.zitadel.model.BetaActionServiceGetTargetResponse;
-import com.zitadel.model.BetaActionServiceListExecutionFunctionsResponse;
-import com.zitadel.model.BetaActionServiceListExecutionMethodsResponse;
-import com.zitadel.model.BetaActionServiceListExecutionServicesResponse;
-import com.zitadel.model.BetaActionServiceListExecutionsRequest;
-import com.zitadel.model.BetaActionServiceListExecutionsResponse;
-import com.zitadel.model.BetaActionServiceListTargetsRequest;
-import com.zitadel.model.BetaActionServiceListTargetsResponse;
-import com.zitadel.model.BetaActionServiceSetExecutionRequest;
-import com.zitadel.model.BetaActionServiceSetExecutionResponse;
-import com.zitadel.model.BetaActionServiceUpdateTargetRequest;
-import com.zitadel.model.BetaActionServiceUpdateTargetResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BetaActionServiceApi extends BaseApi {

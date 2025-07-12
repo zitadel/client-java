@@ -1,54 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.BetaProjectServiceActivateProjectGrantRequest;
-import com.zitadel.model.BetaProjectServiceActivateProjectGrantResponse;
-import com.zitadel.model.BetaProjectServiceActivateProjectRequest;
-import com.zitadel.model.BetaProjectServiceActivateProjectResponse;
-import com.zitadel.model.BetaProjectServiceAddProjectRoleRequest;
-import com.zitadel.model.BetaProjectServiceAddProjectRoleResponse;
-import com.zitadel.model.BetaProjectServiceCreateProjectGrantRequest;
-import com.zitadel.model.BetaProjectServiceCreateProjectGrantResponse;
-import com.zitadel.model.BetaProjectServiceCreateProjectRequest;
-import com.zitadel.model.BetaProjectServiceCreateProjectResponse;
-import com.zitadel.model.BetaProjectServiceDeactivateProjectGrantRequest;
-import com.zitadel.model.BetaProjectServiceDeactivateProjectGrantResponse;
-import com.zitadel.model.BetaProjectServiceDeactivateProjectRequest;
-import com.zitadel.model.BetaProjectServiceDeactivateProjectResponse;
-import com.zitadel.model.BetaProjectServiceDeleteProjectGrantRequest;
-import com.zitadel.model.BetaProjectServiceDeleteProjectGrantResponse;
-import com.zitadel.model.BetaProjectServiceDeleteProjectRequest;
-import com.zitadel.model.BetaProjectServiceDeleteProjectResponse;
-import com.zitadel.model.BetaProjectServiceGetProjectRequest;
-import com.zitadel.model.BetaProjectServiceGetProjectResponse;
-import com.zitadel.model.BetaProjectServiceListProjectGrantsRequest;
-import com.zitadel.model.BetaProjectServiceListProjectGrantsResponse;
-import com.zitadel.model.BetaProjectServiceListProjectRolesRequest;
-import com.zitadel.model.BetaProjectServiceListProjectRolesResponse;
-import com.zitadel.model.BetaProjectServiceListProjectsRequest;
-import com.zitadel.model.BetaProjectServiceListProjectsResponse;
-import com.zitadel.model.BetaProjectServiceRemoveProjectRoleRequest;
-import com.zitadel.model.BetaProjectServiceRemoveProjectRoleResponse;
-import com.zitadel.model.BetaProjectServiceUpdateProjectGrantRequest;
-import com.zitadel.model.BetaProjectServiceUpdateProjectGrantResponse;
-import com.zitadel.model.BetaProjectServiceUpdateProjectRequest;
-import com.zitadel.model.BetaProjectServiceUpdateProjectResponse;
-import com.zitadel.model.BetaProjectServiceUpdateProjectRoleRequest;
-import com.zitadel.model.BetaProjectServiceUpdateProjectRoleResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BetaProjectServiceApi extends BaseApi {

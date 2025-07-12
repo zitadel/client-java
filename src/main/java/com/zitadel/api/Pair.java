@@ -1,4 +1,4 @@
-package com.zitadel;
+package com.zitadel.api;
 
 public class Pair {
     private String name = "";

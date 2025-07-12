@@ -1,0 +1,201 @@
+package {{package}};
+
+import com.fasterxml.jackson.core.type.TypeReference;
+
+import {{invokerPackage}}.ApiException;
+import {{invokerPackage}}.ApiClient;
+import {{invokerPackage}}.BaseApi;
+import {{invokerPackage}}.Configuration;
+{{#models.0}}
+import {{modelPackage}}.*;
+{{/models.0}}
+import {{invokerPackage}}.Pair;
+
+{{#imports}}import {{import}};
+{{/imports}}
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.StringJoiner;
+
+import {{javaxPackage}}.validation.constraints.*;
+import {{javaxPackage}}.validation.Valid;
+
+{{>generatedAnnotation}}
+{{#operations}}
+public class {{classname}} extends BaseApi {
+
+  public {{classname}}(ApiClient apiClient) {
+    super(apiClient);
+  }
+
+  {{#operation}}
+    {{^hasPathParams}}
+      {{^hasQueryParams}}
+        {{^hasHeaderParams}}
+          {{#bodyParams}}
+            {{#vendorExtensions.x-is-empty-body}}
+              /**
+              * {{summary}} (Convenience Method)
+              * {{notes}}
+              {{#returnType}}
+                * @return {{returnType}}
+              {{/returnType}}
+              * @throws ApiException if fails to make API call
+              {{#isDeprecated}}
+                * @deprecated
+              {{/isDeprecated}}
+              {{#externalDocs}}
+                * {{description}}
+                * @see <a href="{{url}}">{{summary}} Documentation</a>
+              {{/externalDocs}}
+              */
+              {{#isDeprecated}}
+                @Deprecated
+              {{/isDeprecated}}
+              public {{#returnType}}{{{returnType}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}() throws ApiException {
+              {{#returnType}}return {{/returnType}}this.{{operationId}}(new {{dataType}}());
+              }
+
+            {{/vendorExtensions.x-is-empty-body}}
+          {{/bodyParams}}
+        {{/hasHeaderParams}}
+      {{/hasQueryParams}}
+    {{/hasPathParams}}
+
+  /**
+   * {{summary}}
+   * {{notes}}
+   {{#allParams}}
+   * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{^isContainer}}{{#defaultValue}}, default to {{.}}{{/defaultValue}}{{/isContainer}}){{/required}}
+   {{/allParams}}
+   {{#returnType}}
+   * @return {{returnType}}
+   {{/returnType}}
+   * @throws ApiException if fails to make API call
+   {{#isDeprecated}}
+   * @deprecated
+   {{/isDeprecated}}
+   {{#externalDocs}}
+   * {{description}}
+   * @see <a href="{{url}}">{{summary}} Documentation</a>
+   {{/externalDocs}}
+   */
+  {{#isDeprecated}}
+  @Deprecated
+  {{/isDeprecated}}
+  public {{#returnType}}{{{returnType}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}) throws ApiException {
+    {{#returnType}}return {{/returnType}}this.{{operationId}}({{#allParams}}{{paramName}}, {{/allParams}}Collections.emptyMap());
+  }
+
+
+  /**
+   * {{summary}}
+   * {{notes}}
+   {{#allParams}}
+   * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{^isContainer}}{{#defaultValue}}, default to {{.}}{{/defaultValue}}{{/isContainer}}){{/required}}
+   {{/allParams}}
+   * @param additionalHeaders additionalHeaders for this call
+   {{#returnType}}
+   * @return {{returnType}}
+   {{/returnType}}
+   * @throws ApiException if fails to make API call
+   {{#isDeprecated}}
+   * @deprecated
+   {{/isDeprecated}}
+   {{#externalDocs}}
+   * {{description}}
+   * @see <a href="{{url}}">{{summary}} Documentation</a>
+   {{/externalDocs}}
+   */
+  {{#isDeprecated}}
+  @Deprecated
+  {{/isDeprecated}}
+  private {{#returnType}}{{{returnType}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = {{#bodyParam}}{{paramName}}{{/bodyParam}}{{^bodyParam}}null{{/bodyParam}};
+    {{#allParams}}{{#required}}
+    if ({{paramName}} == null) {
+      throw new IllegalArgumentException("Missing the required parameter '{{paramName}}' when calling {{operationId}}");
+    }
+    {{/required}}{{/allParams}}
+    String localVarPath = "{{{path}}}"{{#pathParams}}
+      .replaceAll("\\{" + "{{baseName}}" + "\\}", apiClient.escapeString(apiClient.parameterToString({{{paramName}}}))){{/pathParams}};
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+    {{#queryParams}}
+        {{#isDeepObject}}
+    localVarQueryParameterBaseName = "{{{baseName}}}";
+          {{#isArray}}
+    for (int i=0; i < {{paramName}}.size(); i++) {
+      localVarQueryStringJoiner.add({{paramName}}.get(i).toUrlQueryString(String.format("{{baseName}}[%d]", i)));
+    }
+          {{/isArray}}
+          {{^isArray}}
+    localVarQueryStringJoiner.add({{paramName}}.toUrlQueryString("{{baseName}}"));
+          {{/isArray}}
+        {{/isDeepObject}}
+        {{^isDeepObject}}
+            {{#isExplode}}
+                {{#hasVars}}
+                    {{#vars}}
+                        {{#isArray}}
+    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "{{baseName}}", {{paramName}}.{{getter}}()));
+                        {{/isArray}}
+                        {{^isArray}}
+    localVarQueryParams.addAll(apiClient.parameterToPair("{{baseName}}", {{paramName}}.{{getter}}()));
+                        {{/isArray}}
+                    {{/vars}}
+                {{/hasVars}}
+                {{^hasVars}}
+                {{#isModel}}
+    localVarQueryStringJoiner.add({{paramName}}.toUrlQueryString());
+                {{/isModel}}
+                {{^isModel}}
+    {{#collectionFormat}}localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("{{{collectionFormat}}}", {{/collectionFormat}}{{^collectionFormat}}localVarQueryParams.addAll(apiClient.parameterToPair({{/collectionFormat}}"{{baseName}}", {{paramName}}));
+                {{/isModel}}
+                {{/hasVars}}
+            {{/isExplode}}
+            {{^isExplode}}
+    {{#collectionFormat}}localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("{{{collectionFormat}}}", {{/collectionFormat}}{{^collectionFormat}}localVarQueryParams.addAll(apiClient.parameterToPair({{/collectionFormat}}"{{baseName}}", {{paramName}}));
+            {{/isExplode}}
+        {{/isDeepObject}}
+    {{/queryParams}}
+    {{#headerParams}}if ({{paramName}} != null)
+      localVarHeaderParams.put("{{baseName}}", apiClient.parameterToString({{paramName}}));
+    {{/headerParams}}
+
+    localVarHeaderParams.putAll(additionalHeaders);
+
+
+    {{#returnType}}
+    TypeReference<{{{returnType}}}> localVarReturnType = new TypeReference<{{{returnType}}}>() {};
+    return apiClient.invokeAPI(
+    {{/returnType}}
+    {{^returnType}}
+    apiClient.invokeAPI(
+    {{/returnType}}
+        localVarPath,
+        "{{httpMethod}}",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        {{#returnType}}localVarReturnType{{/returnType}}{{^returnType}}null{{/returnType}}
+    );
+  }
+  {{/operation}}
+}
+{{/operations}}

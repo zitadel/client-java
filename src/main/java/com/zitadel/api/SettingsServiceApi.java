@@ -1,44 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.SettingsServiceGetActiveIdentityProvidersRequest;
-import com.zitadel.model.SettingsServiceGetActiveIdentityProvidersResponse;
-import com.zitadel.model.SettingsServiceGetBrandingSettingsRequest;
-import com.zitadel.model.SettingsServiceGetBrandingSettingsResponse;
-import com.zitadel.model.SettingsServiceGetDomainSettingsRequest;
-import com.zitadel.model.SettingsServiceGetDomainSettingsResponse;
-import com.zitadel.model.SettingsServiceGetGeneralSettingsResponse;
-import com.zitadel.model.SettingsServiceGetHostedLoginTranslationRequest;
-import com.zitadel.model.SettingsServiceGetHostedLoginTranslationResponse;
-import com.zitadel.model.SettingsServiceGetLegalAndSupportSettingsRequest;
-import com.zitadel.model.SettingsServiceGetLegalAndSupportSettingsResponse;
-import com.zitadel.model.SettingsServiceGetLockoutSettingsRequest;
-import com.zitadel.model.SettingsServiceGetLockoutSettingsResponse;
-import com.zitadel.model.SettingsServiceGetLoginSettingsRequest;
-import com.zitadel.model.SettingsServiceGetLoginSettingsResponse;
-import com.zitadel.model.SettingsServiceGetPasswordComplexitySettingsRequest;
-import com.zitadel.model.SettingsServiceGetPasswordComplexitySettingsResponse;
-import com.zitadel.model.SettingsServiceGetPasswordExpirySettingsRequest;
-import com.zitadel.model.SettingsServiceGetPasswordExpirySettingsResponse;
-import com.zitadel.model.SettingsServiceGetSecuritySettingsResponse;
-import com.zitadel.model.SettingsServiceSetHostedLoginTranslationRequest;
-import com.zitadel.model.SettingsServiceSetHostedLoginTranslationResponse;
-import com.zitadel.model.SettingsServiceSetSecuritySettingsRequest;
-import com.zitadel.model.SettingsServiceSetSecuritySettingsResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SettingsServiceApi extends BaseApi {

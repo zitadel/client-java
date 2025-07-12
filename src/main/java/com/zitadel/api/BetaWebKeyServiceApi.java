@@ -1,27 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.BetaWebKeyServiceActivateWebKeyRequest;
-import com.zitadel.model.BetaWebKeyServiceActivateWebKeyResponse;
-import com.zitadel.model.BetaWebKeyServiceCreateWebKeyRequest;
-import com.zitadel.model.BetaWebKeyServiceCreateWebKeyResponse;
-import com.zitadel.model.BetaWebKeyServiceDeleteWebKeyRequest;
-import com.zitadel.model.BetaWebKeyServiceDeleteWebKeyResponse;
-import com.zitadel.model.BetaWebKeyServiceListWebKeysResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BetaWebKeyServiceApi extends BaseApi {

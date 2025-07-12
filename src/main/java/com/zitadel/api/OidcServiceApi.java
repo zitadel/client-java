@@ -1,27 +1,10 @@
 package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-
 import com.zitadel.ApiException;
-import com.zitadel.ApiClient;
-import com.zitadel.BaseApi;
-import com.zitadel.Pair;
+import com.zitadel.model.*;
 
-import com.zitadel.model.OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest;
-import com.zitadel.model.OIDCServiceCreateCallbackRequest;
-import com.zitadel.model.OIDCServiceCreateCallbackResponse;
-import com.zitadel.model.OIDCServiceGetAuthRequestRequest;
-import com.zitadel.model.OIDCServiceGetAuthRequestResponse;
-import com.zitadel.model.OIDCServiceGetDeviceAuthorizationRequestRequest;
-import com.zitadel.model.OIDCServiceGetDeviceAuthorizationRequestResponse;
-
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OidcServiceApi extends BaseApi {

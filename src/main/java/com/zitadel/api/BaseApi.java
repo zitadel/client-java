@@ -1,6 +1,7 @@
-package com.zitadel;
+package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.zitadel.ApiException;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
