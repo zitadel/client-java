@@ -89,10 +89,11 @@ class DefaultApiClientTest {
     @Test
     @DisplayName("GET request is successful")
     void testGetRequest() {
-        Map<Integer, TypeReference<?>> responseTypes = Map.of(200, new TypeReference<SuccessModel>() {
+        Map<String, TypeReference<?>> responseTypes = Map.of("200", new TypeReference<SuccessModel>() {
         });
         Object result = assertDoesNotThrow(() ->
-            apiClient.invokeAPI("testGetSuccess", "/users/123", "GET", Map.of(), Map.of(), Map.of(), null, responseTypes)
+            apiClient.invokeAPI("testGetSuccess", "/users/123", "GET", Map.<String, Object>of(), Map.<String, Object>of(), Map.<String, Collection<String>>of(), null, new TypeReference<SuccessModel>() {
+            }, responseTypes)
         );
         assertInstanceOf(SuccessModel.class, result);
     }
@@ -100,10 +101,11 @@ class DefaultApiClientTest {
     @Test
     @DisplayName("POST request is successful")
     void testPostRequest() {
-        Map<Integer, TypeReference<?>> responseTypes = Map.of(201, new TypeReference<SuccessModel>() {
+        Map<String, TypeReference<?>> responseTypes = Map.of("201", new TypeReference<SuccessModel>() {
         });
         Object result = assertDoesNotThrow(() ->
-            apiClient.invokeAPI("testPost", "/users", "POST", Map.of(), Map.of(), Map.of(), new Object(), responseTypes)
+            apiClient.invokeAPI("testPost", "/users", "POST", Map.<String, Object>of(), Map.<String, Object>of(), Map.<String, Collection<String>>of(), new Object(), new TypeReference<SuccessModel>() {
+            }, responseTypes)
         );
         assertInstanceOf(SuccessModel.class, result);
     }
@@ -111,11 +113,12 @@ class DefaultApiClientTest {
     @Test
     @DisplayName("PUT request sends custom headers")
     void testSendsCustomHeaders() {
-        Map<Integer, TypeReference<?>> responseTypes = Map.of(200, new TypeReference<>() {
+        Map<String, TypeReference<?>> responseTypes = Map.of("200", new TypeReference<>() {
         });
         var customHeaders = Map.of("X-Request-ID", (Collection<String>) List.of("test-uuid-123"));
         assertDoesNotThrow(() ->
-            apiClient.invokeAPI("testCustomHeaders", "/users/123", "PUT", Map.of(), Map.of(), customHeaders, new Object(), responseTypes)
+            apiClient.invokeAPI("testCustomHeaders", "/users/123", "PUT", Map.<String, Object>of(), Map.<String, Object>of(), customHeaders, new Object(), new TypeReference<SuccessModel>() {
+            }, responseTypes)
         );
     }
 
@@ -123,7 +126,8 @@ class DefaultApiClientTest {
     @DisplayName("DELETE request returns void")
     void testDeleteRequest() {
         Object result = assertDoesNotThrow(() ->
-            apiClient.invokeAPI("testVoid", "/users/123", "DELETE", Map.of(), Map.of(), Map.of(), null, Map.of())
+            apiClient.invokeAPI("testVoid", "/users/123", "DELETE", Map.<String, Object>of(), Map.<String, Object>of(), Map.<String, Collection<String>>of(), null, new TypeReference<SuccessModel>() {
+            }, Map.of())
         );
         assertNull(result);
     }
@@ -132,7 +136,8 @@ class DefaultApiClientTest {
     @DisplayName("Handles 404 Not Found error")
     void testApiClientErrorResponse() {
         ApiException exception = assertThrows(ApiException.class, () ->
-            apiClient.invokeAPI("test404", "/users/notfound", "GET", Map.of(), Map.of(), Map.of(), null, Map.of())
+            apiClient.invokeAPI("test404", "/users/notfound", "GET", Map.<String, Object>of(), Map.<String, Object>of(), Map.<String, Collection<String>>of(), null, new TypeReference<SuccessModel>() {
+            }, Map.of())
         );
         assertEquals(404, exception.getCode());
     }
@@ -140,10 +145,11 @@ class DefaultApiClientTest {
     @Test
     @DisplayName("Handles 400 Bad Request with a typed error model")
     void testTypedClientErrorResponse() {
-        Map<Integer, TypeReference<?>> responseTypes = Map.of(400, new TypeReference<ErrorModel>() {
+        Map<String, TypeReference<?>> responseTypes = Map.of("400", new TypeReference<ErrorModel>() {
         });
         ApiException exception = assertThrows(ApiException.class, () ->
-            apiClient.invokeAPI("test400", "/users/bad", "POST", Map.of(), Map.of(), Map.of(), new Object(), responseTypes)
+            apiClient.invokeAPI("test400", "/users/bad", "POST", Map.<String, Object>of(), Map.<String, Object>of(), Map.<String, Collection<String>>of(), new Object(), new TypeReference<SuccessModel>() {
+            }, responseTypes)
         );
         assertEquals(400, exception.getCode());
         assertInstanceOf(ErrorModel.class, exception.getResponseBody());
@@ -152,10 +158,11 @@ class DefaultApiClientTest {
     @Test
     @DisplayName("Handles successful response with malformed JSON")
     void testDeserializationFailure() {
-        Map<Integer, TypeReference<?>> responseTypes = Map.of(200, new TypeReference<SuccessModel>() {
+        Map<String, TypeReference<?>> responseTypes = Map.of("200", new TypeReference<SuccessModel>() {
         });
         assertThrows(RuntimeException.class, () ->
-            apiClient.invokeAPI("testMalformed", "/malformed", "GET", Map.of(), Map.of(), Map.of(), null, responseTypes)
+            apiClient.invokeAPI("testMalformed", "/malformed", "GET", Map.<String, Object>of(), Map.<String, Object>of(), Map.<String, Collection<String>>of(), null, new TypeReference<SuccessModel>() {
+            }, responseTypes)
         );
     }
 }
