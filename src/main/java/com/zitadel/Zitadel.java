@@ -7,6 +7,7 @@ import com.zitadel.auth.PersonalAccessTokenAuthenticator;
 import com.zitadel.auth.WebTokenAuthenticator;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 @SuppressWarnings("unused")
 public class Zitadel {
@@ -42,8 +43,8 @@ public class Zitadel {
             });
     }
 
-    public Zitadel(Authenticator authenticator, Consumer<ApiClient> mutateApiClient) {
-        var apiClient = new ApiClient(authenticator);
+    public Zitadel(Authenticator authenticator, Consumer<IApiClient> mutateApiClient) {
+        var apiClient = new DefaultApiClient(new Configuration(authenticator), Function.identity());
 
         if (mutateApiClient != null) {
             mutateApiClient.accept(apiClient);

@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.Map;
 
-interface IApiClient {
+public interface IApiClient {
     <T> T invokeAPI(
         String operationId,
         String pathTemplate,

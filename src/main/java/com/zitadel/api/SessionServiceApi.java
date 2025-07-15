@@ -2,434 +2,120 @@ package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiException;
+import com.zitadel.IApiClient;
 import com.zitadel.model.*;
 
-import java.util.*;
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
-public class SessionServiceApi extends BaseApi {
-
-  public SessionServiceApi() {
-      super(ApiClient.defaultApiClient);
-  }
-
-  public SessionServiceApi(ApiClient apiClient) {
-    super(apiClient);
-  }
+public class SessionServiceApi {
 
 
+    private final IApiClient apiClient;
 
-
-  /**
-   * CreateSession
-   * Create a new session
-   * @param sessionServiceCreateSessionRequest  (required)
-   * @return SessionServiceCreateSessionResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SessionServiceCreateSessionResponse createSession(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest) throws ApiException {
-    return this.createSession(sessionServiceCreateSessionRequest, Collections.emptyMap());
-  }
-
-
-  /**
-   * CreateSession
-   * Create a new session
-   * @param sessionServiceCreateSessionRequest  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SessionServiceCreateSessionResponse
-   * @throws ApiException if fails to make API call
-   */
-  private SessionServiceCreateSessionResponse createSession(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = sessionServiceCreateSessionRequest;
-
-    if (sessionServiceCreateSessionRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceCreateSessionRequest' when calling createSession");
+    public SessionServiceApi(IApiClient apiClient) {
+        this.apiClient = apiClient;
     }
 
-    String localVarPath = "/zitadel.session.v2.SessionService/CreateSession";
+    public SessionServiceCreateSessionResponse createSession(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest) throws ApiException {
+        if (sessionServiceCreateSessionRequest == null) {
+            throw new IllegalArgumentException("Missing the required parameter 'sessionServiceCreateSessionRequest' when calling createSession");
+        }
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        TypeReference<SessionServiceCreateSessionResponse> successType = new TypeReference<>() {
+        };
 
-
-    localVarHeaderParams.putAll(additionalHeaders);
-
-
-
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SessionServiceCreateSessionResponse> localVarReturnType = new TypeReference<SessionServiceCreateSessionResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-
-
-
-  /**
-   * DeleteSession
-   * Terminate a session
-   * @param sessionServiceDeleteSessionRequest  (required)
-   * @return SessionServiceDeleteSessionResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SessionServiceDeleteSessionResponse deleteSession(SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest) throws ApiException {
-    return this.deleteSession(sessionServiceDeleteSessionRequest, Collections.emptyMap());
-  }
-
-
-  /**
-   * DeleteSession
-   * Terminate a session
-   * @param sessionServiceDeleteSessionRequest  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SessionServiceDeleteSessionResponse
-   * @throws ApiException if fails to make API call
-   */
-  private SessionServiceDeleteSessionResponse deleteSession(SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = sessionServiceDeleteSessionRequest;
-
-    if (sessionServiceDeleteSessionRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceDeleteSessionRequest' when calling deleteSession");
+        return apiClient.invokeAPI(
+            "createSession",
+            "/zitadel.session.v2.SessionService/CreateSession",
+            "POST",
+            null,
+            null,
+            null,
+            sessionServiceCreateSessionRequest,
+            successType,
+            null
+        );
     }
 
-    String localVarPath = "/zitadel.session.v2.SessionService/DeleteSession";
+    public SessionServiceDeleteSessionResponse deleteSession(SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest) throws ApiException {
+        if (sessionServiceDeleteSessionRequest == null) {
+            throw new IllegalArgumentException("Missing the required parameter 'sessionServiceDeleteSessionRequest' when calling deleteSession");
+        }
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        TypeReference<SessionServiceDeleteSessionResponse> successType = new TypeReference<>() {
+        };
 
-
-    localVarHeaderParams.putAll(additionalHeaders);
-
-
-
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SessionServiceDeleteSessionResponse> localVarReturnType = new TypeReference<SessionServiceDeleteSessionResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-
-
-
-  /**
-   * GetSession
-   * GetSession a session
-   * @param sessionServiceGetSessionRequest  (required)
-   * @return SessionServiceGetSessionResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SessionServiceGetSessionResponse getSession(SessionServiceGetSessionRequest sessionServiceGetSessionRequest) throws ApiException {
-    return this.getSession(sessionServiceGetSessionRequest, Collections.emptyMap());
-  }
-
-
-  /**
-   * GetSession
-   * GetSession a session
-   * @param sessionServiceGetSessionRequest  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SessionServiceGetSessionResponse
-   * @throws ApiException if fails to make API call
-   */
-  private SessionServiceGetSessionResponse getSession(SessionServiceGetSessionRequest sessionServiceGetSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = sessionServiceGetSessionRequest;
-
-    if (sessionServiceGetSessionRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceGetSessionRequest' when calling getSession");
+        return apiClient.invokeAPI(
+            "deleteSession",
+            "/zitadel.session.v2.SessionService/DeleteSession",
+            "POST",
+            null,
+            null,
+            null,
+            sessionServiceDeleteSessionRequest,
+            successType,
+            null
+        );
     }
 
-    String localVarPath = "/zitadel.session.v2.SessionService/GetSession";
+    public SessionServiceGetSessionResponse getSession(SessionServiceGetSessionRequest sessionServiceGetSessionRequest) throws ApiException {
+        if (sessionServiceGetSessionRequest == null) {
+            throw new IllegalArgumentException("Missing the required parameter 'sessionServiceGetSessionRequest' when calling getSession");
+        }
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        TypeReference<SessionServiceGetSessionResponse> successType = new TypeReference<>() {
+        };
 
-
-    localVarHeaderParams.putAll(additionalHeaders);
-
-
-
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SessionServiceGetSessionResponse> localVarReturnType = new TypeReference<SessionServiceGetSessionResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-
-
-
-  /**
-   * ListSessions
-   * Search sessions
-   * @param sessionServiceListSessionsRequest  (required)
-   * @return SessionServiceListSessionsResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SessionServiceListSessionsResponse listSessions(SessionServiceListSessionsRequest sessionServiceListSessionsRequest) throws ApiException {
-    return this.listSessions(sessionServiceListSessionsRequest, Collections.emptyMap());
-  }
-
-
-  /**
-   * ListSessions
-   * Search sessions
-   * @param sessionServiceListSessionsRequest  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SessionServiceListSessionsResponse
-   * @throws ApiException if fails to make API call
-   */
-  private SessionServiceListSessionsResponse listSessions(SessionServiceListSessionsRequest sessionServiceListSessionsRequest, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = sessionServiceListSessionsRequest;
-
-    if (sessionServiceListSessionsRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceListSessionsRequest' when calling listSessions");
+        return apiClient.invokeAPI(
+            "getSession",
+            "/zitadel.session.v2.SessionService/GetSession",
+            "POST",
+            null,
+            null,
+            null,
+            sessionServiceGetSessionRequest,
+            successType,
+            null
+        );
     }
 
-    String localVarPath = "/zitadel.session.v2.SessionService/ListSessions";
+    public SessionServiceListSessionsResponse listSessions(SessionServiceListSessionsRequest sessionServiceListSessionsRequest) throws ApiException {
+        if (sessionServiceListSessionsRequest == null) {
+            throw new IllegalArgumentException("Missing the required parameter 'sessionServiceListSessionsRequest' when calling listSessions");
+        }
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        TypeReference<SessionServiceListSessionsResponse> successType = new TypeReference<>() {
+        };
 
-
-    localVarHeaderParams.putAll(additionalHeaders);
-
-
-
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SessionServiceListSessionsResponse> localVarReturnType = new TypeReference<SessionServiceListSessionsResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-
-
-
-  /**
-   * SetSession
-   * Update a session
-   * @param sessionServiceSetSessionRequest  (required)
-   * @return SessionServiceSetSessionResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SessionServiceSetSessionResponse setSession(SessionServiceSetSessionRequest sessionServiceSetSessionRequest) throws ApiException {
-    return this.setSession(sessionServiceSetSessionRequest, Collections.emptyMap());
-  }
-
-
-  /**
-   * SetSession
-   * Update a session
-   * @param sessionServiceSetSessionRequest  (required)
-   * @param additionalHeaders additionalHeaders for this call
-   * @return SessionServiceSetSessionResponse
-   * @throws ApiException if fails to make API call
-   */
-  private SessionServiceSetSessionResponse setSession(SessionServiceSetSessionRequest sessionServiceSetSessionRequest, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = sessionServiceSetSessionRequest;
-
-    if (sessionServiceSetSessionRequest == null) {
-      throw new IllegalArgumentException("Missing the required parameter 'sessionServiceSetSessionRequest' when calling setSession");
+        return apiClient.invokeAPI(
+            "listSessions",
+            "/zitadel.session.v2.SessionService/ListSessions",
+            "POST",
+            null,
+            null,
+            null,
+            sessionServiceListSessionsRequest,
+            successType,
+            null
+        );
     }
 
-    String localVarPath = "/zitadel.session.v2.SessionService/SetSession";
+    public SessionServiceSetSessionResponse setSession(SessionServiceSetSessionRequest sessionServiceSetSessionRequest) throws ApiException {
+        if (sessionServiceSetSessionRequest == null) {
+            throw new IllegalArgumentException("Missing the required parameter 'sessionServiceSetSessionRequest' when calling setSession");
+        }
 
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        TypeReference<SessionServiceSetSessionResponse> successType = new TypeReference<>() {
+        };
 
-
-    localVarHeaderParams.putAll(additionalHeaders);
-
-
-
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    TypeReference<SessionServiceSetSessionResponse> localVarReturnType = new TypeReference<SessionServiceSetSessionResponse>() {};
-    return apiClient.invokeAPI(
-        localVarPath,
-        "POST",
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        localVarPostBody,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        localVarReturnType
-    );
-  }
-
-  @Override
-  public <T> T invokeAPI(String url, String method, Object request, TypeReference<T> returnType, Map<String, String> additionalHeaders) throws ApiException {
-    String localVarPath = url.replace(apiClient.getBaseURL(), "");
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-    localVarHeaderParams.putAll(additionalHeaders);
-
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      "application/json"
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
-
-    return apiClient.invokeAPI(
-      localVarPath,
-        method,
-        localVarQueryParams,
-        localVarCollectionQueryParams,
-        localVarQueryStringJoiner.toString(),
-        request,
-        localVarHeaderParams,
-        localVarCookieParams,
-        localVarFormParams,
-        localVarAccept,
-        localVarContentType,
-        localVarAuthNames,
-        returnType
-    );
-  }
+        return apiClient.invokeAPI(
+            "setSession",
+            "/zitadel.session.v2.SessionService/SetSession",
+            "POST",
+            null,
+            null,
+            null,
+            sessionServiceSetSessionRequest,
+            successType,
+            null
+        );
+    }
 }
