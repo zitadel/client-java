@@ -117,17 +117,14 @@ class DefaultApiClientTest {
         });
         var customHeaders = Map.of("X-Request-ID", (Collection<String>) List.of("test-uuid-123"));
         assertDoesNotThrow(() ->
-            apiClient.invokeAPI("testCustomHeaders", "/users/123", "PUT", Map.<String, Object>of(), Map.<String, Object>of(), customHeaders, new Object(), new TypeReference<SuccessModel>() {
-            }, responseTypes)
-        );
+            apiClient.invokeAPI("testCustomHeaders", "/users/123", "PUT", Map.<String, Object>of(), Map.<String, Object>of(), customHeaders, new Object(), null, Map.of()));
     }
 
     @Test
     @DisplayName("DELETE request returns void")
     void testDeleteRequest() {
         Object result = assertDoesNotThrow(() ->
-            apiClient.invokeAPI("testVoid", "/users/123", "DELETE", Map.<String, Object>of(), Map.<String, Object>of(), Map.<String, Collection<String>>of(), null, new TypeReference<SuccessModel>() {
-            }, Map.of())
+            apiClient.invokeAPI("testVoid", "/users/123", "DELETE", Map.<String, Object>of(), Map.<String, Object>of(), Map.<String, Collection<String>>of(), null, null, Map.of())
         );
         assertNull(result);
     }
