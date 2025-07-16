@@ -5,10 +5,12 @@ import com.zitadel.auth.Authenticator;
 import com.zitadel.auth.ClientCredentialsAuthenticator;
 import com.zitadel.auth.PersonalAccessTokenAuthenticator;
 import com.zitadel.auth.WebTokenAuthenticator;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+@SuppressFBWarnings("URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD")
 @SuppressWarnings("unused")
 public class Zitadel {
     public final BetaProjectServiceApi betaProjects;

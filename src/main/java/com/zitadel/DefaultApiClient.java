@@ -40,7 +40,7 @@
      *
      * Configuration config = new Configuration(new PersonalAccessTokenAuthenticator("https://api.example.com", "test-token"));
      *
-     * Function<HttpClientBuilder, <HttpClientBuilder> clientConfigurator = builder -> {
+     * Function<HttpClientBuilder, HttpClientBuilder> clientConfigurator = builder -> {
      *     try {
      *         // Disable SSL certificate verification
      *         builder.setSSLContext(new SSLContextBuilder()
@@ -129,23 +129,22 @@
                     }
                 }
                 final URI uri = uriBuilder.build();
-                final var request1 = new HttpUriRequestBase(method, uri);
-                request1.setHeader("Accept", "application/json");
-                request1.setHeader("Authorization", "Bearer " + config.getAccessToken());
-                request1.setHeader("User-Agent", config.getUserAgent());
-                request1.setHeader("X-Operation-Id", operationId);
+                final var request = new HttpUriRequestBase(method, uri);
+                request.setHeader("Accept", "application/json");
+                request.setHeader("Authorization", "Bearer " + config.getAccessToken());
+                request.setHeader("User-Agent", config.getUserAgent());
+                request.setHeader("X-Operation-Id", operationId);
                 if (headerParams != null) {
                     for (Map.Entry<String, Collection<String>> entry : headerParams.entrySet()) {
                         for (String value : entry.getValue()) {
-                            request1.addHeader(entry.getKey(), value);
+                            request.addHeader(entry.getKey(), value);
                         }
                     }
                 }
                 if (body != null) {
-                    request1.setHeader("Content-Type", "application/json");
-                    request1.setEntity(new StringEntity(serializer.serialize(body), ContentType.APPLICATION_JSON.withCharset(StandardCharsets.UTF_8)));
+                    request.setHeader("Content-Type", "application/json");
+                    request.setEntity(new StringEntity(serializer.serialize(body), ContentType.APPLICATION_JSON.withCharset(StandardCharsets.UTF_8)));
                 }
-                HttpUriRequestBase request = request1;
 
                 return this.httpClient.execute(request, response -> {
                     final int statusCode = response.getCode();

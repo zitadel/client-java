@@ -35,6 +35,7 @@ class DefaultApiClientTest {
     private IApiClient apiClient;
 
     private static class SuccessModel {
+        @SuppressWarnings("unused")
         @Nullable
         public String status;
     }
@@ -113,8 +114,6 @@ class DefaultApiClientTest {
     @Test
     @DisplayName("PUT request sends custom headers")
     void testSendsCustomHeaders() {
-        Map<String, TypeReference<?>> responseTypes = Map.of("200", new TypeReference<>() {
-        });
         var customHeaders = Map.of("X-Request-ID", (Collection<String>) List.of("test-uuid-123"));
         assertDoesNotThrow(() ->
             apiClient.invokeAPI("testCustomHeaders", "/users/123", "PUT", Map.<String, Object>of(), Map.<String, Object>of(), customHeaders, new Object(), null, Map.of()));
