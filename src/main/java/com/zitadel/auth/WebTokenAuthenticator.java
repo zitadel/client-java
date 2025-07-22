@@ -141,6 +141,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
             super.getToken(
                 new ClientAuthentication(ClientAuthenticationMethod.NONE, new ClientID()) {
 
+                    @SuppressWarnings("JvmCoverageInspection")
                     @Override
                     public Set<String> getFormParameterNames() {
                         return new HashSet<>();

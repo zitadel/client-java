@@ -39,6 +39,7 @@ public class ObjectSerializer {
      * @param body The object to serialize.
      * @return The JSON string representation.
      */
+    @SuppressWarnings("JvmCoverageInspection")
     public String serialize(Object body) {
         try {
             return this.objectMapper.writeValueAsString(body);
