@@ -40,7 +40,7 @@
      *
      * Configuration config = new Configuration(new PersonalAccessTokenAuthenticator("https://api.example.com", "test-token"));
      *
-     * Function<HttpClientBuilder, HttpClientBuilder> clientConfigurator = builder -> {
+     * Function&lt;HttpClientBuilder, HttpClientBuilder&gt; clientConfigurator = builder -> {
      *     try {
      *         // Disable SSL certificate verification
      *         builder.setSSLContext(new SSLContextBuilder()
