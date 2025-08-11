@@ -33,7 +33,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   BetaProjectServiceGetProjectResponse.JSON_PROPERTY_PROJECT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaProjectServiceGetProjectResponse {
   public static final String JSON_PROPERTY_PROJECT = "project";
   @javax.annotation.Nullable

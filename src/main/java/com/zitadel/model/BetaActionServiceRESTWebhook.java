@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   BetaActionServiceRESTWebhook.JSON_PROPERTY_INTERRUPT_ON_ERROR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaActionServiceRESTWebhook {
   public static final String JSON_PROPERTY_INTERRUPT_ON_ERROR = "interruptOnError";
   @javax.annotation.Nullable

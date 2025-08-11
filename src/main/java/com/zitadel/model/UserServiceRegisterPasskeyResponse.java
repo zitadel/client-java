@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   UserServiceRegisterPasskeyResponse.JSON_PROPERTY_PASSKEY_ID,
   UserServiceRegisterPasskeyResponse.JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL_CREATION_OPTIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceRegisterPasskeyResponse {
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable

@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   BetaUserServiceDetails.JSON_PROPERTY_RESOURCE_OWNER,
   BetaUserServiceDetails.JSON_PROPERTY_CREATION_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceDetails {
   public static final String JSON_PROPERTY_SEQUENCE = "sequence";
   @javax.annotation.Nullable

@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   BetaSessionServiceGetSessionRequest.JSON_PROPERTY_SESSION_ID,
   BetaSessionServiceGetSessionRequest.JSON_PROPERTY_SESSION_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaSessionServiceGetSessionRequest {
   public static final String JSON_PROPERTY_SESSION_ID = "sessionId";
   @javax.annotation.Nullable

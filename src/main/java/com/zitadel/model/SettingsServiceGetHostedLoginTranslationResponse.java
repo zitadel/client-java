@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   SettingsServiceGetHostedLoginTranslationResponse.JSON_PROPERTY_ETAG,
   SettingsServiceGetHostedLoginTranslationResponse.JSON_PROPERTY_TRANSLATIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class SettingsServiceGetHostedLoginTranslationResponse {
   public static final String JSON_PROPERTY_ETAG = "etag";
   @javax.annotation.Nullable

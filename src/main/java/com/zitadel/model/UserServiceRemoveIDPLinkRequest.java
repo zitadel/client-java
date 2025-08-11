@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   UserServiceRemoveIDPLinkRequest.JSON_PROPERTY_IDP_ID,
   UserServiceRemoveIDPLinkRequest.JSON_PROPERTY_LINKED_USER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceRemoveIDPLinkRequest {
   public static final String JSON_PROPERTY_USER_ID = "userId";
   @javax.annotation.Nonnull

@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   OrganizationServiceOrganization.JSON_PROPERTY_NAME,
   OrganizationServiceOrganization.JSON_PROPERTY_PRIMARY_DOMAIN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class OrganizationServiceOrganization {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

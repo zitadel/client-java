@@ -41,7 +41,7 @@ import java.util.StringJoiner;
   BetaFeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_DEBUG_OIDC_PARENT_ERROR,
   BetaFeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaFeatureServiceGetInstanceFeaturesResponse {
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable

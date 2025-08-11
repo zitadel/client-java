@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   BetaSettingsServiceLockoutSettings.JSON_PROPERTY_RESOURCE_OWNER_TYPE,
   BetaSettingsServiceLockoutSettings.JSON_PROPERTY_MAX_OTP_ATTEMPTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaSettingsServiceLockoutSettings {
   public static final String JSON_PROPERTY_MAX_PASSWORD_ATTEMPTS = "maxPasswordAttempts";
   @javax.annotation.Nullable

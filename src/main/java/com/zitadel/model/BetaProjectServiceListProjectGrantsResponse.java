@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   BetaProjectServiceListProjectGrantsResponse.JSON_PROPERTY_PAGINATION,
   BetaProjectServiceListProjectGrantsResponse.JSON_PROPERTY_PROJECT_GRANTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaProjectServiceListProjectGrantsResponse {
   public static final String JSON_PROPERTY_PAGINATION = "pagination";
   @javax.annotation.Nullable

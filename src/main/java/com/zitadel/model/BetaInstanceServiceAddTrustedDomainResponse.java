@@ -33,7 +33,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   BetaInstanceServiceAddTrustedDomainResponse.JSON_PROPERTY_CREATION_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaInstanceServiceAddTrustedDomainResponse {
   public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
   @javax.annotation.Nullable

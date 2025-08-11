@@ -42,7 +42,7 @@ import java.util.StringJoiner;
   BetaWebKeyServiceWebKey.JSON_PROPERTY_ED25519,
   BetaWebKeyServiceWebKey.JSON_PROPERTY_RSA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaWebKeyServiceWebKey {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

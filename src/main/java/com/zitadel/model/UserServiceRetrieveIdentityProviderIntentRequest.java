@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   UserServiceRetrieveIdentityProviderIntentRequest.JSON_PROPERTY_IDP_INTENT_ID,
   UserServiceRetrieveIdentityProviderIntentRequest.JSON_PROPERTY_IDP_INTENT_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceRetrieveIdentityProviderIntentRequest {
   public static final String JSON_PROPERTY_IDP_INTENT_ID = "idpIntentId";
   @javax.annotation.Nullable

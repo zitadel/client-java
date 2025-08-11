@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   SettingsServiceGetHostedLoginTranslationRequest.JSON_PROPERTY_ORGANIZATION_ID,
   SettingsServiceGetHostedLoginTranslationRequest.JSON_PROPERTY_SYSTEM
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class SettingsServiceGetHostedLoginTranslationRequest {
   public static final String JSON_PROPERTY_LOCALE = "locale";
   @javax.annotation.Nullable

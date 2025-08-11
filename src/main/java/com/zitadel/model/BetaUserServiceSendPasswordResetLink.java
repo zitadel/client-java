@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   BetaUserServiceSendPasswordResetLink.JSON_PROPERTY_NOTIFICATION_TYPE,
   BetaUserServiceSendPasswordResetLink.JSON_PROPERTY_URL_TEMPLATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceSendPasswordResetLink {
   public static final String JSON_PROPERTY_NOTIFICATION_TYPE = "notificationType";
   @javax.annotation.Nullable

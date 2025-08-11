@@ -52,7 +52,7 @@ import java.util.StringJoiner;
   BetaInternalPermissionServiceAdministratorSearchFilter.JSON_PROPERTY_USER_ORGANIZATION_ID,
   BetaInternalPermissionServiceAdministratorSearchFilter.JSON_PROPERTY_USER_PREFERRED_LOGIN_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaInternalPermissionServiceAdministratorSearchFilter {
   public static final String JSON_PROPERTY_AND = "and";
   @javax.annotation.Nullable

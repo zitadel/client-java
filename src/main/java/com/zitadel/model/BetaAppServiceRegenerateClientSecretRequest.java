@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   BetaAppServiceRegenerateClientSecretRequest.JSON_PROPERTY_IS_API,
   BetaAppServiceRegenerateClientSecretRequest.JSON_PROPERTY_IS_OIDC
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaAppServiceRegenerateClientSecretRequest {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
   @javax.annotation.Nullable

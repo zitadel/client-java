@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   BetaAppServiceDeactivateApplicationRequest.JSON_PROPERTY_PROJECT_ID,
   BetaAppServiceDeactivateApplicationRequest.JSON_PROPERTY_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaAppServiceDeactivateApplicationRequest {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
   @javax.annotation.Nullable

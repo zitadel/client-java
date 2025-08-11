@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   BetaProjectServiceProjectSearchFilter.JSON_PROPERTY_PROJECT_ORGANIZATION_ID_FILTER,
   BetaProjectServiceProjectSearchFilter.JSON_PROPERTY_PROJECT_RESOURCE_OWNER_FILTER
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaProjectServiceProjectSearchFilter {
   public static final String JSON_PROPERTY_IN_PROJECT_IDS_FILTER = "inProjectIdsFilter";
   @javax.annotation.Nullable

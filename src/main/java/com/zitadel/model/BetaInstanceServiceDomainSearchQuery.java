@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   BetaInstanceServiceDomainSearchQuery.JSON_PROPERTY_GENERATED_QUERY,
   BetaInstanceServiceDomainSearchQuery.JSON_PROPERTY_PRIMARY_QUERY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaInstanceServiceDomainSearchQuery {
   public static final String JSON_PROPERTY_DOMAIN_QUERY = "domainQuery";
   @javax.annotation.Nullable

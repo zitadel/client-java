@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   BetaOrganizationServiceMetadata.JSON_PROPERTY_KEY,
   BetaOrganizationServiceMetadata.JSON_PROPERTY_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceMetadata {
   public static final String JSON_PROPERTY_KEY = "key";
   @javax.annotation.Nullable

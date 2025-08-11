@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   BetaSettingsServiceGetGeneralSettingsResponse.JSON_PROPERTY_DEFAULT_LANGUAGE,
   BetaSettingsServiceGetGeneralSettingsResponse.JSON_PROPERTY_SUPPORTED_LANGUAGES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaSettingsServiceGetGeneralSettingsResponse {
   public static final String JSON_PROPERTY_DEFAULT_ORG_ID = "defaultOrgId";
   @javax.annotation.Nullable

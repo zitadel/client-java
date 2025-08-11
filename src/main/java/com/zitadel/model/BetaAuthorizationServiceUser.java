@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   BetaAuthorizationServiceUser.JSON_PROPERTY_AVATAR_URL,
   BetaAuthorizationServiceUser.JSON_PROPERTY_ORGANIZATION_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaAuthorizationServiceUser {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

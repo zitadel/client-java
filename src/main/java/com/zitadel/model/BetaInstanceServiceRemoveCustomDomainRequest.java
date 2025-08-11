@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   BetaInstanceServiceRemoveCustomDomainRequest.JSON_PROPERTY_INSTANCE_ID,
   BetaInstanceServiceRemoveCustomDomainRequest.JSON_PROPERTY_DOMAIN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaInstanceServiceRemoveCustomDomainRequest {
   public static final String JSON_PROPERTY_INSTANCE_ID = "instanceId";
   @javax.annotation.Nullable

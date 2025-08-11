@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   OIDCServiceAuthorizationError.JSON_PROPERTY_ERROR_DESCRIPTION,
   OIDCServiceAuthorizationError.JSON_PROPERTY_ERROR_URI
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class OIDCServiceAuthorizationError {
   public static final String JSON_PROPERTY_ERROR = "error";
   @javax.annotation.Nullable

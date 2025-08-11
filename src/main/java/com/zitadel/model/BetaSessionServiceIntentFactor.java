@@ -33,7 +33,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   BetaSessionServiceIntentFactor.JSON_PROPERTY_VERIFIED_AT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaSessionServiceIntentFactor {
   public static final String JSON_PROPERTY_VERIFIED_AT = "verifiedAt";
   @javax.annotation.Nullable

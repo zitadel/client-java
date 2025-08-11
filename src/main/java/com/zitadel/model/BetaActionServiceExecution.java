@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   BetaActionServiceExecution.JSON_PROPERTY_CHANGE_DATE,
   BetaActionServiceExecution.JSON_PROPERTY_TARGETS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaActionServiceExecution {
   public static final String JSON_PROPERTY_CONDITION = "condition";
   @javax.annotation.Nullable

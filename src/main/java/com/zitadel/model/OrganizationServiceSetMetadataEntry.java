@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   OrganizationServiceSetMetadataEntry.JSON_PROPERTY_KEY,
   OrganizationServiceSetMetadataEntry.JSON_PROPERTY_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class OrganizationServiceSetMetadataEntry {
   public static final String JSON_PROPERTY_KEY = "key";
   @javax.annotation.Nonnull

@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   BetaInternalPermissionServiceUpdateAdministratorRequest.JSON_PROPERTY_RESOURCE,
   BetaInternalPermissionServiceUpdateAdministratorRequest.JSON_PROPERTY_ROLES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaInternalPermissionServiceUpdateAdministratorRequest {
   public static final String JSON_PROPERTY_USER_ID = "userId";
   @javax.annotation.Nullable

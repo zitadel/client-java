@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   UserServiceRedirectURLs.JSON_PROPERTY_SUCCESS_URL,
   UserServiceRedirectURLs.JSON_PROPERTY_FAILURE_URL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceRedirectURLs {
   public static final String JSON_PROPERTY_SUCCESS_URL = "successUrl";
   @javax.annotation.Nullable

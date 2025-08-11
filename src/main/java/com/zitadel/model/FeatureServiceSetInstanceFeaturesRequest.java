@@ -51,7 +51,7 @@ import java.util.StringJoiner;
   FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_PERMISSION_CHECK_V2,
   FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_CONSOLE_USE_V2_USER_API
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class FeatureServiceSetInstanceFeaturesRequest {
   public static final String JSON_PROPERTY_LOGIN_DEFAULT_ORG = "loginDefaultOrg";
   @javax.annotation.Nullable

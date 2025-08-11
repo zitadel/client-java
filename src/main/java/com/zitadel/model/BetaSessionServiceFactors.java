@@ -44,7 +44,7 @@ import java.util.StringJoiner;
   BetaSessionServiceFactors.JSON_PROPERTY_OTP_SMS,
   BetaSessionServiceFactors.JSON_PROPERTY_OTP_EMAIL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaSessionServiceFactors {
   public static final String JSON_PROPERTY_USER = "user";
   @javax.annotation.Nullable

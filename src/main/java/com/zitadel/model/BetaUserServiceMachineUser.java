@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   BetaUserServiceMachineUser.JSON_PROPERTY_HAS_SECRET,
   BetaUserServiceMachineUser.JSON_PROPERTY_ACCESS_TOKEN_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceMachineUser {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable

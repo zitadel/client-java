@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   BetaAppServiceCreateApplicationRequest.JSON_PROPERTY_OIDC_REQUEST,
   BetaAppServiceCreateApplicationRequest.JSON_PROPERTY_SAML_REQUEST
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaAppServiceCreateApplicationRequest {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
   @javax.annotation.Nullable

@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   SettingsServiceSetSecuritySettingsRequest.JSON_PROPERTY_EMBEDDED_IFRAME,
   SettingsServiceSetSecuritySettingsRequest.JSON_PROPERTY_ENABLE_IMPERSONATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class SettingsServiceSetSecuritySettingsRequest {
   public static final String JSON_PROPERTY_EMBEDDED_IFRAME = "embeddedIframe";
   @javax.annotation.Nullable

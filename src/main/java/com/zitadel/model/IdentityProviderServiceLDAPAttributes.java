@@ -45,7 +45,7 @@ import java.util.StringJoiner;
   IdentityProviderServiceLDAPAttributes.JSON_PROPERTY_PROFILE_ATTRIBUTE,
   IdentityProviderServiceLDAPAttributes.JSON_PROPERTY_ROOT_CA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class IdentityProviderServiceLDAPAttributes {
   public static final String JSON_PROPERTY_ID_ATTRIBUTE = "idAttribute";
   @javax.annotation.Nullable

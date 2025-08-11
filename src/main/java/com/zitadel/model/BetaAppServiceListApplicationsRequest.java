@@ -41,7 +41,7 @@ import java.util.StringJoiner;
   BetaAppServiceListApplicationsRequest.JSON_PROPERTY_FILTERS,
   BetaAppServiceListApplicationsRequest.JSON_PROPERTY_SORTING_COLUMN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaAppServiceListApplicationsRequest {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
   @javax.annotation.Nullable

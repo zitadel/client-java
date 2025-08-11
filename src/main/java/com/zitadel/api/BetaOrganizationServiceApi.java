@@ -46,7 +46,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceApi extends BaseApi {
 
   public BetaOrganizationServiceApi() {
@@ -212,7 +212,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * CreateOrganization
-   * Create Organization   Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.   Required permission:   - &#x60;org.create&#x60;
+   * Create Organization   Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.   Required permission:   - &#x60;org.create&#x60;   Deprecated: Use [AddOrganization](/apis/resources/org_service_v2/organization-service-add-organization.api.mdx) instead to create an organization.
    * @param betaOrganizationServiceCreateOrganizationRequest  (required)
    * @return BetaOrganizationServiceCreateOrganizationResponse
    * @throws ApiException if fails to make API call
@@ -224,7 +224,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * CreateOrganization
-   * Create Organization   Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.   Required permission:   - &#x60;org.create&#x60;
+   * Create Organization   Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.   Required permission:   - &#x60;org.create&#x60;   Deprecated: Use [AddOrganization](/apis/resources/org_service_v2/organization-service-add-organization.api.mdx) instead to create an organization.
    * @param betaOrganizationServiceCreateOrganizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceCreateOrganizationResponse
@@ -812,7 +812,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * ListOrganizations
-   * List Organizations   Returns a list of organizations that match the requesting filters. All filters are applied with an AND condition.   Required permission:   - &#x60;iam.read&#x60;
+   * List Organizations   Returns a list of organizations that match the requesting filters. All filters are applied with an AND condition.   Required permission:   - &#x60;iam.read&#x60;   Deprecated: Use [ListOrganizations](/apis/resources/org_service_v2/organization-service-list-organizations.api.mdx) instead to list organizations.
    * @param betaOrganizationServiceListOrganizationsRequest  (required)
    * @return BetaOrganizationServiceListOrganizationsResponse
    * @throws ApiException if fails to make API call
@@ -824,7 +824,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * ListOrganizations
-   * List Organizations   Returns a list of organizations that match the requesting filters. All filters are applied with an AND condition.   Required permission:   - &#x60;iam.read&#x60;
+   * List Organizations   Returns a list of organizations that match the requesting filters. All filters are applied with an AND condition.   Required permission:   - &#x60;iam.read&#x60;   Deprecated: Use [ListOrganizations](/apis/resources/org_service_v2/organization-service-list-organizations.api.mdx) instead to list organizations.
    * @param betaOrganizationServiceListOrganizationsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceListOrganizationsResponse

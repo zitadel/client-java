@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   SessionServiceConnectError.JSON_PROPERTY_MESSAGE,
   SessionServiceConnectError.JSON_PROPERTY_DETAIL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class SessionServiceConnectError extends HashMap<String, Object> {
   /**
    * The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].

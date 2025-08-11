@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   BetaAuthorizationServiceCreateAuthorizationResponse.JSON_PROPERTY_ID,
   BetaAuthorizationServiceCreateAuthorizationResponse.JSON_PROPERTY_CREATION_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaAuthorizationServiceCreateAuthorizationResponse {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

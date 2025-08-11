@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   UserServicePersonalAccessTokensSearchFilter.JSON_PROPERTY_TOKEN_ID_FILTER,
   UserServicePersonalAccessTokensSearchFilter.JSON_PROPERTY_USER_ID_FILTER
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServicePersonalAccessTokensSearchFilter {
   public static final String JSON_PROPERTY_CREATED_DATE_FILTER = "createdDateFilter";
   @javax.annotation.Nullable

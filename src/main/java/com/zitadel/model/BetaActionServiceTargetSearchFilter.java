@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   BetaActionServiceTargetSearchFilter.JSON_PROPERTY_IN_TARGET_IDS_FILTER,
   BetaActionServiceTargetSearchFilter.JSON_PROPERTY_TARGET_NAME_FILTER
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaActionServiceTargetSearchFilter {
   public static final String JSON_PROPERTY_IN_TARGET_IDS_FILTER = "inTargetIdsFilter";
   @javax.annotation.Nullable
