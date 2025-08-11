@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest.JSON_PROPERTY_DENY,
   OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest.JSON_PROPERTY_SESSION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest {
   public static final String JSON_PROPERTY_DEVICE_AUTHORIZATION_ID = "deviceAuthorizationId";
   @javax.annotation.Nullable

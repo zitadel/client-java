@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   BetaInternalPermissionServiceResourceFilter.JSON_PROPERTY_PROJECT_GRANT_ID,
   BetaInternalPermissionServiceResourceFilter.JSON_PROPERTY_PROJECT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaInternalPermissionServiceResourceFilter {
   public static final String JSON_PROPERTY_INSTANCE = "instance";
   @javax.annotation.Nullable

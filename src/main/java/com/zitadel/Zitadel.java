@@ -116,6 +116,13 @@ public class Zitadel {
     @Deprecated
     public final BetaActionServiceApi betaActions;
     /**
+     * Service for managing Actions.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getActions()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
+    public final ActionServiceApi actions;
+    /**
      * Service for managing Users.
      *
      * @deprecated As of version 4.2.0, use {@link #getUsers()} for better testability. This field will be removed in a future major version.
@@ -208,6 +215,7 @@ public class Zitadel {
         this.betaFeatures = new BetaFeatureServiceApi(apiClient);
         this.betaWebkeys = new BetaWebKeyServiceApi(apiClient);
         this.betaActions = new BetaActionServiceApi(apiClient);
+        this.actions = new ActionServiceApi(apiClient);
         this.users = new UserServiceApi(apiClient);
         this.sessions = new SessionServiceApi(apiClient);
         this.oidc = new OidcServiceApi(apiClient);
@@ -395,6 +403,15 @@ public class Zitadel {
      */
     public BetaActionServiceApi getBetaActions() {
         return betaActions;
+    }
+
+    /**
+     * Gets the service for managing Actions. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link BetaActionServiceApi}.
+     */
+    public ActionServiceApi getActions() {
+        return actions;
     }
 
     /**

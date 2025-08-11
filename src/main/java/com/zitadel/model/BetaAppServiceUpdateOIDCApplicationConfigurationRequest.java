@@ -62,7 +62,7 @@ import java.util.StringJoiner;
   BetaAppServiceUpdateOIDCApplicationConfigurationRequest.JSON_PROPERTY_BACK_CHANNEL_LOGOUT_URI,
   BetaAppServiceUpdateOIDCApplicationConfigurationRequest.JSON_PROPERTY_LOGIN_VERSION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaAppServiceUpdateOIDCApplicationConfigurationRequest {
   public static final String JSON_PROPERTY_REDIRECT_URIS = "redirectUris";
   @javax.annotation.Nullable

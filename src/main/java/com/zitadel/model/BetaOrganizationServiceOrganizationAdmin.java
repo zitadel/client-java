@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   BetaOrganizationServiceOrganizationAdmin.JSON_PROPERTY_ASSIGNED_ADMIN,
   BetaOrganizationServiceOrganizationAdmin.JSON_PROPERTY_CREATED_ADMIN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceOrganizationAdmin {
   public static final String JSON_PROPERTY_ASSIGNED_ADMIN = "assignedAdmin";
   @javax.annotation.Nullable

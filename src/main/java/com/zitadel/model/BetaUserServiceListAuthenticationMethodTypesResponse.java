@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   BetaUserServiceListAuthenticationMethodTypesResponse.JSON_PROPERTY_DETAILS,
   BetaUserServiceListAuthenticationMethodTypesResponse.JSON_PROPERTY_AUTH_METHOD_TYPES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceListAuthenticationMethodTypesResponse {
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable

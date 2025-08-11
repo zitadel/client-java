@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   UserServicePaginationRequest.JSON_PROPERTY_LIMIT,
   UserServicePaginationRequest.JSON_PROPERTY_ASC
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServicePaginationRequest {
   public static final String JSON_PROPERTY_OFFSET = "offset";
   @javax.annotation.Nullable

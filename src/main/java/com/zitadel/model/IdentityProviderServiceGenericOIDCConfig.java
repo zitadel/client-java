@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   IdentityProviderServiceGenericOIDCConfig.JSON_PROPERTY_SCOPES,
   IdentityProviderServiceGenericOIDCConfig.JSON_PROPERTY_IS_ID_TOKEN_MAPPING
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class IdentityProviderServiceGenericOIDCConfig {
   public static final String JSON_PROPERTY_ISSUER = "issuer";
   @javax.annotation.Nullable

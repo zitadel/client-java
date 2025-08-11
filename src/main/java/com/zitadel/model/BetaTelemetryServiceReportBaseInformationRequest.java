@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   BetaTelemetryServiceReportBaseInformationRequest.JSON_PROPERTY_VERSION,
   BetaTelemetryServiceReportBaseInformationRequest.JSON_PROPERTY_INSTANCES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaTelemetryServiceReportBaseInformationRequest {
   public static final String JSON_PROPERTY_SYSTEM_ID = "systemId";
   @javax.annotation.Nullable

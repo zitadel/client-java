@@ -36,17 +36,17 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   BetaActionServiceListExecutionsResponse.JSON_PROPERTY_PAGINATION,
-  BetaActionServiceListExecutionsResponse.JSON_PROPERTY_RESULT
+  BetaActionServiceListExecutionsResponse.JSON_PROPERTY_EXECUTIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaActionServiceListExecutionsResponse {
   public static final String JSON_PROPERTY_PAGINATION = "pagination";
   @javax.annotation.Nullable
   private BetaActionServicePaginationResponse pagination;
 
-  public static final String JSON_PROPERTY_RESULT = "result";
+  public static final String JSON_PROPERTY_EXECUTIONS = "executions";
   @javax.annotation.Nullable
-  private List<BetaActionServiceExecution> result = new ArrayList<>();
+  private List<BetaActionServiceExecution> executions = new ArrayList<>();
 
   public BetaActionServiceListExecutionsResponse() {
   }
@@ -76,37 +76,37 @@ public class BetaActionServiceListExecutionsResponse {
     this.pagination = pagination;
   }
 
-  public BetaActionServiceListExecutionsResponse result(@javax.annotation.Nullable List<BetaActionServiceExecution> result) {
+  public BetaActionServiceListExecutionsResponse executions(@javax.annotation.Nullable List<BetaActionServiceExecution> executions) {
     
-    this.result = result;
+    this.executions = executions;
     return this;
   }
 
-  public BetaActionServiceListExecutionsResponse addResultItem(BetaActionServiceExecution resultItem) {
-    if (this.result == null) {
-      this.result = new ArrayList<>();
+  public BetaActionServiceListExecutionsResponse addExecutionsItem(BetaActionServiceExecution executionsItem) {
+    if (this.executions == null) {
+      this.executions = new ArrayList<>();
     }
-    this.result.add(resultItem);
+    this.executions.add(executionsItem);
     return this;
   }
 
   /**
-   * Get result
-   * @return result
+   * Get executions
+   * @return executions
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RESULT)
+  @JsonProperty(JSON_PROPERTY_EXECUTIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<BetaActionServiceExecution> getResult() {
-    return result;
+  public List<BetaActionServiceExecution> getExecutions() {
+    return executions;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESULT)
+  @JsonProperty(JSON_PROPERTY_EXECUTIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResult(@javax.annotation.Nullable List<BetaActionServiceExecution> result) {
-    this.result = result;
+  public void setExecutions(@javax.annotation.Nullable List<BetaActionServiceExecution> executions) {
+    this.executions = executions;
   }
 
   @Override
@@ -119,12 +119,12 @@ public class BetaActionServiceListExecutionsResponse {
     }
     BetaActionServiceListExecutionsResponse betaActionServiceListExecutionsResponse = (BetaActionServiceListExecutionsResponse) o;
     return Objects.equals(this.pagination, betaActionServiceListExecutionsResponse.pagination) &&
-        Objects.equals(this.result, betaActionServiceListExecutionsResponse.result);
+        Objects.equals(this.executions, betaActionServiceListExecutionsResponse.executions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pagination, result);
+    return Objects.hash(pagination, executions);
   }
 
   @Override
@@ -132,7 +132,7 @@ public class BetaActionServiceListExecutionsResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class BetaActionServiceListExecutionsResponse {\n");
     sb.append("    pagination: ").append(toIndentedString(pagination)).append("\n");
-    sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    executions: ").append(toIndentedString(executions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -185,11 +185,11 @@ public class BetaActionServiceListExecutionsResponse {
       joiner.add(getPagination().toUrlQueryString(prefix + "pagination" + suffix));
     }
 
-    // add `result` to the URL query string
-    if (getResult() != null) {
-      for (int i = 0; i < getResult().size(); i++) {
-        if (getResult().get(i) != null) {
-          joiner.add(getResult().get(i).toUrlQueryString(String.format("%sresult%s%s", prefix, suffix,
+    // add `executions` to the URL query string
+    if (getExecutions() != null) {
+      for (int i = 0; i < getExecutions().size(); i++) {
+        if (getExecutions().get(i) != null) {
+          joiner.add(getExecutions().get(i).toUrlQueryString(String.format("%sexecutions%s%s", prefix, suffix,
               "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }

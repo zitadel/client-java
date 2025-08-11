@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   FeatureServiceLoginV2FeatureFlag.JSON_PROPERTY_BASE_URI,
   FeatureServiceLoginV2FeatureFlag.JSON_PROPERTY_SOURCE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class FeatureServiceLoginV2FeatureFlag {
   public static final String JSON_PROPERTY_REQUIRED = "required";
   @javax.annotation.Nullable

@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   BetaOrganizationServiceDomain.JSON_PROPERTY_IS_PRIMARY,
   BetaOrganizationServiceDomain.JSON_PROPERTY_VALIDATION_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceDomain {
   public static final String JSON_PROPERTY_ORGANIZATION_ID = "organizationId";
   @javax.annotation.Nullable

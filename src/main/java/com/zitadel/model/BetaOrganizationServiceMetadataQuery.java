@@ -33,7 +33,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   BetaOrganizationServiceMetadataQuery.JSON_PROPERTY_KEY_QUERY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceMetadataQuery {
   public static final String JSON_PROPERTY_KEY_QUERY = "keyQuery";
   @javax.annotation.Nullable

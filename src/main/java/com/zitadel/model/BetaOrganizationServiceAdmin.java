@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   BetaOrganizationServiceAdmin.JSON_PROPERTY_HUMAN,
   BetaOrganizationServiceAdmin.JSON_PROPERTY_USER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceAdmin {
   public static final String JSON_PROPERTY_ROLES = "roles";
   @javax.annotation.Nullable

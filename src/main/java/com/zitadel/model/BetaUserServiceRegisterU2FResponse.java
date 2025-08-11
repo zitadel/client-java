@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   BetaUserServiceRegisterU2FResponse.JSON_PROPERTY_U2F_ID,
   BetaUserServiceRegisterU2FResponse.JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL_CREATION_OPTIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceRegisterU2FResponse {
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable

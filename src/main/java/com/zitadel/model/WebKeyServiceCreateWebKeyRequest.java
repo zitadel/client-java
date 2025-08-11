@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   WebKeyServiceCreateWebKeyRequest.JSON_PROPERTY_ED25519,
   WebKeyServiceCreateWebKeyRequest.JSON_PROPERTY_RSA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class WebKeyServiceCreateWebKeyRequest {
   public static final String JSON_PROPERTY_ECDSA = "ecdsa";
   @javax.annotation.Nullable

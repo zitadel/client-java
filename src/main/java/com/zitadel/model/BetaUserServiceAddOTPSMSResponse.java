@@ -33,7 +33,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   BetaUserServiceAddOTPSMSResponse.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceAddOTPSMSResponse {
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable

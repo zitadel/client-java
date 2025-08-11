@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   BetaAppServiceLoginVersion.JSON_PROPERTY_LOGIN_V1,
   BetaAppServiceLoginVersion.JSON_PROPERTY_LOGIN_V2
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaAppServiceLoginVersion {
   public static final String JSON_PROPERTY_LOGIN_V1 = "loginV1";
   @javax.annotation.Nullable

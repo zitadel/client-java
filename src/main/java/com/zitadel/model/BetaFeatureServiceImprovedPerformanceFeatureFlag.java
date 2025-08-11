@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   BetaFeatureServiceImprovedPerformanceFeatureFlag.JSON_PROPERTY_EXECUTION_PATHS,
   BetaFeatureServiceImprovedPerformanceFeatureFlag.JSON_PROPERTY_SOURCE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaFeatureServiceImprovedPerformanceFeatureFlag {
   public static final String JSON_PROPERTY_EXECUTION_PATHS = "executionPaths";
   @javax.annotation.Nullable

@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   BetaSettingsServiceEmbeddedIframeSettings.JSON_PROPERTY_ENABLED,
   BetaSettingsServiceEmbeddedIframeSettings.JSON_PROPERTY_ALLOWED_ORIGINS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaSettingsServiceEmbeddedIframeSettings {
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   @javax.annotation.Nullable

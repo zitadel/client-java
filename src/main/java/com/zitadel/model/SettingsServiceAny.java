@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   SettingsServiceAny.JSON_PROPERTY_VALUE,
   SettingsServiceAny.JSON_PROPERTY_DEBUG
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class SettingsServiceAny extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_TYPE = "type";
   @javax.annotation.Nullable

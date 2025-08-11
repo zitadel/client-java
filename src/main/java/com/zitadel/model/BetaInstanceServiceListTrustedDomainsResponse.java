@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   BetaInstanceServiceListTrustedDomainsResponse.JSON_PROPERTY_TRUSTED_DOMAIN,
   BetaInstanceServiceListTrustedDomainsResponse.JSON_PROPERTY_PAGINATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaInstanceServiceListTrustedDomainsResponse {
   public static final String JSON_PROPERTY_TRUSTED_DOMAIN = "trustedDomain";
   @javax.annotation.Nullable

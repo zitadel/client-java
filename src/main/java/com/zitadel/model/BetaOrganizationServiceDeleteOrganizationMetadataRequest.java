@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   BetaOrganizationServiceDeleteOrganizationMetadataRequest.JSON_PROPERTY_ORGANIZATION_ID,
   BetaOrganizationServiceDeleteOrganizationMetadataRequest.JSON_PROPERTY_KEYS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceDeleteOrganizationMetadataRequest {
   public static final String JSON_PROPERTY_ORGANIZATION_ID = "organizationId";
   @javax.annotation.Nonnull

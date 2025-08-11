@@ -36,17 +36,17 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   BetaActionServiceListTargetsResponse.JSON_PROPERTY_PAGINATION,
-  BetaActionServiceListTargetsResponse.JSON_PROPERTY_RESULT
+  BetaActionServiceListTargetsResponse.JSON_PROPERTY_TARGETS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaActionServiceListTargetsResponse {
   public static final String JSON_PROPERTY_PAGINATION = "pagination";
   @javax.annotation.Nullable
   private BetaActionServicePaginationResponse pagination;
 
-  public static final String JSON_PROPERTY_RESULT = "result";
+  public static final String JSON_PROPERTY_TARGETS = "targets";
   @javax.annotation.Nullable
-  private List<BetaActionServiceTarget> result = new ArrayList<>();
+  private List<BetaActionServiceTarget> targets = new ArrayList<>();
 
   public BetaActionServiceListTargetsResponse() {
   }
@@ -76,37 +76,37 @@ public class BetaActionServiceListTargetsResponse {
     this.pagination = pagination;
   }
 
-  public BetaActionServiceListTargetsResponse result(@javax.annotation.Nullable List<BetaActionServiceTarget> result) {
+  public BetaActionServiceListTargetsResponse targets(@javax.annotation.Nullable List<BetaActionServiceTarget> targets) {
     
-    this.result = result;
+    this.targets = targets;
     return this;
   }
 
-  public BetaActionServiceListTargetsResponse addResultItem(BetaActionServiceTarget resultItem) {
-    if (this.result == null) {
-      this.result = new ArrayList<>();
+  public BetaActionServiceListTargetsResponse addTargetsItem(BetaActionServiceTarget targetsItem) {
+    if (this.targets == null) {
+      this.targets = new ArrayList<>();
     }
-    this.result.add(resultItem);
+    this.targets.add(targetsItem);
     return this;
   }
 
   /**
-   * Get result
-   * @return result
+   * Get targets
+   * @return targets
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RESULT)
+  @JsonProperty(JSON_PROPERTY_TARGETS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<BetaActionServiceTarget> getResult() {
-    return result;
+  public List<BetaActionServiceTarget> getTargets() {
+    return targets;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESULT)
+  @JsonProperty(JSON_PROPERTY_TARGETS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResult(@javax.annotation.Nullable List<BetaActionServiceTarget> result) {
-    this.result = result;
+  public void setTargets(@javax.annotation.Nullable List<BetaActionServiceTarget> targets) {
+    this.targets = targets;
   }
 
   @Override
@@ -119,12 +119,12 @@ public class BetaActionServiceListTargetsResponse {
     }
     BetaActionServiceListTargetsResponse betaActionServiceListTargetsResponse = (BetaActionServiceListTargetsResponse) o;
     return Objects.equals(this.pagination, betaActionServiceListTargetsResponse.pagination) &&
-        Objects.equals(this.result, betaActionServiceListTargetsResponse.result);
+        Objects.equals(this.targets, betaActionServiceListTargetsResponse.targets);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pagination, result);
+    return Objects.hash(pagination, targets);
   }
 
   @Override
@@ -132,7 +132,7 @@ public class BetaActionServiceListTargetsResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class BetaActionServiceListTargetsResponse {\n");
     sb.append("    pagination: ").append(toIndentedString(pagination)).append("\n");
-    sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    targets: ").append(toIndentedString(targets)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -185,11 +185,11 @@ public class BetaActionServiceListTargetsResponse {
       joiner.add(getPagination().toUrlQueryString(prefix + "pagination" + suffix));
     }
 
-    // add `result` to the URL query string
-    if (getResult() != null) {
-      for (int i = 0; i < getResult().size(); i++) {
-        if (getResult().get(i) != null) {
-          joiner.add(getResult().get(i).toUrlQueryString(String.format("%sresult%s%s", prefix, suffix,
+    // add `targets` to the URL query string
+    if (getTargets() != null) {
+      for (int i = 0; i < getTargets().size(); i++) {
+        if (getTargets().get(i) != null) {
+          joiner.add(getTargets().get(i).toUrlQueryString(String.format("%stargets%s%s", prefix, suffix,
               "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }

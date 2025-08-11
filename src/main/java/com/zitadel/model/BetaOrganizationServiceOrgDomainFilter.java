@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   BetaOrganizationServiceOrgDomainFilter.JSON_PROPERTY_DOMAIN,
   BetaOrganizationServiceOrgDomainFilter.JSON_PROPERTY_METHOD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceOrgDomainFilter {
   public static final String JSON_PROPERTY_DOMAIN = "domain";
   @javax.annotation.Nullable

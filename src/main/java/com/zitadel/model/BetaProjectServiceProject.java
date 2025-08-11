@@ -52,7 +52,7 @@ import java.util.StringJoiner;
   BetaProjectServiceProject.JSON_PROPERTY_GRANTED_ORGANIZATION_NAME,
   BetaProjectServiceProject.JSON_PROPERTY_GRANTED_STATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaProjectServiceProject {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

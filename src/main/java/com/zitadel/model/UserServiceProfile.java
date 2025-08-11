@@ -42,7 +42,7 @@ import java.util.StringJoiner;
   UserServiceProfile.JSON_PROPERTY_PREFERRED_LANGUAGE,
   UserServiceProfile.JSON_PROPERTY_GENDER
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceProfile {
   public static final String JSON_PROPERTY_GIVEN_NAME = "givenName";
   @javax.annotation.Nullable

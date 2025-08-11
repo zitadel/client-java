@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   BetaUserServiceEmailQuery.JSON_PROPERTY_EMAIL_ADDRESS,
   BetaUserServiceEmailQuery.JSON_PROPERTY_METHOD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceEmailQuery {
   public static final String JSON_PROPERTY_EMAIL_ADDRESS = "emailAddress";
   @javax.annotation.Nonnull

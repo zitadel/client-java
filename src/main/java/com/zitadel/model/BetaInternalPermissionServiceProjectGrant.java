@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   BetaInternalPermissionServiceProjectGrant.JSON_PROPERTY_PROJECT_ID,
   BetaInternalPermissionServiceProjectGrant.JSON_PROPERTY_PROJECT_GRANT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaInternalPermissionServiceProjectGrant {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
   @javax.annotation.Nullable

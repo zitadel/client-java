@@ -41,7 +41,7 @@ import java.util.StringJoiner;
   SessionServiceSearchQuery.JSON_PROPERTY_USER_AGENT_QUERY,
   SessionServiceSearchQuery.JSON_PROPERTY_USER_ID_QUERY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class SessionServiceSearchQuery {
   public static final String JSON_PROPERTY_CREATION_DATE_QUERY = "creationDateQuery";
   @javax.annotation.Nullable

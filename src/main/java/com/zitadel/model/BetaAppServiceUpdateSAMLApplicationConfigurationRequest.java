@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   BetaAppServiceUpdateSAMLApplicationConfigurationRequest.JSON_PROPERTY_METADATA_URL,
   BetaAppServiceUpdateSAMLApplicationConfigurationRequest.JSON_PROPERTY_METADATA_XML
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaAppServiceUpdateSAMLApplicationConfigurationRequest {
   public static final String JSON_PROPERTY_LOGIN_VERSION = "loginVersion";
   @javax.annotation.Nullable

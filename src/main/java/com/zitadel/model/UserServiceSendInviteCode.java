@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   UserServiceSendInviteCode.JSON_PROPERTY_URL_TEMPLATE,
   UserServiceSendInviteCode.JSON_PROPERTY_APPLICATION_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceSendInviteCode {
   public static final String JSON_PROPERTY_URL_TEMPLATE = "urlTemplate";
   @javax.annotation.Nullable

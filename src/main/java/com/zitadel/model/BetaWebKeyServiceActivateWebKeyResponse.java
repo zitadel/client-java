@@ -33,7 +33,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   BetaWebKeyServiceActivateWebKeyResponse.JSON_PROPERTY_CHANGE_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaWebKeyServiceActivateWebKeyResponse {
   public static final String JSON_PROPERTY_CHANGE_DATE = "changeDate";
   @javax.annotation.Nullable

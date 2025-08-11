@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   BetaOIDCServiceGetAuthRequestRequest.JSON_PROPERTY_AUTH_REQUEST_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOIDCServiceGetAuthRequestRequest {
   public static final String JSON_PROPERTY_AUTH_REQUEST_ID = "authRequestId";
   @javax.annotation.Nullable

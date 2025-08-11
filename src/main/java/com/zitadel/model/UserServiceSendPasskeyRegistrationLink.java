@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   UserServiceSendPasskeyRegistrationLink.JSON_PROPERTY_URL_TEMPLATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceSendPasskeyRegistrationLink {
   public static final String JSON_PROPERTY_URL_TEMPLATE = "urlTemplate";
   @javax.annotation.Nullable

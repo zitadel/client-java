@@ -50,7 +50,7 @@ import java.util.StringJoiner;
   BetaOIDCServiceAuthRequest.JSON_PROPERTY_MAX_AGE,
   BetaOIDCServiceAuthRequest.JSON_PROPERTY_HINT_USER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOIDCServiceAuthRequest {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

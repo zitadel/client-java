@@ -41,7 +41,7 @@ import java.util.StringJoiner;
   SettingsServiceBrandingSettings.JSON_PROPERTY_RESOURCE_OWNER_TYPE,
   SettingsServiceBrandingSettings.JSON_PROPERTY_THEME_MODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class SettingsServiceBrandingSettings {
   public static final String JSON_PROPERTY_LIGHT_THEME = "lightTheme";
   @javax.annotation.Nullable

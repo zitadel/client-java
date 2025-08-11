@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   BetaSettingsServiceGetSecuritySettingsResponse.JSON_PROPERTY_DETAILS,
   BetaSettingsServiceGetSecuritySettingsResponse.JSON_PROPERTY_SETTINGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaSettingsServiceGetSecuritySettingsResponse {
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable

@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   BetaProjectServiceAddProjectRoleRequest.JSON_PROPERTY_DISPLAY_NAME,
   BetaProjectServiceAddProjectRoleRequest.JSON_PROPERTY_GROUP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaProjectServiceAddProjectRoleRequest {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
   @javax.annotation.Nonnull
