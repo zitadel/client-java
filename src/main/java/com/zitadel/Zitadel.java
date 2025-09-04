@@ -287,7 +287,6 @@ public class Zitadel {
      * @see <a href="https://zitadel.com/docs/guides/integrate/service-users/private-key-jwt">Private
      * Key JWT Guide</a>
      */
-    @SuppressFBWarnings("PATH_TRAVERSAL_IN")
     public static Zitadel withPrivateKey(String host, java.io.InputStream inputStream) {
         return new Zitadel(WebTokenAuthenticator.fromJson(host, inputStream));
     }
