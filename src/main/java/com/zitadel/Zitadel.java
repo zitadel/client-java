@@ -5,7 +5,9 @@ import com.zitadel.auth.Authenticator;
 import com.zitadel.auth.ClientCredentialsAuthenticator;
 import com.zitadel.auth.PersonalAccessTokenAuthenticator;
 import com.zitadel.auth.WebTokenAuthenticator;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
+import java.io.IOException;
 import java.util.function.Consumer;
 
 @SuppressWarnings({"unused", "DeprecatedIsStillUsed"})
@@ -266,8 +268,27 @@ public class Zitadel {
      * @see <a href="https://zitadel.com/docs/guides/integrate/service-users/private-key-jwt">Private
      * Key JWT Guide</a>
      */
+    @SuppressFBWarnings({"PATH_TRAVERSAL_IN", "THROWS_METHOD_THROWS_RUNTIMEEXCEPTION"})
     public static Zitadel withPrivateKey(String host, String keyFile) {
-        return new Zitadel(WebTokenAuthenticator.fromJson(host, keyFile));
+        try (java.io.FileInputStream fis = new java.io.FileInputStream(keyFile)) {
+            return withPrivateKey(host, fis);
+        } catch (IOException e) {
+            throw new RuntimeException(
+                "Unable to read key file at " + keyFile + ": " + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * Initialize the SDK via Private Key JWT assertion.
+     *
+     * @param host        API URL.
+     * @param inputStream Input stream containing service account JSON or PEM key data.
+     * @return Configured Zitadel client instance using JWT assertion.
+     * @see <a href="https://zitadel.com/docs/guides/integrate/service-users/private-key-jwt">Private
+     * Key JWT Guide</a>
+     */
+    public static Zitadel withPrivateKey(String host, java.io.InputStream inputStream) {
+        return new Zitadel(WebTokenAuthenticator.fromJson(host, inputStream));
     }
 
     /**

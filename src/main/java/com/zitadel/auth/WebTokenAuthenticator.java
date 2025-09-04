@@ -21,8 +21,9 @@ import com.zitadel.utils.KeyUtil;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import javax.annotation.Nullable;
-import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.security.PrivateKey;
 import java.time.Duration;
 import java.time.Instant;
@@ -83,27 +84,57 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
      * @throws RuntimeException if the file cannot be read, the JSON is invalid, or required keys are
      *                          missing or invalid.
      */
+    @SuppressWarnings("unused")
     @SuppressFBWarnings("PATH_TRAVERSAL_IN")
     public static WebTokenAuthenticator fromJson(String host, String jsonPath) {
+        try (FileInputStream fis = new FileInputStream(jsonPath)) {
+            return fromJson(host, fis);
+        } catch (IOException e) {
+            throw new RuntimeException(
+                "Unable to read JSON file at " + jsonPath + ": " + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * Creates a {@code WebTokenAuthenticator} instance from a JSON configuration input stream.
+     *
+     * <p>The JSON must be formatted as follows:
+     * <p>
+     * <code>
+     * {
+     *   "type": "serviceaccount",
+     *   "keyId": "key-id",
+     *   "key": "private-key in PEM format",
+     *   "userId": "user-id"
+     * }
+     * </code>
+     *
+     * @param host        the base URL for the API endpoints.
+     * @param inputStream the input stream containing the JSON configuration.
+     * @return a new instance of {@code WebTokenAuthenticator}.
+     * @throws RuntimeException if the stream cannot be read, the JSON is invalid, or required keys are
+     *                          missing or invalid.
+     */
+    public static WebTokenAuthenticator fromJson(String host, InputStream inputStream) {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> config;
         try {
-            config = mapper.readValue(new File(jsonPath), new TypeReference<>() {
+            config = mapper.readValue(inputStream, new TypeReference<>() {
             });
         } catch (IOException e) {
             throw new RuntimeException(
-                "Unable to read or parse JSON file at " + jsonPath + ": " + e.getMessage(), e);
+                "Unable to read or parse JSON from input stream: " + e.getMessage(), e);
         }
 
         if (config == null || config.isEmpty()) {
-            throw new RuntimeException("Expected a JSON object in file at " + jsonPath);
+            throw new RuntimeException("Expected a JSON object in input stream");
         }
 
         String userId = (String) config.get("userId");
         String keyString = (String) config.get("key");
         String keyId = (String) config.get("keyId");
         if (userId == null || keyString == null || keyId == null) {
-            throw new RuntimeException("Missing required keys 'userId', 'keyId' or 'key' in JSON file.");
+            throw new RuntimeException("Missing required keys 'userId', 'keyId' or 'key' in JSON.");
         }
 
         PrivateKey privateKey;
