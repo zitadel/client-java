@@ -5,6 +5,7 @@ import com.zitadel.auth.Authenticator;
 import com.zitadel.auth.ClientCredentialsAuthenticator;
 import com.zitadel.auth.PersonalAccessTokenAuthenticator;
 import com.zitadel.auth.WebTokenAuthenticator;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import java.io.IOException;
 import java.util.function.Consumer;
@@ -267,6 +268,7 @@ public class Zitadel {
      * @see <a href="https://zitadel.com/docs/guides/integrate/service-users/private-key-jwt">Private
      * Key JWT Guide</a>
      */
+    @SuppressFBWarnings({"PATH_TRAVERSAL_IN", "THROWS_METHOD_THROWS_RUNTIMEEXCEPTION"})
     public static Zitadel withPrivateKey(String host, String keyFile) {
         try (java.io.FileInputStream fis = new java.io.FileInputStream(keyFile)) {
             return withPrivateKey(host, fis);
@@ -285,6 +287,7 @@ public class Zitadel {
      * @see <a href="https://zitadel.com/docs/guides/integrate/service-users/private-key-jwt">Private
      * Key JWT Guide</a>
      */
+    @SuppressFBWarnings("PATH_TRAVERSAL_IN")
     public static Zitadel withPrivateKey(String host, java.io.InputStream inputStream) {
         return new Zitadel(WebTokenAuthenticator.fromJson(host, inputStream));
     }

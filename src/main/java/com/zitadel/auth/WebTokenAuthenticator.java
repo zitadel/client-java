@@ -84,6 +84,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
      * @throws RuntimeException if the file cannot be read, the JSON is invalid, or required keys are
      *                          missing or invalid.
      */
+    @SuppressWarnings("unused")
     @SuppressFBWarnings("PATH_TRAVERSAL_IN")
     public static WebTokenAuthenticator fromJson(String host, String jsonPath) {
         try (FileInputStream fis = new FileInputStream(jsonPath)) {
