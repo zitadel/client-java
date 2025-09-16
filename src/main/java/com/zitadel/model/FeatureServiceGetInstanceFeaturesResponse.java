@@ -41,7 +41,6 @@ import java.util.StringJoiner;
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_IMPROVED_PERFORMANCE,
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_DEBUG_OIDC_PARENT_ERROR,
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION,
-  FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT,
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT,
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_LOGIN_V2,
   FeatureServiceGetInstanceFeaturesResponse.JSON_PROPERTY_PERMISSION_CHECK_V2,
@@ -76,10 +75,6 @@ public class FeatureServiceGetInstanceFeaturesResponse {
   public static final String JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION = "oidcSingleV1SessionTermination";
   @javax.annotation.Nullable
   private FeatureServiceFeatureFlag oidcSingleV1SessionTermination;
-
-  public static final String JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT = "disableUserTokenEvent";
-  @javax.annotation.Nullable
-  private FeatureServiceFeatureFlag disableUserTokenEvent;
 
   public static final String JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT = "enableBackChannelLogout";
   @javax.annotation.Nullable
@@ -275,31 +270,6 @@ public class FeatureServiceGetInstanceFeaturesResponse {
     this.oidcSingleV1SessionTermination = oidcSingleV1SessionTermination;
   }
 
-  public FeatureServiceGetInstanceFeaturesResponse disableUserTokenEvent(@javax.annotation.Nullable FeatureServiceFeatureFlag disableUserTokenEvent) {
-    
-    this.disableUserTokenEvent = disableUserTokenEvent;
-    return this;
-  }
-
-  /**
-   * Get disableUserTokenEvent
-   * @return disableUserTokenEvent
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public FeatureServiceFeatureFlag getDisableUserTokenEvent() {
-    return disableUserTokenEvent;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDisableUserTokenEvent(@javax.annotation.Nullable FeatureServiceFeatureFlag disableUserTokenEvent) {
-    this.disableUserTokenEvent = disableUserTokenEvent;
-  }
-
   public FeatureServiceGetInstanceFeaturesResponse enableBackChannelLogout(@javax.annotation.Nullable FeatureServiceFeatureFlag enableBackChannelLogout) {
     
     this.enableBackChannelLogout = enableBackChannelLogout;
@@ -416,7 +386,6 @@ public class FeatureServiceGetInstanceFeaturesResponse {
         Objects.equals(this.improvedPerformance, featureServiceGetInstanceFeaturesResponse.improvedPerformance) &&
         Objects.equals(this.debugOidcParentError, featureServiceGetInstanceFeaturesResponse.debugOidcParentError) &&
         Objects.equals(this.oidcSingleV1SessionTermination, featureServiceGetInstanceFeaturesResponse.oidcSingleV1SessionTermination) &&
-        Objects.equals(this.disableUserTokenEvent, featureServiceGetInstanceFeaturesResponse.disableUserTokenEvent) &&
         Objects.equals(this.enableBackChannelLogout, featureServiceGetInstanceFeaturesResponse.enableBackChannelLogout) &&
         Objects.equals(this.loginV2, featureServiceGetInstanceFeaturesResponse.loginV2) &&
         Objects.equals(this.permissionCheckV2, featureServiceGetInstanceFeaturesResponse.permissionCheckV2) &&
@@ -425,7 +394,7 @@ public class FeatureServiceGetInstanceFeaturesResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(details, loginDefaultOrg, userSchema, oidcTokenExchange, improvedPerformance, debugOidcParentError, oidcSingleV1SessionTermination, disableUserTokenEvent, enableBackChannelLogout, loginV2, permissionCheckV2, consoleUseV2UserApi);
+    return Objects.hash(details, loginDefaultOrg, userSchema, oidcTokenExchange, improvedPerformance, debugOidcParentError, oidcSingleV1SessionTermination, enableBackChannelLogout, loginV2, permissionCheckV2, consoleUseV2UserApi);
   }
 
   @Override
@@ -439,7 +408,6 @@ public class FeatureServiceGetInstanceFeaturesResponse {
     sb.append("    improvedPerformance: ").append(toIndentedString(improvedPerformance)).append("\n");
     sb.append("    debugOidcParentError: ").append(toIndentedString(debugOidcParentError)).append("\n");
     sb.append("    oidcSingleV1SessionTermination: ").append(toIndentedString(oidcSingleV1SessionTermination)).append("\n");
-    sb.append("    disableUserTokenEvent: ").append(toIndentedString(disableUserTokenEvent)).append("\n");
     sb.append("    enableBackChannelLogout: ").append(toIndentedString(enableBackChannelLogout)).append("\n");
     sb.append("    loginV2: ").append(toIndentedString(loginV2)).append("\n");
     sb.append("    permissionCheckV2: ").append(toIndentedString(permissionCheckV2)).append("\n");
@@ -524,11 +492,6 @@ public class FeatureServiceGetInstanceFeaturesResponse {
     // add `oidcSingleV1SessionTermination` to the URL query string
     if (getOidcSingleV1SessionTermination() != null) {
       joiner.add(getOidcSingleV1SessionTermination().toUrlQueryString(prefix + "oidcSingleV1SessionTermination" + suffix));
-    }
-
-    // add `disableUserTokenEvent` to the URL query string
-    if (getDisableUserTokenEvent() != null) {
-      joiner.add(getDisableUserTokenEvent().toUrlQueryString(prefix + "disableUserTokenEvent" + suffix));
     }
 
     // add `enableBackChannelLogout` to the URL query string

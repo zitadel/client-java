@@ -44,7 +44,6 @@ import java.util.StringJoiner;
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_OIDC_TOKEN_EXCHANGE,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_IMPROVED_PERFORMANCE,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION,
-  FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_LOGIN_V2,
   FeatureServiceSetSystemFeaturesRequest.JSON_PROPERTY_PERMISSION_CHECK_V2
@@ -70,10 +69,6 @@ public class FeatureServiceSetSystemFeaturesRequest {
   public static final String JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION = "oidcSingleV1SessionTermination";
   @javax.annotation.Nullable
   private JsonNullable<Boolean> oidcSingleV1SessionTermination = JsonNullable.<Boolean>undefined();
-
-  public static final String JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT = "disableUserTokenEvent";
-  @javax.annotation.Nullable
-  private JsonNullable<Boolean> disableUserTokenEvent = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT = "enableBackChannelLogout";
   @javax.annotation.Nullable
@@ -255,39 +250,6 @@ public class FeatureServiceSetSystemFeaturesRequest {
     this.oidcSingleV1SessionTermination = JsonNullable.<Boolean>of(oidcSingleV1SessionTermination);
   }
 
-  public FeatureServiceSetSystemFeaturesRequest disableUserTokenEvent(@javax.annotation.Nullable Boolean disableUserTokenEvent) {
-    this.disableUserTokenEvent = JsonNullable.<Boolean>of(disableUserTokenEvent);
-    
-    return this;
-  }
-
-  /**
-   * Get disableUserTokenEvent
-   * @return disableUserTokenEvent
-   */
-  @javax.annotation.Nullable
-  @JsonIgnore
-
-  public Boolean getDisableUserTokenEvent() {
-        return disableUserTokenEvent.orElse(null);
-  }
-
-  @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<Boolean> getDisableUserTokenEvent_JsonNullable() {
-    return disableUserTokenEvent;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
-  public void setDisableUserTokenEvent_JsonNullable(JsonNullable<Boolean> disableUserTokenEvent) {
-    this.disableUserTokenEvent = disableUserTokenEvent;
-  }
-
-  public void setDisableUserTokenEvent(@javax.annotation.Nullable Boolean disableUserTokenEvent) {
-    this.disableUserTokenEvent = JsonNullable.<Boolean>of(disableUserTokenEvent);
-  }
-
   public FeatureServiceSetSystemFeaturesRequest enableBackChannelLogout(@javax.annotation.Nullable Boolean enableBackChannelLogout) {
     this.enableBackChannelLogout = JsonNullable.<Boolean>of(enableBackChannelLogout);
     
@@ -393,7 +355,6 @@ public class FeatureServiceSetSystemFeaturesRequest {
         equalsNullable(this.oidcTokenExchange, featureServiceSetSystemFeaturesRequest.oidcTokenExchange) &&
         Objects.equals(this.improvedPerformance, featureServiceSetSystemFeaturesRequest.improvedPerformance) &&
         equalsNullable(this.oidcSingleV1SessionTermination, featureServiceSetSystemFeaturesRequest.oidcSingleV1SessionTermination) &&
-        equalsNullable(this.disableUserTokenEvent, featureServiceSetSystemFeaturesRequest.disableUserTokenEvent) &&
         equalsNullable(this.enableBackChannelLogout, featureServiceSetSystemFeaturesRequest.enableBackChannelLogout) &&
         Objects.equals(this.loginV2, featureServiceSetSystemFeaturesRequest.loginV2) &&
         equalsNullable(this.permissionCheckV2, featureServiceSetSystemFeaturesRequest.permissionCheckV2);
@@ -405,7 +366,7 @@ public class FeatureServiceSetSystemFeaturesRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(loginDefaultOrg), hashCodeNullable(userSchema), hashCodeNullable(oidcTokenExchange), improvedPerformance, hashCodeNullable(oidcSingleV1SessionTermination), hashCodeNullable(disableUserTokenEvent), hashCodeNullable(enableBackChannelLogout), loginV2, hashCodeNullable(permissionCheckV2));
+    return Objects.hash(hashCodeNullable(loginDefaultOrg), hashCodeNullable(userSchema), hashCodeNullable(oidcTokenExchange), improvedPerformance, hashCodeNullable(oidcSingleV1SessionTermination), hashCodeNullable(enableBackChannelLogout), loginV2, hashCodeNullable(permissionCheckV2));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -424,7 +385,6 @@ public class FeatureServiceSetSystemFeaturesRequest {
     sb.append("    oidcTokenExchange: ").append(toIndentedString(oidcTokenExchange)).append("\n");
     sb.append("    improvedPerformance: ").append(toIndentedString(improvedPerformance)).append("\n");
     sb.append("    oidcSingleV1SessionTermination: ").append(toIndentedString(oidcSingleV1SessionTermination)).append("\n");
-    sb.append("    disableUserTokenEvent: ").append(toIndentedString(disableUserTokenEvent)).append("\n");
     sb.append("    enableBackChannelLogout: ").append(toIndentedString(enableBackChannelLogout)).append("\n");
     sb.append("    loginV2: ").append(toIndentedString(loginV2)).append("\n");
     sb.append("    permissionCheckV2: ").append(toIndentedString(permissionCheckV2)).append("\n");
@@ -525,16 +485,6 @@ public class FeatureServiceSetSystemFeaturesRequest {
     if (getOidcSingleV1SessionTermination() != null) {
       try {
         joiner.add(String.format("%soidcSingleV1SessionTermination%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOidcSingleV1SessionTermination()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `disableUserTokenEvent` to the URL query string
-    if (getDisableUserTokenEvent() != null) {
-      try {
-        joiner.add(String.format("%sdisableUserTokenEvent%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDisableUserTokenEvent()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

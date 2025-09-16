@@ -279,7 +279,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * GetInstance
-   * Get Instance   Returns the instance in the current context.   The instace_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.read&#x60;
+   * Get Instance   Returns the instance in the current context.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.read&#x60;
    * @param betaInstanceServiceGetInstanceRequest  (required)
    * @return BetaInstanceServiceGetInstanceResponse
    * @throws ApiException if fails to make API call
@@ -291,7 +291,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * GetInstance
-   * Get Instance   Returns the instance in the current context.   The instace_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.read&#x60;
+   * Get Instance   Returns the instance in the current context.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.read&#x60;
    * @param betaInstanceServiceGetInstanceRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInstanceServiceGetInstanceResponse
