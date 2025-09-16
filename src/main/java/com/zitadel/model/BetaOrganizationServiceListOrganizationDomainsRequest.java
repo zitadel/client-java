@@ -42,7 +42,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceListOrganizationDomainsRequest {
   public static final String JSON_PROPERTY_ORGANIZATION_ID = "organizationId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String organizationId;
 
   public static final String JSON_PROPERTY_PAGINATION = "pagination";
@@ -56,7 +56,7 @@ public class BetaOrganizationServiceListOrganizationDomainsRequest {
   public BetaOrganizationServiceListOrganizationDomainsRequest() {
   }
 
-  public BetaOrganizationServiceListOrganizationDomainsRequest organizationId(@javax.annotation.Nonnull String organizationId) {
+  public BetaOrganizationServiceListOrganizationDomainsRequest organizationId(@javax.annotation.Nullable String organizationId) {
     
     this.organizationId = organizationId;
     return this;
@@ -66,9 +66,9 @@ public class BetaOrganizationServiceListOrganizationDomainsRequest {
    * Organization Id for the Organization which domains are to be listed.
    * @return organizationId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getOrganizationId() {
     return organizationId;
@@ -76,8 +76,8 @@ public class BetaOrganizationServiceListOrganizationDomainsRequest {
 
 
   @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOrganizationId(@javax.annotation.Nonnull String organizationId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOrganizationId(@javax.annotation.Nullable String organizationId) {
     this.organizationId = organizationId;
   }
 

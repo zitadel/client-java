@@ -36,17 +36,17 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceVerifyTOTPRegistrationRequest {
   public static final String JSON_PROPERTY_USER_ID = "userId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String userId;
 
   public static final String JSON_PROPERTY_CODE = "code";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String code;
 
   public UserServiceVerifyTOTPRegistrationRequest() {
   }
 
-  public UserServiceVerifyTOTPRegistrationRequest userId(@javax.annotation.Nonnull String userId) {
+  public UserServiceVerifyTOTPRegistrationRequest userId(@javax.annotation.Nullable String userId) {
     
     this.userId = userId;
     return this;
@@ -56,9 +56,9 @@ public class UserServiceVerifyTOTPRegistrationRequest {
    * Get userId
    * @return userId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserId() {
     return userId;
@@ -66,12 +66,12 @@ public class UserServiceVerifyTOTPRegistrationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(@javax.annotation.Nonnull String userId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserId(@javax.annotation.Nullable String userId) {
     this.userId = userId;
   }
 
-  public UserServiceVerifyTOTPRegistrationRequest code(@javax.annotation.Nonnull String code) {
+  public UserServiceVerifyTOTPRegistrationRequest code(@javax.annotation.Nullable String code) {
     
     this.code = code;
     return this;
@@ -81,9 +81,9 @@ public class UserServiceVerifyTOTPRegistrationRequest {
    * Get code
    * @return code
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CODE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCode() {
     return code;
@@ -91,8 +91,8 @@ public class UserServiceVerifyTOTPRegistrationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_CODE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCode(@javax.annotation.Nonnull String code) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCode(@javax.annotation.Nullable String code) {
     this.code = code;
   }
 

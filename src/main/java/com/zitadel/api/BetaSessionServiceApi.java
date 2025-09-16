@@ -43,7 +43,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
 
   /**
-   * CreateSession
+   * Create a new session
    * Create a new session
    * @param betaSessionServiceCreateSessionRequest  (required)
    * @return BetaSessionServiceCreateSessionResponse
@@ -55,7 +55,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
 
   /**
-   * CreateSession
+   * Create a new session
    * Create a new session
    * @param betaSessionServiceCreateSessionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -118,7 +118,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
 
   /**
-   * DeleteSession
+   * Terminate a session
    * Terminate a session
    * @param betaSessionServiceDeleteSessionRequest  (required)
    * @return BetaSessionServiceDeleteSessionResponse
@@ -130,7 +130,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
 
   /**
-   * DeleteSession
+   * Terminate a session
    * Terminate a session
    * @param betaSessionServiceDeleteSessionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -193,7 +193,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
 
   /**
-   * GetSession
+   * GetSession a session
    * GetSession a session
    * @param betaSessionServiceGetSessionRequest  (required)
    * @return BetaSessionServiceGetSessionResponse
@@ -205,7 +205,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
 
   /**
-   * GetSession
+   * GetSession a session
    * GetSession a session
    * @param betaSessionServiceGetSessionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -268,7 +268,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
 
   /**
-   * ListSessions
+   * Search sessions
    * Search sessions
    * @param betaSessionServiceListSessionsRequest  (required)
    * @return BetaSessionServiceListSessionsResponse
@@ -280,7 +280,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
 
   /**
-   * ListSessions
+   * Search sessions
    * Search sessions
    * @param betaSessionServiceListSessionsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -343,7 +343,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
 
   /**
-   * SetSession
+   * Update a session
    * Update a session
    * @param betaSessionServiceSetSessionRequest  (required)
    * @return BetaSessionServiceSetSessionResponse
@@ -355,7 +355,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
 
   /**
-   * SetSession
+   * Update a session
    * Update a session
    * @param betaSessionServiceSetSessionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call

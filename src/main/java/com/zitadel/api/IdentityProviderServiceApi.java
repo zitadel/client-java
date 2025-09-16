@@ -35,8 +35,8 @@ public class IdentityProviderServiceApi extends BaseApi {
 
 
   /**
-   * GetIDPByID
-   * Get identity provider (IdP) by ID   Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.
+   * Get identity provider (IdP) by ID
+   * Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.
    * @param identityProviderServiceGetIDPByIDRequest  (required)
    * @return IdentityProviderServiceGetIDPByIDResponse
    * @throws ApiException if fails to make API call
@@ -47,8 +47,8 @@ public class IdentityProviderServiceApi extends BaseApi {
 
 
   /**
-   * GetIDPByID
-   * Get identity provider (IdP) by ID   Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.
+   * Get identity provider (IdP) by ID
+   * Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.
    * @param identityProviderServiceGetIDPByIDRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return IdentityProviderServiceGetIDPByIDResponse

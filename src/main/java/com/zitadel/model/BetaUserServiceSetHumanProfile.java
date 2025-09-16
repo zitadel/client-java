@@ -45,11 +45,11 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceSetHumanProfile {
   public static final String JSON_PROPERTY_GIVEN_NAME = "givenName";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String givenName;
 
   public static final String JSON_PROPERTY_FAMILY_NAME = "familyName";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String familyName;
 
   public static final String JSON_PROPERTY_NICK_NAME = "nickName";
@@ -71,7 +71,7 @@ public class BetaUserServiceSetHumanProfile {
   public BetaUserServiceSetHumanProfile() {
   }
 
-  public BetaUserServiceSetHumanProfile givenName(@javax.annotation.Nonnull String givenName) {
+  public BetaUserServiceSetHumanProfile givenName(@javax.annotation.Nullable String givenName) {
     
     this.givenName = givenName;
     return this;
@@ -81,9 +81,9 @@ public class BetaUserServiceSetHumanProfile {
    * Get givenName
    * @return givenName
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_GIVEN_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGivenName() {
     return givenName;
@@ -91,12 +91,12 @@ public class BetaUserServiceSetHumanProfile {
 
 
   @JsonProperty(JSON_PROPERTY_GIVEN_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setGivenName(@javax.annotation.Nonnull String givenName) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGivenName(@javax.annotation.Nullable String givenName) {
     this.givenName = givenName;
   }
 
-  public BetaUserServiceSetHumanProfile familyName(@javax.annotation.Nonnull String familyName) {
+  public BetaUserServiceSetHumanProfile familyName(@javax.annotation.Nullable String familyName) {
     
     this.familyName = familyName;
     return this;
@@ -106,9 +106,9 @@ public class BetaUserServiceSetHumanProfile {
    * Get familyName
    * @return familyName
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_FAMILY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFamilyName() {
     return familyName;
@@ -116,8 +116,8 @@ public class BetaUserServiceSetHumanProfile {
 
 
   @JsonProperty(JSON_PROPERTY_FAMILY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFamilyName(@javax.annotation.Nonnull String familyName) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFamilyName(@javax.annotation.Nullable String familyName) {
     this.familyName = familyName;
   }
 

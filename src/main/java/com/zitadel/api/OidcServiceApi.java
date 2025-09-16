@@ -38,10 +38,20 @@ public class OidcServiceApi extends BaseApi {
 
 
 
+              /**
+              * Authorize or deny device authorization (Convenience Method)
+              * Authorize or deny the device authorization request based on the provided device authorization id.
+                * @return Object
+              * @throws ApiException if fails to make API call
+              */
+              public Object authorizeOrDenyDeviceAuthorization() throws ApiException {
+              return this.authorizeOrDenyDeviceAuthorization(new OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest());
+              }
+
 
   /**
-   * AuthorizeOrDenyDeviceAuthorization
-   * Authorize or deny device authorization   Authorize or deny the device authorization request based on the provided device authorization id.
+   * Authorize or deny device authorization
+   * Authorize or deny the device authorization request based on the provided device authorization id.
    * @param oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest  (required)
    * @return Object
    * @throws ApiException if fails to make API call
@@ -52,8 +62,8 @@ public class OidcServiceApi extends BaseApi {
 
 
   /**
-   * AuthorizeOrDenyDeviceAuthorization
-   * Authorize or deny device authorization   Authorize or deny the device authorization request based on the provided device authorization id.
+   * Authorize or deny device authorization
+   * Authorize or deny the device authorization request based on the provided device authorization id.
    * @param oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return Object
@@ -112,6 +122,16 @@ public class OidcServiceApi extends BaseApi {
   }
 
 
+
+              /**
+              * CreateCallback (Convenience Method)
+              * 
+                * @return OIDCServiceCreateCallbackResponse
+              * @throws ApiException if fails to make API call
+              */
+              public OIDCServiceCreateCallbackResponse createCallback() throws ApiException {
+              return this.createCallback(new OIDCServiceCreateCallbackRequest());
+              }
 
 
   /**
@@ -265,8 +285,8 @@ public class OidcServiceApi extends BaseApi {
 
 
   /**
-   * GetDeviceAuthorizationRequest
-   * Get device authorization request   Get the device authorization based on the provided \&quot;user code\&quot;.  This will return the device authorization request, which contains the device authorization id  that is required to authorize the request once the user signed in or to deny it.
+   * Get device authorization request
+   * Get the device authorization based on the provided \&quot;user code\&quot;.  This will return the device authorization request, which contains the device authorization id  that is required to authorize the request once the user signed in or to deny it.
    * @param oiDCServiceGetDeviceAuthorizationRequestRequest  (required)
    * @return OIDCServiceGetDeviceAuthorizationRequestResponse
    * @throws ApiException if fails to make API call
@@ -277,8 +297,8 @@ public class OidcServiceApi extends BaseApi {
 
 
   /**
-   * GetDeviceAuthorizationRequest
-   * Get device authorization request   Get the device authorization based on the provided \&quot;user code\&quot;.  This will return the device authorization request, which contains the device authorization id  that is required to authorize the request once the user signed in or to deny it.
+   * Get device authorization request
+   * Get the device authorization based on the provided \&quot;user code\&quot;.  This will return the device authorization request, which contains the device authorization id  that is required to authorize the request once the user signed in or to deny it.
    * @param oiDCServiceGetDeviceAuthorizationRequestRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return OIDCServiceGetDeviceAuthorizationRequestResponse

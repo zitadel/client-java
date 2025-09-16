@@ -147,10 +147,20 @@ public class UserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Create a new human user (Convenience Method)
+              * Deprecated: Use [CreateUser](apis/resources/user_service_v2/user-service-create-user.api.mdx) to create a new user of type human instead.   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.
+                * @return UserServiceAddHumanUserResponse
+              * @throws ApiException if fails to make API call
+              */
+              public UserServiceAddHumanUserResponse addHumanUser() throws ApiException {
+              return this.addHumanUser(new UserServiceAddHumanUserRequest());
+              }
+
 
   /**
-   * AddHumanUser
-   * Create a new human user   Deprecated: Use [CreateUser](apis/resources/user_service_v2/user-service-create-user.api.mdx) to create a new user of type human instead.   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.
+   * Create a new human user
+   * Deprecated: Use [CreateUser](apis/resources/user_service_v2/user-service-create-user.api.mdx) to create a new user of type human instead.   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.
    * @param userServiceAddHumanUserRequest  (required)
    * @return UserServiceAddHumanUserResponse
    * @throws ApiException if fails to make API call
@@ -161,8 +171,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * AddHumanUser
-   * Create a new human user   Deprecated: Use [CreateUser](apis/resources/user_service_v2/user-service-create-user.api.mdx) to create a new user of type human instead.   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.
+   * Create a new human user
+   * Deprecated: Use [CreateUser](apis/resources/user_service_v2/user-service-create-user.api.mdx) to create a new user of type human instead.   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.
    * @param userServiceAddHumanUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceAddHumanUserResponse
@@ -224,8 +234,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * AddIDPLink
-   * Add link to an identity provider to an user   Add link to an identity provider to an user..
+   * Add link to an identity provider to an user
+   * Add link to an identity provider to an user..
    * @param userServiceAddIDPLinkRequest  (required)
    * @return UserServiceAddIDPLinkResponse
    * @throws ApiException if fails to make API call
@@ -236,8 +246,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * AddIDPLink
-   * Add link to an identity provider to an user   Add link to an identity provider to an user..
+   * Add link to an identity provider to an user
+   * Add link to an identity provider to an user..
    * @param userServiceAddIDPLinkRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceAddIDPLinkResponse
@@ -299,8 +309,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * AddKey
-   * Add a Key   Add a keys that can be used to securely authenticate at the Zitadel APIs using JWT profile authentication using short-lived tokens.  Make sure you store the returned key safely, as you won&#39;t be able to read it from the Zitadel API anymore.  Only users of type machine can have keys.   Required permission:    - user.write
+   * Add a Key
+   * Add a keys that can be used to securely authenticate at the Zitadel APIs using JWT profile authentication using short-lived tokens.  Make sure you store the returned key safely, as you won&#39;t be able to read it from the Zitadel API anymore.  Only users of type machine can have keys.   Required permission:    - user.write
    * @param userServiceAddKeyRequest  (required)
    * @return UserServiceAddKeyResponse
    * @throws ApiException if fails to make API call
@@ -311,8 +321,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * AddKey
-   * Add a Key   Add a keys that can be used to securely authenticate at the Zitadel APIs using JWT profile authentication using short-lived tokens.  Make sure you store the returned key safely, as you won&#39;t be able to read it from the Zitadel API anymore.  Only users of type machine can have keys.   Required permission:    - user.write
+   * Add a Key
+   * Add a keys that can be used to securely authenticate at the Zitadel APIs using JWT profile authentication using short-lived tokens.  Make sure you store the returned key safely, as you won&#39;t be able to read it from the Zitadel API anymore.  Only users of type machine can have keys.   Required permission:    - user.write
    * @param userServiceAddKeyRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceAddKeyResponse
@@ -374,8 +384,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * AddOTPEmail
-   * Add OTP Email for a user   Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor..
+   * Add OTP Email for a user
+   * Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor..
    * @param userServiceAddOTPEmailRequest  (required)
    * @return UserServiceAddOTPEmailResponse
    * @throws ApiException if fails to make API call
@@ -386,8 +396,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * AddOTPEmail
-   * Add OTP Email for a user   Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor..
+   * Add OTP Email for a user
+   * Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor..
    * @param userServiceAddOTPEmailRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceAddOTPEmailResponse
@@ -449,8 +459,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * AddOTPSMS
-   * Add OTP SMS for a user   Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor..
+   * Add OTP SMS for a user
+   * Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor..
    * @param userServiceAddOTPSMSRequest  (required)
    * @return UserServiceAddOTPSMSResponse
    * @throws ApiException if fails to make API call
@@ -461,8 +471,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * AddOTPSMS
-   * Add OTP SMS for a user   Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor..
+   * Add OTP SMS for a user
+   * Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor..
    * @param userServiceAddOTPSMSRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceAddOTPSMSResponse
@@ -524,8 +534,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * AddPersonalAccessToken
-   * Add a Personal Access Token   Personal access tokens (PAT) are the easiest way to authenticate to the Zitadel APIs.  Make sure you store the returned PAT safely, as you won&#39;t be able to read it from the Zitadel API anymore.  Only users of type machine can have personal access tokens.   Required permission:    - user.write
+   * Add a Personal Access Token
+   * Personal access tokens (PAT) are the easiest way to authenticate to the Zitadel APIs.  Make sure you store the returned PAT safely, as you won&#39;t be able to read it from the Zitadel API anymore.  Only users of type machine can have personal access tokens.   Required permission:    - user.write
    * @param userServiceAddPersonalAccessTokenRequest  (required)
    * @return UserServiceAddPersonalAccessTokenResponse
    * @throws ApiException if fails to make API call
@@ -536,8 +546,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * AddPersonalAccessToken
-   * Add a Personal Access Token   Personal access tokens (PAT) are the easiest way to authenticate to the Zitadel APIs.  Make sure you store the returned PAT safely, as you won&#39;t be able to read it from the Zitadel API anymore.  Only users of type machine can have personal access tokens.   Required permission:    - user.write
+   * Add a Personal Access Token
+   * Personal access tokens (PAT) are the easiest way to authenticate to the Zitadel APIs.  Make sure you store the returned PAT safely, as you won&#39;t be able to read it from the Zitadel API anymore.  Only users of type machine can have personal access tokens.   Required permission:    - user.write
    * @param userServiceAddPersonalAccessTokenRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceAddPersonalAccessTokenResponse
@@ -599,8 +609,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * AddSecret
-   * Add a Users Secret   Generates a client secret for the user.  The client id is the users username.  If the user already has a secret, it is overwritten.  Only users of type machine can have a secret.   Required permission:    - user.write
+   * Add a Users Secret
+   * Generates a client secret for the user.  The client id is the users username.  If the user already has a secret, it is overwritten.  Only users of type machine can have a secret.   Required permission:    - user.write
    * @param userServiceAddSecretRequest  (required)
    * @return UserServiceAddSecretResponse
    * @throws ApiException if fails to make API call
@@ -611,8 +621,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * AddSecret
-   * Add a Users Secret   Generates a client secret for the user.  The client id is the users username.  If the user already has a secret, it is overwritten.  Only users of type machine can have a secret.   Required permission:    - user.write
+   * Add a Users Secret
+   * Generates a client secret for the user.  The client id is the users username.  If the user already has a secret, it is overwritten.  Only users of type machine can have a secret.   Required permission:    - user.write
    * @param userServiceAddSecretRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceAddSecretResponse
@@ -672,10 +682,20 @@ public class UserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Create an invite code for a user (Convenience Method)
+              * Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  If an invite code has been created previously, it&#39;s url template and application name will be used as defaults for the new code.  The new code will overwrite the previous one and make it invalid.  Note: It is possible to reissue a new code only when the previous code has expired, or when the user provides a wrong code three or more times during verification.
+                * @return UserServiceCreateInviteCodeResponse
+              * @throws ApiException if fails to make API call
+              */
+              public UserServiceCreateInviteCodeResponse createInviteCode() throws ApiException {
+              return this.createInviteCode(new UserServiceCreateInviteCodeRequest());
+              }
+
 
   /**
-   * CreateInviteCode
-   * Create an invite code for a user   Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  If an invite code has been created previously, it&#39;s url template and application name will be used as defaults for the new code.  The new code will overwrite the previous one and make it invalid.  Note: It is possible to reissue a new code only when the previous code has expired, or when the user provides a wrong code three or more times during verification.
+   * Create an invite code for a user
+   * Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  If an invite code has been created previously, it&#39;s url template and application name will be used as defaults for the new code.  The new code will overwrite the previous one and make it invalid.  Note: It is possible to reissue a new code only when the previous code has expired, or when the user provides a wrong code three or more times during verification.
    * @param userServiceCreateInviteCodeRequest  (required)
    * @return UserServiceCreateInviteCodeResponse
    * @throws ApiException if fails to make API call
@@ -686,8 +706,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * CreateInviteCode
-   * Create an invite code for a user   Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  If an invite code has been created previously, it&#39;s url template and application name will be used as defaults for the new code.  The new code will overwrite the previous one and make it invalid.  Note: It is possible to reissue a new code only when the previous code has expired, or when the user provides a wrong code three or more times during verification.
+   * Create an invite code for a user
+   * Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  If an invite code has been created previously, it&#39;s url template and application name will be used as defaults for the new code.  The new code will overwrite the previous one and make it invalid.  Note: It is possible to reissue a new code only when the previous code has expired, or when the user provides a wrong code three or more times during verification.
    * @param userServiceCreateInviteCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceCreateInviteCodeResponse
@@ -747,10 +767,20 @@ public class UserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Create a passkey registration link for a user (Convenience Method)
+              * Create a passkey registration link which includes a code and either return it or send it to the user..
+                * @return UserServiceCreatePasskeyRegistrationLinkResponse
+              * @throws ApiException if fails to make API call
+              */
+              public UserServiceCreatePasskeyRegistrationLinkResponse createPasskeyRegistrationLink() throws ApiException {
+              return this.createPasskeyRegistrationLink(new UserServiceCreatePasskeyRegistrationLinkRequest());
+              }
+
 
   /**
-   * CreatePasskeyRegistrationLink
-   * Create a passkey registration link for a user   Create a passkey registration link which includes a code and either return it or send it to the user..
+   * Create a passkey registration link for a user
+   * Create a passkey registration link which includes a code and either return it or send it to the user..
    * @param userServiceCreatePasskeyRegistrationLinkRequest  (required)
    * @return UserServiceCreatePasskeyRegistrationLinkResponse
    * @throws ApiException if fails to make API call
@@ -761,8 +791,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * CreatePasskeyRegistrationLink
-   * Create a passkey registration link for a user   Create a passkey registration link which includes a code and either return it or send it to the user..
+   * Create a passkey registration link for a user
+   * Create a passkey registration link which includes a code and either return it or send it to the user..
    * @param userServiceCreatePasskeyRegistrationLinkRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceCreatePasskeyRegistrationLinkResponse
@@ -822,10 +852,20 @@ public class UserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Create a User (Convenience Method)
+              * Create a new human or machine user in the specified organization.   Required permission:    - user.write
+                * @return UserServiceCreateUserResponse
+              * @throws ApiException if fails to make API call
+              */
+              public UserServiceCreateUserResponse createUser() throws ApiException {
+              return this.createUser(new UserServiceCreateUserRequest());
+              }
+
 
   /**
-   * CreateUser
-   * Create a User   Create a new human or machine user in the specified organization.   Required permission:    - user.write
+   * Create a User
+   * Create a new human or machine user in the specified organization.   Required permission:    - user.write
    * @param userServiceCreateUserRequest  (required)
    * @return UserServiceCreateUserResponse
    * @throws ApiException if fails to make API call
@@ -836,8 +876,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * CreateUser
-   * Create a User   Create a new human or machine user in the specified organization.   Required permission:    - user.write
+   * Create a User
+   * Create a new human or machine user in the specified organization.   Required permission:    - user.write
    * @param userServiceCreateUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceCreateUserResponse
@@ -899,8 +939,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * DeactivateUser
-   * Deactivate user   The state of the user will be changed to &#39;deactivated&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;deactivated&#39;. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data..
+   * Deactivate user
+   * The state of the user will be changed to &#39;deactivated&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;deactivated&#39;. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data..
    * @param userServiceDeactivateUserRequest  (required)
    * @return UserServiceDeactivateUserResponse
    * @throws ApiException if fails to make API call
@@ -911,8 +951,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * DeactivateUser
-   * Deactivate user   The state of the user will be changed to &#39;deactivated&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;deactivated&#39;. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data..
+   * Deactivate user
+   * The state of the user will be changed to &#39;deactivated&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;deactivated&#39;. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data..
    * @param userServiceDeactivateUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceDeactivateUserResponse
@@ -974,8 +1014,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * DeleteUser
-   * Delete user   The state of the user will be changed to &#39;deleted&#39;. The user will not be able to log in anymore. Endpoints requesting this user will return an error &#39;User not found..
+   * Delete user
+   * The state of the user will be changed to &#39;deleted&#39;. The user will not be able to log in anymore. Endpoints requesting this user will return an error &#39;User not found..
    * @param userServiceDeleteUserRequest  (required)
    * @return UserServiceDeleteUserResponse
    * @throws ApiException if fails to make API call
@@ -986,8 +1026,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * DeleteUser
-   * Delete user   The state of the user will be changed to &#39;deleted&#39;. The user will not be able to log in anymore. Endpoints requesting this user will return an error &#39;User not found..
+   * Delete user
+   * The state of the user will be changed to &#39;deleted&#39;. The user will not be able to log in anymore. Endpoints requesting this user will return an error &#39;User not found..
    * @param userServiceDeleteUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceDeleteUserResponse
@@ -1049,8 +1089,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * DeleteUserMetadata
-   * Delete User Metadata   Delete metadata objects from an user with a specific key.   Required permission:   - &#x60;user.write&#x60;
+   * Delete User Metadata
+   * Delete metadata objects from an user with a specific key.   Required permission:   - &#x60;user.write&#x60;
    * @param userServiceDeleteUserMetadataRequest  (required)
    * @return UserServiceDeleteUserMetadataResponse
    * @throws ApiException if fails to make API call
@@ -1061,8 +1101,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * DeleteUserMetadata
-   * Delete User Metadata   Delete metadata objects from an user with a specific key.   Required permission:   - &#x60;user.write&#x60;
+   * Delete User Metadata
+   * Delete metadata objects from an user with a specific key.   Required permission:   - &#x60;user.write&#x60;
    * @param userServiceDeleteUserMetadataRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceDeleteUserMetadataResponse
@@ -1124,8 +1164,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * GetUserByID
-   * User by ID   Returns the full user object (human or machine) including the profile, email, etc..
+   * User by ID
+   * Returns the full user object (human or machine) including the profile, email, etc..
    * @param userServiceGetUserByIDRequest  (required)
    * @return UserServiceGetUserByIDResponse
    * @throws ApiException if fails to make API call
@@ -1136,8 +1176,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * GetUserByID
-   * User by ID   Returns the full user object (human or machine) including the profile, email, etc..
+   * User by ID
+   * Returns the full user object (human or machine) including the profile, email, etc..
    * @param userServiceGetUserByIDRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceGetUserByIDResponse
@@ -1199,8 +1239,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * HumanMFAInitSkipped
-   * MFA Init Skipped   Update the last time the user has skipped MFA initialization. The server timestamp is used.
+   * MFA Init Skipped
+   * Update the last time the user has skipped MFA initialization. The server timestamp is used.
    * @param userServiceHumanMFAInitSkippedRequest  (required)
    * @return UserServiceHumanMFAInitSkippedResponse
    * @throws ApiException if fails to make API call
@@ -1211,8 +1251,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * HumanMFAInitSkipped
-   * MFA Init Skipped   Update the last time the user has skipped MFA initialization. The server timestamp is used.
+   * MFA Init Skipped
+   * Update the last time the user has skipped MFA initialization. The server timestamp is used.
    * @param userServiceHumanMFAInitSkippedRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceHumanMFAInitSkippedResponse
@@ -1349,8 +1389,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListAuthenticationMethodTypes
-   * List all possible authentication methods of a user   List all possible authentication methods of a user like password, passwordless, (T)OTP and more..
+   * List all possible authentication methods of a user
+   * List all possible authentication methods of a user like password, passwordless, (T)OTP and more..
    * @param userServiceListAuthenticationMethodTypesRequest  (required)
    * @return UserServiceListAuthenticationMethodTypesResponse
    * @throws ApiException if fails to make API call
@@ -1361,8 +1401,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListAuthenticationMethodTypes
-   * List all possible authentication methods of a user   List all possible authentication methods of a user like password, passwordless, (T)OTP and more..
+   * List all possible authentication methods of a user
+   * List all possible authentication methods of a user like password, passwordless, (T)OTP and more..
    * @param userServiceListAuthenticationMethodTypesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceListAuthenticationMethodTypesResponse
@@ -1424,8 +1464,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListIDPLinks
-   * List links to an identity provider of an user   List links to an identity provider of an user.
+   * List links to an identity provider of an user
+   * List links to an identity provider of an user.
    * @param userServiceListIDPLinksRequest  (required)
    * @return UserServiceListIDPLinksResponse
    * @throws ApiException if fails to make API call
@@ -1436,8 +1476,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListIDPLinks
-   * List links to an identity provider of an user   List links to an identity provider of an user.
+   * List links to an identity provider of an user
+   * List links to an identity provider of an user.
    * @param userServiceListIDPLinksRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceListIDPLinksResponse
@@ -1499,8 +1539,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListKeys
-   * Search Keys   List all matching keys. By default all keys of the instance on which the caller has permission to read the owning users are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - user.read
+   * Search Keys
+   * List all matching keys. By default all keys of the instance on which the caller has permission to read the owning users are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - user.read
    * @param userServiceListKeysRequest  (required)
    * @return UserServiceListKeysResponse
    * @throws ApiException if fails to make API call
@@ -1511,8 +1551,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListKeys
-   * Search Keys   List all matching keys. By default all keys of the instance on which the caller has permission to read the owning users are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - user.read
+   * Search Keys
+   * List all matching keys. By default all keys of the instance on which the caller has permission to read the owning users are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - user.read
    * @param userServiceListKeysRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceListKeysResponse
@@ -1574,8 +1614,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListPasskeys
-   * List passkeys of an user   List passkeys of an user
+   * List passkeys of an user
+   * List passkeys of an user
    * @param userServiceListPasskeysRequest  (required)
    * @return UserServiceListPasskeysResponse
    * @throws ApiException if fails to make API call
@@ -1586,8 +1626,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListPasskeys
-   * List passkeys of an user   List passkeys of an user
+   * List passkeys of an user
+   * List passkeys of an user
    * @param userServiceListPasskeysRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceListPasskeysResponse
@@ -1649,8 +1689,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListPersonalAccessTokens
-   * Search Personal Access Tokens   List all personal access tokens. By default all personal access tokens of the instance on which the caller has permission to read the owning users are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - user.read
+   * Search Personal Access Tokens
+   * List all personal access tokens. By default all personal access tokens of the instance on which the caller has permission to read the owning users are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - user.read
    * @param userServiceListPersonalAccessTokensRequest  (required)
    * @return UserServiceListPersonalAccessTokensResponse
    * @throws ApiException if fails to make API call
@@ -1661,8 +1701,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListPersonalAccessTokens
-   * Search Personal Access Tokens   List all personal access tokens. By default all personal access tokens of the instance on which the caller has permission to read the owning users are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - user.read
+   * Search Personal Access Tokens
+   * List all personal access tokens. By default all personal access tokens of the instance on which the caller has permission to read the owning users are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - user.read
    * @param userServiceListPersonalAccessTokensRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceListPersonalAccessTokensResponse
@@ -1724,8 +1764,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListUserMetadata
-   * List User Metadata   List metadata of an user filtered by query.   Required permission:   - &#x60;user.read&#x60;
+   * List User Metadata
+   * List metadata of an user filtered by query.   Required permission:   - &#x60;user.read&#x60;
    * @param userServiceListUserMetadataRequest  (required)
    * @return UserServiceListUserMetadataResponse
    * @throws ApiException if fails to make API call
@@ -1736,8 +1776,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListUserMetadata
-   * List User Metadata   List metadata of an user filtered by query.   Required permission:   - &#x60;user.read&#x60;
+   * List User Metadata
+   * List metadata of an user filtered by query.   Required permission:   - &#x60;user.read&#x60;
    * @param userServiceListUserMetadataRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceListUserMetadataResponse
@@ -1799,8 +1839,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListUsers
-   * Search Users   Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.
+   * Search Users
+   * Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.
    * @param userServiceListUsersRequest  (required)
    * @return UserServiceListUsersResponse
    * @throws ApiException if fails to make API call
@@ -1811,8 +1851,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ListUsers
-   * Search Users   Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.
+   * Search Users
+   * Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.
    * @param userServiceListUsersRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceListUsersResponse
@@ -1874,8 +1914,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * LockUser
-   * Lock user   The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..
+   * Lock user
+   * The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..
    * @param userServiceLockUserRequest  (required)
    * @return UserServiceLockUserResponse
    * @throws ApiException if fails to make API call
@@ -1886,8 +1926,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * LockUser
-   * Lock user   The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..
+   * Lock user
+   * The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..
    * @param userServiceLockUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceLockUserResponse
@@ -1947,10 +1987,20 @@ public class UserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Request a code to reset a password (Convenience Method)
+              * Request a code to reset a password..
+                * @return UserServicePasswordResetResponse
+              * @throws ApiException if fails to make API call
+              */
+              public UserServicePasswordResetResponse passwordReset() throws ApiException {
+              return this.passwordReset(new UserServicePasswordResetRequest());
+              }
+
 
   /**
-   * PasswordReset
-   * Request a code to reset a password   Request a code to reset a password..
+   * Request a code to reset a password
+   * Request a code to reset a password..
    * @param userServicePasswordResetRequest  (required)
    * @return UserServicePasswordResetResponse
    * @throws ApiException if fails to make API call
@@ -1961,8 +2011,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * PasswordReset
-   * Request a code to reset a password   Request a code to reset a password..
+   * Request a code to reset a password
+   * Request a code to reset a password..
    * @param userServicePasswordResetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServicePasswordResetResponse
@@ -2024,8 +2074,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ReactivateUser
-   * Reactivate user   Reactivate a user with the state &#39;deactivated&#39;. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state &#39;deactivated&#39;..
+   * Reactivate user
+   * Reactivate a user with the state &#39;deactivated&#39;. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state &#39;deactivated&#39;..
    * @param userServiceReactivateUserRequest  (required)
    * @return UserServiceReactivateUserResponse
    * @throws ApiException if fails to make API call
@@ -2036,8 +2086,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ReactivateUser
-   * Reactivate user   Reactivate a user with the state &#39;deactivated&#39;. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state &#39;deactivated&#39;..
+   * Reactivate user
+   * Reactivate a user with the state &#39;deactivated&#39;. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state &#39;deactivated&#39;..
    * @param userServiceReactivateUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceReactivateUserResponse
@@ -2099,8 +2149,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RegisterPasskey
-   * Start the registration of passkey for a user   Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey..
+   * Start the registration of passkey for a user
+   * Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey..
    * @param userServiceRegisterPasskeyRequest  (required)
    * @return UserServiceRegisterPasskeyResponse
    * @throws ApiException if fails to make API call
@@ -2111,8 +2161,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RegisterPasskey
-   * Start the registration of passkey for a user   Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey..
+   * Start the registration of passkey for a user
+   * Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey..
    * @param userServiceRegisterPasskeyRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRegisterPasskeyResponse
@@ -2174,8 +2224,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RegisterTOTP
-   * Start the registration of a TOTP generator for a user   Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device..
+   * Start the registration of a TOTP generator for a user
+   * Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device..
    * @param userServiceRegisterTOTPRequest  (required)
    * @return UserServiceRegisterTOTPResponse
    * @throws ApiException if fails to make API call
@@ -2186,8 +2236,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RegisterTOTP
-   * Start the registration of a TOTP generator for a user   Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device..
+   * Start the registration of a TOTP generator for a user
+   * Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device..
    * @param userServiceRegisterTOTPRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRegisterTOTPResponse
@@ -2249,8 +2299,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RegisterU2F
-   * Start the registration of a u2f token for a user   Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token..
+   * Start the registration of a u2f token for a user
+   * Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token..
    * @param userServiceRegisterU2FRequest  (required)
    * @return UserServiceRegisterU2FResponse
    * @throws ApiException if fails to make API call
@@ -2261,8 +2311,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RegisterU2F
-   * Start the registration of a u2f token for a user   Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token..
+   * Start the registration of a u2f token for a user
+   * Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token..
    * @param userServiceRegisterU2FRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRegisterU2FResponse
@@ -2324,8 +2374,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveIDPLink
-   * Remove link of an identity provider to an user   Remove link of an identity provider to an user.
+   * Remove link of an identity provider to an user
+   * Remove link of an identity provider to an user.
    * @param userServiceRemoveIDPLinkRequest  (required)
    * @return UserServiceRemoveIDPLinkResponse
    * @throws ApiException if fails to make API call
@@ -2336,8 +2386,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveIDPLink
-   * Remove link of an identity provider to an user   Remove link of an identity provider to an user.
+   * Remove link of an identity provider to an user
+   * Remove link of an identity provider to an user.
    * @param userServiceRemoveIDPLinkRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemoveIDPLinkResponse
@@ -2399,8 +2449,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveKey
-   * Remove a Key   Remove a machine users key by the given key ID and an optionally given user ID.   Required permission:    - user.write
+   * Remove a Key
+   * Remove a machine users key by the given key ID and an optionally given user ID.   Required permission:    - user.write
    * @param userServiceRemoveKeyRequest  (required)
    * @return UserServiceRemoveKeyResponse
    * @throws ApiException if fails to make API call
@@ -2411,8 +2461,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveKey
-   * Remove a Key   Remove a machine users key by the given key ID and an optionally given user ID.   Required permission:    - user.write
+   * Remove a Key
+   * Remove a machine users key by the given key ID and an optionally given user ID.   Required permission:    - user.write
    * @param userServiceRemoveKeyRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemoveKeyResponse
@@ -2474,8 +2524,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveOTPEmail
-   * Remove One-Time Password (OTP) Email from a user   Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.
+   * Remove One-Time Password (OTP) Email from a user
+   * Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.
    * @param userServiceRemoveOTPEmailRequest  (required)
    * @return UserServiceRemoveOTPEmailResponse
    * @throws ApiException if fails to make API call
@@ -2486,8 +2536,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveOTPEmail
-   * Remove One-Time Password (OTP) Email from a user   Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.
+   * Remove One-Time Password (OTP) Email from a user
+   * Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.
    * @param userServiceRemoveOTPEmailRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemoveOTPEmailResponse
@@ -2549,8 +2599,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveOTPSMS
-   * Remove One-Time Password (OTP) SMS from a user   Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.
+   * Remove One-Time Password (OTP) SMS from a user
+   * Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.
    * @param userServiceRemoveOTPSMSRequest  (required)
    * @return UserServiceRemoveOTPSMSResponse
    * @throws ApiException if fails to make API call
@@ -2561,8 +2611,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveOTPSMS
-   * Remove One-Time Password (OTP) SMS from a user   Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.
+   * Remove One-Time Password (OTP) SMS from a user
+   * Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.
    * @param userServiceRemoveOTPSMSRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemoveOTPSMSResponse
@@ -2624,8 +2674,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemovePasskey
-   * Remove passkey from a user   Remove passkey from a user.
+   * Remove passkey from a user
+   * Remove passkey from a user.
    * @param userServiceRemovePasskeyRequest  (required)
    * @return UserServiceRemovePasskeyResponse
    * @throws ApiException if fails to make API call
@@ -2636,8 +2686,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemovePasskey
-   * Remove passkey from a user   Remove passkey from a user.
+   * Remove passkey from a user
+   * Remove passkey from a user.
    * @param userServiceRemovePasskeyRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemovePasskeyResponse
@@ -2699,8 +2749,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemovePersonalAccessToken
-   * Remove a Personal Access Token   Removes a machine users personal access token by the given token ID and an optionally given user ID.   Required permission:    - user.write
+   * Remove a Personal Access Token
+   * Removes a machine users personal access token by the given token ID and an optionally given user ID.   Required permission:    - user.write
    * @param userServiceRemovePersonalAccessTokenRequest  (required)
    * @return UserServiceRemovePersonalAccessTokenResponse
    * @throws ApiException if fails to make API call
@@ -2711,8 +2761,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemovePersonalAccessToken
-   * Remove a Personal Access Token   Removes a machine users personal access token by the given token ID and an optionally given user ID.   Required permission:    - user.write
+   * Remove a Personal Access Token
+   * Removes a machine users personal access token by the given token ID and an optionally given user ID.   Required permission:    - user.write
    * @param userServiceRemovePersonalAccessTokenRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemovePersonalAccessTokenResponse
@@ -2774,8 +2824,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemovePhone
-   * Delete the user phone   Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx) to remove the phone number.   Delete the phone number of a user.
+   * Delete the user phone
+   * Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx) to remove the phone number.   Delete the phone number of a user.
    * @param userServiceRemovePhoneRequest  (required)
    * @return UserServiceRemovePhoneResponse
    * @throws ApiException if fails to make API call
@@ -2786,8 +2836,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemovePhone
-   * Delete the user phone   Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx) to remove the phone number.   Delete the phone number of a user.
+   * Delete the user phone
+   * Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx) to remove the phone number.   Delete the phone number of a user.
    * @param userServiceRemovePhoneRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemovePhoneResponse
@@ -2849,8 +2899,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveSecret
-   * Remove a Users Secret   Remove the current client ID and client secret from a machine user.   Required permission:    - user.write
+   * Remove a Users Secret
+   * Remove the current client ID and client secret from a machine user.   Required permission:    - user.write
    * @param userServiceRemoveSecretRequest  (required)
    * @return UserServiceRemoveSecretResponse
    * @throws ApiException if fails to make API call
@@ -2861,8 +2911,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveSecret
-   * Remove a Users Secret   Remove the current client ID and client secret from a machine user.   Required permission:    - user.write
+   * Remove a Users Secret
+   * Remove the current client ID and client secret from a machine user.   Required permission:    - user.write
    * @param userServiceRemoveSecretRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemoveSecretResponse
@@ -2924,8 +2974,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveTOTP
-   * Remove TOTP generator from a user   Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.
+   * Remove TOTP generator from a user
+   * Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.
    * @param userServiceRemoveTOTPRequest  (required)
    * @return UserServiceRemoveTOTPResponse
    * @throws ApiException if fails to make API call
@@ -2936,8 +2986,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveTOTP
-   * Remove TOTP generator from a user   Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.
+   * Remove TOTP generator from a user
+   * Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.
    * @param userServiceRemoveTOTPRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemoveTOTPResponse
@@ -2999,8 +3049,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveU2F
-   * Remove u2f token from a user   Remove u2f token from a user.
+   * Remove u2f token from a user
+   * Remove u2f token from a user.
    * @param userServiceRemoveU2FRequest  (required)
    * @return UserServiceRemoveU2FResponse
    * @throws ApiException if fails to make API call
@@ -3011,8 +3061,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveU2F
-   * Remove u2f token from a user   Remove u2f token from a user.
+   * Remove u2f token from a user
+   * Remove u2f token from a user.
    * @param userServiceRemoveU2FRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemoveU2FResponse
@@ -3072,9 +3122,19 @@ public class UserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Resend code to verify user email (Convenience Method)
+              * Resend code to verify user email
+                * @return UserServiceResendEmailCodeResponse
+              * @throws ApiException if fails to make API call
+              */
+              public UserServiceResendEmailCodeResponse resendEmailCode() throws ApiException {
+              return this.resendEmailCode(new UserServiceResendEmailCodeRequest());
+              }
+
 
   /**
-   * ResendEmailCode
+   * Resend code to verify user email
    * Resend code to verify user email
    * @param userServiceResendEmailCodeRequest  (required)
    * @return UserServiceResendEmailCodeResponse
@@ -3086,7 +3146,7 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ResendEmailCode
+   * Resend code to verify user email
    * Resend code to verify user email
    * @param userServiceResendEmailCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -3149,8 +3209,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ResendInviteCode
-   * Resend an invite code for a user   Deprecated: Use [CreateInviteCode](apis/resources/user_service_v2/user-service-create-invite-code.api.mdx) instead.   Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.
+   * Resend an invite code for a user
+   * Deprecated: Use [CreateInviteCode](apis/resources/user_service_v2/user-service-create-invite-code.api.mdx) instead.   Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.
    * @param userServiceResendInviteCodeRequest  (required)
    * @return UserServiceResendInviteCodeResponse
    * @throws ApiException if fails to make API call
@@ -3161,8 +3221,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ResendInviteCode
-   * Resend an invite code for a user   Deprecated: Use [CreateInviteCode](apis/resources/user_service_v2/user-service-create-invite-code.api.mdx) instead.   Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.
+   * Resend an invite code for a user
+   * Deprecated: Use [CreateInviteCode](apis/resources/user_service_v2/user-service-create-invite-code.api.mdx) instead.   Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.
    * @param userServiceResendInviteCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceResendInviteCodeResponse
@@ -3222,10 +3282,20 @@ public class UserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Resend code to verify user phone number (Convenience Method)
+              * Resend code to verify user phone number.
+                * @return UserServiceResendPhoneCodeResponse
+              * @throws ApiException if fails to make API call
+              */
+              public UserServiceResendPhoneCodeResponse resendPhoneCode() throws ApiException {
+              return this.resendPhoneCode(new UserServiceResendPhoneCodeRequest());
+              }
+
 
   /**
-   * ResendPhoneCode
-   * Resend code to verify user phone number   Resend code to verify user phone number.
+   * Resend code to verify user phone number
+   * Resend code to verify user phone number.
    * @param userServiceResendPhoneCodeRequest  (required)
    * @return UserServiceResendPhoneCodeResponse
    * @throws ApiException if fails to make API call
@@ -3236,8 +3306,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * ResendPhoneCode
-   * Resend code to verify user phone number   Resend code to verify user phone number.
+   * Resend code to verify user phone number
+   * Resend code to verify user phone number.
    * @param userServiceResendPhoneCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceResendPhoneCodeResponse
@@ -3299,8 +3369,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RetrieveIdentityProviderIntent
-   * Retrieve the information returned by the identity provider   Retrieve the information returned by the identity provider for registration or updating an existing user with new information..
+   * Retrieve the information returned by the identity provider
+   * Retrieve the information returned by the identity provider for registration or updating an existing user with new information..
    * @param userServiceRetrieveIdentityProviderIntentRequest  (required)
    * @return UserServiceRetrieveIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
@@ -3311,8 +3381,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * RetrieveIdentityProviderIntent
-   * Retrieve the information returned by the identity provider   Retrieve the information returned by the identity provider for registration or updating an existing user with new information..
+   * Retrieve the information returned by the identity provider
+   * Retrieve the information returned by the identity provider for registration or updating an existing user with new information..
    * @param userServiceRetrieveIdentityProviderIntentRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRetrieveIdentityProviderIntentResponse
@@ -3372,9 +3442,19 @@ public class UserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Send code to verify user email (Convenience Method)
+              * Send code to verify user email
+                * @return UserServiceSendEmailCodeResponse
+              * @throws ApiException if fails to make API call
+              */
+              public UserServiceSendEmailCodeResponse sendEmailCode() throws ApiException {
+              return this.sendEmailCode(new UserServiceSendEmailCodeRequest());
+              }
+
 
   /**
-   * SendEmailCode
+   * Send code to verify user email
    * Send code to verify user email
    * @param userServiceSendEmailCodeRequest  (required)
    * @return UserServiceSendEmailCodeResponse
@@ -3386,7 +3466,7 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * SendEmailCode
+   * Send code to verify user email
    * Send code to verify user email
    * @param userServiceSendEmailCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -3447,10 +3527,20 @@ public class UserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Change the user email (Convenience Method)
+              * Deprecated: [Update the users email field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..
+                * @return UserServiceSetEmailResponse
+              * @throws ApiException if fails to make API call
+              */
+              public UserServiceSetEmailResponse setEmail() throws ApiException {
+              return this.setEmail(new UserServiceSetEmailRequest());
+              }
+
 
   /**
-   * SetEmail
-   * Change the user email   Deprecated: [Update the users email field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..
+   * Change the user email
+   * Deprecated: [Update the users email field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..
    * @param userServiceSetEmailRequest  (required)
    * @return UserServiceSetEmailResponse
    * @throws ApiException if fails to make API call
@@ -3461,8 +3551,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * SetEmail
-   * Change the user email   Deprecated: [Update the users email field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..
+   * Change the user email
+   * Deprecated: [Update the users email field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..
    * @param userServiceSetEmailRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceSetEmailResponse
@@ -3522,10 +3612,20 @@ public class UserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Change password (Convenience Method)
+              * Deprecated: [Update the users password](apis/resources/user_service_v2/user-service-update-user.api.mdx) instead.   Change the password of a user with either a verification code or the current password..
+                * @return UserServiceSetPasswordResponse
+              * @throws ApiException if fails to make API call
+              */
+              public UserServiceSetPasswordResponse setPassword() throws ApiException {
+              return this.setPassword(new UserServiceSetPasswordRequest());
+              }
+
 
   /**
-   * SetPassword
-   * Change password   Deprecated: [Update the users password](apis/resources/user_service_v2/user-service-update-user.api.mdx) instead.   Change the password of a user with either a verification code or the current password..
+   * Change password
+   * Deprecated: [Update the users password](apis/resources/user_service_v2/user-service-update-user.api.mdx) instead.   Change the password of a user with either a verification code or the current password..
    * @param userServiceSetPasswordRequest  (required)
    * @return UserServiceSetPasswordResponse
    * @throws ApiException if fails to make API call
@@ -3536,8 +3636,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * SetPassword
-   * Change password   Deprecated: [Update the users password](apis/resources/user_service_v2/user-service-update-user.api.mdx) instead.   Change the password of a user with either a verification code or the current password..
+   * Change password
+   * Deprecated: [Update the users password](apis/resources/user_service_v2/user-service-update-user.api.mdx) instead.   Change the password of a user with either a verification code or the current password..
    * @param userServiceSetPasswordRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceSetPasswordResponse
@@ -3597,10 +3697,20 @@ public class UserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Set the user phone (Convenience Method)
+              * Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..
+                * @return UserServiceSetPhoneResponse
+              * @throws ApiException if fails to make API call
+              */
+              public UserServiceSetPhoneResponse setPhone() throws ApiException {
+              return this.setPhone(new UserServiceSetPhoneRequest());
+              }
+
 
   /**
-   * SetPhone
-   * Set the user phone   Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..
+   * Set the user phone
+   * Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..
    * @param userServiceSetPhoneRequest  (required)
    * @return UserServiceSetPhoneResponse
    * @throws ApiException if fails to make API call
@@ -3611,8 +3721,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * SetPhone
-   * Set the user phone   Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..
+   * Set the user phone
+   * Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..
    * @param userServiceSetPhoneRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceSetPhoneResponse
@@ -3674,8 +3784,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * SetUserMetadata
-   * Set User Metadata   Sets a list of key value pairs. Existing metadata entries with matching keys are overwritten. Existing metadata entries without matching keys are untouched. To remove metadata entries, use [DeleteUserMetadata](apis/resources/user_service_v2/user-service-delete-user-metadata.api.mdx). For HTTP requests, make sure the bytes array value is base64 encoded.   Required permission:   - &#x60;user.write&#x60;
+   * Set User Metadata
+   * Sets a list of key value pairs. Existing metadata entries with matching keys are overwritten. Existing metadata entries without matching keys are untouched. To remove metadata entries, use [DeleteUserMetadata](apis/resources/user_service_v2/user-service-delete-user-metadata.api.mdx). For HTTP requests, make sure the bytes array value is base64 encoded.   Required permission:   - &#x60;user.write&#x60;
    * @param userServiceSetUserMetadataRequest  (required)
    * @return UserServiceSetUserMetadataResponse
    * @throws ApiException if fails to make API call
@@ -3686,8 +3796,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * SetUserMetadata
-   * Set User Metadata   Sets a list of key value pairs. Existing metadata entries with matching keys are overwritten. Existing metadata entries without matching keys are untouched. To remove metadata entries, use [DeleteUserMetadata](apis/resources/user_service_v2/user-service-delete-user-metadata.api.mdx). For HTTP requests, make sure the bytes array value is base64 encoded.   Required permission:   - &#x60;user.write&#x60;
+   * Set User Metadata
+   * Sets a list of key value pairs. Existing metadata entries with matching keys are overwritten. Existing metadata entries without matching keys are untouched. To remove metadata entries, use [DeleteUserMetadata](apis/resources/user_service_v2/user-service-delete-user-metadata.api.mdx). For HTTP requests, make sure the bytes array value is base64 encoded.   Required permission:   - &#x60;user.write&#x60;
    * @param userServiceSetUserMetadataRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceSetUserMetadataResponse
@@ -3747,10 +3857,20 @@ public class UserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Start flow with an identity provider (Convenience Method)
+              * Start a flow with an identity provider, for external login, registration or linking..
+                * @return UserServiceStartIdentityProviderIntentResponse
+              * @throws ApiException if fails to make API call
+              */
+              public UserServiceStartIdentityProviderIntentResponse startIdentityProviderIntent() throws ApiException {
+              return this.startIdentityProviderIntent(new UserServiceStartIdentityProviderIntentRequest());
+              }
+
 
   /**
-   * StartIdentityProviderIntent
-   * Start flow with an identity provider   Start a flow with an identity provider, for external login, registration or linking..
+   * Start flow with an identity provider
+   * Start a flow with an identity provider, for external login, registration or linking..
    * @param userServiceStartIdentityProviderIntentRequest  (required)
    * @return UserServiceStartIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
@@ -3761,8 +3881,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * StartIdentityProviderIntent
-   * Start flow with an identity provider   Start a flow with an identity provider, for external login, registration or linking..
+   * Start flow with an identity provider
+   * Start a flow with an identity provider, for external login, registration or linking..
    * @param userServiceStartIdentityProviderIntentRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceStartIdentityProviderIntentResponse
@@ -3824,8 +3944,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * UnlockUser
-   * Unlock user   The state of the user will be changed to &#39;active&#39;. The user will be able to log in again. The endpoint returns an error if the user is not in the state &#39;locked&#39;.
+   * Unlock user
+   * The state of the user will be changed to &#39;active&#39;. The user will be able to log in again. The endpoint returns an error if the user is not in the state &#39;locked&#39;.
    * @param userServiceUnlockUserRequest  (required)
    * @return UserServiceUnlockUserResponse
    * @throws ApiException if fails to make API call
@@ -3836,8 +3956,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * UnlockUser
-   * Unlock user   The state of the user will be changed to &#39;active&#39;. The user will be able to log in again. The endpoint returns an error if the user is not in the state &#39;locked&#39;.
+   * Unlock user
+   * The state of the user will be changed to &#39;active&#39;. The user will be able to log in again. The endpoint returns an error if the user is not in the state &#39;locked&#39;.
    * @param userServiceUnlockUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceUnlockUserResponse
@@ -3899,8 +4019,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * UpdateHumanUser
-   * Update Human User   Deprecated: Use [UpdateUser](apis/resources/user_service_v2/user-service-update-user.api.mdx) to update a user of type human instead.   Update all information from a user.
+   * Update Human User
+   * Deprecated: Use [UpdateUser](apis/resources/user_service_v2/user-service-update-user.api.mdx) to update a user of type human instead.   Update all information from a user.
    * @param userServiceUpdateHumanUserRequest  (required)
    * @return UserServiceUpdateHumanUserResponse
    * @throws ApiException if fails to make API call
@@ -3911,8 +4031,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * UpdateHumanUser
-   * Update Human User   Deprecated: Use [UpdateUser](apis/resources/user_service_v2/user-service-update-user.api.mdx) to update a user of type human instead.   Update all information from a user.
+   * Update Human User
+   * Deprecated: Use [UpdateUser](apis/resources/user_service_v2/user-service-update-user.api.mdx) to update a user of type human instead.   Update all information from a user.
    * @param userServiceUpdateHumanUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceUpdateHumanUserResponse
@@ -3972,10 +4092,20 @@ public class UserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Update a User (Convenience Method)
+              * Partially update an existing user.  If you change the users email or phone, you can specify how the ownership should be verified.  If you change the users password, you can specify if the password should be changed again on the users next login.   Required permission:    - user.write
+                * @return UserServiceUpdateUserResponse
+              * @throws ApiException if fails to make API call
+              */
+              public UserServiceUpdateUserResponse updateUser() throws ApiException {
+              return this.updateUser(new UserServiceUpdateUserRequest());
+              }
+
 
   /**
-   * UpdateUser
-   * Update a User   Partially update an existing user.  If you change the users email or phone, you can specify how the ownership should be verified.  If you change the users password, you can specify if the password should be changed again on the users next login.   Required permission:    - user.write
+   * Update a User
+   * Partially update an existing user.  If you change the users email or phone, you can specify how the ownership should be verified.  If you change the users password, you can specify if the password should be changed again on the users next login.   Required permission:    - user.write
    * @param userServiceUpdateUserRequest  (required)
    * @return UserServiceUpdateUserResponse
    * @throws ApiException if fails to make API call
@@ -3986,8 +4116,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * UpdateUser
-   * Update a User   Partially update an existing user.  If you change the users email or phone, you can specify how the ownership should be verified.  If you change the users password, you can specify if the password should be changed again on the users next login.   Required permission:    - user.write
+   * Update a User
+   * Partially update an existing user.  If you change the users email or phone, you can specify how the ownership should be verified.  If you change the users password, you can specify if the password should be changed again on the users next login.   Required permission:    - user.write
    * @param userServiceUpdateUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceUpdateUserResponse
@@ -4049,8 +4179,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyEmail
-   * Verify the email   Verify the email with the generated code.
+   * Verify the email
+   * Verify the email with the generated code.
    * @param userServiceVerifyEmailRequest  (required)
    * @return UserServiceVerifyEmailResponse
    * @throws ApiException if fails to make API call
@@ -4061,8 +4191,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyEmail
-   * Verify the email   Verify the email with the generated code.
+   * Verify the email
+   * Verify the email with the generated code.
    * @param userServiceVerifyEmailRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceVerifyEmailResponse
@@ -4124,8 +4254,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyInviteCode
-   * Verify an invite code for a user   Verify the invite code of a user previously issued. This will set their email to a verified state and  allow the user to set up their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.
+   * Verify an invite code for a user
+   * Verify the invite code of a user previously issued. This will set their email to a verified state and  allow the user to set up their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.
    * @param userServiceVerifyInviteCodeRequest  (required)
    * @return UserServiceVerifyInviteCodeResponse
    * @throws ApiException if fails to make API call
@@ -4136,8 +4266,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyInviteCode
-   * Verify an invite code for a user   Verify the invite code of a user previously issued. This will set their email to a verified state and  allow the user to set up their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.
+   * Verify an invite code for a user
+   * Verify the invite code of a user previously issued. This will set their email to a verified state and  allow the user to set up their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.
    * @param userServiceVerifyInviteCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceVerifyInviteCodeResponse
@@ -4199,8 +4329,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyPasskeyRegistration
-   * Verify a passkey for a user   Verify the passkey registration with the public key credential..
+   * Verify a passkey for a user
+   * Verify the passkey registration with the public key credential..
    * @param userServiceVerifyPasskeyRegistrationRequest  (required)
    * @return UserServiceVerifyPasskeyRegistrationResponse
    * @throws ApiException if fails to make API call
@@ -4211,8 +4341,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyPasskeyRegistration
-   * Verify a passkey for a user   Verify the passkey registration with the public key credential..
+   * Verify a passkey for a user
+   * Verify the passkey registration with the public key credential..
    * @param userServiceVerifyPasskeyRegistrationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceVerifyPasskeyRegistrationResponse
@@ -4274,8 +4404,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyPhone
-   * Verify the phone number   Verify the phone number with the generated code.
+   * Verify the phone number
+   * Verify the phone number with the generated code.
    * @param userServiceVerifyPhoneRequest  (required)
    * @return UserServiceVerifyPhoneResponse
    * @throws ApiException if fails to make API call
@@ -4286,8 +4416,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyPhone
-   * Verify the phone number   Verify the phone number with the generated code.
+   * Verify the phone number
+   * Verify the phone number with the generated code.
    * @param userServiceVerifyPhoneRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceVerifyPhoneResponse
@@ -4349,8 +4479,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyTOTPRegistration
-   * Verify a TOTP generator for a user   Verify the TOTP registration with a generated code..
+   * Verify a TOTP generator for a user
+   * Verify the TOTP registration with a generated code..
    * @param userServiceVerifyTOTPRegistrationRequest  (required)
    * @return UserServiceVerifyTOTPRegistrationResponse
    * @throws ApiException if fails to make API call
@@ -4361,8 +4491,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyTOTPRegistration
-   * Verify a TOTP generator for a user   Verify the TOTP registration with a generated code..
+   * Verify a TOTP generator for a user
+   * Verify the TOTP registration with a generated code..
    * @param userServiceVerifyTOTPRegistrationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceVerifyTOTPRegistrationResponse
@@ -4424,8 +4554,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyU2FRegistration
-   * Verify a u2f token for a user   Verify the u2f token registration with the public key credential..
+   * Verify a u2f token for a user
+   * Verify the u2f token registration with the public key credential..
    * @param userServiceVerifyU2FRegistrationRequest  (required)
    * @return UserServiceVerifyU2FRegistrationResponse
    * @throws ApiException if fails to make API call
@@ -4436,8 +4566,8 @@ public class UserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyU2FRegistration
-   * Verify a u2f token for a user   Verify the u2f token registration with the public key credential..
+   * Verify a u2f token for a user
+   * Verify the u2f token registration with the public key credential..
    * @param userServiceVerifyU2FRegistrationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceVerifyU2FRegistrationResponse

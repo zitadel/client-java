@@ -37,7 +37,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServicePhoneQuery {
   public static final String JSON_PROPERTY_NUMBER = "number";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String number;
 
   public static final String JSON_PROPERTY_METHOD = "method";
@@ -47,7 +47,7 @@ public class UserServicePhoneQuery {
   public UserServicePhoneQuery() {
   }
 
-  public UserServicePhoneQuery number(@javax.annotation.Nonnull String number) {
+  public UserServicePhoneQuery number(@javax.annotation.Nullable String number) {
     
     this.number = number;
     return this;
@@ -57,9 +57,9 @@ public class UserServicePhoneQuery {
    * Get number
    * @return number
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NUMBER)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getNumber() {
     return number;
@@ -67,8 +67,8 @@ public class UserServicePhoneQuery {
 
 
   @JsonProperty(JSON_PROPERTY_NUMBER)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNumber(@javax.annotation.Nonnull String number) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNumber(@javax.annotation.Nullable String number) {
     this.number = number;
   }
 

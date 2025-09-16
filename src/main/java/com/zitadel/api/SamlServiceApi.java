@@ -35,6 +35,16 @@ public class SamlServiceApi extends BaseApi {
 
 
 
+              /**
+              * CreateResponse (Convenience Method)
+              * 
+                * @return SAMLServiceCreateResponseResponse
+              * @throws ApiException if fails to make API call
+              */
+              public SAMLServiceCreateResponseResponse createResponse() throws ApiException {
+              return this.createResponse(new SAMLServiceCreateResponseRequest());
+              }
+
 
   /**
    * CreateResponse

@@ -36,17 +36,17 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServicePasskeyRegistrationCode {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String id;
 
   public static final String JSON_PROPERTY_CODE = "code";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String code;
 
   public BetaUserServicePasskeyRegistrationCode() {
   }
 
-  public BetaUserServicePasskeyRegistrationCode id(@javax.annotation.Nonnull String id) {
+  public BetaUserServicePasskeyRegistrationCode id(@javax.annotation.Nullable String id) {
     
     this.id = id;
     return this;
@@ -56,9 +56,9 @@ public class BetaUserServicePasskeyRegistrationCode {
    * Get id
    * @return id
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -66,12 +66,12 @@ public class BetaUserServicePasskeyRegistrationCode {
 
 
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull String id) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
-  public BetaUserServicePasskeyRegistrationCode code(@javax.annotation.Nonnull String code) {
+  public BetaUserServicePasskeyRegistrationCode code(@javax.annotation.Nullable String code) {
     
     this.code = code;
     return this;
@@ -81,9 +81,9 @@ public class BetaUserServicePasskeyRegistrationCode {
    * Get code
    * @return code
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CODE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCode() {
     return code;
@@ -91,8 +91,8 @@ public class BetaUserServicePasskeyRegistrationCode {
 
 
   @JsonProperty(JSON_PROPERTY_CODE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCode(@javax.annotation.Nonnull String code) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCode(@javax.annotation.Nullable String code) {
     this.code = code;
   }
 

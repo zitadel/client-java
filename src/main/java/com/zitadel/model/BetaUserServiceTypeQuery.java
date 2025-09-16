@@ -36,13 +36,13 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceTypeQuery {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private BetaUserServiceType type;
 
   public BetaUserServiceTypeQuery() {
   }
 
-  public BetaUserServiceTypeQuery type(@javax.annotation.Nonnull BetaUserServiceType type) {
+  public BetaUserServiceTypeQuery type(@javax.annotation.Nullable BetaUserServiceType type) {
     
     this.type = type;
     return this;
@@ -52,9 +52,9 @@ public class BetaUserServiceTypeQuery {
    * Get type
    * @return type
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BetaUserServiceType getType() {
     return type;
@@ -62,8 +62,8 @@ public class BetaUserServiceTypeQuery {
 
 
   @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull BetaUserServiceType type) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setType(@javax.annotation.Nullable BetaUserServiceType type) {
     this.type = type;
   }
 

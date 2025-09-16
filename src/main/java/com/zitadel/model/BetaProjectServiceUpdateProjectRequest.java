@@ -45,7 +45,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaProjectServiceUpdateProjectRequest {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String id;
 
   public static final String JSON_PROPERTY_NAME = "name";
@@ -71,7 +71,7 @@ public class BetaProjectServiceUpdateProjectRequest {
   public BetaProjectServiceUpdateProjectRequest() {
   }
 
-  public BetaProjectServiceUpdateProjectRequest id(@javax.annotation.Nonnull String id) {
+  public BetaProjectServiceUpdateProjectRequest id(@javax.annotation.Nullable String id) {
     
     this.id = id;
     return this;
@@ -81,9 +81,9 @@ public class BetaProjectServiceUpdateProjectRequest {
    * Get id
    * @return id
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -91,8 +91,8 @@ public class BetaProjectServiceUpdateProjectRequest {
 
 
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull String id) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 

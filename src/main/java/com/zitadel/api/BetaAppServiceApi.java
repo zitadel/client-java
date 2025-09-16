@@ -55,10 +55,20 @@ public class BetaAppServiceApi extends BaseApi {
 
 
 
+              /**
+              * Create Application (Convenience Method)
+              * Create an application. The application can be OIDC, API or SAML type, based on the input.   Required permissions:    - project.app.write
+                * @return BetaAppServiceCreateApplicationResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaAppServiceCreateApplicationResponse createApplication() throws ApiException {
+              return this.createApplication(new BetaAppServiceCreateApplicationRequest());
+              }
+
 
   /**
-   * CreateApplication
-   * Create Application   Create an application. The application can be OIDC, API or SAML type, based on the input.   Required permissions:    - project.app.write
+   * Create Application
+   * Create an application. The application can be OIDC, API or SAML type, based on the input.   Required permissions:    - project.app.write
    * @param betaAppServiceCreateApplicationRequest  (required)
    * @return BetaAppServiceCreateApplicationResponse
    * @throws ApiException if fails to make API call
@@ -69,8 +79,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * CreateApplication
-   * Create Application   Create an application. The application can be OIDC, API or SAML type, based on the input.   Required permissions:    - project.app.write
+   * Create Application
+   * Create an application. The application can be OIDC, API or SAML type, based on the input.   Required permissions:    - project.app.write
    * @param betaAppServiceCreateApplicationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAppServiceCreateApplicationResponse
@@ -132,8 +142,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * CreateApplicationKey
-   * Create Application Key    Create a new application key, which is used to authorize an API application.   Key details are returned in the response. They must be stored safely, as it will not  be possible to retrieve them again.   Required permissions:    - &#x60;project.app.write&#x60;
+   * Create Application Key
+   * Create a new application key, which is used to authorize an API application.   Key details are returned in the response. They must be stored safely, as it will not  be possible to retrieve them again.   Required permissions:    - &#x60;project.app.write&#x60;
    * @param betaAppServiceCreateApplicationKeyRequest  (required)
    * @return BetaAppServiceCreateApplicationKeyResponse
    * @throws ApiException if fails to make API call
@@ -144,8 +154,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * CreateApplicationKey
-   * Create Application Key    Create a new application key, which is used to authorize an API application.   Key details are returned in the response. They must be stored safely, as it will not  be possible to retrieve them again.   Required permissions:    - &#x60;project.app.write&#x60;
+   * Create Application Key
+   * Create a new application key, which is used to authorize an API application.   Key details are returned in the response. They must be stored safely, as it will not  be possible to retrieve them again.   Required permissions:    - &#x60;project.app.write&#x60;
    * @param betaAppServiceCreateApplicationKeyRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAppServiceCreateApplicationKeyResponse
@@ -207,8 +217,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * DeactivateApplication
-   * Deactivate Application   Deactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write
+   * Deactivate Application
+   * Deactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write
    * @param betaAppServiceDeactivateApplicationRequest  (required)
    * @return BetaAppServiceDeactivateApplicationResponse
    * @throws ApiException if fails to make API call
@@ -219,8 +229,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * DeactivateApplication
-   * Deactivate Application   Deactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write
+   * Deactivate Application
+   * Deactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write
    * @param betaAppServiceDeactivateApplicationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAppServiceDeactivateApplicationResponse
@@ -282,8 +292,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * DeleteApplication
-   * Delete Application   Deletes the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.delete
+   * Delete Application
+   * Deletes the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.delete
    * @param betaAppServiceDeleteApplicationRequest  (required)
    * @return BetaAppServiceDeleteApplicationResponse
    * @throws ApiException if fails to make API call
@@ -294,8 +304,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * DeleteApplication
-   * Delete Application   Deletes the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.delete
+   * Delete Application
+   * Deletes the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.delete
    * @param betaAppServiceDeleteApplicationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAppServiceDeleteApplicationResponse
@@ -357,8 +367,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * DeleteApplicationKey
-   * Delete Application Key    Deletes an application key matching the provided ID.   Organization ID is not mandatory, but helps with filtering/performance.   The deletion time is returned in response message.   Required permissions:    - &#x60;project.app.write&#x60;
+   * Delete Application Key
+   * Deletes an application key matching the provided ID.   Organization ID is not mandatory, but helps with filtering/performance.   The deletion time is returned in response message.   Required permissions:    - &#x60;project.app.write&#x60;
    * @param betaAppServiceDeleteApplicationKeyRequest  (required)
    * @return BetaAppServiceDeleteApplicationKeyResponse
    * @throws ApiException if fails to make API call
@@ -369,8 +379,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * DeleteApplicationKey
-   * Delete Application Key    Deletes an application key matching the provided ID.   Organization ID is not mandatory, but helps with filtering/performance.   The deletion time is returned in response message.   Required permissions:    - &#x60;project.app.write&#x60;
+   * Delete Application Key
+   * Deletes an application key matching the provided ID.   Organization ID is not mandatory, but helps with filtering/performance.   The deletion time is returned in response message.   Required permissions:    - &#x60;project.app.write&#x60;
    * @param betaAppServiceDeleteApplicationKeyRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAppServiceDeleteApplicationKeyResponse
@@ -432,8 +442,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * GetApplication
-   * Get Application   Retrieves the application matching the provided ID.   Required permissions:    - project.app.read
+   * Get Application
+   * Retrieves the application matching the provided ID.   Required permissions:    - project.app.read
    * @param betaAppServiceGetApplicationRequest  (required)
    * @return BetaAppServiceGetApplicationResponse
    * @throws ApiException if fails to make API call
@@ -444,8 +454,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * GetApplication
-   * Get Application   Retrieves the application matching the provided ID.   Required permissions:    - project.app.read
+   * Get Application
+   * Retrieves the application matching the provided ID.   Required permissions:    - project.app.read
    * @param betaAppServiceGetApplicationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAppServiceGetApplicationResponse
@@ -507,8 +517,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * GetApplicationKey
-   * Get Application Key   Retrieves the application key matching the provided ID.   Specifying a project, organization and app ID is optional but help with filtering/performance.   Required permissions:    - project.app.read
+   * Get Application Key
+   * Retrieves the application key matching the provided ID.   Specifying a project, organization and app ID is optional but help with filtering/performance.   Required permissions:    - project.app.read
    * @param betaAppServiceGetApplicationKeyRequest  (required)
    * @return BetaAppServiceGetApplicationKeyResponse
    * @throws ApiException if fails to make API call
@@ -519,8 +529,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * GetApplicationKey
-   * Get Application Key   Retrieves the application key matching the provided ID.   Specifying a project, organization and app ID is optional but help with filtering/performance.   Required permissions:    - project.app.read
+   * Get Application Key
+   * Retrieves the application key matching the provided ID.   Specifying a project, organization and app ID is optional but help with filtering/performance.   Required permissions:    - project.app.read
    * @param betaAppServiceGetApplicationKeyRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAppServiceGetApplicationKeyResponse
@@ -580,10 +590,20 @@ public class BetaAppServiceApi extends BaseApi {
 
 
 
+              /**
+              * List Application Keys (Convenience Method)
+              * Returns a list of application keys matching the input parameters.   The result can be sorted by id, aggregate, creation date, expiration date, resource owner or type.  It can also be filtered by app, project or organization ID.   Required permissions:    - project.app.read
+                * @return BetaAppServiceListApplicationKeysResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaAppServiceListApplicationKeysResponse listApplicationKeys() throws ApiException {
+              return this.listApplicationKeys(new BetaAppServiceListApplicationKeysRequest());
+              }
+
 
   /**
-   * ListApplicationKeys
-   * List Application Keys   Returns a list of application keys matching the input parameters.   The result can be sorted by id, aggregate, creation date, expiration date, resource owner or type.  It can also be filtered by app, project or organization ID.   Required permissions:    - project.app.read
+   * List Application Keys
+   * Returns a list of application keys matching the input parameters.   The result can be sorted by id, aggregate, creation date, expiration date, resource owner or type.  It can also be filtered by app, project or organization ID.   Required permissions:    - project.app.read
    * @param betaAppServiceListApplicationKeysRequest  (required)
    * @return BetaAppServiceListApplicationKeysResponse
    * @throws ApiException if fails to make API call
@@ -594,8 +614,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * ListApplicationKeys
-   * List Application Keys   Returns a list of application keys matching the input parameters.   The result can be sorted by id, aggregate, creation date, expiration date, resource owner or type.  It can also be filtered by app, project or organization ID.   Required permissions:    - project.app.read
+   * List Application Keys
+   * Returns a list of application keys matching the input parameters.   The result can be sorted by id, aggregate, creation date, expiration date, resource owner or type.  It can also be filtered by app, project or organization ID.   Required permissions:    - project.app.read
    * @param betaAppServiceListApplicationKeysRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAppServiceListApplicationKeysResponse
@@ -657,8 +677,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * ListApplications
-   * List Applications   Returns a list of applications matching the input parameters that belong to the provided  project.   The result can be sorted by app id, name, creation date, change date or state. It can also  be filtered by app state, app type and app name.   Required permissions:    - project.app.read
+   * List Applications
+   * Returns a list of applications matching the input parameters that belong to the provided  project.   The result can be sorted by app id, name, creation date, change date or state. It can also  be filtered by app state, app type and app name.   Required permissions:    - project.app.read
    * @param betaAppServiceListApplicationsRequest  (required)
    * @return BetaAppServiceListApplicationsResponse
    * @throws ApiException if fails to make API call
@@ -669,8 +689,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * ListApplications
-   * List Applications   Returns a list of applications matching the input parameters that belong to the provided  project.   The result can be sorted by app id, name, creation date, change date or state. It can also  be filtered by app state, app type and app name.   Required permissions:    - project.app.read
+   * List Applications
+   * Returns a list of applications matching the input parameters that belong to the provided  project.   The result can be sorted by app id, name, creation date, change date or state. It can also  be filtered by app state, app type and app name.   Required permissions:    - project.app.read
    * @param betaAppServiceListApplicationsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAppServiceListApplicationsResponse
@@ -732,8 +752,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * ReactivateApplication
-   * Reactivate Application   Reactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write
+   * Reactivate Application
+   * Reactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write
    * @param betaAppServiceReactivateApplicationRequest  (required)
    * @return BetaAppServiceReactivateApplicationResponse
    * @throws ApiException if fails to make API call
@@ -744,8 +764,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * ReactivateApplication
-   * Reactivate Application   Reactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write
+   * Reactivate Application
+   * Reactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write
    * @param betaAppServiceReactivateApplicationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAppServiceReactivateApplicationResponse
@@ -805,10 +825,20 @@ public class BetaAppServiceApi extends BaseApi {
 
 
 
+              /**
+              * Regenerate Client Secret (Convenience Method)
+              * Regenerates the client secret of an API or OIDC application that belongs to the input project.    Required permissions:    - project.app.write
+                * @return BetaAppServiceRegenerateClientSecretResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaAppServiceRegenerateClientSecretResponse regenerateClientSecret() throws ApiException {
+              return this.regenerateClientSecret(new BetaAppServiceRegenerateClientSecretRequest());
+              }
+
 
   /**
-   * RegenerateClientSecret
-   * Regenerate Client Secret   Regenerates the client secret of an API or OIDC application that belongs to the input project.    Required permissions:    - project.app.write
+   * Regenerate Client Secret
+   * Regenerates the client secret of an API or OIDC application that belongs to the input project.    Required permissions:    - project.app.write
    * @param betaAppServiceRegenerateClientSecretRequest  (required)
    * @return BetaAppServiceRegenerateClientSecretResponse
    * @throws ApiException if fails to make API call
@@ -819,8 +849,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * RegenerateClientSecret
-   * Regenerate Client Secret   Regenerates the client secret of an API or OIDC application that belongs to the input project.    Required permissions:    - project.app.write
+   * Regenerate Client Secret
+   * Regenerates the client secret of an API or OIDC application that belongs to the input project.    Required permissions:    - project.app.write
    * @param betaAppServiceRegenerateClientSecretRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAppServiceRegenerateClientSecretResponse
@@ -880,10 +910,20 @@ public class BetaAppServiceApi extends BaseApi {
 
 
 
+              /**
+              * Update Application (Convenience Method)
+              * Changes the configuration of an OIDC, API or SAML type application, as well as  the application name, based on the input provided.   Required permissions:    - project.app.write
+                * @return BetaAppServiceUpdateApplicationResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaAppServiceUpdateApplicationResponse updateApplication() throws ApiException {
+              return this.updateApplication(new BetaAppServiceUpdateApplicationRequest());
+              }
+
 
   /**
-   * UpdateApplication
-   * Update Application   Changes the configuration of an OIDC, API or SAML type application, as well as  the application name, based on the input provided.   Required permissions:    - project.app.write
+   * Update Application
+   * Changes the configuration of an OIDC, API or SAML type application, as well as  the application name, based on the input provided.   Required permissions:    - project.app.write
    * @param betaAppServiceUpdateApplicationRequest  (required)
    * @return BetaAppServiceUpdateApplicationResponse
    * @throws ApiException if fails to make API call
@@ -894,8 +934,8 @@ public class BetaAppServiceApi extends BaseApi {
 
 
   /**
-   * UpdateApplication
-   * Update Application   Changes the configuration of an OIDC, API or SAML type application, as well as  the application name, based on the input provided.   Required permissions:    - project.app.write
+   * Update Application
+   * Changes the configuration of an OIDC, API or SAML type application, as well as  the application name, based on the input provided.   Required permissions:    - project.app.write
    * @param betaAppServiceUpdateApplicationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAppServiceUpdateApplicationResponse

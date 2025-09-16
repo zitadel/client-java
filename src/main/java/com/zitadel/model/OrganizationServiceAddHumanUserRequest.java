@@ -72,11 +72,11 @@ public class OrganizationServiceAddHumanUserRequest {
   private OrganizationServiceOrganization organization;
 
   public static final String JSON_PROPERTY_PROFILE = "profile";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private OrganizationServiceSetHumanProfile profile;
 
   public static final String JSON_PROPERTY_EMAIL = "email";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private OrganizationServiceSetHumanEmail email;
 
   public static final String JSON_PROPERTY_PHONE = "phone";
@@ -197,7 +197,7 @@ public class OrganizationServiceAddHumanUserRequest {
     this.organization = organization;
   }
 
-  public OrganizationServiceAddHumanUserRequest profile(@javax.annotation.Nonnull OrganizationServiceSetHumanProfile profile) {
+  public OrganizationServiceAddHumanUserRequest profile(@javax.annotation.Nullable OrganizationServiceSetHumanProfile profile) {
     
     this.profile = profile;
     return this;
@@ -207,9 +207,9 @@ public class OrganizationServiceAddHumanUserRequest {
    * Get profile
    * @return profile
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PROFILE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OrganizationServiceSetHumanProfile getProfile() {
     return profile;
@@ -217,12 +217,12 @@ public class OrganizationServiceAddHumanUserRequest {
 
 
   @JsonProperty(JSON_PROPERTY_PROFILE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProfile(@javax.annotation.Nonnull OrganizationServiceSetHumanProfile profile) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProfile(@javax.annotation.Nullable OrganizationServiceSetHumanProfile profile) {
     this.profile = profile;
   }
 
-  public OrganizationServiceAddHumanUserRequest email(@javax.annotation.Nonnull OrganizationServiceSetHumanEmail email) {
+  public OrganizationServiceAddHumanUserRequest email(@javax.annotation.Nullable OrganizationServiceSetHumanEmail email) {
     
     this.email = email;
     return this;
@@ -232,9 +232,9 @@ public class OrganizationServiceAddHumanUserRequest {
    * Get email
    * @return email
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_EMAIL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OrganizationServiceSetHumanEmail getEmail() {
     return email;
@@ -242,8 +242,8 @@ public class OrganizationServiceAddHumanUserRequest {
 
 
   @JsonProperty(JSON_PROPERTY_EMAIL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEmail(@javax.annotation.Nonnull OrganizationServiceSetHumanEmail email) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEmail(@javax.annotation.Nullable OrganizationServiceSetHumanEmail email) {
     this.email = email;
   }
 

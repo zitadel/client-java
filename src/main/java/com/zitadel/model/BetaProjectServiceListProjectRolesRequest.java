@@ -44,7 +44,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaProjectServiceListProjectRolesRequest {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String projectId;
 
   public static final String JSON_PROPERTY_PAGINATION = "pagination";
@@ -62,7 +62,7 @@ public class BetaProjectServiceListProjectRolesRequest {
   public BetaProjectServiceListProjectRolesRequest() {
   }
 
-  public BetaProjectServiceListProjectRolesRequest projectId(@javax.annotation.Nonnull String projectId) {
+  public BetaProjectServiceListProjectRolesRequest projectId(@javax.annotation.Nullable String projectId) {
     
     this.projectId = projectId;
     return this;
@@ -72,9 +72,9 @@ public class BetaProjectServiceListProjectRolesRequest {
    * ID of the project.
    * @return projectId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProjectId() {
     return projectId;
@@ -82,8 +82,8 @@ public class BetaProjectServiceListProjectRolesRequest {
 
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjectId(@javax.annotation.Nonnull String projectId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProjectId(@javax.annotation.Nullable String projectId) {
     this.projectId = projectId;
   }
 

@@ -36,17 +36,17 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceSetMetadataEntry {
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String key;
 
   public static final String JSON_PROPERTY_VALUE = "value";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private byte[] value;
 
   public UserServiceSetMetadataEntry() {
   }
 
-  public UserServiceSetMetadataEntry key(@javax.annotation.Nonnull String key) {
+  public UserServiceSetMetadataEntry key(@javax.annotation.Nullable String key) {
     
     this.key = key;
     return this;
@@ -56,9 +56,9 @@ public class UserServiceSetMetadataEntry {
    * Get key
    * @return key
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_KEY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getKey() {
     return key;
@@ -66,12 +66,12 @@ public class UserServiceSetMetadataEntry {
 
 
   @JsonProperty(JSON_PROPERTY_KEY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setKey(@javax.annotation.Nonnull String key) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKey(@javax.annotation.Nullable String key) {
     this.key = key;
   }
 
-  public UserServiceSetMetadataEntry value(@javax.annotation.Nonnull byte[] value) {
+  public UserServiceSetMetadataEntry value(@javax.annotation.Nullable byte[] value) {
     
     this.value = value;
     return this;
@@ -81,9 +81,9 @@ public class UserServiceSetMetadataEntry {
    * Get value
    * @return value
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_VALUE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public byte[] getValue() {
     return value;
@@ -91,8 +91,8 @@ public class UserServiceSetMetadataEntry {
 
 
   @JsonProperty(JSON_PROPERTY_VALUE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setValue(@javax.annotation.Nonnull byte[] value) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setValue(@javax.annotation.Nullable byte[] value) {
     this.value = value;
   }
 

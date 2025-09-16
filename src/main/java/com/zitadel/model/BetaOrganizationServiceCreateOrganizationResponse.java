@@ -46,7 +46,7 @@ public class BetaOrganizationServiceCreateOrganizationResponse {
   private OffsetDateTime creationDate;
 
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String id;
 
   public static final String JSON_PROPERTY_ORGANIZATION_ADMINS = "organizationAdmins";
@@ -81,7 +81,7 @@ public class BetaOrganizationServiceCreateOrganizationResponse {
     this.creationDate = creationDate;
   }
 
-  public BetaOrganizationServiceCreateOrganizationResponse id(@javax.annotation.Nonnull String id) {
+  public BetaOrganizationServiceCreateOrganizationResponse id(@javax.annotation.Nullable String id) {
     
     this.id = id;
     return this;
@@ -91,9 +91,9 @@ public class BetaOrganizationServiceCreateOrganizationResponse {
    * Organization ID of the newly created organization.
    * @return id
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -101,8 +101,8 @@ public class BetaOrganizationServiceCreateOrganizationResponse {
 
 
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull String id) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 

@@ -42,16 +42,16 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaProjectServiceUpdateProjectRoleRequest {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String projectId;
 
   public static final String JSON_PROPERTY_ROLE_KEY = "roleKey";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String roleKey;
 
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   @javax.annotation.Nullable
-  private String displayName;
+  private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_GROUP = "group";
   @javax.annotation.Nullable
@@ -60,7 +60,7 @@ public class BetaProjectServiceUpdateProjectRoleRequest {
   public BetaProjectServiceUpdateProjectRoleRequest() {
   }
 
-  public BetaProjectServiceUpdateProjectRoleRequest projectId(@javax.annotation.Nonnull String projectId) {
+  public BetaProjectServiceUpdateProjectRoleRequest projectId(@javax.annotation.Nullable String projectId) {
     
     this.projectId = projectId;
     return this;
@@ -70,9 +70,9 @@ public class BetaProjectServiceUpdateProjectRoleRequest {
    * ID of the project.
    * @return projectId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProjectId() {
     return projectId;
@@ -80,12 +80,12 @@ public class BetaProjectServiceUpdateProjectRoleRequest {
 
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjectId(@javax.annotation.Nonnull String projectId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProjectId(@javax.annotation.Nullable String projectId) {
     this.projectId = projectId;
   }
 
-  public BetaProjectServiceUpdateProjectRoleRequest roleKey(@javax.annotation.Nonnull String roleKey) {
+  public BetaProjectServiceUpdateProjectRoleRequest roleKey(@javax.annotation.Nullable String roleKey) {
     
     this.roleKey = roleKey;
     return this;
@@ -95,9 +95,9 @@ public class BetaProjectServiceUpdateProjectRoleRequest {
    * The key is the only relevant attribute for ZITADEL regarding the authorization checks.
    * @return roleKey
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ROLE_KEY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRoleKey() {
     return roleKey;
@@ -105,14 +105,14 @@ public class BetaProjectServiceUpdateProjectRoleRequest {
 
 
   @JsonProperty(JSON_PROPERTY_ROLE_KEY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRoleKey(@javax.annotation.Nonnull String roleKey) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRoleKey(@javax.annotation.Nullable String roleKey) {
     this.roleKey = roleKey;
   }
 
   public BetaProjectServiceUpdateProjectRoleRequest displayName(@javax.annotation.Nullable String displayName) {
+    this.displayName = JsonNullable.<String>of(displayName);
     
-    this.displayName = displayName;
     return this;
   }
 
@@ -121,18 +121,26 @@ public class BetaProjectServiceUpdateProjectRoleRequest {
    * @return displayName
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonIgnore
 
   public String getDisplayName() {
-    return displayName;
+        return displayName.orElse(null);
   }
 
-
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDisplayName(@javax.annotation.Nullable String displayName) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getDisplayName_JsonNullable() {
+    return displayName;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  public void setDisplayName_JsonNullable(JsonNullable<String> displayName) {
     this.displayName = displayName;
+  }
+
+  public void setDisplayName(@javax.annotation.Nullable String displayName) {
+    this.displayName = JsonNullable.<String>of(displayName);
   }
 
   public BetaProjectServiceUpdateProjectRoleRequest group(@javax.annotation.Nullable String group) {
@@ -179,7 +187,7 @@ public class BetaProjectServiceUpdateProjectRoleRequest {
     BetaProjectServiceUpdateProjectRoleRequest betaProjectServiceUpdateProjectRoleRequest = (BetaProjectServiceUpdateProjectRoleRequest) o;
     return Objects.equals(this.projectId, betaProjectServiceUpdateProjectRoleRequest.projectId) &&
         Objects.equals(this.roleKey, betaProjectServiceUpdateProjectRoleRequest.roleKey) &&
-        Objects.equals(this.displayName, betaProjectServiceUpdateProjectRoleRequest.displayName) &&
+        equalsNullable(this.displayName, betaProjectServiceUpdateProjectRoleRequest.displayName) &&
         equalsNullable(this.group, betaProjectServiceUpdateProjectRoleRequest.group);
   }
 
@@ -189,7 +197,7 @@ public class BetaProjectServiceUpdateProjectRoleRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(projectId, roleKey, displayName, hashCodeNullable(group));
+    return Objects.hash(projectId, roleKey, hashCodeNullable(displayName), hashCodeNullable(group));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {

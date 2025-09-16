@@ -35,13 +35,13 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class WebKeyServiceActivateWebKeyRequest {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String id;
 
   public WebKeyServiceActivateWebKeyRequest() {
   }
 
-  public WebKeyServiceActivateWebKeyRequest id(@javax.annotation.Nonnull String id) {
+  public WebKeyServiceActivateWebKeyRequest id(@javax.annotation.Nullable String id) {
     
     this.id = id;
     return this;
@@ -51,9 +51,9 @@ public class WebKeyServiceActivateWebKeyRequest {
    * Get id
    * @return id
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -61,8 +61,8 @@ public class WebKeyServiceActivateWebKeyRequest {
 
 
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull String id) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 

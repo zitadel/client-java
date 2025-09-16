@@ -99,10 +99,20 @@ public class BetaUserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Create a new human user (Convenience Method)
+              * Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.   Deprecated: please move to the corresponding endpoint under user service v2 (GA)
+                * @return BetaUserServiceAddHumanUserResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaUserServiceAddHumanUserResponse addHumanUser() throws ApiException {
+              return this.addHumanUser(new BetaUserServiceAddHumanUserRequest());
+              }
+
 
   /**
-   * AddHumanUser
-   * Create a new human user   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.   Deprecated: please move to the corresponding endpoint under user service v2 (GA)
+   * Create a new human user
+   * Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.   Deprecated: please move to the corresponding endpoint under user service v2 (GA)
    * @param betaUserServiceAddHumanUserRequest  (required)
    * @return BetaUserServiceAddHumanUserResponse
    * @throws ApiException if fails to make API call
@@ -113,8 +123,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * AddHumanUser
-   * Create a new human user   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.   Deprecated: please move to the corresponding endpoint under user service v2 (GA)
+   * Create a new human user
+   * Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.   Deprecated: please move to the corresponding endpoint under user service v2 (GA)
    * @param betaUserServiceAddHumanUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceAddHumanUserResponse
@@ -176,8 +186,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * AddIDPLink
-   * Add link to an identity provider to an user   Add link to an identity provider to an user.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Add link to an identity provider to an user
+   * Add link to an identity provider to an user.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceAddIDPLinkRequest  (required)
    * @return BetaUserServiceAddIDPLinkResponse
    * @throws ApiException if fails to make API call
@@ -188,8 +198,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * AddIDPLink
-   * Add link to an identity provider to an user   Add link to an identity provider to an user.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Add link to an identity provider to an user
+   * Add link to an identity provider to an user.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceAddIDPLinkRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceAddIDPLinkResponse
@@ -251,8 +261,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * AddOTPEmail
-   * Add OTP Email for a user   Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Add OTP Email for a user
+   * Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceAddOTPEmailRequest  (required)
    * @return BetaUserServiceAddOTPEmailResponse
    * @throws ApiException if fails to make API call
@@ -263,8 +273,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * AddOTPEmail
-   * Add OTP Email for a user   Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Add OTP Email for a user
+   * Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceAddOTPEmailRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceAddOTPEmailResponse
@@ -326,8 +336,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * AddOTPSMS
-   * Add OTP SMS for a user   Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Add OTP SMS for a user
+   * Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceAddOTPSMSRequest  (required)
    * @return BetaUserServiceAddOTPSMSResponse
    * @throws ApiException if fails to make API call
@@ -338,8 +348,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * AddOTPSMS
-   * Add OTP SMS for a user   Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Add OTP SMS for a user
+   * Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceAddOTPSMSRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceAddOTPSMSResponse
@@ -399,10 +409,20 @@ public class BetaUserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Create a passkey registration link for a user (Convenience Method)
+              * Create a passkey registration link which includes a code and either return it or send it to the user.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+                * @return BetaUserServiceCreatePasskeyRegistrationLinkResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaUserServiceCreatePasskeyRegistrationLinkResponse createPasskeyRegistrationLink() throws ApiException {
+              return this.createPasskeyRegistrationLink(new BetaUserServiceCreatePasskeyRegistrationLinkRequest());
+              }
+
 
   /**
-   * CreatePasskeyRegistrationLink
-   * Create a passkey registration link for a user   Create a passkey registration link which includes a code and either return it or send it to the user.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Create a passkey registration link for a user
+   * Create a passkey registration link which includes a code and either return it or send it to the user.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceCreatePasskeyRegistrationLinkRequest  (required)
    * @return BetaUserServiceCreatePasskeyRegistrationLinkResponse
    * @throws ApiException if fails to make API call
@@ -413,8 +433,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * CreatePasskeyRegistrationLink
-   * Create a passkey registration link for a user   Create a passkey registration link which includes a code and either return it or send it to the user.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Create a passkey registration link for a user
+   * Create a passkey registration link which includes a code and either return it or send it to the user.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceCreatePasskeyRegistrationLinkRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceCreatePasskeyRegistrationLinkResponse
@@ -476,8 +496,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * DeactivateUser
-   * Deactivate user   The state of the user will be changed to &#39;deactivated&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;deactivated&#39;. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Deactivate user
+   * The state of the user will be changed to &#39;deactivated&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;deactivated&#39;. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceDeactivateUserRequest  (required)
    * @return BetaUserServiceDeactivateUserResponse
    * @throws ApiException if fails to make API call
@@ -488,8 +508,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * DeactivateUser
-   * Deactivate user   The state of the user will be changed to &#39;deactivated&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;deactivated&#39;. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Deactivate user
+   * The state of the user will be changed to &#39;deactivated&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;deactivated&#39;. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceDeactivateUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceDeactivateUserResponse
@@ -551,8 +571,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * DeleteUser
-   * Delete user   The state of the user will be changed to &#39;deleted&#39;. The user will not be able to log in anymore. Endpoints requesting this user will return an error &#39;User not found.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Delete user
+   * The state of the user will be changed to &#39;deleted&#39;. The user will not be able to log in anymore. Endpoints requesting this user will return an error &#39;User not found.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceDeleteUserRequest  (required)
    * @return BetaUserServiceDeleteUserResponse
    * @throws ApiException if fails to make API call
@@ -563,8 +583,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * DeleteUser
-   * Delete user   The state of the user will be changed to &#39;deleted&#39;. The user will not be able to log in anymore. Endpoints requesting this user will return an error &#39;User not found.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Delete user
+   * The state of the user will be changed to &#39;deleted&#39;. The user will not be able to log in anymore. Endpoints requesting this user will return an error &#39;User not found.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceDeleteUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceDeleteUserResponse
@@ -626,8 +646,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * GetUserByID
-   * User by ID   Returns the full user object (human or machine) including the profile, email, etc.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * User by ID
+   * Returns the full user object (human or machine) including the profile, email, etc.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceGetUserByIDRequest  (required)
    * @return BetaUserServiceGetUserByIDResponse
    * @throws ApiException if fails to make API call
@@ -638,8 +658,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * GetUserByID
-   * User by ID   Returns the full user object (human or machine) including the profile, email, etc.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * User by ID
+   * Returns the full user object (human or machine) including the profile, email, etc.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceGetUserByIDRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceGetUserByIDResponse
@@ -701,8 +721,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * ListAuthenticationMethodTypes
-   * List all possible authentication methods of a user   List all possible authentication methods of a user like password, passwordless, (T)OTP and more.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * List all possible authentication methods of a user
+   * List all possible authentication methods of a user like password, passwordless, (T)OTP and more.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceListAuthenticationMethodTypesRequest  (required)
    * @return BetaUserServiceListAuthenticationMethodTypesResponse
    * @throws ApiException if fails to make API call
@@ -713,8 +733,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * ListAuthenticationMethodTypes
-   * List all possible authentication methods of a user   List all possible authentication methods of a user like password, passwordless, (T)OTP and more.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * List all possible authentication methods of a user
+   * List all possible authentication methods of a user like password, passwordless, (T)OTP and more.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceListAuthenticationMethodTypesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceListAuthenticationMethodTypesResponse
@@ -776,8 +796,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * ListUsers
-   * Search Users   Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Search Users
+   * Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceListUsersRequest  (required)
    * @return BetaUserServiceListUsersResponse
    * @throws ApiException if fails to make API call
@@ -788,8 +808,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * ListUsers
-   * Search Users   Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Search Users
+   * Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceListUsersRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceListUsersResponse
@@ -851,8 +871,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * LockUser
-   * Lock user   The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.).   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Lock user
+   * The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.).   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceLockUserRequest  (required)
    * @return BetaUserServiceLockUserResponse
    * @throws ApiException if fails to make API call
@@ -863,8 +883,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * LockUser
-   * Lock user   The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.).   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Lock user
+   * The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.).   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceLockUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceLockUserResponse
@@ -924,10 +944,20 @@ public class BetaUserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Request a code to reset a password (Convenience Method)
+              * Request a code to reset a password.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+                * @return BetaUserServicePasswordResetResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaUserServicePasswordResetResponse passwordReset() throws ApiException {
+              return this.passwordReset(new BetaUserServicePasswordResetRequest());
+              }
+
 
   /**
-   * PasswordReset
-   * Request a code to reset a password   Request a code to reset a password.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Request a code to reset a password
+   * Request a code to reset a password.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServicePasswordResetRequest  (required)
    * @return BetaUserServicePasswordResetResponse
    * @throws ApiException if fails to make API call
@@ -938,8 +968,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * PasswordReset
-   * Request a code to reset a password   Request a code to reset a password.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Request a code to reset a password
+   * Request a code to reset a password.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServicePasswordResetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServicePasswordResetResponse
@@ -1001,8 +1031,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * ReactivateUser
-   * Reactivate user   Reactivate a user with the state &#39;deactivated&#39;. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state &#39;deactivated&#39;.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Reactivate user
+   * Reactivate a user with the state &#39;deactivated&#39;. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state &#39;deactivated&#39;.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceReactivateUserRequest  (required)
    * @return BetaUserServiceReactivateUserResponse
    * @throws ApiException if fails to make API call
@@ -1013,8 +1043,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * ReactivateUser
-   * Reactivate user   Reactivate a user with the state &#39;deactivated&#39;. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state &#39;deactivated&#39;.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Reactivate user
+   * Reactivate a user with the state &#39;deactivated&#39;. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state &#39;deactivated&#39;.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceReactivateUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceReactivateUserResponse
@@ -1076,8 +1106,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RegisterPasskey
-   * Start the registration of passkey for a user   Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Start the registration of passkey for a user
+   * Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRegisterPasskeyRequest  (required)
    * @return BetaUserServiceRegisterPasskeyResponse
    * @throws ApiException if fails to make API call
@@ -1088,8 +1118,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RegisterPasskey
-   * Start the registration of passkey for a user   Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Start the registration of passkey for a user
+   * Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRegisterPasskeyRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceRegisterPasskeyResponse
@@ -1151,8 +1181,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RegisterTOTP
-   * Start the registration of a TOTP generator for a user   Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Start the registration of a TOTP generator for a user
+   * Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRegisterTOTPRequest  (required)
    * @return BetaUserServiceRegisterTOTPResponse
    * @throws ApiException if fails to make API call
@@ -1163,8 +1193,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RegisterTOTP
-   * Start the registration of a TOTP generator for a user   Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Start the registration of a TOTP generator for a user
+   * Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRegisterTOTPRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceRegisterTOTPResponse
@@ -1226,8 +1256,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RegisterU2F
-   * Start the registration of a u2f token for a user   Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Start the registration of a u2f token for a user
+   * Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRegisterU2FRequest  (required)
    * @return BetaUserServiceRegisterU2FResponse
    * @throws ApiException if fails to make API call
@@ -1238,8 +1268,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RegisterU2F
-   * Start the registration of a u2f token for a user   Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Start the registration of a u2f token for a user
+   * Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRegisterU2FRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceRegisterU2FResponse
@@ -1301,8 +1331,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveOTPEmail
-   * Remove One-Time Password (OTP) Email from a user   Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Remove One-Time Password (OTP) Email from a user
+   * Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRemoveOTPEmailRequest  (required)
    * @return BetaUserServiceRemoveOTPEmailResponse
    * @throws ApiException if fails to make API call
@@ -1313,8 +1343,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveOTPEmail
-   * Remove One-Time Password (OTP) Email from a user   Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Remove One-Time Password (OTP) Email from a user
+   * Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRemoveOTPEmailRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceRemoveOTPEmailResponse
@@ -1376,8 +1406,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveOTPSMS
-   * Remove One-Time Password (OTP) SMS from a user   Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Remove One-Time Password (OTP) SMS from a user
+   * Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRemoveOTPSMSRequest  (required)
    * @return BetaUserServiceRemoveOTPSMSResponse
    * @throws ApiException if fails to make API call
@@ -1388,8 +1418,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveOTPSMS
-   * Remove One-Time Password (OTP) SMS from a user   Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Remove One-Time Password (OTP) SMS from a user
+   * Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRemoveOTPSMSRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceRemoveOTPSMSResponse
@@ -1451,8 +1481,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RemovePhone
-   * Remove the user phone   Remove the user phone   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Remove the user phone
+   * Remove the user phone   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRemovePhoneRequest  (required)
    * @return BetaUserServiceRemovePhoneResponse
    * @throws ApiException if fails to make API call
@@ -1463,8 +1493,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RemovePhone
-   * Remove the user phone   Remove the user phone   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Remove the user phone
+   * Remove the user phone   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRemovePhoneRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceRemovePhoneResponse
@@ -1526,8 +1556,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveTOTP
-   * Remove TOTP generator from a user   Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Remove TOTP generator from a user
+   * Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRemoveTOTPRequest  (required)
    * @return BetaUserServiceRemoveTOTPResponse
    * @throws ApiException if fails to make API call
@@ -1538,8 +1568,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RemoveTOTP
-   * Remove TOTP generator from a user   Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Remove TOTP generator from a user
+   * Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRemoveTOTPRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceRemoveTOTPResponse
@@ -1599,10 +1629,20 @@ public class BetaUserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Resend code to verify user email (Convenience Method)
+              * Resend code to verify user email   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+                * @return BetaUserServiceResendEmailCodeResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaUserServiceResendEmailCodeResponse resendEmailCode() throws ApiException {
+              return this.resendEmailCode(new BetaUserServiceResendEmailCodeRequest());
+              }
+
 
   /**
-   * ResendEmailCode
-   * Resend code to verify user email   Resend code to verify user email   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Resend code to verify user email
+   * Resend code to verify user email   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceResendEmailCodeRequest  (required)
    * @return BetaUserServiceResendEmailCodeResponse
    * @throws ApiException if fails to make API call
@@ -1613,8 +1653,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * ResendEmailCode
-   * Resend code to verify user email   Resend code to verify user email   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Resend code to verify user email
+   * Resend code to verify user email   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceResendEmailCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceResendEmailCodeResponse
@@ -1674,10 +1714,20 @@ public class BetaUserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Resend code to verify user phone (Convenience Method)
+              * Resend code to verify user phone   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+                * @return BetaUserServiceResendPhoneCodeResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaUserServiceResendPhoneCodeResponse resendPhoneCode() throws ApiException {
+              return this.resendPhoneCode(new BetaUserServiceResendPhoneCodeRequest());
+              }
+
 
   /**
-   * ResendPhoneCode
-   * Resend code to verify user phone   Resend code to verify user phone   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Resend code to verify user phone
+   * Resend code to verify user phone   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceResendPhoneCodeRequest  (required)
    * @return BetaUserServiceResendPhoneCodeResponse
    * @throws ApiException if fails to make API call
@@ -1688,8 +1738,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * ResendPhoneCode
-   * Resend code to verify user phone   Resend code to verify user phone   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Resend code to verify user phone
+   * Resend code to verify user phone   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceResendPhoneCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceResendPhoneCodeResponse
@@ -1751,8 +1801,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RetrieveIdentityProviderIntent
-   * Retrieve the information returned by the identity provider   Retrieve the information returned by the identity provider for registration or updating an existing user with new information.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Retrieve the information returned by the identity provider
+   * Retrieve the information returned by the identity provider for registration or updating an existing user with new information.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRetrieveIdentityProviderIntentRequest  (required)
    * @return BetaUserServiceRetrieveIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
@@ -1763,8 +1813,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * RetrieveIdentityProviderIntent
-   * Retrieve the information returned by the identity provider   Retrieve the information returned by the identity provider for registration or updating an existing user with new information.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Retrieve the information returned by the identity provider
+   * Retrieve the information returned by the identity provider for registration or updating an existing user with new information.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceRetrieveIdentityProviderIntentRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceRetrieveIdentityProviderIntentResponse
@@ -1824,10 +1874,20 @@ public class BetaUserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Change the user email (Convenience Method)
+              * Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+                * @return BetaUserServiceSetEmailResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaUserServiceSetEmailResponse setEmail() throws ApiException {
+              return this.setEmail(new BetaUserServiceSetEmailRequest());
+              }
+
 
   /**
-   * SetEmail
-   * Change the user email   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Change the user email
+   * Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceSetEmailRequest  (required)
    * @return BetaUserServiceSetEmailResponse
    * @throws ApiException if fails to make API call
@@ -1838,8 +1898,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * SetEmail
-   * Change the user email   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Change the user email
+   * Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceSetEmailRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceSetEmailResponse
@@ -1899,10 +1959,20 @@ public class BetaUserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Change password (Convenience Method)
+              * Change the password of a user with either a verification code or the current password.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+                * @return BetaUserServiceSetPasswordResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaUserServiceSetPasswordResponse setPassword() throws ApiException {
+              return this.setPassword(new BetaUserServiceSetPasswordRequest());
+              }
+
 
   /**
-   * SetPassword
-   * Change password   Change the password of a user with either a verification code or the current password.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Change password
+   * Change the password of a user with either a verification code or the current password.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceSetPasswordRequest  (required)
    * @return BetaUserServiceSetPasswordResponse
    * @throws ApiException if fails to make API call
@@ -1913,8 +1983,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * SetPassword
-   * Change password   Change the password of a user with either a verification code or the current password.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Change password
+   * Change the password of a user with either a verification code or the current password.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceSetPasswordRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceSetPasswordResponse
@@ -1974,10 +2044,20 @@ public class BetaUserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Set the user phone (Convenience Method)
+              * Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+                * @return BetaUserServiceSetPhoneResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaUserServiceSetPhoneResponse setPhone() throws ApiException {
+              return this.setPhone(new BetaUserServiceSetPhoneRequest());
+              }
+
 
   /**
-   * SetPhone
-   * Set the user phone   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Set the user phone
+   * Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceSetPhoneRequest  (required)
    * @return BetaUserServiceSetPhoneResponse
    * @throws ApiException if fails to make API call
@@ -1988,8 +2068,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * SetPhone
-   * Set the user phone   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Set the user phone
+   * Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceSetPhoneRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceSetPhoneResponse
@@ -2049,10 +2129,20 @@ public class BetaUserServiceApi extends BaseApi {
 
 
 
+              /**
+              * Start flow with an identity provider (Convenience Method)
+              * Start a flow with an identity provider, for external login, registration or linking.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+                * @return BetaUserServiceStartIdentityProviderIntentResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaUserServiceStartIdentityProviderIntentResponse startIdentityProviderIntent() throws ApiException {
+              return this.startIdentityProviderIntent(new BetaUserServiceStartIdentityProviderIntentRequest());
+              }
+
 
   /**
-   * StartIdentityProviderIntent
-   * Start flow with an identity provider   Start a flow with an identity provider, for external login, registration or linking.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Start flow with an identity provider
+   * Start a flow with an identity provider, for external login, registration or linking.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceStartIdentityProviderIntentRequest  (required)
    * @return BetaUserServiceStartIdentityProviderIntentResponse
    * @throws ApiException if fails to make API call
@@ -2063,8 +2153,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * StartIdentityProviderIntent
-   * Start flow with an identity provider   Start a flow with an identity provider, for external login, registration or linking.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Start flow with an identity provider
+   * Start a flow with an identity provider, for external login, registration or linking.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceStartIdentityProviderIntentRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceStartIdentityProviderIntentResponse
@@ -2126,8 +2216,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * UnlockUser
-   * Unlock user   The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.).   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Unlock user
+   * The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.).   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceUnlockUserRequest  (required)
    * @return BetaUserServiceUnlockUserResponse
    * @throws ApiException if fails to make API call
@@ -2138,8 +2228,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * UnlockUser
-   * Unlock user   The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.).   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Unlock user
+   * The state of the user will be changed to &#39;locked&#39;. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state &#39;locked&#39;. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.).   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceUnlockUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceUnlockUserResponse
@@ -2201,8 +2291,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * UpdateHumanUser
-   * Update User   Update all information from a user.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Update User
+   * Update all information from a user.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceUpdateHumanUserRequest  (required)
    * @return BetaUserServiceUpdateHumanUserResponse
    * @throws ApiException if fails to make API call
@@ -2213,8 +2303,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * UpdateHumanUser
-   * Update User   Update all information from a user.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Update User
+   * Update all information from a user.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceUpdateHumanUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceUpdateHumanUserResponse
@@ -2276,8 +2366,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyEmail
-   * Verify the email   Verify the email with the generated code.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Verify the email
+   * Verify the email with the generated code.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceVerifyEmailRequest  (required)
    * @return BetaUserServiceVerifyEmailResponse
    * @throws ApiException if fails to make API call
@@ -2288,8 +2378,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyEmail
-   * Verify the email   Verify the email with the generated code.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Verify the email
+   * Verify the email with the generated code.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceVerifyEmailRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceVerifyEmailResponse
@@ -2351,8 +2441,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyPasskeyRegistration
-   * Verify a passkey for a user   Verify the passkey registration with the public key credential.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Verify a passkey for a user
+   * Verify the passkey registration with the public key credential.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceVerifyPasskeyRegistrationRequest  (required)
    * @return BetaUserServiceVerifyPasskeyRegistrationResponse
    * @throws ApiException if fails to make API call
@@ -2363,8 +2453,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyPasskeyRegistration
-   * Verify a passkey for a user   Verify the passkey registration with the public key credential.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Verify a passkey for a user
+   * Verify the passkey registration with the public key credential.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceVerifyPasskeyRegistrationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceVerifyPasskeyRegistrationResponse
@@ -2426,8 +2516,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyPhone
-   * Verify the phone   Verify the phone with the generated code.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Verify the phone
+   * Verify the phone with the generated code.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceVerifyPhoneRequest  (required)
    * @return BetaUserServiceVerifyPhoneResponse
    * @throws ApiException if fails to make API call
@@ -2438,8 +2528,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyPhone
-   * Verify the phone   Verify the phone with the generated code.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Verify the phone
+   * Verify the phone with the generated code.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceVerifyPhoneRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceVerifyPhoneResponse
@@ -2501,8 +2591,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyTOTPRegistration
-   * Verify a TOTP generator for a user   Verify the TOTP registration with a generated code.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Verify a TOTP generator for a user
+   * Verify the TOTP registration with a generated code.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceVerifyTOTPRegistrationRequest  (required)
    * @return BetaUserServiceVerifyTOTPRegistrationResponse
    * @throws ApiException if fails to make API call
@@ -2513,8 +2603,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyTOTPRegistration
-   * Verify a TOTP generator for a user   Verify the TOTP registration with a generated code.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Verify a TOTP generator for a user
+   * Verify the TOTP registration with a generated code.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceVerifyTOTPRegistrationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceVerifyTOTPRegistrationResponse
@@ -2576,8 +2666,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyU2FRegistration
-   * Verify a u2f token for a user   Verify the u2f token registration with the public key credential.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Verify a u2f token for a user
+   * Verify the u2f token registration with the public key credential.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceVerifyU2FRegistrationRequest  (required)
    * @return BetaUserServiceVerifyU2FRegistrationResponse
    * @throws ApiException if fails to make API call
@@ -2588,8 +2678,8 @@ public class BetaUserServiceApi extends BaseApi {
 
 
   /**
-   * VerifyU2FRegistration
-   * Verify a u2f token for a user   Verify the u2f token registration with the public key credential.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
+   * Verify a u2f token for a user
+   * Verify the u2f token registration with the public key credential.   Deprecated: please move to the corresponding endpoint under user service v2 (GA).
    * @param betaUserServiceVerifyU2FRegistrationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaUserServiceVerifyU2FRegistrationResponse

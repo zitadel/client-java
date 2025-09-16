@@ -40,11 +40,11 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaProjectServiceUpdateProjectGrantRequest {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String projectId;
 
   public static final String JSON_PROPERTY_GRANTED_ORGANIZATION_ID = "grantedOrganizationId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String grantedOrganizationId;
 
   public static final String JSON_PROPERTY_ROLE_KEYS = "roleKeys";
@@ -54,7 +54,7 @@ public class BetaProjectServiceUpdateProjectGrantRequest {
   public BetaProjectServiceUpdateProjectGrantRequest() {
   }
 
-  public BetaProjectServiceUpdateProjectGrantRequest projectId(@javax.annotation.Nonnull String projectId) {
+  public BetaProjectServiceUpdateProjectGrantRequest projectId(@javax.annotation.Nullable String projectId) {
     
     this.projectId = projectId;
     return this;
@@ -64,9 +64,9 @@ public class BetaProjectServiceUpdateProjectGrantRequest {
    * ID of the project.
    * @return projectId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProjectId() {
     return projectId;
@@ -74,12 +74,12 @@ public class BetaProjectServiceUpdateProjectGrantRequest {
 
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjectId(@javax.annotation.Nonnull String projectId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProjectId(@javax.annotation.Nullable String projectId) {
     this.projectId = projectId;
   }
 
-  public BetaProjectServiceUpdateProjectGrantRequest grantedOrganizationId(@javax.annotation.Nonnull String grantedOrganizationId) {
+  public BetaProjectServiceUpdateProjectGrantRequest grantedOrganizationId(@javax.annotation.Nullable String grantedOrganizationId) {
     
     this.grantedOrganizationId = grantedOrganizationId;
     return this;
@@ -89,9 +89,9 @@ public class BetaProjectServiceUpdateProjectGrantRequest {
    * Organization the project is granted to.
    * @return grantedOrganizationId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_GRANTED_ORGANIZATION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGrantedOrganizationId() {
     return grantedOrganizationId;
@@ -99,8 +99,8 @@ public class BetaProjectServiceUpdateProjectGrantRequest {
 
 
   @JsonProperty(JSON_PROPERTY_GRANTED_ORGANIZATION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setGrantedOrganizationId(@javax.annotation.Nonnull String grantedOrganizationId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGrantedOrganizationId(@javax.annotation.Nullable String grantedOrganizationId) {
     this.grantedOrganizationId = grantedOrganizationId;
   }
 

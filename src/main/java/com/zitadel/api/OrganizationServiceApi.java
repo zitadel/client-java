@@ -37,8 +37,8 @@ public class OrganizationServiceApi extends BaseApi {
 
 
   /**
-   * AddOrganization
-   * Create an Organization   Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.
+   * Create an Organization
+   * Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.
    * @param organizationServiceAddOrganizationRequest  (required)
    * @return OrganizationServiceAddOrganizationResponse
    * @throws ApiException if fails to make API call
@@ -49,8 +49,8 @@ public class OrganizationServiceApi extends BaseApi {
 
 
   /**
-   * AddOrganization
-   * Create an Organization   Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.
+   * Create an Organization
+   * Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.
    * @param organizationServiceAddOrganizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return OrganizationServiceAddOrganizationResponse
@@ -112,8 +112,8 @@ public class OrganizationServiceApi extends BaseApi {
 
 
   /**
-   * ListOrganizations
-   * Search Organizations   Search for Organizations. By default, we will return all organization of the instance. Make sure to include a limit and sorting for pagination..
+   * Search Organizations
+   * Search for Organizations. By default, we will return all organization of the instance. Make sure to include a limit and sorting for pagination..
    * @param organizationServiceListOrganizationsRequest  (required)
    * @return OrganizationServiceListOrganizationsResponse
    * @throws ApiException if fails to make API call
@@ -124,8 +124,8 @@ public class OrganizationServiceApi extends BaseApi {
 
 
   /**
-   * ListOrganizations
-   * Search Organizations   Search for Organizations. By default, we will return all organization of the instance. Make sure to include a limit and sorting for pagination..
+   * Search Organizations
+   * Search for Organizations. By default, we will return all organization of the instance. Make sure to include a limit and sorting for pagination..
    * @param organizationServiceListOrganizationsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return OrganizationServiceListOrganizationsResponse

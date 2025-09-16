@@ -36,13 +36,13 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceTypeQuery {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private UserServiceType type;
 
   public UserServiceTypeQuery() {
   }
 
-  public UserServiceTypeQuery type(@javax.annotation.Nonnull UserServiceType type) {
+  public UserServiceTypeQuery type(@javax.annotation.Nullable UserServiceType type) {
     
     this.type = type;
     return this;
@@ -52,9 +52,9 @@ public class UserServiceTypeQuery {
    * Get type
    * @return type
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public UserServiceType getType() {
     return type;
@@ -62,8 +62,8 @@ public class UserServiceTypeQuery {
 
 
   @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull UserServiceType type) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setType(@javax.annotation.Nullable UserServiceType type) {
     this.type = type;
   }
 

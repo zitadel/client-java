@@ -72,11 +72,11 @@ public class BetaUserServiceAddHumanUserRequest {
   private BetaUserServiceOrganization organization;
 
   public static final String JSON_PROPERTY_PROFILE = "profile";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private BetaUserServiceSetHumanProfile profile;
 
   public static final String JSON_PROPERTY_EMAIL = "email";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private BetaUserServiceSetHumanEmail email;
 
   public static final String JSON_PROPERTY_PHONE = "phone";
@@ -197,7 +197,7 @@ public class BetaUserServiceAddHumanUserRequest {
     this.organization = organization;
   }
 
-  public BetaUserServiceAddHumanUserRequest profile(@javax.annotation.Nonnull BetaUserServiceSetHumanProfile profile) {
+  public BetaUserServiceAddHumanUserRequest profile(@javax.annotation.Nullable BetaUserServiceSetHumanProfile profile) {
     
     this.profile = profile;
     return this;
@@ -207,9 +207,9 @@ public class BetaUserServiceAddHumanUserRequest {
    * Get profile
    * @return profile
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PROFILE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BetaUserServiceSetHumanProfile getProfile() {
     return profile;
@@ -217,12 +217,12 @@ public class BetaUserServiceAddHumanUserRequest {
 
 
   @JsonProperty(JSON_PROPERTY_PROFILE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProfile(@javax.annotation.Nonnull BetaUserServiceSetHumanProfile profile) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProfile(@javax.annotation.Nullable BetaUserServiceSetHumanProfile profile) {
     this.profile = profile;
   }
 
-  public BetaUserServiceAddHumanUserRequest email(@javax.annotation.Nonnull BetaUserServiceSetHumanEmail email) {
+  public BetaUserServiceAddHumanUserRequest email(@javax.annotation.Nullable BetaUserServiceSetHumanEmail email) {
     
     this.email = email;
     return this;
@@ -232,9 +232,9 @@ public class BetaUserServiceAddHumanUserRequest {
    * Get email
    * @return email
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_EMAIL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BetaUserServiceSetHumanEmail getEmail() {
     return email;
@@ -242,8 +242,8 @@ public class BetaUserServiceAddHumanUserRequest {
 
 
   @JsonProperty(JSON_PROPERTY_EMAIL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEmail(@javax.annotation.Nonnull BetaUserServiceSetHumanEmail email) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEmail(@javax.annotation.Nullable BetaUserServiceSetHumanEmail email) {
     this.email = email;
   }
 

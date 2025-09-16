@@ -57,7 +57,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetActiveIdentityProviders
+   * Get the current active identity providers
    * Get the current active identity providers
    * @param settingsServiceGetActiveIdentityProvidersRequest  (required)
    * @return SettingsServiceGetActiveIdentityProvidersResponse
@@ -69,7 +69,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetActiveIdentityProviders
+   * Get the current active identity providers
    * Get the current active identity providers
    * @param settingsServiceGetActiveIdentityProvidersRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -132,7 +132,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetBrandingSettings
+   * Get the current active branding settings
    * Get the current active branding settings
    * @param settingsServiceGetBrandingSettingsRequest  (required)
    * @return SettingsServiceGetBrandingSettingsResponse
@@ -144,7 +144,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetBrandingSettings
+   * Get the current active branding settings
    * Get the current active branding settings
    * @param settingsServiceGetBrandingSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -207,7 +207,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetDomainSettings
+   * Get the domain settings
    * Get the domain settings
    * @param settingsServiceGetDomainSettingsRequest  (required)
    * @return SettingsServiceGetDomainSettingsResponse
@@ -219,7 +219,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetDomainSettings
+   * Get the domain settings
    * Get the domain settings
    * @param settingsServiceGetDomainSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -281,7 +281,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
               /**
-              * GetGeneralSettings (Convenience Method)
+              * Get basic information over the instance (Convenience Method)
               * Get basic information over the instance
                 * @return SettingsServiceGetGeneralSettingsResponse
               * @throws ApiException if fails to make API call
@@ -292,7 +292,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetGeneralSettings
+   * Get basic information over the instance
    * Get basic information over the instance
    * @param body  (required)
    * @return SettingsServiceGetGeneralSettingsResponse
@@ -304,7 +304,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetGeneralSettings
+   * Get basic information over the instance
    * Get basic information over the instance
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -365,10 +365,20 @@ public class SettingsServiceApi extends BaseApi {
 
 
 
+              /**
+              * Get Hosted Login Translation (Convenience Method)
+              * Returns the translations in the requested locale for the hosted login.  The translations returned are based on the input level specified (system, instance or organization).   If the requested level doesn&#39;t contain all translations, and ignore_inheritance is set to false,  a merging process fallbacks onto the higher levels ensuring all keys in the file have a translation,  which could be in the default language if the one of the locale is missing on all levels.   The etag returned in the response represents the hash of the translations as they are stored on DB  and its reliable only if ignore_inheritance &#x3D; true.   Required permissions:    - &#x60;iam.policy.read&#x60;
+                * @return SettingsServiceGetHostedLoginTranslationResponse
+              * @throws ApiException if fails to make API call
+              */
+              public SettingsServiceGetHostedLoginTranslationResponse getHostedLoginTranslation() throws ApiException {
+              return this.getHostedLoginTranslation(new SettingsServiceGetHostedLoginTranslationRequest());
+              }
+
 
   /**
-   * GetHostedLoginTranslation
-   * Get Hosted Login Translation   Returns the translations in the requested locale for the hosted login.  The translations returned are based on the input level specified (system, instance or organization).   If the requested level doesn&#39;t contain all translations, and ignore_inheritance is set to false,  a merging process fallbacks onto the higher levels ensuring all keys in the file have a translation,  which could be in the default language if the one of the locale is missing on all levels.   The etag returned in the response represents the hash of the translations as they are stored on DB  and its reliable only if ignore_inheritance &#x3D; true.   Required permissions:    - &#x60;iam.policy.read&#x60;
+   * Get Hosted Login Translation
+   * Returns the translations in the requested locale for the hosted login.  The translations returned are based on the input level specified (system, instance or organization).   If the requested level doesn&#39;t contain all translations, and ignore_inheritance is set to false,  a merging process fallbacks onto the higher levels ensuring all keys in the file have a translation,  which could be in the default language if the one of the locale is missing on all levels.   The etag returned in the response represents the hash of the translations as they are stored on DB  and its reliable only if ignore_inheritance &#x3D; true.   Required permissions:    - &#x60;iam.policy.read&#x60;
    * @param settingsServiceGetHostedLoginTranslationRequest  (required)
    * @return SettingsServiceGetHostedLoginTranslationResponse
    * @throws ApiException if fails to make API call
@@ -379,8 +389,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetHostedLoginTranslation
-   * Get Hosted Login Translation   Returns the translations in the requested locale for the hosted login.  The translations returned are based on the input level specified (system, instance or organization).   If the requested level doesn&#39;t contain all translations, and ignore_inheritance is set to false,  a merging process fallbacks onto the higher levels ensuring all keys in the file have a translation,  which could be in the default language if the one of the locale is missing on all levels.   The etag returned in the response represents the hash of the translations as they are stored on DB  and its reliable only if ignore_inheritance &#x3D; true.   Required permissions:    - &#x60;iam.policy.read&#x60;
+   * Get Hosted Login Translation
+   * Returns the translations in the requested locale for the hosted login.  The translations returned are based on the input level specified (system, instance or organization).   If the requested level doesn&#39;t contain all translations, and ignore_inheritance is set to false,  a merging process fallbacks onto the higher levels ensuring all keys in the file have a translation,  which could be in the default language if the one of the locale is missing on all levels.   The etag returned in the response represents the hash of the translations as they are stored on DB  and its reliable only if ignore_inheritance &#x3D; true.   Required permissions:    - &#x60;iam.policy.read&#x60;
    * @param settingsServiceGetHostedLoginTranslationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetHostedLoginTranslationResponse
@@ -442,7 +452,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetLegalAndSupportSettings
+   * Get the legal and support settings
    * Get the legal and support settings
    * @param settingsServiceGetLegalAndSupportSettingsRequest  (required)
    * @return SettingsServiceGetLegalAndSupportSettingsResponse
@@ -454,7 +464,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetLegalAndSupportSettings
+   * Get the legal and support settings
    * Get the legal and support settings
    * @param settingsServiceGetLegalAndSupportSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -517,7 +527,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetLockoutSettings
+   * Get the lockout settings
    * Get the lockout settings
    * @param settingsServiceGetLockoutSettingsRequest  (required)
    * @return SettingsServiceGetLockoutSettingsResponse
@@ -529,7 +539,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetLockoutSettings
+   * Get the lockout settings
    * Get the lockout settings
    * @param settingsServiceGetLockoutSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -592,7 +602,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetLoginSettings
+   * Get the login settings
    * Get the login settings
    * @param settingsServiceGetLoginSettingsRequest  (required)
    * @return SettingsServiceGetLoginSettingsResponse
@@ -604,7 +614,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetLoginSettings
+   * Get the login settings
    * Get the login settings
    * @param settingsServiceGetLoginSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -667,7 +677,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetPasswordComplexitySettings
+   * Get the password complexity settings
    * Get the password complexity settings
    * @param settingsServiceGetPasswordComplexitySettingsRequest  (required)
    * @return SettingsServiceGetPasswordComplexitySettingsResponse
@@ -679,7 +689,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetPasswordComplexitySettings
+   * Get the password complexity settings
    * Get the password complexity settings
    * @param settingsServiceGetPasswordComplexitySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -742,7 +752,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetPasswordExpirySettings
+   * Get the password expiry settings
    * Get the password expiry settings
    * @param settingsServiceGetPasswordExpirySettingsRequest  (required)
    * @return SettingsServiceGetPasswordExpirySettingsResponse
@@ -754,7 +764,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetPasswordExpirySettings
+   * Get the password expiry settings
    * Get the password expiry settings
    * @param settingsServiceGetPasswordExpirySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -816,7 +826,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
               /**
-              * GetSecuritySettings (Convenience Method)
+              * Get the security settings (Convenience Method)
               * Get the security settings
                 * @return SettingsServiceGetSecuritySettingsResponse
               * @throws ApiException if fails to make API call
@@ -827,7 +837,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetSecuritySettings
+   * Get the security settings
    * Get the security settings
    * @param body  (required)
    * @return SettingsServiceGetSecuritySettingsResponse
@@ -839,7 +849,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetSecuritySettings
+   * Get the security settings
    * Get the security settings
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -900,10 +910,20 @@ public class SettingsServiceApi extends BaseApi {
 
 
 
+              /**
+              * Set Hosted Login Translation (Convenience Method)
+              * Sets the input translations at the specified level (instance or organization) for the input language.   Required permissions:    - &#x60;iam.policy.write&#x60;
+                * @return SettingsServiceSetHostedLoginTranslationResponse
+              * @throws ApiException if fails to make API call
+              */
+              public SettingsServiceSetHostedLoginTranslationResponse setHostedLoginTranslation() throws ApiException {
+              return this.setHostedLoginTranslation(new SettingsServiceSetHostedLoginTranslationRequest());
+              }
+
 
   /**
-   * SetHostedLoginTranslation
-   * Set Hosted Login Translation   Sets the input translations at the specified level (instance or organization) for the input language.   Required permissions:    - &#x60;iam.policy.write&#x60;
+   * Set Hosted Login Translation
+   * Sets the input translations at the specified level (instance or organization) for the input language.   Required permissions:    - &#x60;iam.policy.write&#x60;
    * @param settingsServiceSetHostedLoginTranslationRequest  (required)
    * @return SettingsServiceSetHostedLoginTranslationResponse
    * @throws ApiException if fails to make API call
@@ -914,8 +934,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * SetHostedLoginTranslation
-   * Set Hosted Login Translation   Sets the input translations at the specified level (instance or organization) for the input language.   Required permissions:    - &#x60;iam.policy.write&#x60;
+   * Set Hosted Login Translation
+   * Sets the input translations at the specified level (instance or organization) for the input language.   Required permissions:    - &#x60;iam.policy.write&#x60;
    * @param settingsServiceSetHostedLoginTranslationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceSetHostedLoginTranslationResponse
@@ -977,7 +997,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * SetSecuritySettings
+   * Set the security settings
    * Set the security settings
    * @param settingsServiceSetSecuritySettingsRequest  (required)
    * @return SettingsServiceSetSecuritySettingsResponse
@@ -989,7 +1009,7 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * SetSecuritySettings
+   * Set the security settings
    * Set the security settings
    * @param settingsServiceSetSecuritySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call

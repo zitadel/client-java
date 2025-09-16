@@ -37,7 +37,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceAddIDPLinkRequest {
   public static final String JSON_PROPERTY_USER_ID = "userId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String userId;
 
   public static final String JSON_PROPERTY_IDP_LINK = "idpLink";
@@ -47,7 +47,7 @@ public class BetaUserServiceAddIDPLinkRequest {
   public BetaUserServiceAddIDPLinkRequest() {
   }
 
-  public BetaUserServiceAddIDPLinkRequest userId(@javax.annotation.Nonnull String userId) {
+  public BetaUserServiceAddIDPLinkRequest userId(@javax.annotation.Nullable String userId) {
     
     this.userId = userId;
     return this;
@@ -57,9 +57,9 @@ public class BetaUserServiceAddIDPLinkRequest {
    * Get userId
    * @return userId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserId() {
     return userId;
@@ -67,8 +67,8 @@ public class BetaUserServiceAddIDPLinkRequest {
 
 
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(@javax.annotation.Nonnull String userId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserId(@javax.annotation.Nullable String userId) {
     this.userId = userId;
   }
 

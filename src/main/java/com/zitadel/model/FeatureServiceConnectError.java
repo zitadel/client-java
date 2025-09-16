@@ -21,7 +21,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.FeatureServiceAny;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -35,7 +38,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   FeatureServiceConnectError.JSON_PROPERTY_CODE,
   FeatureServiceConnectError.JSON_PROPERTY_MESSAGE,
-  FeatureServiceConnectError.JSON_PROPERTY_DETAIL
+  FeatureServiceConnectError.JSON_PROPERTY_DETAILS
 })
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class FeatureServiceConnectError extends HashMap<String, Object> {
@@ -110,9 +113,9 @@ public class FeatureServiceConnectError extends HashMap<String, Object> {
   @javax.annotation.Nullable
   private String message;
 
-  public static final String JSON_PROPERTY_DETAIL = "detail";
+  public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable
-  private FeatureServiceAny detail;
+  private List<FeatureServiceAny> details = new ArrayList<>();
 
   public FeatureServiceConnectError() {
 
@@ -168,29 +171,37 @@ public class FeatureServiceConnectError extends HashMap<String, Object> {
     this.message = message;
   }
 
-  public FeatureServiceConnectError detail(@javax.annotation.Nullable FeatureServiceAny detail) {
+  public FeatureServiceConnectError details(@javax.annotation.Nullable List<FeatureServiceAny> details) {
     
-    this.detail = detail;
+    this.details = details;
+    return this;
+  }
+
+  public FeatureServiceConnectError addDetailsItem(FeatureServiceAny detailsItem) {
+    if (this.details == null) {
+      this.details = new ArrayList<>();
+    }
+    this.details.add(detailsItem);
     return this;
   }
 
   /**
-   * Get detail
-   * @return detail
+   * A list of messages that carry the error details. There is no limit on the number of messages.
+   * @return details
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DETAIL)
+  @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public FeatureServiceAny getDetail() {
-    return detail;
+  public List<FeatureServiceAny> getDetails() {
+    return details;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DETAIL)
+  @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetail(@javax.annotation.Nullable FeatureServiceAny detail) {
-    this.detail = detail;
+  public void setDetails(@javax.annotation.Nullable List<FeatureServiceAny> details) {
+    this.details = details;
   }
 
   @Override
@@ -204,13 +215,13 @@ public class FeatureServiceConnectError extends HashMap<String, Object> {
     FeatureServiceConnectError featureServiceConnectError = (FeatureServiceConnectError) o;
     return Objects.equals(this.code, featureServiceConnectError.code) &&
         Objects.equals(this.message, featureServiceConnectError.message) &&
-        Objects.equals(this.detail, featureServiceConnectError.detail) &&
+        Objects.equals(this.details, featureServiceConnectError.details) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, detail, super.hashCode());
+    return Objects.hash(code, message, details, super.hashCode());
   }
 
   @Override
@@ -220,7 +231,7 @@ public class FeatureServiceConnectError extends HashMap<String, Object> {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -288,13 +299,19 @@ public class FeatureServiceConnectError extends HashMap<String, Object> {
       }
     }
 
-    // add `detail` to the URL query string
-    if (getDetail() != null) {
-      try {
-        joiner.add(String.format("%sdetail%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDetail()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
+    // add `details` to the URL query string
+    if (getDetails() != null) {
+      for (int i = 0; i < getDetails().size(); i++) {
+        if (getDetails().get(i) != null) {
+          try {
+            joiner.add(String.format("%sdetails%s%s=%s", prefix, suffix,
+                "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+                URLEncoder.encode(String.valueOf(getDetails().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+          } catch (UnsupportedEncodingException e) {
+            // Should never happen, UTF-8 is always supported
+            throw new RuntimeException(e);
+          }
+        }
       }
     }
 

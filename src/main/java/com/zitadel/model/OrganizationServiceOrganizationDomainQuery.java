@@ -37,7 +37,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class OrganizationServiceOrganizationDomainQuery {
   public static final String JSON_PROPERTY_DOMAIN = "domain";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String domain;
 
   public static final String JSON_PROPERTY_METHOD = "method";
@@ -47,7 +47,7 @@ public class OrganizationServiceOrganizationDomainQuery {
   public OrganizationServiceOrganizationDomainQuery() {
   }
 
-  public OrganizationServiceOrganizationDomainQuery domain(@javax.annotation.Nonnull String domain) {
+  public OrganizationServiceOrganizationDomainQuery domain(@javax.annotation.Nullable String domain) {
     
     this.domain = domain;
     return this;
@@ -57,9 +57,9 @@ public class OrganizationServiceOrganizationDomainQuery {
    * Domain used in organization, not necessary primary domain.
    * @return domain
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DOMAIN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDomain() {
     return domain;
@@ -67,8 +67,8 @@ public class OrganizationServiceOrganizationDomainQuery {
 
 
   @JsonProperty(JSON_PROPERTY_DOMAIN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDomain(@javax.annotation.Nonnull String domain) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDomain(@javax.annotation.Nullable String domain) {
     this.domain = domain;
   }
 

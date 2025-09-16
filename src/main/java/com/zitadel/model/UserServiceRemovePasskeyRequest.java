@@ -36,17 +36,17 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceRemovePasskeyRequest {
   public static final String JSON_PROPERTY_USER_ID = "userId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String userId;
 
   public static final String JSON_PROPERTY_PASSKEY_ID = "passkeyId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String passkeyId;
 
   public UserServiceRemovePasskeyRequest() {
   }
 
-  public UserServiceRemovePasskeyRequest userId(@javax.annotation.Nonnull String userId) {
+  public UserServiceRemovePasskeyRequest userId(@javax.annotation.Nullable String userId) {
     
     this.userId = userId;
     return this;
@@ -56,9 +56,9 @@ public class UserServiceRemovePasskeyRequest {
    * Get userId
    * @return userId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserId() {
     return userId;
@@ -66,12 +66,12 @@ public class UserServiceRemovePasskeyRequest {
 
 
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(@javax.annotation.Nonnull String userId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserId(@javax.annotation.Nullable String userId) {
     this.userId = userId;
   }
 
-  public UserServiceRemovePasskeyRequest passkeyId(@javax.annotation.Nonnull String passkeyId) {
+  public UserServiceRemovePasskeyRequest passkeyId(@javax.annotation.Nullable String passkeyId) {
     
     this.passkeyId = passkeyId;
     return this;
@@ -81,9 +81,9 @@ public class UserServiceRemovePasskeyRequest {
    * Get passkeyId
    * @return passkeyId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PASSKEY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPasskeyId() {
     return passkeyId;
@@ -91,8 +91,8 @@ public class UserServiceRemovePasskeyRequest {
 
 
   @JsonProperty(JSON_PROPERTY_PASSKEY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPasskeyId(@javax.annotation.Nonnull String passkeyId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPasskeyId(@javax.annotation.Nullable String passkeyId) {
     this.passkeyId = passkeyId;
   }
 

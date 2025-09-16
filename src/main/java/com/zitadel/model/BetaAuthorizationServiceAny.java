@@ -23,6 +23,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -30,7 +34,7 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
+ * Contains an arbitrary serialized message along with a @type that describes the type of the serialized message, with an additional debug field for ConnectRPC error details.
  */
 @JsonPropertyOrder({
   BetaAuthorizationServiceAny.JSON_PROPERTY_TYPE,
@@ -49,7 +53,7 @@ public class BetaAuthorizationServiceAny extends HashMap<String, Object> {
 
   public static final String JSON_PROPERTY_DEBUG = "debug";
   @javax.annotation.Nullable
-  private Map<String, Object> debug = new HashMap<>();
+  private JsonNullable<Object> debug = JsonNullable.<Object>of(null);
 
   public BetaAuthorizationServiceAny() {
 
@@ -62,7 +66,7 @@ public class BetaAuthorizationServiceAny extends HashMap<String, Object> {
   }
 
   /**
-   * Get type
+   * A URL that acts as a globally unique identifier for the type of the serialized message. For example: &#x60;type.googleapis.com/google.rpc.ErrorInfo&#x60;. This is used to determine the schema of the data in the &#x60;value&#x60; field and is the discriminator for the &#x60;debug&#x60; field.
    * @return type
    */
   @javax.annotation.Nullable
@@ -87,7 +91,7 @@ public class BetaAuthorizationServiceAny extends HashMap<String, Object> {
   }
 
   /**
-   * Get value
+   * The Protobuf message, serialized as bytes and base64-encoded. The specific message type is identified by the &#x60;type&#x60; field.
    * @return value
    */
   @javax.annotation.Nullable
@@ -105,37 +109,37 @@ public class BetaAuthorizationServiceAny extends HashMap<String, Object> {
     this.value = value;
   }
 
-  public BetaAuthorizationServiceAny debug(@javax.annotation.Nullable Map<String, Object> debug) {
+  public BetaAuthorizationServiceAny debug(@javax.annotation.Nullable Object debug) {
+    this.debug = JsonNullable.<Object>of(debug);
     
-    this.debug = debug;
-    return this;
-  }
-
-  public BetaAuthorizationServiceAny putDebugItem(String key, Object debugItem) {
-    if (this.debug == null) {
-      this.debug = new HashMap<>();
-    }
-    this.debug.put(key, debugItem);
     return this;
   }
 
   /**
-   * Get debug
+   * Deserialized error detail payload. The &#39;type&#39; field indicates the schema. This field is for easier debugging and should not be relied upon for application logic.
    * @return debug
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DEBUG)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
-  public Map<String, Object> getDebug() {
-    return debug;
+  public Object getDebug() {
+        return debug.orElse(null);
   }
 
-
   @JsonProperty(JSON_PROPERTY_DEBUG)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDebug(@javax.annotation.Nullable Map<String, Object> debug) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<Object> getDebug_JsonNullable() {
+    return debug;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_DEBUG)
+  public void setDebug_JsonNullable(JsonNullable<Object> debug) {
     this.debug = debug;
+  }
+
+  public void setDebug(@javax.annotation.Nullable Object debug) {
+    this.debug = JsonNullable.<Object>of(debug);
   }
 
   @Override
@@ -149,13 +153,24 @@ public class BetaAuthorizationServiceAny extends HashMap<String, Object> {
     BetaAuthorizationServiceAny betaAuthorizationServiceAny = (BetaAuthorizationServiceAny) o;
     return Objects.equals(this.type, betaAuthorizationServiceAny.type) &&
         Objects.equals(this.value, betaAuthorizationServiceAny.value) &&
-        Objects.equals(this.debug, betaAuthorizationServiceAny.debug) &&
+        equalsNullable(this.debug, betaAuthorizationServiceAny.debug) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, value, debug, super.hashCode());
+    return Objects.hash(type, value, hashCodeNullable(debug), super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -235,15 +250,11 @@ public class BetaAuthorizationServiceAny extends HashMap<String, Object> {
 
     // add `debug` to the URL query string
     if (getDebug() != null) {
-      for (String _key : getDebug().keySet()) {
-        try {
-          joiner.add(String.format("%sdebug%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
-              getDebug().get(_key), URLEncoder.encode(String.valueOf(getDebug().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
-        } catch (UnsupportedEncodingException e) {
-          // Should never happen, UTF-8 is always supported
-          throw new RuntimeException(e);
-        }
+      try {
+        joiner.add(String.format("%sdebug%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDebug()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
       }
     }
 

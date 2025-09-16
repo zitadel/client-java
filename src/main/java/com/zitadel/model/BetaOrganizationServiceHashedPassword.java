@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceHashedPassword {
   public static final String JSON_PROPERTY_HASH = "hash";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String hash;
 
   public static final String JSON_PROPERTY_CHANGE_REQUIRED = "changeRequired";
@@ -46,7 +46,7 @@ public class BetaOrganizationServiceHashedPassword {
   public BetaOrganizationServiceHashedPassword() {
   }
 
-  public BetaOrganizationServiceHashedPassword hash(@javax.annotation.Nonnull String hash) {
+  public BetaOrganizationServiceHashedPassword hash(@javax.annotation.Nullable String hash) {
     
     this.hash = hash;
     return this;
@@ -56,9 +56,9 @@ public class BetaOrganizationServiceHashedPassword {
    * Get hash
    * @return hash
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_HASH)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getHash() {
     return hash;
@@ -66,8 +66,8 @@ public class BetaOrganizationServiceHashedPassword {
 
 
   @JsonProperty(JSON_PROPERTY_HASH)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setHash(@javax.annotation.Nonnull String hash) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setHash(@javax.annotation.Nullable String hash) {
     this.hash = hash;
   }
 

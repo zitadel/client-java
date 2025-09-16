@@ -37,7 +37,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceNickNameQuery {
   public static final String JSON_PROPERTY_NICK_NAME = "nickName";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String nickName;
 
   public static final String JSON_PROPERTY_METHOD = "method";
@@ -47,7 +47,7 @@ public class UserServiceNickNameQuery {
   public UserServiceNickNameQuery() {
   }
 
-  public UserServiceNickNameQuery nickName(@javax.annotation.Nonnull String nickName) {
+  public UserServiceNickNameQuery nickName(@javax.annotation.Nullable String nickName) {
     
     this.nickName = nickName;
     return this;
@@ -57,9 +57,9 @@ public class UserServiceNickNameQuery {
    * Get nickName
    * @return nickName
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NICK_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getNickName() {
     return nickName;
@@ -67,8 +67,8 @@ public class UserServiceNickNameQuery {
 
 
   @JsonProperty(JSON_PROPERTY_NICK_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNickName(@javax.annotation.Nonnull String nickName) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNickName(@javax.annotation.Nullable String nickName) {
     this.nickName = nickName;
   }
 

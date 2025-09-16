@@ -39,7 +39,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceDeleteOrganizationMetadataRequest {
   public static final String JSON_PROPERTY_ORGANIZATION_ID = "organizationId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String organizationId;
 
   public static final String JSON_PROPERTY_KEYS = "keys";
@@ -49,7 +49,7 @@ public class BetaOrganizationServiceDeleteOrganizationMetadataRequest {
   public BetaOrganizationServiceDeleteOrganizationMetadataRequest() {
   }
 
-  public BetaOrganizationServiceDeleteOrganizationMetadataRequest organizationId(@javax.annotation.Nonnull String organizationId) {
+  public BetaOrganizationServiceDeleteOrganizationMetadataRequest organizationId(@javax.annotation.Nullable String organizationId) {
     
     this.organizationId = organizationId;
     return this;
@@ -59,9 +59,9 @@ public class BetaOrganizationServiceDeleteOrganizationMetadataRequest {
    * Organization ID of Orgalization which metadata is to be deleted is stored on.
    * @return organizationId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getOrganizationId() {
     return organizationId;
@@ -69,8 +69,8 @@ public class BetaOrganizationServiceDeleteOrganizationMetadataRequest {
 
 
   @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOrganizationId(@javax.annotation.Nonnull String organizationId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOrganizationId(@javax.annotation.Nullable String organizationId) {
     this.organizationId = organizationId;
   }
 

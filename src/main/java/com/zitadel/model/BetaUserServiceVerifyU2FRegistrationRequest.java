@@ -40,25 +40,25 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceVerifyU2FRegistrationRequest {
   public static final String JSON_PROPERTY_USER_ID = "userId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String userId;
 
   public static final String JSON_PROPERTY_U2F_ID = "u2fId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String u2fId;
 
   public static final String JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL = "publicKeyCredential";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private Map<String, Object> publicKeyCredential = new HashMap<>();
 
   public static final String JSON_PROPERTY_TOKEN_NAME = "tokenName";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String tokenName;
 
   public BetaUserServiceVerifyU2FRegistrationRequest() {
   }
 
-  public BetaUserServiceVerifyU2FRegistrationRequest userId(@javax.annotation.Nonnull String userId) {
+  public BetaUserServiceVerifyU2FRegistrationRequest userId(@javax.annotation.Nullable String userId) {
     
     this.userId = userId;
     return this;
@@ -68,9 +68,9 @@ public class BetaUserServiceVerifyU2FRegistrationRequest {
    * Get userId
    * @return userId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserId() {
     return userId;
@@ -78,12 +78,12 @@ public class BetaUserServiceVerifyU2FRegistrationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(@javax.annotation.Nonnull String userId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserId(@javax.annotation.Nullable String userId) {
     this.userId = userId;
   }
 
-  public BetaUserServiceVerifyU2FRegistrationRequest u2fId(@javax.annotation.Nonnull String u2fId) {
+  public BetaUserServiceVerifyU2FRegistrationRequest u2fId(@javax.annotation.Nullable String u2fId) {
     
     this.u2fId = u2fId;
     return this;
@@ -93,9 +93,9 @@ public class BetaUserServiceVerifyU2FRegistrationRequest {
    * Get u2fId
    * @return u2fId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_U2F_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getU2fId() {
     return u2fId;
@@ -103,18 +103,21 @@ public class BetaUserServiceVerifyU2FRegistrationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_U2F_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setU2fId(@javax.annotation.Nonnull String u2fId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setU2fId(@javax.annotation.Nullable String u2fId) {
     this.u2fId = u2fId;
   }
 
-  public BetaUserServiceVerifyU2FRegistrationRequest publicKeyCredential(@javax.annotation.Nonnull Map<String, Object> publicKeyCredential) {
+  public BetaUserServiceVerifyU2FRegistrationRequest publicKeyCredential(@javax.annotation.Nullable Map<String, Object> publicKeyCredential) {
     
     this.publicKeyCredential = publicKeyCredential;
     return this;
   }
 
   public BetaUserServiceVerifyU2FRegistrationRequest putPublicKeyCredentialItem(String key, Object publicKeyCredentialItem) {
+    if (this.publicKeyCredential == null) {
+      this.publicKeyCredential = new HashMap<>();
+    }
     this.publicKeyCredential.put(key, publicKeyCredentialItem);
     return this;
   }
@@ -123,9 +126,9 @@ public class BetaUserServiceVerifyU2FRegistrationRequest {
    * &#x60;Struct&#x60; represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, &#x60;Struct&#x60;  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for &#x60;Struct&#x60; is JSON object.
    * @return publicKeyCredential
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, Object> getPublicKeyCredential() {
     return publicKeyCredential;
@@ -133,12 +136,12 @@ public class BetaUserServiceVerifyU2FRegistrationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
-  public void setPublicKeyCredential(@javax.annotation.Nonnull Map<String, Object> publicKeyCredential) {
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPublicKeyCredential(@javax.annotation.Nullable Map<String, Object> publicKeyCredential) {
     this.publicKeyCredential = publicKeyCredential;
   }
 
-  public BetaUserServiceVerifyU2FRegistrationRequest tokenName(@javax.annotation.Nonnull String tokenName) {
+  public BetaUserServiceVerifyU2FRegistrationRequest tokenName(@javax.annotation.Nullable String tokenName) {
     
     this.tokenName = tokenName;
     return this;
@@ -148,9 +151,9 @@ public class BetaUserServiceVerifyU2FRegistrationRequest {
    * Get tokenName
    * @return tokenName
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_TOKEN_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTokenName() {
     return tokenName;
@@ -158,8 +161,8 @@ public class BetaUserServiceVerifyU2FRegistrationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_TOKEN_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTokenName(@javax.annotation.Nonnull String tokenName) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTokenName(@javax.annotation.Nullable String tokenName) {
     this.tokenName = tokenName;
   }
 
