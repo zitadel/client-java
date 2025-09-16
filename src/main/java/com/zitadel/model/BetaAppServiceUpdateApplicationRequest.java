@@ -47,7 +47,7 @@ public class BetaAppServiceUpdateApplicationRequest {
   private String projectId;
 
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String id;
 
   public static final String JSON_PROPERTY_NAME = "name";
@@ -94,7 +94,7 @@ public class BetaAppServiceUpdateApplicationRequest {
     this.projectId = projectId;
   }
 
-  public BetaAppServiceUpdateApplicationRequest id(@javax.annotation.Nonnull String id) {
+  public BetaAppServiceUpdateApplicationRequest id(@javax.annotation.Nullable String id) {
     
     this.id = id;
     return this;
@@ -104,9 +104,9 @@ public class BetaAppServiceUpdateApplicationRequest {
    * Get id
    * @return id
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -114,8 +114,8 @@ public class BetaAppServiceUpdateApplicationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull String id) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 

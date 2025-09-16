@@ -37,19 +37,22 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaSessionServiceCheckWebAuthN {
   public static final String JSON_PROPERTY_CREDENTIAL_ASSERTION_DATA = "credentialAssertionData";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private Map<String, Object> credentialAssertionData = new HashMap<>();
 
   public BetaSessionServiceCheckWebAuthN() {
   }
 
-  public BetaSessionServiceCheckWebAuthN credentialAssertionData(@javax.annotation.Nonnull Map<String, Object> credentialAssertionData) {
+  public BetaSessionServiceCheckWebAuthN credentialAssertionData(@javax.annotation.Nullable Map<String, Object> credentialAssertionData) {
     
     this.credentialAssertionData = credentialAssertionData;
     return this;
   }
 
   public BetaSessionServiceCheckWebAuthN putCredentialAssertionDataItem(String key, Object credentialAssertionDataItem) {
+    if (this.credentialAssertionData == null) {
+      this.credentialAssertionData = new HashMap<>();
+    }
     this.credentialAssertionData.put(key, credentialAssertionDataItem);
     return this;
   }
@@ -58,9 +61,9 @@ public class BetaSessionServiceCheckWebAuthN {
    * &#x60;Struct&#x60; represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, &#x60;Struct&#x60;  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for &#x60;Struct&#x60; is JSON object.
    * @return credentialAssertionData
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_ASSERTION_DATA)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, Object> getCredentialAssertionData() {
     return credentialAssertionData;
@@ -68,8 +71,8 @@ public class BetaSessionServiceCheckWebAuthN {
 
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_ASSERTION_DATA)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
-  public void setCredentialAssertionData(@javax.annotation.Nonnull Map<String, Object> credentialAssertionData) {
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCredentialAssertionData(@javax.annotation.Nullable Map<String, Object> credentialAssertionData) {
     this.credentialAssertionData = credentialAssertionData;
   }
 

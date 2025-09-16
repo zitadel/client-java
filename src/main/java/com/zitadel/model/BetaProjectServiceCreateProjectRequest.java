@@ -20,7 +20,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.BetaProjectServiceAdmin;
 import com.zitadel.model.BetaProjectServicePrivateLabelingSetting;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -41,7 +45,8 @@ import java.util.StringJoiner;
   BetaProjectServiceCreateProjectRequest.JSON_PROPERTY_PROJECT_ROLE_ASSERTION,
   BetaProjectServiceCreateProjectRequest.JSON_PROPERTY_AUTHORIZATION_REQUIRED,
   BetaProjectServiceCreateProjectRequest.JSON_PROPERTY_PROJECT_ACCESS_REQUIRED,
-  BetaProjectServiceCreateProjectRequest.JSON_PROPERTY_PRIVATE_LABELING_SETTING
+  BetaProjectServiceCreateProjectRequest.JSON_PROPERTY_PRIVATE_LABELING_SETTING,
+  BetaProjectServiceCreateProjectRequest.JSON_PROPERTY_ADMINS
 })
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaProjectServiceCreateProjectRequest {
@@ -54,7 +59,7 @@ public class BetaProjectServiceCreateProjectRequest {
   private JsonNullable<String> id = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_PROJECT_ROLE_ASSERTION = "projectRoleAssertion";
@@ -72,6 +77,10 @@ public class BetaProjectServiceCreateProjectRequest {
   public static final String JSON_PROPERTY_PRIVATE_LABELING_SETTING = "privateLabelingSetting";
   @javax.annotation.Nullable
   private BetaProjectServicePrivateLabelingSetting privateLabelingSetting;
+
+  public static final String JSON_PROPERTY_ADMINS = "admins";
+  @javax.annotation.Nullable
+  private List<BetaProjectServiceAdmin> admins = new ArrayList<>();
 
   public BetaProjectServiceCreateProjectRequest() {
   }
@@ -134,7 +143,7 @@ public class BetaProjectServiceCreateProjectRequest {
     this.id = JsonNullable.<String>of(id);
   }
 
-  public BetaProjectServiceCreateProjectRequest name(@javax.annotation.Nonnull String name) {
+  public BetaProjectServiceCreateProjectRequest name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -144,9 +153,9 @@ public class BetaProjectServiceCreateProjectRequest {
    * Name of the project.
    * @return name
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -154,8 +163,8 @@ public class BetaProjectServiceCreateProjectRequest {
 
 
   @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
@@ -259,6 +268,39 @@ public class BetaProjectServiceCreateProjectRequest {
     this.privateLabelingSetting = privateLabelingSetting;
   }
 
+  public BetaProjectServiceCreateProjectRequest admins(@javax.annotation.Nullable List<BetaProjectServiceAdmin> admins) {
+    
+    this.admins = admins;
+    return this;
+  }
+
+  public BetaProjectServiceCreateProjectRequest addAdminsItem(BetaProjectServiceAdmin adminsItem) {
+    if (this.admins == null) {
+      this.admins = new ArrayList<>();
+    }
+    this.admins.add(adminsItem);
+    return this;
+  }
+
+  /**
+   * List of users and Project Member roles (PROJECT_OWNER, by default) to be assigned to those users.
+   * @return admins
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ADMINS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<BetaProjectServiceAdmin> getAdmins() {
+    return admins;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ADMINS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdmins(@javax.annotation.Nullable List<BetaProjectServiceAdmin> admins) {
+    this.admins = admins;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -274,7 +316,8 @@ public class BetaProjectServiceCreateProjectRequest {
         Objects.equals(this.projectRoleAssertion, betaProjectServiceCreateProjectRequest.projectRoleAssertion) &&
         Objects.equals(this.authorizationRequired, betaProjectServiceCreateProjectRequest.authorizationRequired) &&
         Objects.equals(this.projectAccessRequired, betaProjectServiceCreateProjectRequest.projectAccessRequired) &&
-        Objects.equals(this.privateLabelingSetting, betaProjectServiceCreateProjectRequest.privateLabelingSetting);
+        Objects.equals(this.privateLabelingSetting, betaProjectServiceCreateProjectRequest.privateLabelingSetting) &&
+        Objects.equals(this.admins, betaProjectServiceCreateProjectRequest.admins);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -283,7 +326,7 @@ public class BetaProjectServiceCreateProjectRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(organizationId, hashCodeNullable(id), name, projectRoleAssertion, authorizationRequired, projectAccessRequired, privateLabelingSetting);
+    return Objects.hash(organizationId, hashCodeNullable(id), name, projectRoleAssertion, authorizationRequired, projectAccessRequired, privateLabelingSetting, admins);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -304,6 +347,7 @@ public class BetaProjectServiceCreateProjectRequest {
     sb.append("    authorizationRequired: ").append(toIndentedString(authorizationRequired)).append("\n");
     sb.append("    projectAccessRequired: ").append(toIndentedString(projectAccessRequired)).append("\n");
     sb.append("    privateLabelingSetting: ").append(toIndentedString(privateLabelingSetting)).append("\n");
+    sb.append("    admins: ").append(toIndentedString(admins)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -418,6 +462,16 @@ public class BetaProjectServiceCreateProjectRequest {
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
+      }
+    }
+
+    // add `admins` to the URL query string
+    if (getAdmins() != null) {
+      for (int i = 0; i < getAdmins().size(); i++) {
+        if (getAdmins().get(i) != null) {
+          joiner.add(getAdmins().get(i).toUrlQueryString(String.format("%sadmins%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
       }
     }
 

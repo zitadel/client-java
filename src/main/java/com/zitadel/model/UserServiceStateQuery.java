@@ -36,13 +36,13 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceStateQuery {
   public static final String JSON_PROPERTY_STATE = "state";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private UserServiceUserState state;
 
   public UserServiceStateQuery() {
   }
 
-  public UserServiceStateQuery state(@javax.annotation.Nonnull UserServiceUserState state) {
+  public UserServiceStateQuery state(@javax.annotation.Nullable UserServiceUserState state) {
     
     this.state = state;
     return this;
@@ -52,9 +52,9 @@ public class UserServiceStateQuery {
    * Get state
    * @return state
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public UserServiceUserState getState() {
     return state;
@@ -62,8 +62,8 @@ public class UserServiceStateQuery {
 
 
   @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setState(@javax.annotation.Nonnull UserServiceUserState state) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setState(@javax.annotation.Nullable UserServiceUserState state) {
     this.state = state;
   }
 

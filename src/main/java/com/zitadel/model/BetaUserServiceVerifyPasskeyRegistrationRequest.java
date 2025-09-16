@@ -40,25 +40,25 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceVerifyPasskeyRegistrationRequest {
   public static final String JSON_PROPERTY_USER_ID = "userId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String userId;
 
   public static final String JSON_PROPERTY_PASSKEY_ID = "passkeyId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String passkeyId;
 
   public static final String JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL = "publicKeyCredential";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private Map<String, Object> publicKeyCredential = new HashMap<>();
 
   public static final String JSON_PROPERTY_PASSKEY_NAME = "passkeyName";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String passkeyName;
 
   public BetaUserServiceVerifyPasskeyRegistrationRequest() {
   }
 
-  public BetaUserServiceVerifyPasskeyRegistrationRequest userId(@javax.annotation.Nonnull String userId) {
+  public BetaUserServiceVerifyPasskeyRegistrationRequest userId(@javax.annotation.Nullable String userId) {
     
     this.userId = userId;
     return this;
@@ -68,9 +68,9 @@ public class BetaUserServiceVerifyPasskeyRegistrationRequest {
    * Get userId
    * @return userId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserId() {
     return userId;
@@ -78,12 +78,12 @@ public class BetaUserServiceVerifyPasskeyRegistrationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(@javax.annotation.Nonnull String userId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserId(@javax.annotation.Nullable String userId) {
     this.userId = userId;
   }
 
-  public BetaUserServiceVerifyPasskeyRegistrationRequest passkeyId(@javax.annotation.Nonnull String passkeyId) {
+  public BetaUserServiceVerifyPasskeyRegistrationRequest passkeyId(@javax.annotation.Nullable String passkeyId) {
     
     this.passkeyId = passkeyId;
     return this;
@@ -93,9 +93,9 @@ public class BetaUserServiceVerifyPasskeyRegistrationRequest {
    * Get passkeyId
    * @return passkeyId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PASSKEY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPasskeyId() {
     return passkeyId;
@@ -103,18 +103,21 @@ public class BetaUserServiceVerifyPasskeyRegistrationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_PASSKEY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPasskeyId(@javax.annotation.Nonnull String passkeyId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPasskeyId(@javax.annotation.Nullable String passkeyId) {
     this.passkeyId = passkeyId;
   }
 
-  public BetaUserServiceVerifyPasskeyRegistrationRequest publicKeyCredential(@javax.annotation.Nonnull Map<String, Object> publicKeyCredential) {
+  public BetaUserServiceVerifyPasskeyRegistrationRequest publicKeyCredential(@javax.annotation.Nullable Map<String, Object> publicKeyCredential) {
     
     this.publicKeyCredential = publicKeyCredential;
     return this;
   }
 
   public BetaUserServiceVerifyPasskeyRegistrationRequest putPublicKeyCredentialItem(String key, Object publicKeyCredentialItem) {
+    if (this.publicKeyCredential == null) {
+      this.publicKeyCredential = new HashMap<>();
+    }
     this.publicKeyCredential.put(key, publicKeyCredentialItem);
     return this;
   }
@@ -123,9 +126,9 @@ public class BetaUserServiceVerifyPasskeyRegistrationRequest {
    * &#x60;Struct&#x60; represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, &#x60;Struct&#x60;  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for &#x60;Struct&#x60; is JSON object.
    * @return publicKeyCredential
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, Object> getPublicKeyCredential() {
     return publicKeyCredential;
@@ -133,12 +136,12 @@ public class BetaUserServiceVerifyPasskeyRegistrationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_CREDENTIAL)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
-  public void setPublicKeyCredential(@javax.annotation.Nonnull Map<String, Object> publicKeyCredential) {
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPublicKeyCredential(@javax.annotation.Nullable Map<String, Object> publicKeyCredential) {
     this.publicKeyCredential = publicKeyCredential;
   }
 
-  public BetaUserServiceVerifyPasskeyRegistrationRequest passkeyName(@javax.annotation.Nonnull String passkeyName) {
+  public BetaUserServiceVerifyPasskeyRegistrationRequest passkeyName(@javax.annotation.Nullable String passkeyName) {
     
     this.passkeyName = passkeyName;
     return this;
@@ -148,9 +151,9 @@ public class BetaUserServiceVerifyPasskeyRegistrationRequest {
    * Get passkeyName
    * @return passkeyName
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PASSKEY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPasskeyName() {
     return passkeyName;
@@ -158,8 +161,8 @@ public class BetaUserServiceVerifyPasskeyRegistrationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_PASSKEY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPasskeyName(@javax.annotation.Nonnull String passkeyName) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPasskeyName(@javax.annotation.Nullable String passkeyName) {
     this.passkeyName = passkeyName;
   }
 

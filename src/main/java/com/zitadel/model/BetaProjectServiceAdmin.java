@@ -20,7 +20,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zitadel.model.UserServiceTextQueryMethod;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -28,73 +30,81 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * Query for users with a specific user name.
+ * BetaProjectServiceAdmin
  */
 @JsonPropertyOrder({
-  UserServiceUserNameQuery.JSON_PROPERTY_USER_NAME,
-  UserServiceUserNameQuery.JSON_PROPERTY_METHOD
+  BetaProjectServiceAdmin.JSON_PROPERTY_USER_ID,
+  BetaProjectServiceAdmin.JSON_PROPERTY_ROLES
 })
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
-public class UserServiceUserNameQuery {
-  public static final String JSON_PROPERTY_USER_NAME = "userName";
+public class BetaProjectServiceAdmin {
+  public static final String JSON_PROPERTY_USER_ID = "userId";
   @javax.annotation.Nullable
-  private String userName;
+  private String userId;
 
-  public static final String JSON_PROPERTY_METHOD = "method";
+  public static final String JSON_PROPERTY_ROLES = "roles";
   @javax.annotation.Nullable
-  private UserServiceTextQueryMethod method;
+  private List<String> roles = new ArrayList<>();
 
-  public UserServiceUserNameQuery() {
+  public BetaProjectServiceAdmin() {
   }
 
-  public UserServiceUserNameQuery userName(@javax.annotation.Nullable String userName) {
+  public BetaProjectServiceAdmin userId(@javax.annotation.Nullable String userId) {
     
-    this.userName = userName;
+    this.userId = userId;
     return this;
   }
 
   /**
-   * Get userName
-   * @return userName
+   * Get userId
+   * @return userId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USER_NAME)
+  @JsonProperty(JSON_PROPERTY_USER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getUserName() {
-    return userName;
+  public String getUserId() {
+    return userId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_USER_NAME)
+  @JsonProperty(JSON_PROPERTY_USER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserName(@javax.annotation.Nullable String userName) {
-    this.userName = userName;
+  public void setUserId(@javax.annotation.Nullable String userId) {
+    this.userId = userId;
   }
 
-  public UserServiceUserNameQuery method(@javax.annotation.Nullable UserServiceTextQueryMethod method) {
+  public BetaProjectServiceAdmin roles(@javax.annotation.Nullable List<String> roles) {
     
-    this.method = method;
+    this.roles = roles;
+    return this;
+  }
+
+  public BetaProjectServiceAdmin addRolesItem(String rolesItem) {
+    if (this.roles == null) {
+      this.roles = new ArrayList<>();
+    }
+    this.roles.add(rolesItem);
     return this;
   }
 
   /**
-   * Get method
-   * @return method
+   * specify the Project Member Roles for the provided user (default is PROJECT_OWNER if roles are empty
+   * @return roles
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_METHOD)
+  @JsonProperty(JSON_PROPERTY_ROLES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public UserServiceTextQueryMethod getMethod() {
-    return method;
+  public List<String> getRoles() {
+    return roles;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_METHOD)
+  @JsonProperty(JSON_PROPERTY_ROLES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMethod(@javax.annotation.Nullable UserServiceTextQueryMethod method) {
-    this.method = method;
+  public void setRoles(@javax.annotation.Nullable List<String> roles) {
+    this.roles = roles;
   }
 
   @Override
@@ -105,22 +115,22 @@ public class UserServiceUserNameQuery {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserServiceUserNameQuery userServiceUserNameQuery = (UserServiceUserNameQuery) o;
-    return Objects.equals(this.userName, userServiceUserNameQuery.userName) &&
-        Objects.equals(this.method, userServiceUserNameQuery.method);
+    BetaProjectServiceAdmin betaProjectServiceAdmin = (BetaProjectServiceAdmin) o;
+    return Objects.equals(this.userId, betaProjectServiceAdmin.userId) &&
+        Objects.equals(this.roles, betaProjectServiceAdmin.roles);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userName, method);
+    return Objects.hash(userId, roles);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserServiceUserNameQuery {\n");
-    sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
-    sb.append("    method: ").append(toIndentedString(method)).append("\n");
+    sb.append("class BetaProjectServiceAdmin {\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -168,23 +178,27 @@ public class UserServiceUserNameQuery {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `userName` to the URL query string
-    if (getUserName() != null) {
+    // add `userId` to the URL query string
+    if (getUserId() != null) {
       try {
-        joiner.add(String.format("%suserName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
       }
     }
 
-    // add `method` to the URL query string
-    if (getMethod() != null) {
-      try {
-        joiner.add(String.format("%smethod%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMethod()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
+    // add `roles` to the URL query string
+    if (getRoles() != null) {
+      for (int i = 0; i < getRoles().size(); i++) {
+        try {
+          joiner.add(String.format("%sroles%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getRoles().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
       }
     }
 

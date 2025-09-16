@@ -40,7 +40,7 @@ public class BetaInstanceServiceRemoveTrustedDomainRequest {
   private String instanceId;
 
   public static final String JSON_PROPERTY_DOMAIN = "domain";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String domain;
 
   public BetaInstanceServiceRemoveTrustedDomainRequest() {
@@ -71,7 +71,7 @@ public class BetaInstanceServiceRemoveTrustedDomainRequest {
     this.instanceId = instanceId;
   }
 
-  public BetaInstanceServiceRemoveTrustedDomainRequest domain(@javax.annotation.Nonnull String domain) {
+  public BetaInstanceServiceRemoveTrustedDomainRequest domain(@javax.annotation.Nullable String domain) {
     
     this.domain = domain;
     return this;
@@ -81,9 +81,9 @@ public class BetaInstanceServiceRemoveTrustedDomainRequest {
    * Get domain
    * @return domain
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DOMAIN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDomain() {
     return domain;
@@ -91,8 +91,8 @@ public class BetaInstanceServiceRemoveTrustedDomainRequest {
 
 
   @JsonProperty(JSON_PROPERTY_DOMAIN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDomain(@javax.annotation.Nonnull String domain) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDomain(@javax.annotation.Nullable String domain) {
     this.domain = domain;
   }
 

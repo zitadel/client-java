@@ -37,21 +37,21 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceRemoveIDPLinkRequest {
   public static final String JSON_PROPERTY_USER_ID = "userId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String userId;
 
   public static final String JSON_PROPERTY_IDP_ID = "idpId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String idpId;
 
   public static final String JSON_PROPERTY_LINKED_USER_ID = "linkedUserId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String linkedUserId;
 
   public UserServiceRemoveIDPLinkRequest() {
   }
 
-  public UserServiceRemoveIDPLinkRequest userId(@javax.annotation.Nonnull String userId) {
+  public UserServiceRemoveIDPLinkRequest userId(@javax.annotation.Nullable String userId) {
     
     this.userId = userId;
     return this;
@@ -61,9 +61,9 @@ public class UserServiceRemoveIDPLinkRequest {
    * Get userId
    * @return userId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserId() {
     return userId;
@@ -71,12 +71,12 @@ public class UserServiceRemoveIDPLinkRequest {
 
 
   @JsonProperty(JSON_PROPERTY_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(@javax.annotation.Nonnull String userId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserId(@javax.annotation.Nullable String userId) {
     this.userId = userId;
   }
 
-  public UserServiceRemoveIDPLinkRequest idpId(@javax.annotation.Nonnull String idpId) {
+  public UserServiceRemoveIDPLinkRequest idpId(@javax.annotation.Nullable String idpId) {
     
     this.idpId = idpId;
     return this;
@@ -86,9 +86,9 @@ public class UserServiceRemoveIDPLinkRequest {
    * Get idpId
    * @return idpId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_IDP_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIdpId() {
     return idpId;
@@ -96,12 +96,12 @@ public class UserServiceRemoveIDPLinkRequest {
 
 
   @JsonProperty(JSON_PROPERTY_IDP_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIdpId(@javax.annotation.Nonnull String idpId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIdpId(@javax.annotation.Nullable String idpId) {
     this.idpId = idpId;
   }
 
-  public UserServiceRemoveIDPLinkRequest linkedUserId(@javax.annotation.Nonnull String linkedUserId) {
+  public UserServiceRemoveIDPLinkRequest linkedUserId(@javax.annotation.Nullable String linkedUserId) {
     
     this.linkedUserId = linkedUserId;
     return this;
@@ -111,9 +111,9 @@ public class UserServiceRemoveIDPLinkRequest {
    * Get linkedUserId
    * @return linkedUserId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_LINKED_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLinkedUserId() {
     return linkedUserId;
@@ -121,8 +121,8 @@ public class UserServiceRemoveIDPLinkRequest {
 
 
   @JsonProperty(JSON_PROPERTY_LINKED_USER_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLinkedUserId(@javax.annotation.Nonnull String linkedUserId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLinkedUserId(@javax.annotation.Nullable String linkedUserId) {
     this.linkedUserId = linkedUserId;
   }
 

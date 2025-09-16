@@ -72,11 +72,11 @@ public class BetaOrganizationServiceAddHumanUserRequest {
   private BetaOrganizationServiceOrganization organization;
 
   public static final String JSON_PROPERTY_PROFILE = "profile";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private BetaOrganizationServiceSetHumanProfile profile;
 
   public static final String JSON_PROPERTY_EMAIL = "email";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private BetaOrganizationServiceSetHumanEmail email;
 
   public static final String JSON_PROPERTY_PHONE = "phone";
@@ -197,7 +197,7 @@ public class BetaOrganizationServiceAddHumanUserRequest {
     this.organization = organization;
   }
 
-  public BetaOrganizationServiceAddHumanUserRequest profile(@javax.annotation.Nonnull BetaOrganizationServiceSetHumanProfile profile) {
+  public BetaOrganizationServiceAddHumanUserRequest profile(@javax.annotation.Nullable BetaOrganizationServiceSetHumanProfile profile) {
     
     this.profile = profile;
     return this;
@@ -207,9 +207,9 @@ public class BetaOrganizationServiceAddHumanUserRequest {
    * Get profile
    * @return profile
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PROFILE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BetaOrganizationServiceSetHumanProfile getProfile() {
     return profile;
@@ -217,12 +217,12 @@ public class BetaOrganizationServiceAddHumanUserRequest {
 
 
   @JsonProperty(JSON_PROPERTY_PROFILE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProfile(@javax.annotation.Nonnull BetaOrganizationServiceSetHumanProfile profile) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProfile(@javax.annotation.Nullable BetaOrganizationServiceSetHumanProfile profile) {
     this.profile = profile;
   }
 
-  public BetaOrganizationServiceAddHumanUserRequest email(@javax.annotation.Nonnull BetaOrganizationServiceSetHumanEmail email) {
+  public BetaOrganizationServiceAddHumanUserRequest email(@javax.annotation.Nullable BetaOrganizationServiceSetHumanEmail email) {
     
     this.email = email;
     return this;
@@ -232,9 +232,9 @@ public class BetaOrganizationServiceAddHumanUserRequest {
    * Get email
    * @return email
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_EMAIL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BetaOrganizationServiceSetHumanEmail getEmail() {
     return email;
@@ -242,8 +242,8 @@ public class BetaOrganizationServiceAddHumanUserRequest {
 
 
   @JsonProperty(JSON_PROPERTY_EMAIL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEmail(@javax.annotation.Nonnull BetaOrganizationServiceSetHumanEmail email) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEmail(@javax.annotation.Nullable BetaOrganizationServiceSetHumanEmail email) {
     this.email = email;
   }
 

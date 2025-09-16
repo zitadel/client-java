@@ -37,7 +37,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceEmailQuery {
   public static final String JSON_PROPERTY_EMAIL_ADDRESS = "emailAddress";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String emailAddress;
 
   public static final String JSON_PROPERTY_METHOD = "method";
@@ -47,7 +47,7 @@ public class BetaUserServiceEmailQuery {
   public BetaUserServiceEmailQuery() {
   }
 
-  public BetaUserServiceEmailQuery emailAddress(@javax.annotation.Nonnull String emailAddress) {
+  public BetaUserServiceEmailQuery emailAddress(@javax.annotation.Nullable String emailAddress) {
     
     this.emailAddress = emailAddress;
     return this;
@@ -57,9 +57,9 @@ public class BetaUserServiceEmailQuery {
    * Get emailAddress
    * @return emailAddress
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_EMAIL_ADDRESS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getEmailAddress() {
     return emailAddress;
@@ -67,8 +67,8 @@ public class BetaUserServiceEmailQuery {
 
 
   @JsonProperty(JSON_PROPERTY_EMAIL_ADDRESS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEmailAddress(@javax.annotation.Nonnull String emailAddress) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEmailAddress(@javax.annotation.Nullable String emailAddress) {
     this.emailAddress = emailAddress;
   }
 

@@ -40,7 +40,7 @@ public class BetaInstanceServiceAddTrustedDomainRequest {
   private String instanceId;
 
   public static final String JSON_PROPERTY_DOMAIN = "domain";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String domain;
 
   public BetaInstanceServiceAddTrustedDomainRequest() {
@@ -71,7 +71,7 @@ public class BetaInstanceServiceAddTrustedDomainRequest {
     this.instanceId = instanceId;
   }
 
-  public BetaInstanceServiceAddTrustedDomainRequest domain(@javax.annotation.Nonnull String domain) {
+  public BetaInstanceServiceAddTrustedDomainRequest domain(@javax.annotation.Nullable String domain) {
     
     this.domain = domain;
     return this;
@@ -81,9 +81,9 @@ public class BetaInstanceServiceAddTrustedDomainRequest {
    * Get domain
    * @return domain
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DOMAIN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDomain() {
     return domain;
@@ -91,8 +91,8 @@ public class BetaInstanceServiceAddTrustedDomainRequest {
 
 
   @JsonProperty(JSON_PROPERTY_DOMAIN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDomain(@javax.annotation.Nonnull String domain) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDomain(@javax.annotation.Nullable String domain) {
     this.domain = domain;
   }
 

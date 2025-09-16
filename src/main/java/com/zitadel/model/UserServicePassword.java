@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServicePassword {
   public static final String JSON_PROPERTY_PASSWORD = "password";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String password;
 
   public static final String JSON_PROPERTY_CHANGE_REQUIRED = "changeRequired";
@@ -46,7 +46,7 @@ public class UserServicePassword {
   public UserServicePassword() {
   }
 
-  public UserServicePassword password(@javax.annotation.Nonnull String password) {
+  public UserServicePassword password(@javax.annotation.Nullable String password) {
     
     this.password = password;
     return this;
@@ -56,9 +56,9 @@ public class UserServicePassword {
    * Get password
    * @return password
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPassword() {
     return password;
@@ -66,8 +66,8 @@ public class UserServicePassword {
 
 
   @JsonProperty(JSON_PROPERTY_PASSWORD)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPassword(@javax.annotation.Nonnull String password) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPassword(@javax.annotation.Nullable String password) {
     this.password = password;
   }
 

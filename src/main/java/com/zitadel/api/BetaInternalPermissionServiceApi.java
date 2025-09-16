@@ -41,8 +41,8 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
 
 
   /**
-   * CreateAdministrator
-   * CreateAdministrator grants a administrator role to a user for a specific resource.   Note that the roles are specific to the resource type.  This means that if you want to grant a user the administrator role for an organization and a project,  you need to create two administrator roles.   Required permissions depend on the resource type:    - \&quot;iam.member.write\&quot; for instance administrators    - \&quot;org.member.write\&quot; for organization administrators    - \&quot;project.member.write\&quot; for project administrators    - \&quot;project.grant.member.write\&quot; for project grant administrators
+   * CreateAdministrator grants a administrator role to a user for a specific resource.
+   * Note that the roles are specific to the resource type.  This means that if you want to grant a user the administrator role for an organization and a project,  you need to create two administrator roles.   Required permissions depend on the resource type:    - \&quot;iam.member.write\&quot; for instance administrators    - \&quot;org.member.write\&quot; for organization administrators    - \&quot;project.member.write\&quot; for project administrators    - \&quot;project.grant.member.write\&quot; for project grant administrators
    * @param betaInternalPermissionServiceCreateAdministratorRequest  (required)
    * @return BetaInternalPermissionServiceCreateAdministratorResponse
    * @throws ApiException if fails to make API call
@@ -53,8 +53,8 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
 
 
   /**
-   * CreateAdministrator
-   * CreateAdministrator grants a administrator role to a user for a specific resource.   Note that the roles are specific to the resource type.  This means that if you want to grant a user the administrator role for an organization and a project,  you need to create two administrator roles.   Required permissions depend on the resource type:    - \&quot;iam.member.write\&quot; for instance administrators    - \&quot;org.member.write\&quot; for organization administrators    - \&quot;project.member.write\&quot; for project administrators    - \&quot;project.grant.member.write\&quot; for project grant administrators
+   * CreateAdministrator grants a administrator role to a user for a specific resource.
+   * Note that the roles are specific to the resource type.  This means that if you want to grant a user the administrator role for an organization and a project,  you need to create two administrator roles.   Required permissions depend on the resource type:    - \&quot;iam.member.write\&quot; for instance administrators    - \&quot;org.member.write\&quot; for organization administrators    - \&quot;project.member.write\&quot; for project administrators    - \&quot;project.grant.member.write\&quot; for project grant administrators
    * @param betaInternalPermissionServiceCreateAdministratorRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInternalPermissionServiceCreateAdministratorResponse
@@ -116,8 +116,8 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
 
 
   /**
-   * DeleteAdministrator
-   * DeleteAdministrator revokes a administrator role from a user.   In case the administrator role is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the administrator role was deleted during the request.   Required permissions depend on the resource type:    - \&quot;iam.member.delete\&quot; for instance administrators    - \&quot;org.member.delete\&quot; for organization administrators    - \&quot;project.member.delete\&quot; for project administrators    - \&quot;project.grant.member.delete\&quot; for project grant administrators
+   * DeleteAdministrator revokes a administrator role from a user.
+   * In case the administrator role is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the administrator role was deleted during the request.   Required permissions depend on the resource type:    - \&quot;iam.member.delete\&quot; for instance administrators    - \&quot;org.member.delete\&quot; for organization administrators    - \&quot;project.member.delete\&quot; for project administrators    - \&quot;project.grant.member.delete\&quot; for project grant administrators
    * @param betaInternalPermissionServiceDeleteAdministratorRequest  (required)
    * @return BetaInternalPermissionServiceDeleteAdministratorResponse
    * @throws ApiException if fails to make API call
@@ -128,8 +128,8 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
 
 
   /**
-   * DeleteAdministrator
-   * DeleteAdministrator revokes a administrator role from a user.   In case the administrator role is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the administrator role was deleted during the request.   Required permissions depend on the resource type:    - \&quot;iam.member.delete\&quot; for instance administrators    - \&quot;org.member.delete\&quot; for organization administrators    - \&quot;project.member.delete\&quot; for project administrators    - \&quot;project.grant.member.delete\&quot; for project grant administrators
+   * DeleteAdministrator revokes a administrator role from a user.
+   * In case the administrator role is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the administrator role was deleted during the request.   Required permissions depend on the resource type:    - \&quot;iam.member.delete\&quot; for instance administrators    - \&quot;org.member.delete\&quot; for organization administrators    - \&quot;project.member.delete\&quot; for project administrators    - \&quot;project.grant.member.delete\&quot; for project grant administrators
    * @param betaInternalPermissionServiceDeleteAdministratorRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInternalPermissionServiceDeleteAdministratorResponse
@@ -191,8 +191,8 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
 
 
   /**
-   * ListAdministrators
-   * ListAdministrators returns all administrators and its roles matching the request and necessary permissions.   Required permissions depend on the resource type:    - \&quot;iam.member.read\&quot; for instance administrators    - \&quot;org.member.read\&quot; for organization administrators    - \&quot;project.member.read\&quot; for project administrators    - \&quot;project.grant.member.read\&quot; for project grant administrators    - no permissions required for listing own administrator roles
+   * ListAdministrators returns all administrators and its roles matching the request and necessary permissions.
+   * Required permissions depend on the resource type:    - \&quot;iam.member.read\&quot; for instance administrators    - \&quot;org.member.read\&quot; for organization administrators    - \&quot;project.member.read\&quot; for project administrators    - \&quot;project.grant.member.read\&quot; for project grant administrators    - no permissions required for listing own administrator roles
    * @param betaInternalPermissionServiceListAdministratorsRequest  (required)
    * @return BetaInternalPermissionServiceListAdministratorsResponse
    * @throws ApiException if fails to make API call
@@ -203,8 +203,8 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
 
 
   /**
-   * ListAdministrators
-   * ListAdministrators returns all administrators and its roles matching the request and necessary permissions.   Required permissions depend on the resource type:    - \&quot;iam.member.read\&quot; for instance administrators    - \&quot;org.member.read\&quot; for organization administrators    - \&quot;project.member.read\&quot; for project administrators    - \&quot;project.grant.member.read\&quot; for project grant administrators    - no permissions required for listing own administrator roles
+   * ListAdministrators returns all administrators and its roles matching the request and necessary permissions.
+   * Required permissions depend on the resource type:    - \&quot;iam.member.read\&quot; for instance administrators    - \&quot;org.member.read\&quot; for organization administrators    - \&quot;project.member.read\&quot; for project administrators    - \&quot;project.grant.member.read\&quot; for project grant administrators    - no permissions required for listing own administrator roles
    * @param betaInternalPermissionServiceListAdministratorsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInternalPermissionServiceListAdministratorsResponse
@@ -266,8 +266,8 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
 
 
   /**
-   * UpdateAdministrator
-   * UpdateAdministrator updates the specific administrator role.   Note that any role previously granted to the user and not present in the request will be revoked.   Required permissions depend on the resource type:    - \&quot;iam.member.write\&quot; for instance administrators    - \&quot;org.member.write\&quot; for organization administrators    - \&quot;project.member.write\&quot; for project administrators    - \&quot;project.grant.member.write\&quot; for project grant administrators
+   * UpdateAdministrator updates the specific administrator role.
+   * Note that any role previously granted to the user and not present in the request will be revoked.   Required permissions depend on the resource type:    - \&quot;iam.member.write\&quot; for instance administrators    - \&quot;org.member.write\&quot; for organization administrators    - \&quot;project.member.write\&quot; for project administrators    - \&quot;project.grant.member.write\&quot; for project grant administrators
    * @param betaInternalPermissionServiceUpdateAdministratorRequest  (required)
    * @return BetaInternalPermissionServiceUpdateAdministratorResponse
    * @throws ApiException if fails to make API call
@@ -278,8 +278,8 @@ public class BetaInternalPermissionServiceApi extends BaseApi {
 
 
   /**
-   * UpdateAdministrator
-   * UpdateAdministrator updates the specific administrator role.   Note that any role previously granted to the user and not present in the request will be revoked.   Required permissions depend on the resource type:    - \&quot;iam.member.write\&quot; for instance administrators    - \&quot;org.member.write\&quot; for organization administrators    - \&quot;project.member.write\&quot; for project administrators    - \&quot;project.grant.member.write\&quot; for project grant administrators
+   * UpdateAdministrator updates the specific administrator role.
+   * Note that any role previously granted to the user and not present in the request will be revoked.   Required permissions depend on the resource type:    - \&quot;iam.member.write\&quot; for instance administrators    - \&quot;org.member.write\&quot; for organization administrators    - \&quot;project.member.write\&quot; for project administrators    - \&quot;project.grant.member.write\&quot; for project grant administrators
    * @param betaInternalPermissionServiceUpdateAdministratorRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInternalPermissionServiceUpdateAdministratorResponse

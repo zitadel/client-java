@@ -37,7 +37,7 @@ public class BetaTelemetryServiceApi extends BaseApi {
 
 
   /**
-   * ReportBaseInformation
+   * ReportBaseInformation is used to report the base information of the ZITADEL system,  including the version, instances, their creation date and domains.  The response contains a report ID to link it to the resource counts or other reports.  The report ID is only valid for the same system ID.
    * ReportBaseInformation is used to report the base information of the ZITADEL system,  including the version, instances, their creation date and domains.  The response contains a report ID to link it to the resource counts or other reports.  The report ID is only valid for the same system ID.
    * @param betaTelemetryServiceReportBaseInformationRequest  (required)
    * @return BetaTelemetryServiceReportBaseInformationResponse
@@ -49,7 +49,7 @@ public class BetaTelemetryServiceApi extends BaseApi {
 
 
   /**
-   * ReportBaseInformation
+   * ReportBaseInformation is used to report the base information of the ZITADEL system,  including the version, instances, their creation date and domains.  The response contains a report ID to link it to the resource counts or other reports.  The report ID is only valid for the same system ID.
    * ReportBaseInformation is used to report the base information of the ZITADEL system,  including the version, instances, their creation date and domains.  The response contains a report ID to link it to the resource counts or other reports.  The report ID is only valid for the same system ID.
    * @param betaTelemetryServiceReportBaseInformationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -112,7 +112,7 @@ public class BetaTelemetryServiceApi extends BaseApi {
 
 
   /**
-   * ReportResourceCounts
+   * ReportResourceCounts is used to report the resource counts such as amount of organizations  or users per organization and much more.  Since the resource counts can be reported in multiple batches,  the response contains a report ID to continue reporting.  The report ID is only valid for the same system ID.
    * ReportResourceCounts is used to report the resource counts such as amount of organizations  or users per organization and much more.  Since the resource counts can be reported in multiple batches,  the response contains a report ID to continue reporting.  The report ID is only valid for the same system ID.
    * @param betaTelemetryServiceReportResourceCountsRequest  (required)
    * @return BetaTelemetryServiceReportResourceCountsResponse
@@ -124,7 +124,7 @@ public class BetaTelemetryServiceApi extends BaseApi {
 
 
   /**
-   * ReportResourceCounts
+   * ReportResourceCounts is used to report the resource counts such as amount of organizations  or users per organization and much more.  Since the resource counts can be reported in multiple batches,  the response contains a report ID to continue reporting.  The report ID is only valid for the same system ID.
    * ReportResourceCounts is used to report the resource counts such as amount of organizations  or users per organization and much more.  Since the resource counts can be reported in multiple batches,  the response contains a report ID to continue reporting.  The report ID is only valid for the same system ID.
    * @param betaTelemetryServiceReportResourceCountsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call

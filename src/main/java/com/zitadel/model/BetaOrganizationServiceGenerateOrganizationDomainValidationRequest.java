@@ -38,11 +38,11 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceGenerateOrganizationDomainValidationRequest {
   public static final String JSON_PROPERTY_ORGANIZATION_ID = "organizationId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String organizationId;
 
   public static final String JSON_PROPERTY_DOMAIN = "domain";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String domain;
 
   public static final String JSON_PROPERTY_TYPE = "type";
@@ -52,7 +52,7 @@ public class BetaOrganizationServiceGenerateOrganizationDomainValidationRequest 
   public BetaOrganizationServiceGenerateOrganizationDomainValidationRequest() {
   }
 
-  public BetaOrganizationServiceGenerateOrganizationDomainValidationRequest organizationId(@javax.annotation.Nonnull String organizationId) {
+  public BetaOrganizationServiceGenerateOrganizationDomainValidationRequest organizationId(@javax.annotation.Nullable String organizationId) {
     
     this.organizationId = organizationId;
     return this;
@@ -62,9 +62,9 @@ public class BetaOrganizationServiceGenerateOrganizationDomainValidationRequest 
    * Organization Id for the Organization which doman to be validated.
    * @return organizationId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getOrganizationId() {
     return organizationId;
@@ -72,12 +72,12 @@ public class BetaOrganizationServiceGenerateOrganizationDomainValidationRequest 
 
 
   @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOrganizationId(@javax.annotation.Nonnull String organizationId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOrganizationId(@javax.annotation.Nullable String organizationId) {
     this.organizationId = organizationId;
   }
 
-  public BetaOrganizationServiceGenerateOrganizationDomainValidationRequest domain(@javax.annotation.Nonnull String domain) {
+  public BetaOrganizationServiceGenerateOrganizationDomainValidationRequest domain(@javax.annotation.Nullable String domain) {
     
     this.domain = domain;
     return this;
@@ -87,9 +87,9 @@ public class BetaOrganizationServiceGenerateOrganizationDomainValidationRequest 
    * The domain which to be deleted.
    * @return domain
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DOMAIN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDomain() {
     return domain;
@@ -97,8 +97,8 @@ public class BetaOrganizationServiceGenerateOrganizationDomainValidationRequest 
 
 
   @JsonProperty(JSON_PROPERTY_DOMAIN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDomain(@javax.annotation.Nonnull String domain) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDomain(@javax.annotation.Nullable String domain) {
     this.domain = domain;
   }
 

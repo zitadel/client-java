@@ -48,10 +48,20 @@ public class ActionServiceApi extends BaseApi {
 
 
 
+              /**
+              * Create Target (Convenience Method)
+              * Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+                * @return ActionServiceCreateTargetResponse
+              * @throws ApiException if fails to make API call
+              */
+              public ActionServiceCreateTargetResponse createTarget() throws ApiException {
+              return this.createTarget(new ActionServiceCreateTargetRequest());
+              }
+
 
   /**
-   * CreateTarget
-   * Create Target   Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Create Target
+   * Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceCreateTargetRequest  (required)
    * @return ActionServiceCreateTargetResponse
    * @throws ApiException if fails to make API call
@@ -62,8 +72,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * CreateTarget
-   * Create Target   Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Create Target
+   * Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceCreateTargetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return ActionServiceCreateTargetResponse
@@ -125,8 +135,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * DeleteTarget
-   * Delete Target   Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;action.target.delete&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Delete Target
+   * Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;action.target.delete&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceDeleteTargetRequest  (required)
    * @return ActionServiceDeleteTargetResponse
    * @throws ApiException if fails to make API call
@@ -137,8 +147,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * DeleteTarget
-   * Delete Target   Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;action.target.delete&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Delete Target
+   * Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;action.target.delete&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceDeleteTargetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return ActionServiceDeleteTargetResponse
@@ -200,8 +210,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * GetTarget
-   * Get Target   Returns the target identified by the requested ID.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Get Target
+   * Returns the target identified by the requested ID.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceGetTargetRequest  (required)
    * @return ActionServiceGetTargetResponse
    * @throws ApiException if fails to make API call
@@ -212,8 +222,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * GetTarget
-   * Get Target   Returns the target identified by the requested ID.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Get Target
+   * Returns the target identified by the requested ID.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceGetTargetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return ActionServiceGetTargetResponse
@@ -274,8 +284,8 @@ public class ActionServiceApi extends BaseApi {
 
 
               /**
-              * ListExecutionFunctions (Convenience Method)
-              * List Execution Functions   List all available functions which can be used as condition for executions.
+              * List Execution Functions (Convenience Method)
+              * List all available functions which can be used as condition for executions.
                 * @return ActionServiceListExecutionFunctionsResponse
               * @throws ApiException if fails to make API call
               */
@@ -285,8 +295,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutionFunctions
-   * List Execution Functions   List all available functions which can be used as condition for executions.
+   * List Execution Functions
+   * List all available functions which can be used as condition for executions.
    * @param body  (required)
    * @return ActionServiceListExecutionFunctionsResponse
    * @throws ApiException if fails to make API call
@@ -297,8 +307,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutionFunctions
-   * List Execution Functions   List all available functions which can be used as condition for executions.
+   * List Execution Functions
+   * List all available functions which can be used as condition for executions.
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return ActionServiceListExecutionFunctionsResponse
@@ -359,8 +369,8 @@ public class ActionServiceApi extends BaseApi {
 
 
               /**
-              * ListExecutionMethods (Convenience Method)
-              * List Execution Methods   List all available methods which can be used as condition for executions.
+              * List Execution Methods (Convenience Method)
+              * List all available methods which can be used as condition for executions.
                 * @return ActionServiceListExecutionMethodsResponse
               * @throws ApiException if fails to make API call
               */
@@ -370,8 +380,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutionMethods
-   * List Execution Methods   List all available methods which can be used as condition for executions.
+   * List Execution Methods
+   * List all available methods which can be used as condition for executions.
    * @param body  (required)
    * @return ActionServiceListExecutionMethodsResponse
    * @throws ApiException if fails to make API call
@@ -382,8 +392,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutionMethods
-   * List Execution Methods   List all available methods which can be used as condition for executions.
+   * List Execution Methods
+   * List all available methods which can be used as condition for executions.
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return ActionServiceListExecutionMethodsResponse
@@ -444,8 +454,8 @@ public class ActionServiceApi extends BaseApi {
 
 
               /**
-              * ListExecutionServices (Convenience Method)
-              * List Execution Services   List all available services which can be used as condition for executions.
+              * List Execution Services (Convenience Method)
+              * List all available services which can be used as condition for executions.
                 * @return ActionServiceListExecutionServicesResponse
               * @throws ApiException if fails to make API call
               */
@@ -455,8 +465,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutionServices
-   * List Execution Services   List all available services which can be used as condition for executions.
+   * List Execution Services
+   * List all available services which can be used as condition for executions.
    * @param body  (required)
    * @return ActionServiceListExecutionServicesResponse
    * @throws ApiException if fails to make API call
@@ -467,8 +477,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutionServices
-   * List Execution Services   List all available services which can be used as condition for executions.
+   * List Execution Services
+   * List all available services which can be used as condition for executions.
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return ActionServiceListExecutionServicesResponse
@@ -530,8 +540,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutions
-   * List Executions   List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.execution.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * List Executions
+   * List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.execution.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceListExecutionsRequest  (required)
    * @return ActionServiceListExecutionsResponse
    * @throws ApiException if fails to make API call
@@ -542,8 +552,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutions
-   * List Executions   List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.execution.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * List Executions
+   * List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.execution.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceListExecutionsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return ActionServiceListExecutionsResponse
@@ -605,8 +615,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * ListTargets
-   * List targets   List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * List targets
+   * List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceListTargetsRequest  (required)
    * @return ActionServiceListTargetsResponse
    * @throws ApiException if fails to make API call
@@ -617,8 +627,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * ListTargets
-   * List targets   List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * List targets
+   * List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceListTargetsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return ActionServiceListTargetsResponse
@@ -680,8 +690,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * SetExecution
-   * Set Execution   Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - &#x60;action.execution.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Set Execution
+   * Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - &#x60;action.execution.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceSetExecutionRequest  (required)
    * @return ActionServiceSetExecutionResponse
    * @throws ApiException if fails to make API call
@@ -692,8 +702,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * SetExecution
-   * Set Execution   Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - &#x60;action.execution.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Set Execution
+   * Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - &#x60;action.execution.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceSetExecutionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return ActionServiceSetExecutionResponse
@@ -753,10 +763,20 @@ public class ActionServiceApi extends BaseApi {
 
 
 
+              /**
+              * Update Target (Convenience Method)
+              * Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+                * @return ActionServiceUpdateTargetResponse
+              * @throws ApiException if fails to make API call
+              */
+              public ActionServiceUpdateTargetResponse updateTarget() throws ApiException {
+              return this.updateTarget(new ActionServiceUpdateTargetRequest());
+              }
+
 
   /**
-   * UpdateTarget
-   * Update Target   Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Update Target
+   * Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceUpdateTargetRequest  (required)
    * @return ActionServiceUpdateTargetResponse
    * @throws ApiException if fails to make API call
@@ -767,8 +787,8 @@ public class ActionServiceApi extends BaseApi {
 
 
   /**
-   * UpdateTarget
-   * Update Target   Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Update Target
+   * Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param actionServiceUpdateTargetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return ActionServiceUpdateTargetResponse

@@ -36,13 +36,13 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceStateQuery {
   public static final String JSON_PROPERTY_STATE = "state";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private BetaUserServiceUserState state;
 
   public BetaUserServiceStateQuery() {
   }
 
-  public BetaUserServiceStateQuery state(@javax.annotation.Nonnull BetaUserServiceUserState state) {
+  public BetaUserServiceStateQuery state(@javax.annotation.Nullable BetaUserServiceUserState state) {
     
     this.state = state;
     return this;
@@ -52,9 +52,9 @@ public class BetaUserServiceStateQuery {
    * Get state
    * @return state
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BetaUserServiceUserState getState() {
     return state;
@@ -62,8 +62,8 @@ public class BetaUserServiceStateQuery {
 
 
   @JsonProperty(JSON_PROPERTY_STATE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setState(@javax.annotation.Nonnull BetaUserServiceUserState state) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setState(@javax.annotation.Nullable BetaUserServiceUserState state) {
     this.state = state;
   }
 

@@ -35,6 +35,16 @@ public class BetaOidcServiceApi extends BaseApi {
 
 
 
+              /**
+              * CreateCallback (Convenience Method)
+              * 
+                * @return BetaOIDCServiceCreateCallbackResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaOIDCServiceCreateCallbackResponse createCallback() throws ApiException {
+              return this.createCallback(new BetaOIDCServiceCreateCallbackRequest());
+              }
+
 
   /**
    * CreateCallback

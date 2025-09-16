@@ -43,7 +43,7 @@ public class SessionServiceApi extends BaseApi {
 
 
   /**
-   * CreateSession
+   * Create a new session
    * Create a new session
    * @param sessionServiceCreateSessionRequest  (required)
    * @return SessionServiceCreateSessionResponse
@@ -55,7 +55,7 @@ public class SessionServiceApi extends BaseApi {
 
 
   /**
-   * CreateSession
+   * Create a new session
    * Create a new session
    * @param sessionServiceCreateSessionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -118,7 +118,7 @@ public class SessionServiceApi extends BaseApi {
 
 
   /**
-   * DeleteSession
+   * Terminate a session
    * Terminate a session
    * @param sessionServiceDeleteSessionRequest  (required)
    * @return SessionServiceDeleteSessionResponse
@@ -130,7 +130,7 @@ public class SessionServiceApi extends BaseApi {
 
 
   /**
-   * DeleteSession
+   * Terminate a session
    * Terminate a session
    * @param sessionServiceDeleteSessionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -193,7 +193,7 @@ public class SessionServiceApi extends BaseApi {
 
 
   /**
-   * GetSession
+   * GetSession a session
    * GetSession a session
    * @param sessionServiceGetSessionRequest  (required)
    * @return SessionServiceGetSessionResponse
@@ -205,7 +205,7 @@ public class SessionServiceApi extends BaseApi {
 
 
   /**
-   * GetSession
+   * GetSession a session
    * GetSession a session
    * @param sessionServiceGetSessionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -268,7 +268,7 @@ public class SessionServiceApi extends BaseApi {
 
 
   /**
-   * ListSessions
+   * Search sessions
    * Search sessions
    * @param sessionServiceListSessionsRequest  (required)
    * @return SessionServiceListSessionsResponse
@@ -280,7 +280,7 @@ public class SessionServiceApi extends BaseApi {
 
 
   /**
-   * ListSessions
+   * Search sessions
    * Search sessions
    * @param sessionServiceListSessionsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -343,7 +343,7 @@ public class SessionServiceApi extends BaseApi {
 
 
   /**
-   * SetSession
+   * Update a session
    * Update a session
    * @param sessionServiceSetSessionRequest  (required)
    * @return SessionServiceSetSessionResponse
@@ -355,7 +355,7 @@ public class SessionServiceApi extends BaseApi {
 
 
   /**
-   * SetSession
+   * Update a session
    * Update a session
    * @param sessionServiceSetSessionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call

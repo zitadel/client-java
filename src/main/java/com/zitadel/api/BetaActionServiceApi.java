@@ -48,10 +48,20 @@ public class BetaActionServiceApi extends BaseApi {
 
 
 
+              /**
+              * Create Target (Convenience Method)
+              * Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+                * @return BetaActionServiceCreateTargetResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaActionServiceCreateTargetResponse createTarget() throws ApiException {
+              return this.createTarget(new BetaActionServiceCreateTargetRequest());
+              }
+
 
   /**
-   * CreateTarget
-   * Create Target   Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Create Target
+   * Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceCreateTargetRequest  (required)
    * @return BetaActionServiceCreateTargetResponse
    * @throws ApiException if fails to make API call
@@ -62,8 +72,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * CreateTarget
-   * Create Target   Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Create Target
+   * Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceCreateTargetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceCreateTargetResponse
@@ -125,8 +135,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * DeleteTarget
-   * Delete Target   Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;action.target.delete&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Delete Target
+   * Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;action.target.delete&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceDeleteTargetRequest  (required)
    * @return BetaActionServiceDeleteTargetResponse
    * @throws ApiException if fails to make API call
@@ -137,8 +147,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * DeleteTarget
-   * Delete Target   Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;action.target.delete&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Delete Target
+   * Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;action.target.delete&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceDeleteTargetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceDeleteTargetResponse
@@ -200,8 +210,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * GetTarget
-   * Get Target   Returns the target identified by the requested ID.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Get Target
+   * Returns the target identified by the requested ID.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceGetTargetRequest  (required)
    * @return BetaActionServiceGetTargetResponse
    * @throws ApiException if fails to make API call
@@ -212,8 +222,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * GetTarget
-   * Get Target   Returns the target identified by the requested ID.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Get Target
+   * Returns the target identified by the requested ID.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceGetTargetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceGetTargetResponse
@@ -274,8 +284,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
               /**
-              * ListExecutionFunctions (Convenience Method)
-              * List Execution Functions   List all available functions which can be used as condition for executions.
+              * List Execution Functions (Convenience Method)
+              * List all available functions which can be used as condition for executions.
                 * @return BetaActionServiceListExecutionFunctionsResponse
               * @throws ApiException if fails to make API call
               */
@@ -285,8 +295,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutionFunctions
-   * List Execution Functions   List all available functions which can be used as condition for executions.
+   * List Execution Functions
+   * List all available functions which can be used as condition for executions.
    * @param body  (required)
    * @return BetaActionServiceListExecutionFunctionsResponse
    * @throws ApiException if fails to make API call
@@ -297,8 +307,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutionFunctions
-   * List Execution Functions   List all available functions which can be used as condition for executions.
+   * List Execution Functions
+   * List all available functions which can be used as condition for executions.
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceListExecutionFunctionsResponse
@@ -359,8 +369,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
               /**
-              * ListExecutionMethods (Convenience Method)
-              * List Execution Methods   List all available methods which can be used as condition for executions.
+              * List Execution Methods (Convenience Method)
+              * List all available methods which can be used as condition for executions.
                 * @return BetaActionServiceListExecutionMethodsResponse
               * @throws ApiException if fails to make API call
               */
@@ -370,8 +380,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutionMethods
-   * List Execution Methods   List all available methods which can be used as condition for executions.
+   * List Execution Methods
+   * List all available methods which can be used as condition for executions.
    * @param body  (required)
    * @return BetaActionServiceListExecutionMethodsResponse
    * @throws ApiException if fails to make API call
@@ -382,8 +392,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutionMethods
-   * List Execution Methods   List all available methods which can be used as condition for executions.
+   * List Execution Methods
+   * List all available methods which can be used as condition for executions.
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceListExecutionMethodsResponse
@@ -444,8 +454,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
               /**
-              * ListExecutionServices (Convenience Method)
-              * List Execution Services   List all available services which can be used as condition for executions.
+              * List Execution Services (Convenience Method)
+              * List all available services which can be used as condition for executions.
                 * @return BetaActionServiceListExecutionServicesResponse
               * @throws ApiException if fails to make API call
               */
@@ -455,8 +465,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutionServices
-   * List Execution Services   List all available services which can be used as condition for executions.
+   * List Execution Services
+   * List all available services which can be used as condition for executions.
    * @param body  (required)
    * @return BetaActionServiceListExecutionServicesResponse
    * @throws ApiException if fails to make API call
@@ -467,8 +477,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutionServices
-   * List Execution Services   List all available services which can be used as condition for executions.
+   * List Execution Services
+   * List all available services which can be used as condition for executions.
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceListExecutionServicesResponse
@@ -530,8 +540,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutions
-   * List Executions   List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.execution.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * List Executions
+   * List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.execution.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceListExecutionsRequest  (required)
    * @return BetaActionServiceListExecutionsResponse
    * @throws ApiException if fails to make API call
@@ -542,8 +552,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * ListExecutions
-   * List Executions   List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.execution.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * List Executions
+   * List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.execution.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceListExecutionsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceListExecutionsResponse
@@ -605,8 +615,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * ListTargets
-   * List targets   List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * List targets
+   * List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceListTargetsRequest  (required)
    * @return BetaActionServiceListTargetsResponse
    * @throws ApiException if fails to make API call
@@ -617,8 +627,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * ListTargets
-   * List targets   List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * List targets
+   * List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceListTargetsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceListTargetsResponse
@@ -680,8 +690,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * SetExecution
-   * Set Execution   Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - &#x60;action.execution.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Set Execution
+   * Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - &#x60;action.execution.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceSetExecutionRequest  (required)
    * @return BetaActionServiceSetExecutionResponse
    * @throws ApiException if fails to make API call
@@ -692,8 +702,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * SetExecution
-   * Set Execution   Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - &#x60;action.execution.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Set Execution
+   * Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - &#x60;action.execution.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceSetExecutionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceSetExecutionResponse
@@ -753,10 +763,20 @@ public class BetaActionServiceApi extends BaseApi {
 
 
 
+              /**
+              * Update Target (Convenience Method)
+              * Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+                * @return BetaActionServiceUpdateTargetResponse
+              * @throws ApiException if fails to make API call
+              */
+              public BetaActionServiceUpdateTargetResponse updateTarget() throws ApiException {
+              return this.updateTarget(new BetaActionServiceUpdateTargetRequest());
+              }
+
 
   /**
-   * UpdateTarget
-   * Update Target   Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Update Target
+   * Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceUpdateTargetRequest  (required)
    * @return BetaActionServiceUpdateTargetResponse
    * @throws ApiException if fails to make API call
@@ -767,8 +787,8 @@ public class BetaActionServiceApi extends BaseApi {
 
 
   /**
-   * UpdateTarget
-   * Update Target   Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Update Target
+   * Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
    * @param betaActionServiceUpdateTargetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceUpdateTargetResponse

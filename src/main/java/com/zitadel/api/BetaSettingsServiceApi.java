@@ -53,7 +53,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetActiveIdentityProviders
+   * Get the current active identity providers
    * Get the current active identity providers
    * @param betaSettingsServiceGetActiveIdentityProvidersRequest  (required)
    * @return BetaSettingsServiceGetActiveIdentityProvidersResponse
@@ -65,7 +65,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetActiveIdentityProviders
+   * Get the current active identity providers
    * Get the current active identity providers
    * @param betaSettingsServiceGetActiveIdentityProvidersRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -128,7 +128,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetBrandingSettings
+   * Get the current active branding settings
    * Get the current active branding settings
    * @param betaSettingsServiceGetBrandingSettingsRequest  (required)
    * @return BetaSettingsServiceGetBrandingSettingsResponse
@@ -140,7 +140,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetBrandingSettings
+   * Get the current active branding settings
    * Get the current active branding settings
    * @param betaSettingsServiceGetBrandingSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -203,7 +203,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetDomainSettings
+   * Get the domain settings
    * Get the domain settings
    * @param betaSettingsServiceGetDomainSettingsRequest  (required)
    * @return BetaSettingsServiceGetDomainSettingsResponse
@@ -215,7 +215,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetDomainSettings
+   * Get the domain settings
    * Get the domain settings
    * @param betaSettingsServiceGetDomainSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -277,7 +277,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
               /**
-              * GetGeneralSettings (Convenience Method)
+              * Get basic information over the instance (Convenience Method)
               * Get basic information over the instance
                 * @return BetaSettingsServiceGetGeneralSettingsResponse
               * @throws ApiException if fails to make API call
@@ -288,7 +288,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetGeneralSettings
+   * Get basic information over the instance
    * Get basic information over the instance
    * @param body  (required)
    * @return BetaSettingsServiceGetGeneralSettingsResponse
@@ -300,7 +300,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetGeneralSettings
+   * Get basic information over the instance
    * Get basic information over the instance
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -363,7 +363,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetLegalAndSupportSettings
+   * Get the legal and support settings
    * Get the legal and support settings
    * @param betaSettingsServiceGetLegalAndSupportSettingsRequest  (required)
    * @return BetaSettingsServiceGetLegalAndSupportSettingsResponse
@@ -375,7 +375,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetLegalAndSupportSettings
+   * Get the legal and support settings
    * Get the legal and support settings
    * @param betaSettingsServiceGetLegalAndSupportSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -438,7 +438,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetLockoutSettings
+   * Get the lockout settings
    * Get the lockout settings
    * @param betaSettingsServiceGetLockoutSettingsRequest  (required)
    * @return BetaSettingsServiceGetLockoutSettingsResponse
@@ -450,7 +450,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetLockoutSettings
+   * Get the lockout settings
    * Get the lockout settings
    * @param betaSettingsServiceGetLockoutSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -513,7 +513,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetLoginSettings
+   * Get the login settings
    * Get the login settings
    * @param betaSettingsServiceGetLoginSettingsRequest  (required)
    * @return BetaSettingsServiceGetLoginSettingsResponse
@@ -525,7 +525,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetLoginSettings
+   * Get the login settings
    * Get the login settings
    * @param betaSettingsServiceGetLoginSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -588,7 +588,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetPasswordComplexitySettings
+   * Get the password complexity settings
    * Get the password complexity settings
    * @param betaSettingsServiceGetPasswordComplexitySettingsRequest  (required)
    * @return BetaSettingsServiceGetPasswordComplexitySettingsResponse
@@ -600,7 +600,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetPasswordComplexitySettings
+   * Get the password complexity settings
    * Get the password complexity settings
    * @param betaSettingsServiceGetPasswordComplexitySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -663,7 +663,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetPasswordExpirySettings
+   * Get the password expiry settings
    * Get the password expiry settings
    * @param betaSettingsServiceGetPasswordExpirySettingsRequest  (required)
    * @return BetaSettingsServiceGetPasswordExpirySettingsResponse
@@ -675,7 +675,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetPasswordExpirySettings
+   * Get the password expiry settings
    * Get the password expiry settings
    * @param betaSettingsServiceGetPasswordExpirySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -737,7 +737,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
               /**
-              * GetSecuritySettings (Convenience Method)
+              * Get the security settings (Convenience Method)
               * Get the security settings
                 * @return BetaSettingsServiceGetSecuritySettingsResponse
               * @throws ApiException if fails to make API call
@@ -748,7 +748,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetSecuritySettings
+   * Get the security settings
    * Get the security settings
    * @param body  (required)
    * @return BetaSettingsServiceGetSecuritySettingsResponse
@@ -760,7 +760,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * GetSecuritySettings
+   * Get the security settings
    * Get the security settings
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -823,7 +823,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * SetSecuritySettings
+   * Set the security settings
    * Set the security settings
    * @param betaSettingsServiceSetSecuritySettingsRequest  (required)
    * @return BetaSettingsServiceSetSecuritySettingsResponse
@@ -835,7 +835,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
 
   /**
-   * SetSecuritySettings
+   * Set the security settings
    * Set the security settings
    * @param betaSettingsServiceSetSecuritySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call

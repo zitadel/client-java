@@ -36,17 +36,17 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceUpdateOrganizationRequest {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String id;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String name;
 
   public BetaOrganizationServiceUpdateOrganizationRequest() {
   }
 
-  public BetaOrganizationServiceUpdateOrganizationRequest id(@javax.annotation.Nonnull String id) {
+  public BetaOrganizationServiceUpdateOrganizationRequest id(@javax.annotation.Nullable String id) {
     
     this.id = id;
     return this;
@@ -56,9 +56,9 @@ public class BetaOrganizationServiceUpdateOrganizationRequest {
    * Organization Id for the Organization to be updated
    * @return id
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
@@ -66,12 +66,12 @@ public class BetaOrganizationServiceUpdateOrganizationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull String id) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
-  public BetaOrganizationServiceUpdateOrganizationRequest name(@javax.annotation.Nonnull String name) {
+  public BetaOrganizationServiceUpdateOrganizationRequest name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -81,9 +81,9 @@ public class BetaOrganizationServiceUpdateOrganizationRequest {
    * New Name for the Organization to be updated
    * @return name
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -91,8 +91,8 @@ public class BetaOrganizationServiceUpdateOrganizationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 

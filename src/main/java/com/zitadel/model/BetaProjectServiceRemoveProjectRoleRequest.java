@@ -36,17 +36,17 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaProjectServiceRemoveProjectRoleRequest {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String projectId;
 
   public static final String JSON_PROPERTY_ROLE_KEY = "roleKey";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String roleKey;
 
   public BetaProjectServiceRemoveProjectRoleRequest() {
   }
 
-  public BetaProjectServiceRemoveProjectRoleRequest projectId(@javax.annotation.Nonnull String projectId) {
+  public BetaProjectServiceRemoveProjectRoleRequest projectId(@javax.annotation.Nullable String projectId) {
     
     this.projectId = projectId;
     return this;
@@ -56,9 +56,9 @@ public class BetaProjectServiceRemoveProjectRoleRequest {
    * ID of the project.
    * @return projectId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProjectId() {
     return projectId;
@@ -66,12 +66,12 @@ public class BetaProjectServiceRemoveProjectRoleRequest {
 
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjectId(@javax.annotation.Nonnull String projectId) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProjectId(@javax.annotation.Nullable String projectId) {
     this.projectId = projectId;
   }
 
-  public BetaProjectServiceRemoveProjectRoleRequest roleKey(@javax.annotation.Nonnull String roleKey) {
+  public BetaProjectServiceRemoveProjectRoleRequest roleKey(@javax.annotation.Nullable String roleKey) {
     
     this.roleKey = roleKey;
     return this;
@@ -81,9 +81,9 @@ public class BetaProjectServiceRemoveProjectRoleRequest {
    * The key is the only relevant attribute for ZITADEL regarding the authorization checks.
    * @return roleKey
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ROLE_KEY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRoleKey() {
     return roleKey;
@@ -91,8 +91,8 @@ public class BetaProjectServiceRemoveProjectRoleRequest {
 
 
   @JsonProperty(JSON_PROPERTY_ROLE_KEY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRoleKey(@javax.annotation.Nonnull String roleKey) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRoleKey(@javax.annotation.Nullable String roleKey) {
     this.roleKey = roleKey;
   }
 

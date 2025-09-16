@@ -45,7 +45,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaOrganizationServiceCreateOrganizationRequest {
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_ID = "id";
@@ -59,7 +59,7 @@ public class BetaOrganizationServiceCreateOrganizationRequest {
   public BetaOrganizationServiceCreateOrganizationRequest() {
   }
 
-  public BetaOrganizationServiceCreateOrganizationRequest name(@javax.annotation.Nonnull String name) {
+  public BetaOrganizationServiceCreateOrganizationRequest name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -69,9 +69,9 @@ public class BetaOrganizationServiceCreateOrganizationRequest {
    * name of the Organization to be created.
    * @return name
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -79,8 +79,8 @@ public class BetaOrganizationServiceCreateOrganizationRequest {
 
 
   @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 

@@ -37,7 +37,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaUserServiceUserNameQuery {
   public static final String JSON_PROPERTY_USER_NAME = "userName";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String userName;
 
   public static final String JSON_PROPERTY_METHOD = "method";
@@ -47,7 +47,7 @@ public class BetaUserServiceUserNameQuery {
   public BetaUserServiceUserNameQuery() {
   }
 
-  public BetaUserServiceUserNameQuery userName(@javax.annotation.Nonnull String userName) {
+  public BetaUserServiceUserNameQuery userName(@javax.annotation.Nullable String userName) {
     
     this.userName = userName;
     return this;
@@ -57,9 +57,9 @@ public class BetaUserServiceUserNameQuery {
    * Get userName
    * @return userName
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_USER_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserName() {
     return userName;
@@ -67,8 +67,8 @@ public class BetaUserServiceUserNameQuery {
 
 
   @JsonProperty(JSON_PROPERTY_USER_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserName(@javax.annotation.Nonnull String userName) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserName(@javax.annotation.Nullable String userName) {
     this.userName = userName;
   }
 
