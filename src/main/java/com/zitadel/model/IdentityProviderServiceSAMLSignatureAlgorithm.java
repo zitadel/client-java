@@ -25,23 +25,21 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets BetaFeatureServiceImprovedPerformance
+ * Gets or Sets IdentityProviderServiceSAMLSignatureAlgorithm
  */
-public enum BetaFeatureServiceImprovedPerformance {
+public enum IdentityProviderServiceSAMLSignatureAlgorithm {
   
-  IMPROVED_PERFORMANCE_UNSPECIFIED("IMPROVED_PERFORMANCE_UNSPECIFIED"),
+  SAML_SIGNATURE_UNSPECIFIED("SAML_SIGNATURE_UNSPECIFIED"),
   
-  IMPROVED_PERFORMANCE_PROJECT_GRANT("IMPROVED_PERFORMANCE_PROJECT_GRANT"),
+  SAML_SIGNATURE_RSA_SHA1("SAML_SIGNATURE_RSA_SHA1"),
   
-  IMPROVED_PERFORMANCE_PROJECT("IMPROVED_PERFORMANCE_PROJECT"),
+  SAML_SIGNATURE_RSA_SHA256("SAML_SIGNATURE_RSA_SHA256"),
   
-  IMPROVED_PERFORMANCE_USER_GRANT("IMPROVED_PERFORMANCE_USER_GRANT"),
-  
-  IMPROVED_PERFORMANCE_ORG_DOMAIN_VERIFIED("IMPROVED_PERFORMANCE_ORG_DOMAIN_VERIFIED");
+  SAML_SIGNATURE_RSA_SHA512("SAML_SIGNATURE_RSA_SHA512");
 
   private String value;
 
-  BetaFeatureServiceImprovedPerformance(String value) {
+  IdentityProviderServiceSAMLSignatureAlgorithm(String value) {
     this.value = value;
   }
 
@@ -56,8 +54,8 @@ public enum BetaFeatureServiceImprovedPerformance {
   }
 
   @JsonCreator
-  public static BetaFeatureServiceImprovedPerformance fromValue(String value) {
-    for (BetaFeatureServiceImprovedPerformance b : BetaFeatureServiceImprovedPerformance.values()) {
+  public static IdentityProviderServiceSAMLSignatureAlgorithm fromValue(String value) {
+    for (IdentityProviderServiceSAMLSignatureAlgorithm b : IdentityProviderServiceSAMLSignatureAlgorithm.values()) {
       if (b.value.equals(value)) {
         return b;
       }

@@ -45,7 +45,6 @@ import java.util.StringJoiner;
   FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_IMPROVED_PERFORMANCE,
   FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_DEBUG_OIDC_PARENT_ERROR,
   FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION,
-  FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT,
   FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT,
   FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_LOGIN_V2,
   FeatureServiceSetInstanceFeaturesRequest.JSON_PROPERTY_PERMISSION_CHECK_V2,
@@ -76,10 +75,6 @@ public class FeatureServiceSetInstanceFeaturesRequest {
   public static final String JSON_PROPERTY_OIDC_SINGLE_V1_SESSION_TERMINATION = "oidcSingleV1SessionTermination";
   @javax.annotation.Nullable
   private JsonNullable<Boolean> oidcSingleV1SessionTermination = JsonNullable.<Boolean>undefined();
-
-  public static final String JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT = "disableUserTokenEvent";
-  @javax.annotation.Nullable
-  private JsonNullable<Boolean> disableUserTokenEvent = JsonNullable.<Boolean>undefined();
 
   public static final String JSON_PROPERTY_ENABLE_BACK_CHANNEL_LOGOUT = "enableBackChannelLogout";
   @javax.annotation.Nullable
@@ -298,39 +293,6 @@ public class FeatureServiceSetInstanceFeaturesRequest {
     this.oidcSingleV1SessionTermination = JsonNullable.<Boolean>of(oidcSingleV1SessionTermination);
   }
 
-  public FeatureServiceSetInstanceFeaturesRequest disableUserTokenEvent(@javax.annotation.Nullable Boolean disableUserTokenEvent) {
-    this.disableUserTokenEvent = JsonNullable.<Boolean>of(disableUserTokenEvent);
-    
-    return this;
-  }
-
-  /**
-   * Get disableUserTokenEvent
-   * @return disableUserTokenEvent
-   */
-  @javax.annotation.Nullable
-  @JsonIgnore
-
-  public Boolean getDisableUserTokenEvent() {
-        return disableUserTokenEvent.orElse(null);
-  }
-
-  @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<Boolean> getDisableUserTokenEvent_JsonNullable() {
-    return disableUserTokenEvent;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_DISABLE_USER_TOKEN_EVENT)
-  public void setDisableUserTokenEvent_JsonNullable(JsonNullable<Boolean> disableUserTokenEvent) {
-    this.disableUserTokenEvent = disableUserTokenEvent;
-  }
-
-  public void setDisableUserTokenEvent(@javax.annotation.Nullable Boolean disableUserTokenEvent) {
-    this.disableUserTokenEvent = JsonNullable.<Boolean>of(disableUserTokenEvent);
-  }
-
   public FeatureServiceSetInstanceFeaturesRequest enableBackChannelLogout(@javax.annotation.Nullable Boolean enableBackChannelLogout) {
     this.enableBackChannelLogout = JsonNullable.<Boolean>of(enableBackChannelLogout);
     
@@ -470,7 +432,6 @@ public class FeatureServiceSetInstanceFeaturesRequest {
         Objects.equals(this.improvedPerformance, featureServiceSetInstanceFeaturesRequest.improvedPerformance) &&
         equalsNullable(this.debugOidcParentError, featureServiceSetInstanceFeaturesRequest.debugOidcParentError) &&
         equalsNullable(this.oidcSingleV1SessionTermination, featureServiceSetInstanceFeaturesRequest.oidcSingleV1SessionTermination) &&
-        equalsNullable(this.disableUserTokenEvent, featureServiceSetInstanceFeaturesRequest.disableUserTokenEvent) &&
         equalsNullable(this.enableBackChannelLogout, featureServiceSetInstanceFeaturesRequest.enableBackChannelLogout) &&
         Objects.equals(this.loginV2, featureServiceSetInstanceFeaturesRequest.loginV2) &&
         equalsNullable(this.permissionCheckV2, featureServiceSetInstanceFeaturesRequest.permissionCheckV2) &&
@@ -483,7 +444,7 @@ public class FeatureServiceSetInstanceFeaturesRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(loginDefaultOrg), hashCodeNullable(userSchema), hashCodeNullable(oidcTokenExchange), improvedPerformance, hashCodeNullable(debugOidcParentError), hashCodeNullable(oidcSingleV1SessionTermination), hashCodeNullable(disableUserTokenEvent), hashCodeNullable(enableBackChannelLogout), loginV2, hashCodeNullable(permissionCheckV2), hashCodeNullable(consoleUseV2UserApi));
+    return Objects.hash(hashCodeNullable(loginDefaultOrg), hashCodeNullable(userSchema), hashCodeNullable(oidcTokenExchange), improvedPerformance, hashCodeNullable(debugOidcParentError), hashCodeNullable(oidcSingleV1SessionTermination), hashCodeNullable(enableBackChannelLogout), loginV2, hashCodeNullable(permissionCheckV2), hashCodeNullable(consoleUseV2UserApi));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -503,7 +464,6 @@ public class FeatureServiceSetInstanceFeaturesRequest {
     sb.append("    improvedPerformance: ").append(toIndentedString(improvedPerformance)).append("\n");
     sb.append("    debugOidcParentError: ").append(toIndentedString(debugOidcParentError)).append("\n");
     sb.append("    oidcSingleV1SessionTermination: ").append(toIndentedString(oidcSingleV1SessionTermination)).append("\n");
-    sb.append("    disableUserTokenEvent: ").append(toIndentedString(disableUserTokenEvent)).append("\n");
     sb.append("    enableBackChannelLogout: ").append(toIndentedString(enableBackChannelLogout)).append("\n");
     sb.append("    loginV2: ").append(toIndentedString(loginV2)).append("\n");
     sb.append("    permissionCheckV2: ").append(toIndentedString(permissionCheckV2)).append("\n");
@@ -615,16 +575,6 @@ public class FeatureServiceSetInstanceFeaturesRequest {
     if (getOidcSingleV1SessionTermination() != null) {
       try {
         joiner.add(String.format("%soidcSingleV1SessionTermination%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOidcSingleV1SessionTermination()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `disableUserTokenEvent` to the URL query string
-    if (getDisableUserTokenEvent() != null) {
-      try {
-        joiner.add(String.format("%sdisableUserTokenEvent%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDisableUserTokenEvent()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

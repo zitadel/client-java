@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.SessionServiceCreationDateQuery;
 import com.zitadel.model.SessionServiceCreatorQuery;
+import com.zitadel.model.SessionServiceExpirationDateQuery;
 import com.zitadel.model.SessionServiceIDsQuery;
 import com.zitadel.model.SessionServiceUserAgentQuery;
 import com.zitadel.model.SessionServiceUserIDQuery;
@@ -37,6 +38,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SessionServiceSearchQuery.JSON_PROPERTY_CREATION_DATE_QUERY,
   SessionServiceSearchQuery.JSON_PROPERTY_CREATOR_QUERY,
+  SessionServiceSearchQuery.JSON_PROPERTY_EXPIRATION_DATE_QUERY,
   SessionServiceSearchQuery.JSON_PROPERTY_IDS_QUERY,
   SessionServiceSearchQuery.JSON_PROPERTY_USER_AGENT_QUERY,
   SessionServiceSearchQuery.JSON_PROPERTY_USER_ID_QUERY
@@ -50,6 +52,10 @@ public class SessionServiceSearchQuery {
   public static final String JSON_PROPERTY_CREATOR_QUERY = "creatorQuery";
   @javax.annotation.Nullable
   private SessionServiceCreatorQuery creatorQuery;
+
+  public static final String JSON_PROPERTY_EXPIRATION_DATE_QUERY = "expirationDateQuery";
+  @javax.annotation.Nullable
+  private SessionServiceExpirationDateQuery expirationDateQuery;
 
   public static final String JSON_PROPERTY_IDS_QUERY = "idsQuery";
   @javax.annotation.Nullable
@@ -114,6 +120,31 @@ public class SessionServiceSearchQuery {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCreatorQuery(@javax.annotation.Nullable SessionServiceCreatorQuery creatorQuery) {
     this.creatorQuery = creatorQuery;
+  }
+
+  public SessionServiceSearchQuery expirationDateQuery(@javax.annotation.Nullable SessionServiceExpirationDateQuery expirationDateQuery) {
+    
+    this.expirationDateQuery = expirationDateQuery;
+    return this;
+  }
+
+  /**
+   * Get expirationDateQuery
+   * @return expirationDateQuery
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EXPIRATION_DATE_QUERY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SessionServiceExpirationDateQuery getExpirationDateQuery() {
+    return expirationDateQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXPIRATION_DATE_QUERY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExpirationDateQuery(@javax.annotation.Nullable SessionServiceExpirationDateQuery expirationDateQuery) {
+    this.expirationDateQuery = expirationDateQuery;
   }
 
   public SessionServiceSearchQuery idsQuery(@javax.annotation.Nullable SessionServiceIDsQuery idsQuery) {
@@ -202,6 +233,7 @@ public class SessionServiceSearchQuery {
     SessionServiceSearchQuery sessionServiceSearchQuery = (SessionServiceSearchQuery) o;
     return Objects.equals(this.creationDateQuery, sessionServiceSearchQuery.creationDateQuery) &&
         Objects.equals(this.creatorQuery, sessionServiceSearchQuery.creatorQuery) &&
+        Objects.equals(this.expirationDateQuery, sessionServiceSearchQuery.expirationDateQuery) &&
         Objects.equals(this.idsQuery, sessionServiceSearchQuery.idsQuery) &&
         Objects.equals(this.userAgentQuery, sessionServiceSearchQuery.userAgentQuery) &&
         Objects.equals(this.userIdQuery, sessionServiceSearchQuery.userIdQuery);
@@ -209,7 +241,7 @@ public class SessionServiceSearchQuery {
 
   @Override
   public int hashCode() {
-    return Objects.hash(creationDateQuery, creatorQuery, idsQuery, userAgentQuery, userIdQuery);
+    return Objects.hash(creationDateQuery, creatorQuery, expirationDateQuery, idsQuery, userAgentQuery, userIdQuery);
   }
 
   @Override
@@ -218,6 +250,7 @@ public class SessionServiceSearchQuery {
     sb.append("class SessionServiceSearchQuery {\n");
     sb.append("    creationDateQuery: ").append(toIndentedString(creationDateQuery)).append("\n");
     sb.append("    creatorQuery: ").append(toIndentedString(creatorQuery)).append("\n");
+    sb.append("    expirationDateQuery: ").append(toIndentedString(expirationDateQuery)).append("\n");
     sb.append("    idsQuery: ").append(toIndentedString(idsQuery)).append("\n");
     sb.append("    userAgentQuery: ").append(toIndentedString(userAgentQuery)).append("\n");
     sb.append("    userIdQuery: ").append(toIndentedString(userIdQuery)).append("\n");
@@ -276,6 +309,11 @@ public class SessionServiceSearchQuery {
     // add `creatorQuery` to the URL query string
     if (getCreatorQuery() != null) {
       joiner.add(getCreatorQuery().toUrlQueryString(prefix + "creatorQuery" + suffix));
+    }
+
+    // add `expirationDateQuery` to the URL query string
+    if (getExpirationDateQuery() != null) {
+      joiner.add(getExpirationDateQuery().toUrlQueryString(prefix + "expirationDateQuery" + suffix));
     }
 
     // add `idsQuery` to the URL query string

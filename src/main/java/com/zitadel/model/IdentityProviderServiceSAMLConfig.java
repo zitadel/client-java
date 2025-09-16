@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.IdentityProviderServiceSAMLBinding;
 import com.zitadel.model.IdentityProviderServiceSAMLNameIDFormat;
+import com.zitadel.model.IdentityProviderServiceSAMLSignatureAlgorithm;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -41,7 +42,8 @@ import java.util.StringJoiner;
   IdentityProviderServiceSAMLConfig.JSON_PROPERTY_WITH_SIGNED_REQUEST,
   IdentityProviderServiceSAMLConfig.JSON_PROPERTY_NAME_ID_FORMAT,
   IdentityProviderServiceSAMLConfig.JSON_PROPERTY_TRANSIENT_MAPPING_ATTRIBUTE_NAME,
-  IdentityProviderServiceSAMLConfig.JSON_PROPERTY_FEDERATED_LOGOUT_ENABLED
+  IdentityProviderServiceSAMLConfig.JSON_PROPERTY_FEDERATED_LOGOUT_ENABLED,
+  IdentityProviderServiceSAMLConfig.JSON_PROPERTY_SIGNATURE_ALGORITHM
 })
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class IdentityProviderServiceSAMLConfig {
@@ -68,6 +70,10 @@ public class IdentityProviderServiceSAMLConfig {
   public static final String JSON_PROPERTY_FEDERATED_LOGOUT_ENABLED = "federatedLogoutEnabled";
   @javax.annotation.Nullable
   private JsonNullable<Boolean> federatedLogoutEnabled = JsonNullable.<Boolean>undefined();
+
+  public static final String JSON_PROPERTY_SIGNATURE_ALGORITHM = "signatureAlgorithm";
+  @javax.annotation.Nullable
+  private IdentityProviderServiceSAMLSignatureAlgorithm signatureAlgorithm;
 
   public IdentityProviderServiceSAMLConfig() {
   }
@@ -238,6 +244,31 @@ public class IdentityProviderServiceSAMLConfig {
     this.federatedLogoutEnabled = JsonNullable.<Boolean>of(federatedLogoutEnabled);
   }
 
+  public IdentityProviderServiceSAMLConfig signatureAlgorithm(@javax.annotation.Nullable IdentityProviderServiceSAMLSignatureAlgorithm signatureAlgorithm) {
+    
+    this.signatureAlgorithm = signatureAlgorithm;
+    return this;
+  }
+
+  /**
+   * Get signatureAlgorithm
+   * @return signatureAlgorithm
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SIGNATURE_ALGORITHM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public IdentityProviderServiceSAMLSignatureAlgorithm getSignatureAlgorithm() {
+    return signatureAlgorithm;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SIGNATURE_ALGORITHM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSignatureAlgorithm(@javax.annotation.Nullable IdentityProviderServiceSAMLSignatureAlgorithm signatureAlgorithm) {
+    this.signatureAlgorithm = signatureAlgorithm;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -252,7 +283,8 @@ public class IdentityProviderServiceSAMLConfig {
         Objects.equals(this.withSignedRequest, identityProviderServiceSAMLConfig.withSignedRequest) &&
         Objects.equals(this.nameIdFormat, identityProviderServiceSAMLConfig.nameIdFormat) &&
         equalsNullable(this.transientMappingAttributeName, identityProviderServiceSAMLConfig.transientMappingAttributeName) &&
-        equalsNullable(this.federatedLogoutEnabled, identityProviderServiceSAMLConfig.federatedLogoutEnabled);
+        equalsNullable(this.federatedLogoutEnabled, identityProviderServiceSAMLConfig.federatedLogoutEnabled) &&
+        Objects.equals(this.signatureAlgorithm, identityProviderServiceSAMLConfig.signatureAlgorithm);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -261,7 +293,7 @@ public class IdentityProviderServiceSAMLConfig {
 
   @Override
   public int hashCode() {
-    return Objects.hash(Arrays.hashCode(metadataXml), binding, withSignedRequest, nameIdFormat, hashCodeNullable(transientMappingAttributeName), hashCodeNullable(federatedLogoutEnabled));
+    return Objects.hash(Arrays.hashCode(metadataXml), binding, withSignedRequest, nameIdFormat, hashCodeNullable(transientMappingAttributeName), hashCodeNullable(federatedLogoutEnabled), signatureAlgorithm);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -281,6 +313,7 @@ public class IdentityProviderServiceSAMLConfig {
     sb.append("    nameIdFormat: ").append(toIndentedString(nameIdFormat)).append("\n");
     sb.append("    transientMappingAttributeName: ").append(toIndentedString(transientMappingAttributeName)).append("\n");
     sb.append("    federatedLogoutEnabled: ").append(toIndentedString(federatedLogoutEnabled)).append("\n");
+    sb.append("    signatureAlgorithm: ").append(toIndentedString(signatureAlgorithm)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -382,6 +415,16 @@ public class IdentityProviderServiceSAMLConfig {
     if (getFederatedLogoutEnabled() != null) {
       try {
         joiner.add(String.format("%sfederatedLogoutEnabled%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFederatedLogoutEnabled()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `signatureAlgorithm` to the URL query string
+    if (getSignatureAlgorithm() != null) {
+      try {
+        joiner.add(String.format("%ssignatureAlgorithm%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignatureAlgorithm()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

@@ -25,23 +25,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets BetaFeatureServiceImprovedPerformance
+ * Gets or Sets UserServiceByteFilterMethod
  */
-public enum BetaFeatureServiceImprovedPerformance {
+public enum UserServiceByteFilterMethod {
   
-  IMPROVED_PERFORMANCE_UNSPECIFIED("IMPROVED_PERFORMANCE_UNSPECIFIED"),
+  BYTE_FILTER_METHOD_EQUALS("BYTE_FILTER_METHOD_EQUALS"),
   
-  IMPROVED_PERFORMANCE_PROJECT_GRANT("IMPROVED_PERFORMANCE_PROJECT_GRANT"),
-  
-  IMPROVED_PERFORMANCE_PROJECT("IMPROVED_PERFORMANCE_PROJECT"),
-  
-  IMPROVED_PERFORMANCE_USER_GRANT("IMPROVED_PERFORMANCE_USER_GRANT"),
-  
-  IMPROVED_PERFORMANCE_ORG_DOMAIN_VERIFIED("IMPROVED_PERFORMANCE_ORG_DOMAIN_VERIFIED");
+  BYTE_FILTER_METHOD_NOT_EQUALS("BYTE_FILTER_METHOD_NOT_EQUALS");
 
   private String value;
 
-  BetaFeatureServiceImprovedPerformance(String value) {
+  UserServiceByteFilterMethod(String value) {
     this.value = value;
   }
 
@@ -56,8 +50,8 @@ public enum BetaFeatureServiceImprovedPerformance {
   }
 
   @JsonCreator
-  public static BetaFeatureServiceImprovedPerformance fromValue(String value) {
-    for (BetaFeatureServiceImprovedPerformance b : BetaFeatureServiceImprovedPerformance.values()) {
+  public static UserServiceByteFilterMethod fromValue(String value) {
+    for (UserServiceByteFilterMethod b : UserServiceByteFilterMethod.values()) {
       if (b.value.equals(value)) {
         return b;
       }

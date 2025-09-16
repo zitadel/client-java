@@ -150,7 +150,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * AddHumanUser
-   * Create a new human user   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.
+   * Create a new human user   Deprecated: Use [CreateUser](apis/resources/user_service_v2/user-service-create-user.api.mdx) to create a new user of type human instead.   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.
    * @param userServiceAddHumanUserRequest  (required)
    * @return UserServiceAddHumanUserResponse
    * @throws ApiException if fails to make API call
@@ -162,7 +162,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * AddHumanUser
-   * Create a new human user   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.
+   * Create a new human user   Deprecated: Use [CreateUser](apis/resources/user_service_v2/user-service-create-user.api.mdx) to create a new user of type human instead.   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.
    * @param userServiceAddHumanUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceAddHumanUserResponse
@@ -675,7 +675,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * CreateInviteCode
-   * Create an invite code for a user   Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  If an invite code has been created previously, it&#39;s url template and application name will be used as defaults for the new code.  The new code will overwrite the previous one and make it invalid.
+   * Create an invite code for a user   Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  If an invite code has been created previously, it&#39;s url template and application name will be used as defaults for the new code.  The new code will overwrite the previous one and make it invalid.  Note: It is possible to reissue a new code only when the previous code has expired, or when the user provides a wrong code three or more times during verification.
    * @param userServiceCreateInviteCodeRequest  (required)
    * @return UserServiceCreateInviteCodeResponse
    * @throws ApiException if fails to make API call
@@ -687,7 +687,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * CreateInviteCode
-   * Create an invite code for a user   Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  If an invite code has been created previously, it&#39;s url template and application name will be used as defaults for the new code.  The new code will overwrite the previous one and make it invalid.
+   * Create an invite code for a user   Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization&#39;s available methods.  If an invite code has been created previously, it&#39;s url template and application name will be used as defaults for the new code.  The new code will overwrite the previous one and make it invalid.  Note: It is possible to reissue a new code only when the previous code has expired, or when the user provides a wrong code three or more times during verification.
    * @param userServiceCreateInviteCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceCreateInviteCodeResponse
@@ -2775,7 +2775,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * RemovePhone
-   * Delete the user phone   Delete the phone number of a user.
+   * Delete the user phone   Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx) to remove the phone number.   Delete the phone number of a user.
    * @param userServiceRemovePhoneRequest  (required)
    * @return UserServiceRemovePhoneResponse
    * @throws ApiException if fails to make API call
@@ -2787,7 +2787,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * RemovePhone
-   * Delete the user phone   Delete the phone number of a user.
+   * Delete the user phone   Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx) to remove the phone number.   Delete the phone number of a user.
    * @param userServiceRemovePhoneRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceRemovePhoneResponse
@@ -3225,7 +3225,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * ResendPhoneCode
-   * Resend code to verify user phone
+   * Resend code to verify user phone number   Resend code to verify user phone number.
    * @param userServiceResendPhoneCodeRequest  (required)
    * @return UserServiceResendPhoneCodeResponse
    * @throws ApiException if fails to make API call
@@ -3237,7 +3237,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * ResendPhoneCode
-   * Resend code to verify user phone
+   * Resend code to verify user phone number   Resend code to verify user phone number.
    * @param userServiceResendPhoneCodeRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceResendPhoneCodeResponse
@@ -3450,7 +3450,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * SetEmail
-   * Change the user email   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..
+   * Change the user email   Deprecated: [Update the users email field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..
    * @param userServiceSetEmailRequest  (required)
    * @return UserServiceSetEmailResponse
    * @throws ApiException if fails to make API call
@@ -3462,7 +3462,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * SetEmail
-   * Change the user email   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..
+   * Change the user email   Deprecated: [Update the users email field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..
    * @param userServiceSetEmailRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceSetEmailResponse
@@ -3525,7 +3525,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * SetPassword
-   * Change password   Change the password of a user with either a verification code or the current password..
+   * Change password   Deprecated: [Update the users password](apis/resources/user_service_v2/user-service-update-user.api.mdx) instead.   Change the password of a user with either a verification code or the current password..
    * @param userServiceSetPasswordRequest  (required)
    * @return UserServiceSetPasswordResponse
    * @throws ApiException if fails to make API call
@@ -3537,7 +3537,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * SetPassword
-   * Change password   Change the password of a user with either a verification code or the current password..
+   * Change password   Deprecated: [Update the users password](apis/resources/user_service_v2/user-service-update-user.api.mdx) instead.   Change the password of a user with either a verification code or the current password..
    * @param userServiceSetPasswordRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceSetPasswordResponse
@@ -3600,7 +3600,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * SetPhone
-   * Set the user phone   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..
+   * Set the user phone   Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..
    * @param userServiceSetPhoneRequest  (required)
    * @return UserServiceSetPhoneResponse
    * @throws ApiException if fails to make API call
@@ -3612,7 +3612,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * SetPhone
-   * Set the user phone   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..
+   * Set the user phone   Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..
    * @param userServiceSetPhoneRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceSetPhoneResponse
@@ -3900,7 +3900,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * UpdateHumanUser
-   * Update Human User   Update all information from a user..
+   * Update Human User   Deprecated: Use [UpdateUser](apis/resources/user_service_v2/user-service-update-user.api.mdx) to update a user of type human instead.   Update all information from a user.
    * @param userServiceUpdateHumanUserRequest  (required)
    * @return UserServiceUpdateHumanUserResponse
    * @throws ApiException if fails to make API call
@@ -3912,7 +3912,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * UpdateHumanUser
-   * Update Human User   Update all information from a user..
+   * Update Human User   Deprecated: Use [UpdateUser](apis/resources/user_service_v2/user-service-update-user.api.mdx) to update a user of type human instead.   Update all information from a user.
    * @param userServiceUpdateHumanUserRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceUpdateHumanUserResponse
@@ -4275,7 +4275,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * VerifyPhone
-   * Verify the phone   Verify the phone with the generated code..
+   * Verify the phone number   Verify the phone number with the generated code.
    * @param userServiceVerifyPhoneRequest  (required)
    * @return UserServiceVerifyPhoneResponse
    * @throws ApiException if fails to make API call
@@ -4287,7 +4287,7 @@ public class UserServiceApi extends BaseApi {
 
   /**
    * VerifyPhone
-   * Verify the phone   Verify the phone with the generated code..
+   * Verify the phone number   Verify the phone number with the generated code.
    * @param userServiceVerifyPhoneRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return UserServiceVerifyPhoneResponse

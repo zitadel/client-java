@@ -28,6 +28,8 @@ import com.zitadel.model.UserServiceInUserEmailsQuery;
 import com.zitadel.model.UserServiceInUserIDQuery;
 import com.zitadel.model.UserServiceLastNameQuery;
 import com.zitadel.model.UserServiceLoginNameQuery;
+import com.zitadel.model.UserServiceMetadataKeyFilter;
+import com.zitadel.model.UserServiceMetadataValueFilter;
 import com.zitadel.model.UserServiceNickNameQuery;
 import com.zitadel.model.UserServiceNotQuery;
 import com.zitadel.model.UserServiceOrQuery;
@@ -54,6 +56,8 @@ import java.util.StringJoiner;
   UserServiceSearchQuery.JSON_PROPERTY_IN_USER_IDS_QUERY,
   UserServiceSearchQuery.JSON_PROPERTY_LAST_NAME_QUERY,
   UserServiceSearchQuery.JSON_PROPERTY_LOGIN_NAME_QUERY,
+  UserServiceSearchQuery.JSON_PROPERTY_METADATA_KEY_FILTER,
+  UserServiceSearchQuery.JSON_PROPERTY_METADATA_VALUE_FILTER,
   UserServiceSearchQuery.JSON_PROPERTY_NICK_NAME_QUERY,
   UserServiceSearchQuery.JSON_PROPERTY_NOT_QUERY,
   UserServiceSearchQuery.JSON_PROPERTY_OR_QUERY,
@@ -96,6 +100,14 @@ public class UserServiceSearchQuery {
   public static final String JSON_PROPERTY_LOGIN_NAME_QUERY = "loginNameQuery";
   @javax.annotation.Nullable
   private UserServiceLoginNameQuery loginNameQuery;
+
+  public static final String JSON_PROPERTY_METADATA_KEY_FILTER = "metadataKeyFilter";
+  @javax.annotation.Nullable
+  private UserServiceMetadataKeyFilter metadataKeyFilter;
+
+  public static final String JSON_PROPERTY_METADATA_VALUE_FILTER = "metadataValueFilter";
+  @javax.annotation.Nullable
+  private UserServiceMetadataValueFilter metadataValueFilter;
 
   public static final String JSON_PROPERTY_NICK_NAME_QUERY = "nickNameQuery";
   @javax.annotation.Nullable
@@ -332,6 +344,56 @@ public class UserServiceSearchQuery {
     this.loginNameQuery = loginNameQuery;
   }
 
+  public UserServiceSearchQuery metadataKeyFilter(@javax.annotation.Nullable UserServiceMetadataKeyFilter metadataKeyFilter) {
+    
+    this.metadataKeyFilter = metadataKeyFilter;
+    return this;
+  }
+
+  /**
+   * Get metadataKeyFilter
+   * @return metadataKeyFilter
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_METADATA_KEY_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UserServiceMetadataKeyFilter getMetadataKeyFilter() {
+    return metadataKeyFilter;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_METADATA_KEY_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMetadataKeyFilter(@javax.annotation.Nullable UserServiceMetadataKeyFilter metadataKeyFilter) {
+    this.metadataKeyFilter = metadataKeyFilter;
+  }
+
+  public UserServiceSearchQuery metadataValueFilter(@javax.annotation.Nullable UserServiceMetadataValueFilter metadataValueFilter) {
+    
+    this.metadataValueFilter = metadataValueFilter;
+    return this;
+  }
+
+  /**
+   * Get metadataValueFilter
+   * @return metadataValueFilter
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_METADATA_VALUE_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UserServiceMetadataValueFilter getMetadataValueFilter() {
+    return metadataValueFilter;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_METADATA_VALUE_FILTER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMetadataValueFilter(@javax.annotation.Nullable UserServiceMetadataValueFilter metadataValueFilter) {
+    this.metadataValueFilter = metadataValueFilter;
+  }
+
   public UserServiceSearchQuery nickNameQuery(@javax.annotation.Nullable UserServiceNickNameQuery nickNameQuery) {
     
     this.nickNameQuery = nickNameQuery;
@@ -549,6 +611,8 @@ public class UserServiceSearchQuery {
         Objects.equals(this.inUserIdsQuery, userServiceSearchQuery.inUserIdsQuery) &&
         Objects.equals(this.lastNameQuery, userServiceSearchQuery.lastNameQuery) &&
         Objects.equals(this.loginNameQuery, userServiceSearchQuery.loginNameQuery) &&
+        Objects.equals(this.metadataKeyFilter, userServiceSearchQuery.metadataKeyFilter) &&
+        Objects.equals(this.metadataValueFilter, userServiceSearchQuery.metadataValueFilter) &&
         Objects.equals(this.nickNameQuery, userServiceSearchQuery.nickNameQuery) &&
         Objects.equals(this.notQuery, userServiceSearchQuery.notQuery) &&
         Objects.equals(this.orQuery, userServiceSearchQuery.orQuery) &&
@@ -561,7 +625,7 @@ public class UserServiceSearchQuery {
 
   @Override
   public int hashCode() {
-    return Objects.hash(andQuery, displayNameQuery, emailQuery, firstNameQuery, inUserEmailsQuery, inUserIdsQuery, lastNameQuery, loginNameQuery, nickNameQuery, notQuery, orQuery, organizationIdQuery, phoneQuery, stateQuery, typeQuery, userNameQuery);
+    return Objects.hash(andQuery, displayNameQuery, emailQuery, firstNameQuery, inUserEmailsQuery, inUserIdsQuery, lastNameQuery, loginNameQuery, metadataKeyFilter, metadataValueFilter, nickNameQuery, notQuery, orQuery, organizationIdQuery, phoneQuery, stateQuery, typeQuery, userNameQuery);
   }
 
   @Override
@@ -576,6 +640,8 @@ public class UserServiceSearchQuery {
     sb.append("    inUserIdsQuery: ").append(toIndentedString(inUserIdsQuery)).append("\n");
     sb.append("    lastNameQuery: ").append(toIndentedString(lastNameQuery)).append("\n");
     sb.append("    loginNameQuery: ").append(toIndentedString(loginNameQuery)).append("\n");
+    sb.append("    metadataKeyFilter: ").append(toIndentedString(metadataKeyFilter)).append("\n");
+    sb.append("    metadataValueFilter: ").append(toIndentedString(metadataValueFilter)).append("\n");
     sb.append("    nickNameQuery: ").append(toIndentedString(nickNameQuery)).append("\n");
     sb.append("    notQuery: ").append(toIndentedString(notQuery)).append("\n");
     sb.append("    orQuery: ").append(toIndentedString(orQuery)).append("\n");
@@ -669,6 +735,16 @@ public class UserServiceSearchQuery {
     // add `loginNameQuery` to the URL query string
     if (getLoginNameQuery() != null) {
       joiner.add(getLoginNameQuery().toUrlQueryString(prefix + "loginNameQuery" + suffix));
+    }
+
+    // add `metadataKeyFilter` to the URL query string
+    if (getMetadataKeyFilter() != null) {
+      joiner.add(getMetadataKeyFilter().toUrlQueryString(prefix + "metadataKeyFilter" + suffix));
+    }
+
+    // add `metadataValueFilter` to the URL query string
+    if (getMetadataValueFilter() != null) {
+      joiner.add(getMetadataValueFilter().toUrlQueryString(prefix + "metadataValueFilter" + suffix));
     }
 
     // add `nickNameQuery` to the URL query string
