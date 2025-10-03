@@ -31,7 +31,7 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   BetaInternalPermissionServiceProjectGrant.JSON_PROPERTY_PROJECT_ID,
-  BetaInternalPermissionServiceProjectGrant.JSON_PROPERTY_PROJECT_GRANT_ID
+  BetaInternalPermissionServiceProjectGrant.JSON_PROPERTY_ORGANIZATION_ID
 })
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class BetaInternalPermissionServiceProjectGrant {
@@ -39,9 +39,9 @@ public class BetaInternalPermissionServiceProjectGrant {
   @javax.annotation.Nullable
   private String projectId;
 
-  public static final String JSON_PROPERTY_PROJECT_GRANT_ID = "projectGrantId";
+  public static final String JSON_PROPERTY_ORGANIZATION_ID = "organizationId";
   @javax.annotation.Nullable
-  private String projectGrantId;
+  private String organizationId;
 
   public BetaInternalPermissionServiceProjectGrant() {
   }
@@ -71,29 +71,29 @@ public class BetaInternalPermissionServiceProjectGrant {
     this.projectId = projectId;
   }
 
-  public BetaInternalPermissionServiceProjectGrant projectGrantId(@javax.annotation.Nullable String projectGrantId) {
+  public BetaInternalPermissionServiceProjectGrant organizationId(@javax.annotation.Nullable String organizationId) {
     
-    this.projectGrantId = projectGrantId;
+    this.organizationId = organizationId;
     return this;
   }
 
   /**
-   * ProjectGrantID is required to grant administrator privileges for a specific project grant.
-   * @return projectGrantId
+   * OrganizationID is required to grant administrator privileges for a specific project grant.
+   * @return organizationId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROJECT_GRANT_ID)
+  @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getProjectGrantId() {
-    return projectGrantId;
+  public String getOrganizationId() {
+    return organizationId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROJECT_GRANT_ID)
+  @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProjectGrantId(@javax.annotation.Nullable String projectGrantId) {
-    this.projectGrantId = projectGrantId;
+  public void setOrganizationId(@javax.annotation.Nullable String organizationId) {
+    this.organizationId = organizationId;
   }
 
   @Override
@@ -106,12 +106,12 @@ public class BetaInternalPermissionServiceProjectGrant {
     }
     BetaInternalPermissionServiceProjectGrant betaInternalPermissionServiceProjectGrant = (BetaInternalPermissionServiceProjectGrant) o;
     return Objects.equals(this.projectId, betaInternalPermissionServiceProjectGrant.projectId) &&
-        Objects.equals(this.projectGrantId, betaInternalPermissionServiceProjectGrant.projectGrantId);
+        Objects.equals(this.organizationId, betaInternalPermissionServiceProjectGrant.organizationId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(projectId, projectGrantId);
+    return Objects.hash(projectId, organizationId);
   }
 
   @Override
@@ -119,7 +119,7 @@ public class BetaInternalPermissionServiceProjectGrant {
     StringBuilder sb = new StringBuilder();
     sb.append("class BetaInternalPermissionServiceProjectGrant {\n");
     sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
-    sb.append("    projectGrantId: ").append(toIndentedString(projectGrantId)).append("\n");
+    sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -177,10 +177,10 @@ public class BetaInternalPermissionServiceProjectGrant {
       }
     }
 
-    // add `projectGrantId` to the URL query string
-    if (getProjectGrantId() != null) {
+    // add `organizationId` to the URL query string
+    if (getOrganizationId() != null) {
       try {
-        joiner.add(String.format("%sprojectGrantId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectGrantId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%sorganizationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrganizationId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
