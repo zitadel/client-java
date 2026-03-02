@@ -39,8 +39,8 @@ public class OidcServiceApi extends BaseApi {
 
 
               /**
-              * Authorize or deny device authorization (Convenience Method)
-              * Authorize or deny the device authorization request based on the provided device authorization id.
+              * Authorize or Deny Device Authorization (Convenience Method)
+              * Authorize or deny the device authorization request based on the provided device authorization id.   Required permissions:    - &#x60;session.link&#x60;
                 * @return Object
               * @throws ApiException if fails to make API call
               */
@@ -50,8 +50,8 @@ public class OidcServiceApi extends BaseApi {
 
 
   /**
-   * Authorize or deny device authorization
-   * Authorize or deny the device authorization request based on the provided device authorization id.
+   * Authorize or Deny Device Authorization
+   * Authorize or deny the device authorization request based on the provided device authorization id.   Required permissions:    - &#x60;session.link&#x60;
    * @param oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest  (required)
    * @return Object
    * @throws ApiException if fails to make API call
@@ -62,8 +62,8 @@ public class OidcServiceApi extends BaseApi {
 
 
   /**
-   * Authorize or deny device authorization
-   * Authorize or deny the device authorization request based on the provided device authorization id.
+   * Authorize or Deny Device Authorization
+   * Authorize or deny the device authorization request based on the provided device authorization id.   Required permissions:    - &#x60;session.link&#x60;
    * @param oiDCServiceAuthorizeOrDenyDeviceAuthorizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return Object
@@ -124,8 +124,8 @@ public class OidcServiceApi extends BaseApi {
 
 
               /**
-              * CreateCallback (Convenience Method)
-              * 
+              * Create Callback (Convenience Method)
+              * Finalize an Auth Request and get the callback URL for success or failure.  The user must be redirected to the URL in order to inform the application about the success or failure.  On success, the URL contains details for the application to obtain the tokens.  This method can only be called once for an Auth request.   Required permissions:    - &#x60;session.link&#x60;
                 * @return OIDCServiceCreateCallbackResponse
               * @throws ApiException if fails to make API call
               */
@@ -135,8 +135,8 @@ public class OidcServiceApi extends BaseApi {
 
 
   /**
-   * CreateCallback
-   * 
+   * Create Callback
+   * Finalize an Auth Request and get the callback URL for success or failure.  The user must be redirected to the URL in order to inform the application about the success or failure.  On success, the URL contains details for the application to obtain the tokens.  This method can only be called once for an Auth request.   Required permissions:    - &#x60;session.link&#x60;
    * @param oiDCServiceCreateCallbackRequest  (required)
    * @return OIDCServiceCreateCallbackResponse
    * @throws ApiException if fails to make API call
@@ -147,8 +147,8 @@ public class OidcServiceApi extends BaseApi {
 
 
   /**
-   * CreateCallback
-   * 
+   * Create Callback
+   * Finalize an Auth Request and get the callback URL for success or failure.  The user must be redirected to the URL in order to inform the application about the success or failure.  On success, the URL contains details for the application to obtain the tokens.  This method can only be called once for an Auth request.   Required permissions:    - &#x60;session.link&#x60;
    * @param oiDCServiceCreateCallbackRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return OIDCServiceCreateCallbackResponse
@@ -210,8 +210,8 @@ public class OidcServiceApi extends BaseApi {
 
 
   /**
-   * GetAuthRequest
-   * 
+   * Get Auth Request
+   * Get OIDC Auth Request details by ID, obtained from the redirect URL.  Returns details that are parsed from the application&#39;s Auth Request.   Required permissions:    - &#x60;session.read&#x60;
    * @param oiDCServiceGetAuthRequestRequest  (required)
    * @return OIDCServiceGetAuthRequestResponse
    * @throws ApiException if fails to make API call
@@ -222,8 +222,8 @@ public class OidcServiceApi extends BaseApi {
 
 
   /**
-   * GetAuthRequest
-   * 
+   * Get Auth Request
+   * Get OIDC Auth Request details by ID, obtained from the redirect URL.  Returns details that are parsed from the application&#39;s Auth Request.   Required permissions:    - &#x60;session.read&#x60;
    * @param oiDCServiceGetAuthRequestRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return OIDCServiceGetAuthRequestResponse
@@ -285,8 +285,8 @@ public class OidcServiceApi extends BaseApi {
 
 
   /**
-   * Get device authorization request
-   * Get the device authorization based on the provided \&quot;user code\&quot;.  This will return the device authorization request, which contains the device authorization id  that is required to authorize the request once the user signed in or to deny it.
+   * Get Device Authorization Request
+   * Get the device authorization based on the provided \&quot;user code\&quot;.  This will return the device authorization request, which contains the device authorization id  that is required to authorize the request once the user signed in or to deny it.   Required permissions:    - &#x60;session.read&#x60;
    * @param oiDCServiceGetDeviceAuthorizationRequestRequest  (required)
    * @return OIDCServiceGetDeviceAuthorizationRequestResponse
    * @throws ApiException if fails to make API call
@@ -297,8 +297,8 @@ public class OidcServiceApi extends BaseApi {
 
 
   /**
-   * Get device authorization request
-   * Get the device authorization based on the provided \&quot;user code\&quot;.  This will return the device authorization request, which contains the device authorization id  that is required to authorize the request once the user signed in or to deny it.
+   * Get Device Authorization Request
+   * Get the device authorization based on the provided \&quot;user code\&quot;.  This will return the device authorization request, which contains the device authorization id  that is required to authorize the request once the user signed in or to deny it.   Required permissions:    - &#x60;session.read&#x60;
    * @param oiDCServiceGetDeviceAuthorizationRequestRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return OIDCServiceGetDeviceAuthorizationRequestResponse

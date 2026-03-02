@@ -48,7 +48,7 @@ public class WebKeyServiceDeleteWebKeyRequest {
   }
 
   /**
-   * Get id
+   * The unique identifier of the key to delete.
    * @return id
    */
   @javax.annotation.Nullable

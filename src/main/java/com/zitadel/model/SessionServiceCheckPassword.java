@@ -48,7 +48,7 @@ public class SessionServiceCheckPassword {
   }
 
   /**
-   * Get password
+   * The password of the user to be checked.
    * @return password
    */
   @javax.annotation.Nullable

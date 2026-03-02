@@ -48,7 +48,7 @@ public class WebKeyServiceActivateWebKeyRequest {
   }
 
   /**
-   * Get id
+   * The unique identifier of the key to activate.
    * @return id
    */
   @javax.annotation.Nullable

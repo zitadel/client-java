@@ -38,6 +38,7 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   SettingsServiceLoginSettings.JSON_PROPERTY_ALLOW_USERNAME_PASSWORD,
+  SettingsServiceLoginSettings.JSON_PROPERTY_ALLOW_LOCAL_AUTHENTICATION,
   SettingsServiceLoginSettings.JSON_PROPERTY_ALLOW_REGISTER,
   SettingsServiceLoginSettings.JSON_PROPERTY_ALLOW_EXTERNAL_IDP,
   SettingsServiceLoginSettings.JSON_PROPERTY_FORCE_MFA,
@@ -63,6 +64,10 @@ public class SettingsServiceLoginSettings {
   public static final String JSON_PROPERTY_ALLOW_USERNAME_PASSWORD = "allowUsernamePassword";
   @javax.annotation.Nullable
   private Boolean allowUsernamePassword;
+
+  public static final String JSON_PROPERTY_ALLOW_LOCAL_AUTHENTICATION = "allowLocalAuthentication";
+  @javax.annotation.Nullable
+  private Boolean allowLocalAuthentication;
 
   public static final String JSON_PROPERTY_ALLOW_REGISTER = "allowRegister";
   @javax.annotation.Nullable
@@ -150,9 +155,11 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Get allowUsernamePassword
+   * If enabled, users can log in locally with their username and passkeys or password.  Disabling this option will require users to log in with an external identity provider.  Be sure to allow at least one external identity provider if this option is disabled.  Deprecated: check allow_local_authentication instead.
    * @return allowUsernamePassword
+   * @deprecated
    */
+  @Deprecated
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_ALLOW_USERNAME_PASSWORD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -168,6 +175,31 @@ public class SettingsServiceLoginSettings {
     this.allowUsernamePassword = allowUsernamePassword;
   }
 
+  public SettingsServiceLoginSettings allowLocalAuthentication(@javax.annotation.Nullable Boolean allowLocalAuthentication) {
+    
+    this.allowLocalAuthentication = allowLocalAuthentication;
+    return this;
+  }
+
+  /**
+   * If enabled, users can log in locally with their username and passkeys or password.  Disabling this option will require users to log in with an external identity provider.  Be sure to allow at least one external identity provider if this option is disabled.
+   * @return allowLocalAuthentication
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALLOW_LOCAL_AUTHENTICATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getAllowLocalAuthentication() {
+    return allowLocalAuthentication;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALLOW_LOCAL_AUTHENTICATION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAllowLocalAuthentication(@javax.annotation.Nullable Boolean allowLocalAuthentication) {
+    this.allowLocalAuthentication = allowLocalAuthentication;
+  }
+
   public SettingsServiceLoginSettings allowRegister(@javax.annotation.Nullable Boolean allowRegister) {
     
     this.allowRegister = allowRegister;
@@ -175,7 +207,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Get allowRegister
+   * If enabled, users can register a local account by themself.  This option does not effect external identity providers.  Each identity provider can be configured to allow or disallow registration.
    * @return allowRegister
    */
   @javax.annotation.Nullable
@@ -200,7 +232,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Get allowExternalIdp
+   * If enabled, users will generally be allowed to use an external identity provider to log in.  Be sure to allow at least one external identity provider if this option is enabled.
    * @return allowExternalIdp
    */
   @javax.annotation.Nullable
@@ -225,7 +257,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Get forceMfa
+   * If enabled, users will be forced to use a multi-factor to log in.  This also applies to federated logins through an external identity provider.  Users will be required to set up a second factor if they have not done so already.
    * @return forceMfa
    */
   @javax.annotation.Nullable
@@ -275,7 +307,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Get hidePasswordReset
+   * If enabled, the password reset link will be hidden on the login screen.
    * @return hidePasswordReset
    */
   @javax.annotation.Nullable
@@ -300,7 +332,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Get ignoreUnknownUsernames
+   * If enabled, an unknown username on the login screen will not return an error directly,  but will always display the password screen.  This prevents user enumeration attacks.
    * @return ignoreUnknownUsernames
    */
   @javax.annotation.Nullable
@@ -325,7 +357,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Get defaultRedirectUri
+   * Defines where the user will be redirected to if the login is started without app context (e.g. from mail).
    * @return defaultRedirectUri
    */
   @javax.annotation.Nullable
@@ -483,7 +515,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Get secondFactors
+   * The list of allowed second factors.
    * @return secondFactors
    */
   @javax.annotation.Nullable
@@ -516,7 +548,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Get multiFactors
+   * The list of allowed multi factors.
    * @return multiFactors
    */
   @javax.annotation.Nullable
@@ -541,7 +573,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * If set to true, the suffix (@domain.com) of an unknown username input on the login screen will be matched against the org domains and will redirect to the registration of that organization on success.
+   * Allow discovery of the organization and its authentication option by domain.  If set to true, the suffix (@domain.com) of an unknown username input on the login screen  will be matched against the organization domains and will redirect to the registration of that organization on success.  The registration can either be locally (requires allow_register to be true) or through an external identity provider.  In case only one identity provider is configured for the organization, the user will be redirected directly to the identity provider.
    * @return allowDomainDiscovery
    */
   @javax.annotation.Nullable
@@ -566,7 +598,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Get disableLoginWithEmail
+   * By default, users can login with their verified email address additionally to their login name.  Setting this to true disables the email login.  Note: If the email is set as the login name, this setting has no effect.
    * @return disableLoginWithEmail
    */
   @javax.annotation.Nullable
@@ -591,7 +623,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Get disableLoginWithPhone
+   * By default, users can login with their verified phone number additionally to their login name.  Setting this to true disables the phone number login.  Note: If the phone number is set as the login name, this setting has no effect.
    * @return disableLoginWithPhone
    */
   @javax.annotation.Nullable
@@ -641,7 +673,7 @@ public class SettingsServiceLoginSettings {
   }
 
   /**
-   * Get forceMfaLocalOnly
+   * If enabled, users will be forced to use a multi-factor to log in if they authenticated locally.  This does not apply to federated logins through an external identity provider.  Users will be required to set up a second factor if they have not done so already.  If both force_mfa and force_mfa_local_only are enabled, force_mfa takes precedence and  all logins will require a second factor.
    * @return forceMfaLocalOnly
    */
   @javax.annotation.Nullable
@@ -669,6 +701,7 @@ public class SettingsServiceLoginSettings {
     }
     SettingsServiceLoginSettings settingsServiceLoginSettings = (SettingsServiceLoginSettings) o;
     return Objects.equals(this.allowUsernamePassword, settingsServiceLoginSettings.allowUsernamePassword) &&
+        Objects.equals(this.allowLocalAuthentication, settingsServiceLoginSettings.allowLocalAuthentication) &&
         Objects.equals(this.allowRegister, settingsServiceLoginSettings.allowRegister) &&
         Objects.equals(this.allowExternalIdp, settingsServiceLoginSettings.allowExternalIdp) &&
         Objects.equals(this.forceMfa, settingsServiceLoginSettings.forceMfa) &&
@@ -692,7 +725,7 @@ public class SettingsServiceLoginSettings {
 
   @Override
   public int hashCode() {
-    return Objects.hash(allowUsernamePassword, allowRegister, allowExternalIdp, forceMfa, passkeysType, hidePasswordReset, ignoreUnknownUsernames, defaultRedirectUri, passwordCheckLifetime, externalLoginCheckLifetime, mfaInitSkipLifetime, secondFactorCheckLifetime, multiFactorCheckLifetime, secondFactors, multiFactors, allowDomainDiscovery, disableLoginWithEmail, disableLoginWithPhone, resourceOwnerType, forceMfaLocalOnly);
+    return Objects.hash(allowUsernamePassword, allowLocalAuthentication, allowRegister, allowExternalIdp, forceMfa, passkeysType, hidePasswordReset, ignoreUnknownUsernames, defaultRedirectUri, passwordCheckLifetime, externalLoginCheckLifetime, mfaInitSkipLifetime, secondFactorCheckLifetime, multiFactorCheckLifetime, secondFactors, multiFactors, allowDomainDiscovery, disableLoginWithEmail, disableLoginWithPhone, resourceOwnerType, forceMfaLocalOnly);
   }
 
   @Override
@@ -700,6 +733,7 @@ public class SettingsServiceLoginSettings {
     StringBuilder sb = new StringBuilder();
     sb.append("class SettingsServiceLoginSettings {\n");
     sb.append("    allowUsernamePassword: ").append(toIndentedString(allowUsernamePassword)).append("\n");
+    sb.append("    allowLocalAuthentication: ").append(toIndentedString(allowLocalAuthentication)).append("\n");
     sb.append("    allowRegister: ").append(toIndentedString(allowRegister)).append("\n");
     sb.append("    allowExternalIdp: ").append(toIndentedString(allowExternalIdp)).append("\n");
     sb.append("    forceMfa: ").append(toIndentedString(forceMfa)).append("\n");
@@ -770,6 +804,16 @@ public class SettingsServiceLoginSettings {
     if (getAllowUsernamePassword() != null) {
       try {
         joiner.add(String.format("%sallowUsernamePassword%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAllowUsernamePassword()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `allowLocalAuthentication` to the URL query string
+    if (getAllowLocalAuthentication() != null) {
+      try {
+        joiner.add(String.format("%sallowLocalAuthentication%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAllowLocalAuthentication()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

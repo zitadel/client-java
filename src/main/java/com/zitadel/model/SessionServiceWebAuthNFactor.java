@@ -79,7 +79,7 @@ public class SessionServiceWebAuthNFactor {
   }
 
   /**
-   * Get userVerified
+   * Indicates if the user presence was verified during the last challenge.  This can be used to determine if the factor can be considered as multi-factor authentication.
    * @return userVerified
    */
   @javax.annotation.Nullable

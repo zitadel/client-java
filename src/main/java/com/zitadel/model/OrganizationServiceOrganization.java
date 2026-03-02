@@ -70,7 +70,7 @@ public class OrganizationServiceOrganization {
   }
 
   /**
-   * Unique identifier of the organization.
+   * ID is the unique identifier of the organization.
    * @return id
    */
   @javax.annotation.Nullable

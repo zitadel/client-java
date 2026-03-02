@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.SessionServiceIntentFactor;
 import com.zitadel.model.SessionServiceOTPFactor;
 import com.zitadel.model.SessionServicePasswordFactor;
+import com.zitadel.model.SessionServiceRecoveryCodeFactor;
 import com.zitadel.model.SessionServiceTOTPFactor;
 import com.zitadel.model.SessionServiceUserFactor;
 import com.zitadel.model.SessionServiceWebAuthNFactor;
@@ -42,7 +43,8 @@ import java.util.StringJoiner;
   SessionServiceFactors.JSON_PROPERTY_INTENT,
   SessionServiceFactors.JSON_PROPERTY_TOTP,
   SessionServiceFactors.JSON_PROPERTY_OTP_SMS,
-  SessionServiceFactors.JSON_PROPERTY_OTP_EMAIL
+  SessionServiceFactors.JSON_PROPERTY_OTP_EMAIL,
+  SessionServiceFactors.JSON_PROPERTY_RECOVERY_CODE
 })
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class SessionServiceFactors {
@@ -73,6 +75,10 @@ public class SessionServiceFactors {
   public static final String JSON_PROPERTY_OTP_EMAIL = "otpEmail";
   @javax.annotation.Nullable
   private SessionServiceOTPFactor otpEmail;
+
+  public static final String JSON_PROPERTY_RECOVERY_CODE = "recoveryCode";
+  @javax.annotation.Nullable
+  private SessionServiceRecoveryCodeFactor recoveryCode;
 
   public SessionServiceFactors() {
   }
@@ -252,6 +258,31 @@ public class SessionServiceFactors {
     this.otpEmail = otpEmail;
   }
 
+  public SessionServiceFactors recoveryCode(@javax.annotation.Nullable SessionServiceRecoveryCodeFactor recoveryCode) {
+    
+    this.recoveryCode = recoveryCode;
+    return this;
+  }
+
+  /**
+   * Get recoveryCode
+   * @return recoveryCode
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RECOVERY_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SessionServiceRecoveryCodeFactor getRecoveryCode() {
+    return recoveryCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RECOVERY_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRecoveryCode(@javax.annotation.Nullable SessionServiceRecoveryCodeFactor recoveryCode) {
+    this.recoveryCode = recoveryCode;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -267,12 +298,13 @@ public class SessionServiceFactors {
         Objects.equals(this.intent, sessionServiceFactors.intent) &&
         Objects.equals(this.totp, sessionServiceFactors.totp) &&
         Objects.equals(this.otpSms, sessionServiceFactors.otpSms) &&
-        Objects.equals(this.otpEmail, sessionServiceFactors.otpEmail);
+        Objects.equals(this.otpEmail, sessionServiceFactors.otpEmail) &&
+        Objects.equals(this.recoveryCode, sessionServiceFactors.recoveryCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(user, password, webAuthN, intent, totp, otpSms, otpEmail);
+    return Objects.hash(user, password, webAuthN, intent, totp, otpSms, otpEmail, recoveryCode);
   }
 
   @Override
@@ -286,6 +318,7 @@ public class SessionServiceFactors {
     sb.append("    totp: ").append(toIndentedString(totp)).append("\n");
     sb.append("    otpSms: ").append(toIndentedString(otpSms)).append("\n");
     sb.append("    otpEmail: ").append(toIndentedString(otpEmail)).append("\n");
+    sb.append("    recoveryCode: ").append(toIndentedString(recoveryCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -366,6 +399,11 @@ public class SessionServiceFactors {
     // add `otpEmail` to the URL query string
     if (getOtpEmail() != null) {
       joiner.add(getOtpEmail().toUrlQueryString(prefix + "otpEmail" + suffix));
+    }
+
+    // add `recoveryCode` to the URL query string
+    if (getRecoveryCode() != null) {
+      joiner.add(getRecoveryCode().toUrlQueryString(prefix + "recoveryCode" + suffix));
     }
 
     return joiner.toString();

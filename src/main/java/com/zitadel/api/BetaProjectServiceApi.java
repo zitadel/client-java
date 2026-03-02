@@ -68,7 +68,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Activate Project
-   * Set the state of a project to active. Request returns no error if the project is already activated.   Required permission:    - &#x60;project.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of a project to active. Request returns no error if the project is already activated.   Required permission:    - &#x60;project.write&#x60;
    * @param betaProjectServiceActivateProjectRequest  (required)
    * @return BetaProjectServiceActivateProjectResponse
    * @throws ApiException if fails to make API call
@@ -80,7 +80,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Activate Project
-   * Set the state of a project to active. Request returns no error if the project is already activated.   Required permission:    - &#x60;project.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of a project to active. Request returns no error if the project is already activated.   Required permission:    - &#x60;project.write&#x60;
    * @param betaProjectServiceActivateProjectRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceActivateProjectResponse
@@ -143,7 +143,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Activate Project Grant
-   * Set the state of the project grant to activated.   Required permission:    - &#x60;project.grant.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of the project grant to activated.   Required permission:    - &#x60;project.grant.write&#x60;
    * @param betaProjectServiceActivateProjectGrantRequest  (required)
    * @return BetaProjectServiceActivateProjectGrantResponse
    * @throws ApiException if fails to make API call
@@ -155,7 +155,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Activate Project Grant
-   * Set the state of the project grant to activated.   Required permission:    - &#x60;project.grant.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of the project grant to activated.   Required permission:    - &#x60;project.grant.write&#x60;
    * @param betaProjectServiceActivateProjectGrantRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceActivateProjectGrantResponse
@@ -218,7 +218,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Add Project Role
-   * Add a new project role to a project. The key must be unique within the project.   Required permission:    - &#x60;project.role.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Add a new project role to a project. The key must be unique within the project.   Required permission:    - &#x60;project.role.write&#x60;
    * @param betaProjectServiceAddProjectRoleRequest  (required)
    * @return BetaProjectServiceAddProjectRoleResponse
    * @throws ApiException if fails to make API call
@@ -230,7 +230,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Add Project Role
-   * Add a new project role to a project. The key must be unique within the project.   Required permission:    - &#x60;project.role.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Add a new project role to a project. The key must be unique within the project.   Required permission:    - &#x60;project.role.write&#x60;
    * @param betaProjectServiceAddProjectRoleRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceAddProjectRoleResponse
@@ -293,7 +293,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Create Project
-   * Create a new Project.   Required permission:    - &#x60;project.create&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Create a new Project.   Required permission:    - &#x60;project.create&#x60;
    * @param betaProjectServiceCreateProjectRequest  (required)
    * @return BetaProjectServiceCreateProjectResponse
    * @throws ApiException if fails to make API call
@@ -305,7 +305,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Create Project
-   * Create a new Project.   Required permission:    - &#x60;project.create&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Create a new Project.   Required permission:    - &#x60;project.create&#x60;
    * @param betaProjectServiceCreateProjectRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceCreateProjectResponse
@@ -368,7 +368,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Create Project Grant
-   * Grant a project to another organization.  The project grant will allow the granted organization to access the project and manage the authorizations for its users.   Required permission:    - &#x60;project.grant.create&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Grant a project to another organization.  The project grant will allow the granted organization to access the project and manage the authorizations for its users.   Required permission:    - &#x60;project.grant.create&#x60;
    * @param betaProjectServiceCreateProjectGrantRequest  (required)
    * @return BetaProjectServiceCreateProjectGrantResponse
    * @throws ApiException if fails to make API call
@@ -380,7 +380,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Create Project Grant
-   * Grant a project to another organization.  The project grant will allow the granted organization to access the project and manage the authorizations for its users.   Required permission:    - &#x60;project.grant.create&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Grant a project to another organization.  The project grant will allow the granted organization to access the project and manage the authorizations for its users.   Required permission:    - &#x60;project.grant.create&#x60;
    * @param betaProjectServiceCreateProjectGrantRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceCreateProjectGrantResponse
@@ -443,7 +443,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Deactivate Project
-   * Set the state of a project to deactivated. Request returns no error if the project is already deactivated.  Applications under deactivated projects are not able to login anymore.   Required permission:    - &#x60;project.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of a project to deactivated. Request returns no error if the project is already deactivated.  Applications under deactivated projects are not able to login anymore.   Required permission:    - &#x60;project.write&#x60;
    * @param betaProjectServiceDeactivateProjectRequest  (required)
    * @return BetaProjectServiceDeactivateProjectResponse
    * @throws ApiException if fails to make API call
@@ -455,7 +455,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Deactivate Project
-   * Set the state of a project to deactivated. Request returns no error if the project is already deactivated.  Applications under deactivated projects are not able to login anymore.   Required permission:    - &#x60;project.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of a project to deactivated. Request returns no error if the project is already deactivated.  Applications under deactivated projects are not able to login anymore.   Required permission:    - &#x60;project.write&#x60;
    * @param betaProjectServiceDeactivateProjectRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceDeactivateProjectResponse
@@ -518,7 +518,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Deactivate Project Grant
-   * Set the state of the project grant to deactivated.  Applications under deactivated projects grants are not able to login anymore.   Required permission:    - &#x60;project.grant.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of the project grant to deactivated.  Applications under deactivated projects grants are not able to login anymore.   Required permission:    - &#x60;project.grant.write&#x60;
    * @param betaProjectServiceDeactivateProjectGrantRequest  (required)
    * @return BetaProjectServiceDeactivateProjectGrantResponse
    * @throws ApiException if fails to make API call
@@ -530,7 +530,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Deactivate Project Grant
-   * Set the state of the project grant to deactivated.  Applications under deactivated projects grants are not able to login anymore.   Required permission:    - &#x60;project.grant.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of the project grant to deactivated.  Applications under deactivated projects grants are not able to login anymore.   Required permission:    - &#x60;project.grant.write&#x60;
    * @param betaProjectServiceDeactivateProjectGrantRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceDeactivateProjectGrantResponse
@@ -593,7 +593,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Delete Project
-   * Delete an existing project.  In case the project is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;project.delete&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete an existing project.  In case the project is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;project.delete&#x60;
    * @param betaProjectServiceDeleteProjectRequest  (required)
    * @return BetaProjectServiceDeleteProjectResponse
    * @throws ApiException if fails to make API call
@@ -605,7 +605,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Delete Project
-   * Delete an existing project.  In case the project is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;project.delete&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete an existing project.  In case the project is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;project.delete&#x60;
    * @param betaProjectServiceDeleteProjectRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceDeleteProjectResponse
@@ -668,7 +668,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Delete Project Grant
-   * Delete a project grant. All user grants for this project grant will also be removed.  A user will not have access to the project afterward (if permissions are checked).  In case the project grant is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;project.grant.delete&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete a project grant. All user grants for this project grant will also be removed.  A user will not have access to the project afterward (if permissions are checked).  In case the project grant is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;project.grant.delete&#x60;
    * @param betaProjectServiceDeleteProjectGrantRequest  (required)
    * @return BetaProjectServiceDeleteProjectGrantResponse
    * @throws ApiException if fails to make API call
@@ -680,7 +680,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Delete Project Grant
-   * Delete a project grant. All user grants for this project grant will also be removed.  A user will not have access to the project afterward (if permissions are checked).  In case the project grant is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;project.grant.delete&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete a project grant. All user grants for this project grant will also be removed.  A user will not have access to the project afterward (if permissions are checked).  In case the project grant is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;project.grant.delete&#x60;
    * @param betaProjectServiceDeleteProjectGrantRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceDeleteProjectGrantResponse
@@ -743,7 +743,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Get Project
-   * Returns the project identified by the requested ID.   Required permission:    - &#x60;project.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the project identified by the requested ID.   Required permission:    - &#x60;project.read&#x60;
    * @param betaProjectServiceGetProjectRequest  (required)
    * @return BetaProjectServiceGetProjectResponse
    * @throws ApiException if fails to make API call
@@ -755,7 +755,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Get Project
-   * Returns the project identified by the requested ID.   Required permission:    - &#x60;project.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the project identified by the requested ID.   Required permission:    - &#x60;project.read&#x60;
    * @param betaProjectServiceGetProjectRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceGetProjectResponse
@@ -818,7 +818,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * List Project Grants
-   * Returns a list of project grants. A project grant is when the organization grants its project to another organization.   Required permission:    - &#x60;project.grant.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns a list of project grants. A project grant is when the organization grants its project to another organization.   Required permission:    - &#x60;project.grant.write&#x60;
    * @param betaProjectServiceListProjectGrantsRequest  (required)
    * @return BetaProjectServiceListProjectGrantsResponse
    * @throws ApiException if fails to make API call
@@ -830,7 +830,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * List Project Grants
-   * Returns a list of project grants. A project grant is when the organization grants its project to another organization.   Required permission:    - &#x60;project.grant.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns a list of project grants. A project grant is when the organization grants its project to another organization.   Required permission:    - &#x60;project.grant.write&#x60;
    * @param betaProjectServiceListProjectGrantsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceListProjectGrantsResponse
@@ -893,7 +893,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * List Project Roles
-   * Returns all roles of a project matching the search query.   Required permission:    - &#x60;project.role.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns all roles of a project matching the search query.   Required permission:    - &#x60;project.role.read&#x60;
    * @param betaProjectServiceListProjectRolesRequest  (required)
    * @return BetaProjectServiceListProjectRolesResponse
    * @throws ApiException if fails to make API call
@@ -905,7 +905,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * List Project Roles
-   * Returns all roles of a project matching the search query.   Required permission:    - &#x60;project.role.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns all roles of a project matching the search query.   Required permission:    - &#x60;project.role.read&#x60;
    * @param betaProjectServiceListProjectRolesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceListProjectRolesResponse
@@ -968,7 +968,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * List Projects
-   * List all matching projects. By default all projects of the instance that the caller has permission to read are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;project.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   List all matching projects. By default all projects of the instance that the caller has permission to read are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;project.read&#x60;
    * @param betaProjectServiceListProjectsRequest  (required)
    * @return BetaProjectServiceListProjectsResponse
    * @throws ApiException if fails to make API call
@@ -980,7 +980,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * List Projects
-   * List all matching projects. By default all projects of the instance that the caller has permission to read are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;project.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   List all matching projects. By default all projects of the instance that the caller has permission to read are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;project.read&#x60;
    * @param betaProjectServiceListProjectsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceListProjectsResponse
@@ -1043,7 +1043,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Remove Project Role
-   * Removes the role from the project and on every resource it has a dependency. This includes project grants and user grants.   Required permission:    - &#x60;project.role.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Removes the role from the project and on every resource it has a dependency. This includes project grants and user grants.   Required permission:    - &#x60;project.role.write&#x60;
    * @param betaProjectServiceRemoveProjectRoleRequest  (required)
    * @return BetaProjectServiceRemoveProjectRoleResponse
    * @throws ApiException if fails to make API call
@@ -1055,7 +1055,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Remove Project Role
-   * Removes the role from the project and on every resource it has a dependency. This includes project grants and user grants.   Required permission:    - &#x60;project.role.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Removes the role from the project and on every resource it has a dependency. This includes project grants and user grants.   Required permission:    - &#x60;project.role.write&#x60;
    * @param betaProjectServiceRemoveProjectRoleRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceRemoveProjectRoleResponse
@@ -1118,7 +1118,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Update Project
-   * Update an existing project.   Required permission:    - &#x60;project.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Update an existing project.   Required permission:    - &#x60;project.write&#x60;
    * @param betaProjectServiceUpdateProjectRequest  (required)
    * @return BetaProjectServiceUpdateProjectResponse
    * @throws ApiException if fails to make API call
@@ -1130,7 +1130,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Update Project
-   * Update an existing project.   Required permission:    - &#x60;project.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Update an existing project.   Required permission:    - &#x60;project.write&#x60;
    * @param betaProjectServiceUpdateProjectRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceUpdateProjectResponse
@@ -1193,7 +1193,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Update Project Grant
-   * Change the roles of the project that is granted to another organization.  The project grant will allow the granted organization to access the project and manage the authorizations for its users.   Required permission:    - &#x60;project.grant.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Change the roles of the project that is granted to another organization.  The project grant will allow the granted organization to access the project and manage the authorizations for its users.   Required permission:    - &#x60;project.grant.write&#x60;
    * @param betaProjectServiceUpdateProjectGrantRequest  (required)
    * @return BetaProjectServiceUpdateProjectGrantResponse
    * @throws ApiException if fails to make API call
@@ -1205,7 +1205,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Update Project Grant
-   * Change the roles of the project that is granted to another organization.  The project grant will allow the granted organization to access the project and manage the authorizations for its users.   Required permission:    - &#x60;project.grant.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Change the roles of the project that is granted to another organization.  The project grant will allow the granted organization to access the project and manage the authorizations for its users.   Required permission:    - &#x60;project.grant.write&#x60;
    * @param betaProjectServiceUpdateProjectGrantRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceUpdateProjectGrantResponse
@@ -1268,7 +1268,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Update Project Role
-   * Change a project role. The key is not editable. If a key should change, remove the role and create a new one.   Required permission:    - &#x60;project.role.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Change a project role. The key is not editable. If a key should change, remove the role and create a new one.   Required permission:    - &#x60;project.role.write&#x60;
    * @param betaProjectServiceUpdateProjectRoleRequest  (required)
    * @return BetaProjectServiceUpdateProjectRoleResponse
    * @throws ApiException if fails to make API call
@@ -1280,7 +1280,7 @@ public class BetaProjectServiceApi extends BaseApi {
 
   /**
    * Update Project Role
-   * Change a project role. The key is not editable. If a key should change, remove the role and create a new one.   Required permission:    - &#x60;project.role.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Change a project role. The key is not editable. If a key should change, remove the role and create a new one.   Required permission:    - &#x60;project.role.write&#x60;
    * @param betaProjectServiceUpdateProjectRoleRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaProjectServiceUpdateProjectRoleResponse

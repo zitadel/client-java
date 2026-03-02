@@ -54,7 +54,7 @@ public class SessionServiceWebAuthN {
   }
 
   /**
-   * Get domain
+   * The domain on which the session was created. Will be used in the WebAuthN challenge.  It must be either the exact domain or a top-level domain of the origin of the request.  For example if the request is coming from \&quot;login.example.com\&quot;, the domain can be  \&quot;login.example.com\&quot; or \&quot;example.com\&quot;, but not \&quot;other.com\&quot; or \&quot;sub.login.example.com\&quot;.  See also: https://www.w3.org/TR/webauthn/#relying-party-identifier
    * @return domain
    */
   @javax.annotation.Nullable

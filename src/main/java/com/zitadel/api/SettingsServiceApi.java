@@ -57,8 +57,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the current active identity providers
-   * Get the current active identity providers
+   * Get Active Identity Providers
+   * Get the current active identity providers for the requested context.  This can be the instance or an organization. In case of an organization,  the returned identity providers will fall back to the active instance identity providers  if not explicitly set on the organization.   Optionally, filter the identity providers by their allowed actions:    - creation_allowed: only return identity providers that are allowed for user creation    - linking_allowed: only return identity providers that are allowed for linking to existing users    - auto_creation: only return identity providers that are allowed for automatic user creation    - auto_linking: only return identity providers that are allowed for automatic linking to existing users   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetActiveIdentityProvidersRequest  (required)
    * @return SettingsServiceGetActiveIdentityProvidersResponse
    * @throws ApiException if fails to make API call
@@ -69,8 +69,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the current active identity providers
-   * Get the current active identity providers
+   * Get Active Identity Providers
+   * Get the current active identity providers for the requested context.  This can be the instance or an organization. In case of an organization,  the returned identity providers will fall back to the active instance identity providers  if not explicitly set on the organization.   Optionally, filter the identity providers by their allowed actions:    - creation_allowed: only return identity providers that are allowed for user creation    - linking_allowed: only return identity providers that are allowed for linking to existing users    - auto_creation: only return identity providers that are allowed for automatic user creation    - auto_linking: only return identity providers that are allowed for automatic linking to existing users   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetActiveIdentityProvidersRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetActiveIdentityProvidersResponse
@@ -132,8 +132,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the current active branding settings
-   * Get the current active branding settings
+   * Get Branding Settings
+   * Get the current active branding settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetBrandingSettingsRequest  (required)
    * @return SettingsServiceGetBrandingSettingsResponse
    * @throws ApiException if fails to make API call
@@ -144,8 +144,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the current active branding settings
-   * Get the current active branding settings
+   * Get Branding Settings
+   * Get the current active branding settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetBrandingSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetBrandingSettingsResponse
@@ -207,8 +207,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the domain settings
-   * Get the domain settings
+   * Get Domain Settings
+   * Get the domain settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetDomainSettingsRequest  (required)
    * @return SettingsServiceGetDomainSettingsResponse
    * @throws ApiException if fails to make API call
@@ -219,8 +219,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the domain settings
-   * Get the domain settings
+   * Get Domain Settings
+   * Get the domain settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetDomainSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetDomainSettingsResponse
@@ -281,8 +281,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
               /**
-              * Get basic information over the instance (Convenience Method)
-              * Get basic information over the instance
+              * Get General Settings (Convenience Method)
+              * Get basic information of the instance like the default organization, default language and supported languages.   Required permissions:    - &#x60;policy.read&#x60;
                 * @return SettingsServiceGetGeneralSettingsResponse
               * @throws ApiException if fails to make API call
               */
@@ -292,8 +292,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get basic information over the instance
-   * Get basic information over the instance
+   * Get General Settings
+   * Get basic information of the instance like the default organization, default language and supported languages.   Required permissions:    - &#x60;policy.read&#x60;
    * @param body  (required)
    * @return SettingsServiceGetGeneralSettingsResponse
    * @throws ApiException if fails to make API call
@@ -304,8 +304,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get basic information over the instance
-   * Get basic information over the instance
+   * Get General Settings
+   * Get basic information of the instance like the default organization, default language and supported languages.   Required permissions:    - &#x60;policy.read&#x60;
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetGeneralSettingsResponse
@@ -452,8 +452,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the legal and support settings
-   * Get the legal and support settings
+   * Get Legal and Support Settings
+   * Get the legal and support settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetLegalAndSupportSettingsRequest  (required)
    * @return SettingsServiceGetLegalAndSupportSettingsResponse
    * @throws ApiException if fails to make API call
@@ -464,8 +464,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the legal and support settings
-   * Get the legal and support settings
+   * Get Legal and Support Settings
+   * Get the legal and support settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetLegalAndSupportSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetLegalAndSupportSettingsResponse
@@ -527,8 +527,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the lockout settings
-   * Get the lockout settings
+   * Get Lockout Settings
+   * Get the lockout settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Lockout settings define how many failed attempts are allowed before a user is locked out.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetLockoutSettingsRequest  (required)
    * @return SettingsServiceGetLockoutSettingsResponse
    * @throws ApiException if fails to make API call
@@ -539,8 +539,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the lockout settings
-   * Get the lockout settings
+   * Get Lockout Settings
+   * Get the lockout settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Lockout settings define how many failed attempts are allowed before a user is locked out.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetLockoutSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetLockoutSettingsResponse
@@ -602,8 +602,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the login settings
-   * Get the login settings
+   * Get Login Settings
+   * Get the login settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetLoginSettingsRequest  (required)
    * @return SettingsServiceGetLoginSettingsResponse
    * @throws ApiException if fails to make API call
@@ -614,8 +614,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the login settings
-   * Get the login settings
+   * Get Login Settings
+   * Get the login settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetLoginSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetLoginSettingsResponse
@@ -677,8 +677,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the password complexity settings
-   * Get the password complexity settings
+   * Get Password Complexity Settings
+   * Get the password complexity settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetPasswordComplexitySettingsRequest  (required)
    * @return SettingsServiceGetPasswordComplexitySettingsResponse
    * @throws ApiException if fails to make API call
@@ -689,8 +689,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the password complexity settings
-   * Get the password complexity settings
+   * Get Password Complexity Settings
+   * Get the password complexity settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetPasswordComplexitySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetPasswordComplexitySettingsResponse
@@ -752,8 +752,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the password expiry settings
-   * Get the password expiry settings
+   * Get Password Expiry Settings
+   * Get the password expiry settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetPasswordExpirySettingsRequest  (required)
    * @return SettingsServiceGetPasswordExpirySettingsResponse
    * @throws ApiException if fails to make API call
@@ -764,8 +764,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the password expiry settings
-   * Get the password expiry settings
+   * Get Password Expiry Settings
+   * Get the password expiry settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - &#x60;policy.read&#x60;
    * @param settingsServiceGetPasswordExpirySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetPasswordExpirySettingsResponse
@@ -826,8 +826,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
               /**
-              * Get the security settings (Convenience Method)
-              * Get the security settings
+              * Get Security Settings (Convenience Method)
+              * Get the security settings of the ZITADEL instance.  Security settings include settings like enabling impersonation and embedded iframe settings.   Required permissions:    - &#x60;iam.policy.read&#x60;
                 * @return SettingsServiceGetSecuritySettingsResponse
               * @throws ApiException if fails to make API call
               */
@@ -837,8 +837,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the security settings
-   * Get the security settings
+   * Get Security Settings
+   * Get the security settings of the ZITADEL instance.  Security settings include settings like enabling impersonation and embedded iframe settings.   Required permissions:    - &#x60;iam.policy.read&#x60;
    * @param body  (required)
    * @return SettingsServiceGetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
@@ -849,8 +849,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Get the security settings
-   * Get the security settings
+   * Get Security Settings
+   * Get the security settings of the ZITADEL instance.  Security settings include settings like enabling impersonation and embedded iframe settings.   Required permissions:    - &#x60;iam.policy.read&#x60;
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceGetSecuritySettingsResponse
@@ -997,8 +997,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Set the security settings
-   * Set the security settings
+   * Set Security Settings
+   * Set the security settings of the instance.   Required permissions:    - &#x60;iam.policy.write&#x60;
    * @param settingsServiceSetSecuritySettingsRequest  (required)
    * @return SettingsServiceSetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
@@ -1009,8 +1009,8 @@ public class SettingsServiceApi extends BaseApi {
 
 
   /**
-   * Set the security settings
-   * Set the security settings
+   * Set Security Settings
+   * Set the security settings of the instance.   Required permissions:    - &#x60;iam.policy.write&#x60;
    * @param settingsServiceSetSecuritySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SettingsServiceSetSecuritySettingsResponse

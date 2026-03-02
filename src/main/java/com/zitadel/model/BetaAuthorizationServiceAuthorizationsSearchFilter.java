@@ -38,6 +38,7 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   BetaAuthorizationServiceAuthorizationsSearchFilter.JSON_PROPERTY_AUTHORIZATION_IDS,
+  BetaAuthorizationServiceAuthorizationsSearchFilter.JSON_PROPERTY_IN_USER_IDS,
   BetaAuthorizationServiceAuthorizationsSearchFilter.JSON_PROPERTY_ORGANIZATION_ID,
   BetaAuthorizationServiceAuthorizationsSearchFilter.JSON_PROPERTY_PROJECT_GRANT_ID,
   BetaAuthorizationServiceAuthorizationsSearchFilter.JSON_PROPERTY_PROJECT_ID,
@@ -54,6 +55,10 @@ public class BetaAuthorizationServiceAuthorizationsSearchFilter {
   public static final String JSON_PROPERTY_AUTHORIZATION_IDS = "authorizationIds";
   @javax.annotation.Nullable
   private BetaAuthorizationServiceInIDsFilter authorizationIds;
+
+  public static final String JSON_PROPERTY_IN_USER_IDS = "inUserIds";
+  @javax.annotation.Nullable
+  private BetaAuthorizationServiceInIDsFilter inUserIds;
 
   public static final String JSON_PROPERTY_ORGANIZATION_ID = "organizationId";
   @javax.annotation.Nullable
@@ -121,6 +126,31 @@ public class BetaAuthorizationServiceAuthorizationsSearchFilter {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAuthorizationIds(@javax.annotation.Nullable BetaAuthorizationServiceInIDsFilter authorizationIds) {
     this.authorizationIds = authorizationIds;
+  }
+
+  public BetaAuthorizationServiceAuthorizationsSearchFilter inUserIds(@javax.annotation.Nullable BetaAuthorizationServiceInIDsFilter inUserIds) {
+    
+    this.inUserIds = inUserIds;
+    return this;
+  }
+
+  /**
+   * Get inUserIds
+   * @return inUserIds
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IN_USER_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BetaAuthorizationServiceInIDsFilter getInUserIds() {
+    return inUserIds;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IN_USER_IDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setInUserIds(@javax.annotation.Nullable BetaAuthorizationServiceInIDsFilter inUserIds) {
+    this.inUserIds = inUserIds;
   }
 
   public BetaAuthorizationServiceAuthorizationsSearchFilter organizationId(@javax.annotation.Nullable BetaAuthorizationServiceIDFilter organizationId) {
@@ -383,6 +413,7 @@ public class BetaAuthorizationServiceAuthorizationsSearchFilter {
     }
     BetaAuthorizationServiceAuthorizationsSearchFilter betaAuthorizationServiceAuthorizationsSearchFilter = (BetaAuthorizationServiceAuthorizationsSearchFilter) o;
     return Objects.equals(this.authorizationIds, betaAuthorizationServiceAuthorizationsSearchFilter.authorizationIds) &&
+        Objects.equals(this.inUserIds, betaAuthorizationServiceAuthorizationsSearchFilter.inUserIds) &&
         Objects.equals(this.organizationId, betaAuthorizationServiceAuthorizationsSearchFilter.organizationId) &&
         Objects.equals(this.projectGrantId, betaAuthorizationServiceAuthorizationsSearchFilter.projectGrantId) &&
         Objects.equals(this.projectId, betaAuthorizationServiceAuthorizationsSearchFilter.projectId) &&
@@ -397,7 +428,7 @@ public class BetaAuthorizationServiceAuthorizationsSearchFilter {
 
   @Override
   public int hashCode() {
-    return Objects.hash(authorizationIds, organizationId, projectGrantId, projectId, projectName, roleKey, state, userDisplayName, userId, userOrganizationId, userPreferredLoginName);
+    return Objects.hash(authorizationIds, inUserIds, organizationId, projectGrantId, projectId, projectName, roleKey, state, userDisplayName, userId, userOrganizationId, userPreferredLoginName);
   }
 
   @Override
@@ -405,6 +436,7 @@ public class BetaAuthorizationServiceAuthorizationsSearchFilter {
     StringBuilder sb = new StringBuilder();
     sb.append("class BetaAuthorizationServiceAuthorizationsSearchFilter {\n");
     sb.append("    authorizationIds: ").append(toIndentedString(authorizationIds)).append("\n");
+    sb.append("    inUserIds: ").append(toIndentedString(inUserIds)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    projectGrantId: ").append(toIndentedString(projectGrantId)).append("\n");
     sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
@@ -465,6 +497,11 @@ public class BetaAuthorizationServiceAuthorizationsSearchFilter {
     // add `authorizationIds` to the URL query string
     if (getAuthorizationIds() != null) {
       joiner.add(getAuthorizationIds().toUrlQueryString(prefix + "authorizationIds" + suffix));
+    }
+
+    // add `inUserIds` to the URL query string
+    if (getInUserIds() != null) {
+      joiner.add(getInUserIds().toUrlQueryString(prefix + "inUserIds" + suffix));
     }
 
     // add `organizationId` to the URL query string

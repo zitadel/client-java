@@ -50,7 +50,7 @@ public class BetaActionServiceApi extends BaseApi {
 
               /**
               * Create Target (Convenience Method)
-              * Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+              * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;
                 * @return BetaActionServiceCreateTargetResponse
               * @throws ApiException if fails to make API call
               */
@@ -61,7 +61,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * Create Target
-   * Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;
    * @param betaActionServiceCreateTargetRequest  (required)
    * @return BetaActionServiceCreateTargetResponse
    * @throws ApiException if fails to make API call
@@ -73,7 +73,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * Create Target
-   * Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Create a new target to your endpoint, which can be used in executions.   Required permission:    - &#x60;action.target.write&#x60;
    * @param betaActionServiceCreateTargetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceCreateTargetResponse
@@ -136,7 +136,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * Delete Target
-   * Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;action.target.delete&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;action.target.delete&#x60;
    * @param betaActionServiceDeleteTargetRequest  (required)
    * @return BetaActionServiceDeleteTargetResponse
    * @throws ApiException if fails to make API call
@@ -148,7 +148,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * Delete Target
-   * Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;action.target.delete&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - &#x60;action.target.delete&#x60;
    * @param betaActionServiceDeleteTargetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceDeleteTargetResponse
@@ -211,7 +211,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * Get Target
-   * Returns the target identified by the requested ID.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the target identified by the requested ID.   Required permission:    - &#x60;action.target.read&#x60;
    * @param betaActionServiceGetTargetRequest  (required)
    * @return BetaActionServiceGetTargetResponse
    * @throws ApiException if fails to make API call
@@ -223,7 +223,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * Get Target
-   * Returns the target identified by the requested ID.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the target identified by the requested ID.   Required permission:    - &#x60;action.target.read&#x60;
    * @param betaActionServiceGetTargetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceGetTargetResponse
@@ -285,7 +285,7 @@ public class BetaActionServiceApi extends BaseApi {
 
               /**
               * List Execution Functions (Convenience Method)
-              * List all available functions which can be used as condition for executions.
+              * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available functions which can be used as condition for executions.
                 * @return BetaActionServiceListExecutionFunctionsResponse
               * @throws ApiException if fails to make API call
               */
@@ -296,7 +296,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * List Execution Functions
-   * List all available functions which can be used as condition for executions.
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available functions which can be used as condition for executions.
    * @param body  (required)
    * @return BetaActionServiceListExecutionFunctionsResponse
    * @throws ApiException if fails to make API call
@@ -308,7 +308,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * List Execution Functions
-   * List all available functions which can be used as condition for executions.
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available functions which can be used as condition for executions.
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceListExecutionFunctionsResponse
@@ -370,7 +370,7 @@ public class BetaActionServiceApi extends BaseApi {
 
               /**
               * List Execution Methods (Convenience Method)
-              * List all available methods which can be used as condition for executions.
+              * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available methods which can be used as condition for executions.
                 * @return BetaActionServiceListExecutionMethodsResponse
               * @throws ApiException if fails to make API call
               */
@@ -381,7 +381,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * List Execution Methods
-   * List all available methods which can be used as condition for executions.
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available methods which can be used as condition for executions.
    * @param body  (required)
    * @return BetaActionServiceListExecutionMethodsResponse
    * @throws ApiException if fails to make API call
@@ -393,7 +393,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * List Execution Methods
-   * List all available methods which can be used as condition for executions.
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available methods which can be used as condition for executions.
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceListExecutionMethodsResponse
@@ -455,7 +455,7 @@ public class BetaActionServiceApi extends BaseApi {
 
               /**
               * List Execution Services (Convenience Method)
-              * List all available services which can be used as condition for executions.
+              * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available services which can be used as condition for executions.
                 * @return BetaActionServiceListExecutionServicesResponse
               * @throws ApiException if fails to make API call
               */
@@ -466,7 +466,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * List Execution Services
-   * List all available services which can be used as condition for executions.
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available services which can be used as condition for executions.
    * @param body  (required)
    * @return BetaActionServiceListExecutionServicesResponse
    * @throws ApiException if fails to make API call
@@ -478,7 +478,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * List Execution Services
-   * List all available services which can be used as condition for executions.
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available services which can be used as condition for executions.
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceListExecutionServicesResponse
@@ -541,7 +541,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * List Executions
-   * List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.execution.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.execution.read&#x60;
    * @param betaActionServiceListExecutionsRequest  (required)
    * @return BetaActionServiceListExecutionsResponse
    * @throws ApiException if fails to make API call
@@ -553,7 +553,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * List Executions
-   * List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.execution.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.execution.read&#x60;
    * @param betaActionServiceListExecutionsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceListExecutionsResponse
@@ -616,7 +616,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * List targets
-   * List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.target.read&#x60;
    * @param betaActionServiceListTargetsRequest  (required)
    * @return BetaActionServiceListTargetsResponse
    * @throws ApiException if fails to make API call
@@ -628,7 +628,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * List targets
-   * List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.target.read&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - &#x60;action.target.read&#x60;
    * @param betaActionServiceListTargetsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceListTargetsResponse
@@ -691,7 +691,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * Set Execution
-   * Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - &#x60;action.execution.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - &#x60;action.execution.write&#x60;
    * @param betaActionServiceSetExecutionRequest  (required)
    * @return BetaActionServiceSetExecutionResponse
    * @throws ApiException if fails to make API call
@@ -703,7 +703,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * Set Execution
-   * Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - &#x60;action.execution.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - &#x60;action.execution.write&#x60;
    * @param betaActionServiceSetExecutionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceSetExecutionResponse
@@ -765,7 +765,7 @@ public class BetaActionServiceApi extends BaseApi {
 
               /**
               * Update Target (Convenience Method)
-              * Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+              * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;
                 * @return BetaActionServiceUpdateTargetResponse
               * @throws ApiException if fails to make API call
               */
@@ -776,7 +776,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * Update Target
-   * Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;
    * @param betaActionServiceUpdateTargetRequest  (required)
    * @return BetaActionServiceUpdateTargetResponse
    * @throws ApiException if fails to make API call
@@ -788,7 +788,7 @@ public class BetaActionServiceApi extends BaseApi {
 
   /**
    * Update Target
-   * Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;   Required feature flag:    - &#x60;actions&#x60;
+   * Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - &#x60;action.target.write&#x60;
    * @param betaActionServiceUpdateTargetRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaActionServiceUpdateTargetResponse

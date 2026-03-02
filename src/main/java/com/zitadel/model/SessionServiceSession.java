@@ -92,7 +92,7 @@ public class SessionServiceSession {
   }
 
   /**
-   * Get id
+   * Unique identifier of the session.
    * @return id
    */
   @javax.annotation.Nullable
@@ -167,7 +167,7 @@ public class SessionServiceSession {
   }
 
   /**
-   * Get sequence
+   * The sequence of the session represents the change sequence of the session.
    * @return sequence
    */
   @javax.annotation.Nullable
@@ -233,7 +233,7 @@ public class SessionServiceSession {
   }
 
   /**
-   * Get metadata
+   * Metadata contains custom key value pairs set by the user.  The metadata is not interpreted by ZITADEL and can be used to store any information  relevant to the session.
    * @return metadata
    */
   @javax.annotation.Nullable

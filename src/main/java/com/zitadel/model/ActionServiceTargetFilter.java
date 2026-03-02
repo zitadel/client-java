@@ -48,7 +48,7 @@ public class ActionServiceTargetFilter {
   }
 
   /**
-   * Defines the id to query for.
+   * Defines the id of the target that needs to be part of the execution.
    * @return targetId
    */
   @javax.annotation.Nullable

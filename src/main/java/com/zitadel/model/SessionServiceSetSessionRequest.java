@@ -77,7 +77,7 @@ public class SessionServiceSetSessionRequest {
   }
 
   /**
-   * Get sessionId
+   * The unique identifier of the session to be updated.
    * @return sessionId
    */
   @javax.annotation.Nullable
@@ -102,9 +102,11 @@ public class SessionServiceSetSessionRequest {
   }
 
   /**
-   * Get sessionToken
+   * Deprecated: the session token is no longer required when updating a session  and will be ignored when provided.
    * @return sessionToken
+   * @deprecated
    */
+  @Deprecated
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -160,7 +162,7 @@ public class SessionServiceSetSessionRequest {
   }
 
   /**
-   * Get metadata
+   * Additional custom key value pairs to be stored on the session.  Existing keys will be overwritten. To delete a key, set its value to an empty byte array.  Note that metadata keys cannot be changed once the session has been created.  You need to create a new entry and delete the old one instead.
    * @return metadata
    */
   @javax.annotation.Nullable

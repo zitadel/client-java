@@ -54,7 +54,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Add Custom Domain
-   * Adds a custom domain to the instance in context.   The instance_id in the input message will be used in the future   Required permissions:    - &#x60;system.domain.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Adds a custom domain to the instance in context.   The instance_id in the input message will be used in the future   Required permissions:    - &#x60;system.domain.write&#x60;
    * @param betaInstanceServiceAddCustomDomainRequest  (required)
    * @return BetaInstanceServiceAddCustomDomainResponse
    * @throws ApiException if fails to make API call
@@ -66,7 +66,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Add Custom Domain
-   * Adds a custom domain to the instance in context.   The instance_id in the input message will be used in the future   Required permissions:    - &#x60;system.domain.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Adds a custom domain to the instance in context.   The instance_id in the input message will be used in the future   Required permissions:    - &#x60;system.domain.write&#x60;
    * @param betaInstanceServiceAddCustomDomainRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInstanceServiceAddCustomDomainResponse
@@ -129,7 +129,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Add Trusted Domain
-   * Adds a trusted domain to the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;iam.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Adds a trusted domain to the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;iam.write&#x60;
    * @param betaInstanceServiceAddTrustedDomainRequest  (required)
    * @return BetaInstanceServiceAddTrustedDomainResponse
    * @throws ApiException if fails to make API call
@@ -141,7 +141,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Add Trusted Domain
-   * Adds a trusted domain to the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;iam.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Adds a trusted domain to the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;iam.write&#x60;
    * @param betaInstanceServiceAddTrustedDomainRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInstanceServiceAddTrustedDomainResponse
@@ -204,7 +204,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Delete Instance
-   * Deletes an instance with the given ID.   Required permissions:    - &#x60;system.instance.delete&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Deletes an instance with the given ID.   Required permissions:    - &#x60;system.instance.delete&#x60;
    * @param betaInstanceServiceDeleteInstanceRequest  (required)
    * @return BetaInstanceServiceDeleteInstanceResponse
    * @throws ApiException if fails to make API call
@@ -216,7 +216,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Delete Instance
-   * Deletes an instance with the given ID.   Required permissions:    - &#x60;system.instance.delete&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Deletes an instance with the given ID.   Required permissions:    - &#x60;system.instance.delete&#x60;
    * @param betaInstanceServiceDeleteInstanceRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInstanceServiceDeleteInstanceResponse
@@ -279,7 +279,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Get Instance
-   * Returns the instance in the current context.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the instance in the current context.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.read&#x60;
    * @param betaInstanceServiceGetInstanceRequest  (required)
    * @return BetaInstanceServiceGetInstanceResponse
    * @throws ApiException if fails to make API call
@@ -291,7 +291,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Get Instance
-   * Returns the instance in the current context.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the instance in the current context.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.read&#x60;
    * @param betaInstanceServiceGetInstanceRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInstanceServiceGetInstanceResponse
@@ -354,7 +354,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * List Custom Domains
-   * Lists custom domains of the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;iam.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Lists custom domains of the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;iam.read&#x60;
    * @param betaInstanceServiceListCustomDomainsRequest  (required)
    * @return BetaInstanceServiceListCustomDomainsResponse
    * @throws ApiException if fails to make API call
@@ -366,7 +366,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * List Custom Domains
-   * Lists custom domains of the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;iam.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Lists custom domains of the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;iam.read&#x60;
    * @param betaInstanceServiceListCustomDomainsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInstanceServiceListCustomDomainsResponse
@@ -429,7 +429,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * List Instances
-   * Lists instances matching the given query.  The query can be used to filter either by instance ID or domain.  The request is paginated and returns 100 results by default.   Required permissions:   - &#x60;system.instance.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Lists instances matching the given query.  The query can be used to filter either by instance ID or domain.  The request is paginated and returns 100 results by default.   Required permissions:   - &#x60;system.instance.read&#x60;
    * @param betaInstanceServiceListInstancesRequest  (required)
    * @return BetaInstanceServiceListInstancesResponse
    * @throws ApiException if fails to make API call
@@ -441,7 +441,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * List Instances
-   * Lists instances matching the given query.  The query can be used to filter either by instance ID or domain.  The request is paginated and returns 100 results by default.   Required permissions:   - &#x60;system.instance.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Lists instances matching the given query.  The query can be used to filter either by instance ID or domain.  The request is paginated and returns 100 results by default.   Required permissions:   - &#x60;system.instance.read&#x60;
    * @param betaInstanceServiceListInstancesRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInstanceServiceListInstancesResponse
@@ -504,7 +504,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * List Trusted Domains
-   * Lists trusted domains of the instance.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Lists trusted domains of the instance.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.read&#x60;
    * @param betaInstanceServiceListTrustedDomainsRequest  (required)
    * @return BetaInstanceServiceListTrustedDomainsResponse
    * @throws ApiException if fails to make API call
@@ -516,7 +516,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * List Trusted Domains
-   * Lists trusted domains of the instance.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Lists trusted domains of the instance.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.read&#x60;
    * @param betaInstanceServiceListTrustedDomainsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInstanceServiceListTrustedDomainsResponse
@@ -579,7 +579,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Remove Custom Domain
-   * Removes a custom domain from the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;system.domain.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Removes a custom domain from the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;system.domain.write&#x60;
    * @param betaInstanceServiceRemoveCustomDomainRequest  (required)
    * @return BetaInstanceServiceRemoveCustomDomainResponse
    * @throws ApiException if fails to make API call
@@ -591,7 +591,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Remove Custom Domain
-   * Removes a custom domain from the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;system.domain.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Removes a custom domain from the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;system.domain.write&#x60;
    * @param betaInstanceServiceRemoveCustomDomainRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInstanceServiceRemoveCustomDomainResponse
@@ -654,7 +654,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Remove Trusted Domain
-   * Removes a trusted domain from the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;iam.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Removes a trusted domain from the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;iam.write&#x60;
    * @param betaInstanceServiceRemoveTrustedDomainRequest  (required)
    * @return BetaInstanceServiceRemoveTrustedDomainResponse
    * @throws ApiException if fails to make API call
@@ -666,7 +666,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Remove Trusted Domain
-   * Removes a trusted domain from the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;iam.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Removes a trusted domain from the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - &#x60;iam.write&#x60;
    * @param betaInstanceServiceRemoveTrustedDomainRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInstanceServiceRemoveTrustedDomainResponse
@@ -729,7 +729,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Update Instance
-   * Updates instance in context with the given name.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Updates instance in context with the given name.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.write&#x60;
    * @param betaInstanceServiceUpdateInstanceRequest  (required)
    * @return BetaInstanceServiceUpdateInstanceResponse
    * @throws ApiException if fails to make API call
@@ -741,7 +741,7 @@ public class BetaInstanceServiceApi extends BaseApi {
 
   /**
    * Update Instance
-   * Updates instance in context with the given name.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Updates instance in context with the given name.   The instance_id in the input message will be used in the future.   Required permissions:    - &#x60;iam.write&#x60;
    * @param betaInstanceServiceUpdateInstanceRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaInstanceServiceUpdateInstanceResponse

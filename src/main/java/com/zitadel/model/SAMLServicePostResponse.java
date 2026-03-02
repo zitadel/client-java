@@ -53,7 +53,7 @@ public class SAMLServicePostResponse {
   }
 
   /**
-   * Get relayState
+   * The SAML RelaySate, that needs to be returned to the application to match the response to the request.
    * @return relayState
    */
   @javax.annotation.Nullable
@@ -78,7 +78,7 @@ public class SAMLServicePostResponse {
   }
 
   /**
-   * Get samlResponse
+   * The SAML Response, that needs to be returned to the application to complete the SAML flow.
    * @return samlResponse
    */
   @javax.annotation.Nullable

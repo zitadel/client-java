@@ -151,7 +151,7 @@ public class ActionServiceExecution {
   }
 
   /**
-   * Ordered list of targets called during the execution.
+   * Ordered list of targets called during the execution.  The order of the targets in this list defines the order of execution.  If one of the targets fails, depending on the target&#39;s type and settings,  the execution might be interrupted and the following targets will not be called.
    * @return targets
    */
   @javax.annotation.Nullable

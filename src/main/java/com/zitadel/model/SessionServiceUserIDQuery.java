@@ -48,7 +48,7 @@ public class SessionServiceUserIDQuery {
   }
 
   /**
-   * Get id
+   * ID of the user whose sessions are being searched for.
    * @return id
    */
   @javax.annotation.Nullable

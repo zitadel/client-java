@@ -62,7 +62,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Activate Organization
-   * Set the state of my organization to active. The state of the organization has to be deactivated to perform the request. Users of this organization will be able to log in again.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of my organization to active. The state of the organization has to be deactivated to perform the request. Users of this organization will be able to log in again.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceActivateOrganizationRequest  (required)
    * @return BetaOrganizationServiceActivateOrganizationResponse
    * @throws ApiException if fails to make API call
@@ -74,7 +74,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Activate Organization
-   * Set the state of my organization to active. The state of the organization has to be deactivated to perform the request. Users of this organization will be able to log in again.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of my organization to active. The state of the organization has to be deactivated to perform the request. Users of this organization will be able to log in again.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceActivateOrganizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceActivateOrganizationResponse
@@ -137,7 +137,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Add Organization Domain
-   * Add a new domain to an organization. The domains are used to identify to which organization a user belongs.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Add a new domain to an organization. The domains are used to identify to which organization a user belongs.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceAddOrganizationDomainRequest  (required)
    * @return BetaOrganizationServiceAddOrganizationDomainResponse
    * @throws ApiException if fails to make API call
@@ -149,7 +149,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Add Organization Domain
-   * Add a new domain to an organization. The domains are used to identify to which organization a user belongs.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Add a new domain to an organization. The domains are used to identify to which organization a user belongs.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceAddOrganizationDomainRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceAddOrganizationDomainResponse
@@ -287,7 +287,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Deactivate Organization
-   * Sets the state of my organization to deactivated. Users of this organization will not be able to log in.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Sets the state of my organization to deactivated. Users of this organization will not be able to log in.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceDeactivateOrganizationRequest  (required)
    * @return BetaOrganizationServiceDeactivateOrganizationResponse
    * @throws ApiException if fails to make API call
@@ -299,7 +299,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Deactivate Organization
-   * Sets the state of my organization to deactivated. Users of this organization will not be able to log in.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Sets the state of my organization to deactivated. Users of this organization will not be able to log in.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceDeactivateOrganizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceDeactivateOrganizationResponse
@@ -362,7 +362,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Delete Organization
-   * Deletes the organization and all its resources (Users, Projects, Grants to and from the org). Users of this organization will not be able to log in.   Required permission:   - &#x60;org.delete&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Deletes the organization and all its resources (Users, Projects, Grants to and from the org). Users of this organization will not be able to log in.   Required permission:   - &#x60;org.delete&#x60;
    * @param betaOrganizationServiceDeleteOrganizationRequest  (required)
    * @return BetaOrganizationServiceDeleteOrganizationResponse
    * @throws ApiException if fails to make API call
@@ -374,7 +374,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Delete Organization
-   * Deletes the organization and all its resources (Users, Projects, Grants to and from the org). Users of this organization will not be able to log in.   Required permission:   - &#x60;org.delete&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Deletes the organization and all its resources (Users, Projects, Grants to and from the org). Users of this organization will not be able to log in.   Required permission:   - &#x60;org.delete&#x60;
    * @param betaOrganizationServiceDeleteOrganizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceDeleteOrganizationResponse
@@ -437,7 +437,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Delete Organization Domain
-   * Delete a new domain from an organization. The domains are used to identify to which organization a user belongs. If the uses use the domain for login, this will not be possible afterwards. They have to use another domain instead.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete a new domain from an organization. The domains are used to identify to which organization a user belongs. If the uses use the domain for login, this will not be possible afterwards. They have to use another domain instead.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceDeleteOrganizationDomainRequest  (required)
    * @return BetaOrganizationServiceDeleteOrganizationDomainResponse
    * @throws ApiException if fails to make API call
@@ -449,7 +449,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Delete Organization Domain
-   * Delete a new domain from an organization. The domains are used to identify to which organization a user belongs. If the uses use the domain for login, this will not be possible afterwards. They have to use another domain instead.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete a new domain from an organization. The domains are used to identify to which organization a user belongs. If the uses use the domain for login, this will not be possible afterwards. They have to use another domain instead.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceDeleteOrganizationDomainRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceDeleteOrganizationDomainResponse
@@ -512,7 +512,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Delete Organization Metadata
-   * Delete metadata objects from an organization with a specific key.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete metadata objects from an organization with a specific key.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceDeleteOrganizationMetadataRequest  (required)
    * @return BetaOrganizationServiceDeleteOrganizationMetadataResponse
    * @throws ApiException if fails to make API call
@@ -524,7 +524,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Delete Organization Metadata
-   * Delete metadata objects from an organization with a specific key.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete metadata objects from an organization with a specific key.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceDeleteOrganizationMetadataRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceDeleteOrganizationMetadataResponse
@@ -587,7 +587,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Generate Organization Domain Validation
-   * Generate a new file to be able to verify your domain with DNS or HTTP challenge.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Generate a new file to be able to verify your domain with DNS or HTTP challenge.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceGenerateOrganizationDomainValidationRequest  (required)
    * @return BetaOrganizationServiceGenerateOrganizationDomainValidationResponse
    * @throws ApiException if fails to make API call
@@ -599,7 +599,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Generate Organization Domain Validation
-   * Generate a new file to be able to verify your domain with DNS or HTTP challenge.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Generate a new file to be able to verify your domain with DNS or HTTP challenge.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceGenerateOrganizationDomainValidationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceGenerateOrganizationDomainValidationResponse
@@ -662,7 +662,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * List Organization Domains
-   * Returns the list of registered domains of an organization. The domains are used to identify to which organization a user belongs.    Required permission:   - &#x60;org.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the list of registered domains of an organization. The domains are used to identify to which organization a user belongs.    Required permission:   - &#x60;org.read&#x60;
    * @param betaOrganizationServiceListOrganizationDomainsRequest  (required)
    * @return BetaOrganizationServiceListOrganizationDomainsResponse
    * @throws ApiException if fails to make API call
@@ -674,7 +674,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * List Organization Domains
-   * Returns the list of registered domains of an organization. The domains are used to identify to which organization a user belongs.    Required permission:   - &#x60;org.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the list of registered domains of an organization. The domains are used to identify to which organization a user belongs.    Required permission:   - &#x60;org.read&#x60;
    * @param betaOrganizationServiceListOrganizationDomainsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceListOrganizationDomainsResponse
@@ -737,7 +737,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * List Organization Metadata
-   * List metadata of an organization filtered by query.   Required permission:   - &#x60;org.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   List metadata of an organization filtered by query.   Required permission:   - &#x60;org.read&#x60;
    * @param betaOrganizationServiceListOrganizationMetadataRequest  (required)
    * @return BetaOrganizationServiceListOrganizationMetadataResponse
    * @throws ApiException if fails to make API call
@@ -749,7 +749,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * List Organization Metadata
-   * List metadata of an organization filtered by query.   Required permission:   - &#x60;org.read&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   List metadata of an organization filtered by query.   Required permission:   - &#x60;org.read&#x60;
    * @param betaOrganizationServiceListOrganizationMetadataRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceListOrganizationMetadataResponse
@@ -812,7 +812,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * List Organizations
-   * Returns a list of organizations that match the requesting filters. All filters are applied with an AND condition.   Required permission:   - &#x60;iam.read&#x60;   Deprecated: Use [ListOrganizations](/apis/resources/org_service_v2/organization-service-list-organizations.api.mdx) instead to list organizations.
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns a list of organizations that match the requesting filters. All filters are applied with an AND condition.   Required permission:   - &#x60;org.read&#x60;   Deprecated: Use [ListOrganizations](/apis/resources/org_service_v2/organization-service-list-organizations.api.mdx) instead to list organizations.
    * @param betaOrganizationServiceListOrganizationsRequest  (required)
    * @return BetaOrganizationServiceListOrganizationsResponse
    * @throws ApiException if fails to make API call
@@ -824,7 +824,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * List Organizations
-   * Returns a list of organizations that match the requesting filters. All filters are applied with an AND condition.   Required permission:   - &#x60;iam.read&#x60;   Deprecated: Use [ListOrganizations](/apis/resources/org_service_v2/organization-service-list-organizations.api.mdx) instead to list organizations.
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns a list of organizations that match the requesting filters. All filters are applied with an AND condition.   Required permission:   - &#x60;org.read&#x60;   Deprecated: Use [ListOrganizations](/apis/resources/org_service_v2/organization-service-list-organizations.api.mdx) instead to list organizations.
    * @param betaOrganizationServiceListOrganizationsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceListOrganizationsResponse
@@ -887,7 +887,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Set Organization Metadata
-   * Adds or updates a metadata value for the requested key. Make sure the value is base64 encoded.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Adds or updates a metadata value for the requested key. Make sure the value is base64 encoded.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceSetOrganizationMetadataRequest  (required)
    * @return BetaOrganizationServiceSetOrganizationMetadataResponse
    * @throws ApiException if fails to make API call
@@ -899,7 +899,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Set Organization Metadata
-   * Adds or updates a metadata value for the requested key. Make sure the value is base64 encoded.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Adds or updates a metadata value for the requested key. Make sure the value is base64 encoded.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceSetOrganizationMetadataRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceSetOrganizationMetadataResponse
@@ -962,7 +962,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Update Organization
-   * Change the name of the organization.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Change the name of the organization.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceUpdateOrganizationRequest  (required)
    * @return BetaOrganizationServiceUpdateOrganizationResponse
    * @throws ApiException if fails to make API call
@@ -974,7 +974,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Update Organization
-   * Change the name of the organization.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Change the name of the organization.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceUpdateOrganizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceUpdateOrganizationResponse
@@ -1037,7 +1037,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Verify Organization Domain
-   * Make sure you have added the required verification to your domain, depending on the method you have chosen (HTTP or DNS challenge). ZITADEL will check it and set the domain as verified if it was successful. A verify domain has to be unique.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Make sure you have added the required verification to your domain, depending on the method you have chosen (HTTP or DNS challenge). ZITADEL will check it and set the domain as verified if it was successful. A verify domain has to be unique.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceVerifyOrganizationDomainRequest  (required)
    * @return BetaOrganizationServiceVerifyOrganizationDomainResponse
    * @throws ApiException if fails to make API call
@@ -1049,7 +1049,7 @@ public class BetaOrganizationServiceApi extends BaseApi {
 
   /**
    * Verify Organization Domain
-   * Make sure you have added the required verification to your domain, depending on the method you have chosen (HTTP or DNS challenge). ZITADEL will check it and set the domain as verified if it was successful. A verify domain has to be unique.   Required permission:   - &#x60;org.write&#x60;
+   * Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Make sure you have added the required verification to your domain, depending on the method you have chosen (HTTP or DNS challenge). ZITADEL will check it and set the domain as verified if it was successful. A verify domain has to be unique.   Required permission:   - &#x60;org.write&#x60;
    * @param betaOrganizationServiceVerifyOrganizationDomainRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaOrganizationServiceVerifyOrganizationDomainResponse

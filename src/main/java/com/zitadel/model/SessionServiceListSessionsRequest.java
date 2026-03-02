@@ -97,7 +97,7 @@ public class SessionServiceListSessionsRequest {
   }
 
   /**
-   * Get queries
+   * The criteria to be used when searching for sessions.  Multiple queries will be combined with a logical AND.
    * @return queries
    */
   @javax.annotation.Nullable

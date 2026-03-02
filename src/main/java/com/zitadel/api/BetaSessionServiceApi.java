@@ -44,7 +44,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
   /**
    * Create a new session
-   * Create a new session
+   * Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSessionServiceCreateSessionRequest  (required)
    * @return BetaSessionServiceCreateSessionResponse
    * @throws ApiException if fails to make API call
@@ -56,7 +56,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
   /**
    * Create a new session
-   * Create a new session
+   * Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSessionServiceCreateSessionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSessionServiceCreateSessionResponse
@@ -119,7 +119,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
   /**
    * Terminate a session
-   * Terminate a session
+   * Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSessionServiceDeleteSessionRequest  (required)
    * @return BetaSessionServiceDeleteSessionResponse
    * @throws ApiException if fails to make API call
@@ -131,7 +131,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
   /**
    * Terminate a session
-   * Terminate a session
+   * Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSessionServiceDeleteSessionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSessionServiceDeleteSessionResponse
@@ -194,7 +194,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
   /**
    * GetSession a session
-   * GetSession a session
+   * Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSessionServiceGetSessionRequest  (required)
    * @return BetaSessionServiceGetSessionResponse
    * @throws ApiException if fails to make API call
@@ -206,7 +206,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
   /**
    * GetSession a session
-   * GetSession a session
+   * Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSessionServiceGetSessionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSessionServiceGetSessionResponse
@@ -269,7 +269,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
   /**
    * Search sessions
-   * Search sessions
+   * Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSessionServiceListSessionsRequest  (required)
    * @return BetaSessionServiceListSessionsResponse
    * @throws ApiException if fails to make API call
@@ -281,7 +281,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
   /**
    * Search sessions
-   * Search sessions
+   * Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSessionServiceListSessionsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSessionServiceListSessionsResponse
@@ -344,7 +344,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
   /**
    * Update a session
-   * Update a session
+   * Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSessionServiceSetSessionRequest  (required)
    * @return BetaSessionServiceSetSessionResponse
    * @throws ApiException if fails to make API call
@@ -356,7 +356,7 @@ public class BetaSessionServiceApi extends BaseApi {
 
   /**
    * Update a session
-   * Update a session
+   * Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSessionServiceSetSessionRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSessionServiceSetSessionResponse

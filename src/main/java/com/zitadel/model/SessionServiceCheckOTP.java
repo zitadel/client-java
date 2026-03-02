@@ -48,7 +48,7 @@ public class SessionServiceCheckOTP {
   }
 
   /**
-   * Get code
+   * The One-Time Password sent over SMS or Email of the user to be checked.
    * @return code
    */
   @javax.annotation.Nullable

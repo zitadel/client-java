@@ -28,7 +28,7 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * SAMLServiceSAMLRequest
+ * SAMLRequest contains information about a SAML authentication request.  see: https://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html
  */
 @JsonPropertyOrder({
   SAMLServiceSAMLRequest.JSON_PROPERTY_ID,
@@ -74,7 +74,7 @@ public class SAMLServiceSAMLRequest {
   }
 
   /**
-   * Get id
+   * ID of the created SAMLRequest.
    * @return id
    */
   @javax.annotation.Nullable
@@ -124,7 +124,7 @@ public class SAMLServiceSAMLRequest {
   }
 
   /**
-   * Get issuer
+   * SAML entityID of the application that created the SAMLRequest.
    * @return issuer
    */
   @javax.annotation.Nullable
@@ -149,7 +149,7 @@ public class SAMLServiceSAMLRequest {
   }
 
   /**
-   * Get assertionConsumerService
+   * URL which points back to the assertion consumer service of the application that created the SAMLRequest.
    * @return assertionConsumerService
    */
   @javax.annotation.Nullable
@@ -174,7 +174,7 @@ public class SAMLServiceSAMLRequest {
   }
 
   /**
-   * Get relayState
+   * RelayState provided by the application for the request.
    * @return relayState
    */
   @javax.annotation.Nullable
@@ -199,7 +199,7 @@ public class SAMLServiceSAMLRequest {
   }
 
   /**
-   * Get binding
+   * Binding used by the application for the request.
    * @return binding
    */
   @javax.annotation.Nullable

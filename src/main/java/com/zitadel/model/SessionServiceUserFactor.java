@@ -94,7 +94,7 @@ public class SessionServiceUserFactor {
   }
 
   /**
-   * Get id
+   * The unique identifier of the user that was verified.
    * @return id
    */
   @javax.annotation.Nullable
@@ -119,7 +119,7 @@ public class SessionServiceUserFactor {
   }
 
   /**
-   * Get loginName
+   * The login name of the user that was verified.
    * @return loginName
    */
   @javax.annotation.Nullable
@@ -144,7 +144,7 @@ public class SessionServiceUserFactor {
   }
 
   /**
-   * Get displayName
+   * The display name of the user that was verified.
    * @return displayName
    */
   @javax.annotation.Nullable
@@ -169,7 +169,7 @@ public class SessionServiceUserFactor {
   }
 
   /**
-   * Get organizationId
+   * The id of the organization the user belongs to.
    * @return organizationId
    */
   @javax.annotation.Nullable

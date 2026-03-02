@@ -60,7 +60,7 @@ public class OIDCServiceCreateCallbackRequest {
   }
 
   /**
-   * Get authRequestId
+   * The ID of the Auth Request to finalize.
    * @return authRequestId
    */
   @javax.annotation.Nullable

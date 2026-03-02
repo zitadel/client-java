@@ -40,6 +40,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   OrganizationServiceAddOrganizationRequest.JSON_PROPERTY_NAME,
   OrganizationServiceAddOrganizationRequest.JSON_PROPERTY_ADMINS,
+  OrganizationServiceAddOrganizationRequest.JSON_PROPERTY_ORGANIZATION_ID,
   OrganizationServiceAddOrganizationRequest.JSON_PROPERTY_ORG_ID
 })
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
@@ -51,6 +52,10 @@ public class OrganizationServiceAddOrganizationRequest {
   public static final String JSON_PROPERTY_ADMINS = "admins";
   @javax.annotation.Nullable
   private List<OrganizationServiceAdmin> admins = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ORGANIZATION_ID = "organizationId";
+  @javax.annotation.Nullable
+  private JsonNullable<String> organizationId = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_ORG_ID = "orgId";
   @javax.annotation.Nullable
@@ -66,7 +71,7 @@ public class OrganizationServiceAddOrganizationRequest {
   }
 
   /**
-   * Get name
+   * Name is the unique name of the organization to be created.  This must be unique across the instance.
    * @return name
    */
   @javax.annotation.Nullable
@@ -99,7 +104,7 @@ public class OrganizationServiceAddOrganizationRequest {
   }
 
   /**
-   * Get admins
+   * Specify users to be assigned as organization admins.  If no users are specified here, the organization will be created without any admin users.  The organization can still be managed by any instance administrator.  If no roles are specified for a user, they will be assigned the role ORG_OWNER.
    * @return admins
    */
   @javax.annotation.Nullable
@@ -117,6 +122,39 @@ public class OrganizationServiceAddOrganizationRequest {
     this.admins = admins;
   }
 
+  public OrganizationServiceAddOrganizationRequest organizationId(@javax.annotation.Nullable String organizationId) {
+    this.organizationId = JsonNullable.<String>of(organizationId);
+    
+    return this;
+  }
+
+  /**
+   * OrganizationID is the unique identifier of the organization. This field is optional.  If omitted, the system will generate one,  which is the recommended way. The generated ID will be returned in the response.
+   * @return organizationId
+   */
+  @javax.annotation.Nullable
+  @JsonIgnore
+
+  public String getOrganizationId() {
+        return organizationId.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getOrganizationId_JsonNullable() {
+    return organizationId;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_ORGANIZATION_ID)
+  public void setOrganizationId_JsonNullable(JsonNullable<String> organizationId) {
+    this.organizationId = organizationId;
+  }
+
+  public void setOrganizationId(@javax.annotation.Nullable String organizationId) {
+    this.organizationId = JsonNullable.<String>of(organizationId);
+  }
+
   public OrganizationServiceAddOrganizationRequest orgId(@javax.annotation.Nullable String orgId) {
     this.orgId = JsonNullable.<String>of(orgId);
     
@@ -124,9 +162,11 @@ public class OrganizationServiceAddOrganizationRequest {
   }
 
   /**
-   * optionally set your own id unique for the organization.
+   * Optionally, set a unique id for the organization. If omitted, the system will generate one,  which is the recommended way. The generated ID will be returned in the response.   Deprecated: use &#39;organization_id&#39; field instead.  If both org_id and organization_id are set, organization_id will take precedence.
    * @return orgId
+   * @deprecated
    */
+  @Deprecated
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -161,6 +201,7 @@ public class OrganizationServiceAddOrganizationRequest {
     OrganizationServiceAddOrganizationRequest organizationServiceAddOrganizationRequest = (OrganizationServiceAddOrganizationRequest) o;
     return Objects.equals(this.name, organizationServiceAddOrganizationRequest.name) &&
         Objects.equals(this.admins, organizationServiceAddOrganizationRequest.admins) &&
+        equalsNullable(this.organizationId, organizationServiceAddOrganizationRequest.organizationId) &&
         equalsNullable(this.orgId, organizationServiceAddOrganizationRequest.orgId);
   }
 
@@ -170,7 +211,7 @@ public class OrganizationServiceAddOrganizationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, admins, hashCodeNullable(orgId));
+    return Objects.hash(name, admins, hashCodeNullable(organizationId), hashCodeNullable(orgId));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -186,6 +227,7 @@ public class OrganizationServiceAddOrganizationRequest {
     sb.append("class OrganizationServiceAddOrganizationRequest {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    admins: ").append(toIndentedString(admins)).append("\n");
+    sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    orgId: ").append(toIndentedString(orgId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -251,6 +293,16 @@ public class OrganizationServiceAddOrganizationRequest {
           joiner.add(getAdmins().get(i).toUrlQueryString(String.format("%sadmins%s%s", prefix, suffix,
               "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
         }
+      }
+    }
+
+    // add `organizationId` to the URL query string
+    if (getOrganizationId() != null) {
+      try {
+        joiner.add(String.format("%sorganizationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrganizationId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
       }
     }
 

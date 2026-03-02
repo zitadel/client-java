@@ -91,7 +91,7 @@ public class ActionServiceListTargetsResponse {
   }
 
   /**
-   * Get targets
+   * List of all targets matching the query.
    * @return targets
    */
   @javax.annotation.Nullable

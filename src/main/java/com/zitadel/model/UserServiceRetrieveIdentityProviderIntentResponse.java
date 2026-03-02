@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.zitadel.model.UserServiceAddHumanUserRequest;
 import com.zitadel.model.UserServiceDetails;
 import com.zitadel.model.UserServiceIDPInformation;
+import com.zitadel.model.UserServiceUpdateHumanUserRequest;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -36,7 +37,8 @@ import java.util.StringJoiner;
   UserServiceRetrieveIdentityProviderIntentResponse.JSON_PROPERTY_DETAILS,
   UserServiceRetrieveIdentityProviderIntentResponse.JSON_PROPERTY_IDP_INFORMATION,
   UserServiceRetrieveIdentityProviderIntentResponse.JSON_PROPERTY_USER_ID,
-  UserServiceRetrieveIdentityProviderIntentResponse.JSON_PROPERTY_ADD_HUMAN_USER
+  UserServiceRetrieveIdentityProviderIntentResponse.JSON_PROPERTY_ADD_HUMAN_USER,
+  UserServiceRetrieveIdentityProviderIntentResponse.JSON_PROPERTY_UPDATE_HUMAN_USER
 })
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class UserServiceRetrieveIdentityProviderIntentResponse {
@@ -55,6 +57,10 @@ public class UserServiceRetrieveIdentityProviderIntentResponse {
   public static final String JSON_PROPERTY_ADD_HUMAN_USER = "addHumanUser";
   @javax.annotation.Nullable
   private UserServiceAddHumanUserRequest addHumanUser;
+
+  public static final String JSON_PROPERTY_UPDATE_HUMAN_USER = "updateHumanUser";
+  @javax.annotation.Nullable
+  private UserServiceUpdateHumanUserRequest updateHumanUser;
 
   public UserServiceRetrieveIdentityProviderIntentResponse() {
   }
@@ -159,6 +165,31 @@ public class UserServiceRetrieveIdentityProviderIntentResponse {
     this.addHumanUser = addHumanUser;
   }
 
+  public UserServiceRetrieveIdentityProviderIntentResponse updateHumanUser(@javax.annotation.Nullable UserServiceUpdateHumanUserRequest updateHumanUser) {
+    
+    this.updateHumanUser = updateHumanUser;
+    return this;
+  }
+
+  /**
+   * Get updateHumanUser
+   * @return updateHumanUser
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_UPDATE_HUMAN_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public UserServiceUpdateHumanUserRequest getUpdateHumanUser() {
+    return updateHumanUser;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_UPDATE_HUMAN_USER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUpdateHumanUser(@javax.annotation.Nullable UserServiceUpdateHumanUserRequest updateHumanUser) {
+    this.updateHumanUser = updateHumanUser;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -171,12 +202,13 @@ public class UserServiceRetrieveIdentityProviderIntentResponse {
     return Objects.equals(this.details, userServiceRetrieveIdentityProviderIntentResponse.details) &&
         Objects.equals(this.idpInformation, userServiceRetrieveIdentityProviderIntentResponse.idpInformation) &&
         Objects.equals(this.userId, userServiceRetrieveIdentityProviderIntentResponse.userId) &&
-        Objects.equals(this.addHumanUser, userServiceRetrieveIdentityProviderIntentResponse.addHumanUser);
+        Objects.equals(this.addHumanUser, userServiceRetrieveIdentityProviderIntentResponse.addHumanUser) &&
+        Objects.equals(this.updateHumanUser, userServiceRetrieveIdentityProviderIntentResponse.updateHumanUser);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(details, idpInformation, userId, addHumanUser);
+    return Objects.hash(details, idpInformation, userId, addHumanUser, updateHumanUser);
   }
 
   @Override
@@ -187,6 +219,7 @@ public class UserServiceRetrieveIdentityProviderIntentResponse {
     sb.append("    idpInformation: ").append(toIndentedString(idpInformation)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    addHumanUser: ").append(toIndentedString(addHumanUser)).append("\n");
+    sb.append("    updateHumanUser: ").append(toIndentedString(updateHumanUser)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -257,6 +290,11 @@ public class UserServiceRetrieveIdentityProviderIntentResponse {
     // add `addHumanUser` to the URL query string
     if (getAddHumanUser() != null) {
       joiner.add(getAddHumanUser().toUrlQueryString(prefix + "addHumanUser" + suffix));
+    }
+
+    // add `updateHumanUser` to the URL query string
+    if (getUpdateHumanUser() != null) {
+      joiner.add(getUpdateHumanUser().toUrlQueryString(prefix + "updateHumanUser" + suffix));
     }
 
     return joiner.toString();

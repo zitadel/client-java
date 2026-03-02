@@ -64,7 +64,7 @@ public class SettingsServiceDomainSettings {
   }
 
   /**
-   * Get loginNameIncludesDomain
+   * If enabled, the login name will automatically be suffixed with the domain of the organization.  This ensures that the login name is unique across the instance.
    * @return loginNameIncludesDomain
    */
   @javax.annotation.Nullable
@@ -89,7 +89,7 @@ public class SettingsServiceDomainSettings {
   }
 
   /**
-   * Get requireOrgDomainVerification
+   * If enabled, organization domains must be verified (through an DNS or HTTP challenge) upon creation.  If disabled, organization domains will be created as already verified automatically.
    * @return requireOrgDomainVerification
    */
   @javax.annotation.Nullable
@@ -114,7 +114,7 @@ public class SettingsServiceDomainSettings {
   }
 
   /**
-   * Get smtpSenderAddressMatchesInstanceDomain
+   * If enabled, the SMTP sender address domain must match custom domain on the instance.
    * @return smtpSenderAddressMatchesInstanceDomain
    */
   @javax.annotation.Nullable

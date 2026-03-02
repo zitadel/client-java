@@ -78,7 +78,7 @@ public class SettingsServicePasswordComplexitySettings {
   }
 
   /**
-   * Get minLength
+   * The minimum length a password must have.
    * @return minLength
    */
   @javax.annotation.Nullable
@@ -111,7 +111,7 @@ public class SettingsServicePasswordComplexitySettings {
   }
 
   /**
-   * Get requiresUppercase
+   * Defines if the password MUST contain an upper case letter.
    * @return requiresUppercase
    */
   @javax.annotation.Nullable
@@ -136,7 +136,7 @@ public class SettingsServicePasswordComplexitySettings {
   }
 
   /**
-   * Get requiresLowercase
+   * Defines if the password MUST contain a lowercase letter.
    * @return requiresLowercase
    */
   @javax.annotation.Nullable
@@ -161,7 +161,7 @@ public class SettingsServicePasswordComplexitySettings {
   }
 
   /**
-   * Get requiresNumber
+   * Defines if the password MUST contain a number.
    * @return requiresNumber
    */
   @javax.annotation.Nullable
@@ -186,7 +186,7 @@ public class SettingsServicePasswordComplexitySettings {
   }
 
   /**
-   * Get requiresSymbol
+   * Defines if the password MUST contain a symbol or special character. E.g. \&quot;$\&quot;
    * @return requiresSymbol
    */
   @javax.annotation.Nullable

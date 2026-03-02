@@ -58,7 +58,7 @@ public class ActionServiceEventExecution {
   }
 
   /**
-   * all events as condition.
+   * Define all events as condition.  After any event is created, the execution is triggered.
    * @return all
    */
   @javax.annotation.Nullable
@@ -83,7 +83,7 @@ public class ActionServiceEventExecution {
   }
 
   /**
-   * Event name as condition.
+   * Define a specific event as condition.  After this event is created, the execution is triggered.
    * @return event
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class ActionServiceEventExecution {
   }
 
   /**
-   * Event group as condition, all events under this group.
+   * Define an event group as condition.  After any event under this group is created, the execution is triggered.
    * @return group
    */
   @javax.annotation.Nullable

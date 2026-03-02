@@ -35,7 +35,9 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SettingsServiceGetGeneralSettingsResponse.JSON_PROPERTY_DEFAULT_ORG_ID,
   SettingsServiceGetGeneralSettingsResponse.JSON_PROPERTY_DEFAULT_LANGUAGE,
-  SettingsServiceGetGeneralSettingsResponse.JSON_PROPERTY_SUPPORTED_LANGUAGES
+  SettingsServiceGetGeneralSettingsResponse.JSON_PROPERTY_SUPPORTED_LANGUAGES,
+  SettingsServiceGetGeneralSettingsResponse.JSON_PROPERTY_DEFAULT_ORGANIZATION_ID,
+  SettingsServiceGetGeneralSettingsResponse.JSON_PROPERTY_ALLOWED_LANGUAGES
 })
 @javax.annotation.Generated(value = "io.github.mridang.codegen.generators.java.BetterJavaCodegen", comments = "Generator version: 7.14.0")
 public class SettingsServiceGetGeneralSettingsResponse {
@@ -51,6 +53,14 @@ public class SettingsServiceGetGeneralSettingsResponse {
   @javax.annotation.Nullable
   private List<String> supportedLanguages = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_DEFAULT_ORGANIZATION_ID = "defaultOrganizationId";
+  @javax.annotation.Nullable
+  private String defaultOrganizationId;
+
+  public static final String JSON_PROPERTY_ALLOWED_LANGUAGES = "allowedLanguages";
+  @javax.annotation.Nullable
+  private List<String> allowedLanguages = new ArrayList<>();
+
   public SettingsServiceGetGeneralSettingsResponse() {
   }
 
@@ -61,7 +71,7 @@ public class SettingsServiceGetGeneralSettingsResponse {
   }
 
   /**
-   * Get defaultOrgId
+   * The unique identifier of the default organization.  The default organization is used to assign new users to an organization if no other organization is specified.  Deprecated: use default_organization_id instead.
    * @return defaultOrgId
    */
   @javax.annotation.Nullable
@@ -86,7 +96,7 @@ public class SettingsServiceGetGeneralSettingsResponse {
   }
 
   /**
-   * Get defaultLanguage
+   * The default language is use if no other language is specified or detected.  The format is a BCP 47 language tag (e.g. \&quot;en\&quot;, \&quot;de\&quot;, \&quot;fr-CH\&quot;).
    * @return defaultLanguage
    */
   @javax.annotation.Nullable
@@ -119,7 +129,7 @@ public class SettingsServiceGetGeneralSettingsResponse {
   }
 
   /**
-   * Get supportedLanguages
+   * The list of supported languages.  Note that the instance might restrict the languages further  only allowing a subset of these languages to be used.  The format is a BCP 47 language tag (e.g. \&quot;en\&quot;, \&quot;de\&quot;, \&quot;fr-CH\&quot;).
    * @return supportedLanguages
    */
   @javax.annotation.Nullable
@@ -137,6 +147,64 @@ public class SettingsServiceGetGeneralSettingsResponse {
     this.supportedLanguages = supportedLanguages;
   }
 
+  public SettingsServiceGetGeneralSettingsResponse defaultOrganizationId(@javax.annotation.Nullable String defaultOrganizationId) {
+    
+    this.defaultOrganizationId = defaultOrganizationId;
+    return this;
+  }
+
+  /**
+   * The unique identifier of the default organization.  The default organization is used to assign new users to an organization if no other organization is specified.
+   * @return defaultOrganizationId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DEFAULT_ORGANIZATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getDefaultOrganizationId() {
+    return defaultOrganizationId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DEFAULT_ORGANIZATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDefaultOrganizationId(@javax.annotation.Nullable String defaultOrganizationId) {
+    this.defaultOrganizationId = defaultOrganizationId;
+  }
+
+  public SettingsServiceGetGeneralSettingsResponse allowedLanguages(@javax.annotation.Nullable List<String> allowedLanguages) {
+    
+    this.allowedLanguages = allowedLanguages;
+    return this;
+  }
+
+  public SettingsServiceGetGeneralSettingsResponse addAllowedLanguagesItem(String allowedLanguagesItem) {
+    if (this.allowedLanguages == null) {
+      this.allowedLanguages = new ArrayList<>();
+    }
+    this.allowedLanguages.add(allowedLanguagesItem);
+    return this;
+  }
+
+  /**
+   * The list of allowed languages for the instance.  This is a subset of the supported languages to be used in the instance  e.g. for user selection during registration or language detection in the UI.  The format is a BCP 47 language tag (e.g. \&quot;en\&quot;, \&quot;de\&quot;, \&quot;fr-CH\&quot;).
+   * @return allowedLanguages
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALLOWED_LANGUAGES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getAllowedLanguages() {
+    return allowedLanguages;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALLOWED_LANGUAGES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAllowedLanguages(@javax.annotation.Nullable List<String> allowedLanguages) {
+    this.allowedLanguages = allowedLanguages;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -148,12 +216,14 @@ public class SettingsServiceGetGeneralSettingsResponse {
     SettingsServiceGetGeneralSettingsResponse settingsServiceGetGeneralSettingsResponse = (SettingsServiceGetGeneralSettingsResponse) o;
     return Objects.equals(this.defaultOrgId, settingsServiceGetGeneralSettingsResponse.defaultOrgId) &&
         Objects.equals(this.defaultLanguage, settingsServiceGetGeneralSettingsResponse.defaultLanguage) &&
-        Objects.equals(this.supportedLanguages, settingsServiceGetGeneralSettingsResponse.supportedLanguages);
+        Objects.equals(this.supportedLanguages, settingsServiceGetGeneralSettingsResponse.supportedLanguages) &&
+        Objects.equals(this.defaultOrganizationId, settingsServiceGetGeneralSettingsResponse.defaultOrganizationId) &&
+        Objects.equals(this.allowedLanguages, settingsServiceGetGeneralSettingsResponse.allowedLanguages);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultOrgId, defaultLanguage, supportedLanguages);
+    return Objects.hash(defaultOrgId, defaultLanguage, supportedLanguages, defaultOrganizationId, allowedLanguages);
   }
 
   @Override
@@ -163,6 +233,8 @@ public class SettingsServiceGetGeneralSettingsResponse {
     sb.append("    defaultOrgId: ").append(toIndentedString(defaultOrgId)).append("\n");
     sb.append("    defaultLanguage: ").append(toIndentedString(defaultLanguage)).append("\n");
     sb.append("    supportedLanguages: ").append(toIndentedString(supportedLanguages)).append("\n");
+    sb.append("    defaultOrganizationId: ").append(toIndentedString(defaultOrganizationId)).append("\n");
+    sb.append("    allowedLanguages: ").append(toIndentedString(allowedLanguages)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -237,6 +309,30 @@ public class SettingsServiceGetGeneralSettingsResponse {
           joiner.add(String.format("%ssupportedLanguages%s%s=%s", prefix, suffix,
               "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getSupportedLanguages().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
+    }
+
+    // add `defaultOrganizationId` to the URL query string
+    if (getDefaultOrganizationId() != null) {
+      try {
+        joiner.add(String.format("%sdefaultOrganizationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDefaultOrganizationId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `allowedLanguages` to the URL query string
+    if (getAllowedLanguages() != null) {
+      for (int i = 0; i < getAllowedLanguages().size(); i++) {
+        try {
+          joiner.add(String.format("%sallowedLanguages%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getAllowedLanguages().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
           throw new RuntimeException(e);

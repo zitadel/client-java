@@ -59,7 +59,7 @@ public class ActionServiceListExecutionFunctionsResponse {
   }
 
   /**
-   * All available methods
+   * All available functions to use in conditions.
    * @return functions
    */
   @javax.annotation.Nullable
