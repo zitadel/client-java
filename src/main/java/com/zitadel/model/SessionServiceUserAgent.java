@@ -70,7 +70,7 @@ public class SessionServiceUserAgent {
   }
 
   /**
-   * Get fingerprintId
+   * FingerprintID is a unique identifier for the user agent&#39;s fingerprint.  It can be used to group sessions by device or browser.
    * @return fingerprintId
    */
   @javax.annotation.Nullable
@@ -103,7 +103,7 @@ public class SessionServiceUserAgent {
   }
 
   /**
-   * Get ip
+   * IP is the IP address from which the session was created.
    * @return ip
    */
   @javax.annotation.Nullable
@@ -136,7 +136,7 @@ public class SessionServiceUserAgent {
   }
 
   /**
-   * Get description
+   * Description is a human-readable description of the user agent.
    * @return description
    */
   @javax.annotation.Nullable

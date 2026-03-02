@@ -36,7 +36,7 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * OIDCServiceAuthRequest
+ * AuthRequest represents an OpenID Connect Authorization Request as defined in  https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
  */
 @JsonPropertyOrder({
   OIDCServiceAuthRequest.JSON_PROPERTY_ID,
@@ -102,7 +102,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * Get id
+   * The unique identifier of the authorization request.
    * @return id
    */
   @javax.annotation.Nullable
@@ -152,7 +152,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * Get clientId
+   * The OAuth2/OIDC client_id of the application that initiated the authorization request.
    * @return clientId
    */
   @javax.annotation.Nullable
@@ -185,7 +185,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * Get scope
+   * The scopes by the application that the user must consent to.
    * @return scope
    */
   @javax.annotation.Nullable
@@ -210,7 +210,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * Get redirectUri
+   * The redirect_uri used in the authorization request. This must exactly match one of the redirect URIs registered for the client.  This uri is used to send the authorization code or tokens back to the application.
    * @return redirectUri
    */
   @javax.annotation.Nullable
@@ -243,7 +243,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * Get prompt
+   * Prompts that must be displayed to the user.
    * @return prompt
    */
   @javax.annotation.Nullable
@@ -276,7 +276,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * Get uiLocales
+   * End-User&#39;s preferred languages and scripts for the user interface, represented as a list of BCP47 [RFC5646]  language tag values, ordered by preference.  For instance, the value [fr-CA, fr, en] represents a preference for French as spoken in Canada,  then French (without a region designation), followed by English (without a region designation).  An error SHOULD NOT result if some or all of the requested locales are not supported.
    * @return uiLocales
    */
   @javax.annotation.Nullable
@@ -301,7 +301,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * Get loginHint
+   * Login hint can be set by the application with a user identifier such as an email or phone number.
    * @return loginHint
    */
   @javax.annotation.Nullable
@@ -359,7 +359,7 @@ public class OIDCServiceAuthRequest {
   }
 
   /**
-   * Get hintUserId
+   * User ID taken from a ID Token Hint if it was present and valid.
    * @return hintUserId
    */
   @javax.annotation.Nullable

@@ -54,7 +54,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the current active identity providers
-   * Get the current active identity providers
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetActiveIdentityProvidersRequest  (required)
    * @return BetaSettingsServiceGetActiveIdentityProvidersResponse
    * @throws ApiException if fails to make API call
@@ -66,7 +66,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the current active identity providers
-   * Get the current active identity providers
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetActiveIdentityProvidersRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSettingsServiceGetActiveIdentityProvidersResponse
@@ -129,7 +129,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the current active branding settings
-   * Get the current active branding settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetBrandingSettingsRequest  (required)
    * @return BetaSettingsServiceGetBrandingSettingsResponse
    * @throws ApiException if fails to make API call
@@ -141,7 +141,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the current active branding settings
-   * Get the current active branding settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetBrandingSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSettingsServiceGetBrandingSettingsResponse
@@ -204,7 +204,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the domain settings
-   * Get the domain settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetDomainSettingsRequest  (required)
    * @return BetaSettingsServiceGetDomainSettingsResponse
    * @throws ApiException if fails to make API call
@@ -216,7 +216,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the domain settings
-   * Get the domain settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetDomainSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSettingsServiceGetDomainSettingsResponse
@@ -278,7 +278,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
               /**
               * Get basic information over the instance (Convenience Method)
-              * Get basic information over the instance
+              * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
                 * @return BetaSettingsServiceGetGeneralSettingsResponse
               * @throws ApiException if fails to make API call
               */
@@ -289,7 +289,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get basic information over the instance
-   * Get basic information over the instance
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param body  (required)
    * @return BetaSettingsServiceGetGeneralSettingsResponse
    * @throws ApiException if fails to make API call
@@ -301,7 +301,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get basic information over the instance
-   * Get basic information over the instance
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSettingsServiceGetGeneralSettingsResponse
@@ -364,7 +364,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the legal and support settings
-   * Get the legal and support settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetLegalAndSupportSettingsRequest  (required)
    * @return BetaSettingsServiceGetLegalAndSupportSettingsResponse
    * @throws ApiException if fails to make API call
@@ -376,7 +376,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the legal and support settings
-   * Get the legal and support settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetLegalAndSupportSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSettingsServiceGetLegalAndSupportSettingsResponse
@@ -439,7 +439,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the lockout settings
-   * Get the lockout settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetLockoutSettingsRequest  (required)
    * @return BetaSettingsServiceGetLockoutSettingsResponse
    * @throws ApiException if fails to make API call
@@ -451,7 +451,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the lockout settings
-   * Get the lockout settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetLockoutSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSettingsServiceGetLockoutSettingsResponse
@@ -514,7 +514,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the login settings
-   * Get the login settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetLoginSettingsRequest  (required)
    * @return BetaSettingsServiceGetLoginSettingsResponse
    * @throws ApiException if fails to make API call
@@ -526,7 +526,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the login settings
-   * Get the login settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetLoginSettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSettingsServiceGetLoginSettingsResponse
@@ -589,7 +589,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the password complexity settings
-   * Get the password complexity settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetPasswordComplexitySettingsRequest  (required)
    * @return BetaSettingsServiceGetPasswordComplexitySettingsResponse
    * @throws ApiException if fails to make API call
@@ -601,7 +601,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the password complexity settings
-   * Get the password complexity settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetPasswordComplexitySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSettingsServiceGetPasswordComplexitySettingsResponse
@@ -664,7 +664,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the password expiry settings
-   * Get the password expiry settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetPasswordExpirySettingsRequest  (required)
    * @return BetaSettingsServiceGetPasswordExpirySettingsResponse
    * @throws ApiException if fails to make API call
@@ -676,7 +676,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the password expiry settings
-   * Get the password expiry settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceGetPasswordExpirySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSettingsServiceGetPasswordExpirySettingsResponse
@@ -738,7 +738,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
               /**
               * Get the security settings (Convenience Method)
-              * Get the security settings
+              * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
                 * @return BetaSettingsServiceGetSecuritySettingsResponse
               * @throws ApiException if fails to make API call
               */
@@ -749,7 +749,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the security settings
-   * Get the security settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param body  (required)
    * @return BetaSettingsServiceGetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
@@ -761,7 +761,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Get the security settings
-   * Get the security settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param body  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSettingsServiceGetSecuritySettingsResponse
@@ -824,7 +824,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Set the security settings
-   * Set the security settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceSetSecuritySettingsRequest  (required)
    * @return BetaSettingsServiceSetSecuritySettingsResponse
    * @throws ApiException if fails to make API call
@@ -836,7 +836,7 @@ public class BetaSettingsServiceApi extends BaseApi {
 
   /**
    * Set the security settings
-   * Set the security settings
+   * Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.
    * @param betaSettingsServiceSetSecuritySettingsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaSettingsServiceSetSecuritySettingsResponse

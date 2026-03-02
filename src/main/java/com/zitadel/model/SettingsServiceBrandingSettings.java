@@ -131,7 +131,7 @@ public class SettingsServiceBrandingSettings {
   }
 
   /**
-   * Get fontUrl
+   * The url where the font is served.
    * @return fontUrl
    */
   @javax.annotation.Nullable
@@ -156,7 +156,7 @@ public class SettingsServiceBrandingSettings {
   }
 
   /**
-   * hides the org suffix on the login form if the scope \\\&quot;urn:zitadel:iam:org:domain:primary:{domainname}\\\&quot; is set
+   * If enabled, the organization suffix will be hidden on the login form if the scope \\\&quot;urn:zitadel:iam:org:domain:primary:{domainname}\\\&quot; is used.
    * @return hideLoginNameSuffix
    */
   @javax.annotation.Nullable
@@ -181,7 +181,7 @@ public class SettingsServiceBrandingSettings {
   }
 
   /**
-   * Get disableWatermark
+   * If enabled, the Zitadel logo will not be displayed on the login screen.
    * @return disableWatermark
    */
   @javax.annotation.Nullable

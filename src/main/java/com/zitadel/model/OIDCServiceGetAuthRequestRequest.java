@@ -48,7 +48,7 @@ public class OIDCServiceGetAuthRequestRequest {
   }
 
   /**
-   * Get authRequestId
+   * The ID of the Auth Request, as obtained from the redirect URL.
    * @return authRequestId
    */
   @javax.annotation.Nullable

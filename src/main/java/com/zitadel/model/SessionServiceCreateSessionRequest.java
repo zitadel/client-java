@@ -106,7 +106,7 @@ public class SessionServiceCreateSessionRequest {
   }
 
   /**
-   * Get metadata
+   * Custom key value list to be stored on the session.
    * @return metadata
    */
   @javax.annotation.Nullable

@@ -46,7 +46,7 @@ public class BetaAuthorizationServiceApi extends BaseApi {
 
   /**
    * Activate Authorization
-   * ActivateAuthorization activates an existing but inactive authorization.   In case the authorization is already active, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was activated by the request.   Required permissions:    - \&quot;user.grant.write\&quot;
+   * Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   ActivateAuthorization activates an existing but inactive authorization.   In case the authorization is already active, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was activated by the request.   Required permissions:    - \&quot;user.grant.write\&quot;
    * @param betaAuthorizationServiceActivateAuthorizationRequest  (required)
    * @return BetaAuthorizationServiceActivateAuthorizationResponse
    * @throws ApiException if fails to make API call
@@ -58,7 +58,7 @@ public class BetaAuthorizationServiceApi extends BaseApi {
 
   /**
    * Activate Authorization
-   * ActivateAuthorization activates an existing but inactive authorization.   In case the authorization is already active, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was activated by the request.   Required permissions:    - \&quot;user.grant.write\&quot;
+   * Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   ActivateAuthorization activates an existing but inactive authorization.   In case the authorization is already active, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was activated by the request.   Required permissions:    - \&quot;user.grant.write\&quot;
    * @param betaAuthorizationServiceActivateAuthorizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAuthorizationServiceActivateAuthorizationResponse
@@ -121,7 +121,7 @@ public class BetaAuthorizationServiceApi extends BaseApi {
 
   /**
    * Create Authorization
-   * CreateAuthorization creates a new authorization for a user in an owned or granted project.   Required permissions:    - \&quot;user.grant.write\&quot;
+   * Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   CreateAuthorization creates a new authorization for a user in an owned or granted project.   Required permissions:    - \&quot;user.grant.write\&quot;
    * @param betaAuthorizationServiceCreateAuthorizationRequest  (required)
    * @return BetaAuthorizationServiceCreateAuthorizationResponse
    * @throws ApiException if fails to make API call
@@ -133,7 +133,7 @@ public class BetaAuthorizationServiceApi extends BaseApi {
 
   /**
    * Create Authorization
-   * CreateAuthorization creates a new authorization for a user in an owned or granted project.   Required permissions:    - \&quot;user.grant.write\&quot;
+   * Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   CreateAuthorization creates a new authorization for a user in an owned or granted project.   Required permissions:    - \&quot;user.grant.write\&quot;
    * @param betaAuthorizationServiceCreateAuthorizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAuthorizationServiceCreateAuthorizationResponse
@@ -196,7 +196,7 @@ public class BetaAuthorizationServiceApi extends BaseApi {
 
   /**
    * Deactivate Authorization
-   * DeactivateAuthorization deactivates an existing and active authorization.   In case the authorization is already inactive, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was deactivated by the request.   Required permissions:    - \&quot;user.grant.write\&quot;
+   * Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   DeactivateAuthorization deactivates an existing and active authorization.   In case the authorization is already inactive, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was deactivated by the request.   Required permissions:    - \&quot;user.grant.write\&quot;
    * @param betaAuthorizationServiceDeactivateAuthorizationRequest  (required)
    * @return BetaAuthorizationServiceDeactivateAuthorizationResponse
    * @throws ApiException if fails to make API call
@@ -208,7 +208,7 @@ public class BetaAuthorizationServiceApi extends BaseApi {
 
   /**
    * Deactivate Authorization
-   * DeactivateAuthorization deactivates an existing and active authorization.   In case the authorization is already inactive, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was deactivated by the request.   Required permissions:    - \&quot;user.grant.write\&quot;
+   * Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   DeactivateAuthorization deactivates an existing and active authorization.   In case the authorization is already inactive, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was deactivated by the request.   Required permissions:    - \&quot;user.grant.write\&quot;
    * @param betaAuthorizationServiceDeactivateAuthorizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAuthorizationServiceDeactivateAuthorizationResponse
@@ -271,7 +271,7 @@ public class BetaAuthorizationServiceApi extends BaseApi {
 
   /**
    * Delete Authorization
-   * DeleteAuthorization deletes the authorization.   In case the authorization is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the authorization was deleted by the request.   Required permissions:    - \&quot;user.grant.delete\&quot;
+   * Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   DeleteAuthorization deletes the authorization.   In case the authorization is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the authorization was deleted by the request.   Required permissions:    - \&quot;user.grant.delete\&quot;
    * @param betaAuthorizationServiceDeleteAuthorizationRequest  (required)
    * @return BetaAuthorizationServiceDeleteAuthorizationResponse
    * @throws ApiException if fails to make API call
@@ -283,7 +283,7 @@ public class BetaAuthorizationServiceApi extends BaseApi {
 
   /**
    * Delete Authorization
-   * DeleteAuthorization deletes the authorization.   In case the authorization is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the authorization was deleted by the request.   Required permissions:    - \&quot;user.grant.delete\&quot;
+   * Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   DeleteAuthorization deletes the authorization.   In case the authorization is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the authorization was deleted by the request.   Required permissions:    - \&quot;user.grant.delete\&quot;
    * @param betaAuthorizationServiceDeleteAuthorizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAuthorizationServiceDeleteAuthorizationResponse
@@ -346,7 +346,7 @@ public class BetaAuthorizationServiceApi extends BaseApi {
 
   /**
    * List Authorizations
-   * ListAuthorizations returns all authorizations matching the request and necessary permissions.   Required permissions:    - \&quot;user.grant.read\&quot;    - no permissions required for listing own authorizations
+   * Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   ListAuthorizations returns all authorizations matching the request and necessary permissions.   Required permissions:    - \&quot;user.grant.read\&quot;    - no permissions required for listing own authorizations
    * @param betaAuthorizationServiceListAuthorizationsRequest  (required)
    * @return BetaAuthorizationServiceListAuthorizationsResponse
    * @throws ApiException if fails to make API call
@@ -358,7 +358,7 @@ public class BetaAuthorizationServiceApi extends BaseApi {
 
   /**
    * List Authorizations
-   * ListAuthorizations returns all authorizations matching the request and necessary permissions.   Required permissions:    - \&quot;user.grant.read\&quot;    - no permissions required for listing own authorizations
+   * Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   ListAuthorizations returns all authorizations matching the request and necessary permissions.   Required permissions:    - \&quot;user.grant.read\&quot;    - no permissions required for listing own authorizations
    * @param betaAuthorizationServiceListAuthorizationsRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAuthorizationServiceListAuthorizationsResponse
@@ -421,7 +421,7 @@ public class BetaAuthorizationServiceApi extends BaseApi {
 
   /**
    * Update Authorization
-   * UpdateAuthorization updates the authorization.   Note that any role keys previously granted to the user and not present in the request will be revoked.   Required permissions:    - \&quot;user.grant.write\&quot;
+   * Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   UpdateAuthorization updates the authorization.   Note that any role keys previously granted to the user and not present in the request will be revoked.   Required permissions:    - \&quot;user.grant.write\&quot;
    * @param betaAuthorizationServiceUpdateAuthorizationRequest  (required)
    * @return BetaAuthorizationServiceUpdateAuthorizationResponse
    * @throws ApiException if fails to make API call
@@ -433,7 +433,7 @@ public class BetaAuthorizationServiceApi extends BaseApi {
 
   /**
    * Update Authorization
-   * UpdateAuthorization updates the authorization.   Note that any role keys previously granted to the user and not present in the request will be revoked.   Required permissions:    - \&quot;user.grant.write\&quot;
+   * Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   UpdateAuthorization updates the authorization.   Note that any role keys previously granted to the user and not present in the request will be revoked.   Required permissions:    - \&quot;user.grant.write\&quot;
    * @param betaAuthorizationServiceUpdateAuthorizationRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return BetaAuthorizationServiceUpdateAuthorizationResponse

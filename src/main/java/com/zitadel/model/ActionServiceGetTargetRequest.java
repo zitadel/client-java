@@ -48,7 +48,7 @@ public class ActionServiceGetTargetRequest {
   }
 
   /**
-   * Get id
+   * The unique identifier of the target to retrieve.
    * @return id
    */
   @javax.annotation.Nullable

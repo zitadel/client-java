@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.ActionServicePayloadType;
 import com.zitadel.model.ActionServiceRESTCall;
 import com.zitadel.model.ActionServiceRESTWebhook;
 import java.time.OffsetDateTime;
@@ -40,6 +41,7 @@ import java.util.StringJoiner;
   ActionServiceTarget.JSON_PROPERTY_TIMEOUT,
   ActionServiceTarget.JSON_PROPERTY_ENDPOINT,
   ActionServiceTarget.JSON_PROPERTY_SIGNING_KEY,
+  ActionServiceTarget.JSON_PROPERTY_PAYLOAD_TYPE,
   ActionServiceTarget.JSON_PROPERTY_REST_ASYNC,
   ActionServiceTarget.JSON_PROPERTY_REST_CALL,
   ActionServiceTarget.JSON_PROPERTY_REST_WEBHOOK
@@ -73,6 +75,10 @@ public class ActionServiceTarget {
   public static final String JSON_PROPERTY_SIGNING_KEY = "signingKey";
   @javax.annotation.Nullable
   private String signingKey;
+
+  public static final String JSON_PROPERTY_PAYLOAD_TYPE = "payloadType";
+  @javax.annotation.Nullable
+  private ActionServicePayloadType payloadType;
 
   public static final String JSON_PROPERTY_REST_ASYNC = "restAsync";
   @javax.annotation.Nullable
@@ -171,7 +177,7 @@ public class ActionServiceTarget {
   }
 
   /**
-   * Get name
+   * Display name of the target.
    * @return name
    */
   @javax.annotation.Nullable
@@ -221,7 +227,7 @@ public class ActionServiceTarget {
   }
 
   /**
-   * Get endpoint
+   * The URL that will be called in case of an execution.
    * @return endpoint
    */
   @javax.annotation.Nullable
@@ -246,7 +252,7 @@ public class ActionServiceTarget {
   }
 
   /**
-   * Get signingKey
+   * The current signing key used to sign the request sent to the target.  The key can be used to verify the integrity and authenticity of the request  on the receiver side. The key should be treated as a secret and only known to ZITADEL and the receiver.  The signature is included in the request header &#x60;X-ZITADEL-Signature&#x60;  and calculated over the raw body of the request using HMAC with SHA256.
    * @return signingKey
    */
   @javax.annotation.Nullable
@@ -262,6 +268,31 @@ public class ActionServiceTarget {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSigningKey(@javax.annotation.Nullable String signingKey) {
     this.signingKey = signingKey;
+  }
+
+  public ActionServiceTarget payloadType(@javax.annotation.Nullable ActionServicePayloadType payloadType) {
+    
+    this.payloadType = payloadType;
+    return this;
+  }
+
+  /**
+   * Get payloadType
+   * @return payloadType
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PAYLOAD_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ActionServicePayloadType getPayloadType() {
+    return payloadType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PAYLOAD_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPayloadType(@javax.annotation.Nullable ActionServicePayloadType payloadType) {
+    this.payloadType = payloadType;
   }
 
   public ActionServiceTarget restAsync(@javax.annotation.Nullable Object restAsync) {
@@ -355,6 +386,7 @@ public class ActionServiceTarget {
         Objects.equals(this.timeout, actionServiceTarget.timeout) &&
         Objects.equals(this.endpoint, actionServiceTarget.endpoint) &&
         Objects.equals(this.signingKey, actionServiceTarget.signingKey) &&
+        Objects.equals(this.payloadType, actionServiceTarget.payloadType) &&
         Objects.equals(this.restAsync, actionServiceTarget.restAsync) &&
         Objects.equals(this.restCall, actionServiceTarget.restCall) &&
         Objects.equals(this.restWebhook, actionServiceTarget.restWebhook);
@@ -362,7 +394,7 @@ public class ActionServiceTarget {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, creationDate, changeDate, name, timeout, endpoint, signingKey, restAsync, restCall, restWebhook);
+    return Objects.hash(id, creationDate, changeDate, name, timeout, endpoint, signingKey, payloadType, restAsync, restCall, restWebhook);
   }
 
   @Override
@@ -376,6 +408,7 @@ public class ActionServiceTarget {
     sb.append("    timeout: ").append(toIndentedString(timeout)).append("\n");
     sb.append("    endpoint: ").append(toIndentedString(endpoint)).append("\n");
     sb.append("    signingKey: ").append(toIndentedString(signingKey)).append("\n");
+    sb.append("    payloadType: ").append(toIndentedString(payloadType)).append("\n");
     sb.append("    restAsync: ").append(toIndentedString(restAsync)).append("\n");
     sb.append("    restCall: ").append(toIndentedString(restCall)).append("\n");
     sb.append("    restWebhook: ").append(toIndentedString(restWebhook)).append("\n");
@@ -490,6 +523,16 @@ public class ActionServiceTarget {
     if (getSigningKey() != null) {
       try {
         joiner.add(String.format("%ssigningKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSigningKey()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `payloadType` to the URL query string
+    if (getPayloadType() != null) {
+      try {
+        joiner.add(String.format("%spayloadType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPayloadType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

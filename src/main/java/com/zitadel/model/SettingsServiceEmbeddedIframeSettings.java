@@ -56,7 +56,7 @@ public class SettingsServiceEmbeddedIframeSettings {
   }
 
   /**
-   * Get enabled
+   * Enabled states if iframe embedding is enabled or disabled.
    * @return enabled
    */
   @javax.annotation.Nullable
@@ -89,7 +89,7 @@ public class SettingsServiceEmbeddedIframeSettings {
   }
 
   /**
-   * Get allowedOrigins
+   * AllowedOrigins defines which origins are allowed to embed ZITADEL in an iframe.
    * @return allowedOrigins
    */
   @javax.annotation.Nullable

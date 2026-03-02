@@ -48,7 +48,7 @@ public class ActionServiceDeleteTargetRequest {
   }
 
   /**
-   * Get id
+   * The unique identifier of the target to delete.
    * @return id
    */
   @javax.annotation.Nullable

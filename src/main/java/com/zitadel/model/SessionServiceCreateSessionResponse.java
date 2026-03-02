@@ -90,7 +90,7 @@ public class SessionServiceCreateSessionResponse {
   }
 
   /**
-   * Get sessionId
+   * Unique identifier of the session.
    * @return sessionId
    */
   @javax.annotation.Nullable
@@ -115,7 +115,7 @@ public class SessionServiceCreateSessionResponse {
   }
 
   /**
-   * Get sessionToken
+   * The current token of the session, which is required for using the session as authentication,  e.g.when authenticating an OIDC auth request or SAML request.  Additionally, the session token can be used as OAuth2 access token to authenticate against  the ZITADEL APIs.
    * @return sessionToken
    */
   @javax.annotation.Nullable

@@ -36,8 +36,8 @@ public class SamlServiceApi extends BaseApi {
 
 
               /**
-              * CreateResponse (Convenience Method)
-              * 
+              * Create Response (Convenience Method)
+              * Finalize a SAML Request and get the response definition for success or failure.  The response must be handled as per the SAML definition to inform the application about the success or failure.  On success, the response contains details for the application to obtain the SAMLResponse.  This method can only be called once for an SAML request.   Required permissions:    - &#x60;session.link&#x60;
                 * @return SAMLServiceCreateResponseResponse
               * @throws ApiException if fails to make API call
               */
@@ -47,8 +47,8 @@ public class SamlServiceApi extends BaseApi {
 
 
   /**
-   * CreateResponse
-   * 
+   * Create Response
+   * Finalize a SAML Request and get the response definition for success or failure.  The response must be handled as per the SAML definition to inform the application about the success or failure.  On success, the response contains details for the application to obtain the SAMLResponse.  This method can only be called once for an SAML request.   Required permissions:    - &#x60;session.link&#x60;
    * @param saMLServiceCreateResponseRequest  (required)
    * @return SAMLServiceCreateResponseResponse
    * @throws ApiException if fails to make API call
@@ -59,8 +59,8 @@ public class SamlServiceApi extends BaseApi {
 
 
   /**
-   * CreateResponse
-   * 
+   * Create Response
+   * Finalize a SAML Request and get the response definition for success or failure.  The response must be handled as per the SAML definition to inform the application about the success or failure.  On success, the response contains details for the application to obtain the SAMLResponse.  This method can only be called once for an SAML request.   Required permissions:    - &#x60;session.link&#x60;
    * @param saMLServiceCreateResponseRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SAMLServiceCreateResponseResponse
@@ -122,8 +122,8 @@ public class SamlServiceApi extends BaseApi {
 
 
   /**
-   * GetSAMLRequest
-   * 
+   * Get SAML Request
+   * Get SAML Request details by ID. Returns details that are parsed from the application&#39;s SAML Request.   Required permissions:    - &#x60;session.read&#x60;
    * @param saMLServiceGetSAMLRequestRequest  (required)
    * @return SAMLServiceGetSAMLRequestResponse
    * @throws ApiException if fails to make API call
@@ -134,8 +134,8 @@ public class SamlServiceApi extends BaseApi {
 
 
   /**
-   * GetSAMLRequest
-   * 
+   * Get SAML Request
+   * Get SAML Request details by ID. Returns details that are parsed from the application&#39;s SAML Request.   Required permissions:    - &#x60;session.read&#x60;
    * @param saMLServiceGetSAMLRequestRequest  (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return SAMLServiceGetSAMLRequestResponse

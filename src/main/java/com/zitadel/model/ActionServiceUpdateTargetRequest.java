@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zitadel.model.ActionServicePayloadType;
 import com.zitadel.model.ActionServiceRESTCall;
 import com.zitadel.model.ActionServiceRESTWebhook;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -41,6 +42,7 @@ import java.util.StringJoiner;
   ActionServiceUpdateTargetRequest.JSON_PROPERTY_TIMEOUT,
   ActionServiceUpdateTargetRequest.JSON_PROPERTY_ENDPOINT,
   ActionServiceUpdateTargetRequest.JSON_PROPERTY_EXPIRATION_SIGNING_KEY,
+  ActionServiceUpdateTargetRequest.JSON_PROPERTY_PAYLOAD_TYPE,
   ActionServiceUpdateTargetRequest.JSON_PROPERTY_REST_ASYNC,
   ActionServiceUpdateTargetRequest.JSON_PROPERTY_REST_CALL,
   ActionServiceUpdateTargetRequest.JSON_PROPERTY_REST_WEBHOOK
@@ -67,6 +69,10 @@ public class ActionServiceUpdateTargetRequest {
   @javax.annotation.Nullable
   private String expirationSigningKey;
 
+  public static final String JSON_PROPERTY_PAYLOAD_TYPE = "payloadType";
+  @javax.annotation.Nullable
+  private ActionServicePayloadType payloadType;
+
   public static final String JSON_PROPERTY_REST_ASYNC = "restAsync";
   @javax.annotation.Nullable
   private Object restAsync;
@@ -89,7 +95,7 @@ public class ActionServiceUpdateTargetRequest {
   }
 
   /**
-   * Get id
+   * The unique identifier of the target to update.
    * @return id
    */
   @javax.annotation.Nullable
@@ -114,7 +120,7 @@ public class ActionServiceUpdateTargetRequest {
   }
 
   /**
-   * Get name
+   * Optionally, update the name of the target.  If not set, the name will not be changed.
    * @return name
    */
   @javax.annotation.Nullable
@@ -172,7 +178,7 @@ public class ActionServiceUpdateTargetRequest {
   }
 
   /**
-   * Get endpoint
+   * The new URL of the endpoint to call.  If not set, the endpoint will not be changed.
    * @return endpoint
    */
   @javax.annotation.Nullable
@@ -221,6 +227,31 @@ public class ActionServiceUpdateTargetRequest {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setExpirationSigningKey(@javax.annotation.Nullable String expirationSigningKey) {
     this.expirationSigningKey = expirationSigningKey;
+  }
+
+  public ActionServiceUpdateTargetRequest payloadType(@javax.annotation.Nullable ActionServicePayloadType payloadType) {
+    
+    this.payloadType = payloadType;
+    return this;
+  }
+
+  /**
+   * Get payloadType
+   * @return payloadType
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PAYLOAD_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ActionServicePayloadType getPayloadType() {
+    return payloadType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PAYLOAD_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPayloadType(@javax.annotation.Nullable ActionServicePayloadType payloadType) {
+    this.payloadType = payloadType;
   }
 
   public ActionServiceUpdateTargetRequest restAsync(@javax.annotation.Nullable Object restAsync) {
@@ -312,6 +343,7 @@ public class ActionServiceUpdateTargetRequest {
         Objects.equals(this.timeout, actionServiceUpdateTargetRequest.timeout) &&
         equalsNullable(this.endpoint, actionServiceUpdateTargetRequest.endpoint) &&
         Objects.equals(this.expirationSigningKey, actionServiceUpdateTargetRequest.expirationSigningKey) &&
+        Objects.equals(this.payloadType, actionServiceUpdateTargetRequest.payloadType) &&
         Objects.equals(this.restAsync, actionServiceUpdateTargetRequest.restAsync) &&
         Objects.equals(this.restCall, actionServiceUpdateTargetRequest.restCall) &&
         Objects.equals(this.restWebhook, actionServiceUpdateTargetRequest.restWebhook);
@@ -323,7 +355,7 @@ public class ActionServiceUpdateTargetRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, hashCodeNullable(name), timeout, hashCodeNullable(endpoint), expirationSigningKey, restAsync, restCall, restWebhook);
+    return Objects.hash(id, hashCodeNullable(name), timeout, hashCodeNullable(endpoint), expirationSigningKey, payloadType, restAsync, restCall, restWebhook);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -342,6 +374,7 @@ public class ActionServiceUpdateTargetRequest {
     sb.append("    timeout: ").append(toIndentedString(timeout)).append("\n");
     sb.append("    endpoint: ").append(toIndentedString(endpoint)).append("\n");
     sb.append("    expirationSigningKey: ").append(toIndentedString(expirationSigningKey)).append("\n");
+    sb.append("    payloadType: ").append(toIndentedString(payloadType)).append("\n");
     sb.append("    restAsync: ").append(toIndentedString(restAsync)).append("\n");
     sb.append("    restCall: ").append(toIndentedString(restCall)).append("\n");
     sb.append("    restWebhook: ").append(toIndentedString(restWebhook)).append("\n");
@@ -436,6 +469,16 @@ public class ActionServiceUpdateTargetRequest {
     if (getExpirationSigningKey() != null) {
       try {
         joiner.add(String.format("%sexpirationSigningKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpirationSigningKey()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `payloadType` to the URL query string
+    if (getPayloadType() != null) {
+      try {
+        joiner.add(String.format("%spayloadType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPayloadType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

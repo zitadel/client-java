@@ -91,7 +91,7 @@ public class ActionServiceListExecutionsResponse {
   }
 
   /**
-   * Get executions
+   * List of all executions matching the query.
    * @return executions
    */
   @javax.annotation.Nullable

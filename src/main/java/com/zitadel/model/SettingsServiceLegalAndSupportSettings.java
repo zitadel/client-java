@@ -84,7 +84,7 @@ public class SettingsServiceLegalAndSupportSettings {
   }
 
   /**
-   * Get tosLink
+   * Link to the Terms of Service. Can be a relative or absolute URL.
    * @return tosLink
    */
   @javax.annotation.Nullable
@@ -109,7 +109,7 @@ public class SettingsServiceLegalAndSupportSettings {
   }
 
   /**
-   * Get privacyPolicyLink
+   * Link to the Privacy Policy. Can be a relative or absolute URL.
    * @return privacyPolicyLink
    */
   @javax.annotation.Nullable
@@ -134,7 +134,7 @@ public class SettingsServiceLegalAndSupportSettings {
   }
 
   /**
-   * Get helpLink
+   * Link to a help page. Can be a relative or absolute URL.
    * @return helpLink
    */
   @javax.annotation.Nullable
@@ -159,7 +159,7 @@ public class SettingsServiceLegalAndSupportSettings {
   }
 
   /**
-   * Get supportEmail
+   * Email address for support issues.
    * @return supportEmail
    */
   @javax.annotation.Nullable
@@ -209,7 +209,7 @@ public class SettingsServiceLegalAndSupportSettings {
   }
 
   /**
-   * Get docsLink
+   * Link to documentation to be shown in the console.
    * @return docsLink
    */
   @javax.annotation.Nullable
@@ -234,7 +234,7 @@ public class SettingsServiceLegalAndSupportSettings {
   }
 
   /**
-   * Get customLink
+   * Link to an external resource that will be available to users in the console.
    * @return customLink
    */
   @javax.annotation.Nullable
@@ -259,7 +259,7 @@ public class SettingsServiceLegalAndSupportSettings {
   }
 
   /**
-   * Get customLinkText
+   * The button text that would be shown in console pointing to custom link.
    * @return customLinkText
    */
   @javax.annotation.Nullable

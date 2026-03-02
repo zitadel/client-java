@@ -53,7 +53,7 @@ public class OIDCServiceSession {
   }
 
   /**
-   * Get sessionId
+   * ID of the session, used to login the user. Connects the session to the Auth Request.
    * @return sessionId
    */
   @javax.annotation.Nullable
@@ -78,7 +78,7 @@ public class OIDCServiceSession {
   }
 
   /**
-   * Get sessionToken
+   * Token of the session used to login the user. This token verifies that the session is valid.
    * @return sessionToken
    */
   @javax.annotation.Nullable

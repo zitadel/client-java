@@ -73,7 +73,7 @@ public class SettingsServiceTheme {
   }
 
   /**
-   * hex value for primary color
+   * The hex value for primary color.
    * @return primaryColor
    */
   @javax.annotation.Nullable
@@ -98,7 +98,7 @@ public class SettingsServiceTheme {
   }
 
   /**
-   * hex value for background color
+   * The hex value for background color.
    * @return backgroundColor
    */
   @javax.annotation.Nullable
@@ -123,7 +123,7 @@ public class SettingsServiceTheme {
   }
 
   /**
-   * hex value for warning color
+   * The hex value for warning color.
    * @return warnColor
    */
   @javax.annotation.Nullable
@@ -148,7 +148,7 @@ public class SettingsServiceTheme {
   }
 
   /**
-   * hex value for font color
+   * The value for font color.
    * @return fontColor
    */
   @javax.annotation.Nullable
@@ -173,7 +173,7 @@ public class SettingsServiceTheme {
   }
 
   /**
-   * url where the logo is served
+   * The URL where the logo is served.
    * @return logoUrl
    */
   @javax.annotation.Nullable
@@ -198,7 +198,7 @@ public class SettingsServiceTheme {
   }
 
   /**
-   * url where the icon is served
+   * The URL where the icon is served.
    * @return iconUrl
    */
   @javax.annotation.Nullable

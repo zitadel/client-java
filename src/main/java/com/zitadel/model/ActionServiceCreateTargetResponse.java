@@ -109,7 +109,7 @@ public class ActionServiceCreateTargetResponse {
   }
 
   /**
-   * Key used to sign and check payload sent to the target.
+   * Key used to sign and check payload sent to the target.  The key can be used to verify the integrity and authenticity of the request  on the receiver side. The key should be treated as a secret and only known to ZITADEL and the receiver.  The signature is included in the request header &#x60;X-ZITADEL-Signature&#x60;  and calculated over the raw body of the request using HMAC with SHA256.
    * @return signingKey
    */
   @javax.annotation.Nullable

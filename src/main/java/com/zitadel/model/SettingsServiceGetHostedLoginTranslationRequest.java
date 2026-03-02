@@ -68,7 +68,7 @@ public class SettingsServiceGetHostedLoginTranslationRequest {
   }
 
   /**
-   * Get locale
+   * The locale of the translations to be returned.  Needs to be a BCP 47 language tag (e.g. \&quot;en\&quot;, \&quot;de\&quot;, \&quot;fr-CH\&quot;).
    * @return locale
    */
   @javax.annotation.Nullable

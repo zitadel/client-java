@@ -35,6 +35,8 @@ import com.zitadel.model.UserServiceDeleteUserMetadataRequest;
 import com.zitadel.model.UserServiceDeleteUserMetadataResponse;
 import com.zitadel.model.UserServiceDeleteUserRequest;
 import com.zitadel.model.UserServiceDeleteUserResponse;
+import com.zitadel.model.UserServiceGenerateRecoveryCodesRequest;
+import com.zitadel.model.UserServiceGenerateRecoveryCodesResponse;
 import com.zitadel.model.UserServiceGetUserByIDRequest;
 import com.zitadel.model.UserServiceGetUserByIDResponse;
 import com.zitadel.model.UserServiceHumanMFAInitSkippedRequest;
@@ -81,6 +83,8 @@ import com.zitadel.model.UserServiceRemovePersonalAccessTokenRequest;
 import com.zitadel.model.UserServiceRemovePersonalAccessTokenResponse;
 import com.zitadel.model.UserServiceRemovePhoneRequest;
 import com.zitadel.model.UserServiceRemovePhoneResponse;
+import com.zitadel.model.UserServiceRemoveRecoveryCodesRequest;
+import com.zitadel.model.UserServiceRemoveRecoveryCodesResponse;
 import com.zitadel.model.UserServiceRemoveSecretRequest;
 import com.zitadel.model.UserServiceRemoveSecretResponse;
 import com.zitadel.model.UserServiceRemoveTOTPRequest;
@@ -1143,6 +1147,81 @@ public class UserServiceApi extends BaseApi {
     String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
 
     TypeReference<UserServiceDeleteUserMetadataResponse> localVarReturnType = new TypeReference<UserServiceDeleteUserMetadataResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+
+
+
+  /**
+   * Generate single-use recovery codes for a user
+   * Generate new single-use recovery codes for the authenticated user. Recovery codes can be used to recover access to the account if other second factors are not available.
+   * @param userServiceGenerateRecoveryCodesRequest  (required)
+   * @return UserServiceGenerateRecoveryCodesResponse
+   * @throws ApiException if fails to make API call
+   */
+  public UserServiceGenerateRecoveryCodesResponse generateRecoveryCodes(UserServiceGenerateRecoveryCodesRequest userServiceGenerateRecoveryCodesRequest) throws ApiException {
+    return this.generateRecoveryCodes(userServiceGenerateRecoveryCodesRequest, Collections.emptyMap());
+  }
+
+
+  /**
+   * Generate single-use recovery codes for a user
+   * Generate new single-use recovery codes for the authenticated user. Recovery codes can be used to recover access to the account if other second factors are not available.
+   * @param userServiceGenerateRecoveryCodesRequest  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return UserServiceGenerateRecoveryCodesResponse
+   * @throws ApiException if fails to make API call
+   */
+  private UserServiceGenerateRecoveryCodesResponse generateRecoveryCodes(UserServiceGenerateRecoveryCodesRequest userServiceGenerateRecoveryCodesRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceGenerateRecoveryCodesRequest;
+    
+    if (userServiceGenerateRecoveryCodesRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceGenerateRecoveryCodesRequest' when calling generateRecoveryCodes");
+    }
+    
+    String localVarPath = "/zitadel.user.v2.UserService/GenerateRecoveryCodes";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<UserServiceGenerateRecoveryCodesResponse> localVarReturnType = new TypeReference<UserServiceGenerateRecoveryCodesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "POST",
@@ -2878,6 +2957,81 @@ public class UserServiceApi extends BaseApi {
     String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
 
     TypeReference<UserServiceRemovePhoneResponse> localVarReturnType = new TypeReference<UserServiceRemovePhoneResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+
+
+
+  /**
+   * Remove recovery codes from a user
+   * Remove all recovery codes from the authenticated user. This will disable the recovery code second factor.
+   * @param userServiceRemoveRecoveryCodesRequest  (required)
+   * @return UserServiceRemoveRecoveryCodesResponse
+   * @throws ApiException if fails to make API call
+   */
+  public UserServiceRemoveRecoveryCodesResponse removeRecoveryCodes(UserServiceRemoveRecoveryCodesRequest userServiceRemoveRecoveryCodesRequest) throws ApiException {
+    return this.removeRecoveryCodes(userServiceRemoveRecoveryCodesRequest, Collections.emptyMap());
+  }
+
+
+  /**
+   * Remove recovery codes from a user
+   * Remove all recovery codes from the authenticated user. This will disable the recovery code second factor.
+   * @param userServiceRemoveRecoveryCodesRequest  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return UserServiceRemoveRecoveryCodesResponse
+   * @throws ApiException if fails to make API call
+   */
+  private UserServiceRemoveRecoveryCodesResponse removeRecoveryCodes(UserServiceRemoveRecoveryCodesRequest userServiceRemoveRecoveryCodesRequest, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = userServiceRemoveRecoveryCodesRequest;
+    
+    if (userServiceRemoveRecoveryCodesRequest == null) {
+      throw new IllegalArgumentException("Missing the required parameter 'userServiceRemoveRecoveryCodesRequest' when calling removeRecoveryCodes");
+    }
+    
+    String localVarPath = "/zitadel.user.v2.UserService/RemoveRecoveryCodes";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "zitadelAccessToken" };
+
+    TypeReference<UserServiceRemoveRecoveryCodesResponse> localVarReturnType = new TypeReference<UserServiceRemoveRecoveryCodesResponse>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "POST",

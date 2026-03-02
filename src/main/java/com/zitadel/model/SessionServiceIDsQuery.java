@@ -59,7 +59,7 @@ public class SessionServiceIDsQuery {
   }
 
   /**
-   * Get ids
+   * List of session IDs to search for.  If multiple IDs are provided, sessions matching any of the IDs will be returned.
    * @return ids
    */
   @javax.annotation.Nullable

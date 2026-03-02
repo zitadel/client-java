@@ -58,7 +58,7 @@ public class ActionServiceRequestExecution {
   }
 
   /**
-   * All calls to any available services and methods as condition.
+   * Define all calls as condition.  When a call to any available service happens, the execution is triggered.
    * @return all
    */
   @javax.annotation.Nullable
@@ -83,7 +83,7 @@ public class ActionServiceRequestExecution {
   }
 
   /**
-   * GRPC-method as condition.
+   * Define a GRPC-method as condition.  When a request to this method happens, the execution is triggered.
    * @return method
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class ActionServiceRequestExecution {
   }
 
   /**
-   * GRPC-service as condition.
+   * Define a GRPC-service as condition.  When a request to any method of this service happens, the execution is triggered.
    * @return service
    */
   @javax.annotation.Nullable

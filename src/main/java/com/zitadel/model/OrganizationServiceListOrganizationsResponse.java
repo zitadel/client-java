@@ -122,7 +122,7 @@ public class OrganizationServiceListOrganizationsResponse {
   }
 
   /**
-   * Get result
+   * The Result is a list of organizations matching the query.
    * @return result
    */
   @javax.annotation.Nullable
