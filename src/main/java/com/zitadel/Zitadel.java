@@ -125,6 +125,20 @@ public class Zitadel {
     @Deprecated
     public final ActionServiceApi actions;
     /**
+     * Service for managing Applications.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getApplications()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
+    public final ApplicationServiceApi applications;
+    /**
+     * Service for managing Authorizations.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getAuthorizations()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
+    public final AuthorizationServiceApi authorizations;
+    /**
      * Service for managing Users.
      *
      * @deprecated As of version 4.2.0, use {@link #getUsers()} for better testability. This field will be removed in a future major version.
@@ -160,12 +174,33 @@ public class Zitadel {
     @Deprecated
     public final IdentityProviderServiceApi idps;
     /**
+     * Service for managing Instances.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getInstances()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
+    public final InstanceServiceApi instances;
+    /**
+     * Service for managing internal Permissions.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getInternalPermissions()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
+    public final InternalPermissionServiceApi internalPermissions;
+    /**
      * Service for managing Organizations.
      *
      * @deprecated As of version 4.2.0, use {@link #getOrganizations()} for better testability. This field will be removed in a future major version.
      */
     @Deprecated
     public final OrganizationServiceApi organizations;
+    /**
+     * Service for managing Projects.
+     *
+     * @deprecated As of version 4.2.0, use {@link #getProjects()} for better testability. This field will be removed in a future major version.
+     */
+    @Deprecated
+    public final ProjectServiceApi projects;
     /**
      * Service for managing Settings.
      *
@@ -218,12 +253,17 @@ public class Zitadel {
         this.betaWebkeys = new BetaWebKeyServiceApi(apiClient);
         this.betaActions = new BetaActionServiceApi(apiClient);
         this.actions = new ActionServiceApi(apiClient);
+        this.applications = new ApplicationServiceApi(apiClient);
+        this.authorizations = new AuthorizationServiceApi(apiClient);
         this.users = new UserServiceApi(apiClient);
         this.sessions = new SessionServiceApi(apiClient);
         this.oidc = new OidcServiceApi(apiClient);
         this.features = new FeatureServiceApi(apiClient);
         this.idps = new IdentityProviderServiceApi(apiClient);
+        this.instances = new InstanceServiceApi(apiClient);
+        this.internalPermissions = new InternalPermissionServiceApi(apiClient);
         this.organizations = new OrganizationServiceApi(apiClient);
+        this.projects = new ProjectServiceApi(apiClient);
         this.settings = new SettingsServiceApi(apiClient);
         this.saml = new SamlServiceApi(apiClient);
         this.webkeys = new WebKeyServiceApi(apiClient);
@@ -436,6 +476,24 @@ public class Zitadel {
     }
 
     /**
+     * Gets the service for managing Applications. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link ApplicationServiceApi}.
+     */
+    public ApplicationServiceApi getApplications() {
+        return applications;
+    }
+
+    /**
+     * Gets the service for managing Authorizations. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link AuthorizationServiceApi}.
+     */
+    public AuthorizationServiceApi getAuthorizations() {
+        return authorizations;
+    }
+
+    /**
      * Gets the service for managing Users. Recommended over direct field access for testability.
      *
      * @return An instance of {@link UserServiceApi}.
@@ -481,12 +539,39 @@ public class Zitadel {
     }
 
     /**
+     * Gets the service for managing Instances. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link InstanceServiceApi}.
+     */
+    public InstanceServiceApi getInstances() {
+        return instances;
+    }
+
+    /**
+     * Gets the service for managing internal Permissions. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link InternalPermissionServiceApi}.
+     */
+    public InternalPermissionServiceApi getInternalPermissions() {
+        return internalPermissions;
+    }
+
+    /**
      * Gets the service for managing Organizations. Recommended over direct field access for testability.
      *
      * @return An instance of {@link OrganizationServiceApi}.
      */
     public OrganizationServiceApi getOrganizations() {
         return organizations;
+    }
+
+    /**
+     * Gets the service for managing Projects. Recommended over direct field access for testability.
+     *
+     * @return An instance of {@link ProjectServiceApi}.
+     */
+    public ProjectServiceApi getProjects() {
+        return projects;
     }
 
     /**
