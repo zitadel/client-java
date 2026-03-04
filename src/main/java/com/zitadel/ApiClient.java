@@ -106,7 +106,7 @@ public class ApiClient {
     }
 
     public ApiClient(Authenticator authenticator, TransportOptions transportOptions) {
-        this(authenticator, buildHttpClient(transportOptions));
+        this(authenticator, buildHttpClient(transportOptions != null ? transportOptions : TransportOptions.defaults()));
     }
 
     private static CloseableHttpClient buildHttpClient(TransportOptions transportOptions) {
