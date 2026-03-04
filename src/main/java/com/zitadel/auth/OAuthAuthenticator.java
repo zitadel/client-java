@@ -6,11 +6,23 @@ import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.token.BearerAccessToken;
 import com.zitadel.TransportOptions;
 import com.zitadel.ZitadelException;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import javax.annotation.Nullable;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.security.KeyStore;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
@@ -31,6 +43,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
     protected final Scope scope;
 
     private final OpenId openId;
+    private final TransportOptions transportOptions;
     /**
      * The OAuth token.
      */
@@ -40,14 +53,16 @@ public abstract class OAuthAuthenticator extends Authenticator {
     /**
      * Constructs an OAuthAuthenticator.
      *
-     * @param openId The URL of the OAuth2 token endpoint.
-     * @param scope  The scope for the token request.
+     * @param openId           The URL of the OAuth2 token endpoint.
+     * @param scope            The scope for the token request.
+     * @param transportOptions The transport options for HTTP connections.
      */
-    public OAuthAuthenticator(OpenId openId, Scope scope) {
+    public OAuthAuthenticator(OpenId openId, Scope scope, TransportOptions transportOptions) {
         super(openId.getHostEndpoint());
         this.scope = new Scope(scope);
         this.token = null;
         this.openId = openId;
+        this.transportOptions = transportOptions;
     }
 
     public String getAuthToken() throws ZitadelException {
@@ -90,12 +105,74 @@ public abstract class OAuthAuthenticator extends Authenticator {
 
     protected abstract AuthorizationGrant getGrant();
 
+    @SuppressFBWarnings({"URLCONNECTION_SSRF_FD", "PATH_TRAVERSAL_IN"})
     protected Token getToken(ClientAuthentication authentication) throws ZitadelException {
         try {
             URI tokenEndpoint = openId.getTokenEndpoint().toURI();
             TokenRequest request =
                 new TokenRequest(tokenEndpoint, authentication, this.getGrant(), this.scope);
             HTTPRequest httpRequest = request.toHTTPRequest();
+
+            // Apply proxy settings
+            if (transportOptions.getProxyUrl() != null) {
+                URL proxyParsed = new URL(transportOptions.getProxyUrl());
+                httpRequest.setProxy(new Proxy(Proxy.Type.HTTP,
+                    new InetSocketAddress(proxyParsed.getHost(),
+                        proxyParsed.getPort() != -1 ? proxyParsed.getPort() : proxyParsed.getDefaultPort())));
+            }
+
+            // Apply SSL settings
+            if (transportOptions.isInsecure()) {
+                SSLContext sslContext = SSLContext.getInstance("TLS");
+                sslContext.init(null, new TrustManager[]{new X509TrustManager() {
+                    @Override
+                    public void checkClientTrusted(X509Certificate[] chain, String authType) {
+                        // trust all
+                    }
+
+                    @Override
+                    public void checkServerTrusted(X509Certificate[] chain, String authType) {
+                        // trust all
+                    }
+
+                    @Override
+                    public X509Certificate[] getAcceptedIssuers() {
+                        return new X509Certificate[0];
+                    }
+                }}, null);
+                httpRequest.setSSLSocketFactory(sslContext.getSocketFactory());
+                httpRequest.setHostnameVerifier((h, s) -> true);
+            } else if (transportOptions.getCaCertPath() != null) {
+                CertificateFactory cf = CertificateFactory.getInstance("X.509");
+                java.security.cert.Certificate caCert;
+                try (FileInputStream fis = new FileInputStream(transportOptions.getCaCertPath())) {
+                    caCert = cf.generateCertificate(fis);
+                }
+                KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
+                ks.load(null, null);
+                ks.setCertificateEntry("custom-ca", caCert);
+                TrustManagerFactory defaultTmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+                defaultTmf.init((KeyStore) null);
+                int certIndex = 0;
+                for (TrustManager tm : defaultTmf.getTrustManagers()) {
+                    if (tm instanceof X509TrustManager) {
+                        for (X509Certificate cert : ((X509TrustManager) tm).getAcceptedIssuers()) {
+                            ks.setCertificateEntry("default-" + certIndex++, cert);
+                        }
+                    }
+                }
+                TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+                tmf.init(ks);
+                SSLContext sslContext = SSLContext.getInstance("TLS");
+                sslContext.init(null, tmf.getTrustManagers(), null);
+                httpRequest.setSSLSocketFactory(sslContext.getSocketFactory());
+            }
+
+            // Apply default headers
+            for (Map.Entry<String, String> entry : transportOptions.getDefaultHeaders().entrySet()) {
+                httpRequest.setHeader(entry.getKey(), entry.getValue());
+            }
+
             TokenResponse tokenResponse = TokenResponse.parse(httpRequest.send());
 
             if (!tokenResponse.indicatesSuccess()) {
@@ -110,6 +187,8 @@ public abstract class OAuthAuthenticator extends Authenticator {
                     accessToken.getValue(), Instant.now().plusSeconds(accessToken.getLifetime()));
             }
         } catch (RuntimeException | IOException | ParseException | URISyntaxException e) {
+            throw new ZitadelException("Failed to refresh token: " + e.getMessage(), e);
+        } catch (Exception e) {
             throw new ZitadelException("Failed to refresh token: " + e.getMessage(), e);
         }
     }

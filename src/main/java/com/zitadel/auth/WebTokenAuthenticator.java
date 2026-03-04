@@ -55,8 +55,9 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
         JWSSigner keySigner,
         Duration tokenLifetime,
         JWSHeader jwsHeader,
-        Scope authScopes) {
-        super(openId, authScopes);
+        Scope authScopes,
+        TransportOptions transportOptions) {
+        super(openId, authScopes, transportOptions);
         this.jwtIssuer = jwtIssuer;
         this.jwtSubject = jwtSubject;
         this.jwtAudience = jwtAudience;
@@ -364,7 +365,8 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
                 keySigner,
                 tokenLifetime,
                 new JWSHeader.Builder(jwtAlgorithm).keyID(keyId).build(),
-                authScopes);
+                authScopes,
+                transportOptions);
         }
     }
 }

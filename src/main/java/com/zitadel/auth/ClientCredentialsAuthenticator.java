@@ -26,14 +26,15 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
     /**
      * Constructs a ClientCredentialsAuthenticator.
      *
-     * @param openId       The base URL for the API endpoints.
-     * @param clientId     The OAuth2 client identifier.
-     * @param clientSecret The OAuth2 client secret.
-     * @param authScopes   The scope for the token request.
+     * @param openId           The base URL for the API endpoints.
+     * @param clientId         The OAuth2 client identifier.
+     * @param clientSecret     The OAuth2 client secret.
+     * @param authScopes       The scope for the token request.
+     * @param transportOptions The transport options for HTTP connections.
      */
     ClientCredentialsAuthenticator(
-        OpenId openId, ClientID clientId, Secret clientSecret, Scope authScopes) {
-        super(openId, authScopes);
+        OpenId openId, ClientID clientId, Secret clientSecret, Scope authScopes, TransportOptions transportOptions) {
+        super(openId, authScopes, transportOptions);
         this.clientSecret = clientSecret;
         this.clientId = clientId;
     }
@@ -112,7 +113,7 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
          * @return a new ClientCredentialsAuthenticator instance.
          */
         public ClientCredentialsAuthenticator build() {
-            return new ClientCredentialsAuthenticator(openId, clientId, clientSecret, authScopes);
+            return new ClientCredentialsAuthenticator(openId, clientId, clientSecret, authScopes, transportOptions);
         }
     }
 }
