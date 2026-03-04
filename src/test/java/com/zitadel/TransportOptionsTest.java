@@ -80,10 +80,11 @@ class TransportOptionsTest {
             public X509Certificate[] getAcceptedIssuers() { return new X509Certificate[0]; }
         }}, new SecureRandom());
 
-        SSLSocket socket = (SSLSocket) ctx.getSocketFactory().createSocket(host, httpsPort);
-        socket.startHandshake();
-        Certificate cert = socket.getSession().getPeerCertificates()[0];
-        socket.close();
+        Certificate cert;
+        try (SSLSocket socket = (SSLSocket) ctx.getSocketFactory().createSocket(host, httpsPort)) {
+            socket.startHandshake();
+            cert = socket.getSession().getPeerCertificates()[0];
+        }
 
         String pem = "-----BEGIN CERTIFICATE-----\n"
             + Base64.getMimeEncoder(64, "\n".getBytes()).encodeToString(cert.getEncoded())
