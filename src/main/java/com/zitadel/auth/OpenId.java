@@ -82,6 +82,16 @@ public class OpenId {
                     KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
                     ks.load(null, null);
                     ks.setCertificateEntry("custom-ca", caCert);
+                    TrustManagerFactory defaultTmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+                    defaultTmf.init((KeyStore) null);
+                    int certIndex = 0;
+                    for (TrustManager tm : defaultTmf.getTrustManagers()) {
+                        if (tm instanceof X509TrustManager) {
+                            for (java.security.cert.X509Certificate cert : ((X509TrustManager) tm).getAcceptedIssuers()) {
+                                ks.setCertificateEntry("default-" + certIndex++, cert);
+                            }
+                        }
+                    }
                     TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
                     tmf.init(ks);
                     SSLContext sslContext = SSLContext.getInstance("TLS");

@@ -146,6 +146,16 @@ public class ApiClient {
                 KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
                 ks.load(null, null);
                 ks.setCertificateEntry("custom-ca", caCert);
+                TrustManagerFactory defaultTmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+                defaultTmf.init((KeyStore) null);
+                int certIndex = 0;
+                for (javax.net.ssl.TrustManager tm : defaultTmf.getTrustManagers()) {
+                    if (tm instanceof javax.net.ssl.X509TrustManager) {
+                        for (java.security.cert.X509Certificate cert : ((javax.net.ssl.X509TrustManager) tm).getAcceptedIssuers()) {
+                            ks.setCertificateEntry("default-" + certIndex++, cert);
+                        }
+                    }
+                }
                 TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
                 tmf.init(ks);
                 SSLContext sslContext = SSLContext.getInstance("TLS");
