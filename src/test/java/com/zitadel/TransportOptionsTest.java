@@ -179,8 +179,8 @@ class TransportOptionsTest {
             .proxyUrl("http://" + host + ":" + httpPort)
             .build();
 
-        Zitadel zitadel = Zitadel.withClientCredentials(
-            "http://" + host + ":" + httpPort, "dummy-client", "dummy-secret", options);
+        Zitadel zitadel = Zitadel.withAccessToken(
+            "http://" + host + ":" + httpPort, "test-token", options);
 
         assertNotNull(zitadel);
     }

@@ -6,7 +6,6 @@ import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.token.BearerAccessToken;
 import com.zitadel.TransportOptions;
 import com.zitadel.ZitadelException;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import javax.annotation.Nullable;
 import javax.net.ssl.SSLContext;
@@ -99,7 +98,6 @@ public abstract class OAuthAuthenticator extends Authenticator {
 
     protected abstract AuthorizationGrant getGrant();
 
-    @SuppressFBWarnings("PATH_TRAVERSAL_IN")
     protected Token getToken(ClientAuthentication authentication) throws ZitadelException {
         try {
             URI tokenEndpoint = openId.getTokenEndpoint().toURI();
