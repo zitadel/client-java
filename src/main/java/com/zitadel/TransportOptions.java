@@ -95,6 +95,12 @@ public class TransportOptions {
          * @return this builder.
          */
         public Builder defaultHeader(String key, String value) {
+            if (key == null || key.isBlank()) {
+                throw new IllegalArgumentException("Header name must not be null or blank");
+            }
+            if (value == null) {
+                throw new IllegalArgumentException("Header value must not be null");
+            }
             this.defaultHeaders.put(key, value);
             return this;
         }
