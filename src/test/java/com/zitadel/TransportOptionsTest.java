@@ -159,11 +159,13 @@ class TransportOptionsTest {
 
         URL journalUrl = new URL("http://" + host + ":" + httpPort + "/__admin/requests");
         HttpURLConnection conn = (HttpURLConnection) journalUrl.openConnection();
-        String journal = new String(conn.getInputStream().readAllBytes());
-        conn.disconnect();
-
-        assertTrue(journal.contains("X-Custom-Header"),
-            "Custom header should be present in WireMock request journal");
+        try (var in = conn.getInputStream()) {
+            String journal = new String(in.readAllBytes());
+            assertTrue(journal.contains("X-Custom-Header"),
+                "Custom header should be present in WireMock request journal");
+        } finally {
+            conn.disconnect();
+        }
     }
 
     @SuppressWarnings("HttpUrlsUsage")

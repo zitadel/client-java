@@ -171,16 +171,5 @@ public abstract class OAuthAuthenticator extends Authenticator {
             return (T) this;
         }
 
-        /**
-         * Sets the transport options for HTTP connections.
-         *
-         * @param transportOptions The transport options to use.
-         * @return The builder instance.
-         */
-        @SuppressWarnings("unchecked")
-        public T transportOptions(TransportOptions transportOptions) {
-            this.transportOptions = transportOptions;
-            return (T) this;
-        }
     }
 }

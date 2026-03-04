@@ -212,25 +212,25 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
     }
 
     /**
-     * Returns a new builder instance for JWTAuthenticator.
+     * Returns a new builder instance for WebTokenAuthenticator.
      *
      * @param host       The base URL for API endpoints.
      * @param userId     Used as both the issuer and subject in the JWT.
      * @param privateKey The private key used to sign the JWT.
-     * @return a new JWTAuthenticatorBuilder instance.
+     * @return a new WebTokenAuthenticator.Builder instance.
      */
     public static Builder builder(String host, String userId, PrivateKey privateKey) {
         return new Builder(host, userId, userId, host, privateKey);
     }
 
     /**
-     * Returns a new builder instance for JWTAuthenticator with custom transport options.
+     * Returns a new builder instance for WebTokenAuthenticator with custom transport options.
      *
      * @param host             The base URL for API endpoints.
      * @param userId           Used as both the issuer and subject in the JWT.
      * @param privateKey       The private key used to sign the JWT.
      * @param transportOptions The transport options for HTTP connections.
-     * @return a new JWTAuthenticatorBuilder instance.
+     * @return a new WebTokenAuthenticator.Builder instance.
      */
     public static Builder builder(String host, String userId, PrivateKey privateKey, TransportOptions transportOptions) {
         return new Builder(host, userId, userId, host, privateKey, transportOptions);

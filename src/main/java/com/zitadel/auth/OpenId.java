@@ -87,7 +87,6 @@ public class OpenId {
                     SSLContext sslContext = SSLContext.getInstance("TLS");
                     sslContext.init(null, tmf.getTrustManagers(), null);
                     httpsConn.setSSLSocketFactory(sslContext.getSocketFactory());
-                    httpsConn.setHostnameVerifier((h, s) -> true);
                 }
             }
 
