@@ -31,6 +31,9 @@ public class TransportOptions {
     private final boolean insecure;
     @Nullable
     private final String proxyUrl;
+    @Nullable
+    private volatile SSLContext cachedSSLContext;
+    private volatile boolean sslContextBuilt;
 
     private TransportOptions(Map<String, String> defaultHeaders, @Nullable String caCertPath, boolean insecure, @Nullable String proxyUrl) {
         this.defaultHeaders = Collections.unmodifiableMap(new LinkedHashMap<>(defaultHeaders));
@@ -102,6 +105,22 @@ public class TransportOptions {
     @Nullable
     @SuppressFBWarnings("PATH_TRAVERSAL_IN")
     public SSLContext buildSSLContext() throws GeneralSecurityException, IOException {
+        if (sslContextBuilt) {
+            return cachedSSLContext;
+        }
+        synchronized (this) {
+            if (sslContextBuilt) {
+                return cachedSSLContext;
+            }
+            cachedSSLContext = buildSSLContextInternal();
+            sslContextBuilt = true;
+            return cachedSSLContext;
+        }
+    }
+
+    @Nullable
+    @SuppressFBWarnings("PATH_TRAVERSAL_IN")
+    private SSLContext buildSSLContextInternal() throws GeneralSecurityException, IOException {
         if (insecure) {
             SSLContext sslContext = SSLContext.getInstance("TLS");
             sslContext.init(null, new TrustManager[]{new InsecureTrustManager()}, null);
