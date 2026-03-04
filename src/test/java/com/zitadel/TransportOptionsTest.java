@@ -6,22 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
+import org.testcontainers.utility.MountableFile;
 
 import javax.annotation.Nullable;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.security.SecureRandom;
-import java.security.cert.Certificate;
-import java.security.cert.X509Certificate;
-import java.util.Base64;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -32,17 +24,29 @@ class TransportOptionsTest {
     private static String host;
     private static int httpPort;
     private static int httpsPort;
-    @Nullable
-    private static Path caCertPath;
+    private static String caCertPath;
     @Nullable
     private static GenericContainer<?> wireMockServer;
 
     @SuppressWarnings({"resource", "HttpUrlsUsage"})
     @BeforeAll
     static void setUp() throws Exception {
+        caCertPath = Path.of(TransportOptionsTest.class.getClassLoader()
+            .getResource("ca.pem").toURI()).toString();
+
         wireMockServer = new GenericContainer<>(DockerImageName.parse("wiremock/wiremock:3.3.1"))
             .withExposedPorts(8080, 8443)
-            .withCommand("--https-port 8443 --global-response-templating")
+            .withCopyFileToContainer(
+                MountableFile.forClasspathResource("keystore.p12"),
+                "/home/wiremock/keystore.p12"
+            )
+            .withCommand(
+                "--https-port", "8443",
+                "--https-keystore", "/home/wiremock/keystore.p12",
+                "--keystore-password", "password",
+                "--keystore-type", "PKCS12",
+                "--global-response-templating"
+            )
             .waitingFor(Wait.forHttp("/__admin/mappings").forPort(8080).forStatusCode(200));
 
         wireMockServer.start();
@@ -72,35 +76,12 @@ class TransportOptionsTest {
             + "\"jsonBody\":{\"access_token\":\"test-token-12345\",\"token_type\":\"Bearer\",\"expires_in\":3600}"
             + "}"
             + "}");
-
-        SSLContext ctx = SSLContext.getInstance("TLS");
-        ctx.init(null, new TrustManager[]{new X509TrustManager() {
-            public void checkClientTrusted(X509Certificate[] c, String a) {}
-            public void checkServerTrusted(X509Certificate[] c, String a) {}
-            public X509Certificate[] getAcceptedIssuers() { return new X509Certificate[0]; }
-        }}, new SecureRandom());
-
-        Certificate cert;
-        try (SSLSocket socket = (SSLSocket) ctx.getSocketFactory().createSocket(host, httpsPort)) {
-            socket.startHandshake();
-            cert = socket.getSession().getPeerCertificates()[0];
-        }
-
-        String pem = "-----BEGIN CERTIFICATE-----\n"
-            + Base64.getMimeEncoder(64, "\n".getBytes()).encodeToString(cert.getEncoded())
-            + "\n-----END CERTIFICATE-----\n";
-
-        caCertPath = Files.createTempFile("wiremock-ca-", ".pem");
-        Files.writeString(caCertPath, pem);
     }
 
     @AfterAll
-    static void tearDown() throws Exception {
+    static void tearDown() {
         if (wireMockServer != null) {
             wireMockServer.stop();
-        }
-        if (caCertPath != null) {
-            Files.deleteIfExists(caCertPath);
         }
     }
 
@@ -125,7 +106,7 @@ class TransportOptionsTest {
     void testCustomCaCert() {
         assertNotNull(caCertPath, "CA cert path must not be null");
         TransportOptions options = new TransportOptions.Builder()
-            .caCertPath(caCertPath.toString())
+            .caCertPath(caCertPath)
             .build();
 
         Zitadel zitadel = Zitadel.withClientCredentials(

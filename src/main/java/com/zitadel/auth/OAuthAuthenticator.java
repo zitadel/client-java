@@ -105,7 +105,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
 
     protected abstract AuthorizationGrant getGrant();
 
-    @SuppressFBWarnings({"URLCONNECTION_SSRF_FD", "PATH_TRAVERSAL_IN"})
+    @SuppressFBWarnings("PATH_TRAVERSAL_IN")
     protected Token getToken(ClientAuthentication authentication) throws ZitadelException {
         try {
             URI tokenEndpoint = openId.getTokenEndpoint().toURI();
@@ -124,22 +124,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
             // Apply SSL settings
             if (transportOptions.isInsecure()) {
                 SSLContext sslContext = SSLContext.getInstance("TLS");
-                sslContext.init(null, new TrustManager[]{new X509TrustManager() {
-                    @Override
-                    public void checkClientTrusted(X509Certificate[] chain, String authType) {
-                        // trust all
-                    }
-
-                    @Override
-                    public void checkServerTrusted(X509Certificate[] chain, String authType) {
-                        // trust all
-                    }
-
-                    @Override
-                    public X509Certificate[] getAcceptedIssuers() {
-                        return new X509Certificate[0];
-                    }
-                }}, null);
+                sslContext.init(null, new TrustManager[]{new InsecureTrustManager()}, null);
                 httpRequest.setSSLSocketFactory(sslContext.getSocketFactory());
                 httpRequest.setHostnameVerifier((h, s) -> true);
             } else if (transportOptions.getCaCertPath() != null) {
@@ -219,6 +204,24 @@ public abstract class OAuthAuthenticator extends Authenticator {
          */
         private boolean isExpired() {
             return Instant.now().isAfter(expiresAt.minus(5, ChronoUnit.MINUTES));
+        }
+    }
+
+    @SuppressFBWarnings("WEAK_TRUST_MANAGER")
+    private static final class InsecureTrustManager implements X509TrustManager {
+        @Override
+        public void checkClientTrusted(X509Certificate[] chain, String authType) {
+            // trust all
+        }
+
+        @Override
+        public void checkServerTrusted(X509Certificate[] chain, String authType) {
+            // trust all
+        }
+
+        @Override
+        public X509Certificate[] getAcceptedIssuers() {
+            return new X509Certificate[0];
         }
     }
 
