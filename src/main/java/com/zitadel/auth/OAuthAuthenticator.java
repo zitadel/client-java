@@ -119,6 +119,11 @@ public abstract class OAuthAuthenticator extends Authenticator {
                 httpRequest.setProxy(new Proxy(Proxy.Type.HTTP,
                     new InetSocketAddress(proxyParsed.getHost(),
                         proxyParsed.getPort() != -1 ? proxyParsed.getPort() : proxyParsed.getDefaultPort())));
+                if (proxyParsed.getUserInfo() != null) {
+                    String encoded = java.util.Base64.getEncoder()
+                        .encodeToString(proxyParsed.getUserInfo().getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                    httpRequest.setHeader("Proxy-Authorization", "Basic " + encoded);
+                }
             }
 
             // Apply SSL settings

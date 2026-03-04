@@ -157,13 +157,27 @@ class TransportOptionsTest {
             .proxyUrl("http://" + host + ":" + httpPort)
             .build();
 
-        assertNotNull(options);
-        assertNotNull(options.getProxyUrl());
+        Zitadel zitadel = Zitadel.withClientCredentials(
+            "http://" + host + ":" + httpPort, "dummy-client", "dummy-secret", options);
+
+        assertNotNull(zitadel);
+    }
+
+    @Test
+    void testTransportOptionsObject() {
+        TransportOptions options = new TransportOptions.Builder()
+            .insecure(true)
+            .build();
+
+        Zitadel zitadel = Zitadel.withClientCredentials(
+            "https://" + host + ":" + httpsPort, "dummy-client", "dummy-secret", options);
+
+        assertNotNull(zitadel);
     }
 
     @Test
     void testNoCaCertFails() {
-        assertThrows(Exception.class, () -> {
+        assertThrows(RuntimeException.class, () -> {
             Zitadel.withClientCredentials(
                 "https://" + host + ":" + httpsPort, "dummy-client", "dummy-secret");
         });

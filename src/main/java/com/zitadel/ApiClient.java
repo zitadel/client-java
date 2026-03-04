@@ -167,19 +167,27 @@ public class ApiClient {
                     .build());
             }
 
+            List<Header> defaultHeaders = new ArrayList<>();
+
             if (transportOptions.getProxyUrl() != null) {
                 java.net.URL proxyParsed = new java.net.URL(transportOptions.getProxyUrl());
                 String proxyScheme = proxyParsed.getProtocol();
                 String proxyHost = proxyParsed.getHost();
                 int proxyPort = proxyParsed.getPort() != -1 ? proxyParsed.getPort() : proxyParsed.getDefaultPort();
                 builder.setProxy(new HttpHost(proxyScheme, proxyHost, proxyPort));
+                if (proxyParsed.getUserInfo() != null) {
+                    String encoded = Base64.getEncoder()
+                        .encodeToString(proxyParsed.getUserInfo().getBytes(StandardCharsets.UTF_8));
+                    defaultHeaders.add(new BasicHeader("Proxy-Authorization", "Basic " + encoded));
+                }
             }
 
-            if (!transportOptions.getDefaultHeaders().isEmpty()) {
-                List<Header> headers = transportOptions.getDefaultHeaders().entrySet().stream()
-                    .map(e -> (Header) new BasicHeader(e.getKey(), e.getValue()))
-                    .collect(Collectors.toList());
-                builder.setDefaultHeaders(headers);
+            for (Map.Entry<String, String> entry : transportOptions.getDefaultHeaders().entrySet()) {
+                defaultHeaders.add(new BasicHeader(entry.getKey(), entry.getValue()));
+            }
+
+            if (!defaultHeaders.isEmpty()) {
+                builder.setDefaultHeaders(defaultHeaders);
             }
 
             return builder.build();

@@ -46,6 +46,11 @@ public class OpenId {
                 int proxyPort = proxyParsed.getPort() != -1 ? proxyParsed.getPort() : proxyParsed.getDefaultPort();
                 Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort));
                 connection = (HttpURLConnection) wellKnownUrl.openConnection(proxy);
+                if (proxyParsed.getUserInfo() != null) {
+                    String encoded = java.util.Base64.getEncoder()
+                        .encodeToString(proxyParsed.getUserInfo().getBytes(StandardCharsets.UTF_8));
+                    connection.setRequestProperty("Proxy-Authorization", "Basic " + encoded);
+                }
             } else {
                 connection = (HttpURLConnection) wellKnownUrl.openConnection();
             }
