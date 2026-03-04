@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.Network;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
 import org.testcontainers.utility.MountableFile;
@@ -18,16 +19,20 @@ import java.nio.file.Path;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TransportOptionsTest {
 
     private static String host;
     private static int httpPort;
     private static int httpsPort;
+    private static int proxyPort;
     private static String caCertPath;
     @Nullable
+    private static Network network;
+    @Nullable
     private static GenericContainer<?> wireMockServer;
+    @Nullable
+    private static GenericContainer<?> proxyServer;
 
     @SuppressWarnings({"resource", "HttpUrlsUsage"})
     @BeforeAll
@@ -35,7 +40,11 @@ class TransportOptionsTest {
         caCertPath = Path.of(TransportOptionsTest.class.getClassLoader()
             .getResource("ca.pem").toURI()).toString();
 
+        network = Network.newNetwork();
+
         wireMockServer = new GenericContainer<>(DockerImageName.parse("wiremock/wiremock:3.3.1"))
+            .withNetwork(network)
+            .withNetworkAliases("wiremock")
             .withExposedPorts(8080, 8443)
             .withCopyFileToContainer(
                 MountableFile.forClasspathResource("keystore.p12"),
@@ -52,9 +61,21 @@ class TransportOptionsTest {
 
         wireMockServer.start();
 
+        proxyServer = new GenericContainer<>(DockerImageName.parse("vimagick/tinyproxy"))
+            .withNetwork(network)
+            .withExposedPorts(8888)
+            .withCopyFileToContainer(
+                MountableFile.forClasspathResource("tinyproxy.conf"),
+                "/etc/tinyproxy/tinyproxy.conf"
+            )
+            .waitingFor(Wait.forListeningPort());
+
+        proxyServer.start();
+
         host = wireMockServer.getHost();
         httpPort = wireMockServer.getMappedPort(8080);
         httpsPort = wireMockServer.getMappedPort(8443);
+        proxyPort = proxyServer.getMappedPort(8888);
 
         registerStub("{"
             + "\"request\":{\"method\":\"GET\",\"url\":\"/.well-known/openid-configuration\"},"
@@ -90,8 +111,14 @@ class TransportOptionsTest {
 
     @AfterAll
     static void tearDown() {
+        if (proxyServer != null) {
+            proxyServer.stop();
+        }
         if (wireMockServer != null) {
             wireMockServer.stop();
+        }
+        if (network != null) {
+            network.close();
         }
     }
 
@@ -174,15 +201,17 @@ class TransportOptionsTest {
 
     @SuppressWarnings("HttpUrlsUsage")
     @Test
-    void testProxyUrl() {
+    void testProxyUrl() throws Exception {
         TransportOptions options = new TransportOptions.Builder()
-            .proxyUrl("http://" + host + ":" + httpPort)
+            .proxyUrl("http://" + host + ":" + proxyPort)
             .build();
 
+        // Use Docker-internal hostname — only resolvable through the proxy's network
         Zitadel zitadel = Zitadel.withAccessToken(
-            "http://" + host + ":" + httpPort, "test-token", options);
+            "http://wiremock:8080", "test-token", options);
 
         assertNotNull(zitadel);
+        zitadel.getSettings().getGeneralSettings();
     }
 
     @Test
