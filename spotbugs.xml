@@ -14,4 +14,46 @@
     <Package name="~com\.zitadel\..*"/>
     <Bug pattern="THROWS_METHOD_THROWS_RUNTIMEEXCEPTION"/>
   </Match>
+  <!-- Insecure TLS mode intentionally uses trust-all TrustManagers -->
+  <Match>
+    <Or>
+      <Class name="com.zitadel.ApiClient$1"/>
+      <Class name="com.zitadel.auth.OpenId$1"/>
+    </Or>
+    <Bug pattern="WEAK_TRUST_MANAGER"/>
+  </Match>
+  <!-- Constructors that perform I/O intentionally throw -->
+  <Match>
+    <Or>
+      <Class name="com.zitadel.ApiClient"/>
+      <Class name="com.zitadel.auth.OpenId"/>
+    </Or>
+    <Bug pattern="CT_CONSTRUCTOR_THROW"/>
+  </Match>
+  <!-- Broad catch for security/crypto exceptions in transport setup -->
+  <Match>
+    <Or>
+      <Class name="com.zitadel.ApiClient"/>
+      <Class name="com.zitadel.auth.OpenId"/>
+    </Or>
+    <Bug pattern="REC_CATCH_EXCEPTION"/>
+  </Match>
+  <!-- Reading user-provided CA cert path is intentional -->
+  <Match>
+    <Or>
+      <Class name="com.zitadel.ApiClient"/>
+      <Class name="com.zitadel.auth.OpenId"/>
+    </Or>
+    <Bug pattern="PATH_TRAVERSAL_IN"/>
+  </Match>
+  <!-- Builder field used by subclass builders via Zitadel factory -->
+  <Match>
+    <Class name="com.zitadel.auth.OAuthAuthenticator$OAuthAuthenticatorBuilder"/>
+    <Bug pattern="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD"/>
+  </Match>
+  <!-- Anonymous TrustManager in OpenId insecure mode -->
+  <Match>
+    <Class name="com.zitadel.auth.OpenId"/>
+    <Bug pattern="SIC_INNER_SHOULD_BE_STATIC_ANON"/>
+  </Match>
 </FindBugsFilter>

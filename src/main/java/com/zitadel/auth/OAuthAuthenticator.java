@@ -4,6 +4,7 @@ import com.nimbusds.oauth2.sdk.*;
 import com.nimbusds.oauth2.sdk.auth.ClientAuthentication;
 import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.token.BearerAccessToken;
+import com.zitadel.TransportOptions;
 import com.zitadel.ZitadelException;
 
 import javax.annotation.Nullable;
@@ -146,10 +147,16 @@ public abstract class OAuthAuthenticator extends Authenticator {
         T extends OAuthAuthenticatorBuilder<?>> {
 
         protected final OpenId openId;
+        protected TransportOptions transportOptions = TransportOptions.defaults();
         protected Scope authScopes = Scope.parse("openid urn:zitadel:iam:org:project:id:zitadel:aud");
 
         protected OAuthAuthenticatorBuilder(String host) {
             this.openId = new OpenId(host);
+        }
+
+        protected OAuthAuthenticatorBuilder(String host, TransportOptions transportOptions) {
+            this.transportOptions = transportOptions;
+            this.openId = new OpenId(host, transportOptions);
         }
 
         /**
@@ -161,6 +168,18 @@ public abstract class OAuthAuthenticator extends Authenticator {
         @SuppressWarnings("unchecked")
         public final T scopes(Set<String> authScopes) {
             this.authScopes = Scope.parse(authScopes);
+            return (T) this;
+        }
+
+        /**
+         * Sets the transport options for HTTP connections.
+         *
+         * @param transportOptions The transport options to use.
+         * @return The builder instance.
+         */
+        @SuppressWarnings("unchecked")
+        public T transportOptions(TransportOptions transportOptions) {
+            this.transportOptions = transportOptions;
             return (T) this;
         }
     }

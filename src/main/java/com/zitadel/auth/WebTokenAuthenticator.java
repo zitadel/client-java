@@ -16,6 +16,7 @@ import com.nimbusds.oauth2.sdk.auth.ClientAuthentication;
 import com.nimbusds.oauth2.sdk.auth.ClientAuthenticationMethod;
 import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.id.ClientID;
+import com.zitadel.TransportOptions;
 import com.zitadel.ZitadelException;
 import com.zitadel.utils.KeyUtil;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -96,6 +97,26 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
     }
 
     /**
+     * Creates a {@code WebTokenAuthenticator} instance from a JSON configuration file
+     * with custom transport options.
+     *
+     * @param host             the base URL for the API endpoints.
+     * @param jsonPath         the file path to the JSON configuration file.
+     * @param transportOptions the transport options for HTTP connections.
+     * @return a new instance of {@code WebTokenAuthenticator}.
+     */
+    @SuppressWarnings("unused")
+    @SuppressFBWarnings("PATH_TRAVERSAL_IN")
+    public static WebTokenAuthenticator fromJson(String host, String jsonPath, TransportOptions transportOptions) {
+        try (FileInputStream fis = new FileInputStream(jsonPath)) {
+            return fromJson(host, fis, transportOptions);
+        } catch (IOException e) {
+            throw new RuntimeException(
+                "Unable to read JSON file at " + jsonPath + ": " + e.getMessage(), e);
+        }
+    }
+
+    /**
      * Creates a {@code WebTokenAuthenticator} instance from a JSON configuration input stream.
      *
      * <p>The JSON must be formatted as follows:
@@ -149,6 +170,48 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
     }
 
     /**
+     * Creates a {@code WebTokenAuthenticator} instance from a JSON configuration input stream
+     * with custom transport options.
+     *
+     * @param host             the base URL for the API endpoints.
+     * @param inputStream      the input stream containing the JSON configuration.
+     * @param transportOptions the transport options for HTTP connections.
+     * @return a new instance of {@code WebTokenAuthenticator}.
+     */
+    public static WebTokenAuthenticator fromJson(String host, InputStream inputStream, TransportOptions transportOptions) {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> config;
+        try {
+            config = mapper.readValue(inputStream, new TypeReference<>() {
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(
+                "Unable to read or parse JSON from input stream: " + e.getMessage(), e);
+        }
+
+        if (config == null || config.isEmpty()) {
+            throw new RuntimeException("Expected a JSON object in input stream");
+        }
+
+        String userId = (String) config.get("userId");
+        String keyString = (String) config.get("key");
+        String keyId = (String) config.get("keyId");
+        if (userId == null || keyString == null || keyId == null) {
+            throw new RuntimeException("Missing required keys 'userId', 'keyId' or 'key' in JSON.");
+        }
+
+        PrivateKey privateKey;
+        try {
+            privateKey = KeyUtil.getPrivateKeyFromString(keyString);
+        } catch (Exception e) {
+            throw new RuntimeException(
+                "Unable to convert key string to PrivateKey: " + e.getMessage(), e);
+        }
+
+        return WebTokenAuthenticator.builder(host, userId, privateKey, transportOptions).keyId(keyId).build();
+    }
+
+    /**
      * Returns a new builder instance for JWTAuthenticator.
      *
      * @param host       The base URL for API endpoints.
@@ -158,6 +221,19 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
      */
     public static Builder builder(String host, String userId, PrivateKey privateKey) {
         return new Builder(host, userId, userId, host, privateKey);
+    }
+
+    /**
+     * Returns a new builder instance for JWTAuthenticator with custom transport options.
+     *
+     * @param host             The base URL for API endpoints.
+     * @param userId           Used as both the issuer and subject in the JWT.
+     * @param privateKey       The private key used to sign the JWT.
+     * @param transportOptions The transport options for HTTP connections.
+     * @return a new JWTAuthenticatorBuilder instance.
+     */
+    public static Builder builder(String host, String userId, PrivateKey privateKey, TransportOptions transportOptions) {
+        return new Builder(host, userId, userId, host, privateKey, transportOptions);
     }
 
     /**
@@ -237,6 +313,20 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
             String jwtAudience,
             PrivateKey privateKey) {
             super(host);
+            this.jwtIssuer = jwtIssuer;
+            this.jwtSubject = jwtSubject;
+            this.jwtAudience = jwtAudience;
+            this.keySigner = new RSASSASigner(privateKey);
+        }
+
+        Builder(
+            String host,
+            String jwtIssuer,
+            String jwtSubject,
+            String jwtAudience,
+            PrivateKey privateKey,
+            TransportOptions transportOptions) {
+            super(host, transportOptions);
             this.jwtIssuer = jwtIssuer;
             this.jwtSubject = jwtSubject;
             this.jwtAudience = jwtAudience;

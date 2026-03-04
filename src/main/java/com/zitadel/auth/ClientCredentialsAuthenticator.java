@@ -6,6 +6,7 @@ import com.nimbusds.oauth2.sdk.Scope;
 import com.nimbusds.oauth2.sdk.auth.ClientSecretBasic;
 import com.nimbusds.oauth2.sdk.auth.Secret;
 import com.nimbusds.oauth2.sdk.id.ClientID;
+import com.zitadel.TransportOptions;
 import com.zitadel.ZitadelException;
 
 /**
@@ -50,6 +51,19 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
     }
 
     /**
+     * Returns a new builder instance for ClientCredentialsAuthenticator with custom transport options.
+     *
+     * @param host             The base URL for API endpoints.
+     * @param clientId         The OAuth2 client identifier.
+     * @param clientSecret     The OAuth2 client secret.
+     * @param transportOptions The transport options for HTTP connections.
+     * @return a new ClientCredentialsAuthenticatorBuilder instance.
+     */
+    public static Builder builder(String host, String clientId, String clientSecret, TransportOptions transportOptions) {
+        return new Builder(host, clientId, clientSecret, transportOptions);
+    }
+
+    /**
      * Refreshes the access token using the client credentials grant.
      *
      * <p>This method uses the Nimbus OAuth2 SDK to send a token request.
@@ -82,6 +96,12 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
          */
         Builder(String host, String clientId, String clientSecret) {
             super(host);
+            this.clientId = new ClientID(clientId);
+            this.clientSecret = new Secret(clientSecret);
+        }
+
+        Builder(String host, String clientId, String clientSecret, TransportOptions transportOptions) {
+            super(host, transportOptions);
             this.clientId = new ClientID(clientId);
             this.clientSecret = new Secret(clientSecret);
         }

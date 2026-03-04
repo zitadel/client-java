@@ -15,19 +15,29 @@ import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
 import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.protocol.HttpClientContext;
+import org.apache.hc.client5.http.ssl.NoopHostnameVerifier;
+import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactoryBuilder;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
 import org.apache.hc.core5.http.*;
 import org.apache.hc.core5.http.io.entity.ByteArrayEntity;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.entity.FileEntity;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
+import org.apache.hc.core5.http.message.BasicHeader;
 import org.apache.hc.core5.http.message.BasicNameValuePair;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 
 import javax.annotation.Nullable;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URLEncoder;
@@ -37,6 +47,9 @@ import java.nio.charset.UnsupportedCharsetException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.security.KeyStore;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.text.DateFormat;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
@@ -44,6 +57,7 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @SuppressFBWarnings("THROWS_METHOD_THROWS_RUNTIMEEXCEPTION")
 public class ApiClient {
@@ -89,6 +103,80 @@ public class ApiClient {
 
     public ApiClient(Authenticator authenticator) {
         this(authenticator, HttpClients.custom().setUserAgent(USER_AGENT).build());
+    }
+
+    public ApiClient(Authenticator authenticator, TransportOptions transportOptions) {
+        this(authenticator, buildHttpClient(transportOptions));
+    }
+
+    private static CloseableHttpClient buildHttpClient(TransportOptions transportOptions) {
+        try {
+            HttpClientBuilder builder = HttpClients.custom().setUserAgent(USER_AGENT);
+
+            if (transportOptions.isInsecure()) {
+                SSLContext sslContext = SSLContext.getInstance("TLS");
+                sslContext.init(null, new TrustManager[]{new X509TrustManager() {
+                    @Override
+                    public void checkClientTrusted(X509Certificate[] chain, String authType) {
+                        // trust all
+                    }
+
+                    @Override
+                    public void checkServerTrusted(X509Certificate[] chain, String authType) {
+                        // trust all
+                    }
+
+                    @Override
+                    public X509Certificate[] getAcceptedIssuers() {
+                        return new X509Certificate[0];
+                    }
+                }}, null);
+                SSLConnectionSocketFactoryBuilder sslSocketFactoryBuilder = SSLConnectionSocketFactoryBuilder.create()
+                    .setSslContext(sslContext)
+                    .setHostnameVerifier(NoopHostnameVerifier.INSTANCE);
+                builder.setConnectionManager(PoolingHttpClientConnectionManagerBuilder.create()
+                    .setSSLSocketFactory(sslSocketFactoryBuilder.build())
+                    .build());
+            } else if (transportOptions.getCaCertPath() != null) {
+                CertificateFactory cf = CertificateFactory.getInstance("X.509");
+                java.security.cert.Certificate caCert;
+                try (FileInputStream fis = new FileInputStream(transportOptions.getCaCertPath())) {
+                    caCert = cf.generateCertificate(fis);
+                }
+                KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
+                ks.load(null, null);
+                ks.setCertificateEntry("custom-ca", caCert);
+                TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+                tmf.init(ks);
+                SSLContext sslContext = SSLContext.getInstance("TLS");
+                sslContext.init(null, tmf.getTrustManagers(), null);
+                SSLConnectionSocketFactoryBuilder sslSocketFactoryBuilder = SSLConnectionSocketFactoryBuilder.create()
+                    .setSslContext(sslContext)
+                    .setHostnameVerifier(NoopHostnameVerifier.INSTANCE);
+                builder.setConnectionManager(PoolingHttpClientConnectionManagerBuilder.create()
+                    .setSSLSocketFactory(sslSocketFactoryBuilder.build())
+                    .build());
+            }
+
+            if (transportOptions.getProxyUrl() != null) {
+                java.net.URL proxyParsed = new java.net.URL(transportOptions.getProxyUrl());
+                String proxyScheme = proxyParsed.getProtocol();
+                String proxyHost = proxyParsed.getHost();
+                int proxyPort = proxyParsed.getPort() != -1 ? proxyParsed.getPort() : proxyParsed.getDefaultPort();
+                builder.setProxy(new HttpHost(proxyScheme, proxyHost, proxyPort));
+            }
+
+            if (!transportOptions.getDefaultHeaders().isEmpty()) {
+                List<Header> headers = transportOptions.getDefaultHeaders().entrySet().stream()
+                    .map(e -> (Header) new BasicHeader(e.getKey(), e.getValue()))
+                    .collect(Collectors.toList());
+                builder.setDefaultHeaders(headers);
+            }
+
+            return builder.build();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to build HTTP client with transport options: " + e.getMessage(), e);
+        }
     }
 
     public static DateFormat buildDefaultDateFormat() {
