@@ -15,6 +15,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -74,6 +75,15 @@ class TransportOptionsTest {
             + "\"status\":200,"
             + "\"headers\":{\"Content-Type\":\"application/json\"},"
             + "\"jsonBody\":{\"access_token\":\"test-token-12345\",\"token_type\":\"Bearer\",\"expires_in\":3600}"
+            + "}"
+            + "}");
+
+        registerStub("{"
+            + "\"request\":{\"method\":\"POST\",\"url\":\"/zitadel.settings.v2.SettingsService/GetGeneralSettings\"},"
+            + "\"response\":{"
+            + "\"status\":200,"
+            + "\"headers\":{\"Content-Type\":\"application/json\"},"
+            + "\"jsonBody\":{}"
             + "}"
             + "}");
     }
@@ -139,12 +149,24 @@ class TransportOptionsTest {
 
         assertNotNull(zitadel);
 
-        URL journalUrl = new URL("http://" + host + ":" + httpPort + "/__admin/requests");
-        HttpURLConnection conn = (HttpURLConnection) journalUrl.openConnection();
+        // Make an actual API call to verify headers propagate to service requests
+        zitadel.getSettings().getGeneralSettings();
+
+        // Use WireMock's verification API to assert the header was sent on the API call
+        URL verifyUrl = new URL("http://" + host + ":" + httpPort + "/__admin/requests/count");
+        HttpURLConnection conn = (HttpURLConnection) verifyUrl.openConnection();
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setDoOutput(true);
+        String verifyBody = "{\"url\":\"/zitadel.settings.v2.SettingsService/GetGeneralSettings\","
+            + "\"headers\":{\"X-Custom-Header\":{\"equalTo\":\"test-value\"}}}";
+        try (OutputStream os = conn.getOutputStream()) {
+            os.write(verifyBody.getBytes(StandardCharsets.UTF_8));
+        }
         try (var in = conn.getInputStream()) {
-            String journal = new String(in.readAllBytes());
-            assertTrue(journal.contains("X-Custom-Header"),
-                "Custom header should be present in WireMock request journal");
+            String result = new String(in.readAllBytes());
+            assertFalse(result.contains("\"count\" : 0"),
+                "Custom header should be present on API call, got: " + result);
         } finally {
             conn.disconnect();
         }
