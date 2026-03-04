@@ -1,6 +1,18 @@
 package com.zitadel;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 import javax.annotation.Nullable;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.security.KeyStore;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -73,6 +85,71 @@ public class TransportOptions {
     @Nullable
     public String getProxyUrl() {
         return proxyUrl;
+    }
+
+    /**
+     * Builds an {@link SSLContext} from these transport options.
+     *
+     * <p>If insecure mode is enabled, returns a trust-all SSLContext.
+     * If a custom CA cert path is set, returns an SSLContext that trusts
+     * both the custom CA and the system default CAs.
+     * Otherwise returns {@code null} (use JVM defaults).
+     *
+     * @return the configured SSLContext, or {@code null} if no custom SSL is needed.
+     * @throws GeneralSecurityException if SSL context creation fails.
+     * @throws IOException if the CA cert file cannot be read.
+     */
+    @Nullable
+    @SuppressFBWarnings("PATH_TRAVERSAL_IN")
+    public SSLContext buildSSLContext() throws GeneralSecurityException, IOException {
+        if (insecure) {
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null, new TrustManager[]{new InsecureTrustManager()}, null);
+            return sslContext;
+        } else if (caCertPath != null) {
+            CertificateFactory cf = CertificateFactory.getInstance("X.509");
+            java.security.cert.Certificate caCert;
+            try (FileInputStream fis = new FileInputStream(caCertPath)) {
+                caCert = cf.generateCertificate(fis);
+            }
+            KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
+            ks.load(null, null);
+            ks.setCertificateEntry("custom-ca", caCert);
+            TrustManagerFactory defaultTmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+            defaultTmf.init((KeyStore) null);
+            int certIndex = 0;
+            for (TrustManager tm : defaultTmf.getTrustManagers()) {
+                if (tm instanceof X509TrustManager) {
+                    for (X509Certificate cert : ((X509TrustManager) tm).getAcceptedIssuers()) {
+                        ks.setCertificateEntry("default-" + certIndex++, cert);
+                    }
+                }
+            }
+            TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+            tmf.init(ks);
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null, tmf.getTrustManagers(), null);
+            return sslContext;
+        }
+        return null;
+    }
+
+    @SuppressFBWarnings("WEAK_TRUST_MANAGER")
+    private static final class InsecureTrustManager implements X509TrustManager {
+        @Override
+        public void checkClientTrusted(X509Certificate[] chain, String authType) {
+            // trust all
+        }
+
+        @Override
+        public void checkServerTrusted(X509Certificate[] chain, String authType) {
+            // trust all
+        }
+
+        @Override
+        public X509Certificate[] getAcceptedIssuers() {
+            return new X509Certificate[0];
+        }
     }
 
     /**

@@ -113,55 +113,13 @@ public class ApiClient {
         try {
             HttpClientBuilder builder = HttpClients.custom().setUserAgent(USER_AGENT);
 
-            if (transportOptions.isInsecure()) {
-                SSLContext sslContext = SSLContext.getInstance("TLS");
-                sslContext.init(null, new TrustManager[]{new X509TrustManager() {
-                    @Override
-                    public void checkClientTrusted(X509Certificate[] chain, String authType) {
-                        // trust all
-                    }
-
-                    @Override
-                    public void checkServerTrusted(X509Certificate[] chain, String authType) {
-                        // trust all
-                    }
-
-                    @Override
-                    public X509Certificate[] getAcceptedIssuers() {
-                        return new X509Certificate[0];
-                    }
-                }}, null);
-                SSLConnectionSocketFactoryBuilder sslSocketFactoryBuilder = SSLConnectionSocketFactoryBuilder.create()
-                    .setSslContext(sslContext)
-                    .setHostnameVerifier(NoopHostnameVerifier.INSTANCE);
-                builder.setConnectionManager(PoolingHttpClientConnectionManagerBuilder.create()
-                    .setSSLSocketFactory(sslSocketFactoryBuilder.build())
-                    .build());
-            } else if (transportOptions.getCaCertPath() != null) {
-                CertificateFactory cf = CertificateFactory.getInstance("X.509");
-                java.security.cert.Certificate caCert;
-                try (FileInputStream fis = new FileInputStream(transportOptions.getCaCertPath())) {
-                    caCert = cf.generateCertificate(fis);
-                }
-                KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
-                ks.load(null, null);
-                ks.setCertificateEntry("custom-ca", caCert);
-                TrustManagerFactory defaultTmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-                defaultTmf.init((KeyStore) null);
-                int certIndex = 0;
-                for (javax.net.ssl.TrustManager tm : defaultTmf.getTrustManagers()) {
-                    if (tm instanceof javax.net.ssl.X509TrustManager) {
-                        for (java.security.cert.X509Certificate cert : ((javax.net.ssl.X509TrustManager) tm).getAcceptedIssuers()) {
-                            ks.setCertificateEntry("default-" + certIndex++, cert);
-                        }
-                    }
-                }
-                TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-                tmf.init(ks);
-                SSLContext sslContext = SSLContext.getInstance("TLS");
-                sslContext.init(null, tmf.getTrustManagers(), null);
+            SSLContext sslContext = transportOptions.buildSSLContext();
+            if (sslContext != null) {
                 SSLConnectionSocketFactoryBuilder sslSocketFactoryBuilder = SSLConnectionSocketFactoryBuilder.create()
                     .setSslContext(sslContext);
+                if (transportOptions.isInsecure()) {
+                    sslSocketFactoryBuilder.setHostnameVerifier(NoopHostnameVerifier.INSTANCE);
+                }
                 builder.setConnectionManager(PoolingHttpClientConnectionManagerBuilder.create()
                     .setSSLSocketFactory(sslSocketFactoryBuilder.build())
                     .build());

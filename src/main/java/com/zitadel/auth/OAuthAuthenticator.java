@@ -10,18 +10,12 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import javax.annotation.Nullable;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.security.KeyStore;
-import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -127,35 +121,12 @@ public abstract class OAuthAuthenticator extends Authenticator {
             }
 
             // Apply SSL settings
-            if (transportOptions.isInsecure()) {
-                SSLContext sslContext = SSLContext.getInstance("TLS");
-                sslContext.init(null, new TrustManager[]{new InsecureTrustManager()}, null);
+            SSLContext sslContext = transportOptions.buildSSLContext();
+            if (sslContext != null) {
                 httpRequest.setSSLSocketFactory(sslContext.getSocketFactory());
-                httpRequest.setHostnameVerifier((h, s) -> true);
-            } else if (transportOptions.getCaCertPath() != null) {
-                CertificateFactory cf = CertificateFactory.getInstance("X.509");
-                java.security.cert.Certificate caCert;
-                try (FileInputStream fis = new FileInputStream(transportOptions.getCaCertPath())) {
-                    caCert = cf.generateCertificate(fis);
+                if (transportOptions.isInsecure()) {
+                    httpRequest.setHostnameVerifier((h, s) -> true);
                 }
-                KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
-                ks.load(null, null);
-                ks.setCertificateEntry("custom-ca", caCert);
-                TrustManagerFactory defaultTmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-                defaultTmf.init((KeyStore) null);
-                int certIndex = 0;
-                for (TrustManager tm : defaultTmf.getTrustManagers()) {
-                    if (tm instanceof X509TrustManager) {
-                        for (X509Certificate cert : ((X509TrustManager) tm).getAcceptedIssuers()) {
-                            ks.setCertificateEntry("default-" + certIndex++, cert);
-                        }
-                    }
-                }
-                TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-                tmf.init(ks);
-                SSLContext sslContext = SSLContext.getInstance("TLS");
-                sslContext.init(null, tmf.getTrustManagers(), null);
-                httpRequest.setSSLSocketFactory(sslContext.getSocketFactory());
             }
 
             // Apply default headers
@@ -209,24 +180,6 @@ public abstract class OAuthAuthenticator extends Authenticator {
          */
         private boolean isExpired() {
             return Instant.now().isAfter(expiresAt.minus(5, ChronoUnit.MINUTES));
-        }
-    }
-
-    @SuppressFBWarnings("WEAK_TRUST_MANAGER")
-    private static final class InsecureTrustManager implements X509TrustManager {
-        @Override
-        public void checkClientTrusted(X509Certificate[] chain, String authType) {
-            // trust all
-        }
-
-        @Override
-        public void checkServerTrusted(X509Certificate[] chain, String authType) {
-            // trust all
-        }
-
-        @Override
-        public X509Certificate[] getAcceptedIssuers() {
-            return new X509Certificate[0];
         }
     }
 

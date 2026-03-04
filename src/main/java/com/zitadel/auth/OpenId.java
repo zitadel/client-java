@@ -8,11 +8,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -20,9 +16,6 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.security.KeyStore;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
 import java.util.Map;
 
 public class OpenId {
@@ -59,50 +52,12 @@ public class OpenId {
 
             if (connection instanceof HttpsURLConnection) {
                 HttpsURLConnection httpsConn = (HttpsURLConnection) connection;
-                if (opts.isInsecure()) {
-                    SSLContext sslContext = SSLContext.getInstance("TLS");
-                    sslContext.init(null, new TrustManager[]{new X509TrustManager() {
-                        @Override
-                        public void checkClientTrusted(X509Certificate[] chain, String authType) {
-                            // trust all
-                        }
-
-                        @Override
-                        public void checkServerTrusted(X509Certificate[] chain, String authType) {
-                            // trust all
-                        }
-
-                        @Override
-                        public X509Certificate[] getAcceptedIssuers() {
-                            return new X509Certificate[0];
-                        }
-                    }}, null);
+                SSLContext sslContext = opts.buildSSLContext();
+                if (sslContext != null) {
                     httpsConn.setSSLSocketFactory(sslContext.getSocketFactory());
-                    httpsConn.setHostnameVerifier((h, s) -> true);
-                } else if (opts.getCaCertPath() != null) {
-                    CertificateFactory cf = CertificateFactory.getInstance("X.509");
-                    java.security.cert.Certificate caCert;
-                    try (FileInputStream fis = new FileInputStream(opts.getCaCertPath())) {
-                        caCert = cf.generateCertificate(fis);
+                    if (opts.isInsecure()) {
+                        httpsConn.setHostnameVerifier((h, s) -> true);
                     }
-                    KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
-                    ks.load(null, null);
-                    ks.setCertificateEntry("custom-ca", caCert);
-                    TrustManagerFactory defaultTmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-                    defaultTmf.init((KeyStore) null);
-                    int certIndex = 0;
-                    for (TrustManager tm : defaultTmf.getTrustManagers()) {
-                        if (tm instanceof X509TrustManager) {
-                            for (java.security.cert.X509Certificate cert : ((X509TrustManager) tm).getAcceptedIssuers()) {
-                                ks.setCertificateEntry("default-" + certIndex++, cert);
-                            }
-                        }
-                    }
-                    TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-                    tmf.init(ks);
-                    SSLContext sslContext = SSLContext.getInstance("TLS");
-                    sslContext.init(null, tmf.getTrustManagers(), null);
-                    httpsConn.setSSLSocketFactory(sslContext.getSocketFactory());
                 }
             }
 
