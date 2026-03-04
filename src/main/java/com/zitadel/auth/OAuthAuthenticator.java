@@ -62,7 +62,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
         this.scope = new Scope(scope);
         this.token = null;
         this.openId = openId;
-        this.transportOptions = transportOptions;
+        this.transportOptions = transportOptions != null ? transportOptions : TransportOptions.defaults();
     }
 
     public String getAuthToken() throws ZitadelException {
@@ -242,8 +242,8 @@ public abstract class OAuthAuthenticator extends Authenticator {
         }
 
         protected OAuthAuthenticatorBuilder(String host, TransportOptions transportOptions) {
-            this.transportOptions = transportOptions;
-            this.openId = new OpenId(host, transportOptions);
+            this.transportOptions = transportOptions != null ? transportOptions : TransportOptions.defaults();
+            this.openId = new OpenId(host, this.transportOptions);
         }
 
         /**

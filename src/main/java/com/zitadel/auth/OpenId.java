@@ -36,12 +36,13 @@ public class OpenId {
 
     @SuppressFBWarnings("URLCONNECTION_SSRF_FD")
     public OpenId(String hostname, TransportOptions transportOptions) {
+        TransportOptions opts = transportOptions != null ? transportOptions : TransportOptions.defaults();
         HttpURLConnection connection = null;
         try {
             this.hostEndpoint = URLUtil.buildHostname(hostname);
             URL wellKnownUrl = buildWellKnownUrl(hostname);
-            if (transportOptions.getProxyUrl() != null) {
-                URL proxyParsed = new URL(transportOptions.getProxyUrl());
+            if (opts.getProxyUrl() != null) {
+                URL proxyParsed = new URL(opts.getProxyUrl());
                 String proxyHost = proxyParsed.getHost();
                 int proxyPort = proxyParsed.getPort() != -1 ? proxyParsed.getPort() : proxyParsed.getDefaultPort();
                 Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort));
@@ -58,7 +59,7 @@ public class OpenId {
 
             if (connection instanceof HttpsURLConnection) {
                 HttpsURLConnection httpsConn = (HttpsURLConnection) connection;
-                if (transportOptions.isInsecure()) {
+                if (opts.isInsecure()) {
                     SSLContext sslContext = SSLContext.getInstance("TLS");
                     sslContext.init(null, new TrustManager[]{new X509TrustManager() {
                         @Override
@@ -78,10 +79,10 @@ public class OpenId {
                     }}, null);
                     httpsConn.setSSLSocketFactory(sslContext.getSocketFactory());
                     httpsConn.setHostnameVerifier((h, s) -> true);
-                } else if (transportOptions.getCaCertPath() != null) {
+                } else if (opts.getCaCertPath() != null) {
                     CertificateFactory cf = CertificateFactory.getInstance("X.509");
                     java.security.cert.Certificate caCert;
-                    try (FileInputStream fis = new FileInputStream(transportOptions.getCaCertPath())) {
+                    try (FileInputStream fis = new FileInputStream(opts.getCaCertPath())) {
                         caCert = cf.generateCertificate(fis);
                     }
                     KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
@@ -105,7 +106,7 @@ public class OpenId {
                 }
             }
 
-            for (Map.Entry<String, String> entry : transportOptions.getDefaultHeaders().entrySet()) {
+            for (Map.Entry<String, String> entry : opts.getDefaultHeaders().entrySet()) {
                 connection.setRequestProperty(entry.getKey(), entry.getValue());
             }
 
