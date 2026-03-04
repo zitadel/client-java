@@ -43,10 +43,14 @@ install dependencies.
 
 ### Installation
 
-Install the SDK by running one of the following commands:
+Add the SDK dependency to your `pom.xml`:
 
-```bash
-composer require zitadel/client
+```xml
+<dependency>
+    <groupId>io.github.zitadel</groupId>
+    <artifactId>client</artifactId>
+    <version>4.1.0</version>
+</dependency>
 ```
 
 ## Authentication Methods
