@@ -103,7 +103,6 @@ public class TransportOptions {
      * @throws IOException if the CA cert file cannot be read.
      */
     @Nullable
-    @SuppressFBWarnings("PATH_TRAVERSAL_IN")
     public SSLContext buildSSLContext() throws GeneralSecurityException, IOException {
         if (sslContextBuilt) {
             return cachedSSLContext;
