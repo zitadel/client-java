@@ -227,7 +227,6 @@ public class Zitadel {
         this(
             authenticator,
             apiClient -> {
-                // Dummy lambda that does nothing, can add default behavior here if needed
             });
     }
 
@@ -236,7 +235,6 @@ public class Zitadel {
             authenticator,
             transportOptions,
             apiClient -> {
-                // Dummy lambda that does nothing, can add default behavior here if needed
             });
     }
 
@@ -331,11 +329,11 @@ public class Zitadel {
     }
 
     /**
-     * Initialize the SDK with a Personal Access Token (PAT) and custom transport options.
+     * Initialize the SDK with a Personal Access Token (PAT).
      *
      * @param host             API URL.
      * @param accessToken      Personal Access Token for Bearer authentication.
-     * @param transportOptions Transport options for HTTP connections.
+     * @param transportOptions Optional transport options for TLS, proxy, headers.
      * @return Configured Zitadel client instance.
      */
     public static Zitadel withAccessToken(String host, String accessToken, TransportOptions transportOptions) {
@@ -359,12 +357,12 @@ public class Zitadel {
     }
 
     /**
-     * Initialize the SDK using OAuth2 Client Credentials flow with custom transport options.
+     * Initialize the SDK using OAuth2 Client Credentials flow.
      *
      * @param host             API URL.
      * @param clientId         OAuth2 client identifier.
      * @param clientSecret     OAuth2 client secret.
-     * @param transportOptions Transport options for HTTP connections.
+     * @param transportOptions Optional transport options for TLS, proxy, headers.
      * @return Configured Zitadel client instance with token auto-refresh.
      */
     public static Zitadel withClientCredentials(String host, String clientId, String clientSecret, TransportOptions transportOptions) {
@@ -406,11 +404,11 @@ public class Zitadel {
     }
 
     /**
-     * Initialize the SDK via Private Key JWT assertion with custom transport options.
+     * Initialize the SDK via Private Key JWT assertion.
      *
      * @param host             API URL.
      * @param keyFile          Path to service account JSON or PEM key file.
-     * @param transportOptions Transport options for HTTP connections.
+     * @param transportOptions Optional transport options for TLS, proxy, headers.
      * @return Configured Zitadel client instance using JWT assertion.
      */
     @SuppressFBWarnings({"PATH_TRAVERSAL_IN", "THROWS_METHOD_THROWS_RUNTIMEEXCEPTION"})
@@ -424,11 +422,11 @@ public class Zitadel {
     }
 
     /**
-     * Initialize the SDK via Private Key JWT assertion with custom transport options.
+     * Initialize the SDK via Private Key JWT assertion.
      *
      * @param host             API URL.
      * @param inputStream      Input stream containing service account JSON or PEM key data.
-     * @param transportOptions Transport options for HTTP connections.
+     * @param transportOptions Optional transport options for TLS, proxy, headers.
      * @return Configured Zitadel client instance using JWT assertion.
      */
     public static Zitadel withPrivateKey(String host, java.io.InputStream inputStream, TransportOptions transportOptions) {

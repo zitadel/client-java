@@ -156,12 +156,10 @@ public class TransportOptions {
     private static final class InsecureTrustManager implements X509TrustManager {
         @Override
         public void checkClientTrusted(X509Certificate[] chain, String authType) {
-            // trust all
         }
 
         @Override
         public void checkServerTrusted(X509Certificate[] chain, String authType) {
-            // trust all
         }
 
         @Override

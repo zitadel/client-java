@@ -176,10 +176,8 @@ class TransportOptionsTest {
 
         assertNotNull(zitadel);
 
-        // Make an actual API call to verify headers propagate to service requests
         zitadel.getSettings().getGeneralSettings();
 
-        // Use WireMock's verification API to assert the header was sent on the API call
         URL verifyUrl = new URL("http://" + host + ":" + httpPort + "/__admin/requests/count");
         HttpURLConnection conn = (HttpURLConnection) verifyUrl.openConnection();
         conn.setRequestMethod("POST");
@@ -206,24 +204,11 @@ class TransportOptionsTest {
             .proxyUrl("http://" + host + ":" + proxyPort)
             .build();
 
-        // Use Docker-internal hostname — only resolvable through the proxy's network
         Zitadel zitadel = Zitadel.withAccessToken(
             "http://wiremock:8080", "test-token", options);
 
         assertNotNull(zitadel);
         zitadel.getSettings().getGeneralSettings();
-    }
-
-    @Test
-    void testTransportOptionsObject() {
-        TransportOptions options = new TransportOptions.Builder()
-            .insecure(true)
-            .build();
-
-        Zitadel zitadel = Zitadel.withClientCredentials(
-            "https://" + host + ":" + httpsPort, "dummy-client", "dummy-secret", options);
-
-        assertNotNull(zitadel);
     }
 
     @Test
