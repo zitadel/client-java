@@ -144,9 +144,8 @@ public abstract class OAuthAuthenticator extends Authenticator {
                 return new Token(
                     accessToken.getValue(), Instant.now().plusSeconds(accessToken.getLifetime()));
             }
-        } catch (RuntimeException | IOException | ParseException | URISyntaxException e) {
-            throw new ZitadelException("Failed to refresh token: " + e.getMessage(), e);
-        } catch (Exception e) {
+        } catch (RuntimeException | IOException | ParseException | URISyntaxException
+                 | java.security.GeneralSecurityException e) {
             throw new ZitadelException("Failed to refresh token: " + e.getMessage(), e);
         }
     }
