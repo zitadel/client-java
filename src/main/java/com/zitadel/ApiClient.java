@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
 import javax.net.ssl.SSLContext;
 import java.io.File;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.lang.reflect.Type;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
@@ -141,7 +142,7 @@ public class ApiClient {
             }
 
             return builder.build();
-        } catch (Exception e) {
+        } catch (IOException | GeneralSecurityException e) {
             throw new RuntimeException("Failed to build HTTP client with transport options: " + e.getMessage(), e);
         }
     }

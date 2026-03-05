@@ -16,6 +16,8 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.net.MalformedURLException;
+import java.security.GeneralSecurityException;
 import java.util.Map;
 
 public class OpenId {
@@ -80,9 +82,7 @@ public class OpenId {
                 JsonNode root = new ObjectMapper().readTree(responseBuilder.toString());
                 this.tokenEndpoint = new URL(root.path("token_endpoint").asText());
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (Exception e) {
+        } catch (IOException | GeneralSecurityException e) {
             throw new RuntimeException(e);
         } finally {
             if (connection != null) {
@@ -101,7 +101,7 @@ public class OpenId {
 
             URL base = new URL(hostname);
             return new URL(base, "/.well-known/openid-configuration");
-        } catch (Exception e) {
+        } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
     }

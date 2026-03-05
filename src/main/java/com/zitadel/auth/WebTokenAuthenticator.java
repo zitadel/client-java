@@ -25,7 +25,9 @@ import javax.annotation.Nullable;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
+import java.security.spec.InvalidKeySpecException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
@@ -162,7 +164,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
         PrivateKey privateKey;
         try {
             privateKey = KeyUtil.getPrivateKeyFromString(keyString);
-        } catch (Exception e) {
+        } catch (IOException | InvalidKeySpecException | NoSuchAlgorithmException e) {
             throw new RuntimeException(
                 "Unable to convert key string to PrivateKey: " + e.getMessage(), e);
         }
@@ -204,7 +206,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
         PrivateKey privateKey;
         try {
             privateKey = KeyUtil.getPrivateKeyFromString(keyString);
-        } catch (Exception e) {
+        } catch (IOException | InvalidKeySpecException | NoSuchAlgorithmException e) {
             throw new RuntimeException(
                 "Unable to convert key string to PrivateKey: " + e.getMessage(), e);
         }
