@@ -61,12 +61,12 @@ class TransportOptionsTest {
 
         wireMockServer.start();
 
-        proxyServer = new GenericContainer<>(DockerImageName.parse("vimagick/tinyproxy"))
+        proxyServer = new GenericContainer<>(DockerImageName.parse("ubuntu/squid:6.10-24.10_beta"))
             .withNetwork(network)
-            .withExposedPorts(8888)
+            .withExposedPorts(3128)
             .withCopyFileToContainer(
-                MountableFile.forClasspathResource("tinyproxy.conf"),
-                "/etc/tinyproxy/tinyproxy.conf"
+                MountableFile.forClasspathResource("squid.conf"),
+                "/etc/squid/squid.conf"
             )
             .waitingFor(Wait.forListeningPort());
 
@@ -75,7 +75,7 @@ class TransportOptionsTest {
         host = wireMockServer.getHost();
         httpPort = wireMockServer.getMappedPort(8080);
         httpsPort = wireMockServer.getMappedPort(8443);
-        proxyPort = proxyServer.getMappedPort(8888);
+        proxyPort = proxyServer.getMappedPort(3128);
 
         registerStub("{"
             + "\"request\":{\"method\":\"GET\",\"url\":\"/.well-known/openid-configuration\"},"
