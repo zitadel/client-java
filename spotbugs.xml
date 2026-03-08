@@ -14,17 +14,4 @@
     <Package name="~com\.zitadel\..*"/>
     <Bug pattern="THROWS_METHOD_THROWS_RUNTIMEEXCEPTION"/>
   </Match>
-  <!-- Constructors that perform I/O intentionally throw -->
-  <Match>
-    <Or>
-      <Class name="com.zitadel.ApiClient"/>
-      <Class name="com.zitadel.auth.OpenId"/>
-    </Or>
-    <Bug pattern="CT_CONSTRUCTOR_THROW"/>
-  </Match>
-  <!-- Builder field used by subclass builders via Zitadel factory -->
-  <Match>
-    <Class name="com.zitadel.auth.OAuthAuthenticator$OAuthAuthenticatorBuilder"/>
-    <Bug pattern="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD"/>
-  </Match>
 </FindBugsFilter>

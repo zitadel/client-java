@@ -20,6 +20,7 @@ import java.net.MalformedURLException;
 import java.security.GeneralSecurityException;
 import java.util.Map;
 
+@SuppressFBWarnings("CT_CONSTRUCTOR_THROW")
 public class OpenId {
 
     private final URL hostEndpoint;

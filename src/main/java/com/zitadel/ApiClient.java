@@ -52,7 +52,7 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@SuppressFBWarnings("THROWS_METHOD_THROWS_RUNTIMEEXCEPTION")
+@SuppressFBWarnings({"THROWS_METHOD_THROWS_RUNTIMEEXCEPTION", "CT_CONSTRUCTOR_THROW"})
 public class ApiClient {
 
     public static final String USER_AGENT =
