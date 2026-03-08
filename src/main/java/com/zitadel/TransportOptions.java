@@ -21,7 +21,7 @@ import java.util.Map;
  * Immutable transport options for configuring HTTP connections.
  *
  * <p>Provides settings for default headers, custom CA certificate paths, insecure
- * (trust-all) TLS connections, and proxy configuration. Use the {@link Builder} to construct instances.
+ * (trust-all) TLS connections, and proxy configuration.
  */
 public class TransportOptions {
 
@@ -35,7 +35,13 @@ public class TransportOptions {
     private volatile SSLContext cachedSSLContext;
     private volatile boolean sslContextBuilt;
 
-    private TransportOptions(Map<String, String> defaultHeaders, @Nullable String caCertPath, boolean insecure, @Nullable String proxyUrl) {
+    /**
+     * @param defaultHeaders the default headers to include in every request.
+     * @param caCertPath     path to a custom CA certificate file for TLS verification, or {@code null}.
+     * @param insecure       whether to disable TLS certificate verification.
+     * @param proxyUrl       proxy URL for HTTP connections, or {@code null}.
+     */
+    public TransportOptions(Map<String, String> defaultHeaders, @Nullable String caCertPath, boolean insecure, @Nullable String proxyUrl) {
         this.defaultHeaders = Collections.unmodifiableMap(new LinkedHashMap<>(defaultHeaders));
         this.caCertPath = caCertPath;
         this.insecure = insecure;
@@ -168,76 +174,4 @@ public class TransportOptions {
         }
     }
 
-    /**
-     * Builder for constructing {@link TransportOptions} instances.
-     */
-    public static class Builder {
-
-        private final Map<String, String> defaultHeaders = new LinkedHashMap<>();
-        @Nullable
-        private String caCertPath;
-        private boolean insecure;
-        @Nullable
-        private String proxyUrl;
-
-        /**
-         * Adds a default header to include in every request.
-         *
-         * @param key   the header name.
-         * @param value the header value.
-         * @return this builder.
-         */
-        public Builder defaultHeader(String key, String value) {
-            if (key == null || key.isBlank()) {
-                throw new IllegalArgumentException("Header name must not be null or blank");
-            }
-            if (value == null) {
-                throw new IllegalArgumentException("Header value must not be null");
-            }
-            this.defaultHeaders.put(key, value);
-            return this;
-        }
-
-        /**
-         * Sets the path to a custom CA certificate file for TLS verification.
-         *
-         * @param path the CA cert file path.
-         * @return this builder.
-         */
-        public Builder caCertPath(String path) {
-            this.caCertPath = path;
-            return this;
-        }
-
-        /**
-         * Sets whether insecure (trust-all) TLS mode should be enabled.
-         *
-         * @param insecure {@code true} to trust all certificates; {@code false} otherwise.
-         * @return this builder.
-         */
-        public Builder insecure(boolean insecure) {
-            this.insecure = insecure;
-            return this;
-        }
-
-        /**
-         * Sets the proxy URL for HTTP connections.
-         *
-         * @param proxyUrl the proxy URL (e.g. {@code "http://proxy:8080"}).
-         * @return this builder.
-         */
-        public Builder proxyUrl(String proxyUrl) {
-            this.proxyUrl = proxyUrl;
-            return this;
-        }
-
-        /**
-         * Builds the {@link TransportOptions} instance.
-         *
-         * @return a new immutable {@code TransportOptions}.
-         */
-        public TransportOptions build() {
-            return new TransportOptions(defaultHeaders, caCertPath, insecure, proxyUrl);
-        }
-    }
 }

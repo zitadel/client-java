@@ -11,6 +11,7 @@ import org.testcontainers.utility.MountableFile;
 
 import javax.annotation.Nullable;
 import java.io.OutputStream;
+import java.util.Map;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -145,9 +146,8 @@ class TransportOptionsTest {
     @Test
     void testCustomCaCert() {
         assertNotNull(caCertPath, "CA cert path must not be null");
-        TransportOptions options = new TransportOptions.Builder()
-            .caCertPath(caCertPath)
-            .build();
+        TransportOptions options = new TransportOptions(
+            Map.of(), caCertPath, false, null);
 
         Zitadel zitadel = Zitadel.withClientCredentials(
             "https://" + host + ":" + httpsPort, "dummy-client", "dummy-secret", options);
@@ -157,9 +157,8 @@ class TransportOptionsTest {
 
     @Test
     void testInsecureMode() {
-        TransportOptions options = new TransportOptions.Builder()
-            .insecure(true)
-            .build();
+        TransportOptions options = new TransportOptions(
+            Map.of(), null, true, null);
 
         Zitadel zitadel = Zitadel.withClientCredentials(
             "https://" + host + ":" + httpsPort, "dummy-client", "dummy-secret", options);
@@ -170,9 +169,8 @@ class TransportOptionsTest {
     @SuppressWarnings("HttpUrlsUsage")
     @Test
     void testDefaultHeaders() throws Exception {
-        TransportOptions options = new TransportOptions.Builder()
-            .defaultHeader("X-Custom-Header", "test-value")
-            .build();
+        TransportOptions options = new TransportOptions(
+            Map.of("X-Custom-Header", "test-value"), null, false, null);
 
         Zitadel zitadel = Zitadel.withClientCredentials(
             "http://" + host + ":" + httpPort, "dummy-client", "dummy-secret", options);
@@ -203,9 +201,8 @@ class TransportOptionsTest {
     @SuppressWarnings("HttpUrlsUsage")
     @Test
     void testProxyUrl() throws Exception {
-        TransportOptions options = new TransportOptions.Builder()
-            .proxyUrl("http://" + host + ":" + proxyPort)
-            .build();
+        TransportOptions options = new TransportOptions(
+            Map.of(), null, false, "http://" + host + ":" + proxyPort);
 
         Zitadel zitadel = Zitadel.withAccessToken(
             "http://wiremock:8080", "test-token", options);

@@ -199,7 +199,7 @@ environment and security requirements. For more details, please refer to the
 
 ## Advanced Configuration
 
-The SDK provides a `TransportOptions` builder that allows you to customise
+The SDK provides a `TransportOptions` object that allows you to customise
 the underlying HTTP transport used for both OpenID discovery and API calls.
 
 ### Disabling TLS Verification
@@ -208,9 +208,8 @@ In development or testing environments with self-signed certificates, you can
 disable TLS verification entirely:
 
 ```java
-TransportOptions options = new TransportOptions.Builder()
-    .insecure(true)
-    .build();
+TransportOptions options = new TransportOptions(
+    Map.of(), null, true, null);
 
 Zitadel zitadel = Zitadel.withClientCredentials(
     "https://your-instance.zitadel.cloud", "client-id", "client-secret", options);
@@ -222,9 +221,8 @@ If your Zitadel instance uses a certificate signed by a private CA, you can
 provide the path to the CA certificate in PEM format:
 
 ```java
-TransportOptions options = new TransportOptions.Builder()
-    .caCertPath("/path/to/ca.pem")
-    .build();
+TransportOptions options = new TransportOptions(
+    Map.of(), "/path/to/ca.pem", false, null);
 
 Zitadel zitadel = Zitadel.withClientCredentials(
     "https://your-instance.zitadel.cloud", "client-id", "client-secret", options);
@@ -236,9 +234,8 @@ You can attach default headers to every outgoing request. This is useful for
 custom routing or tracing headers:
 
 ```java
-TransportOptions options = new TransportOptions.Builder()
-    .defaultHeader("X-Custom-Header", "my-value")
-    .build();
+TransportOptions options = new TransportOptions(
+    Map.of("X-Custom-Header", "my-value"), null, false, null);
 
 Zitadel zitadel = Zitadel.withClientCredentials(
     "https://your-instance.zitadel.cloud", "client-id", "client-secret", options);
@@ -251,9 +248,8 @@ specify the proxy URL. To authenticate with the proxy, embed the credentials
 directly in the URL:
 
 ```java
-TransportOptions options = new TransportOptions.Builder()
-    .proxyUrl("http://user:pass@proxy:8080")
-    .build();
+TransportOptions options = new TransportOptions(
+    Map.of(), null, false, "http://user:pass@proxy:8080");
 
 Zitadel zitadel = Zitadel.withClientCredentials(
     "https://your-instance.zitadel.cloud", "client-id", "client-secret", options);
