@@ -16,8 +16,11 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TransportOptionsTest {
@@ -189,9 +192,9 @@ class TransportOptionsTest {
             os.write(verifyBody.getBytes(StandardCharsets.UTF_8));
         }
         try (var in = conn.getInputStream()) {
-            String result = new String(in.readAllBytes());
-            assertFalse(result.contains("\"count\" : 0"),
-                "Custom header should be present on API call, got: " + result);
+            JsonNode result = new ObjectMapper().readTree(in);
+            int count = result.path("count").asInt();
+            assertTrue(count >= 1, "Custom header should be present on API call");
         } finally {
             conn.disconnect();
         }
