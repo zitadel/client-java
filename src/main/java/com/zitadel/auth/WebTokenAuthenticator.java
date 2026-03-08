@@ -116,7 +116,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
      *
      * @param host             the base URL for the API endpoints.
      * @param jsonPath         the file path to the JSON configuration file.
-     * @param transportOptions the transport options for HTTP connections.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
      * @return a new instance of {@code WebTokenAuthenticator}.
      */
     @SuppressWarnings("unused")
@@ -189,7 +189,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
      *
      * @param host             the base URL for the API endpoints.
      * @param inputStream      the input stream containing the JSON configuration.
-     * @param transportOptions the transport options for HTTP connections.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
      * @return a new instance of {@code WebTokenAuthenticator}.
      */
     public static WebTokenAuthenticator fromJson(String host, InputStream inputStream, TransportOptions transportOptions) {
@@ -243,7 +243,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
      * @param host             The base URL for API endpoints.
      * @param userId           Used as both the issuer and subject in the JWT.
      * @param privateKey       The private key used to sign the JWT.
-     * @param transportOptions The transport options for HTTP connections.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
      * @return a new WebTokenAuthenticator.Builder instance.
      */
     public static Builder builder(String host, String userId, PrivateKey privateKey, TransportOptions transportOptions) {

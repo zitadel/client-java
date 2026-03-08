@@ -342,7 +342,7 @@ public class Zitadel {
      *
      * @param host             API URL.
      * @param accessToken      Personal Access Token for Bearer authentication.
-     * @param transportOptions Optional transport options for TLS, proxy, headers.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
      * @return Configured Zitadel client instance.
      */
     public static Zitadel withAccessToken(String host, String accessToken, TransportOptions transportOptions) {
@@ -371,7 +371,7 @@ public class Zitadel {
      * @param host             API URL.
      * @param clientId         OAuth2 client identifier.
      * @param clientSecret     OAuth2 client secret.
-     * @param transportOptions Optional transport options for TLS, proxy, headers.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
      * @return Configured Zitadel client instance with token auto-refresh.
      */
     public static Zitadel withClientCredentials(String host, String clientId, String clientSecret, TransportOptions transportOptions) {
@@ -417,7 +417,7 @@ public class Zitadel {
      *
      * @param host             API URL.
      * @param keyFile          Path to service account JSON or PEM key file.
-     * @param transportOptions Optional transport options for TLS, proxy, headers.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
      * @return Configured Zitadel client instance using JWT assertion.
      */
     @SuppressFBWarnings({"PATH_TRAVERSAL_IN", "THROWS_METHOD_THROWS_RUNTIMEEXCEPTION"})
@@ -435,7 +435,7 @@ public class Zitadel {
      *
      * @param host             API URL.
      * @param inputStream      Input stream containing service account JSON or PEM key data.
-     * @param transportOptions Optional transport options for TLS, proxy, headers.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
      * @return Configured Zitadel client instance using JWT assertion.
      */
     public static Zitadel withPrivateKey(String host, java.io.InputStream inputStream, TransportOptions transportOptions) {

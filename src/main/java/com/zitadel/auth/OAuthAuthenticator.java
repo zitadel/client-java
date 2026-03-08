@@ -47,7 +47,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
      *
      * @param openId           The URL of the OAuth2 token endpoint.
      * @param scope            The scope for the token request.
-     * @param transportOptions The transport options for HTTP connections.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
      */
     public OAuthAuthenticator(OpenId openId, Scope scope, TransportOptions transportOptions) {
         super(openId.getHostEndpoint());

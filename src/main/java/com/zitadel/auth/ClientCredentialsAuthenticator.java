@@ -30,7 +30,7 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
      * @param clientId         The OAuth2 client identifier.
      * @param clientSecret     The OAuth2 client secret.
      * @param authScopes       The scope for the token request.
-     * @param transportOptions The transport options for HTTP connections.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
      */
     ClientCredentialsAuthenticator(
         OpenId openId, ClientID clientId, Secret clientSecret, Scope authScopes, TransportOptions transportOptions) {
@@ -57,7 +57,7 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
      * @param host             The base URL for API endpoints.
      * @param clientId         The OAuth2 client identifier.
      * @param clientSecret     The OAuth2 client secret.
-     * @param transportOptions The transport options for HTTP connections.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
      * @return a new ClientCredentialsAuthenticatorBuilder instance.
      */
     public static Builder builder(String host, String clientId, String clientSecret, TransportOptions transportOptions) {
