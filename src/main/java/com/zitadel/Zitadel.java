@@ -344,6 +344,9 @@ public class Zitadel {
      * @param accessToken      Personal Access Token for Bearer authentication.
      * @param transportOptions Optional transport options for TLS, proxy, and headers.
      * @return Configured Zitadel client instance.
+     * @see <a
+     * href="https://zitadel.com/docs/guides/integrate/service-users/personal-access-token">PAT
+     * Guide</a>
      */
     public static Zitadel withAccessToken(String host, String accessToken, TransportOptions transportOptions) {
         return new Zitadel(new PersonalAccessTokenAuthenticator(host, accessToken), transportOptions);
@@ -373,6 +376,9 @@ public class Zitadel {
      * @param clientSecret     OAuth2 client secret.
      * @param transportOptions Optional transport options for TLS, proxy, and headers.
      * @return Configured Zitadel client instance with token auto-refresh.
+     * @see <a
+     * href="https://zitadel.com/docs/guides/integrate/service-users/client-credentials">Client
+     * Credentials Guide</a>
      */
     public static Zitadel withClientCredentials(String host, String clientId, String clientSecret, TransportOptions transportOptions) {
         return new Zitadel(
@@ -419,6 +425,8 @@ public class Zitadel {
      * @param keyFile          Path to service account JSON or PEM key file.
      * @param transportOptions Optional transport options for TLS, proxy, and headers.
      * @return Configured Zitadel client instance using JWT assertion.
+     * @see <a href="https://zitadel.com/docs/guides/integrate/service-users/private-key-jwt">Private
+     * Key JWT Guide</a>
      */
     @SuppressFBWarnings({"PATH_TRAVERSAL_IN", "THROWS_METHOD_THROWS_RUNTIMEEXCEPTION"})
     public static Zitadel withPrivateKey(String host, String keyFile, TransportOptions transportOptions) {
@@ -437,6 +445,8 @@ public class Zitadel {
      * @param inputStream      Input stream containing service account JSON or PEM key data.
      * @param transportOptions Optional transport options for TLS, proxy, and headers.
      * @return Configured Zitadel client instance using JWT assertion.
+     * @see <a href="https://zitadel.com/docs/guides/integrate/service-users/private-key-jwt">Private
+     * Key JWT Guide</a>
      */
     public static Zitadel withPrivateKey(String host, java.io.InputStream inputStream, TransportOptions transportOptions) {
         return new Zitadel(WebTokenAuthenticator.fromJson(host, inputStream, transportOptions), transportOptions);

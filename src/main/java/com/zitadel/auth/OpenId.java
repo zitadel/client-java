@@ -103,7 +103,7 @@ public class OpenId {
     private static URL buildWellKnownUrl(String hostname) {
         try {
             if (!hostname.startsWith("http://") && !hostname.startsWith("https://")) {
-                hostname = "https://" + hostname; // default to https
+                hostname = "https://" + hostname;
             }
 
             URL base = new URL(hostname);
