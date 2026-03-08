@@ -49,8 +49,7 @@ public class TransportOptions {
     }
 
     /**
-     * Returns a default {@code TransportOptions} instance with no custom headers,
-     * no CA cert path, and insecure mode disabled.
+     * Returns a {@code TransportOptions} instance with all default values.
      *
      * @return the default transport options.
      */
