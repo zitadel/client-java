@@ -98,6 +98,10 @@ public class ApiClient {
         this(authenticator, HttpClients.custom().setUserAgent(USER_AGENT).build());
     }
 
+    /**
+     * @param authenticator    the authenticator to use for API requests.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     */
     public ApiClient(Authenticator authenticator, TransportOptions transportOptions) {
         this(authenticator, buildHttpClient(transportOptions != null ? transportOptions : TransportOptions.defaults()));
     }

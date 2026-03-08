@@ -190,6 +190,10 @@ public abstract class OAuthAuthenticator extends Authenticator {
             this.openId = new OpenId(host);
         }
 
+        /**
+         * @param host             The base URL for the API endpoints.
+         * @param transportOptions Optional transport options for TLS, proxy, and headers.
+         */
         protected OAuthAuthenticatorBuilder(String host, TransportOptions transportOptions) {
             this.transportOptions = transportOptions != null ? transportOptions : TransportOptions.defaults();
             this.openId = new OpenId(host, this.transportOptions);

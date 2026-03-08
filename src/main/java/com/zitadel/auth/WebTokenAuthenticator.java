@@ -49,6 +49,17 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
     private final Duration tokenLifetime;
     private final JWSHeader jwsHeader;
 
+    /**
+     * @param openId           the OpenID configuration.
+     * @param jwtIssuer        the issuer claim for the JWT.
+     * @param jwtSubject       the subject claim for the JWT.
+     * @param jwtAudience      the audience claim for the JWT.
+     * @param keySigner        the signer used to sign the JWT.
+     * @param tokenLifetime    the lifetime of the token.
+     * @param jwsHeader        the JWS header for the JWT.
+     * @param authScopes       the scopes for the token request.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     */
     WebTokenAuthenticator(
         OpenId openId,
         String jwtIssuer,
@@ -322,6 +333,14 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
             this.keySigner = new RSASSASigner(privateKey);
         }
 
+        /**
+         * @param host             The base URL for the API endpoints.
+         * @param jwtIssuer        The issuer claim for the JWT.
+         * @param jwtSubject       The subject claim for the JWT.
+         * @param jwtAudience      The audience claim for the JWT.
+         * @param privateKey       The RSAPrivateKey used to sign the JWT.
+         * @param transportOptions Optional transport options for TLS, proxy, and headers.
+         */
         Builder(
             String host,
             String jwtIssuer,

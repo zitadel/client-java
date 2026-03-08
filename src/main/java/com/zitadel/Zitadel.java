@@ -230,6 +230,10 @@ public class Zitadel {
             });
     }
 
+    /**
+     * @param authenticator    the authenticator to use for API requests.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     */
     public Zitadel(Authenticator authenticator, TransportOptions transportOptions) {
         this(
             authenticator,
@@ -238,6 +242,11 @@ public class Zitadel {
             });
     }
 
+    /**
+     * @param authenticator    the authenticator to use for API requests.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     * @param mutateApiClient  a consumer to customize the API client after creation.
+     */
     public Zitadel(Authenticator authenticator, TransportOptions transportOptions, Consumer<ApiClient> mutateApiClient) {
         this.apiClient = new ApiClient(authenticator, transportOptions);
 

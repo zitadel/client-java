@@ -25,10 +25,17 @@ public class OpenId {
     private final URL hostEndpoint;
     private final URL tokenEndpoint;
 
+    /**
+     * @param hostname the hostname of the OpenID provider.
+     */
     public OpenId(String hostname) {
         this(hostname, TransportOptions.defaults());
     }
 
+    /**
+     * @param hostname         the hostname of the OpenID provider.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     */
     @SuppressFBWarnings("URLCONNECTION_SSRF_FD")
     public OpenId(String hostname, TransportOptions transportOptions) {
         TransportOptions opts = transportOptions != null ? transportOptions : TransportOptions.defaults();

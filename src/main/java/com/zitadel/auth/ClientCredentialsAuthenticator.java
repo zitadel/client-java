@@ -101,6 +101,12 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
             this.clientSecret = new Secret(clientSecret);
         }
 
+        /**
+         * @param host             The base URL for the API endpoints.
+         * @param clientId         The OAuth2 client identifier.
+         * @param clientSecret     The OAuth2 client secret.
+         * @param transportOptions Optional transport options for TLS, proxy, and headers.
+         */
         Builder(String host, String clientId, String clientSecret, TransportOptions transportOptions) {
             super(host, transportOptions);
             this.clientId = new ClientID(clientId);
