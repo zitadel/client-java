@@ -104,7 +104,6 @@ public abstract class OAuthAuthenticator extends Authenticator {
                 new TokenRequest(tokenEndpoint, authentication, this.getGrant(), this.scope);
             HTTPRequest httpRequest = request.toHTTPRequest();
 
-            // Apply proxy settings
             if (transportOptions.getProxyUrl() != null) {
                 URL proxyParsed = new URL(transportOptions.getProxyUrl());
                 httpRequest.setProxy(new Proxy(Proxy.Type.HTTP,
@@ -117,7 +116,6 @@ public abstract class OAuthAuthenticator extends Authenticator {
                 }
             }
 
-            // Apply SSL settings
             SSLContext sslContext = transportOptions.buildSSLContext();
             if (sslContext != null) {
                 httpRequest.setSSLSocketFactory(sslContext.getSocketFactory());
@@ -126,7 +124,6 @@ public abstract class OAuthAuthenticator extends Authenticator {
                 }
             }
 
-            // Apply default headers
             for (Map.Entry<String, String> entry : transportOptions.getDefaultHeaders().entrySet()) {
                 httpRequest.setHeader(entry.getKey(), entry.getValue());
             }
