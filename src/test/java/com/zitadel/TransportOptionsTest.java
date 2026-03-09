@@ -54,6 +54,10 @@ class TransportOptionsTest {
                 MountableFile.forClasspathResource("keystore.p12"),
                 "/home/wiremock/keystore.p12"
             )
+            .withCopyFileToContainer(
+                MountableFile.forClasspathResource("mappings/"),
+                "/home/wiremock/mappings/"
+            )
             .withCommand(
                 "--https-port", "8443",
                 "--https-keystore", "/home/wiremock/keystore.p12",
@@ -80,37 +84,6 @@ class TransportOptionsTest {
         httpPort = wireMockServer.getMappedPort(8080);
         httpsPort = wireMockServer.getMappedPort(8443);
         proxyPort = proxyServer.getMappedPort(3128);
-
-        registerStub("{"
-            + "\"request\":{\"method\":\"GET\",\"url\":\"/.well-known/openid-configuration\"},"
-            + "\"response\":{"
-            + "\"status\":200,"
-            + "\"headers\":{\"Content-Type\":\"application/json\"},"
-            + "\"body\":\"{\\\"issuer\\\":\\\"{{request.baseUrl}}\\\","
-            + "\\\"token_endpoint\\\":\\\"{{request.baseUrl}}/oauth/v2/token\\\","
-            + "\\\"authorization_endpoint\\\":\\\"{{request.baseUrl}}/oauth/v2/authorize\\\","
-            + "\\\"userinfo_endpoint\\\":\\\"{{request.baseUrl}}/oidc/v1/userinfo\\\","
-            + "\\\"jwks_uri\\\":\\\"{{request.baseUrl}}/oauth/v2/keys\\\"}\""
-            + "}"
-            + "}");
-
-        registerStub("{"
-            + "\"request\":{\"method\":\"POST\",\"url\":\"/oauth/v2/token\"},"
-            + "\"response\":{"
-            + "\"status\":200,"
-            + "\"headers\":{\"Content-Type\":\"application/json\"},"
-            + "\"jsonBody\":{\"access_token\":\"test-token-12345\",\"token_type\":\"Bearer\",\"expires_in\":3600}"
-            + "}"
-            + "}");
-
-        registerStub("{"
-            + "\"request\":{\"method\":\"POST\",\"url\":\"/zitadel.settings.v2.SettingsService/GetGeneralSettings\"},"
-            + "\"response\":{"
-            + "\"status\":200,"
-            + "\"headers\":{\"Content-Type\":\"application/json\"},"
-            + "\"jsonBody\":{}"
-            + "}"
-            + "}");
     }
 
     @AfterAll
@@ -123,23 +96,6 @@ class TransportOptionsTest {
         }
         if (network != null) {
             network.close();
-        }
-    }
-
-    @SuppressWarnings("HttpUrlsUsage")
-    private static void registerStub(String stubJson) throws Exception {
-        URL url = new URL("http://" + host + ":" + httpPort + "/__admin/mappings");
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Type", "application/json");
-        conn.setDoOutput(true);
-        try (OutputStream os = conn.getOutputStream()) {
-            os.write(stubJson.getBytes(StandardCharsets.UTF_8));
-        }
-        int status = conn.getResponseCode();
-        conn.disconnect();
-        if (status != 201) {
-            throw new RuntimeException("Failed to register WireMock stub, status: " + status);
         }
     }
 
