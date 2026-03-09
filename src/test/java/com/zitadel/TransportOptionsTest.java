@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TransportOptionsTest {
 
@@ -40,10 +39,8 @@ class TransportOptionsTest {
     }
 
     @Test
-    void testInsecureTakesPrecedenceOverCaCert() throws Exception {
-        String caCertPath = Path.of(TransportOptionsTest.class.getClassLoader()
-            .getResource("ca.pem").toURI()).toString();
-        TransportOptions options = new TransportOptions(Map.of(), caCertPath, true, null);
+    void testInsecureTakesPrecedenceOverCaCert() throws GeneralSecurityException, IOException {
+        TransportOptions options = new TransportOptions(Map.of(), "/nonexistent/ca.pem", true, null);
         SSLContext ctx = options.buildSSLContext();
         assertNotNull(ctx);
     }
