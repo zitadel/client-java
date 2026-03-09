@@ -298,7 +298,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
     }
 
     /**
-     * Builder for JWTAuthenticator.
+     * Builder for WebTokenAuthenticator.
      */
     public static class Builder extends OAuthAuthenticatorBuilder<Builder> {
 
@@ -371,11 +371,11 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
         }
 
         /**
-         * Builds the JWTAuthenticator.
+         * Builds the WebTokenAuthenticator.
          *
          * <p>Prepares all required values for JWT-based authentication.
          *
-         * @return a new JWTAuthenticator instance.
+         * @return a new WebTokenAuthenticator instance.
          */
         public WebTokenAuthenticator build() {
             return new WebTokenAuthenticator(
