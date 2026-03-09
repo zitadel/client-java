@@ -46,7 +46,7 @@ class TransportOptionsTest {
 
         network = Network.newNetwork();
 
-        wireMockServer = new GenericContainer<>(DockerImageName.parse("wiremock/wiremock:3.3.1"))
+        wireMockServer = new GenericContainer<>(DockerImageName.parse("wiremock/wiremock:3.12.1"))
             .withNetwork(network)
             .withNetworkAliases("wiremock")
             .withExposedPorts(8080, 8443)
