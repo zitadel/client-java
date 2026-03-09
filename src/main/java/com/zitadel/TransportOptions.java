@@ -19,9 +19,6 @@ import java.util.Map;
 
 /**
  * Immutable transport options for configuring HTTP connections.
- *
- * <p>Provides settings for default headers, custom CA certificate paths, insecure
- * (trust-all) TLS connections, and proxy configuration.
  */
 public class TransportOptions {
 
@@ -36,10 +33,10 @@ public class TransportOptions {
     private volatile boolean sslContextBuilt;
 
     /**
-     * @param defaultHeaders Default headers sent to the origin server with every request.
-     * @param caCertPath     path to a custom CA certificate file for TLS verification, or {@code null}.
-     * @param insecure       whether to disable TLS certificate verification.
-     * @param proxyUrl       proxy URL for HTTP connections, or {@code null}.
+     * @param defaultHeaders Default HTTP headers sent to the origin server with every request.
+     * @param caCertPath     Path to a custom CA certificate file for TLS verification, or {@code null}.
+     * @param insecure       Whether to disable TLS certificate verification.
+     * @param proxyUrl       Proxy URL for HTTP connections, or {@code null}.
      */
     public TransportOptions(Map<String, String> defaultHeaders, @Nullable String caCertPath, boolean insecure, @Nullable String proxyUrl) {
         this.defaultHeaders = Collections.unmodifiableMap(new LinkedHashMap<>(defaultHeaders));
@@ -58,7 +55,7 @@ public class TransportOptions {
     }
 
     /**
-     * Returns the default headers sent to the origin server with every request.
+     * Returns the default HTTP headers sent to the origin server with every request.
      *
      * @return an unmodifiable map of header names to values.
      */
