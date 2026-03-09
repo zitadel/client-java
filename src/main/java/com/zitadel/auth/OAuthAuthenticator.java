@@ -45,11 +45,21 @@ public abstract class OAuthAuthenticator extends Authenticator {
     /**
      * Constructs an OAuthAuthenticator.
      *
+     * @param openId The URL of the OAuth2 token endpoint.
+     * @param scope  The scope for the token request.
+     */
+    public OAuthAuthenticator(OpenId openId, Scope scope) {
+        this(openId, scope, null);
+    }
+
+    /**
+     * Constructs an OAuthAuthenticator.
+     *
      * @param openId           The URL of the OAuth2 token endpoint.
      * @param scope            The scope for the token request.
      * @param transportOptions Optional transport options for TLS, proxy, and headers.
      */
-    public OAuthAuthenticator(OpenId openId, Scope scope, TransportOptions transportOptions) {
+    public OAuthAuthenticator(OpenId openId, Scope scope, @Nullable TransportOptions transportOptions) {
         super(openId.getHostEndpoint());
         this.scope = new Scope(scope);
         this.token = null;
