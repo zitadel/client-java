@@ -36,7 +36,7 @@ public class TransportOptions {
     private volatile boolean sslContextBuilt;
 
     /**
-     * @param defaultHeaders default headers sent to the origin server with every request.
+     * @param defaultHeaders Default headers sent to the origin server with every request.
      * @param caCertPath     path to a custom CA certificate file for TLS verification, or {@code null}.
      * @param insecure       whether to disable TLS certificate verification.
      * @param proxyUrl       proxy URL for HTTP connections, or {@code null}.
