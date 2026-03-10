@@ -16,6 +16,7 @@ import com.nimbusds.oauth2.sdk.auth.ClientAuthentication;
 import com.nimbusds.oauth2.sdk.auth.ClientAuthenticationMethod;
 import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.id.ClientID;
+import com.zitadel.TransportOptions;
 import com.zitadel.ZitadelException;
 import com.zitadel.utils.KeyUtil;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -24,7 +25,9 @@ import javax.annotation.Nullable;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
+import java.security.spec.InvalidKeySpecException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
@@ -46,6 +49,17 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
     private final Duration tokenLifetime;
     private final JWSHeader jwsHeader;
 
+    /**
+     * @param openId           the OpenID configuration.
+     * @param jwtIssuer        the issuer claim for the JWT.
+     * @param jwtSubject       the subject claim for the JWT.
+     * @param jwtAudience      the audience claim for the JWT.
+     * @param keySigner        the signer used to sign the JWT.
+     * @param tokenLifetime    the lifetime of the token.
+     * @param jwsHeader        the JWS header for the JWT.
+     * @param authScopes       the scopes for the token request.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     */
     WebTokenAuthenticator(
         OpenId openId,
         String jwtIssuer,
@@ -54,8 +68,9 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
         JWSSigner keySigner,
         Duration tokenLifetime,
         JWSHeader jwsHeader,
-        Scope authScopes) {
-        super(openId, authScopes);
+        Scope authScopes,
+        TransportOptions transportOptions) {
+        super(openId, authScopes, transportOptions);
         this.jwtIssuer = jwtIssuer;
         this.jwtSubject = jwtSubject;
         this.jwtAudience = jwtAudience;
@@ -89,6 +104,26 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
     public static WebTokenAuthenticator fromJson(String host, String jsonPath) {
         try (FileInputStream fis = new FileInputStream(jsonPath)) {
             return fromJson(host, fis);
+        } catch (IOException e) {
+            throw new RuntimeException(
+                "Unable to read JSON file at " + jsonPath + ": " + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * Creates a {@code WebTokenAuthenticator} instance from a JSON configuration file
+     * with custom transport options.
+     *
+     * @param host             the base URL for the API endpoints.
+     * @param jsonPath         the file path to the JSON configuration file.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     * @return a new instance of {@code WebTokenAuthenticator}.
+     */
+    @SuppressWarnings("unused")
+    @SuppressFBWarnings("PATH_TRAVERSAL_IN")
+    public static WebTokenAuthenticator fromJson(String host, String jsonPath, TransportOptions transportOptions) {
+        try (FileInputStream fis = new FileInputStream(jsonPath)) {
+            return fromJson(host, fis, transportOptions);
         } catch (IOException e) {
             throw new RuntimeException(
                 "Unable to read JSON file at " + jsonPath + ": " + e.getMessage(), e);
@@ -140,7 +175,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
         PrivateKey privateKey;
         try {
             privateKey = KeyUtil.getPrivateKeyFromString(keyString);
-        } catch (Exception e) {
+        } catch (IOException | InvalidKeySpecException | NoSuchAlgorithmException e) {
             throw new RuntimeException(
                 "Unable to convert key string to PrivateKey: " + e.getMessage(), e);
         }
@@ -149,15 +184,70 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
     }
 
     /**
-     * Returns a new builder instance for JWTAuthenticator.
+     * Creates a {@code WebTokenAuthenticator} instance from a JSON configuration input stream
+     * with custom transport options.
+     *
+     * @param host             the base URL for the API endpoints.
+     * @param inputStream      the input stream containing the JSON configuration.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     * @return a new instance of {@code WebTokenAuthenticator}.
+     */
+    public static WebTokenAuthenticator fromJson(String host, InputStream inputStream, TransportOptions transportOptions) {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> config;
+        try {
+            config = mapper.readValue(inputStream, new TypeReference<>() {
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(
+                "Unable to read or parse JSON from input stream: " + e.getMessage(), e);
+        }
+
+        if (config == null || config.isEmpty()) {
+            throw new RuntimeException("Expected a JSON object in input stream");
+        }
+
+        String userId = (String) config.get("userId");
+        String keyString = (String) config.get("key");
+        String keyId = (String) config.get("keyId");
+        if (userId == null || keyString == null || keyId == null) {
+            throw new RuntimeException("Missing required keys 'userId', 'keyId' or 'key' in JSON.");
+        }
+
+        PrivateKey privateKey;
+        try {
+            privateKey = KeyUtil.getPrivateKeyFromString(keyString);
+        } catch (IOException | InvalidKeySpecException | NoSuchAlgorithmException e) {
+            throw new RuntimeException(
+                "Unable to convert key string to PrivateKey: " + e.getMessage(), e);
+        }
+
+        return WebTokenAuthenticator.builder(host, userId, privateKey, transportOptions).keyId(keyId).build();
+    }
+
+    /**
+     * Returns a new builder instance for WebTokenAuthenticator.
      *
      * @param host       The base URL for API endpoints.
      * @param userId     Used as both the issuer and subject in the JWT.
      * @param privateKey The private key used to sign the JWT.
-     * @return a new JWTAuthenticatorBuilder instance.
+     * @return a new WebTokenAuthenticator.Builder instance.
      */
     public static Builder builder(String host, String userId, PrivateKey privateKey) {
         return new Builder(host, userId, userId, host, privateKey);
+    }
+
+    /**
+     * Returns a new builder instance for WebTokenAuthenticator with custom transport options.
+     *
+     * @param host             The base URL for API endpoints.
+     * @param userId           Used as both the issuer and subject in the JWT.
+     * @param privateKey       The private key used to sign the JWT.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     * @return a new WebTokenAuthenticator.Builder instance.
+     */
+    public static Builder builder(String host, String userId, PrivateKey privateKey, TransportOptions transportOptions) {
+        return new Builder(host, userId, userId, host, privateKey, transportOptions);
     }
 
     /**
@@ -208,7 +298,7 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
     }
 
     /**
-     * Builder for JWTAuthenticator.
+     * Builder for WebTokenAuthenticator.
      */
     public static class Builder extends OAuthAuthenticatorBuilder<Builder> {
 
@@ -243,6 +333,28 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
             this.keySigner = new RSASSASigner(privateKey);
         }
 
+        /**
+         * @param host             The base URL for the API endpoints.
+         * @param jwtIssuer        The issuer claim for the JWT.
+         * @param jwtSubject       The subject claim for the JWT.
+         * @param jwtAudience      The audience claim for the JWT.
+         * @param privateKey       The RSAPrivateKey used to sign the JWT.
+         * @param transportOptions Optional transport options for TLS, proxy, and headers.
+         */
+        Builder(
+            String host,
+            String jwtIssuer,
+            String jwtSubject,
+            String jwtAudience,
+            PrivateKey privateKey,
+            TransportOptions transportOptions) {
+            super(host, transportOptions);
+            this.jwtIssuer = jwtIssuer;
+            this.jwtSubject = jwtSubject;
+            this.jwtAudience = jwtAudience;
+            this.keySigner = new RSASSASigner(privateKey);
+        }
+
         public Builder tokenLifetime(Duration tokenLifetime) {
             this.tokenLifetime = tokenLifetime;
             return this;
@@ -259,11 +371,11 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
         }
 
         /**
-         * Builds the JWTAuthenticator.
+         * Builds the WebTokenAuthenticator.
          *
          * <p>Prepares all required values for JWT-based authentication.
          *
-         * @return a new JWTAuthenticator instance.
+         * @return a new WebTokenAuthenticator instance.
          */
         public WebTokenAuthenticator build() {
             return new WebTokenAuthenticator(
@@ -274,7 +386,8 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
                 keySigner,
                 tokenLifetime,
                 new JWSHeader.Builder(jwtAlgorithm).keyID(keyId).build(),
-                authScopes);
+                authScopes,
+                transportOptions);
         }
     }
 }

@@ -6,6 +6,7 @@ import com.nimbusds.oauth2.sdk.Scope;
 import com.nimbusds.oauth2.sdk.auth.ClientSecretBasic;
 import com.nimbusds.oauth2.sdk.auth.Secret;
 import com.nimbusds.oauth2.sdk.id.ClientID;
+import com.zitadel.TransportOptions;
 import com.zitadel.ZitadelException;
 
 /**
@@ -25,14 +26,15 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
     /**
      * Constructs a ClientCredentialsAuthenticator.
      *
-     * @param openId       The base URL for the API endpoints.
-     * @param clientId     The OAuth2 client identifier.
-     * @param clientSecret The OAuth2 client secret.
-     * @param authScopes   The scope for the token request.
+     * @param openId           The base URL for the API endpoints.
+     * @param clientId         The OAuth2 client identifier.
+     * @param clientSecret     The OAuth2 client secret.
+     * @param authScopes       The scope for the token request.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
      */
     ClientCredentialsAuthenticator(
-        OpenId openId, ClientID clientId, Secret clientSecret, Scope authScopes) {
-        super(openId, authScopes);
+        OpenId openId, ClientID clientId, Secret clientSecret, Scope authScopes, TransportOptions transportOptions) {
+        super(openId, authScopes, transportOptions);
         this.clientSecret = clientSecret;
         this.clientId = clientId;
     }
@@ -47,6 +49,19 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
      */
     public static Builder builder(String host, String clientId, String clientSecret) {
         return new Builder(host, clientId, clientSecret);
+    }
+
+    /**
+     * Returns a new builder instance for ClientCredentialsAuthenticator with custom transport options.
+     *
+     * @param host             The base URL for API endpoints.
+     * @param clientId         The OAuth2 client identifier.
+     * @param clientSecret     The OAuth2 client secret.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     * @return a new ClientCredentialsAuthenticatorBuilder instance.
+     */
+    public static Builder builder(String host, String clientId, String clientSecret, TransportOptions transportOptions) {
+        return new Builder(host, clientId, clientSecret, transportOptions);
     }
 
     /**
@@ -87,12 +102,24 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
         }
 
         /**
+         * @param host             The base URL for the API endpoints.
+         * @param clientId         The OAuth2 client identifier.
+         * @param clientSecret     The OAuth2 client secret.
+         * @param transportOptions Optional transport options for TLS, proxy, and headers.
+         */
+        Builder(String host, String clientId, String clientSecret, TransportOptions transportOptions) {
+            super(host, transportOptions);
+            this.clientId = new ClientID(clientId);
+            this.clientSecret = new Secret(clientSecret);
+        }
+
+        /**
          * Builds the ClientCredentialsAuthenticator.
          *
          * @return a new ClientCredentialsAuthenticator instance.
          */
         public ClientCredentialsAuthenticator build() {
-            return new ClientCredentialsAuthenticator(openId, clientId, clientSecret, authScopes);
+            return new ClientCredentialsAuthenticator(openId, clientId, clientSecret, authScopes, transportOptions);
         }
     }
 }

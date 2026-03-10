@@ -4,12 +4,17 @@ import com.nimbusds.oauth2.sdk.*;
 import com.nimbusds.oauth2.sdk.auth.ClientAuthentication;
 import com.nimbusds.oauth2.sdk.http.HTTPRequest;
 import com.nimbusds.oauth2.sdk.token.BearerAccessToken;
+import com.zitadel.TransportOptions;
 import com.zitadel.ZitadelException;
 
 import javax.annotation.Nullable;
+import javax.net.ssl.SSLContext;
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
@@ -30,6 +35,7 @@ public abstract class OAuthAuthenticator extends Authenticator {
     protected final Scope scope;
 
     private final OpenId openId;
+    private final TransportOptions transportOptions;
     /**
      * The OAuth token.
      */
@@ -43,10 +49,22 @@ public abstract class OAuthAuthenticator extends Authenticator {
      * @param scope  The scope for the token request.
      */
     public OAuthAuthenticator(OpenId openId, Scope scope) {
+        this(openId, scope, null);
+    }
+
+    /**
+     * Constructs an OAuthAuthenticator.
+     *
+     * @param openId           The URL of the OAuth2 token endpoint.
+     * @param scope            The scope for the token request.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     */
+    public OAuthAuthenticator(OpenId openId, Scope scope, @Nullable TransportOptions transportOptions) {
         super(openId.getHostEndpoint());
         this.scope = new Scope(scope);
         this.token = null;
         this.openId = openId;
+        this.transportOptions = transportOptions != null ? transportOptions : TransportOptions.defaults();
     }
 
     public String getAuthToken() throws ZitadelException {
@@ -95,6 +113,31 @@ public abstract class OAuthAuthenticator extends Authenticator {
             TokenRequest request =
                 new TokenRequest(tokenEndpoint, authentication, this.getGrant(), this.scope);
             HTTPRequest httpRequest = request.toHTTPRequest();
+
+            if (transportOptions.getProxyUrl() != null) {
+                URL proxyParsed = new URL(transportOptions.getProxyUrl());
+                httpRequest.setProxy(new Proxy(Proxy.Type.HTTP,
+                    new InetSocketAddress(proxyParsed.getHost(),
+                        proxyParsed.getPort() != -1 ? proxyParsed.getPort() : proxyParsed.getDefaultPort())));
+                if (proxyParsed.getUserInfo() != null) {
+                    String encoded = java.util.Base64.getEncoder()
+                        .encodeToString(proxyParsed.getUserInfo().getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                    httpRequest.setHeader("Proxy-Authorization", "Basic " + encoded);
+                }
+            }
+
+            SSLContext sslContext = transportOptions.buildSSLContext();
+            if (sslContext != null) {
+                httpRequest.setSSLSocketFactory(sslContext.getSocketFactory());
+                if (transportOptions.isInsecure()) {
+                    httpRequest.setHostnameVerifier((h, s) -> true);
+                }
+            }
+
+            for (Map.Entry<String, String> entry : transportOptions.getDefaultHeaders().entrySet()) {
+                httpRequest.setHeader(entry.getKey(), entry.getValue());
+            }
+
             TokenResponse tokenResponse = TokenResponse.parse(httpRequest.send());
 
             if (!tokenResponse.indicatesSuccess()) {
@@ -108,7 +151,8 @@ public abstract class OAuthAuthenticator extends Authenticator {
                 return new Token(
                     accessToken.getValue(), Instant.now().plusSeconds(accessToken.getLifetime()));
             }
-        } catch (RuntimeException | IOException | ParseException | URISyntaxException e) {
+        } catch (RuntimeException | IOException | ParseException | URISyntaxException
+                 | java.security.GeneralSecurityException e) {
             throw new ZitadelException("Failed to refresh token: " + e.getMessage(), e);
         }
     }
@@ -146,10 +190,20 @@ public abstract class OAuthAuthenticator extends Authenticator {
         T extends OAuthAuthenticatorBuilder<?>> {
 
         protected final OpenId openId;
+        protected TransportOptions transportOptions = TransportOptions.defaults();
         protected Scope authScopes = Scope.parse("openid urn:zitadel:iam:org:project:id:zitadel:aud");
 
         protected OAuthAuthenticatorBuilder(String host) {
             this.openId = new OpenId(host);
+        }
+
+        /**
+         * @param host             The base URL for the API endpoints.
+         * @param transportOptions Optional transport options for TLS, proxy, and headers.
+         */
+        protected OAuthAuthenticatorBuilder(String host, TransportOptions transportOptions) {
+            this.transportOptions = transportOptions != null ? transportOptions : TransportOptions.defaults();
+            this.openId = new OpenId(host, this.transportOptions);
         }
 
         /**
@@ -163,5 +217,6 @@ public abstract class OAuthAuthenticator extends Authenticator {
             this.authScopes = Scope.parse(authScopes);
             return (T) this;
         }
+
     }
 }

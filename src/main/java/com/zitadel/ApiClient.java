@@ -15,20 +15,27 @@ import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
 import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.protocol.HttpClientContext;
+import org.apache.hc.client5.http.ssl.NoopHostnameVerifier;
+import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactoryBuilder;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
 import org.apache.hc.core5.http.*;
 import org.apache.hc.core5.http.io.entity.ByteArrayEntity;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.entity.FileEntity;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
+import org.apache.hc.core5.http.message.BasicHeader;
 import org.apache.hc.core5.http.message.BasicNameValuePair;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 
 import javax.annotation.Nullable;
+import javax.net.ssl.SSLContext;
 import java.io.File;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.lang.reflect.Type;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
@@ -45,7 +52,7 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@SuppressFBWarnings("THROWS_METHOD_THROWS_RUNTIMEEXCEPTION")
+@SuppressFBWarnings({"THROWS_METHOD_THROWS_RUNTIMEEXCEPTION", "CT_CONSTRUCTOR_THROW"})
 public class ApiClient {
 
     public static final String USER_AGENT =
@@ -89,6 +96,59 @@ public class ApiClient {
 
     public ApiClient(Authenticator authenticator) {
         this(authenticator, HttpClients.custom().setUserAgent(USER_AGENT).build());
+    }
+
+    /**
+     * @param authenticator    the authenticator to use for API requests.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     */
+    public ApiClient(Authenticator authenticator, TransportOptions transportOptions) {
+        this(authenticator, buildHttpClient(transportOptions != null ? transportOptions : TransportOptions.defaults()));
+    }
+
+    private static CloseableHttpClient buildHttpClient(TransportOptions transportOptions) {
+        try {
+            HttpClientBuilder builder = HttpClients.custom().setUserAgent(USER_AGENT);
+
+            SSLContext sslContext = transportOptions.buildSSLContext();
+            if (sslContext != null) {
+                SSLConnectionSocketFactoryBuilder sslSocketFactoryBuilder = SSLConnectionSocketFactoryBuilder.create()
+                    .setSslContext(sslContext);
+                if (transportOptions.isInsecure()) {
+                    sslSocketFactoryBuilder.setHostnameVerifier(NoopHostnameVerifier.INSTANCE);
+                }
+                builder.setConnectionManager(PoolingHttpClientConnectionManagerBuilder.create()
+                    .setSSLSocketFactory(sslSocketFactoryBuilder.build())
+                    .build());
+            }
+
+            List<Header> defaultHeaders = new ArrayList<>();
+
+            if (transportOptions.getProxyUrl() != null) {
+                java.net.URL proxyParsed = new java.net.URL(transportOptions.getProxyUrl());
+                String proxyScheme = proxyParsed.getProtocol();
+                String proxyHost = proxyParsed.getHost();
+                int proxyPort = proxyParsed.getPort() != -1 ? proxyParsed.getPort() : proxyParsed.getDefaultPort();
+                builder.setProxy(new HttpHost(proxyScheme, proxyHost, proxyPort));
+                if (proxyParsed.getUserInfo() != null) {
+                    String encoded = Base64.getEncoder()
+                        .encodeToString(proxyParsed.getUserInfo().getBytes(StandardCharsets.UTF_8));
+                    defaultHeaders.add(new BasicHeader("Proxy-Authorization", "Basic " + encoded));
+                }
+            }
+
+            for (Map.Entry<String, String> entry : transportOptions.getDefaultHeaders().entrySet()) {
+                defaultHeaders.add(new BasicHeader(entry.getKey(), entry.getValue()));
+            }
+
+            if (!defaultHeaders.isEmpty()) {
+                builder.setDefaultHeaders(defaultHeaders);
+            }
+
+            return builder.build();
+        } catch (IOException | GeneralSecurityException e) {
+            throw new RuntimeException("Failed to build HTTP client with transport options: " + e.getMessage(), e);
+        }
     }
 
     public static DateFormat buildDefaultDateFormat() {

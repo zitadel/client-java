@@ -227,8 +227,62 @@ public class Zitadel {
         this(
             authenticator,
             apiClient -> {
-                // Dummy lambda that does nothing, can add default behavior here if needed
             });
+    }
+
+    /**
+     * @param authenticator    the authenticator to use for API requests.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     */
+    public Zitadel(Authenticator authenticator, TransportOptions transportOptions) {
+        this(
+            authenticator,
+            transportOptions,
+            apiClient -> {
+            });
+    }
+
+    /**
+     * @param authenticator    the authenticator to use for API requests.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     * @param mutateApiClient  a consumer to customize the API client after creation.
+     */
+    public Zitadel(Authenticator authenticator, TransportOptions transportOptions, Consumer<ApiClient> mutateApiClient) {
+        this.apiClient = new ApiClient(authenticator, transportOptions);
+
+        if (mutateApiClient != null) {
+            mutateApiClient.accept(this.apiClient);
+        }
+
+        this.betaProjects = new BetaProjectServiceApi(apiClient);
+        this.betaApps = new BetaAppServiceApi(apiClient);
+        this.betaOidc = new BetaOidcServiceApi(apiClient);
+        this.betaUsers = new BetaUserServiceApi(apiClient);
+        this.betaOrganizations = new BetaOrganizationServiceApi(apiClient);
+        this.betaSettings = new BetaSettingsServiceApi(apiClient);
+        this.betaPermissions = new BetaInternalPermissionServiceApi(apiClient);
+        this.betaAuthorizations = new BetaAuthorizationServiceApi(apiClient);
+        this.betaSessions = new BetaSessionServiceApi(apiClient);
+        this.betaInstance = new BetaInstanceServiceApi(apiClient);
+        this.betaTelemetry = new BetaTelemetryServiceApi(apiClient);
+        this.betaFeatures = new BetaFeatureServiceApi(apiClient);
+        this.betaWebkeys = new BetaWebKeyServiceApi(apiClient);
+        this.betaActions = new BetaActionServiceApi(apiClient);
+        this.actions = new ActionServiceApi(apiClient);
+        this.applications = new ApplicationServiceApi(apiClient);
+        this.authorizations = new AuthorizationServiceApi(apiClient);
+        this.users = new UserServiceApi(apiClient);
+        this.sessions = new SessionServiceApi(apiClient);
+        this.oidc = new OidcServiceApi(apiClient);
+        this.features = new FeatureServiceApi(apiClient);
+        this.idps = new IdentityProviderServiceApi(apiClient);
+        this.instances = new InstanceServiceApi(apiClient);
+        this.internalPermissions = new InternalPermissionServiceApi(apiClient);
+        this.organizations = new OrganizationServiceApi(apiClient);
+        this.projects = new ProjectServiceApi(apiClient);
+        this.settings = new SettingsServiceApi(apiClient);
+        this.saml = new SamlServiceApi(apiClient);
+        this.webkeys = new WebKeyServiceApi(apiClient);
     }
 
     public Zitadel(Authenticator authenticator, Consumer<ApiClient> mutateApiClient) {
@@ -284,6 +338,21 @@ public class Zitadel {
     }
 
     /**
+     * Initialize the SDK with a Personal Access Token (PAT).
+     *
+     * @param host             API URL.
+     * @param accessToken      Personal Access Token for Bearer authentication.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     * @return Configured Zitadel client instance.
+     * @see <a
+     * href="https://zitadel.com/docs/guides/integrate/service-users/personal-access-token">PAT
+     * Guide</a>
+     */
+    public static Zitadel withAccessToken(String host, String accessToken, TransportOptions transportOptions) {
+        return new Zitadel(new PersonalAccessTokenAuthenticator(host, accessToken), transportOptions);
+    }
+
+    /**
      * Initialize the SDK using OAuth2 Client Credentials flow.
      *
      * @param host         API URL.
@@ -297,6 +366,24 @@ public class Zitadel {
     public static Zitadel withClientCredentials(String host, String clientId, String clientSecret) {
         return new Zitadel(
             ClientCredentialsAuthenticator.builder(host, clientId, clientSecret).build());
+    }
+
+    /**
+     * Initialize the SDK using OAuth2 Client Credentials flow.
+     *
+     * @param host             API URL.
+     * @param clientId         OAuth2 client identifier.
+     * @param clientSecret     OAuth2 client secret.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     * @return Configured Zitadel client instance with token auto-refresh.
+     * @see <a
+     * href="https://zitadel.com/docs/guides/integrate/service-users/client-credentials">Client
+     * Credentials Guide</a>
+     */
+    public static Zitadel withClientCredentials(String host, String clientId, String clientSecret, TransportOptions transportOptions) {
+        return new Zitadel(
+            ClientCredentialsAuthenticator.builder(host, clientId, clientSecret, transportOptions).build(),
+            transportOptions);
     }
 
     /**
@@ -329,6 +416,40 @@ public class Zitadel {
      */
     public static Zitadel withPrivateKey(String host, java.io.InputStream inputStream) {
         return new Zitadel(WebTokenAuthenticator.fromJson(host, inputStream));
+    }
+
+    /**
+     * Initialize the SDK via Private Key JWT assertion.
+     *
+     * @param host             API URL.
+     * @param keyFile          Path to service account JSON or PEM key file.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     * @return Configured Zitadel client instance using JWT assertion.
+     * @see <a href="https://zitadel.com/docs/guides/integrate/service-users/private-key-jwt">Private
+     * Key JWT Guide</a>
+     */
+    @SuppressFBWarnings({"PATH_TRAVERSAL_IN", "THROWS_METHOD_THROWS_RUNTIMEEXCEPTION"})
+    public static Zitadel withPrivateKey(String host, String keyFile, TransportOptions transportOptions) {
+        try (java.io.FileInputStream fis = new java.io.FileInputStream(keyFile)) {
+            return withPrivateKey(host, fis, transportOptions);
+        } catch (IOException e) {
+            throw new RuntimeException(
+                "Unable to read key file at " + keyFile + ": " + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * Initialize the SDK via Private Key JWT assertion.
+     *
+     * @param host             API URL.
+     * @param inputStream      Input stream containing service account JSON or PEM key data.
+     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     * @return Configured Zitadel client instance using JWT assertion.
+     * @see <a href="https://zitadel.com/docs/guides/integrate/service-users/private-key-jwt">Private
+     * Key JWT Guide</a>
+     */
+    public static Zitadel withPrivateKey(String host, java.io.InputStream inputStream, TransportOptions transportOptions) {
+        return new Zitadel(WebTokenAuthenticator.fromJson(host, inputStream, transportOptions), transportOptions);
     }
 
     /**

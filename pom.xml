@@ -324,6 +324,7 @@
               <exclude>**/api/*.java</exclude>
               <exclude>**/model/*.java</exclude>
             </excludes>
+            <removeUnusedImports/>
             <googleJavaFormat/>
           </java>
         </configuration>
