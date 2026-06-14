@@ -1,4 +1,4 @@
-FROM maven:3-eclipse-temurin-24@sha256:312fa2399c102b3cb171e1467b87f6cb8aac647c2b8ee63f1eb6ffefc0374b04
+FROM maven:3-eclipse-temurin-25@sha256:01ef98a139ed64622c086bac54d1e167453d0f2ff68b69d00978f26d8736215c
 
 WORKDIR /app
 

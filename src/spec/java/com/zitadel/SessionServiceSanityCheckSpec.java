@@ -3,6 +3,7 @@ package com.zitadel;
 import com.zitadel.model.*;
 import org.junit.jupiter.api.*;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -40,27 +41,33 @@ class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
     void setUp() throws ApiException {
         String userName = UUID.randomUUID().toString();
 
-        client.users.addHumanUser(new UserServiceAddHumanUserRequest()
-            .username(userName)
-            .profile(new UserServiceSetHumanProfile()
-                .givenName("John")
-                .familyName("Doe"))
-            .email(new UserServiceSetHumanEmail()
-                .email("johndoe" + UUID.randomUUID() + "@example.com")));
+        UserServiceAddHumanUserRequest humanUser = new UserServiceAddHumanUserRequest();
+        humanUser.username = userName;
+        UserServiceSetHumanProfile profile = new UserServiceSetHumanProfile();
+        profile.givenName = "John";
+        profile.familyName = "Doe";
+        humanUser.profile = profile;
+        UserServiceSetHumanEmail email = new UserServiceSetHumanEmail();
+        email.email = "johndoe" + UUID.randomUUID() + "@example.com";
+        humanUser.email = email;
+        client.users.addHumanUser(humanUser);
 
-        session = client.sessions.createSession(new SessionServiceCreateSessionRequest()
-            .checks(new SessionServiceChecks()
-                .user(new SessionServiceCheckUser()
-                    .loginName(userName)))
-            .lifetime("18000s"));
+        SessionServiceCreateSessionRequest createRequest = new SessionServiceCreateSessionRequest();
+        SessionServiceChecks checks = new SessionServiceChecks();
+        SessionServiceCheckUser checkUser = new SessionServiceCheckUser();
+        checkUser.loginName = userName;
+        checks.user = checkUser;
+        createRequest.checks = checks;
+        createRequest.lifetime = Duration.ofHours(5);
+        session = client.sessions.createSession(createRequest);
     }
 
     @AfterEach
     void tearDown() {
         try {
-            client.sessions.deleteSession(
-                new SessionServiceDeleteSessionRequest().sessionId(session.getSessionId())
-            );
+            SessionServiceDeleteSessionRequest deleteRequest = new SessionServiceDeleteSessionRequest();
+            deleteRequest.sessionId = session.sessionId;
+            client.sessions.deleteSession(deleteRequest);
         } catch (ApiException ignored) {
             // cleanup errors are ignored
         }
@@ -71,12 +78,12 @@ class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
      */
     @Test
     void testRetrievesSessionDetailsById() throws ApiException {
-        SessionServiceGetSessionResponse response =
-            client.sessions.getSession(new SessionServiceGetSessionRequest()
-                .sessionId(session.getSessionId())
-                .sessionToken(session.getSessionToken()));
-        assertNotNull(response.getSession());
-        assertEquals(session.getSessionId(), response.getSession().getId());
+        SessionServiceGetSessionRequest getRequest = new SessionServiceGetSessionRequest();
+        getRequest.sessionId = session.sessionId;
+        getRequest.sessionToken = session.sessionToken;
+        SessionServiceGetSessionResponse response = client.sessions.getSession(getRequest);
+        assertNotNull(response.session);
+        assertEquals(session.sessionId, response.session.id);
     }
 
     /**
@@ -84,16 +91,16 @@ class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
      */
     @Test
     void testIncludesCreatedSessionWhenListing() throws ApiException {
-        SessionServiceListSessionsRequest request = new SessionServiceListSessionsRequest()
-            .query(new SessionServiceListQuery());
+        SessionServiceListSessionsRequest request = new SessionServiceListSessionsRequest();
+        request.queries = List.of();
 
         SessionServiceListSessionsResponse response =
             client.sessions.listSessions(request);
-        assertNotNull(response.getSessions());
-        List<String> ids = response.getSessions().stream()
-            .map(SessionServiceSession::getId)
+        assertNotNull(response.sessions);
+        List<String> ids = response.sessions.stream()
+            .map(s -> s.id)
             .collect(Collectors.toList());
-        assertTrue(ids.contains(session.getSessionId()));
+        assertTrue(ids.contains(session.sessionId));
     }
 
     /**
@@ -101,13 +108,13 @@ class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
      */
     @Test
     void testUpdatesSessionLifetimeAndReturnsNewToken() throws ApiException {
-        SessionServiceSetSessionRequest request = new SessionServiceSetSessionRequest()
-            .sessionId(session.getSessionId())
-            .lifetime("36000s");
+        SessionServiceSetSessionRequest request = new SessionServiceSetSessionRequest();
+        request.sessionId = session.sessionId;
+        request.lifetime = Duration.ofHours(10);
 
         SessionServiceSetSessionResponse response =
             client.sessions.setSession(request);
-        assertNotNull(response.getSessionToken());
+        assertNotNull(response.sessionToken);
     }
 
     /**
@@ -115,10 +122,11 @@ class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
      */
     @Test
     void testRaisesApiExceptionForNonexistentSession() {
-        assertThrows(ApiException.class, () ->
-            client.sessions.getSession(new SessionServiceGetSessionRequest()
-                .sessionId(UUID.randomUUID().toString())
-                .sessionToken(session.getSessionToken())
-            ));
+        assertThrows(ApiException.class, () -> {
+            SessionServiceGetSessionRequest getRequest = new SessionServiceGetSessionRequest();
+            getRequest.sessionId = UUID.randomUUID().toString();
+            getRequest.sessionToken = session.sessionToken;
+            client.sessions.getSession(getRequest);
+        });
     }
 }

@@ -1,6 +1,5 @@
 package com.zitadel;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
 import java.io.BufferedReader;
@@ -11,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
@@ -18,14 +18,16 @@ import java.util.concurrent.TimeUnit;
  * Abstract base class for integration tests that interact with a Docker
  * Compose stack.
  * <p>
- * This class handles the lifecycle of a Docker Compose environment,
- * bringing it up before tests run and tearing it down afterwards. It also
- * provides mechanisms to load specific data (like authentication tokens
- * and JWT key paths) from files and make them accessible via protected
- * getters for use in concrete test implementations.
- * <p>
- * This implementation uses direct shell commands via ProcessBuilder to
- * control Docker Compose, closely mirroring the PHP `exec` approach.
+ * The Zitadel stack is expensive to provision and is shared by every
+ * {@code *Spec} class in the suite. Because the integration specs run
+ * concurrently (see {@code junit-platform.properties} and the Failsafe
+ * {@code <parallel>} configuration), each class's {@link BeforeAll} would
+ * otherwise race to {@code docker compose up} the <em>same</em> project,
+ * colliding on network, volume, and container names. To avoid that, the stack
+ * is brought up exactly once per JVM under a lock and torn down once via a JVM
+ * shutdown hook. This mirrors the single-provisioning fixtures used by the
+ * other Zitadel SDKs (Python's {@code docker_compose} fixture, the .NET
+ * {@code ZitadelStackFixture}).
  */
 public abstract class AbstractIntegrationTest {
 
@@ -38,12 +40,23 @@ public abstract class AbstractIntegrationTest {
     /**
      * The directory containing the docker-compose.yaml file.
      */
-    private static final Path composeFileDir = Optional.ofNullable(COMPOSE_FILE_PATH.getParent()).orElseThrow();
+    private static final Path composeFileDir =
+        Optional.ofNullable(COMPOSE_FILE_PATH.getParent()).orElseThrow();
+
+    /**
+     * Guards one-time provisioning of the shared Docker Compose stack across
+     * the concurrently executing spec classes in this JVM.
+     */
+    private static final Object LOCK = new Object();
+
+    /**
+     * Whether the shared stack has already been provisioned in this JVM.
+     */
+    private static boolean started = false;
 
     /**
      * The authentication token loaded from file.
      */
-    @SuppressWarnings("CanBeFinal")
     protected static String authToken = "";
 
     /**
@@ -57,107 +70,127 @@ public abstract class AbstractIntegrationTest {
     protected static String baseUrl = "";
 
     /**
-     * Sets up the test environment before the first test in the class runs.
-     * This includes bringing up the Docker Compose stack and exposing
-     * necessary data.
+     * Provisions the shared Docker Compose stack the first time any spec class
+     * runs, and exposes the credentials it mints. Subsequent invocations from
+     * other spec classes reuse the already-running stack.
      *
-     * @throws RuntimeException If the Docker Compose stack fails to start
-     *                          or if a required file for data is not found or cannot be read.
+     * @throws RuntimeException If the Docker Compose stack fails to start or if
+     *                          a required output file cannot be read.
      */
     @BeforeAll
     public static void setUpBeforeAll() {
-        System.out.println("Bringing up Docker Compose stack...");
-        try {
-            ProcessBuilder pb = new ProcessBuilder(
-                "docker", "compose", "-f", COMPOSE_FILE_PATH.toString(),
-                "up", "--detach", "--no-color", "--quiet-pull", "--yes"
-            );
-            pb.redirectErrorStream(true); // Redirect error stream to output stream
-            Process process = pb.start();
+        synchronized (LOCK) {
+            if (started) {
+                return;
+            }
 
-            try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    System.out.println("STDOUT: " + line);
+            System.out.println("Bringing up Docker Compose stack...");
+            try {
+                ProcessResult up = runCompose(
+                    List.of("up", "--detach", "--no-color", "--quiet-pull", "--yes"));
+                if (up.exitCode() != 0) {
+                    throw new RuntimeException(
+                        "Failed to bring up Docker Compose stack. Exit code: "
+                            + up.exitCode() + "\nOutput:\n" + up.output());
                 }
+                System.out.println("Docker Compose stack is up.\n");
+
+                loadFileContentIntoProperty("zitadel_output/pat.txt", "authToken");
+
+                Path jwtKeyFile = composeFileDir.resolve("zitadel_output/sa-key.json");
+                if (!Files.exists(jwtKeyFile)) {
+                    throw new RuntimeException(
+                        "JWT Key file not found at path: " + jwtKeyFile.toAbsolutePath());
+                }
+                jwtKeyPath = jwtKeyFile.toAbsolutePath().toString();
+                System.out.println("Loaded JWT_KEY path: " + jwtKeyPath + "\n");
+
+                baseUrl = "http://localhost:18103";
+                System.out.println("Exposed BASE_URL as: " + baseUrl + "\n");
+
+                System.out.println("Sleeping for 20 seconds to allow services to initialize...");
+                Thread.sleep(20000);
+                System.out.println("Sleep finished.\n");
+
+                Runtime.getRuntime().addShutdownHook(new Thread(AbstractIntegrationTest::tearDownStack));
+                started = true;
+            } catch (IOException | InterruptedException e) {
+                throw new RuntimeException("Error during Docker Compose setup: " + e.getMessage(), e);
             }
-
-            if (!process.waitFor(5, TimeUnit.MINUTES) || process.exitValue() != 0) {
-                String errorMessage = "Failed to bring up Docker Compose stack. "
-                    + "Exit code: " + process.exitValue() + "\n"
-                    + "Output:\n" + getProcessOutput(process); // Get remaining output if process timed out
-                System.err.println(errorMessage);
-                throw new RuntimeException(errorMessage);
-            }
-            System.out.println("Docker Compose stack is up.\n");
-
-            // Load AUTH_TOKEN content from file
-            loadFileContentIntoProperty("zitadel_output/pat.txt", "authToken");
-
-            // Set JWT_KEY to the absolute path of the file
-            Path jwtKeyFile = composeFileDir.resolve("zitadel_output/sa-key.json");
-            if (!Files.exists(jwtKeyFile)) {
-                throw new RuntimeException(
-                    "JWT Key file not found at path: " + jwtKeyFile.toAbsolutePath());
-            }
-            jwtKeyPath = jwtKeyFile.toAbsolutePath().toString();
-            System.out.println("Loaded JWT_KEY path: " + jwtKeyPath + "\n");
-
-            baseUrl = "http://localhost:8099";
-            System.out.println("Exposed BASE_URL as: " + baseUrl + "\n");
-
-            System.out.println("Sleeping for 20 seconds to allow services to initialize...");
-            Thread.sleep(20000);
-            System.out.println("Sleep finished.\n");
-
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException("Error during Docker Compose setup: " + e.getMessage(), e);
         }
     }
 
     /**
-     * Tears down the test environment after all tests in the class have run.
-     * This includes stopping and removing the Docker Compose stack.
-     *
-     * @throws RuntimeException If the Docker Compose file path is invalid or
-     *                          the stack fails to tear down.
+     * Stops and removes the shared Docker Compose stack. Invoked once per JVM
+     * from a shutdown hook after every spec class has finished, so that an
+     * early teardown cannot pull the stack out from under specs still running.
      */
-    @AfterAll
-    public static void tearDownAfterAll() {
+    private static void tearDownStack() {
         System.out.println("Tearing down Docker Compose stack...");
-        if (Files.exists(COMPOSE_FILE_PATH)) {
-            try {
-                ProcessBuilder pb = new ProcessBuilder(
-                    "docker", "compose", "-f", COMPOSE_FILE_PATH.toString(), "down", "-v"
-                );
-                pb.redirectErrorStream(true);
-                Process process = pb.start();
-
-                try (BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8))) {
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        System.out.println("STDOUT: " + line);
-                    }
-                }
-
-                if (!process.waitFor(5, TimeUnit.MINUTES) || process.exitValue() != 0) {
-                    String errorMessage = "Failed to tear down Docker Compose stack. "
-                        + "Exit code: " + process.exitValue() + "\n"
-                        + "Output:\n" + getProcessOutput(process);
-                    System.err.println("Warning: " + errorMessage);
-                    throw new RuntimeException(errorMessage);
-                }
-                System.out.println("Docker Compose stack torn down.\n");
-            } catch (IOException | InterruptedException e) {
-                throw new RuntimeException(
-                    "Error during Docker Compose tear down: " + e.getMessage(), e);
-            }
-        } else {
-            throw new RuntimeException("Docker Compose file path not initialized or "
-                + "file does not exist, skipping tear down.");
+        if (!Files.exists(COMPOSE_FILE_PATH)) {
+            return;
         }
+        try {
+            ProcessResult down = runCompose(List.of("down", "-v"));
+            if (down.exitCode() != 0) {
+                System.err.println("Warning: Failed to tear down Docker Compose stack. Exit code: "
+                    + down.exitCode() + "\nOutput:\n" + down.output());
+                return;
+            }
+            System.out.println("Docker Compose stack torn down.\n");
+        } catch (IOException | InterruptedException e) {
+            System.err.println("Warning: Error during Docker Compose tear down: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Runs a {@code docker compose} subcommand against the suite's compose
+     * file, draining its combined output stream to completion before returning.
+     *
+     * <p>The output is captured into a string as it is read, so callers can
+     * include it in error messages without re-reading (and thus reopening) the
+     * already-closed process stream.</p>
+     *
+     * @param composeArgs the compose subcommand and its arguments
+     * @return the exit code and captured combined output
+     * @throws IOException          if the process cannot be started or read
+     * @throws InterruptedException if waiting for the process is interrupted
+     */
+    private static ProcessResult runCompose(List<String> composeArgs)
+        throws IOException, InterruptedException {
+        ProcessBuilder pb = new ProcessBuilder();
+        pb.command().add("docker");
+        pb.command().add("compose");
+        pb.command().add("-f");
+        pb.command().add(COMPOSE_FILE_PATH.toString());
+        pb.command().addAll(composeArgs);
+        pb.redirectErrorStream(true);
+
+        Process process = pb.start();
+        StringBuilder output = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(
+            new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println("STDOUT: " + line);
+                output.append(line).append("\n");
+            }
+        }
+
+        if (!process.waitFor(5, TimeUnit.MINUTES)) {
+            process.destroyForcibly();
+            throw new IOException("Docker Compose command timed out:\n" + output);
+        }
+        return new ProcessResult(process.exitValue(), output.toString());
+    }
+
+    /**
+     * The outcome of a {@code docker compose} subcommand.
+     *
+     * @param exitCode the process exit code
+     * @param output   the captured combined output
+     */
+    private record ProcessResult(int exitCode, String output) {
     }
 
     /**
@@ -172,13 +205,13 @@ public abstract class AbstractIntegrationTest {
      * @throws RuntimeException If the file is not found or cannot be read.
      */
     private static void loadFileContentIntoProperty(
-        @SuppressWarnings("SameParameterValue") String relativePath, @SuppressWarnings("SameParameterValue") String propertyName) {
+        @SuppressWarnings("SameParameterValue") String relativePath,
+        @SuppressWarnings("SameParameterValue") String propertyName) {
         Path filePath = composeFileDir.resolve(relativePath);
 
         if (Files.exists(filePath)) {
             try {
                 String content = Files.readString(filePath).trim();
-                // Use reflection to set the static property
                 AbstractIntegrationTest.class.getDeclaredField(propertyName).set(null, content);
                 System.out.println(
                     "Loaded " + filePath + " content into property: " + propertyName);
@@ -190,25 +223,6 @@ public abstract class AbstractIntegrationTest {
         } else {
             throw new RuntimeException("File not found for property '" + propertyName
                 + "': " + filePath.toAbsolutePath());
-        }
-    }
-
-    /**
-     * Helper method to get remaining output from a process.
-     *
-     * @param process The process object.
-     * @return The remaining output as a String.
-     * @throws IOException If an I/O error occurs.
-     */
-    private static String getProcessOutput(Process process) throws IOException {
-        try (BufferedReader reader = new BufferedReader(
-            new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8))) {
-            StringBuilder output = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                output.append(line).append("\n");
-            }
-            return output.toString();
         }
     }
 

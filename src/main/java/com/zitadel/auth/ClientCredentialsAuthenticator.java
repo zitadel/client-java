@@ -1,125 +1,86 @@
 package com.zitadel.auth;
 
-import com.nimbusds.oauth2.sdk.AuthorizationGrant;
-import com.nimbusds.oauth2.sdk.ClientCredentialsGrant;
-import com.nimbusds.oauth2.sdk.Scope;
-import com.nimbusds.oauth2.sdk.auth.ClientSecretBasic;
-import com.nimbusds.oauth2.sdk.auth.Secret;
-import com.nimbusds.oauth2.sdk.id.ClientID;
-import com.zitadel.TransportOptions;
-import com.zitadel.ZitadelException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * OAuth2 Client Credentials Authenticator.
  *
- * <p>Implements the OAuth2 client credentials grant to obtain an access token.
+ * <p>Implements the OAuth2 client credentials grant (RFC 6749 §4.4) to obtain an access token.
+ * Client credentials are transmitted in the request body (the {@code client_secret_post} method) on
+ * the token request, matching the other Zitadel SDKs.
  */
 public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
 
+  private static final String GRANT_TYPE = "client_credentials";
+
+  private final String clientId;
+  private final String clientSecret;
+
+  /**
+   * Constructs a ClientCredentialsAuthenticator.
+   *
+   * @param openId the OpenID discovery helper for the target host.
+   * @param clientId the OAuth2 client identifier.
+   * @param clientSecret the OAuth2 client secret.
+   * @param scope the space-delimited scope string for the token request.
+   */
+  ClientCredentialsAuthenticator(
+      OpenId openId, String clientId, String clientSecret, String scope) {
+    super(openId, scope);
+    this.clientId = clientId;
+    this.clientSecret = clientSecret;
+  }
+
+  /**
+   * Returns a new builder instance for ClientCredentialsAuthenticator.
+   *
+   * @param host the base URL for API endpoints.
+   * @param clientId the OAuth2 client identifier.
+   * @param clientSecret the OAuth2 client secret.
+   * @return a new {@link Builder} instance.
+   */
+  public static Builder builder(String host, String clientId, String clientSecret) {
+    return new Builder(host, clientId, clientSecret);
+  }
+
+  @Override
+  protected String getGrantType() {
+    return GRANT_TYPE;
+  }
+
+  @Override
+  protected Map<String, String> getTokenRequestParams() {
+    Map<String, String> params = new LinkedHashMap<>();
+    params.put("client_id", clientId);
+    params.put("client_secret", clientSecret);
+    return params;
+  }
+
+  /** Builder for {@link ClientCredentialsAuthenticator}. */
+  public static class Builder extends OAuthAuthenticatorBuilder<Builder> {
+
+    private final String clientId;
+    private final String clientSecret;
+
     /**
-     * The OAuth2 client secret.
+     * @param host the base URL for the API endpoints.
+     * @param clientId the OAuth2 client identifier.
+     * @param clientSecret the OAuth2 client secret.
      */
-    private final Secret clientSecret;
-
-    private final ClientID clientId;
+    Builder(String host, String clientId, String clientSecret) {
+      super(host);
+      this.clientId = clientId;
+      this.clientSecret = clientSecret;
+    }
 
     /**
-     * Constructs a ClientCredentialsAuthenticator.
+     * Builds the ClientCredentialsAuthenticator.
      *
-     * @param openId           The base URL for the API endpoints.
-     * @param clientId         The OAuth2 client identifier.
-     * @param clientSecret     The OAuth2 client secret.
-     * @param authScopes       The scope for the token request.
-     * @param transportOptions Optional transport options for TLS, proxy, and headers.
+     * @return a new {@link ClientCredentialsAuthenticator} instance.
      */
-    ClientCredentialsAuthenticator(
-        OpenId openId, ClientID clientId, Secret clientSecret, Scope authScopes, TransportOptions transportOptions) {
-        super(openId, authScopes, transportOptions);
-        this.clientSecret = clientSecret;
-        this.clientId = clientId;
+    public ClientCredentialsAuthenticator build() {
+      return new ClientCredentialsAuthenticator(openId, clientId, clientSecret, scope);
     }
-
-    /**
-     * Returns a new builder instance for ClientCredentialsAuthenticator.
-     *
-     * @param host         The base URL for API endpoints.
-     * @param clientId     The OAuth2 client identifier.
-     * @param clientSecret The OAuth2 client secret.
-     * @return a new ClientCredentialsAuthenticatorBuilder instance.
-     */
-    public static Builder builder(String host, String clientId, String clientSecret) {
-        return new Builder(host, clientId, clientSecret);
-    }
-
-    /**
-     * Returns a new builder instance for ClientCredentialsAuthenticator with custom transport options.
-     *
-     * @param host             The base URL for API endpoints.
-     * @param clientId         The OAuth2 client identifier.
-     * @param clientSecret     The OAuth2 client secret.
-     * @param transportOptions Optional transport options for TLS, proxy, and headers.
-     * @return a new ClientCredentialsAuthenticatorBuilder instance.
-     */
-    public static Builder builder(String host, String clientId, String clientSecret, TransportOptions transportOptions) {
-        return new Builder(host, clientId, clientSecret, transportOptions);
-    }
-
-    /**
-     * Refreshes the access token using the client credentials grant.
-     *
-     * <p>This method uses the Nimbus OAuth2 SDK to send a token request.
-     */
-    @Override
-    public Token refreshToken() throws ZitadelException {
-        this.token = super.getToken(new ClientSecretBasic(this.clientId, this.clientSecret));
-        return this.token;
-    }
-
-    @Override
-    public AuthorizationGrant getGrant() {
-        return new ClientCredentialsGrant();
-    }
-
-    /**
-     * Builder for ClientCredentialsAuthenticator.
-     */
-    public static class Builder extends OAuthAuthenticatorBuilder<Builder> {
-
-        private final ClientID clientId;
-        private final Secret clientSecret;
-
-        /**
-         * Builder constructor with required parameters.
-         *
-         * @param host         The base URL for the API endpoints.
-         * @param clientId     The OAuth2 client identifier.
-         * @param clientSecret The OAuth2 client secret.
-         */
-        Builder(String host, String clientId, String clientSecret) {
-            super(host);
-            this.clientId = new ClientID(clientId);
-            this.clientSecret = new Secret(clientSecret);
-        }
-
-        /**
-         * @param host             The base URL for the API endpoints.
-         * @param clientId         The OAuth2 client identifier.
-         * @param clientSecret     The OAuth2 client secret.
-         * @param transportOptions Optional transport options for TLS, proxy, and headers.
-         */
-        Builder(String host, String clientId, String clientSecret, TransportOptions transportOptions) {
-            super(host, transportOptions);
-            this.clientId = new ClientID(clientId);
-            this.clientSecret = new Secret(clientSecret);
-        }
-
-        /**
-         * Builds the ClientCredentialsAuthenticator.
-         *
-         * @return a new ClientCredentialsAuthenticator instance.
-         */
-        public ClientCredentialsAuthenticator build() {
-            return new ClientCredentialsAuthenticator(openId, clientId, clientSecret, authScopes, transportOptions);
-        }
-    }
+  }
 }
