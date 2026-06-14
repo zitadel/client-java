@@ -46,567 +46,482 @@
     <system>GitHub</system>
     <url>https://github.com/zitadel/client-java/issues</url>
   </issueManagement>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>com.github.spotbugs</groupId>
-        <artifactId>spotbugs-maven-plugin</artifactId>
-        <version>4.9.3.2</version>
-        <configuration>
-          <effort>Max</effort>
-          <threshold>Low</threshold>
-          <xmlOutput>true</xmlOutput>
-          <failOnError>true</failOnError>
-          <excludeFilterFile>${project.basedir}/spotbugs.xml</excludeFilterFile>
-          <plugins>
-            <plugin>
-              <groupId>com.h3xstream.findsecbugs</groupId>
-              <artifactId>findsecbugs-plugin</artifactId>
-              <version>1.14.0</version>
-            </plugin>
-<!--            <plugin>-->
-<!--              <groupId>com.mebigfatguy.fb-contrib</groupId>-->
-<!--              <artifactId>fb-contrib</artifactId>-->
-<!--              <version>7.6.9</version>-->
-<!--            </plugin>-->
-          </plugins>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-              <goal>spotbugs</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.14.0</version>
-        <configuration>
-          <release>11</release>
-          <fork>true</fork>
-          <meminitial>128m</meminitial>
-          <maxmem>512m</maxmem>
-          <compilerArgs>
-            <arg>-Xlint:all</arg>
-            <arg>-J-Xss4m</arg>
-          </compilerArgs>
 
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.6.1</version>
-        <executions>
-          <execution>
-            <id>enforce-maven</id>
-            <goals>
-              <goal>enforce</goal>
-            </goals>
-            <configuration>
-              <rules>
-                <requireMavenVersion>
-                  <version>2.2.0</version>
-                </requireMavenVersion>
-              </rules>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.5.3</version>
-        <configuration>
-          <systemPropertyVariables>
-            <property>
-              <name>loggerPath</name>
-              <value>conf/log4j.properties</value>
-            </property>
-          </systemPropertyVariables>
-          <argLine>${jacoco.agent} -Xms512m -Xmx1500m</argLine>
-          <parallel>methods</parallel>
-          <useUnlimitedThreads>true</useUnlimitedThreads>
-          <reportsDirectory>${project.build.directory}/reports</reportsDirectory>
-          <trimStackTrace>false</trimStackTrace>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${project.build.directory}/lib</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.4.2</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>test-jar</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>3.6.1</version>
-        <executions>
-          <execution>
-            <id>add_sources</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>src/main/java</source>
-              </sources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>add_test_sources</id>
-            <phase>generate-test-sources</phase>
-            <goals>
-              <goal>add-test-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>src/test/java</source>
-              </sources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>add_spec_sources</id>
-            <phase>generate-test-sources</phase>
-            <goals>
-              <goal>add-test-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>src/spec/java</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.11.2</version>
-        <configuration>
-          <doclint>none</doclint>
-          <source>1.8</source>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>3.3.1</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.13</version>
-        <executions>
-          <execution>
-            <id>prepare-agent</id>
-            <goals>
-              <goal>prepare-agent</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>report-html</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
-            <configuration>
-              <formats>
-                <format>HTML</format>
-              </formats>
-              <outputDirectory>${project.build.directory}/coverage/html</outputDirectory>
-              <excludes>
-                <exclude>**/api/**</exclude>
-                <exclude>**/model/**</exclude>
-              </excludes>
-            </configuration>
-          </execution>
-          <execution>
-            <id>report-xml</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
-            <configuration>
-              <formats>
-                <format>XML</format>
-              </formats>
-              <outputDirectory>${project.build.directory}/coverage</outputDirectory>
-              <excludes>
-                <exclude>**/api/**</exclude>
-                <exclude>**/model/**</exclude>
-              </excludes>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-failsafe-plugin</artifactId>
-        <version>3.5.3</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>integration-test</goal>
-              <goal>verify</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <testSourceDirectory>src/spec/java</testSourceDirectory>
-          <includes>
-            <include>**/*Spec.java</include>
-          </includes>
-          <parallel>methods</parallel>
-          <useUnlimitedThreads>true</useUnlimitedThreads>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>com.diffplug.spotless</groupId>
-        <artifactId>spotless-maven-plugin</artifactId>
-        <version>2.46.0</version>
-        <configuration>
-          <formats>
-            <format>
-              <includes>
-                <include>**/*.java</include>
-              </includes>
-              <excludes>
-                <exclude>**/api/*.java</exclude>
-                <exclude>**/model/*.java</exclude>
-              </excludes>
-            </format>
-          </formats>
-          <java>
-            <excludes>
-              <exclude>**/api/*.java</exclude>
-              <exclude>**/model/*.java</exclude>
-            </excludes>
-            <removeUnusedImports/>
-            <googleJavaFormat/>
-          </java>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>apply</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.sonatype.central</groupId>
-        <artifactId>central-publishing-maven-plugin</artifactId>
-        <version>0.8.0</version>
-        <extensions>true</extensions>
-        <configuration>
-          <publishingServerId>central</publishingServerId>
-          <autoPublish>true</autoPublish>
-          <waitUntil>uploaded</waitUntil>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  <profiles>
-    <profile>
-      <id>deployment</id>
-      <build>
+    <build>
         <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
-            <version>3.3.1</version>
-            <executions>
-              <execution>
-                <id>attach-sources</id>
-                <goals>
-                  <goal>jar-no-fork</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <version>3.11.2</version>
-            <executions>
-              <execution>
-                <id>attach-javadocs</id>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <version>3.2.8</version>
-            <dependencies>
-              <dependency>
-                <groupId>org.bouncycastle</groupId>
-                <artifactId>bcprov-jdk18on</artifactId>
-                <version>1.84</version>
-              </dependency>
-              <dependency>
-                <groupId>org.bouncycastle</groupId>
-                <artifactId>bcpkix-jdk18on</artifactId>
-                <version>1.84</version>
-              </dependency>
-            </dependencies>
-            <configuration>
-              <signer>bc</signer>
-              <useAgent>false</useAgent>
-              <keyEnvName>MAVEN_GPG_KEY</keyEnvName>
-              <passphraseEnvName>MAVEN_GPG_PASSPHRASE</passphraseEnvName>
-            </configuration>
-            <executions>
-              <execution>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.sonatype.central</groupId>
-            <artifactId>central-publishing-maven-plugin</artifactId>
-            <version>0.8.0</version>
-            <extensions>true</extensions>
-            <configuration>
-              <publishingServerId>central</publishingServerId>
-              <autoPublish>true</autoPublish>
-              <waitUntil>uploaded</waitUntil>
-            </configuration>
-          </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.0</version>
+                <configuration>
+                    <release>25</release>
+                    <fork>true</fork>
+                    <failOnWarning>true</failOnWarning>
+                    <compilerArgs>
+                        <arg>-XDcompilePolicy=simple</arg>
+                        <arg>--should-stop=ifError=FLOW</arg>
+                        <arg>-Xlint:all</arg>
+                        <!-- Java 25-new check, triggered by ctor-time
+                             field initialization patterns in generated
+                             SDKs (e.g. modifyFeatureSet escapes 'this'). -->
+                        <arg>-Xlint:-this-escape</arg>
+                        <!-- Java 23+ markdown doc-comments (///) flagged
+                             as dangling on shared param documentation. -->
+                        <arg>-Xlint:-dangling-doc-comments</arg>
+                        <!-- The generic transport (BaseApi.invokeApiForResult)
+                             casts a runtime-guarded concrete value (InputStream,
+                             byte[], String) to the method's type variable T for
+                             binary/raw response handling. The cast is provably
+                             safe at runtime (each is guarded by a
+                             returnType.getType() == ... check) but unprovable to
+                             javac. All unchecked casts in generated code are
+                             generator-controlled and confined to these
+                             guarded sites; there is no hand-written code to
+                             protect, so the lint is disabled here rather than
+                             reintroduced as inline @SuppressWarnings. -->
+                        <arg>-Xlint:-unchecked</arg>
+                        <!-- Generated models and APIs mirror @Deprecated
+                             elements declared in the OpenAPI spec: a deprecated
+                             operation must still reference its (also deprecated)
+                             model types, and deprecated models are used in API
+                             method signatures and tests. These cross-class uses
+                             of generator-emitted @Deprecated members are
+                             intentional, not migration debt, and cannot be
+                             expressed without an inline @SuppressWarnings —
+                             which the house rule forbids — so the lint is
+                             disabled here. Use of deprecated JDK/library APIs is
+                             instead caught by the OpenRewrite UpgradeToJava25
+                             recipe configured below. -->
+                        <arg>-Xlint:-deprecation</arg>
+                        <!-- InlineMeSuggester fires on the generated deprecated
+                             operation overloads, which delegate to the
+                             current-signature method. They are not safe @InlineMe
+                             targets (they are part of the published, deprecated
+                             API surface mirroring the spec), and the suggestion
+                             cannot be silenced without an inline
+                             @SuppressWarnings, which the house rule forbids. It
+                             is a pure refactoring hint, not a correctness check,
+                             so it is disabled project-wide here. -->
+                        <!-- TypeParameterUnusedInFormals fires on the generic
+                             transport entry points whose return type T is
+                             resolved from a java.lang.reflect.Type token rather
+                             than a T-bearing formal parameter — e.g.
+                             BaseApi.invokeApi(..., Type returnType) and the
+                             BaseApi test harness's call(...) wrapper. The Type
+                             token is deliberately erased so the transport never
+                             exposes Jackson's TypeReference/ObjectSerializer on
+                             the public API surface (the leak-hiding design);
+                             ObjectSerializer.deserialize(String, Type) is the
+                             same <T> T shape. T legitimately appears only in the
+                             return position here and is target-typed at the call
+                             site, exactly like Jackson's own readValue. This is
+                             a design advisory, not a correctness check, and it
+                             cannot be silenced without an inline
+                             @SuppressWarnings (which the house rule forbids), so
+                             it is disabled project-wide here. -->
+                        <arg>-Xplugin:ErrorProne -Xep:InlineMeSuggester:OFF -Xep:TypeParameterUnusedInFormals:OFF -Xep:NullAway:ERROR -XepOpt:NullAway:AnnotatedPackages=com.zitadel</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+                        <arg>-J-Xss4m</arg>
+                    </compilerArgs>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>com.google.errorprone</groupId>
+                            <artifactId>error_prone_core</artifactId>
+                            <version>${error-prone-version}</version>
+                        </path>
+                        <path>
+                            <groupId>com.uber.nullaway</groupId>
+                            <artifactId>nullaway</artifactId>
+                            <version>${nullaway-version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <reportsDirectory>${project.build.directory}/reports</reportsDirectory>
+                    <forkCount>1C</forkCount>
+                    <reuseForks>true</reuseForks>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- Pinned ahead of the Maven default so `dependency:analyze`
+                     can read Java 25 bytecode (class file major version 69);
+                     the default plugin's bundled ASM predates JDK 25 and fails
+                     with "Unsupported class file major version 69". -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin-version}</version>
+                <configuration>
+                    <!-- brotli and zstd-jni are loaded reflectively via
+                         Class.forName for optional Content-Encoding support
+                         (see DefaultApiClient.decompressBrotli / decompressZstd),
+                         so the bytecode analyzer cannot see the usage. They are
+                         genuinely required at runtime; declare them used. -->
+                    <usedDependencies>
+                        <dependency>org.brotli:dec</dependency>
+                        <dependency>com.github.luben:zstd-jni</dependency>
+                    </usedDependencies>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.6.1</version>
+                <executions>
+                    <execution>
+                        <id>add-spec-sources</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>add-test-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/spec/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.5.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <testSourceDirectory>src/spec/java</testSourceDirectory>
+                    <includes>
+                        <include>**/*Spec.java</include>
+                    </includes>
+                    <reportsDirectory>${project.build.directory}/reports</reportsDirectory>
+                    <!-- The integration specs share a single Docker Compose
+                         Zitadel stack provisioned once per JVM under a lock
+                         (see AbstractIntegrationTest). Multiple forks would each
+                         race to `docker compose up` the same project and
+                         collide, so they must run in one JVM. -->
+                    <forkCount>1</forkCount>
+                    <reuseForks>true</reuseForks>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${spotless-version}</version>
+                <configuration>
+                    <java>
+                        <includes>
+                            <include>src/main/java/**/*.java</include>
+                            <include>src/test/java/**/*.java</include>
+                        </includes>
+                        <googleJavaFormat>
+                            <!-- Pin to a google-java-format release that
+                                 understands JDK 25 javac internals. The
+                                 spotless-default version predates JDK 25 and
+                                 crashes with NoSuchMethodError on
+                                 Log$DeferredDiagnosticHandler.getDiagnostics(). -->
+                            <version>${google-java-format-version}</version>
+                        </googleJavaFormat>
+                    </java>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle-plugin-version}</version>
+                <configuration>
+                    <!-- Industry-default ruleset bundled with checkstyle; no
+                         custom/relaxed config. Findings inherent to generated
+                         code are silenced per-file via class-level
+                         @SuppressWarnings("checkstyle:...") honoured by
+                         google_checks' SuppressWarningsFilter. -->
+                    <configLocation>/google_checks.xml</configLocation>
+                    <consoleOutput>true</consoleOutput>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <failsOnError>true</failsOnError>
+                    <violationSeverity>warning</violationSeverity>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${checkstyle-version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs-plugin-version}</version>
+                <configuration>
+                    <!-- Default SpotBugs: no custom exclude filter; the whole
+                         SDK is analyzed. Findings inherent to generated code
+                         are silenced per-file via class-level
+                         @SuppressFBWarnings(... justification = "generated
+                         code"). -->
+                    <effort>Default</effort>
+                    <threshold>Low</threshold>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.openrewrite.maven</groupId>
+                <artifactId>rewrite-maven-plugin</artifactId>
+                <version>${openrewrite-plugin-version}</version>
+                <configuration>
+                    <activeRecipes>
+                        <recipe>org.openrewrite.java.migrate.UpgradeToJava25</recipe>
+                    </activeRecipes>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.openrewrite.recipe</groupId>
+                        <artifactId>rewrite-migrate-java</artifactId>
+                        <version>${openrewrite-recipes-version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.13</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <!-- The CI coverage step (test.yml) reads
+                                 target/coverage/jacoco.xml, so emit the report
+                                 there. -->
+                            <outputDirectory>${project.build.directory}/coverage</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <!-- 3.6.3 is the last line that exposes reportOutputDirectory
+                     and destDir on the javadoc:javadoc goal, letting docs land
+                     at exactly .out/docs. Newer releases (3.11+/3.12) dropped
+                     those params and 3.12.0 has a reproducible-build timestamp
+                     bug that breaks the goal outright. -->
+                <version>3.6.3</version>
+                <configuration>
+                    <failOnWarnings>true</failOnWarnings>
+                    <doclint>all</doclint>
+                    <reportOutputDirectory>${project.basedir}/.out</reportOutputDirectory>
+                    <destDir>docs</destDir>
+                    <quiet>true</quiet>
+                    <notimestamp>true</notimestamp>
+                </configuration>
+            </plugin>
         </plugins>
-      </build>
-    </profile>
-    <profile>
-      <id>errorprone-active</id>
-      <activation>
-        <property>
-          <name>!skipErrorProne</name>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <configuration>
-              <release>11</release>
-              <compilerArgs>
-                <arg>-XDcompilePolicy=simple</arg>
-                <arg>--should-stop=ifError=FLOW</arg>
-                <arg>-Xlint:all</arg>
-                <arg>-Xlint:-path</arg>
-                <arg>-Xplugin:ErrorProne -XepExcludedPaths:.*/com/zitadel/(api|model)/.* -XepDisableWarningsInGeneratedCode -Xep:NullAway:ERROR -XepOpt:NullAway:AnnotatedPackages=com.zitadel -XepOpt:NullAway:UnannotatedSubPackages=com.zitadel.api,com.zitadel.model</arg>
-                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
-                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
-                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
-                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
-                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
-                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
-                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
-                <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
-                <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
-                <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
-                <arg>-J-Xss4m</arg>
-              </compilerArgs>
-              <annotationProcessorPaths>
-                <path>
-                  <groupId>com.google.errorprone</groupId>
-                  <artifactId>error_prone_core</artifactId>
-                  <version>2.40.0</version>
-                </path>
-                <path>
-                  <groupId>com.uber.nullaway</groupId>
-                  <artifactId>nullaway</artifactId>
-                  <version>0.12.7</version>
-                </path>
-              </annotationProcessorPaths>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
-  <dependencies>
-    <dependency>
-      <groupId>com.nimbusds</groupId>
-      <artifactId>nimbus-jose-jwt</artifactId>
-      <version>10.4</version>
-    </dependency>
-    <dependency>
-      <groupId>com.nimbusds</groupId>
-      <artifactId>oauth2-oidc-sdk</artifactId>
-      <version>11.26</version>
-    </dependency>
-    <dependency>
-      <groupId>jakarta.annotation</groupId>
-      <artifactId>jakarta.annotation-api</artifactId>
-      <version>1.3.5</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.code.findbugs</groupId>
-      <artifactId>jsr305</artifactId>
-      <version>3.0.2</version>
-    </dependency>
-    <dependency>
-      <groupId>com.google.code.findbugs</groupId>
-      <artifactId>annotations</artifactId>
-      <version>3.0.1u2</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents.client5</groupId>
-      <artifactId>httpclient5</artifactId>
-      <version>5.5</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-core</artifactId>
-      <version>${jackson-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-annotations</artifactId>
-      <version>${jackson-annotations-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>${jackson-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.jaxrs</groupId>
-      <artifactId>jackson-jaxrs-json-provider</artifactId>
-      <version>${jackson-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.datatype</groupId>
-      <artifactId>jackson-datatype-jsr310</artifactId>
-      <version>${jackson-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.openapitools</groupId>
-      <artifactId>jackson-databind-nullable</artifactId>
-      <version>0.2.6</version>
-    </dependency>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk18on</artifactId>
-      <version>1.84</version>
-    </dependency>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcpkix-jdk18on</artifactId>
-      <version>1.84</version>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>5.13.4</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.testcontainers</groupId>
-      <artifactId>testcontainers</artifactId>
-      <version>1.21.4</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.testcontainers</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>1.21.4</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.github.classgraph</groupId>
-      <artifactId>classgraph</artifactId>
-      <version>4.8.181</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.github.cdimascio</groupId>
-      <artifactId>java-dotenv</artifactId>
-      <version>5.2.2</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-stdlib</artifactId>
-      <version>2.1.10</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-compress</artifactId>
-      <version>1.27.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.errorprone</groupId>
-      <artifactId>error_prone_annotations</artifactId>
-      <version>2.40.0</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-      <version>2.0.17</version> <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jackson-version>2.21.1</jackson-version>
-    <jackson-annotations-version>2.21</jackson-annotations-version>
-    <!--suppress XmlUnresolvedReference -->
-    <jacoco.agent>${argLine}</jacoco.agent>
-  </properties>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-annotations</artifactId>
+            <version>${spotbugs-annotations-version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-annotations-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-api</artifactId>
+            <version>${opentelemetry-version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-context</artifactId>
+            <version>${opentelemetry-version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.brotli</groupId>
+            <artifactId>dec</artifactId>
+            <version>0.1.2</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.github.luben</groupId>
+            <artifactId>zstd-jni</artifactId>
+            <version>1.5.6-4</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Bespoke token-minting authenticators (kept, generator-excluded):
+             WebTokenAuthenticator signs JWTs with Nimbus JOSE; KeyUtil parses
+             PEM/PKCS#1 private keys with Bouncy Castle. These deps are not part
+             of the generator's default surface and are carried here for the
+             hand-written auth layer. -->
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>${nimbus-jose-jwt-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk18on</artifactId>
+            <version>${bouncycastle-version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jackson-version>2.21.1</jackson-version>
+        <jackson-annotations-version>2.21</jackson-annotations-version>
+        <jackson-databind-version>2.21.1</jackson-databind-version>
+        <opentelemetry-version>1.62.0</opentelemetry-version>
+        <junit-version>6.1.0</junit-version>
+        <error-prone-version>2.41.0</error-prone-version>
+        <nullaway-version>0.12.10</nullaway-version>
+        <spotbugs-plugin-version>4.9.3.2</spotbugs-plugin-version>
+        <spotbugs-annotations-version>4.9.6</spotbugs-annotations-version>
+        <spotless-version>2.46.1</spotless-version>
+        <google-java-format-version>1.28.0</google-java-format-version>
+        <maven-dependency-plugin-version>3.11.0</maven-dependency-plugin-version>
+        <checkstyle-plugin-version>3.6.0</checkstyle-plugin-version>
+        <checkstyle-version>10.20.2</checkstyle-version>
+        <openrewrite-plugin-version>6.13.0</openrewrite-plugin-version>
+        <openrewrite-recipes-version>3.18.0</openrewrite-recipes-version>
+        <nimbus-jose-jwt-version>10.4</nimbus-jose-jwt-version>
+        <bouncycastle-version>1.84</bouncycastle-version>
+    </properties>
+
+    <profiles>
+        <profile>
+          <id>deployment</id>
+          <build>
+            <plugins>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                  <execution>
+                    <id>attach-sources</id>
+                    <goals>
+                      <goal>jar-no-fork</goal>
+                    </goals>
+                  </execution>
+                </executions>
+              </plugin>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.11.2</version>
+                <executions>
+                  <execution>
+                    <id>attach-javadocs</id>
+                    <goals>
+                      <goal>jar</goal>
+                    </goals>
+                  </execution>
+                </executions>
+              </plugin>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.8</version>
+                <dependencies>
+                  <dependency>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcprov-jdk18on</artifactId>
+                    <version>1.84</version>
+                  </dependency>
+                  <dependency>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcpkix-jdk18on</artifactId>
+                    <version>1.84</version>
+                  </dependency>
+                </dependencies>
+                <configuration>
+                  <signer>bc</signer>
+                  <useAgent>false</useAgent>
+                  <keyEnvName>MAVEN_GPG_KEY</keyEnvName>
+                  <passphraseEnvName>MAVEN_GPG_PASSPHRASE</passphraseEnvName>
+                </configuration>
+                <executions>
+                  <execution>
+                    <phase>verify</phase>
+                    <goals>
+                      <goal>sign</goal>
+                    </goals>
+                  </execution>
+                </executions>
+              </plugin>
+              <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.8.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                  <publishingServerId>central</publishingServerId>
+                  <autoPublish>true</autoPublish>
+                  <waitUntil>uploaded</waitUntil>
+                </configuration>
+              </plugin>
+            </plugins>
+          </build>
+        </profile>
+    </profiles>
 </project>
