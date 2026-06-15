@@ -21,10 +21,10 @@ implementation 'com.zitadel:client:0.0.1'
 ## Quick Start
 
 ```java
-import com.zitadel.Client;
+import com.zitadel.Zitadel;
 import com.zitadel.auth.BearerAuthenticator;
 
-Client client = Client.withToken("https://api.example.com", "your-token");
+Zitadel client = Zitadel.withToken("https://api.example.com", "your-token");
 ```
 
 ## Authentication
@@ -37,7 +37,7 @@ All authentication is handled via `Authenticator` implementations passed to the 
 import com.zitadel.auth.BearerAuthenticator;
 
 var authenticator = new BearerAuthenticator("https://api.example.com", "your-token");
-var client = new Client(authenticator);
+var client = new Zitadel(authenticator);
 ```
 
 ## Servers
@@ -47,7 +47,7 @@ If the OpenAPI spec defines multiple servers, the generated `Servers` class expo
 ```java
 import com.zitadel.Servers;
 
-var client = Client.withToken(Servers.SERVER_0.url(), "your-token");
+var client = Zitadel.withToken(Servers.SERVER_0.url(), "your-token");
 ```
 
 ## Testing
@@ -64,7 +64,7 @@ var fake = new Authenticator() {
     public String getHost() { return "https://api.example.com"; }
 };
 
-var client = new Client(fake);
+var client = new Zitadel(fake);
 ```
 
 ## Error Handling
@@ -110,7 +110,7 @@ var transport = TransportOptions.builder()
     .timeout(5000)
     .build();
 
-var client = new Client(authenticator, transport);
+var client = new Zitadel(authenticator, transport);
 ```
 
 ## API Methods
