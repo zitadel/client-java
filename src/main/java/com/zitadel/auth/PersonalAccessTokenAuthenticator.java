@@ -1,6 +1,9 @@
 package com.zitadel.auth;
 
-import com.zitadel.utils.URLUtil;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.Map;
 
@@ -21,8 +24,21 @@ public class PersonalAccessTokenAuthenticator extends BaseAuthenticator {
    * @param token the personal access token.
    */
   public PersonalAccessTokenAuthenticator(String host, String token) {
-    this.host = URLUtil.buildHostname(host).toString();
+    this.host = buildHostname(host).toString();
     this.token = token;
+  }
+
+  @SuppressWarnings("HttpUrlsUsage")
+  private static URL buildHostname(String hostname) {
+    try {
+      if (!hostname.startsWith("http://") && !hostname.startsWith("https://")) {
+        hostname = "https://" + hostname; // default to https
+      }
+
+      return new URI(hostname).toURL();
+    } catch (URISyntaxException | MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @Override

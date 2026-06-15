@@ -6,7 +6,6 @@ import com.zitadel.ApiClient;
 import com.zitadel.ApiException;
 import com.zitadel.ApiHttpResponse;
 import com.zitadel.ZitadelException;
-import com.zitadel.utils.URLUtil;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -37,7 +36,20 @@ public class OpenId {
    */
   public OpenId(String hostname) {
     this.hostname = hostname;
-    this.hostEndpoint = URLUtil.buildHostname(hostname);
+    this.hostEndpoint = buildHostname(hostname);
+  }
+
+  @SuppressWarnings("HttpUrlsUsage")
+  private static URL buildHostname(String hostname) {
+    try {
+      if (!hostname.startsWith("http://") && !hostname.startsWith("https://")) {
+        hostname = "https://" + hostname; // default to https
+      }
+
+      return new URI(hostname).toURL();
+    } catch (URISyntaxException | MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   /**
