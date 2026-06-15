@@ -10,6 +10,7 @@ src/main/java/com/zitadel/ServerConfiguration.java
 src/main/java/com/zitadel/ServerVariable.java
 src/main/java/com/zitadel/Servers.java
 src/main/java/com/zitadel/TransportOptions.java
+src/main/java/com/zitadel/ZitadelException.java
 src/main/java/com/zitadel/api/ActionServiceApi.java
 src/main/java/com/zitadel/api/ApplicationServiceApi.java
 src/main/java/com/zitadel/api/AuthorizationServiceApi.java
