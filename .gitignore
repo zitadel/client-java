@@ -6,6 +6,9 @@
 *.iml
 .idea/
 
+# devbox local state
+devbox.d/
+
 # Coverage output
 .out/
 

@@ -21,9 +21,9 @@ src/main/java/com/zitadel/auth/WebTokenAuthenticator.java
 # and land under src/test/java/com/zitadel/...; they are NOT kept here.
 # Only the bespoke test RESOURCES (wiremock mappings, certs, squid.conf,
 # junit-platform.properties) are kept — the generator does not emit those.
-etc/**
-src/spec/**
-src/test/resources/**
+etc/
+src/spec/
+src/test/resources/
 
 # --- repo identity + docs (team-owned, not generated) ---
 LICENSE
@@ -35,11 +35,9 @@ VERSIONING.md
 .commitlintrc.json
 .dockerignore
 .editorconfig
-.env
-.github/**
+.github/
 .gitignore
-.idea/**
-.mvn/**
+.mvn/
 .pre-commit-config.yaml
 .releaserc.json
 *.iml

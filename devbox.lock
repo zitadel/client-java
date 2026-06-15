@@ -85,54 +85,6 @@
         }
       }
     },
-    "lefthook@latest": {
-      "last_modified": "2025-04-07T13:23:10Z",
-      "resolved": "github:NixOS/nixpkgs/b0b4b5f8f621bfe213b8b21694bab52ecfcbf30b#lefthook",
-      "source": "devbox-search",
-      "version": "1.11.5",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/4fmy4hm7wq4knkgr22afradj65dhl44j-lefthook-1.11.5",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/4fmy4hm7wq4knkgr22afradj65dhl44j-lefthook-1.11.5"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/gbzlzd5kri8q91hsr0a5ndsqwzar6c80-lefthook-1.11.5",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/gbzlzd5kri8q91hsr0a5ndsqwzar6c80-lefthook-1.11.5"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/91ngsvl5frcd6fa21b2wp0mrz2mxv0c9-lefthook-1.11.5",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/91ngsvl5frcd6fa21b2wp0mrz2mxv0c9-lefthook-1.11.5"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/bza0zs1fhm718vq4xr0n8rg4lnbj65p2-lefthook-1.11.5",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/bza0zs1fhm718vq4xr0n8rg4lnbj65p2-lefthook-1.11.5"
-        }
-      }
-    },
     "maven@latest": {
       "last_modified": "2025-03-11T17:52:14Z",
       "resolved": "github:NixOS/nixpkgs/0d534853a55b5d02a4ababa1d71921ce8f0aee4c#maven",
