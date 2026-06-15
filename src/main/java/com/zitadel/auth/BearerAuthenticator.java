@@ -51,6 +51,20 @@ public final class BearerAuthenticator extends BaseAuthenticator {
     return host;
   }
 
+  /**
+   * Returns a string representation of this authenticator with the bearer token redacted.
+   *
+   * <p>The bearer token is sensitive; emitting it through {@code toString()} would leak it into logs
+   * and diagnostics. This override masks the token as {@code ***} while keeping the non-sensitive
+   * host visible, matching the masking behaviour of the Python, PHP and Ruby SDKs.
+   *
+   * @return a string representation with the token redacted.
+   */
+  @Override
+  public String toString() {
+    return getClass().getSimpleName() + "(host=" + host + ", token=***)";
+  }
+
   @Override
   public Map<String, String> getAuthHeaders() {
     /* Dedupe "Bearer " prefix (case-insensitive ASCII): tokens read
