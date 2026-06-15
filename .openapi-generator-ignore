@@ -13,10 +13,12 @@ src/main/java/com/zitadel/auth/OpenId.java
 src/main/java/com/zitadel/auth/PersonalAccessTokenAuthenticator.java
 src/main/java/com/zitadel/auth/WebTokenAuthenticator.java
 
-# --- bespoke support classes (facade + base exception + helpers the
-#     authenticators depend on that the generator does not emit) ---
+# --- bespoke support classes (facade + helpers the authenticators depend on
+#     that the generator does not emit) ---
+#
+# NOTE: ZitadelException is NOT kept; the generator now owns it (full javadoc,
+# serialVersionUID = 1L) under src/main/java/com/zitadel/ZitadelException.java.
 src/main/java/com/zitadel/Zitadel.java
-src/main/java/com/zitadel/ZitadelException.java
 src/main/java/com/zitadel/utils/KeyUtil.java
 src/main/java/com/zitadel/utils/URLUtil.java
 
