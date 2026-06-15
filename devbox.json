@@ -3,13 +3,11 @@
   "packages": [
     "jdk@25",
     "maven@latest",
-    "lefthook@latest",
     "gnupg@latest",
     "github:mridang/nixpkgs#qodana"
   ],
   "shell": {
     "init_hook": [
-      "lefthook install",
       "mvn --batch-mode --show-version dependency:go-offline"
     ],
     "scripts": {
