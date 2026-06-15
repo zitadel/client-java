@@ -18,7 +18,6 @@ src/main/java/com/zitadel/auth/WebTokenAuthenticator.java
 #
 # NOTE: ZitadelException is NOT kept; the generator now owns it (full javadoc,
 # serialVersionUID = 1L) under src/main/java/com/zitadel/ZitadelException.java.
-src/main/java/com/zitadel/Zitadel.java
 src/main/java/com/zitadel/utils/KeyUtil.java
 src/main/java/com/zitadel/utils/URLUtil.java
 

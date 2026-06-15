@@ -1,5 +1,6 @@
 package com.zitadel;
 
+import com.zitadel.auth.PersonalAccessTokenAuthenticator;
 import com.zitadel.model.*;
 import org.junit.jupiter.api.*;
 
@@ -34,7 +35,8 @@ class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
 
     @BeforeAll
     void initClient() {
-        client = Zitadel.withAccessToken(getBaseUrl(), getAuthToken());
+        client = Zitadel.withAuthenticator(
+            new PersonalAccessTokenAuthenticator(getBaseUrl(), getAuthToken()));
     }
 
     @BeforeEach
@@ -50,7 +52,7 @@ class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
         UserServiceSetHumanEmail email = new UserServiceSetHumanEmail();
         email.email = "johndoe" + UUID.randomUUID() + "@example.com";
         humanUser.email = email;
-        client.users.addHumanUser(humanUser);
+        client.userService.addHumanUser(humanUser);
 
         SessionServiceCreateSessionRequest createRequest = new SessionServiceCreateSessionRequest();
         SessionServiceChecks checks = new SessionServiceChecks();
@@ -59,7 +61,7 @@ class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
         checks.user = checkUser;
         createRequest.checks = checks;
         createRequest.lifetime = Duration.ofHours(5);
-        session = client.sessions.createSession(createRequest);
+        session = client.sessionService.createSession(createRequest);
     }
 
     @AfterEach
@@ -67,7 +69,7 @@ class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
         try {
             SessionServiceDeleteSessionRequest deleteRequest = new SessionServiceDeleteSessionRequest();
             deleteRequest.sessionId = session.sessionId;
-            client.sessions.deleteSession(deleteRequest);
+            client.sessionService.deleteSession(deleteRequest);
         } catch (ApiException ignored) {
             // cleanup errors are ignored
         }
@@ -81,7 +83,7 @@ class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
         SessionServiceGetSessionRequest getRequest = new SessionServiceGetSessionRequest();
         getRequest.sessionId = session.sessionId;
         getRequest.sessionToken = session.sessionToken;
-        SessionServiceGetSessionResponse response = client.sessions.getSession(getRequest);
+        SessionServiceGetSessionResponse response = client.sessionService.getSession(getRequest);
         assertNotNull(response.session);
         assertEquals(session.sessionId, response.session.id);
     }
@@ -95,7 +97,7 @@ class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
         request.queries = List.of();
 
         SessionServiceListSessionsResponse response =
-            client.sessions.listSessions(request);
+            client.sessionService.listSessions(request);
         assertNotNull(response.sessions);
         List<String> ids = response.sessions.stream()
             .map(s -> s.id)
@@ -113,7 +115,7 @@ class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
         request.lifetime = Duration.ofHours(10);
 
         SessionServiceSetSessionResponse response =
-            client.sessions.setSession(request);
+            client.sessionService.setSession(request);
         assertNotNull(response.sessionToken);
     }
 
@@ -126,7 +128,7 @@ class SessionServiceSanityCheckSpec extends AbstractIntegrationTest {
             SessionServiceGetSessionRequest getRequest = new SessionServiceGetSessionRequest();
             getRequest.sessionId = UUID.randomUUID().toString();
             getRequest.sessionToken = session.sessionToken;
-            client.sessions.getSession(getRequest);
+            client.sessionService.getSession(getRequest);
         });
     }
 }

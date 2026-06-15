@@ -96,10 +96,10 @@ class UseClientCredentialsSpec extends AbstractIntegrationTest {
     @Test
     void testRetrievesGeneralSettingsWithValidAuth() throws Exception {
         Map<String, String> credentials = generateUserSecret(getAuthToken(), "api-user");
-        Zitadel client = Zitadel.withClientCredentials(getBaseUrl(), credentials.getOrDefault("clientId", ""), credentials.getOrDefault("clientSecret", ""));
+        Zitadel client = Zitadel.withAuthenticator(ClientCredentialsAuthenticator.builder(getBaseUrl(), credentials.getOrDefault("clientId", ""), credentials.getOrDefault("clientSecret", "")).build());
 
         SettingsServiceGetGeneralSettingsResponse response =
-            client.settings.getGeneralSettings(new Object());
+            client.settingsService.getGeneralSettings(new Object());
         assertNotNull(response);
     }
 
@@ -108,9 +108,9 @@ class UseClientCredentialsSpec extends AbstractIntegrationTest {
      */
     @Test
     void testRaisesApiExceptionWithInvalidAuth() {
-        Zitadel invalid = Zitadel.withClientCredentials(getBaseUrl(), "invalid", "invalid");
+        Zitadel invalid = Zitadel.withAuthenticator(ClientCredentialsAuthenticator.builder(getBaseUrl(), "invalid", "invalid").build());
 
-        assertThrows(ZitadelException.class, () -> invalid.settings.getGeneralSettings(new Object())
+        assertThrows(ZitadelException.class, () -> invalid.settingsService.getGeneralSettings(new Object())
         );
     }
 }

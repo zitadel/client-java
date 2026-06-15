@@ -19,7 +19,7 @@ import com.zitadel.ApiClient;
  * HTTP calls (token endpoints, discovery documents) use the same transport configuration (proxy,
  * TLS, timeouts) as regular API calls.
  *
- * <p>The {@link ApiClient} is injected by the {@code Client} class after construction, via {@link
+ * <p>The {@link ApiClient} is injected by the {@code Zitadel} class after construction, via {@link
  * #setApiClient(ApiClient)}. Implementations must not make HTTP calls before the client is
  * injected.
  *
@@ -31,7 +31,7 @@ public interface HttpAwareAuthenticator extends Authenticator {
   /**
    * Inject the shared API client for making HTTP requests.
    *
-   * <p>Called by the {@code Client} constructor after the {@link ApiClient} has been created with
+   * <p>Called by the {@code Zitadel} constructor after the {@link ApiClient} has been created with
    * the user's {@link com.zitadel.TransportOptions}. Implementations should store this reference
    * and use it for all outbound HTTP calls (token exchange, discovery, etc.).
    *
