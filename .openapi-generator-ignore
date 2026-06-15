@@ -1,8 +1,7 @@
 # Keep-list: files the generator must NOT overwrite, and the Makefile's
 # `prune` step must NOT delete. Everything else is generator-owned.
 
-# --- bespoke token-minting authenticators (ported onto the new
-#     Authenticator / BaseAuthenticator / HttpAwareAuthenticator interfaces) ---
+# --- bespoke authenticators (ported onto the generated auth interfaces) ---
 #
 # NOTE: the old hand-written Authenticator.java (abstract base) is NOT kept;
 # the generator now owns Authenticator (interface), BaseAuthenticator,
@@ -14,13 +13,14 @@ src/main/java/com/zitadel/auth/OpenId.java
 src/main/java/com/zitadel/auth/PersonalAccessTokenAuthenticator.java
 src/main/java/com/zitadel/auth/WebTokenAuthenticator.java
 
-# --- bespoke support classes the ported authenticators depend on and the
-#     new generator no longer emits (the old generator used to) ---
+# --- bespoke support classes (facade + base exception + helpers the
+#     authenticators depend on that the generator does not emit) ---
+src/main/java/com/zitadel/Zitadel.java
 src/main/java/com/zitadel/ZitadelException.java
 src/main/java/com/zitadel/utils/KeyUtil.java
 src/main/java/com/zitadel/utils/URLUtil.java
 
-# --- bespoke integration specs + Zitadel server fixtures ---
+# --- bespoke tests + fixtures the generator does not emit ---
 #
 # NOTE: the six spec-independent unit tests (ValueSerializerTest,
 # HeaderSelectorTest, ConfigurationTest, TransportOptionsTest,
@@ -28,57 +28,54 @@ src/main/java/com/zitadel/utils/URLUtil.java
 # and land under src/test/java/com/zitadel/...; they are NOT kept here.
 # Only the bespoke test RESOURCES (wiremock mappings, certs, squid.conf,
 # junit-platform.properties) are kept — the generator does not emit those.
-src/test/resources/**
-src/spec/**
 etc/**
+src/spec/**
+src/test/resources/**
 
-# --- repo identity, docs (team-owned, not generated) ---
-README.md
+# --- repo identity + docs (team-owned, not generated) ---
 LICENSE
+README.md
 SECURITY.md
 VERSIONING.md
 
 # --- house tooling (team-owned, not generated) ---
+.commitlintrc.json
+.dockerignore
+.editorconfig
+.env
 .github/**
+.gitignore
+.idea/**
 .mvn/**
+.pre-commit-config.yaml
+.releaserc.json
+*.iml
 devbox.json
 devbox.lock
+Dockerfile
 lefthook.yml
 qodana.yaml
 settings.xml
-.editorconfig
-.gitignore
-.dockerignore
-Dockerfile
-.releaserc.json
-.commitlintrc.json
-.pre-commit-config.yaml
-.idea/**
-*.iml
 SKILLS.md
-.env
 
-# --- build config (team-owned): pom.xml carries the repo identity, the
-#     Maven Central release/deployment profile, and the bespoke-auth deps
-#     (nimbus-jose-jwt, bouncycastle bcprov/bcpkix) that the kept
-#     authenticators need and the generator does not emit. Its toolchain is
-#     aligned to the generator's output: checkstyle google_checks.xml +
-#     default spotbugs, no custom checkstyle.xml / spotbugs.xml (those are
-#     gone; the generator emits class-level @SuppressWarnings / @SuppressFBWarnings
-#     instead). ---
+# --- build / package config (team-owned: carries repo identity + bespoke
+#     deps) ---
+#
+# pom.xml carries the repo identity, the Maven Central release/deployment
+# profile, and the bespoke-auth deps (nimbus-jose-jwt, bouncycastle
+# bcprov/bcpkix) that the kept authenticators need and the generator does
+# not emit. Its toolchain is aligned to the generator's output: checkstyle
+# google_checks.xml + default spotbugs, no custom checkstyle.xml /
+# spotbugs.xml (the generator emits class-level @SuppressWarnings /
+# @SuppressFBWarnings instead).
 pom.xml
 
 # --- generation tooling we added ---
-proc.yml
-Makefile
 .openapi-generator-ignore
+Makefile
+proc.yml
 
-# generator-owned metadata (FILES manifest + VERSION) — always rewritten by
-# the generator, but keep-listed so prune does not treat them as orphans
-# (the FILES manifest does not list itself, so it would otherwise be deleted)
+# --- generator bookkeeping (FILES manifest + VERSION; rewritten by the
+#     generator but keep-listed so prune does not orphan them — the FILES
+#     manifest does not list itself, so it would otherwise be deleted) ---
 .openapi-generator/
-src/main/java/com/zitadel/Zitadel.java
-src/main/java/com/zitadel/Version.java
-src/main/java/com/zitadel/utils/StringUtil.java
-
-# bespoke facade + helpers (hand-written glue over generated code)
