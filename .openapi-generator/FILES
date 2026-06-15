@@ -2,7 +2,6 @@ src/main/java/com/zitadel/ApiClient.java
 src/main/java/com/zitadel/ApiException.java
 src/main/java/com/zitadel/ApiHttpResponse.java
 src/main/java/com/zitadel/ApiResult.java
-src/main/java/com/zitadel/Client.java
 src/main/java/com/zitadel/Configuration.java
 src/main/java/com/zitadel/DefaultApiClient.java
 src/main/java/com/zitadel/ObjectSerializer.java
@@ -10,6 +9,7 @@ src/main/java/com/zitadel/ServerConfiguration.java
 src/main/java/com/zitadel/ServerVariable.java
 src/main/java/com/zitadel/Servers.java
 src/main/java/com/zitadel/TransportOptions.java
+src/main/java/com/zitadel/Zitadel.java
 src/main/java/com/zitadel/ZitadelException.java
 src/main/java/com/zitadel/api/ActionServiceApi.java
 src/main/java/com/zitadel/api/ApplicationServiceApi.java

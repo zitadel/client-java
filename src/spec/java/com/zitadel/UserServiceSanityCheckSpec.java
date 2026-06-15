@@ -1,5 +1,6 @@
 package com.zitadel;
 
+import com.zitadel.auth.PersonalAccessTokenAuthenticator;
 import com.zitadel.model.*;
 import org.junit.jupiter.api.*;
 
@@ -34,7 +35,8 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
 
     @BeforeAll
     void initClient() {
-        client = Zitadel.withAccessToken(getBaseUrl(), getAuthToken());
+        client = Zitadel.withAuthenticator(
+            new PersonalAccessTokenAuthenticator(getBaseUrl(), getAuthToken()));
     }
 
     /**
@@ -52,7 +54,7 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
         email.email = "johndoe" + UUID.randomUUID() + "@example.com";
         request.email = email;
 
-        user = client.users.addHumanUser(request);
+        user = client.userService.addHumanUser(request);
     }
 
     /**
@@ -63,7 +65,7 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
         try {
             UserServiceDeleteUserRequest deleteRequest = new UserServiceDeleteUserRequest();
             deleteRequest.userId = user.userId;
-            client.users.deleteUser(deleteRequest);
+            client.userService.deleteUser(deleteRequest);
         } catch (ApiException ignored) {
             // cleanup errors are ignored
         }
@@ -76,7 +78,7 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
     void testRetrievesUserDetailsById() throws ApiException {
         UserServiceGetUserByIDRequest getRequest = new UserServiceGetUserByIDRequest();
         getRequest.userId = user.userId;
-        UserServiceGetUserByIDResponse response = client.users.getUserByID(getRequest);
+        UserServiceGetUserByIDResponse response = client.userService.getUserByID(getRequest);
         assertNotNull(response.user);
         assertEquals(user.userId, response.user.userId);
     }
@@ -89,7 +91,7 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
         UserServiceListUsersRequest request = new UserServiceListUsersRequest();
         request.queries = List.of();
 
-        UserServiceListUsersResponse response = client.users.listUsers(request);
+        UserServiceListUsersResponse response = client.userService.listUsers(request);
         assertNotNull(response.result);
         List<String> ids = response.result.stream()
             .map(u -> u.userId)
@@ -108,11 +110,11 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
         UserServiceSetHumanEmail email = new UserServiceSetHumanEmail();
         email.email = "updated" + UUID.randomUUID() + "@example.com";
         updateRequest.email = email;
-        client.users.updateHumanUser(updateRequest);
+        client.userService.updateHumanUser(updateRequest);
 
         UserServiceGetUserByIDRequest getRequest = new UserServiceGetUserByIDRequest();
         getRequest.userId = user.userId;
-        UserServiceGetUserByIDResponse response = client.users.getUserByID(getRequest);
+        UserServiceGetUserByIDResponse response = client.userService.getUserByID(getRequest);
         UserServiceUser fetched = Objects.requireNonNull(response.user);
         UserServiceHumanUser human = Objects.requireNonNull(fetched.human);
         UserServiceHumanEmail humanEmail = Objects.requireNonNull(human.email);
@@ -128,7 +130,7 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
         assertThrows(ApiException.class, () -> {
             UserServiceGetUserByIDRequest getRequest = new UserServiceGetUserByIDRequest();
             getRequest.userId = UUID.randomUUID().toString();
-            client.users.getUserByID(getRequest);
+            client.userService.getUserByID(getRequest);
         });
     }
 }

@@ -1,5 +1,6 @@
 groupId: com.zitadel
 invokerPackage: com.zitadel
+clientClassName: Zitadel
 apiPackage: com.zitadel.api
 modelPackage: com.zitadel.model
 artifactId: client

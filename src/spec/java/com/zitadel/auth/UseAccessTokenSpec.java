@@ -28,10 +28,10 @@ class UseAccessTokenSpec extends AbstractIntegrationTest {
      */
     @Test
     void testRetrievesGeneralSettingsWithValidAuth() throws ApiException {
-        Zitadel client = Zitadel.withAccessToken(getBaseUrl(), getAuthToken());
+        Zitadel client = Zitadel.withAuthenticator(new PersonalAccessTokenAuthenticator(getBaseUrl(), getAuthToken()));
 
         SettingsServiceGetGeneralSettingsResponse response =
-            client.settings.getGeneralSettings(new Object());
+            client.settingsService.getGeneralSettings(new Object());
         assertNotNull(response);
     }
 
@@ -40,9 +40,9 @@ class UseAccessTokenSpec extends AbstractIntegrationTest {
      */
     @Test
     void testRaisesApiExceptionWithInvalidAuth() {
-        Zitadel invalid = Zitadel.withAccessToken(getBaseUrl(), "invalid");
+        Zitadel invalid = Zitadel.withAuthenticator(new PersonalAccessTokenAuthenticator(getBaseUrl(), "invalid"));
 
-        assertThrows(ApiException.class, () -> invalid.settings.getGeneralSettings(new Object())
+        assertThrows(ApiException.class, () -> invalid.settingsService.getGeneralSettings(new Object())
         );
     }
 }
