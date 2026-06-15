@@ -1,95 +1,332 @@
-# Zitadel SDK SDK
+# Java SDK for Zitadel
 
-Auto-generated Java SDK client for the Zitadel SDK API.
+This is the Zitadel Java SDK, designed to provide a convenient and idiomatic
+way to interact with the Zitadel APIs in Java. The SDK provides a seamless
+wrapping of the Zitadel API, making it easy to authenticate service users and
+perform API operations.
 
-## Requirements
+The SDK enables efficient integration with the Zitadel API, allowing you to
+manage resources and execute actions. However, it's important to note that
+this SDK is tailored for service users and is not intended for user
+authentication scenarios. It does not support authentication mechanisms
+like OAuth2, OIDC, or SAML for client applications, including web, mobile,
+or other environments. For these types of user authentication, you should
+use other libraries that are designed for the specific platform and
+authentication method.
 
-- **Java 25** (LTS, released Sep 2025) — minimum required JDK to build and run
-- **Maven 3.9+** — build tool
+**Disclaimer**: This SDK is not suitable for implementing user authentication.
+It does not handle authentication for client applications using OAuth2, OIDC,
+or SAML and should not be used for scenarios requiring such functionality.
+For those use cases, consider using other solutions that are designed for
+user authentication across various platforms like web, mobile, or other
+client environments.
 
-### Tooling
+> [!IMPORTANT]
+> Please be aware that this SDK is currently in an incubating stage. We are releasing it to the community to gather
+> feedback and learn how it is being used. While you are welcome to use it, please note that the API and functionality may
+> evolve based on community input. We encourage you to try it out and share your experiences, but advise caution when
+> considering it for production environments as future updates may introduce changes.
 
-The generated project comes pre-wired with the following Maven plugins:
+## Getting Started
 
-| Tool | Plugin | Invoke |
-| --- | --- | --- |
-| Formatter | `spotless-maven-plugin` (google-java-format) | `mvn spotless:apply` (write) / `mvn spotless:check` (verify) |
-| Linter | `maven-checkstyle-plugin` (`checkstyle.xml` at project root) | `mvn checkstyle:check` |
-| Static analyser | `spotbugs-maven-plugin` | `mvn spotbugs:check` |
-| Static analyser (compile-time) | Error Prone + NullAway (via `maven-compiler-plugin`) | `mvn compile` |
-| Auto-upgrader | `rewrite-maven-plugin` (`org.openrewrite.java.migrate.UpgradeToJava25` recipe) | `mvn rewrite:run` |
+### Sign up for Zitadel
 
-## Build
+To use this SDK, you need a Zitadel account. Sign up at the official
+Zitadel website and obtain the necessary credentials to access the API.
 
-```bash
-mvn compile
+### Minimum Requirements
+
+Ensure you have Java 8 or higher installed. You also need Maven to
+install dependencies.
+
+## Using the SDK
+
+### Installation
+
+Add the SDK dependency to your `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>io.github.zitadel</groupId>
+    <artifactId>client</artifactId>
+    <version>4.1.2</version>
+</dependency>
 ```
 
-## Test
+## Authentication Methods
 
-```bash
-mvn test
+Your SDK offers three ways to authenticate with Zitadel. Each method has its
+own benefits—choose the one that fits your situation best.
+
+#### 1. Private Key JWT Authentication
+
+**What is it?**
+You use a JSON Web Token (JWT) that you sign with a private key stored in a
+JSON file. This process creates a secure token.
+
+**When should you use it?**
+
+- **Best for production:** It offers strong security.
+- **Advanced control:** You can adjust token settings like expiration.
+
+**How do you use it?**
+
+1. Save your private key in a JSON file.
+2. Build the authenticator using the helper method.
+
+**Example:**
+
+```java
+import com.zitadel.ApiException;
+import com.zitadel.Zitadel;
+import com.zitadel.auth.WebTokenAuthenticator;
+import com.zitadel.model.UserServiceAddHumanUserRequest;
+import com.zitadel.model.UserServiceAddHumanUserResponse;
+import com.zitadel.model.UserServiceSetHumanEmail;
+import com.zitadel.model.UserServiceSetHumanProfile;
+
+class Demo {
+  public static void main(String[] args) throws ApiException {
+    Zitadel zitadel = Zitadel.withAuthenticator(
+      WebTokenAuthenticator.fromJson("https://example.us1.zitadel.cloud", "path/to/jwt-key.json"));
+
+    UserServiceSetHumanProfile profile = new UserServiceSetHumanProfile();
+    profile.givenName = "John";
+    profile.familyName = "Doe";
+
+    UserServiceSetHumanEmail email = new UserServiceSetHumanEmail();
+    email.email = "john@doe.com";
+
+    UserServiceAddHumanUserRequest request = new UserServiceAddHumanUserRequest();
+    request.username = "john.doe";
+    request.profile = profile;
+    request.email = email;
+
+    UserServiceAddHumanUserResponse response = zitadel.userService.addHumanUser(request);
+    System.out.println("User created: " + response);
+  }
+}
 ```
 
-## Package
+#### 2. Client Credentials Grant
 
-- Group: `com.zitadel`
-- Version: ``
+**What is it?**
+This method uses a client ID and client secret to get a secure access token,
+which is then used to authenticate.
 
-## Not supported
+**When should you use it?**
 
-### Webhooks and callbacks
+- **Simple and straightforward:** Good for server-to-server communication.
+- **Trusted environments:** Use it when both servers are owned or trusted.
 
-This SDK is **client → server** only. Spec entries describing
-server-initiated calls — OAS 3.1 top-level `webhooks` and OAS 3.0
-per-operation `callbacks` — are intentionally skipped during code
-generation. If you need to receive webhook deliveries, write the
-handler yourself and use this SDK only to deserialize the incoming
-payload (e.g. by reusing the relevant request-body model).
+**How do you use it?**
 
-### Conditional-required validation (`dependentRequired` / `dependentSchemas`)
+1. Provide your client ID and client secret.
+2. Build the authenticator using the helper method.
 
-JSON Schema 2019-09 keywords for "if field X is present, field Y is
-also required" are **not enforced** by this SDK. No mainstream
-OpenAPI client codegen implements them. The server is the authoritative
-validator; if you want client-side checking, plug in a JSON Schema
-validator library for your language.
+**Example:**
 
-### Numeric / string constraint validation
+```java
+import com.zitadel.ApiException;
+import com.zitadel.Zitadel;
+import com.zitadel.auth.ClientCredentialsAuthenticator;
+import com.zitadel.model.UserServiceAddHumanUserRequest;
+import com.zitadel.model.UserServiceAddHumanUserResponse;
+import com.zitadel.model.UserServiceSetHumanEmail;
+import com.zitadel.model.UserServiceSetHumanProfile;
 
-OpenAPI keywords like `minLength`, `maxLength`, `minimum`, `maximum`,
-`pattern`, `minItems`, `maxItems`, `uniqueItems`, `multipleOf` are
-**not enforced** by this SDK. The server is the authoritative
-validator; client-side enforcement is a DX nicety, not a correctness
-requirement. If you want fast-fail validation before the network
-round trip, plug in a JSON Schema validator library for your language.
+class Demo {
+  public static void main(String[] args) throws ApiException {
+    Zitadel zitadel = Zitadel.withAuthenticator(
+      ClientCredentialsAuthenticator.builder("https://example.us1.zitadel.cloud", "id", "secret").build());
 
-### SOCKS proxies
+    UserServiceSetHumanProfile profile = new UserServiceSetHumanProfile();
+    profile.givenName = "John";
+    profile.familyName = "Doe";
 
-`TransportOptions.proxy()` accepts only `http://` and `https://` URLs.
-Passing a `socks://`, `socks4://`, or `socks5://` scheme throws (or
-panics) at construction time with a clear error. SOCKS support would
-require enabling extra dependencies / feature flags on the underlying
-HTTP library in every one of the 12 SDKs we generate, with non-trivial
-API divergence; we explicitly chose not to. If you need SOCKS, route
-through a local HTTP-CONNECT bridge or configure it at the OS level.
+    UserServiceSetHumanEmail email = new UserServiceSetHumanEmail();
+    email.email = "john@doe.com";
 
-### Per-call cancellation
+    UserServiceAddHumanUserRequest request = new UserServiceAddHumanUserRequest();
+    request.username = "john.doe";
+    request.profile = profile;
+    request.email = email;
 
-No generated operation method accepts a per-call cancellation handle.
-In-flight requests can only be terminated by waiting for the configured
-`TransportOptions` request timeout to fire — there is no way to abort
-mid-flight from the caller side. If you need fine-grained per-call
-cancellation, wrap the SDK call in your language's standard concurrency
-primitives (a `Future` you cancel externally, a `Task` you orphan, an
-`asyncio` task you cancel, etc.) and rely on the timeout to break the
-underlying socket.
+    UserServiceAddHumanUserResponse response = zitadel.userService.addHumanUser(request);
+    System.out.println("User created: " + response);
+  }
+}
+```
 
-### `LICENSE` file is not auto-emitted
+#### 3. Personal Access Tokens (PATs)
 
-The package manifest declares MIT, but no `LICENSE` / `LICENSE.md` file
-is generated alongside the sources. Drop the appropriate license text
-into the generated tree as part of your release pipeline before
-publishing to a registry — most registries warn or block on a missing
-file, and the GitHub license auto-detect cannot pick up a manifest-only
-declaration.
+**What is it?**
+A Personal Access Token (PAT) is a pre-generated token that you can use to
+authenticate without exchanging credentials every time.
+
+**When should you use it?**
+
+- **Easy to use:** Great for development or testing scenarios.
+- **Quick setup:** No need for dynamic token generation.
+
+**How do you use it?**
+
+1. Obtain a valid personal access token from your account.
+2. Build the authenticator using the helper method.
+
+**Example:**
+
+```java
+import com.zitadel.ApiException;
+import com.zitadel.Zitadel;
+import com.zitadel.auth.PersonalAccessTokenAuthenticator;
+import com.zitadel.model.UserServiceAddHumanUserRequest;
+import com.zitadel.model.UserServiceAddHumanUserResponse;
+import com.zitadel.model.UserServiceSetHumanEmail;
+import com.zitadel.model.UserServiceSetHumanProfile;
+
+class Demo {
+
+  public static void main(String[] args) throws ApiException {
+    Zitadel zitadel = Zitadel.withAuthenticator(
+      new PersonalAccessTokenAuthenticator("https://example.us1.zitadel.cloud", "token"));
+
+    UserServiceSetHumanProfile profile = new UserServiceSetHumanProfile();
+    profile.givenName = "John";
+    profile.familyName = "Doe";
+
+    UserServiceSetHumanEmail email = new UserServiceSetHumanEmail();
+    email.email = "john@doe.com";
+
+    UserServiceAddHumanUserRequest request = new UserServiceAddHumanUserRequest();
+    request.username = "john.doe";
+    request.profile = profile;
+    request.email = email;
+
+    UserServiceAddHumanUserResponse response = zitadel.userService.addHumanUser(request);
+    System.out.println("User created: " + response);
+  }
+}
+```
+
+---
+
+Choose the authentication method that best suits your needs based on your
+environment and security requirements. For more details, please refer to the
+[Zitadel documentation on authenticating service users](https://zitadel.com/docs/guides/integrate/service-users/authenticate-service-users).
+
+## Advanced Configuration
+
+The SDK provides a `TransportOptions` object that allows you to customise
+the underlying HTTP transport used for both OpenID discovery and API calls.
+
+### Disabling TLS Verification
+
+In development or testing environments with self-signed certificates, you can
+disable TLS verification entirely:
+
+```java
+TransportOptions options = TransportOptions.builder()
+    .verifySsl(false)
+    .build();
+
+Zitadel zitadel = Zitadel.withAuthenticator(
+    ClientCredentialsAuthenticator.builder(
+        "https://your-instance.zitadel.cloud", "client-id", "client-secret").build(),
+    options);
+```
+
+### Using a Custom CA Certificate
+
+If your Zitadel instance uses a certificate signed by a private CA, you can
+provide the path to the CA certificate in PEM format:
+
+```java
+TransportOptions options = TransportOptions.builder()
+    .caCertPath("/path/to/ca.pem")
+    .build();
+
+Zitadel zitadel = Zitadel.withAuthenticator(
+    ClientCredentialsAuthenticator.builder(
+        "https://your-instance.zitadel.cloud", "client-id", "client-secret").build(),
+    options);
+```
+
+### Custom Default Headers
+
+You can attach default headers to every outgoing request. This is useful for
+custom routing or tracing headers:
+
+```java
+TransportOptions options = TransportOptions.builder()
+    .defaultHeader("X-Custom-Header", "my-value")
+    .build();
+
+Zitadel zitadel = Zitadel.withAuthenticator(
+    ClientCredentialsAuthenticator.builder(
+        "https://your-instance.zitadel.cloud", "client-id", "client-secret").build(),
+    options);
+```
+
+### Proxy Configuration
+
+If your environment requires routing traffic through an HTTP proxy, you can
+specify the proxy URL. To authenticate with the proxy, embed the credentials
+directly in the URL:
+
+```java
+TransportOptions options = TransportOptions.builder()
+    .proxy("http://user:pass@proxy:8080")
+    .build();
+
+Zitadel zitadel = Zitadel.withAuthenticator(
+    ClientCredentialsAuthenticator.builder(
+        "https://your-instance.zitadel.cloud", "client-id", "client-secret").build(),
+    options);
+```
+
+## Design and Dependencies
+
+This SDK is designed to be lean and efficient, focusing on providing a
+streamlined way to interact with the Zitadel API. It relies on the commonly used
+Apache HTTP Client for making requests, which ensures that
+the SDK integrates well with other libraries and provides flexibility
+in terms of request handling and error management.
+
+## Versioning
+
+A key aspect of our strategy is that the SDK's major version is synchronized with the ZITADEL core project's major
+version to ensure compatibility. For a detailed explanation of this policy and our release schedule, please see
+our [Versioning Guide](VERSIONING.md).
+
+## Contributing
+
+This repository is autogenerated. We do not accept direct contributions.
+Instead, please open an issue for any bugs or feature requests.
+
+## Reporting Issues
+
+If you encounter any issues or have suggestions for improvements, please
+open an issue in the [issue tracker](https://github.com/zitadel/client-java/issues).
+When reporting an issue, please provide the following information to help
+us address it more effectively:
+
+- A detailed description of the problem or feature request
+- Steps to reproduce the issue (if applicable)
+- Any relevant error messages or logs
+- Environment details (e.g., OS version, relevant configurations)
+
+## Support
+
+If you need help setting up or configuring the SDK (or anything
+Zitadel), please head over to the [Zitadel Community on Discord](https://zitadel.com/chat).
+
+There are many helpful people in our Discord community who are ready to
+assist you.
+
+Cloud and enterprise customers can additionally reach us privately via our
+[support communication channels](https://zitadel.com/docs/legal/service-description/support-services).
+
+## License
+
+This SDK is distributed under the Apache 2.0 License.
