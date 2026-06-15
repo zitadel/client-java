@@ -1,6 +1,9 @@
 package com.zitadel.auth;
 
-import com.zitadel.utils.URLUtil;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.Map;
 
@@ -19,7 +22,20 @@ public class NoAuthAuthenticator extends BaseAuthenticator {
    * @param host the base URL for authentication endpoints.
    */
   public NoAuthAuthenticator(String host) {
-    this.host = URLUtil.buildHostname(host).toString();
+    this.host = buildHostname(host).toString();
+  }
+
+  @SuppressWarnings("HttpUrlsUsage")
+  private static URL buildHostname(String hostname) {
+    try {
+      if (!hostname.startsWith("http://") && !hostname.startsWith("https://")) {
+        hostname = "https://" + hostname; // default to https
+      }
+
+      return new URI(hostname).toURL();
+    } catch (URISyntaxException | MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   /** Constructs a NoAuthAuthenticator targeting {@code localhost}. */

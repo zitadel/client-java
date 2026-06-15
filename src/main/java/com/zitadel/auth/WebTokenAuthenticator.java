@@ -10,20 +10,28 @@ import com.nimbusds.jose.crypto.RSASSASigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import com.zitadel.ZitadelException;
-import com.zitadel.utils.KeyUtil;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
+import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
 import javax.annotation.Nullable;
+import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
+import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import org.bouncycastle.asn1.pkcs.RSAPrivateKey;
+import org.bouncycastle.asn1.x509.AlgorithmIdentifier;
+import org.bouncycastle.util.io.pem.PemObject;
+import org.bouncycastle.util.io.pem.PemReader;
 
 /**
  * JWT-based Authenticator using the JWT Bearer Grant (RFC 7523).
@@ -121,13 +129,46 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
 
     PrivateKey privateKey;
     try {
-      privateKey = KeyUtil.getPrivateKeyFromString(keyString);
+      privateKey = getPrivateKeyFromString(keyString);
     } catch (IOException | InvalidKeySpecException | NoSuchAlgorithmException e) {
       throw new ZitadelException(
           "Unable to convert key string to PrivateKey: " + e.getMessage(), e);
     }
 
     return WebTokenAuthenticator.builder(host, userId, privateKey).keyId(keyId).build();
+  }
+
+  /**
+   * Converts a PEM-formatted private key string into a {@code PrivateKey} object.
+   *
+   * @param key the PEM-formatted private key string.
+   * @return the corresponding {@code PrivateKey} instance.
+   * @throws IOException if the key cannot be parsed.
+   */
+  private static PrivateKey getPrivateKeyFromString(String key)
+      throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
+    try (PemReader pemReader = new PemReader(new StringReader(key))) {
+      PemObject pemObject = pemReader.readPemObject();
+
+      if (pemObject == null) {
+        throw new IOException(
+            "Failed to parse PEM object from key string. The input may be malformed or empty.");
+      } else {
+        byte[] keyBytes = pemObject.getContent();
+
+        if (pemObject.getType().equals("RSA PRIVATE KEY")) {
+          RSAPrivateKey rsaPrivateKey = RSAPrivateKey.getInstance(keyBytes);
+          PrivateKeyInfo privateKeyInfo =
+              new PrivateKeyInfo(
+                  new AlgorithmIdentifier(PKCSObjectIdentifiers.rsaEncryption), rsaPrivateKey);
+          keyBytes = privateKeyInfo.getEncoded();
+        }
+
+        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(keyBytes);
+        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        return keyFactory.generatePrivate(keySpec);
+      }
+    }
   }
 
   /**
