@@ -38,7 +38,7 @@ class UseClientCredentialsSpec extends AbstractIntegrationTest {
     public Map<String, String> generateUserSecret(String token, String loginName) throws Exception {
 
         HttpRequest userIdRequest = HttpRequest.newBuilder()
-            .uri(URI.create("http://localhost:18103/management/v1/global/users/_by_login_name?loginName=" + URLEncoder.encode(loginName, StandardCharsets.UTF_8)))
+            .uri(URI.create(getBaseUrl() + "/management/v1/global/users/_by_login_name?loginName=" + URLEncoder.encode(loginName, StandardCharsets.UTF_8)))
             .header("Authorization", "Bearer " + token)
             .header("Accept", "application/json")
             .build();
@@ -55,7 +55,7 @@ class UseClientCredentialsSpec extends AbstractIntegrationTest {
 
             if (userId != null && !userId.isEmpty()) {
                 HttpRequest secretRequest = HttpRequest.newBuilder()
-                    .uri(URI.create("http://localhost:18103/management/v1/users/" + userId + "/secret"))
+                    .uri(URI.create(getBaseUrl() + "/management/v1/users/" + userId + "/secret"))
                     .header("Authorization", "Bearer " + token)
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")
