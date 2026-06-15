@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN mvn install -DskipErrorProne=true -Dspotbugs.skip=true --batch-mode -DskipTests
+RUN mvn install -DskipErrorProne=true -Dspotbugs.skip=true --batch-mode -DskipTests \
+    && mvn dependency:copy-dependencies -DoutputDirectory=target/lib --batch-mode
 
 CMD ["jshell", "--class-path", "target/classes:target/lib/*"]
