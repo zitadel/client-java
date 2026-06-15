@@ -44,4 +44,20 @@ public final class ZitadelAccessTokenAuthenticator extends BaseAuthenticator {
   public Map<String, String> getCookieParams() {
     return delegate.getCookieParams();
   }
+
+  /**
+   * Returns a string representation of this authenticator with the access token redacted.
+   *
+   * <p>This authenticator wraps a {@link BearerAuthenticator} that holds the sensitive access token;
+   * emitting it through {@code toString()} would leak it into logs and diagnostics. This override
+   * delegates to the wrapped authenticator's redacted representation, which masks the token as {@code
+   * ***} while keeping the non-sensitive host visible, matching the masking behaviour of the Python,
+   * PHP and Ruby SDKs.
+   *
+   * @return a string representation with the token redacted.
+   */
+  @Override
+  public String toString() {
+    return getClass().getSimpleName() + "(host=" + delegate.getHost() + ", token=***)";
+  }
 }

@@ -57,6 +57,32 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
     return params;
   }
 
+  /**
+   * Returns a string representation of this authenticator with sensitive material redacted.
+   *
+   * <p>The OAuth2 client secret and the cached access token are sensitive; emitting them through
+   * {@code toString()} would leak them into logs and diagnostics. This override masks the secret as
+   * {@code ***} and the cached token as {@code ***} (or {@code null} when no token has been minted
+   * yet), while keeping the non-sensitive host and client identifier visible, matching the masking
+   * behaviour of the Python, PHP and Ruby SDKs.
+   *
+   * @return a string representation with the client secret and cached token redacted.
+   */
+  @Override
+  public String toString() {
+    String maskedToken = token == null ? null : "***";
+    return getClass().getSimpleName()
+        + "(host="
+        + getHost()
+        + ", clientId="
+        + clientId
+        + ", clientSecret=***, scope="
+        + scope
+        + ", accessToken="
+        + maskedToken
+        + ")";
+  }
+
   /** Builder for {@link ClientCredentialsAuthenticator}. */
   public static class Builder extends OAuthAuthenticatorBuilder<Builder> {
 

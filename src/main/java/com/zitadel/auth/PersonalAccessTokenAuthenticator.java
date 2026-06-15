@@ -50,4 +50,18 @@ public class PersonalAccessTokenAuthenticator extends BaseAuthenticator {
   public Map<String, String> getAuthHeaders() {
     return Collections.singletonMap("Authorization", "Bearer " + token);
   }
+
+  /**
+   * Returns a string representation of this authenticator with the personal access token redacted.
+   *
+   * <p>The personal access token is sensitive; emitting it through {@code toString()} would leak it
+   * into logs and diagnostics. This override masks the token as {@code ***} while keeping the
+   * non-sensitive host visible, matching the masking behaviour of the Python, PHP and Ruby SDKs.
+   *
+   * @return a string representation with the token redacted.
+   */
+  @Override
+  public String toString() {
+    return getClass().getSimpleName() + "(host=" + host + ", token=***)";
+  }
 }
