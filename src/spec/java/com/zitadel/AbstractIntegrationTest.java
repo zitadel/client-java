@@ -105,7 +105,7 @@ public abstract class AbstractIntegrationTest {
                 jwtKeyPath = jwtKeyFile.toAbsolutePath().toString();
                 System.out.println("Loaded JWT_KEY path: " + jwtKeyPath + "\n");
 
-                baseUrl = "http://localhost:18103";
+                baseUrl = discoverBaseUrl();
                 System.out.println("Exposed BASE_URL as: " + baseUrl + "\n");
 
                 System.out.println("Sleeping for 20 seconds to allow services to initialize...");
@@ -141,6 +141,43 @@ public abstract class AbstractIntegrationTest {
         } catch (IOException | InterruptedException e) {
             System.err.println("Warning: Error during Docker Compose tear down: " + e.getMessage());
         }
+    }
+
+    /**
+     * Discovers the base URL of the Zitadel service by asking Docker Compose
+     * for the host address it mapped the container's port 8080 to.
+     *
+     * <p>The compose file publishes port 8080 on an <em>ephemeral</em> host
+     * port (no fixed host part), so Docker assigns a random free port at
+     * {@code up} time. {@code docker compose port zitadel 8080} reports the
+     * resulting {@code host:port} binding, from which the base URL is built.
+     * Using the discovered port instead of a hardcoded one lets multiple
+     * stacks coexist and avoids collisions with anything already bound to a
+     * fixed port on the host.</p>
+     *
+     * @return the base URL (e.g. {@code http://localhost:49153}) of the
+     *         running Zitadel service
+     * @throws IOException          if the port cannot be discovered
+     * @throws InterruptedException if waiting for the process is interrupted
+     */
+    private static String discoverBaseUrl() throws IOException, InterruptedException {
+        ProcessResult result = runCompose(List.of("port", "zitadel", "8080"));
+        if (result.exitCode() != 0) {
+            throw new IOException(
+                "Failed to discover the mapped host port for zitadel:8080. Exit code: "
+                    + result.exitCode() + "\nOutput:\n" + result.output());
+        }
+
+        String mapped = result.output().trim();
+        int colon = mapped.lastIndexOf(':');
+        if (colon < 0 || colon == mapped.length() - 1) {
+            throw new IOException(
+                "Unexpected 'docker compose port' output, cannot parse host:port from: '"
+                    + mapped + "'");
+        }
+
+        String port = mapped.substring(colon + 1).trim();
+        return "http://localhost:" + port;
     }
 
     /**
