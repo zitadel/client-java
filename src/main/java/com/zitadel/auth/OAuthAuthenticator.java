@@ -179,9 +179,9 @@ public abstract class OAuthAuthenticator extends BaseAuthenticator
    * Returns a string representation of this authenticator with the cached access token redacted.
    *
    * <p>The minted bearer token is sensitive material; emitting it through {@code toString()} would
-   * leak it into logs and diagnostics. This override masks the token as {@code ***} (or {@code null}
-   * when no token has been minted yet) while keeping non-sensitive fields such as the host and scope
-   * visible, matching the masking behaviour of the Python, PHP and Ruby SDKs.
+   * leak it into logs and diagnostics. This override masks the token as {@code ***} (or {@code
+   * null} when no token has been minted yet) while keeping non-sensitive fields such as the host
+   * and scope visible, matching the masking behaviour of the Python, PHP and Ruby SDKs.
    *
    * @return a string representation with the cached token redacted.
    */

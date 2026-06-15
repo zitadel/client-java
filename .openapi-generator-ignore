@@ -21,9 +21,15 @@ src/main/java/com/zitadel/auth/WebTokenAuthenticator.java
 # and land under src/test/java/com/zitadel/...; they are NOT kept here.
 # Only the bespoke test RESOURCES (wiremock mappings, certs, squid.conf,
 # junit-platform.properties) are kept — the generator does not emit those.
+#
+# AuthenticatorRedactionTest covers the bespoke kept authenticators
+# (ClientCredentialsAuthenticator, PersonalAccessTokenAuthenticator) alongside
+# the generated Bearer/ZitadelAccessToken ones; the generator does not emit it
+# for this spec, so it is kept here to survive the prune step.
 etc/
 src/spec/
 src/test/resources/
+src/test/java/com/zitadel/auth/AuthenticatorRedactionTest.java
 
 # --- repo identity + docs (team-owned, not generated) ---
 LICENSE
