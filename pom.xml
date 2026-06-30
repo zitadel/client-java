@@ -604,7 +604,7 @@
   </dependencies>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jackson-version>2.21.1</jackson-version>
+    <jackson-version>2.22.0</jackson-version>
     <jackson-annotations-version>2.21</jackson-annotations-version>
     <!--suppress XmlUnresolvedReference -->
     <jacoco.agent>${argLine}</jacoco.agent>
