@@ -36,7 +36,7 @@ Zitadel website and obtain the necessary credentials to access the API.
 
 ### Minimum Requirements
 
-Ensure you have Java 8 or higher installed. You also need Maven to
+Ensure you have Java 11 or higher installed. You also need Maven to
 install dependencies.
 
 ## Using the SDK
@@ -49,7 +49,7 @@ Add the SDK dependency to your `pom.xml`:
 <dependency>
     <groupId>io.github.zitadel</groupId>
     <artifactId>client</artifactId>
-    <version>4.1.0</version>
+    <version>4.1.2</version>
 </dependency>
 ```
 
