@@ -1,7 +1,9 @@
 package com.zitadel.auth;
 
-import com.zitadel.utils.URLUtil;
-
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.Map;
 
@@ -10,28 +12,44 @@ import java.util.Map;
  *
  * <p>This strategy applies no authentication and returns empty headers.
  */
-public class NoAuthAuthenticator extends Authenticator {
+public class NoAuthAuthenticator extends BaseAuthenticator {
 
-    /**
-     * Constructs a NoAuthAuthenticator.
-     *
-     * @param host The base URL for authentication endpoints.
-     */
-    public NoAuthAuthenticator(String host) {
-        super(URLUtil.buildHostname(host));
-    }
+  private final String host;
 
-    public NoAuthAuthenticator() {
-        this("localhost");
-    }
+  /**
+   * Constructs a NoAuthAuthenticator.
+   *
+   * @param host the base URL for authentication endpoints.
+   */
+  public NoAuthAuthenticator(String host) {
+    this.host = buildHostname(host).toString();
+  }
 
-    /**
-     * Returns an empty set of authentication headers.
-     *
-     * @return An empty map.
-     */
-    @Override
-    public Map<String, String> getAuthHeaders() {
-        return Collections.emptyMap();
+  @SuppressWarnings("HttpUrlsUsage")
+  private static URL buildHostname(String hostname) {
+    try {
+      if (!hostname.startsWith("http://") && !hostname.startsWith("https://")) {
+        hostname = "https://" + hostname; // default to https
+      }
+
+      return new URI(hostname).toURL();
+    } catch (URISyntaxException | MalformedURLException e) {
+      throw new RuntimeException(e);
     }
+  }
+
+  /** Constructs a NoAuthAuthenticator targeting {@code localhost}. */
+  public NoAuthAuthenticator() {
+    this("localhost");
+  }
+
+  @Override
+  public String getHost() {
+    return host;
+  }
+
+  @Override
+  public Map<String, String> getAuthHeaders() {
+    return Collections.emptyMap();
+  }
 }

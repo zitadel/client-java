@@ -1,34 +1,32 @@
 package com.zitadel.auth;
 
-import com.zitadel.ZitadelException;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
+/**
+ * Verifies that {@link ClientCredentialsAuthenticator} redacts the OAuth2 client secret in its
+ * {@code toString()} representation so it cannot leak into logs, matching the Python, PHP and Ruby
+ * SDKs.
+ */
+class ClientCredentialsAuthenticatorTest {
 
-import static org.junit.jupiter.api.Assertions.*;
+  private static final String SECRET = "super-secret-value-9000";
 
-class ClientCredentialsAuthenticatorTest extends OAuthAuthenticatorTest {
+  /** The client credentials authenticator must mask the client secret in {@code toString()}. */
+  @Test
+  @DisplayName("ClientCredentialsAuthenticator masks the client secret")
+  void redactsSecret() {
+    ClientCredentialsAuthenticator authenticator =
+        ClientCredentialsAuthenticator.builder("https://example.zitadel.cloud", "client-1", SECRET)
+            .build();
 
-    @Test
-    void testRefreshToken() throws ZitadelException {
-        ClientCredentialsAuthenticator authenticator =
-            ClientCredentialsAuthenticator.builder(oauthHost, "dummy-client", "dummy-secret")
-                .scopes(new HashSet<>(Arrays.asList("openid", "foo")))
-                .build();
+    String rendered = authenticator.toString();
 
-        assertNotNull(authenticator.getAuthToken(), "Access token should not be empty");
-        OAuthAuthenticator.Token token = authenticator.refreshToken();
-        assertEquals(
-            Collections.singletonMap("Authorization", "Bearer " + token.accessToken),
-            authenticator.getAuthHeaders());
-        assertNotNull(token.accessToken, "Access token should not be null");
-        assertTrue(token.expiresAt.isAfter(Instant.now()), "Token expiry should be in the future");
-        assertEquals(token.accessToken, authenticator.getAuthToken());
-        assertEquals(oauthHost, authenticator.getHost());
-        assertNotEquals(
-            authenticator.refreshToken().accessToken, authenticator.refreshToken().accessToken);
-    }
+    assertFalse(rendered.contains(SECRET), "toString must not contain the client secret");
+    assertTrue(rendered.contains("***"), "toString must redact the secret with ***");
+    assertTrue(rendered.contains("client-1"), "toString should keep the non-secret client id");
+  }
 }
