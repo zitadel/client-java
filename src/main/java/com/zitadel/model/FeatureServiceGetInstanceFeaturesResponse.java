@@ -30,57 +30,57 @@ import javax.annotation.Nullable;
 })
 public class FeatureServiceGetInstanceFeaturesResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public FeatureServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code loginDefaultOrg} property. */
   @JsonProperty("loginDefaultOrg")
   @Nullable
   public FeatureServiceFeatureFlag loginDefaultOrg;
 
-  /** Example: {@code null} */
+  /** The {@code userSchema} property. */
   @JsonProperty("userSchema")
   @Nullable
   public FeatureServiceFeatureFlag userSchema;
 
-  /** Example: {@code null} */
+  /** The {@code oidcTokenExchange} property. */
   @JsonProperty("oidcTokenExchange")
   @Nullable
   public FeatureServiceFeatureFlag oidcTokenExchange;
 
-  /** Example: {@code null} */
+  /** The {@code improvedPerformance} property. */
   @JsonProperty("improvedPerformance")
   @Nullable
   public FeatureServiceImprovedPerformanceFeatureFlag improvedPerformance;
 
-  /** Example: {@code null} */
+  /** The {@code debugOidcParentError} property. */
   @JsonProperty("debugOidcParentError")
   @Nullable
   public FeatureServiceFeatureFlag debugOidcParentError;
 
-  /** Example: {@code null} */
+  /** The {@code oidcSingleV1SessionTermination} property. */
   @JsonProperty("oidcSingleV1SessionTermination")
   @Nullable
   public FeatureServiceFeatureFlag oidcSingleV1SessionTermination;
 
-  /** Example: {@code null} */
+  /** The {@code enableBackChannelLogout} property. */
   @JsonProperty("enableBackChannelLogout")
   @Nullable
   public FeatureServiceFeatureFlag enableBackChannelLogout;
 
-  /** Example: {@code null} */
+  /** The {@code loginV2} property. */
   @JsonProperty("loginV2")
   @Nullable
   public FeatureServiceLoginV2FeatureFlag loginV2;
 
-  /** Example: {@code null} */
+  /** The {@code permissionCheckV2} property. */
   @JsonProperty("permissionCheckV2")
   @Nullable
   public FeatureServiceFeatureFlag permissionCheckV2;
 
-  /** Example: {@code null} */
+  /** The {@code consoleUseV2UserApi} property. */
   @JsonProperty("consoleUseV2UserApi")
   @Nullable
   public FeatureServiceFeatureFlag consoleUseV2UserApi;

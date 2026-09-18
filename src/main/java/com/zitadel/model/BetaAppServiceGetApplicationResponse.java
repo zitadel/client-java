@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceGetApplicationResponse {
 
-  /** Example: {@code null} */
+  /** The {@code app} property. */
   @JsonProperty("app")
   @Nullable
   public BetaAppServiceApplication app;

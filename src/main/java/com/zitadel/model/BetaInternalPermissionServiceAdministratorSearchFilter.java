@@ -30,57 +30,57 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceAdministratorSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code and} property. */
   @JsonProperty("and")
   @Nullable
   public BetaInternalPermissionServiceAndFilter and;
 
-  /** Example: {@code null} */
+  /** The {@code changeDate} property. */
   @JsonProperty("changeDate")
   @Nullable
   public BetaInternalPermissionServiceTimestampFilter changeDate;
 
-  /** Example: {@code null} */
+  /** The {@code creationDate} property. */
   @JsonProperty("creationDate")
   @Nullable
   public BetaInternalPermissionServiceTimestampFilter creationDate;
 
-  /** Example: {@code null} */
+  /** The {@code inUserIdsFilter} property. */
   @JsonProperty("inUserIdsFilter")
   @Nullable
   public BetaInternalPermissionServiceInIDsFilter inUserIdsFilter;
 
-  /** Example: {@code null} */
+  /** The {@code not} property. */
   @JsonProperty("not")
   @Nullable
   public BetaInternalPermissionServiceNotFilter not;
 
-  /** Example: {@code null} */
+  /** The {@code or} property. */
   @JsonProperty("or")
   @Nullable
   public BetaInternalPermissionServiceOrFilter or;
 
-  /** Example: {@code null} */
+  /** The {@code resource} property. */
   @JsonProperty("resource")
   @Nullable
   public BetaInternalPermissionServiceResourceFilter resource;
 
-  /** Example: {@code null} */
+  /** The {@code role} property. */
   @JsonProperty("role")
   @Nullable
   public BetaInternalPermissionServiceRoleFilter role;
 
-  /** Example: {@code null} */
+  /** The {@code userDisplayName} property. */
   @JsonProperty("userDisplayName")
   @Nullable
   public BetaInternalPermissionServiceUserDisplayNameFilter userDisplayName;
 
-  /** Example: {@code null} */
+  /** The {@code userOrganizationId} property. */
   @JsonProperty("userOrganizationId")
   @Nullable
   public BetaInternalPermissionServiceIDFilter userOrganizationId;
 
-  /** Example: {@code null} */
+  /** The {@code userPreferredLoginName} property. */
   @JsonProperty("userPreferredLoginName")
   @Nullable
   public BetaInternalPermissionServiceUserPreferredLoginNameFilter userPreferredLoginName;

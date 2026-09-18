@@ -30,56 +30,32 @@ import javax.annotation.Nullable;
 })
 public class BetaSettingsServiceTheme {
 
-  /**
-   * hex value for primary color
-   *
-   * <p>Example: {@code null}
-   */
+  /** hex value for primary color */
   @JsonProperty("primaryColor")
   @Nullable
   public String primaryColor;
 
-  /**
-   * hex value for background color
-   *
-   * <p>Example: {@code null}
-   */
+  /** hex value for background color */
   @JsonProperty("backgroundColor")
   @Nullable
   public String backgroundColor;
 
-  /**
-   * hex value for warning color
-   *
-   * <p>Example: {@code null}
-   */
+  /** hex value for warning color */
   @JsonProperty("warnColor")
   @Nullable
   public String warnColor;
 
-  /**
-   * hex value for font color
-   *
-   * <p>Example: {@code null}
-   */
+  /** hex value for font color */
   @JsonProperty("fontColor")
   @Nullable
   public String fontColor;
 
-  /**
-   * url where the logo is served
-   *
-   * <p>Example: {@code null}
-   */
+  /** url where the logo is served */
   @JsonProperty("logoUrl")
   @Nullable
   public String logoUrl;
 
-  /**
-   * url where the icon is served
-   *
-   * <p>Example: {@code null}
-   */
+  /** url where the icon is served */
   @JsonProperty("iconUrl")
   @Nullable
   public String iconUrl;

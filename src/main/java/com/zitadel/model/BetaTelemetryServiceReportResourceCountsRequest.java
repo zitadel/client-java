@@ -32,11 +32,7 @@ import javax.annotation.Nullable;
 })
 public class BetaTelemetryServiceReportResourceCountsRequest {
 
-  /**
-   * The system ID is a unique identifier for the ZITADEL system.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The system ID is a unique identifier for the ZITADEL system. */
   @JsonProperty("systemId")
   @Nullable
   public String systemId;
@@ -44,18 +40,12 @@ public class BetaTelemetryServiceReportResourceCountsRequest {
   /**
    * The previously returned report ID from the server to continue reporting. Note that the report
    * ID is only valid for the same system ID.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("reportId")
   @Nullable
   public String reportId;
 
-  /**
-   * A list of resource counts to report.
-   *
-   * <p>Example: {@code null}
-   */
+  /** A list of resource counts to report. */
   @JsonProperty("resourceCounts")
   @Nullable
   public List<BetaTelemetryServiceResourceCount> resourceCounts = new ArrayList<>();

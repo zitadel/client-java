@@ -32,21 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceListOrganizationsRequest {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaOrganizationServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public BetaOrganizationServiceOrgFieldName sortingColumn;
 
-  /**
-   * Define the criteria to query for. repeated ProjectRoleQuery filters = 4;
-   *
-   * <p>Example: {@code null}
-   */
+  /** Define the criteria to query for. repeated ProjectRoleQuery filters = 4; */
   @JsonProperty("filter")
   @Nullable
   public List<BetaOrganizationServiceOrganizationSearchFilter> filter = new ArrayList<>();

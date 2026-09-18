@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaInstanceServiceDomainGeneratedQuery {
 
-  /** Example: {@code null} */
+  /** The {@code generated} property. */
   @JsonProperty("generated")
   @Nullable
   public Boolean generated;

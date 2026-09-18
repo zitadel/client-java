@@ -33,18 +33,12 @@ public class InternalPermissionServiceOrganization {
   /**
    * ID is the unique identifier of the organization the user was granted the administrator role
    * for.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /**
-   * Name is the name of the organization the user was granted the administrator role for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Name is the name of the organization the user was granted the administrator role for. */
   @JsonProperty("name")
   @Nullable
   public String name;

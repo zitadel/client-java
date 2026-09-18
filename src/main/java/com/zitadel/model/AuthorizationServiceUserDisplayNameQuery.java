@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class AuthorizationServiceUserDisplayNameQuery {
 
-  /**
-   * Specify the public display name of the granted user to search for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Specify the public display name of the granted user to search for. */
   @JsonProperty("displayName")
   @Nullable
   public String displayName;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public AuthorizationServiceTextFilterMethod method;

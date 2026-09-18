@@ -32,21 +32,17 @@ import javax.annotation.Nullable;
 })
 public class InstanceServiceListInstancesRequest {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public InstanceServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public InstanceServiceFieldName sortingColumn;
 
-  /**
-   * Filter the instances to be returned.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Filter the instances to be returned. */
   @JsonProperty("filters")
   @Nullable
   public List<InstanceServiceFilter> filters = new ArrayList<>();

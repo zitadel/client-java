@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceUpdateAdministratorRequest {
 
-  /**
-   * UserID is the ID of the user who should have his administrator roles update.
-   *
-   * <p>Example: {@code null}
-   */
+  /** UserID is the ID of the user who should have his administrator roles update. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code resource} property. */
   @JsonProperty("resource")
   @Nullable
   public BetaInternalPermissionServiceResourceType resource;
@@ -49,8 +45,6 @@ public class BetaInternalPermissionServiceUpdateAdministratorRequest {
   /**
    * Roles are the roles that the user should be granted. Note that any role previously granted to
    * the user and not present in the list will be revoked.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("roles")
   @Nullable

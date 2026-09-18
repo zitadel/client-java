@@ -30,27 +30,27 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceSearchQuery {
 
-  /** Example: {@code null} */
+  /** The {@code defaultQuery} property. */
   @JsonProperty("defaultQuery")
   @Nullable
   public Object defaultQuery;
 
-  /** Example: {@code null} */
+  /** The {@code domainQuery} property. */
   @JsonProperty("domainQuery")
   @Nullable
   public OrganizationServiceOrganizationDomainQuery domainQuery;
 
-  /** Example: {@code null} */
+  /** The {@code idQuery} property. */
   @JsonProperty("idQuery")
   @Nullable
   public OrganizationServiceOrganizationIDQuery idQuery;
 
-  /** Example: {@code null} */
+  /** The {@code nameQuery} property. */
   @JsonProperty("nameQuery")
   @Nullable
   public OrganizationServiceOrganizationNameQuery nameQuery;
 
-  /** Example: {@code null} */
+  /** The {@code stateQuery} property. */
   @JsonProperty("stateQuery")
   @Nullable
   public OrganizationServiceOrganizationStateQuery stateQuery;

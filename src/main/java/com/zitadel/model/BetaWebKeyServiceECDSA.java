@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaWebKeyServiceECDSA {
 
-  /** Example: {@code null} */
+  /** The {@code curve} property. */
   @JsonProperty("curve")
   @Nullable
   public BetaWebKeyServiceECDSACurve curve;

@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceSetSessionResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public BetaSessionServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code sessionToken} property. */
   @JsonProperty("sessionToken")
   @Nullable
   public String sessionToken;
 
-  /** Example: {@code null} */
+  /** The {@code challenges} property. */
   @JsonProperty("challenges")
   @Nullable
   public BetaSessionServiceChallenges challenges;

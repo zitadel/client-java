@@ -32,20 +32,12 @@ import javax.annotation.Nullable;
 })
 public class IdentityProviderServiceGoogleConfig {
 
-  /**
-   * Client id of the Google application.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Client id of the Google application. */
   @JsonProperty("clientId")
   @Nullable
   public String clientId;
 
-  /**
-   * The scopes requested by ZITADEL during the request to Google.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The scopes requested by ZITADEL during the request to Google. */
   @JsonProperty("scopes")
   @Nullable
   public List<String> scopes = new ArrayList<>();

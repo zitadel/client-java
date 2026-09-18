@@ -32,8 +32,6 @@ public class OrganizationServiceAddOrganizationDomainRequest {
 
   /**
    * OrganizationID is the unique identifier of the organization to which the domain is to be added.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("organizationId")
   @Nullable
@@ -43,8 +41,6 @@ public class OrganizationServiceAddOrganizationDomainRequest {
    * Domain is the full qualified domain name to be added to the organization. Note that the domain
    * has to be unique across the instance. Depending on the settings, you might have to verify the
    * domain before it can be used.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("domain")
   @Nullable

@@ -33,8 +33,6 @@ public class SessionServiceOTPSMS {
   /**
    * Request the code to be returned instead of sending an SMS. This is useful for testing or in
    * case you want to send the code yourself.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("returnCode")
   @Nullable

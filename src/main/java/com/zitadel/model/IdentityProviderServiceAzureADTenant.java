@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class IdentityProviderServiceAzureADTenant {
 
-  /** Example: {@code null} */
+  /** The {@code tenantId} property. */
   @JsonProperty("tenantId")
   @Nullable
   public String tenantId;
 
-  /** Example: {@code null} */
+  /** The {@code tenantType} property. */
   @JsonProperty("tenantType")
   @Nullable
   public IdentityProviderServiceAzureADTenantType tenantType;

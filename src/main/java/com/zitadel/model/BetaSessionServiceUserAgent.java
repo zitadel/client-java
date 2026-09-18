@@ -32,22 +32,22 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceUserAgent {
 
-  /** Example: {@code null} */
+  /** The {@code fingerprintId} property. */
   @JsonProperty("fingerprintId")
   @Nullable
   public String fingerprintId;
 
-  /** Example: {@code null} */
+  /** The {@code ip} property. */
   @JsonProperty("ip")
   @Nullable
   public String ip;
 
-  /** Example: {@code null} */
+  /** The {@code description} property. */
   @JsonProperty("description")
   @Nullable
   public String description;
 
-  /** Example: {@code null} */
+  /** The {@code header} property. */
   @JsonProperty("header")
   @Nullable
   public Map<String, BetaSessionServiceHeaderValues> header = new HashMap<>();

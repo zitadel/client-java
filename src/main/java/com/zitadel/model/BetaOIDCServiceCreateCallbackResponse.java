@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaOIDCServiceCreateCallbackResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public BetaOIDCServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code callbackUrl} property. */
   @JsonProperty("callbackUrl")
   @Nullable
   public String callbackUrl;

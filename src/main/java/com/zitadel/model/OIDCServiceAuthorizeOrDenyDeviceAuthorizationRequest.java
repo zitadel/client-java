@@ -30,21 +30,17 @@ import javax.annotation.Nullable;
 })
 public class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest {
 
-  /**
-   * The device authorization id returned when submitting the user code.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The device authorization id returned when submitting the user code. */
   @JsonProperty("deviceAuthorizationId")
   @Nullable
   public String deviceAuthorizationId;
 
-  /** Example: {@code null} */
+  /** The {@code deny} property. */
   @JsonProperty("deny")
   @Nullable
   public Object deny;
 
-  /** Example: {@code null} */
+  /** The {@code session} property. */
   @JsonProperty("session")
   @Nullable
   public OIDCServiceSession session;

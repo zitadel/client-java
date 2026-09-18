@@ -166,6 +166,30 @@ class DefaultApiClientUnitTest {
             os.write(body);
           }
         });
+    server.createContext(
+        "/utf16-no-bom",
+        exchange -> {
+          // RFC 2781: a UTF-16 body with NO byte-order mark defaults to
+          // big-endian. "Pet" as BOM-less UTF-16BE is 00 50 00 65 00 74.
+          byte[] body = new byte[] {0x00, 0x50, 0x00, 0x65, 0x00, 0x74};
+          exchange.getResponseHeaders().add("Content-Type", "text/plain; charset=utf-16");
+          exchange.sendResponseHeaders(200, body.length);
+          try (OutputStream os = exchange.getResponseBody()) {
+            os.write(body);
+          }
+        });
+    server.createContext(
+        "/content-encoding-lie",
+        exchange -> {
+          // Gap AL: the server claims gzip but sends plain (non-gzip) bytes.
+          byte[] body = "this is not gzip".getBytes(StandardCharsets.UTF_8);
+          exchange.getResponseHeaders().add("Content-Encoding", "gzip");
+          exchange.getResponseHeaders().add("Content-Type", "text/plain");
+          exchange.sendResponseHeaders(200, body.length);
+          try (OutputStream os = exchange.getResponseBody()) {
+            os.write(body);
+          }
+        });
     server.start();
     baseUrl = "http://localhost:" + server.getAddress().getPort();
   }
@@ -618,6 +642,48 @@ class DefaultApiClientUnitTest {
   }
 
   @Test
+  void multipartRawBytesPartReusesFieldNameAsFilenameWithOctetStream() throws Exception {
+    String part = renderMultipartPart("file", new byte[] {0x00, 0x01, 0x02});
+    assertTrue(
+        part.contains("name=\"file\""),
+        "byte[] part must carry Content-Disposition name=\"file\", got: " + part);
+    assertTrue(
+        part.contains("filename=\"file\""),
+        "byte[] part with no explicit filename must reuse the field name as filename=\"file\", got: "
+            + part);
+    assertTrue(
+        part.contains("Content-Type: application/octet-stream"),
+        "byte[] part named \"file\" (no extension) must emit Content-Type: application/octet-stream, got: "
+            + part);
+  }
+
+  @Test
+  void multipartModelPartUsesWirePropertyNamesAndDateTimeFormat() throws Exception {
+    com.zitadel.model.PhotoMetadata metadata = new com.zitadel.model.PhotoMetadata();
+    metadata.isPrimary = true;
+    metadata.takenAt = java.time.OffsetDateTime.parse("2020-01-02T03:04:05.123Z");
+
+    String part = renderMultipartPart("metadata", metadata);
+
+    assertTrue(
+        part.contains("Content-Type: application/json"),
+        "model multipart part must declare Content-Type: application/json, got: " + part);
+    assertTrue(
+        part.contains("\"isPrimary\":true"),
+        "model part must use the wire property name isPrimary, got: " + part);
+    assertFalse(
+        part.contains("is_primary"),
+        "model part must NOT snake_case the wire name to is_primary, got: " + part);
+    assertTrue(
+        part.contains("\"takenAt\":\"2020-01-02T03:04:05.123Z\""),
+        "model part must use the wire name takenAt with the ISO-8601 date-time string, got: "
+            + part);
+    assertFalse(
+        part.contains("taken_at"),
+        "model part must NOT snake_case the wire name to taken_at, got: " + part);
+  }
+
+  @Test
   void multipartNonAsciiFieldNamePreservedAsUtf8() throws Exception {
     String fieldName = "imágé";
     String part = renderMultipartPart(fieldName, "value");
@@ -721,6 +787,42 @@ class DefaultApiClientUnitTest {
     ApiHttpResponse response =
         client.sendRequest("GET", baseUrl + "/unknown-charset", Map.of(), null);
     assertEquals("héllo", response.body());
+  }
+
+  @Test
+  void decodesBomlessUtf16AsBigEndian() throws Exception {
+    DefaultApiClient client = new DefaultApiClient();
+    ApiHttpResponse response = client.sendRequest("GET", baseUrl + "/utf16-no-bom", Map.of(), null);
+    assertEquals(200, response.statusCode());
+    assertEquals(
+        "Pet", response.body(), "a BOM-less utf-16 body must decode as big-endian per RFC 2781");
+    // Prove the choice: the same bytes read little-endian are NOT "Pet".
+    byte[] sameBytes = new byte[] {0x00, 0x50, 0x00, 0x65, 0x00, 0x74};
+    assertNotEquals(
+        "Pet",
+        new String(sameBytes, java.nio.charset.StandardCharsets.UTF_16LE),
+        "little-endian interpretation of the same bytes must NOT equal \"Pet\"");
+  }
+
+  @Test
+  void contentEncodingLieSurfacesApiException() {
+    // Gap AL: a response that advertises `Content-Encoding: gzip` but carries
+    // non-gzip plain bytes must surface a typed ApiException — never crash
+    // unconditionally and never silently hand back corrupted/garbage bytes.
+    // GZIPInputStream rejects the non-gzip magic with a ZipException
+    // (an IOException), which sendRequest wraps as an ApiException. (dart
+    // crashed; csharp/kotlin/node/swift/elixir passed corrupt bytes through;
+    // Java already wraps -> this guard is green here.)
+    DefaultApiClient client = new DefaultApiClient();
+    ApiException ex =
+        assertThrows(
+            ApiException.class,
+            () -> client.sendRequest("GET", baseUrl + "/content-encoding-lie", Map.of(), null));
+    assertNotNull(
+        ex.getCause(), "the underlying decompression failure must be preserved as the cause");
+    assertTrue(
+        ex.getCause() instanceof java.io.IOException,
+        "cause should be the decompression IOException, was: " + ex.getCause());
   }
 
   @Test

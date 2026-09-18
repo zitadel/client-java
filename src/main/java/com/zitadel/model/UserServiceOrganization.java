@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceOrganization {
 
-  /** Example: {@code null} */
+  /** The {@code orgDomain} property. */
   @JsonProperty("orgDomain")
   @Nullable
   public String orgDomain;
 
-  /** Example: {@code null} */
+  /** The {@code orgId} property. */
   @JsonProperty("orgId")
   @Nullable
   public String orgId;

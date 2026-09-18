@@ -32,21 +32,17 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceAdmin {
 
-  /**
-   * specify Org Member Roles for the provided user (default is ORG_OWNER if roles are empty)
-   *
-   * <p>Example: {@code null}
-   */
+  /** specify Org Member Roles for the provided user (default is ORG_OWNER if roles are empty) */
   @JsonProperty("roles")
   @Nullable
   public List<String> roles = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code human} property. */
   @JsonProperty("human")
   @Nullable
   public OrganizationServiceAddHumanUserRequest human;
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;

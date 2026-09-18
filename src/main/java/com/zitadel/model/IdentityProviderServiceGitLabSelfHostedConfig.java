@@ -32,25 +32,17 @@ import javax.annotation.Nullable;
 })
 public class IdentityProviderServiceGitLabSelfHostedConfig {
 
-  /** Example: {@code null} */
+  /** The {@code issuer} property. */
   @JsonProperty("issuer")
   @Nullable
   public String issuer;
 
-  /**
-   * Client id of the GitLab application.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Client id of the GitLab application. */
   @JsonProperty("clientId")
   @Nullable
   public String clientId;
 
-  /**
-   * The scopes requested by ZITADEL during the request to GitLab.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The scopes requested by ZITADEL during the request to GitLab. */
   @JsonProperty("scopes")
   @Nullable
   public List<String> scopes = new ArrayList<>();

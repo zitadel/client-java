@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
 })
 public class UserServiceListAuthenticationFactorsResponse {
 
-  /** Example: {@code null} */
+  /** The {@code result} property. */
   @JsonProperty("result")
   @Nullable
   public List<UserServiceAuthFactor> result = new ArrayList<>();

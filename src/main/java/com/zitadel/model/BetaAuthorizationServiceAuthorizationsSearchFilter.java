@@ -30,62 +30,62 @@ import javax.annotation.Nullable;
 })
 public class BetaAuthorizationServiceAuthorizationsSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code authorizationIds} property. */
   @JsonProperty("authorizationIds")
   @Nullable
   public BetaAuthorizationServiceInIDsFilter authorizationIds;
 
-  /** Example: {@code null} */
+  /** The {@code inUserIds} property. */
   @JsonProperty("inUserIds")
   @Nullable
   public BetaAuthorizationServiceInIDsFilter inUserIds;
 
-  /** Example: {@code null} */
+  /** The {@code organizationId} property. */
   @JsonProperty("organizationId")
   @Nullable
   public BetaAuthorizationServiceIDFilter organizationId;
 
-  /** Example: {@code null} */
+  /** The {@code projectGrantId} property. */
   @JsonProperty("projectGrantId")
   @Nullable
   public BetaAuthorizationServiceIDFilter projectGrantId;
 
-  /** Example: {@code null} */
+  /** The {@code projectId} property. */
   @JsonProperty("projectId")
   @Nullable
   public BetaAuthorizationServiceIDFilter projectId;
 
-  /** Example: {@code null} */
+  /** The {@code projectName} property. */
   @JsonProperty("projectName")
   @Nullable
   public BetaAuthorizationServiceProjectNameQuery projectName;
 
-  /** Example: {@code null} */
+  /** The {@code roleKey} property. */
   @JsonProperty("roleKey")
   @Nullable
   public BetaAuthorizationServiceRoleKeyQuery roleKey;
 
-  /** Example: {@code null} */
+  /** The {@code state} property. */
   @JsonProperty("state")
   @Nullable
   public BetaAuthorizationServiceStateQuery state;
 
-  /** Example: {@code null} */
+  /** The {@code userDisplayName} property. */
   @JsonProperty("userDisplayName")
   @Nullable
   public BetaAuthorizationServiceUserDisplayNameQuery userDisplayName;
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public BetaAuthorizationServiceIDFilter userId;
 
-  /** Example: {@code null} */
+  /** The {@code userOrganizationId} property. */
   @JsonProperty("userOrganizationId")
   @Nullable
   public BetaAuthorizationServiceIDFilter userOrganizationId;
 
-  /** Example: {@code null} */
+  /** The {@code userPreferredLoginName} property. */
   @JsonProperty("userPreferredLoginName")
   @Nullable
   public BetaAuthorizationServiceUserPreferredLoginNameQuery userPreferredLoginName;

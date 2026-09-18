@@ -33,8 +33,6 @@ public class ApplicationServiceSAMLConfiguration {
   /**
    * The Metadata XML is the provided or fetched metadata stored at Zitadel. If either the metadata
    * was provided as XML or when Zitadel fetched it at the provided URL, it is stored here.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("metadataXml")
   @Nullable
@@ -43,14 +41,12 @@ public class ApplicationServiceSAMLConfiguration {
   /**
    * The Metadata URL is the URL where the metadata was fetched from. In case the metadata was
    * provided as raw XML, this field is empty.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("metadataUrl")
   @Nullable
   public String metadataUrl;
 
-  /** Example: {@code null} */
+  /** The {@code loginVersion} property. */
   @JsonProperty("loginVersion")
   @Nullable
   public ApplicationServiceLoginVersion loginVersion;

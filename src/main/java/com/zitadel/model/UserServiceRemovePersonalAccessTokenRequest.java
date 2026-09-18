@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceRemovePersonalAccessTokenRequest {
 
-  /**
-   * The users resource ID.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The users resource ID. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /**
-   * The tokens ID.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The tokens ID. */
   @JsonProperty("tokenId")
   @Nullable
   public String tokenId;

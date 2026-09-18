@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaWebKeyServiceDeleteWebKeyRequest {
 
-  /** Example: {@code null} */
+  /** The {@code id} property. */
   @JsonProperty("id")
   @Nullable
   public String id;

@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class SettingsServiceGetLoginSettingsRequest {
 
-  /** Example: {@code null} */
+  /** The {@code ctx} property. */
   @JsonProperty("ctx")
   @Nullable
   public SettingsServiceRequestContext ctx;

@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceRedirectURLs {
 
-  /** Example: {@code null} */
+  /** The {@code successUrl} property. */
   @JsonProperty("successUrl")
   @Nullable
   public String successUrl;
 
-  /** Example: {@code null} */
+  /** The {@code failureUrl} property. */
   @JsonProperty("failureUrl")
   @Nullable
   public String failureUrl;

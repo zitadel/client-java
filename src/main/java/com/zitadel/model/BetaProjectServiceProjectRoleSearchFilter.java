@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaProjectServiceProjectRoleSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code displayNameFilter} property. */
   @JsonProperty("displayNameFilter")
   @Nullable
   public BetaProjectServiceProjectRoleDisplayNameFilter displayNameFilter;
 
-  /** Example: {@code null} */
+  /** The {@code roleKeyFilter} property. */
   @JsonProperty("roleKeyFilter")
   @Nullable
   public BetaProjectServiceProjectRoleKeyFilter roleKeyFilter;

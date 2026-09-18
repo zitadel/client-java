@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServicePassword {
 
-  /** Example: {@code null} */
+  /** The {@code password} property. */
   @JsonProperty("password")
   @Nullable
   public String password;
 
-  /** Example: {@code null} */
+  /** The {@code changeRequired} property. */
   @JsonProperty("changeRequired")
   @Nullable
   public Boolean changeRequired;

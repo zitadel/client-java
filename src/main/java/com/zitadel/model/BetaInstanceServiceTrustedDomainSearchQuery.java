@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaInstanceServiceTrustedDomainSearchQuery {
 
-  /** Example: {@code null} */
+  /** The {@code domainQuery} property. */
   @JsonProperty("domainQuery")
   @Nullable
   public BetaInstanceServiceDomainQuery domainQuery;

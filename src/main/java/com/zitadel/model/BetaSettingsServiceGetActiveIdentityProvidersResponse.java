@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaSettingsServiceGetActiveIdentityProvidersResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public BetaSettingsServiceListDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code identityProviders} property. */
   @JsonProperty("identityProviders")
   @Nullable
   public List<BetaSettingsServiceIdentityProvider> identityProviders = new ArrayList<>();

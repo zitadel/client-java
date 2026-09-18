@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaFeatureServiceFeatureFlag {
 
-  /** Example: {@code null} */
+  /** The {@code enabled} property. */
   @JsonProperty("enabled")
   @Nullable
   public Boolean enabled;
 
-  /** Example: {@code null} */
+  /** The {@code source} property. */
   @JsonProperty("source")
   @Nullable
   public BetaFeatureServiceSource source;

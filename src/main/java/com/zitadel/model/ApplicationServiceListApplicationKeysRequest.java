@@ -32,20 +32,18 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceListApplicationKeysRequest {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public ApplicationServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public ApplicationServiceApplicationKeysSorting sortingColumn;
 
   /**
    * Criteria to filter the application keys. All provided filters are combined with a logical AND.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("filters")
   @Nullable

@@ -32,25 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceListOrganizationDomainsRequest {
 
-  /**
-   * Organization Id for the Organization which domains are to be listed.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization Id for the Organization which domains are to be listed. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaOrganizationServicePaginationRequest pagination;
 
-  /**
-   * Define the criteria to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Define the criteria to query for. */
   @JsonProperty("filters")
   @Nullable
   public List<BetaOrganizationServiceDomainSearchFilter> filters = new ArrayList<>();

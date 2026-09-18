@@ -60,6 +60,40 @@ public abstract class BaseApi {
   /** Default authenticator used when no per-operation auth is provided. */
   @Nullable protected final Authenticator authenticator;
 
+  /**
+   * Sentinel authenticator that marks an operation as explicitly unauthenticated.
+   *
+   * <p>An operation declared with {@code security: []} in the spec opts out of all authentication.
+   * Its generated method passes this sentinel as the {@code auth} argument so that {@link
+   * #invokeApiForResult} can distinguish three states that a plain {@code null} could not:
+   *
+   * <ul>
+   *   <li>{@code auth == NO_AUTH} — the operation is unauthenticated; the client-level
+   *       authenticator must NOT be applied (no credential leak);
+   *   <li>{@code auth == null} — a secured operation with no per-call override; fall back to the
+   *       client-level authenticator (unchanged behaviour);
+   *   <li>{@code auth} is any other instance — a per-call override; use it (unchanged behaviour).
+   * </ul>
+   *
+   * <p>This is a private, identity-comparable singleton; it returns empty header/query/cookie maps
+   * so that even if it were ever applied it would attach nothing. Callers never see it — generated
+   * subclasses reference it by its inherited {@code protected} name, and it is never exposed in any
+   * public signature.
+   */
+  protected static final Authenticator NO_AUTH =
+      new Authenticator() {
+
+        @Override
+        public String getHost() {
+          return "";
+        }
+
+        @Override
+        public Map<String, String> getAuthHeaders() {
+          return Map.of();
+        }
+      };
+
   /** Create an API instance with the default configuration and default transport. */
   public BaseApi() {
     this(Configuration.getDefault());
@@ -136,7 +170,14 @@ public abstract class BaseApi {
       url = base + path;
     }
 
-    Authenticator effectiveAuth = (auth != null) ? auth : this.authenticator;
+    Authenticator effectiveAuth;
+    if (auth == NO_AUTH) {
+      effectiveAuth = null;
+    } else if (auth != null) {
+      effectiveAuth = auth;
+    } else {
+      effectiveAuth = this.authenticator;
+    }
     if (effectiveAuth != null) {
       for (Map.Entry<String, String> entry : effectiveAuth.getQueryParams().entrySet()) {
         queryParams.put(entry.getKey(), entry.getValue());
@@ -190,7 +231,20 @@ public abstract class BaseApi {
 
     Object requestBody = null;
     if (body != null) {
-      if (body instanceof byte[]
+      if (("application/octet-stream".equals(contentType) || contentType.startsWith("image/"))
+          && body instanceof Map<?, ?> binaryForm) {
+        /* The operation declares a binary content-type
+         * (application/octet-stream or image/*) alongside
+         * multipart/form-data, and the API layer always hands us a
+         * form-style Map keyed by the declared parts. When the caller
+         * selects the raw-binary content-type we must NOT wrap the
+         * payload in a multipart envelope: we extract the single binary
+         * part (InputStream / byte[] / File) and send its raw bytes so
+         * the wire Content-Type stays the selected binary type. Falling
+         * through to the generic Map branch below would let the
+         * transport see a Map and emit multipart/form-data instead. */
+        requestBody = extractBinaryPart(binaryForm);
+      } else if (body instanceof byte[]
           || contentType.startsWith("image/")
           || "application/octet-stream".equals(contentType)) {
         requestBody = body;
@@ -220,11 +274,17 @@ public abstract class BaseApi {
                 continue;
               }
               joiner.add(
-                  key + "=" + URLEncoder.encode(String.valueOf(element), StandardCharsets.UTF_8));
+                  key
+                      + "="
+                      + URLEncoder.encode(
+                          ObjectSerializer.toFormValue(element), StandardCharsets.UTF_8));
             }
           } else {
             joiner.add(
-                key + "=" + URLEncoder.encode(String.valueOf(value), StandardCharsets.UTF_8));
+                key
+                    + "="
+                    + URLEncoder.encode(
+                        ObjectSerializer.toFormValue(value), StandardCharsets.UTF_8));
           }
         }
         requestBody = joiner.toString();
@@ -264,6 +324,19 @@ public abstract class BaseApi {
         byte[] rawBytes;
         if (!isTextResponseContentType(responseContentType)) {
           rawBytes = java.util.Base64.getDecoder().decode(response.body());
+        } else if (returnType == byte[].class && headerSelector.isJsonMime(responseContentType)) {
+          /* A top-level `format: byte` value carried as application/json
+           * arrives as a JSON string literal (e.g. "dGVzdA==", quotes
+           * included). The transport leaves JSON bodies as a decoded
+           * string, so we must JSON-parse the literal first and then
+           * base64-decode the inner string to recover the raw bytes —
+           * returning neither the quoted literal's UTF-8 bytes nor the
+           * still-encoded base64 string. */
+          String inner =
+              objectSerializer.deserialize(
+                  response.body(),
+                  new com.fasterxml.jackson.core.type.TypeReference<String>() {}.getType());
+          rawBytes = java.util.Base64.getDecoder().decode(inner);
         } else {
           rawBytes = response.body().getBytes(StandardCharsets.UTF_8);
         }
@@ -294,6 +367,32 @@ public abstract class BaseApi {
         data,
         response.body(),
         response.headers() != null ? response.headers() : Map.of());
+  }
+
+  /**
+   * Extract the single binary payload from a form-style body Map when a raw-binary content-type
+   * (application/octet-stream or image/*) was selected for an operation that also declares
+   * multipart/form-data.
+   *
+   * <p>The API layer always builds a form Map keyed by the operation's declared parts. For a
+   * raw-binary upload only the binary part travels on the wire — the auxiliary string parts
+   * (classification, notes, ...) belong to the multipart variant and are dropped. This returns the
+   * first binary-typed value ({@link InputStream}, {@code byte[]}, or {@link java.io.File}) so the
+   * transport sends its raw bytes under the selected Content-Type rather than a multipart envelope.
+   *
+   * @param formBody the form-style body Map
+   * @return the binary part suitable for raw transmission
+   * @throws ApiException if no binary part is present
+   */
+  private static Object extractBinaryPart(Map<?, ?> formBody) {
+    for (Object value : formBody.values()) {
+      if (value instanceof InputStream
+          || value instanceof byte[]
+          || value instanceof java.io.File) {
+        return value;
+      }
+    }
+    throw new ApiException("No binary payload found in request body for raw octet-stream upload");
   }
 
   /**
@@ -375,8 +474,12 @@ public abstract class BaseApi {
   /**
    * Returns true if the value is a valid RFC 6265 cookie name (token). Allowed chars: ALPHA / DIGIT
    * / "!#$%&'*+-.^_`|~".
+   *
+   * <p>Visible to generated API subclasses (different package) so that operation-level cookie
+   * parameters can be validated with the exact same RFC 6265 rule the auth-provided cookie path
+   * uses, rather than being interpolated into the Cookie header unchecked.
    */
-  private static boolean isValidCookieName(String name) {
+  protected static boolean isValidCookieName(String name) {
     if (name == null || name.isEmpty()) {
       return false;
     }
@@ -398,8 +501,13 @@ public abstract class BaseApi {
    * Returns true if the value is a valid RFC 6265 cookie value (cookie-octet*). Allowed: %x21 /
    * %x23-2B / %x2D-3A / %x3C-5B / %x5D-7E. Excludes whitespace, DQUOTE, comma, semicolon,
    * backslash, controls. Empty value is allowed.
+   *
+   * <p>Visible to generated API subclasses (different package) so that operation-level cookie
+   * parameters can be validated with the exact same RFC 6265 rule the auth-provided cookie path
+   * uses. This is what makes a CR/LF or control-char value fail closed instead of being smuggled
+   * into the Cookie request header (header injection).
    */
-  private static boolean isValidCookieValue(String value) {
+  protected static boolean isValidCookieValue(String value) {
     if (value == null) {
       return false;
     }
@@ -429,7 +537,11 @@ public abstract class BaseApi {
    */
   private static boolean isTextResponseContentType(String contentType) {
     if (contentType == null || contentType.isEmpty()) {
-      return true;
+      /* Mirror the transport: an absent/empty Content-Type is treated as
+       * binary (base64-encoded by the transport), so binary return-type
+       * handling base64-decodes it back to the exact bytes instead of
+       * lossily re-deriving them from a UTF-8 String. */
+      return false;
     }
     int semi = contentType.indexOf(';');
     String mediaType =
@@ -437,7 +549,7 @@ public abstract class BaseApi {
             .trim()
             .toLowerCase(java.util.Locale.ROOT);
     if (mediaType.isEmpty()) {
-      return true;
+      return false;
     }
     if (mediaType.startsWith("text/")) {
       return true;

@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceAddIDPLinkRequest {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code idpLink} property. */
   @JsonProperty("idpLink")
   @Nullable
   public UserServiceIDPLink idpLink;

@@ -30,21 +30,17 @@ import javax.annotation.Nullable;
 })
 public class OIDCServiceCreateCallbackRequest {
 
-  /**
-   * The ID of the Auth Request to finalize.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The ID of the Auth Request to finalize. */
   @JsonProperty("authRequestId")
   @Nullable
   public String authRequestId;
 
-  /** Example: {@code null} */
+  /** The {@code error} property. */
   @JsonProperty("error")
   @Nullable
   public OIDCServiceAuthorizationError error;
 
-  /** Example: {@code null} */
+  /** The {@code session} property. */
   @JsonProperty("session")
   @Nullable
   public OIDCServiceSession session;

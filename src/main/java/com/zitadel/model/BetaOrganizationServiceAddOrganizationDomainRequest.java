@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceAddOrganizationDomainRequest {
 
-  /**
-   * Organization Id for the Organization for which the domain is to be added to.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization Id for the Organization for which the domain is to be added to. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * The domain you want to add to the organization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The domain you want to add to the organization. */
   @JsonProperty("domain")
   @Nullable
   public String domain;

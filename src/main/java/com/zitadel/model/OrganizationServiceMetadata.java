@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceMetadata {
 
-  /**
-   * Key is identifier of the metadata entry.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Key is identifier of the metadata entry. */
   @JsonProperty("key")
   @Nullable
   public String key;
 
-  /**
-   * Value is the values of the metadata entry.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Value is the values of the metadata entry. */
   @JsonProperty("value")
   @Nullable
   public byte[] value;

@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class AuthorizationServiceOrganization {
 
-  /**
-   * ID is the unique identifier of the organization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID is the unique identifier of the organization. */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /**
-   * Name is the name of the organization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Name is the name of the organization. */
   @JsonProperty("name")
   @Nullable
   public String name;

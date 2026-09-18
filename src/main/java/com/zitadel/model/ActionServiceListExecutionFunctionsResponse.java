@@ -32,11 +32,7 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceListExecutionFunctionsResponse {
 
-  /**
-   * All available functions to use in conditions.
-   *
-   * <p>Example: {@code null}
-   */
+  /** All available functions to use in conditions. */
   @JsonProperty("functions")
   @Nullable
   public List<String> functions = new ArrayList<>();

@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class AuthorizationServiceActivateAuthorizationRequest {
 
-  /**
-   * ID is the unique identifier of the authorization that should be activated.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID is the unique identifier of the authorization that should be activated. */
   @JsonProperty("id")
   @Nullable
   public String id;

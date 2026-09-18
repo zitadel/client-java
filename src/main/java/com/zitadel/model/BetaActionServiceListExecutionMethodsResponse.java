@@ -32,11 +32,7 @@ import javax.annotation.Nullable;
 })
 public class BetaActionServiceListExecutionMethodsResponse {
 
-  /**
-   * All available methods
-   *
-   * <p>Example: {@code null}
-   */
+  /** All available methods */
   @JsonProperty("methods")
   @Nullable
   public List<String> methods = new ArrayList<>();

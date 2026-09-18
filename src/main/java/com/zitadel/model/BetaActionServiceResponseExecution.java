@@ -30,29 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaActionServiceResponseExecution {
 
-  /**
-   * All calls to any available services and methods as condition.
-   *
-   * <p>Example: {@code null}
-   */
+  /** All calls to any available services and methods as condition. */
   @JsonProperty("all")
   @Nullable
   public Boolean all;
 
-  /**
-   * GRPC-method as condition.
-   *
-   * <p>Example: {@code null}
-   */
+  /** GRPC-method as condition. */
   @JsonProperty("method")
   @Nullable
   public String method;
 
-  /**
-   * GRPC-service as condition.
-   *
-   * <p>Example: {@code null}
-   */
+  /** GRPC-service as condition. */
   @JsonProperty("service")
   @Nullable
   public String service;

@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class InternalPermissionServicePaginationResponse {
 
-  /**
-   * Absolute number of objects matching the query, regardless of applied limit.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Absolute number of objects matching the query, regardless of applied limit. */
   @JsonProperty("totalResult")
   @Nullable
   public Object totalResult;
@@ -42,8 +38,6 @@ public class InternalPermissionServicePaginationResponse {
   /**
    * Applied limit from query, defines maximum amount of objects per request, to compare if all
    * objects are returned.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("appliedLimit")
   @Nullable

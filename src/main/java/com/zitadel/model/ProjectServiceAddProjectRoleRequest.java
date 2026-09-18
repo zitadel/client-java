@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceAddProjectRoleRequest {
 
-  /**
-   * ProjectID is the unique identifier of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectID is the unique identifier of the project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
@@ -42,18 +38,12 @@ public class ProjectServiceAddProjectRoleRequest {
   /**
    * RoleKey identifies the role. It's the only relevant attribute for ZITADEL and will be used for
    * authorization checks and as claim in tokens and user info responses.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("roleKey")
   @Nullable
   public String roleKey;
 
-  /**
-   * DisplayName is a human readable name for the role, which might be displayed to users.
-   *
-   * <p>Example: {@code null}
-   */
+  /** DisplayName is a human readable name for the role, which might be displayed to users. */
   @JsonProperty("displayName")
   @Nullable
   public String displayName;
@@ -62,8 +52,6 @@ public class ProjectServiceAddProjectRoleRequest {
    * Group allows grouping roles for display purposes. Zitadel will not handle it in any way. It can
    * be used to group roles in a UI to allow easier management for administrators. This attribute is
    * not to be confused with groups as a collection of users.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("group")
   @Nullable

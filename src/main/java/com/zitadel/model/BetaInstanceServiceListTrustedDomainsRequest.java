@@ -32,26 +32,22 @@ import javax.annotation.Nullable;
 })
 public class BetaInstanceServiceListTrustedDomainsRequest {
 
-  /** Example: {@code null} */
+  /** The {@code instanceId} property. */
   @JsonProperty("instanceId")
   @Nullable
   public String instanceId;
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaInstanceServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public BetaInstanceServiceTrustedDomainFieldName sortingColumn;
 
-  /**
-   * Criterias the client is looking for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Criterias the client is looking for. */
   @JsonProperty("queries")
   @Nullable
   public List<BetaInstanceServiceTrustedDomainSearchQuery> queries = new ArrayList<>();

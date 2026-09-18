@@ -32,11 +32,7 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceCreateProjectGrantRequest {
 
-  /**
-   * ProjectID is the unique identifier of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectID is the unique identifier of the project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
@@ -44,8 +40,6 @@ public class ProjectServiceCreateProjectGrantRequest {
   /**
    * GrantedOrganizationID is the unique identifier of the organization the project will be granted
    * to.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("grantedOrganizationId")
   @Nullable
@@ -54,8 +48,6 @@ public class ProjectServiceCreateProjectGrantRequest {
   /**
    * RoleKeys is a list of roles to be granted to the organization for self management. The roles
    * are identified by their keys.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("roleKeys")
   @Nullable

@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceVerifyOrganizationDomainRequest {
 
-  /**
-   * Organization Id for the Organization doman to be verified.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization Id for the Organization doman to be verified. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * Organization Id for the Organization doman to be verified.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization Id for the Organization doman to be verified. */
   @JsonProperty("domain")
   @Nullable
   public String domain;

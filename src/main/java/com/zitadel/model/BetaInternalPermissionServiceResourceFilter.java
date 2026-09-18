@@ -30,38 +30,22 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceResourceFilter {
 
-  /**
-   * Search for administrators granted on the instance level.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Search for administrators granted on the instance level. */
   @JsonProperty("instance")
   @Nullable
   public Boolean instance;
 
-  /**
-   * Search for administrators granted on a specific organization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Search for administrators granted on a specific organization. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * Search for administrators granted on a specific project grant.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Search for administrators granted on a specific project grant. */
   @JsonProperty("projectGrantId")
   @Nullable
   public String projectGrantId;
 
-  /**
-   * Search for administrators granted on a specific project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Search for administrators granted on a specific project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;

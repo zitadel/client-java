@@ -32,20 +32,12 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceSetOrganizationMetadataRequest {
 
-  /**
-   * Organization ID is the unique identifier of the organization whose metadata is to be set.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization ID is the unique identifier of the organization whose metadata is to be set. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * Metadata is a list of metadata entries to set.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Metadata is a list of metadata entries to set. */
   @JsonProperty("metadata")
   @Nullable
   public List<OrganizationServiceMetadata> metadata = new ArrayList<>();

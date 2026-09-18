@@ -33,8 +33,6 @@ public class BetaSettingsServicePasswordExpirySettings {
   /**
    * Amount of days after which a password will expire. The user will be forced to change the
    * password on the following authentication.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("maxAgeDays")
   @Nullable
@@ -43,14 +41,12 @@ public class BetaSettingsServicePasswordExpirySettings {
   /**
    * Amount of days after which the user should be notified of the upcoming expiry. ZITADEL will not
    * notify the user.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("expireWarnDays")
   @Nullable
   public Object expireWarnDays;
 
-  /** Example: {@code null} */
+  /** The {@code resourceOwnerType} property. */
   @JsonProperty("resourceOwnerType")
   @Nullable
   public BetaSettingsServiceResourceOwnerType resourceOwnerType;

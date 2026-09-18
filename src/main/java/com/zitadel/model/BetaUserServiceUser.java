@@ -32,42 +32,42 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceUser {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public BetaUserServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code state} property. */
   @JsonProperty("state")
   @Nullable
   public BetaUserServiceUserState state;
 
-  /** Example: {@code null} */
+  /** The {@code username} property. */
   @JsonProperty("username")
   @Nullable
   public String username;
 
-  /** Example: {@code null} */
+  /** The {@code loginNames} property. */
   @JsonProperty("loginNames")
   @Nullable
   public List<String> loginNames = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code preferredLoginName} property. */
   @JsonProperty("preferredLoginName")
   @Nullable
   public String preferredLoginName;
 
-  /** Example: {@code null} */
+  /** The {@code human} property. */
   @JsonProperty("human")
   @Nullable
   public BetaUserServiceHumanUser human;
 
-  /** Example: {@code null} */
+  /** The {@code machine} property. */
   @JsonProperty("machine")
   @Nullable
   public BetaUserServiceMachineUser machine;

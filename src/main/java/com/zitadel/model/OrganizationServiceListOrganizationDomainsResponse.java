@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceListOrganizationDomainsResponse {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public OrganizationServicePaginationResponse pagination;
@@ -40,8 +40,6 @@ public class OrganizationServiceListOrganizationDomainsResponse {
   /**
    * Domains is a list of fully qualified domain names registered to the organization matching the
    * query.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("domains")
   @Nullable

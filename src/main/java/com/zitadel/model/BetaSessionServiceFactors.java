@@ -30,37 +30,37 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceFactors {
 
-  /** Example: {@code null} */
+  /** The {@code user} property. */
   @JsonProperty("user")
   @Nullable
   public BetaSessionServiceUserFactor user;
 
-  /** Example: {@code null} */
+  /** The {@code password} property. */
   @JsonProperty("password")
   @Nullable
   public BetaSessionServicePasswordFactor password;
 
-  /** Example: {@code null} */
+  /** The {@code webAuthN} property. */
   @JsonProperty("webAuthN")
   @Nullable
   public BetaSessionServiceWebAuthNFactor webAuthN;
 
-  /** Example: {@code null} */
+  /** The {@code intent} property. */
   @JsonProperty("intent")
   @Nullable
   public BetaSessionServiceIntentFactor intent;
 
-  /** Example: {@code null} */
+  /** The {@code totp} property. */
   @JsonProperty("totp")
   @Nullable
   public BetaSessionServiceTOTPFactor totp;
 
-  /** Example: {@code null} */
+  /** The {@code otpSms} property. */
   @JsonProperty("otpSms")
   @Nullable
   public BetaSessionServiceOTPFactor otpSms;
 
-  /** Example: {@code null} */
+  /** The {@code otpEmail} property. */
   @JsonProperty("otpEmail")
   @Nullable
   public BetaSessionServiceOTPFactor otpEmail;

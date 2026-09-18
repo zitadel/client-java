@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceDeleteTargetRequest {
 
-  /**
-   * The unique identifier of the target to delete.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique identifier of the target to delete. */
   @JsonProperty("id")
   @Nullable
   public String id;

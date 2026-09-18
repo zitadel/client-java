@@ -36,14 +36,12 @@ public class ApplicationServiceListApplicationsResponse {
    * The list of applications matching the query. Depending on the applied limit, there might be
    * more applications available than included in this list. Use the returned pagination information
    * to request further applications.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("applications")
   @Nullable
   public List<ApplicationServiceApplication> applications = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public ApplicationServicePaginationResponse pagination;

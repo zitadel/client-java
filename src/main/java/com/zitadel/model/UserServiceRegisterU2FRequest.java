@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceRegisterU2FRequest {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code domain} property. */
   @JsonProperty("domain")
   @Nullable
   public String domain;

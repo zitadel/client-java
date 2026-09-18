@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceListProjectRolesResponse {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public ProjectServicePaginationResponse pagination;
 
-  /**
-   * ProjectRoles is a list of roles matching the query.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectRoles is a list of roles matching the query. */
   @JsonProperty("projectRoles")
   @Nullable
   public List<ProjectServiceProjectRole> projectRoles = new ArrayList<>();

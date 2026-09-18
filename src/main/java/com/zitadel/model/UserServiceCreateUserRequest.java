@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class UserServiceCreateUserRequest {
 
-  /**
-   * The unique identifier of the organization the user belongs to.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique identifier of the organization the user belongs to. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
@@ -44,8 +40,6 @@ public class UserServiceCreateUserRequest {
    * generated. You can set your own user id that is unique within the instance. This is useful in
    * migration scenarios, for example if the user already has an ID in another Zitadel system. If
    * not specified, it will be generated. It can't be changed after creation.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("userId")
   @Nullable
@@ -55,19 +49,17 @@ public class UserServiceCreateUserRequest {
    * The username is a unique identifier for the user in the organization. If not specified, Zitadel
    * sets the username to the email for users of type human and to the user_id for users of type
    * machine. It is used to identify the user in the organization and can be used for login.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("username")
   @Nullable
   public String username;
 
-  /** Example: {@code null} */
+  /** The {@code human} property. */
   @JsonProperty("human")
   @Nullable
   public UserServiceHuman human;
 
-  /** Example: {@code null} */
+  /** The {@code machine} property. */
   @JsonProperty("machine")
   @Nullable
   public UserServiceMachine machine;

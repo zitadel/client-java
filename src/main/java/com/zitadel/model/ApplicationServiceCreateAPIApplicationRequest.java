@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceCreateAPIApplicationRequest {
 
-  /** Example: {@code null} */
+  /** The {@code authMethodType} property. */
   @JsonProperty("authMethodType")
   @Nullable
   public ApplicationServiceAPIAuthMethodType authMethodType;

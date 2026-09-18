@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaFeatureServiceSetInstanceFeaturesResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public BetaFeatureServiceDetails details;

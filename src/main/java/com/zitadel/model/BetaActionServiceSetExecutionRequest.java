@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaActionServiceSetExecutionRequest {
 
-  /** Example: {@code null} */
+  /** The {@code condition} property. */
   @JsonProperty("condition")
   @Nullable
   public BetaActionServiceCondition condition;
 
-  /**
-   * Ordered list of targets called during the execution.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Ordered list of targets called during the execution. */
   @JsonProperty("targets")
   @Nullable
   public List<String> targets = new ArrayList<>();

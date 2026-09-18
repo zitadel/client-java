@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceOrgDomainFilter {
 
-  /**
-   * The domain.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The domain. */
   @JsonProperty("domain")
   @Nullable
   public String domain;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public BetaOrganizationServiceTextQueryMethod method;

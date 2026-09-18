@@ -30,36 +30,32 @@ import javax.annotation.Nullable;
 })
 public class IdentityProviderServiceIDP {
 
-  /**
-   * Unique identifier for the identity provider.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Unique identifier for the identity provider. */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public IdentityProviderServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code state} property. */
   @JsonProperty("state")
   @Nullable
   public IdentityProviderServiceIDPState state;
 
-  /** Example: {@code null} */
+  /** The {@code name} property. */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /** Example: {@code null} */
+  /** The {@code type} property. */
   @JsonProperty("type")
   @Nullable
   public IdentityProviderServiceIDPType type;
 
-  /** Example: {@code null} */
+  /** The {@code config} property. */
   @JsonProperty("config")
   @Nullable
   public IdentityProviderServiceIDPConfig config;

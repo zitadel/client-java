@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceCheckPassword {
 
-  /** Example: {@code null} */
+  /** The {@code password} property. */
   @JsonProperty("password")
   @Nullable
   public String password;

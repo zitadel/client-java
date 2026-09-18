@@ -32,29 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceCreateOrganizationRequest {
 
-  /**
-   * name of the Organization to be created.
-   *
-   * <p>Example: {@code null}
-   */
+  /** name of the Organization to be created. */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /**
-   * Optionally set your own id unique for the organization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Optionally set your own id unique for the organization. */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /**
-   * Additional Admins for the Organization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Additional Admins for the Organization. */
   @JsonProperty("admins")
   @Nullable
   public List<BetaOrganizationServiceAdmin> admins = new ArrayList<>();

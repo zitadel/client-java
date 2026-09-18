@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceListSessionsResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public BetaSessionServiceListDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code sessions} property. */
   @JsonProperty("sessions")
   @Nullable
   public List<BetaSessionServiceSession> sessions = new ArrayList<>();

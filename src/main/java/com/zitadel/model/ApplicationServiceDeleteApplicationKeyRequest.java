@@ -30,29 +30,17 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceDeleteApplicationKeyRequest {
 
-  /**
-   * The unique ID of the application key to be deleted.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique ID of the application key to be deleted. */
   @JsonProperty("keyId")
   @Nullable
   public String keyId;
 
-  /**
-   * The ID of the application the key belongs to.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The ID of the application the key belongs to. */
   @JsonProperty("applicationId")
   @Nullable
   public String applicationId;
 
-  /**
-   * The ID of the project the application belongs to.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The ID of the project the application belongs to. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;

@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceMetadataKeyQuery {
 
-  /** Example: {@code null} */
+  /** The {@code key} property. */
   @JsonProperty("key")
   @Nullable
   public String key;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public BetaOrganizationServiceTextQueryMethod method;

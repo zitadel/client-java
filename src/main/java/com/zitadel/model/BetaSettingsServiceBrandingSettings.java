@@ -30,42 +30,40 @@ import javax.annotation.Nullable;
 })
 public class BetaSettingsServiceBrandingSettings {
 
-  /** Example: {@code null} */
+  /** The {@code lightTheme} property. */
   @JsonProperty("lightTheme")
   @Nullable
   public BetaSettingsServiceTheme lightTheme;
 
-  /** Example: {@code null} */
+  /** The {@code darkTheme} property. */
   @JsonProperty("darkTheme")
   @Nullable
   public BetaSettingsServiceTheme darkTheme;
 
-  /** Example: {@code null} */
+  /** The {@code fontUrl} property. */
   @JsonProperty("fontUrl")
   @Nullable
   public String fontUrl;
 
   /**
    * hides the org suffix on the login form if the scope
-   * \\\"urn:zitadel:iam:org:domain:primary:{domainname}\\\" is set
-   *
-   * <p>Example: {@code null}
+   * \"urn:zitadel:iam:org:domain:primary:{domainname}\" is set
    */
   @JsonProperty("hideLoginNameSuffix")
   @Nullable
   public Boolean hideLoginNameSuffix;
 
-  /** Example: {@code null} */
+  /** The {@code disableWatermark} property. */
   @JsonProperty("disableWatermark")
   @Nullable
   public Boolean disableWatermark;
 
-  /** Example: {@code null} */
+  /** The {@code resourceOwnerType} property. */
   @JsonProperty("resourceOwnerType")
   @Nullable
   public BetaSettingsServiceResourceOwnerType resourceOwnerType;
 
-  /** Example: {@code null} */
+  /** The {@code themeMode} property. */
   @JsonProperty("themeMode")
   @Nullable
   public BetaSettingsServiceThemeMode themeMode;

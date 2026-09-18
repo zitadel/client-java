@@ -32,11 +32,7 @@ import javax.annotation.Nullable;
 })
 public class BetaActionServiceInTargetIDsFilter {
 
-  /**
-   * Defines the ids to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Defines the ids to query for. */
   @JsonProperty("targetIds")
   @Nullable
   public List<String> targetIds = new ArrayList<>();

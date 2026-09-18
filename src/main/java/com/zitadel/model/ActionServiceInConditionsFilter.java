@@ -32,11 +32,7 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceInConditionsFilter {
 
-  /**
-   * Defines the conditions to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Defines the conditions to query for. */
   @JsonProperty("conditions")
   @Nullable
   public List<ActionServiceCondition> conditions = new ArrayList<>();

@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class FeatureServiceGetUserFeaturesRequest {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code inheritance} property. */
   @JsonProperty("inheritance")
   @Nullable
   public Boolean inheritance;

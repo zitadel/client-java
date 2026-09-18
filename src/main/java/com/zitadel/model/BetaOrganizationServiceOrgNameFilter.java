@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceOrgNameFilter {
 
-  /**
-   * Organization name.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization name. */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public BetaOrganizationServiceTextQueryMethod method;

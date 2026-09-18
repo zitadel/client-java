@@ -32,25 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceListOrganizationMetadataRequest {
 
-  /**
-   * Organization ID of Orgalization which metadata is to be listed.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization ID of Orgalization which metadata is to be listed. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaOrganizationServicePaginationRequest pagination;
 
-  /**
-   * Define the criteria to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Define the criteria to query for. */
   @JsonProperty("filter")
   @Nullable
   public List<BetaOrganizationServiceMetadataQuery> filter = new ArrayList<>();

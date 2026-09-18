@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceProjectRoleKeyFilter {
 
-  /**
-   * The key of the project role to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The key of the project role to query for. */
   @JsonProperty("key")
   @Nullable
   public String key;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public ProjectServiceTextFilterMethod method;

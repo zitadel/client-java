@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class FeatureServiceResetOrganizationFeaturesRequest {
 
-  /** Example: {@code null} */
+  /** The {@code organizationId} property. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;

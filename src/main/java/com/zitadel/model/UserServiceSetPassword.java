@@ -30,22 +30,22 @@ import javax.annotation.Nullable;
 })
 public class UserServiceSetPassword {
 
-  /** Example: {@code null} */
+  /** The {@code hashedPassword} property. */
   @JsonProperty("hashedPassword")
   @Nullable
   public UserServiceHashedPassword hashedPassword;
 
-  /** Example: {@code null} */
+  /** The {@code password} property. */
   @JsonProperty("password")
   @Nullable
   public UserServicePassword password;
 
-  /** Example: {@code null} */
+  /** The {@code currentPassword} property. */
   @JsonProperty("currentPassword")
   @Nullable
   public String currentPassword;
 
-  /** Example: {@code null} */
+  /** The {@code verificationCode} property. */
   @JsonProperty("verificationCode")
   @Nullable
   public String verificationCode;

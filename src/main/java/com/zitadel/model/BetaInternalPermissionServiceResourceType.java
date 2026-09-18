@@ -30,34 +30,22 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceResourceType {
 
-  /**
-   * Instance is the resource type for granting administrator privileges on the instance level.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Instance is the resource type for granting administrator privileges on the instance level. */
   @JsonProperty("instance")
   @Nullable
   public Boolean instance;
 
-  /**
-   * OrganizationID is required to grant administrator privileges for a specific organization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** OrganizationID is required to grant administrator privileges for a specific organization. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /** Example: {@code null} */
+  /** The {@code projectGrant} property. */
   @JsonProperty("projectGrant")
   @Nullable
   public BetaInternalPermissionServiceProjectGrant projectGrant;
 
-  /**
-   * ProjectID is required to grant administrator privileges for a specific project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectID is required to grant administrator privileges for a specific project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;

@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class IdentityProviderServiceAzureADConfig {
 
-  /**
-   * Client id of the Azure AD application
-   *
-   * <p>Example: {@code null}
-   */
+  /** Client id of the Azure AD application */
   @JsonProperty("clientId")
   @Nullable
   public String clientId;
 
-  /** Example: {@code null} */
+  /** The {@code tenant} property. */
   @JsonProperty("tenant")
   @Nullable
   public IdentityProviderServiceAzureADTenant tenant;
@@ -49,18 +45,12 @@ public class IdentityProviderServiceAzureADConfig {
   /**
    * Azure AD doesn't send if the email has been verified. Enable this if the user email should
    * always be added verified in ZITADEL (no verification emails will be sent).
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("emailVerified")
   @Nullable
   public Boolean emailVerified;
 
-  /**
-   * The scopes requested by ZITADEL during the request to Azure AD.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The scopes requested by ZITADEL during the request to Azure AD. */
   @JsonProperty("scopes")
   @Nullable
   public List<String> scopes = new ArrayList<>();

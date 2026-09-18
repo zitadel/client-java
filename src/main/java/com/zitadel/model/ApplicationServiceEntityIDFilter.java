@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceEntityIDFilter {
 
-  /**
-   * The entityID to search for. The search is performed as an exact match.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The entityID to search for. The search is performed as an exact match. */
   @JsonProperty("entityId")
   @Nullable
   public String entityId;

@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class InternalPermissionServiceUserDisplayNameFilter {
 
-  /**
-   * Search for administrators by the display name of the user.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Search for administrators by the display name of the user. */
   @JsonProperty("displayName")
   @Nullable
   public String displayName;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public InternalPermissionServiceTextFilterMethod method;

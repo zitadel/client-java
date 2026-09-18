@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ActionServicePaginationRequest {
 
-  /**
-   * Starting point for retrieval, in combination of offset used to query a set list of objects.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Starting point for retrieval, in combination of offset used to query a set list of objects. */
   @JsonProperty("offset")
   @Nullable
   public Object offset;
@@ -43,8 +39,6 @@ public class ActionServicePaginationRequest {
    * limit is the maximum amount of objects returned. The default is set to 100 with a maximum of
    * 1000 in the runtime configuration. If the limit exceeds the maximum configured ZITADEL will
    * throw an error. If no limit is present the default is taken.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("limit")
   @Nullable
@@ -53,8 +47,6 @@ public class ActionServicePaginationRequest {
   /**
    * Asc is the sorting order. If true the list is sorted ascending, if false the list is sorted
    * descending. The default is descending.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("asc")
   @Nullable

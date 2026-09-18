@@ -32,29 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaProjectServiceCreateProjectGrantRequest {
 
-  /**
-   * ID of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID of the project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
 
-  /**
-   * Organization the project is granted to.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization the project is granted to. */
   @JsonProperty("grantedOrganizationId")
   @Nullable
   public String grantedOrganizationId;
 
-  /**
-   * Keys of the role available for the project grant.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Keys of the role available for the project grant. */
   @JsonProperty("roleKeys")
   @Nullable
   public List<String> roleKeys = new ArrayList<>();

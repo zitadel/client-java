@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceUser {
 
-  /**
-   * ID is the unique identifier of the user.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID is the unique identifier of the user. */
   @JsonProperty("id")
   @Nullable
   public String id;
@@ -42,8 +38,6 @@ public class BetaInternalPermissionServiceUser {
   /**
    * PreferredLoginName is the preferred login name of the user. This value is unique across the
    * whole instance.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("preferredLoginName")
   @Nullable
@@ -52,18 +46,12 @@ public class BetaInternalPermissionServiceUser {
   /**
    * DisplayName is the public display name of the user. By default it's the user's given name and
    * family name, their username or their email address.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("displayName")
   @Nullable
   public String displayName;
 
-  /**
-   * The organization the user belong to.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The organization the user belong to. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;

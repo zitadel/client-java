@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceGetTargetRequest {
 
-  /**
-   * The unique identifier of the target to retrieve.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique identifier of the target to retrieve. */
   @JsonProperty("id")
   @Nullable
   public String id;

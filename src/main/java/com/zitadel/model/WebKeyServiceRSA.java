@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class WebKeyServiceRSA {
 
-  /** Example: {@code null} */
+  /** The {@code bits} property. */
   @JsonProperty("bits")
   @Nullable
   public WebKeyServiceRSABits bits;
 
-  /** Example: {@code null} */
+  /** The {@code hasher} property. */
   @JsonProperty("hasher")
   @Nullable
   public WebKeyServiceRSAHasher hasher;

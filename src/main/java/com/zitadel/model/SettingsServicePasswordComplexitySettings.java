@@ -30,52 +30,32 @@ import javax.annotation.Nullable;
 })
 public class SettingsServicePasswordComplexitySettings {
 
-  /**
-   * The minimum length a password must have.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The minimum length a password must have. */
   @JsonProperty("minLength")
   @Nullable
   public Object minLength;
 
-  /**
-   * Defines if the password MUST contain an upper case letter.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Defines if the password MUST contain an upper case letter. */
   @JsonProperty("requiresUppercase")
   @Nullable
   public Boolean requiresUppercase;
 
-  /**
-   * Defines if the password MUST contain a lowercase letter.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Defines if the password MUST contain a lowercase letter. */
   @JsonProperty("requiresLowercase")
   @Nullable
   public Boolean requiresLowercase;
 
-  /**
-   * Defines if the password MUST contain a number.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Defines if the password MUST contain a number. */
   @JsonProperty("requiresNumber")
   @Nullable
   public Boolean requiresNumber;
 
-  /**
-   * Defines if the password MUST contain a symbol or special character. E.g. \"$\"
-   *
-   * <p>Example: {@code null}
-   */
+  /** Defines if the password MUST contain a symbol or special character. E.g. "$" */
   @JsonProperty("requiresSymbol")
   @Nullable
   public Boolean requiresSymbol;
 
-  /** Example: {@code null} */
+  /** The {@code resourceOwnerType} property. */
   @JsonProperty("resourceOwnerType")
   @Nullable
   public SettingsServiceResourceOwnerType resourceOwnerType;

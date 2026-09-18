@@ -32,25 +32,17 @@ import javax.annotation.Nullable;
 })
 public class UserServiceListUserMetadataRequest {
 
-  /**
-   * ID of the user under which the metadata is to be listed.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID of the user under which the metadata is to be listed. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public UserServicePaginationRequest pagination;
 
-  /**
-   * Define the criteria to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Define the criteria to query for. */
   @JsonProperty("filters")
   @Nullable
   public List<UserServiceMetadataSearchFilter> filters = new ArrayList<>();

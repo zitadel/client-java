@@ -30,29 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaActionServiceEventExecution {
 
-  /**
-   * all events as condition.
-   *
-   * <p>Example: {@code null}
-   */
+  /** all events as condition. */
   @JsonProperty("all")
   @Nullable
   public Boolean all;
 
-  /**
-   * Event name as condition.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Event name as condition. */
   @JsonProperty("event")
   @Nullable
   public String event;
 
-  /**
-   * Event group as condition, all events under this group.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Event group as condition, all events under this group. */
   @JsonProperty("group")
   @Nullable
   public String group;

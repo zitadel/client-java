@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceTypeQuery {
 
-  /** Example: {@code null} */
+  /** The {@code type} property. */
   @JsonProperty("type")
   @Nullable
   public BetaUserServiceType type;

@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceActivatePublicKeyRequest {
 
-  /**
-   * TargetID is the unique identifier of the target to activate the public key for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** TargetID is the unique identifier of the target to activate the public key for. */
   @JsonProperty("targetId")
   @Nullable
   public String targetId;
 
-  /**
-   * KeyID is the unique identifier of the public key to activate.
-   *
-   * <p>Example: {@code null}
-   */
+  /** KeyID is the unique identifier of the public key to activate. */
   @JsonProperty("keyId")
   @Nullable
   public String keyId;

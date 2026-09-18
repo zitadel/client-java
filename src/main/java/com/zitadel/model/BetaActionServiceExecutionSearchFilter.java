@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaActionServiceExecutionSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code executionTypeFilter} property. */
   @JsonProperty("executionTypeFilter")
   @Nullable
   public BetaActionServiceExecutionTypeFilter executionTypeFilter;
 
-  /** Example: {@code null} */
+  /** The {@code inConditionsFilter} property. */
   @JsonProperty("inConditionsFilter")
   @Nullable
   public BetaActionServiceInConditionsFilter inConditionsFilter;
 
-  /** Example: {@code null} */
+  /** The {@code targetFilter} property. */
   @JsonProperty("targetFilter")
   @Nullable
   public BetaActionServiceTargetFilter targetFilter;

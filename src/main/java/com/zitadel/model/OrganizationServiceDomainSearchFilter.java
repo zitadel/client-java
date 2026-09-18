@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceDomainSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code domainFilter} property. */
   @JsonProperty("domainFilter")
   @Nullable
   public OrganizationServiceOrganizationDomainQuery domainFilter;

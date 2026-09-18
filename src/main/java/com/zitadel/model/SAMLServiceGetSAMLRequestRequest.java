@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class SAMLServiceGetSAMLRequestRequest {
 
-  /**
-   * ID of the SAML Request, as obtained from the redirect URL.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID of the SAML Request, as obtained from the redirect URL. */
   @JsonProperty("samlRequestId")
   @Nullable
   public String samlRequestId;

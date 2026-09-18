@@ -33,8 +33,6 @@ public class OrganizationServiceDeleteOrganizationDomainRequest {
   /**
    * OrganizationID is the unique identifier of the organization from which the domain is to be
    * deleted.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("organizationId")
   @Nullable
@@ -45,8 +43,6 @@ public class OrganizationServiceDeleteOrganizationDomainRequest {
    * domain is used as suffix for user logins, those users will not be able to log in anymore. They
    * have to use another domain instead. Also if the domain was used for domain discovery, users
    * will not be able to find the organization by the domain anymore.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("domain")
   @Nullable

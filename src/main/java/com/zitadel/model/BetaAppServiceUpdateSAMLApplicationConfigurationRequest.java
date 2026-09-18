@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceUpdateSAMLApplicationConfigurationRequest {
 
-  /** Example: {@code null} */
+  /** The {@code loginVersion} property. */
   @JsonProperty("loginVersion")
   @Nullable
   public BetaAppServiceLoginVersion loginVersion;
 
-  /** Example: {@code null} */
+  /** The {@code metadataUrl} property. */
   @JsonProperty("metadataUrl")
   @Nullable
   public String metadataUrl;
 
-  /** Example: {@code null} */
+  /** The {@code metadataXml} property. */
   @JsonProperty("metadataXml")
   @Nullable
   public byte[] metadataXml;

@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceUserPreferredLoginNameFilter {
 
-  /**
-   * Search for administrators by the preferred login name of the user.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Search for administrators by the preferred login name of the user. */
   @JsonProperty("preferredLoginName")
   @Nullable
   public String preferredLoginName;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public BetaInternalPermissionServiceTextFilterMethod method;

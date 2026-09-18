@@ -32,20 +32,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceDeleteUserMetadataRequest {
 
-  /**
-   * ID of the user which metadata is to be deleted is stored on.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID of the user which metadata is to be deleted is stored on. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /**
-   * The keys for the user metadata to be deleted.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The keys for the user metadata to be deleted. */
   @JsonProperty("keys")
   @Nullable
   public List<String> keys = new ArrayList<>();

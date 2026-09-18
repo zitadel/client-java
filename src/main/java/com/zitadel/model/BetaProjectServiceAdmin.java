@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
 })
 public class BetaProjectServiceAdmin {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
@@ -40,8 +40,6 @@ public class BetaProjectServiceAdmin {
   /**
    * specify the Project Member Roles for the provided user (default is PROJECT_OWNER if roles are
    * empty
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("roles")
   @Nullable

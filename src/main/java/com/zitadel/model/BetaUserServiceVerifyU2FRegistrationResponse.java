@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceVerifyU2FRegistrationResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public BetaUserServiceDetails details;

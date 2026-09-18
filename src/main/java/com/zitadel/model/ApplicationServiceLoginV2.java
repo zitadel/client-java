@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceLoginV2 {
 
-  /**
-   * Optionally specify a base uri of the login UI. If unspecified the default URI will be used.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Optionally specify a base uri of the login UI. If unspecified the default URI will be used. */
   @JsonProperty("baseUri")
   @Nullable
   public String baseUri;

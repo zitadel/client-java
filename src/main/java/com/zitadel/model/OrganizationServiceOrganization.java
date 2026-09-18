@@ -30,39 +30,27 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceOrganization {
 
-  /**
-   * ID is the unique identifier of the organization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID is the unique identifier of the organization. */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public OrganizationServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code state} property. */
   @JsonProperty("state")
   @Nullable
   public OrganizationServiceOrganizationState state;
 
-  /**
-   * Name of the organization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Name of the organization. */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /**
-   * Primary domain used in the organization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Primary domain used in the organization. */
   @JsonProperty("primaryDomain")
   @Nullable
   public String primaryDomain;

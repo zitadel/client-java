@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class WebKeyServiceDeleteWebKeyRequest {
 
-  /**
-   * The unique identifier of the key to delete.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique identifier of the key to delete. */
   @JsonProperty("id")
   @Nullable
   public String id;

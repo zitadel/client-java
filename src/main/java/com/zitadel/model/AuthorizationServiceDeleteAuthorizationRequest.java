@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class AuthorizationServiceDeleteAuthorizationRequest {
 
-  /**
-   * ID is the unique identifier of the authorization that should be deleted.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID is the unique identifier of the authorization that should be deleted. */
   @JsonProperty("id")
   @Nullable
   public String id;

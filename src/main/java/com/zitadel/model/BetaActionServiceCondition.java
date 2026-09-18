@@ -30,22 +30,22 @@ import javax.annotation.Nullable;
 })
 public class BetaActionServiceCondition {
 
-  /** Example: {@code null} */
+  /** The {@code event} property. */
   @JsonProperty("event")
   @Nullable
   public BetaActionServiceEventExecution event;
 
-  /** Example: {@code null} */
+  /** The {@code function} property. */
   @JsonProperty("function")
   @Nullable
   public BetaActionServiceFunctionExecution function;
 
-  /** Example: {@code null} */
+  /** The {@code request} property. */
   @JsonProperty("request")
   @Nullable
   public BetaActionServiceRequestExecution request;
 
-  /** Example: {@code null} */
+  /** The {@code response} property. */
   @JsonProperty("response")
   @Nullable
   public BetaActionServiceResponseExecution response;

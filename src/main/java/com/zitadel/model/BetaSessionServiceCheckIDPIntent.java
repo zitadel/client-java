@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceCheckIDPIntent {
 
-  /** Example: {@code null} */
+  /** The {@code idpIntentId} property. */
   @JsonProperty("idpIntentId")
   @Nullable
   public String idpIntentId;
 
-  /** Example: {@code null} */
+  /** The {@code idpIntentToken} property. */
   @JsonProperty("idpIntentToken")
   @Nullable
   public String idpIntentToken;

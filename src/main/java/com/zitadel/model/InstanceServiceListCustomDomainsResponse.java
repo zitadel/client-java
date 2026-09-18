@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class InstanceServiceListCustomDomainsResponse {
 
-  /**
-   * The list of custom domains matching the query.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The list of custom domains matching the query. */
   @JsonProperty("domains")
   @Nullable
   public List<InstanceServiceCustomDomain> domains = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public InstanceServicePaginationResponse pagination;

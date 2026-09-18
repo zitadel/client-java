@@ -30,22 +30,22 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceSetHumanEmail {
 
-  /** Example: {@code null} */
+  /** The {@code email} property. */
   @JsonProperty("email")
   @Nullable
   public String email;
 
-  /** Example: {@code null} */
+  /** The {@code isVerified} property. */
   @JsonProperty("isVerified")
   @Nullable
   public Boolean isVerified;
 
-  /** Example: {@code null} */
+  /** The {@code returnCode} property. */
   @JsonProperty("returnCode")
   @Nullable
   public Object returnCode;
 
-  /** Example: {@code null} */
+  /** The {@code sendCode} property. */
   @JsonProperty("sendCode")
   @Nullable
   public OrganizationServiceSendEmailVerificationCode sendCode;

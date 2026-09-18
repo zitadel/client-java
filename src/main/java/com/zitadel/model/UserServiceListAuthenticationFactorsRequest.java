@@ -32,17 +32,17 @@ import javax.annotation.Nullable;
 })
 public class UserServiceListAuthenticationFactorsRequest {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code authFactors} property. */
   @JsonProperty("authFactors")
   @Nullable
   public List<UserServiceAuthFactors> authFactors = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code states} property. */
   @JsonProperty("states")
   @Nullable
   public List<UserServiceAuthFactorState> states = new ArrayList<>();

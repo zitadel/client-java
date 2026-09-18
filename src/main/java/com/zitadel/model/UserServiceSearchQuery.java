@@ -30,92 +30,92 @@ import javax.annotation.Nullable;
 })
 public class UserServiceSearchQuery {
 
-  /** Example: {@code null} */
+  /** The {@code andQuery} property. */
   @JsonProperty("andQuery")
   @Nullable
   public UserServiceAndQuery andQuery;
 
-  /** Example: {@code null} */
+  /** The {@code displayNameQuery} property. */
   @JsonProperty("displayNameQuery")
   @Nullable
   public UserServiceDisplayNameQuery displayNameQuery;
 
-  /** Example: {@code null} */
+  /** The {@code emailQuery} property. */
   @JsonProperty("emailQuery")
   @Nullable
   public UserServiceEmailQuery emailQuery;
 
-  /** Example: {@code null} */
+  /** The {@code firstNameQuery} property. */
   @JsonProperty("firstNameQuery")
   @Nullable
   public UserServiceFirstNameQuery firstNameQuery;
 
-  /** Example: {@code null} */
+  /** The {@code inUserEmailsQuery} property. */
   @JsonProperty("inUserEmailsQuery")
   @Nullable
   public UserServiceInUserEmailsQuery inUserEmailsQuery;
 
-  /** Example: {@code null} */
+  /** The {@code inUserIdsQuery} property. */
   @JsonProperty("inUserIdsQuery")
   @Nullable
   public UserServiceInUserIDQuery inUserIdsQuery;
 
-  /** Example: {@code null} */
+  /** The {@code lastNameQuery} property. */
   @JsonProperty("lastNameQuery")
   @Nullable
   public UserServiceLastNameQuery lastNameQuery;
 
-  /** Example: {@code null} */
+  /** The {@code loginNameQuery} property. */
   @JsonProperty("loginNameQuery")
   @Nullable
   public UserServiceLoginNameQuery loginNameQuery;
 
-  /** Example: {@code null} */
+  /** The {@code metadataKeyFilter} property. */
   @JsonProperty("metadataKeyFilter")
   @Nullable
   public UserServiceMetadataKeyFilter metadataKeyFilter;
 
-  /** Example: {@code null} */
+  /** The {@code metadataValueFilter} property. */
   @JsonProperty("metadataValueFilter")
   @Nullable
   public UserServiceMetadataValueFilter metadataValueFilter;
 
-  /** Example: {@code null} */
+  /** The {@code nickNameQuery} property. */
   @JsonProperty("nickNameQuery")
   @Nullable
   public UserServiceNickNameQuery nickNameQuery;
 
-  /** Example: {@code null} */
+  /** The {@code notQuery} property. */
   @JsonProperty("notQuery")
   @Nullable
   public UserServiceNotQuery notQuery;
 
-  /** Example: {@code null} */
+  /** The {@code orQuery} property. */
   @JsonProperty("orQuery")
   @Nullable
   public UserServiceOrQuery orQuery;
 
-  /** Example: {@code null} */
+  /** The {@code organizationIdQuery} property. */
   @JsonProperty("organizationIdQuery")
   @Nullable
   public UserServiceOrganizationIdQuery organizationIdQuery;
 
-  /** Example: {@code null} */
+  /** The {@code phoneQuery} property. */
   @JsonProperty("phoneQuery")
   @Nullable
   public UserServicePhoneQuery phoneQuery;
 
-  /** Example: {@code null} */
+  /** The {@code stateQuery} property. */
   @JsonProperty("stateQuery")
   @Nullable
   public UserServiceStateQuery stateQuery;
 
-  /** Example: {@code null} */
+  /** The {@code typeQuery} property. */
   @JsonProperty("typeQuery")
   @Nullable
   public UserServiceTypeQuery typeQuery;
 
-  /** Example: {@code null} */
+  /** The {@code userNameQuery} property. */
   @JsonProperty("userNameQuery")
   @Nullable
   public UserServiceUserNameQuery userNameQuery;

@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class FeatureServiceLoginV2FeatureFlag {
 
-  /** Example: {@code null} */
+  /** The {@code required} property. */
   @JsonProperty("required")
   @Nullable
   public Boolean required;
 
-  /** Example: {@code null} */
+  /** The {@code baseUri} property. */
   @JsonProperty("baseUri")
   @Nullable
   public String baseUri;
 
-  /** Example: {@code null} */
+  /** The {@code source} property. */
   @JsonProperty("source")
   @Nullable
   public FeatureServiceSource source;

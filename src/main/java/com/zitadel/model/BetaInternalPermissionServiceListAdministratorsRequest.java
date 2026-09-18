@@ -32,21 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceListAdministratorsRequest {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaInternalPermissionServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public BetaInternalPermissionServiceAdministratorFieldName sortingColumn;
 
-  /**
-   * Filter the administrator roles to be returned.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Filter the administrator roles to be returned. */
   @JsonProperty("filters")
   @Nullable
   public List<BetaInternalPermissionServiceAdministratorSearchFilter> filters = new ArrayList<>();

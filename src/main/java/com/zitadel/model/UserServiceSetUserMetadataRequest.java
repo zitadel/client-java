@@ -32,20 +32,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceSetUserMetadataRequest {
 
-  /**
-   * ID of the user under which the metadata gets set.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID of the user under which the metadata gets set. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /**
-   * Metadata to bet set. The values have to be base64 encoded.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Metadata to bet set. The values have to be base64 encoded. */
   @JsonProperty("metadata")
   @Nullable
   public List<UserServiceMetadata> metadata = new ArrayList<>();

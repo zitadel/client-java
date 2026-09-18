@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceListTargetsResponse {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public ActionServicePaginationResponse pagination;
 
-  /**
-   * List of all targets matching the query.
-   *
-   * <p>Example: {@code null}
-   */
+  /** List of all targets matching the query. */
   @JsonProperty("targets")
   @Nullable
   public List<ActionServiceTarget> targets = new ArrayList<>();

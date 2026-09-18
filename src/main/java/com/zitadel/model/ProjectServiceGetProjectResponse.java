@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceGetProjectResponse {
 
-  /** Example: {@code null} */
+  /** The {@code project} property. */
   @JsonProperty("project")
   @Nullable
   public ProjectServiceProject project;

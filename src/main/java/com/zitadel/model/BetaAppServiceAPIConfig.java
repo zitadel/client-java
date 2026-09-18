@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceAPIConfig {
 
-  /** Example: {@code null} */
+  /** The {@code clientId} property. */
   @JsonProperty("clientId")
   @Nullable
   public String clientId;
 
-  /** Example: {@code null} */
+  /** The {@code authMethodType} property. */
   @JsonProperty("authMethodType")
   @Nullable
   public BetaAppServiceAPIAuthMethodType authMethodType;

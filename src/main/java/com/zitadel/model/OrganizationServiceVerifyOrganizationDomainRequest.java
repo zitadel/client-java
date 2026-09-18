@@ -32,18 +32,12 @@ public class OrganizationServiceVerifyOrganizationDomainRequest {
 
   /**
    * Organization ID is the unique identifier of the organization whose domain is to be verified.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * Domain is the full qualified domain name to be verified.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Domain is the full qualified domain name to be verified. */
   @JsonProperty("domain")
   @Nullable
   public String domain;

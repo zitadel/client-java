@@ -30,32 +30,32 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceSearchQuery {
 
-  /** Example: {@code null} */
+  /** The {@code creationDateQuery} property. */
   @JsonProperty("creationDateQuery")
   @Nullable
   public SessionServiceCreationDateQuery creationDateQuery;
 
-  /** Example: {@code null} */
+  /** The {@code creatorQuery} property. */
   @JsonProperty("creatorQuery")
   @Nullable
   public SessionServiceCreatorQuery creatorQuery;
 
-  /** Example: {@code null} */
+  /** The {@code expirationDateQuery} property. */
   @JsonProperty("expirationDateQuery")
   @Nullable
   public SessionServiceExpirationDateQuery expirationDateQuery;
 
-  /** Example: {@code null} */
+  /** The {@code idsQuery} property. */
   @JsonProperty("idsQuery")
   @Nullable
   public SessionServiceIDsQuery idsQuery;
 
-  /** Example: {@code null} */
+  /** The {@code userAgentQuery} property. */
   @JsonProperty("userAgentQuery")
   @Nullable
   public SessionServiceUserAgentQuery userAgentQuery;
 
-  /** Example: {@code null} */
+  /** The {@code userIdQuery} property. */
   @JsonProperty("userIdQuery")
   @Nullable
   public SessionServiceUserIDQuery userIdQuery;

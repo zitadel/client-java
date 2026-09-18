@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaAuthorizationServiceRoleKeyQuery {
 
-  /**
-   * Specify the key of the role the user was granted to search for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Specify the key of the role the user was granted to search for. */
   @JsonProperty("key")
   @Nullable
   public String key;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public BetaAuthorizationServiceTextFilterMethod method;

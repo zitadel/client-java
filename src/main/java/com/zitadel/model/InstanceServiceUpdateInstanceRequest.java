@@ -34,18 +34,12 @@ public class InstanceServiceUpdateInstanceRequest {
    * InstanceID is the unique ID of the instance to be updated. If not set, the instance in the
    * current context (e.g. identified by the host header) will be changed. If an ID is set, the
    * caller must have additional permissions.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("instanceId")
   @Nullable
   public String instanceId;
 
-  /**
-   * InstanceName is the new name of the instance to be set.
-   *
-   * <p>Example: {@code null}
-   */
+  /** InstanceName is the new name of the instance to be set. */
   @JsonProperty("instanceName")
   @Nullable
   public String instanceName;

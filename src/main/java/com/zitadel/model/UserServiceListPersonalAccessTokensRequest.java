@@ -32,21 +32,17 @@ import javax.annotation.Nullable;
 })
 public class UserServiceListPersonalAccessTokensRequest {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public UserServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public UserServicePersonalAccessTokenFieldName sortingColumn;
 
-  /**
-   * Define the criteria to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Define the criteria to query for. */
   @JsonProperty("filters")
   @Nullable
   public List<UserServicePersonalAccessTokensSearchFilter> filters = new ArrayList<>();

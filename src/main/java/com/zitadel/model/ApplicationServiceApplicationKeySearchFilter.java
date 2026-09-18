@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceApplicationKeySearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code applicationIdFilter} property. */
   @JsonProperty("applicationIdFilter")
   @Nullable
   public ApplicationServiceApplicationKeyApplicationIDFilter applicationIdFilter;
 
-  /** Example: {@code null} */
+  /** The {@code organizationIdFilter} property. */
   @JsonProperty("organizationIdFilter")
   @Nullable
   public ApplicationServiceApplicationKeyOrganizationIDFilter organizationIdFilter;
 
-  /** Example: {@code null} */
+  /** The {@code projectIdFilter} property. */
   @JsonProperty("projectIdFilter")
   @Nullable
   public ApplicationServiceApplicationKeyProjectIDFilter projectIdFilter;

@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaSettingsServiceRequestContext {
 
-  /** Example: {@code null} */
+  /** The {@code instance} property. */
   @JsonProperty("instance")
   @Nullable
   public Boolean instance;
 
-  /** Example: {@code null} */
+  /** The {@code orgId} property. */
   @JsonProperty("orgId")
   @Nullable
   public String orgId;

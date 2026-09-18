@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class AuthorizationServiceListAuthorizationsResponse {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public AuthorizationServicePaginationResponse pagination;
 
-  /**
-   * Authorizations contains the list of authorizations matching the request.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Authorizations contains the list of authorizations matching the request. */
   @JsonProperty("authorizations")
   @Nullable
   public List<AuthorizationServiceAuthorization> authorizations = new ArrayList<>();

@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceCheckOTP {
 
-  /** Example: {@code null} */
+  /** The {@code code} property. */
   @JsonProperty("code")
   @Nullable
   public String code;

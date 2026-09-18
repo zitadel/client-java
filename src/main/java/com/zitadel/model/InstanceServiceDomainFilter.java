@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class InstanceServiceDomainFilter {
 
-  /**
-   * The domain to filter for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The domain to filter for. */
   @JsonProperty("domain")
   @Nullable
   public String domain;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public InstanceServiceTextQueryMethod method;

@@ -32,17 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceListSessionsRequest {
 
-  /** Example: {@code null} */
+  /** The {@code query} property. */
   @JsonProperty("query")
   @Nullable
   public BetaSessionServiceListQuery query;
 
-  /** Example: {@code null} */
+  /** The {@code queries} property. */
   @JsonProperty("queries")
   @Nullable
   public List<BetaSessionServiceSearchQuery> queries = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public BetaSessionServiceSessionFieldName sortingColumn;

@@ -32,50 +32,42 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceAddHumanUserRequest {
 
-  /**
-   * optionally set your own id unique for the user.
-   *
-   * <p>Example: {@code null}
-   */
+  /** optionally set your own id unique for the user. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /**
-   * optionally set a unique username, if none is provided the email will be used.
-   *
-   * <p>Example: {@code null}
-   */
+  /** optionally set a unique username, if none is provided the email will be used. */
   @JsonProperty("username")
   @Nullable
   public String username;
 
-  /** Example: {@code null} */
+  /** The {@code organization} property. */
   @JsonProperty("organization")
   @Nullable
   public BetaOrganizationServiceOrganization organization;
 
-  /** Example: {@code null} */
+  /** The {@code profile} property. */
   @JsonProperty("profile")
   @Nullable
   public BetaOrganizationServiceSetHumanProfile profile;
 
-  /** Example: {@code null} */
+  /** The {@code email} property. */
   @JsonProperty("email")
   @Nullable
   public BetaOrganizationServiceSetHumanEmail email;
 
-  /** Example: {@code null} */
+  /** The {@code phone} property. */
   @JsonProperty("phone")
   @Nullable
   public BetaOrganizationServiceSetHumanPhone phone;
 
-  /** Example: {@code null} */
+  /** The {@code metadata} property. */
   @JsonProperty("metadata")
   @Nullable
   public List<BetaOrganizationServiceSetMetadataEntry> metadata = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code idpLinks} property. */
   @JsonProperty("idpLinks")
   @Nullable
   public List<BetaOrganizationServiceIDPLink> idpLinks = new ArrayList<>();
@@ -83,19 +75,17 @@ public class BetaOrganizationServiceAddHumanUserRequest {
   /**
    * An Implementation of RFC 6238 is used, with HMAC-SHA-1 and time-step of 30 seconds. Currently
    * no other options are supported, and if anything different is used the validation will fail.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("totpSecret")
   @Nullable
   public String totpSecret;
 
-  /** Example: {@code null} */
+  /** The {@code hashedPassword} property. */
   @JsonProperty("hashedPassword")
   @Nullable
   public BetaOrganizationServiceHashedPassword hashedPassword;
 
-  /** Example: {@code null} */
+  /** The {@code password} property. */
   @JsonProperty("password")
   @Nullable
   public BetaOrganizationServicePassword password;

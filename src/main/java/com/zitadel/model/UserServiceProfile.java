@@ -33,8 +33,6 @@ public class UserServiceProfile {
   /**
    * The given name is the first name of the user. For example, it can be used to personalize
    * notifications and login UIs.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("givenName")
   @Nullable
@@ -43,8 +41,6 @@ public class UserServiceProfile {
   /**
    * The family name is the last name of the user. For example, it can be used to personalize user
    * interfaces and notifications.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("familyName")
   @Nullable
@@ -53,8 +49,6 @@ public class UserServiceProfile {
   /**
    * The nick name is the users short name. For example, it can be used to personalize user
    * interfaces and notifications.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("nickName")
   @Nullable
@@ -63,8 +57,6 @@ public class UserServiceProfile {
   /**
    * The display name is how a user should primarily be displayed in lists. It can also for example
    * be used to personalize user interfaces and notifications.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("displayName")
   @Nullable
@@ -77,14 +69,12 @@ public class UserServiceProfile {
    * browser settings can overwrite a users preferred_language. Notification messages and standard
    * login UIs use the users preferred language if it is supported and allowed on the instance.
    * Else, the default language of the instance is used.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("preferredLanguage")
   @Nullable
   public String preferredLanguage;
 
-  /** Example: {@code null} */
+  /** The {@code gender} property. */
   @JsonProperty("gender")
   @Nullable
   public UserServiceGender gender;

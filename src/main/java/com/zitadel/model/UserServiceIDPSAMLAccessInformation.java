@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class UserServiceIDPSAMLAccessInformation {
 
-  /** Example: {@code null} */
+  /** The {@code assertion} property. */
   @JsonProperty("assertion")
   @Nullable
   public byte[] assertion;

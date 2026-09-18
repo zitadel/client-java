@@ -30,82 +30,82 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceSearchQuery {
 
-  /** Example: {@code null} */
+  /** The {@code andQuery} property. */
   @JsonProperty("andQuery")
   @Nullable
   public BetaUserServiceAndQuery andQuery;
 
-  /** Example: {@code null} */
+  /** The {@code displayNameQuery} property. */
   @JsonProperty("displayNameQuery")
   @Nullable
   public BetaUserServiceDisplayNameQuery displayNameQuery;
 
-  /** Example: {@code null} */
+  /** The {@code emailQuery} property. */
   @JsonProperty("emailQuery")
   @Nullable
   public BetaUserServiceEmailQuery emailQuery;
 
-  /** Example: {@code null} */
+  /** The {@code firstNameQuery} property. */
   @JsonProperty("firstNameQuery")
   @Nullable
   public BetaUserServiceFirstNameQuery firstNameQuery;
 
-  /** Example: {@code null} */
+  /** The {@code inUserEmailsQuery} property. */
   @JsonProperty("inUserEmailsQuery")
   @Nullable
   public BetaUserServiceInUserEmailsQuery inUserEmailsQuery;
 
-  /** Example: {@code null} */
+  /** The {@code inUserIdsQuery} property. */
   @JsonProperty("inUserIdsQuery")
   @Nullable
   public BetaUserServiceInUserIDQuery inUserIdsQuery;
 
-  /** Example: {@code null} */
+  /** The {@code lastNameQuery} property. */
   @JsonProperty("lastNameQuery")
   @Nullable
   public BetaUserServiceLastNameQuery lastNameQuery;
 
-  /** Example: {@code null} */
+  /** The {@code loginNameQuery} property. */
   @JsonProperty("loginNameQuery")
   @Nullable
   public BetaUserServiceLoginNameQuery loginNameQuery;
 
-  /** Example: {@code null} */
+  /** The {@code nickNameQuery} property. */
   @JsonProperty("nickNameQuery")
   @Nullable
   public BetaUserServiceNickNameQuery nickNameQuery;
 
-  /** Example: {@code null} */
+  /** The {@code notQuery} property. */
   @JsonProperty("notQuery")
   @Nullable
   public BetaUserServiceNotQuery notQuery;
 
-  /** Example: {@code null} */
+  /** The {@code orQuery} property. */
   @JsonProperty("orQuery")
   @Nullable
   public BetaUserServiceOrQuery orQuery;
 
-  /** Example: {@code null} */
+  /** The {@code organizationIdQuery} property. */
   @JsonProperty("organizationIdQuery")
   @Nullable
   public BetaUserServiceOrganizationIdQuery organizationIdQuery;
 
-  /** Example: {@code null} */
+  /** The {@code phoneQuery} property. */
   @JsonProperty("phoneQuery")
   @Nullable
   public BetaUserServicePhoneQuery phoneQuery;
 
-  /** Example: {@code null} */
+  /** The {@code stateQuery} property. */
   @JsonProperty("stateQuery")
   @Nullable
   public BetaUserServiceStateQuery stateQuery;
 
-  /** Example: {@code null} */
+  /** The {@code typeQuery} property. */
   @JsonProperty("typeQuery")
   @Nullable
   public BetaUserServiceTypeQuery typeQuery;
 
-  /** Example: {@code null} */
+  /** The {@code userNameQuery} property. */
   @JsonProperty("userNameQuery")
   @Nullable
   public BetaUserServiceUserNameQuery userNameQuery;

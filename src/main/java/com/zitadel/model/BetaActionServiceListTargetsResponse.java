@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaActionServiceListTargetsResponse {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaActionServicePaginationResponse pagination;
 
-  /** Example: {@code null} */
+  /** The {@code targets} property. */
   @JsonProperty("targets")
   @Nullable
   public List<BetaActionServiceTarget> targets = new ArrayList<>();

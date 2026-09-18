@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceGetApplicationResponse {
 
-  /** Example: {@code null} */
+  /** The {@code application} property. */
   @JsonProperty("application")
   @Nullable
   public ApplicationServiceApplication application;

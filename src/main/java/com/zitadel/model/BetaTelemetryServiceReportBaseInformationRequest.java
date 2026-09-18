@@ -32,29 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaTelemetryServiceReportBaseInformationRequest {
 
-  /**
-   * The system ID is a unique identifier for the ZITADEL system.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The system ID is a unique identifier for the ZITADEL system. */
   @JsonProperty("systemId")
   @Nullable
   public String systemId;
 
-  /**
-   * The current version of the ZITADEL system.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The current version of the ZITADEL system. */
   @JsonProperty("version")
   @Nullable
   public String version;
 
-  /**
-   * A list of instances in the ZITADEL system and their information.
-   *
-   * <p>Example: {@code null}
-   */
+  /** A list of instances in the ZITADEL system and their information. */
   @JsonProperty("instances")
   @Nullable
   public List<BetaTelemetryServiceInstanceInformation> instances = new ArrayList<>();

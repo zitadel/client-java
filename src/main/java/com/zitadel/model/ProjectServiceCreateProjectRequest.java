@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceCreateProjectRequest {
 
-  /**
-   * OrganizationID is the unique identifier of the organization the project belongs to.
-   *
-   * <p>Example: {@code null}
-   */
+  /** OrganizationID is the unique identifier of the organization the project belongs to. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
@@ -43,18 +39,12 @@ public class ProjectServiceCreateProjectRequest {
    * ProjectID is the unique identifier of the new project. This field is optional. If omitted, the
    * system will generate a unique ID for you. This is the recommended way. The generated ID will be
    * returned in the response.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
 
-  /**
-   * Name of the project. This might be presented to users, e.g. in sign-in flows.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Name of the project. This might be presented to users, e.g. in sign-in flows. */
   @JsonProperty("name")
   @Nullable
   public String name;
@@ -63,8 +53,6 @@ public class ProjectServiceCreateProjectRequest {
    * ProjectRoleAssertion is a setting that can be enabled to have role information included in the
    * user info endpoint. It is also dependent on your application settings to include it in tokens
    * and other types.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("projectRoleAssertion")
   @Nullable
@@ -73,8 +61,6 @@ public class ProjectServiceCreateProjectRequest {
   /**
    * AuthorizationRequired is a boolean flag that can be enabled to check if a user has an
    * authorization to use this project assigned when login into an application of this project.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("authorizationRequired")
   @Nullable
@@ -84,14 +70,12 @@ public class ProjectServiceCreateProjectRequest {
    * ProjectAccessRequired is a boolean flag that can be enabled to check if the organization of the
    * user, that is trying to log in, has access to this project (either owns the project or is
    * granted).
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("projectAccessRequired")
   @Nullable
   public Boolean projectAccessRequired;
 
-  /** Example: {@code null} */
+  /** The {@code privateLabelingSetting} property. */
   @JsonProperty("privateLabelingSetting")
   @Nullable
   public ProjectServicePrivateLabelingSetting privateLabelingSetting;

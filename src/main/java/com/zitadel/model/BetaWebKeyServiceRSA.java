@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaWebKeyServiceRSA {
 
-  /** Example: {@code null} */
+  /** The {@code bits} property. */
   @JsonProperty("bits")
   @Nullable
   public BetaWebKeyServiceRSABits bits;
 
-  /** Example: {@code null} */
+  /** The {@code hasher} property. */
   @JsonProperty("hasher")
   @Nullable
   public BetaWebKeyServiceRSAHasher hasher;

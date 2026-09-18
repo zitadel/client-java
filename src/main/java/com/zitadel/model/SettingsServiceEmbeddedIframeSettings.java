@@ -32,20 +32,12 @@ import javax.annotation.Nullable;
 })
 public class SettingsServiceEmbeddedIframeSettings {
 
-  /**
-   * Enabled states if iframe embedding is enabled or disabled.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Enabled states if iframe embedding is enabled or disabled. */
   @JsonProperty("enabled")
   @Nullable
   public Boolean enabled;
 
-  /**
-   * AllowedOrigins defines which origins are allowed to embed ZITADEL in an iframe.
-   *
-   * <p>Example: {@code null}
-   */
+  /** AllowedOrigins defines which origins are allowed to embed ZITADEL in an iframe. */
   @JsonProperty("allowedOrigins")
   @Nullable
   public List<String> allowedOrigins = new ArrayList<>();

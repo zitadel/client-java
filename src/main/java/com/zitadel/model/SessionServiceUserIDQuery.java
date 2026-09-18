@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceUserIDQuery {
 
-  /**
-   * ID of the user whose sessions are being searched for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID of the user whose sessions are being searched for. */
   @JsonProperty("id")
   @Nullable
   public String id;

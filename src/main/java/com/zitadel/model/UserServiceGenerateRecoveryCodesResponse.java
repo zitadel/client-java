@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceGenerateRecoveryCodesResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public UserServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code recoveryCodes} property. */
   @JsonProperty("recoveryCodes")
   @Nullable
   public List<String> recoveryCodes = new ArrayList<>();

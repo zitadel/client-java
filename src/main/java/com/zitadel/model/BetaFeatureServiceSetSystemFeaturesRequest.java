@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaFeatureServiceSetSystemFeaturesRequest {
 
-  /** Example: {@code null} */
+  /** The {@code loginDefaultOrg} property. */
   @JsonProperty("loginDefaultOrg")
   @Nullable
   public Boolean loginDefaultOrg;
 
-  /** Example: {@code null} */
+  /** The {@code userSchema} property. */
   @JsonProperty("userSchema")
   @Nullable
   public Boolean userSchema;
@@ -49,8 +49,6 @@ public class BetaFeatureServiceSetSystemFeaturesRequest {
    * impersonation on an instance. This field is only kept for backward compatibility and will be
    * removed in the next major version of Zitadel. Setting the field will have no effect.
    *
-   * <p>Example: {@code null}
-   *
    * @deprecated This property is deprecated.
    */
   @Deprecated
@@ -58,12 +56,12 @@ public class BetaFeatureServiceSetSystemFeaturesRequest {
   @Nullable
   public Boolean oidcTokenExchange;
 
-  /** Example: {@code null} */
+  /** The {@code improvedPerformance} property. */
   @JsonProperty("improvedPerformance")
   @Nullable
   public List<BetaFeatureServiceImprovedPerformance> improvedPerformance = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code oidcSingleV1SessionTermination} property. */
   @JsonProperty("oidcSingleV1SessionTermination")
   @Nullable
   public Boolean oidcSingleV1SessionTermination;

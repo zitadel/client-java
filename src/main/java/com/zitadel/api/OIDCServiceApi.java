@@ -87,16 +87,16 @@ public class OIDCServiceApi extends BaseApi {
    * Authorize or Deny Device Authorization Authorize or deny the device authorization request based
    * on the provided device authorization id. Required permissions: - `session.link`
    *
-   * @param oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest (required)
+   * @param oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest (required)
    * @return {@code Object}
    * @throws ApiException if fails to make API call
    */
   public Object authorizeOrDenyDeviceAuthorization(
       OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest
-          oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest) {
+          oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest) {
     return requireBody(
         authorizeOrDenyDeviceAuthorizationWithHttpInfo(
-            oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest),
+            oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest),
         "authorizeOrDenyDeviceAuthorization");
   }
 
@@ -104,16 +104,16 @@ public class OIDCServiceApi extends BaseApi {
    * Authorize or Deny Device Authorization Authorize or deny the device authorization request based
    * on the provided device authorization id. Required permissions: - `session.link`
    *
-   * @param oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest (required)
+   * @param oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest (required)
    * @return the API result wrapping {@code Object}
    * @throws ApiException if fails to make API call
    */
   public ApiResult<Object> authorizeOrDenyDeviceAuthorizationWithHttpInfo(
       OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest
-          oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest) {
-    if (oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest == null) {
+          oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest) {
+    if (oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest == null) {
       throw new IllegalArgumentException(
-          "Missing the required parameter 'oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest' when calling authorizeOrDenyDeviceAuthorization");
+          "Missing the required parameter 'oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest' when calling authorizeOrDenyDeviceAuthorization");
     }
     String path = "/zitadel.oidc.v2.OIDCService/AuthorizeOrDenyDeviceAuthorization";
     Map<String, Object> queryParams = new HashMap<>();
@@ -123,7 +123,7 @@ public class OIDCServiceApi extends BaseApi {
         path,
         queryParams,
         headerParams,
-        oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest,
+        oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest,
         new String[] {"application/json"},
         "application/json",
         authorizeOrDenyDeviceAuthorizationTypeRef,
@@ -136,14 +136,14 @@ public class OIDCServiceApi extends BaseApi {
    * failure. On success, the URL contains details for the application to obtain the tokens. This
    * method can only be called once for an Auth request. Required permissions: - `session.link`
    *
-   * @param oIDCServiceCreateCallbackRequest (required)
+   * @param oidcServiceCreateCallbackRequest (required)
    * @return {@code OIDCServiceCreateCallbackResponse}
    * @throws ApiException if fails to make API call
    */
   public OIDCServiceCreateCallbackResponse createCallback(
-      OIDCServiceCreateCallbackRequest oIDCServiceCreateCallbackRequest) {
+      OIDCServiceCreateCallbackRequest oidcServiceCreateCallbackRequest) {
     return requireBody(
-        createCallbackWithHttpInfo(oIDCServiceCreateCallbackRequest), "createCallback");
+        createCallbackWithHttpInfo(oidcServiceCreateCallbackRequest), "createCallback");
   }
 
   /**
@@ -152,15 +152,15 @@ public class OIDCServiceApi extends BaseApi {
    * failure. On success, the URL contains details for the application to obtain the tokens. This
    * method can only be called once for an Auth request. Required permissions: - `session.link`
    *
-   * @param oIDCServiceCreateCallbackRequest (required)
+   * @param oidcServiceCreateCallbackRequest (required)
    * @return the API result wrapping {@code OIDCServiceCreateCallbackResponse}
    * @throws ApiException if fails to make API call
    */
   public ApiResult<OIDCServiceCreateCallbackResponse> createCallbackWithHttpInfo(
-      OIDCServiceCreateCallbackRequest oIDCServiceCreateCallbackRequest) {
-    if (oIDCServiceCreateCallbackRequest == null) {
+      OIDCServiceCreateCallbackRequest oidcServiceCreateCallbackRequest) {
+    if (oidcServiceCreateCallbackRequest == null) {
       throw new IllegalArgumentException(
-          "Missing the required parameter 'oIDCServiceCreateCallbackRequest' when calling createCallback");
+          "Missing the required parameter 'oidcServiceCreateCallbackRequest' when calling createCallback");
     }
     String path = "/zitadel.oidc.v2.OIDCService/CreateCallback";
     Map<String, Object> queryParams = new HashMap<>();
@@ -170,7 +170,7 @@ public class OIDCServiceApi extends BaseApi {
         path,
         queryParams,
         headerParams,
-        oIDCServiceCreateCallbackRequest,
+        oidcServiceCreateCallbackRequest,
         new String[] {"application/json"},
         "application/json",
         createCallbackTypeRef,
@@ -182,14 +182,14 @@ public class OIDCServiceApi extends BaseApi {
    * details that are parsed from the application's Auth Request. Required permissions: -
    * `session.read`
    *
-   * @param oIDCServiceGetAuthRequestRequest (required)
+   * @param oidcServiceGetAuthRequestRequest (required)
    * @return {@code OIDCServiceGetAuthRequestResponse}
    * @throws ApiException if fails to make API call
    */
   public OIDCServiceGetAuthRequestResponse getAuthRequest(
-      OIDCServiceGetAuthRequestRequest oIDCServiceGetAuthRequestRequest) {
+      OIDCServiceGetAuthRequestRequest oidcServiceGetAuthRequestRequest) {
     return requireBody(
-        getAuthRequestWithHttpInfo(oIDCServiceGetAuthRequestRequest), "getAuthRequest");
+        getAuthRequestWithHttpInfo(oidcServiceGetAuthRequestRequest), "getAuthRequest");
   }
 
   /**
@@ -197,15 +197,15 @@ public class OIDCServiceApi extends BaseApi {
    * details that are parsed from the application's Auth Request. Required permissions: -
    * `session.read`
    *
-   * @param oIDCServiceGetAuthRequestRequest (required)
+   * @param oidcServiceGetAuthRequestRequest (required)
    * @return the API result wrapping {@code OIDCServiceGetAuthRequestResponse}
    * @throws ApiException if fails to make API call
    */
   public ApiResult<OIDCServiceGetAuthRequestResponse> getAuthRequestWithHttpInfo(
-      OIDCServiceGetAuthRequestRequest oIDCServiceGetAuthRequestRequest) {
-    if (oIDCServiceGetAuthRequestRequest == null) {
+      OIDCServiceGetAuthRequestRequest oidcServiceGetAuthRequestRequest) {
+    if (oidcServiceGetAuthRequestRequest == null) {
       throw new IllegalArgumentException(
-          "Missing the required parameter 'oIDCServiceGetAuthRequestRequest' when calling getAuthRequest");
+          "Missing the required parameter 'oidcServiceGetAuthRequestRequest' when calling getAuthRequest");
     }
     String path = "/zitadel.oidc.v2.OIDCService/GetAuthRequest";
     Map<String, Object> queryParams = new HashMap<>();
@@ -215,7 +215,7 @@ public class OIDCServiceApi extends BaseApi {
         path,
         queryParams,
         headerParams,
-        oIDCServiceGetAuthRequestRequest,
+        oidcServiceGetAuthRequestRequest,
         new String[] {"application/json"},
         "application/json",
         getAuthRequestTypeRef,
@@ -228,15 +228,15 @@ public class OIDCServiceApi extends BaseApi {
    * authorization id that is required to authorize the request once the user signed in or to deny
    * it. Required permissions: - `session.read`
    *
-   * @param oIDCServiceGetDeviceAuthorizationRequestRequest (required)
+   * @param oidcServiceGetDeviceAuthorizationRequestRequest (required)
    * @return {@code OIDCServiceGetDeviceAuthorizationRequestResponse}
    * @throws ApiException if fails to make API call
    */
   public OIDCServiceGetDeviceAuthorizationRequestResponse getDeviceAuthorizationRequest(
       OIDCServiceGetDeviceAuthorizationRequestRequest
-          oIDCServiceGetDeviceAuthorizationRequestRequest) {
+          oidcServiceGetDeviceAuthorizationRequestRequest) {
     return requireBody(
-        getDeviceAuthorizationRequestWithHttpInfo(oIDCServiceGetDeviceAuthorizationRequestRequest),
+        getDeviceAuthorizationRequestWithHttpInfo(oidcServiceGetDeviceAuthorizationRequestRequest),
         "getDeviceAuthorizationRequest");
   }
 
@@ -246,17 +246,17 @@ public class OIDCServiceApi extends BaseApi {
    * authorization id that is required to authorize the request once the user signed in or to deny
    * it. Required permissions: - `session.read`
    *
-   * @param oIDCServiceGetDeviceAuthorizationRequestRequest (required)
+   * @param oidcServiceGetDeviceAuthorizationRequestRequest (required)
    * @return the API result wrapping {@code OIDCServiceGetDeviceAuthorizationRequestResponse}
    * @throws ApiException if fails to make API call
    */
   public ApiResult<OIDCServiceGetDeviceAuthorizationRequestResponse>
       getDeviceAuthorizationRequestWithHttpInfo(
           OIDCServiceGetDeviceAuthorizationRequestRequest
-              oIDCServiceGetDeviceAuthorizationRequestRequest) {
-    if (oIDCServiceGetDeviceAuthorizationRequestRequest == null) {
+              oidcServiceGetDeviceAuthorizationRequestRequest) {
+    if (oidcServiceGetDeviceAuthorizationRequestRequest == null) {
       throw new IllegalArgumentException(
-          "Missing the required parameter 'oIDCServiceGetDeviceAuthorizationRequestRequest' when calling getDeviceAuthorizationRequest");
+          "Missing the required parameter 'oidcServiceGetDeviceAuthorizationRequestRequest' when calling getDeviceAuthorizationRequest");
     }
     String path = "/zitadel.oidc.v2.OIDCService/GetDeviceAuthorizationRequest";
     Map<String, Object> queryParams = new HashMap<>();
@@ -266,7 +266,7 @@ public class OIDCServiceApi extends BaseApi {
         path,
         queryParams,
         headerParams,
-        oIDCServiceGetDeviceAuthorizationRequestRequest,
+        oidcServiceGetDeviceAuthorizationRequestRequest,
         new String[] {"application/json"},
         "application/json",
         getDeviceAuthorizationRequestTypeRef,

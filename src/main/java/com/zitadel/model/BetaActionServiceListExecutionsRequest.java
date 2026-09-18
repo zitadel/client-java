@@ -32,21 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaActionServiceListExecutionsRequest {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaActionServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public BetaActionServiceExecutionFieldName sortingColumn;
 
-  /**
-   * Define the criteria to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Define the criteria to query for. */
   @JsonProperty("filters")
   @Nullable
   public List<BetaActionServiceExecutionSearchFilter> filters = new ArrayList<>();

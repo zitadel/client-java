@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class OIDCServiceGetDeviceAuthorizationRequestResponse {
 
-  /** Example: {@code null} */
+  /** The {@code deviceAuthorizationRequest} property. */
   @JsonProperty("deviceAuthorizationRequest")
   @Nullable
   public OIDCServiceDeviceAuthorizationRequest deviceAuthorizationRequest;

@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
 })
 public class BetaWebKeyServiceListWebKeysResponse {
 
-  /** Example: {@code null} */
+  /** The {@code webKeys} property. */
   @JsonProperty("webKeys")
   @Nullable
   public List<BetaWebKeyServiceWebKey> webKeys = new ArrayList<>();

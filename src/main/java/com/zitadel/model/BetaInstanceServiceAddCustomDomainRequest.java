@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaInstanceServiceAddCustomDomainRequest {
 
-  /** Example: {@code null} */
+  /** The {@code instanceId} property. */
   @JsonProperty("instanceId")
   @Nullable
   public String instanceId;
 
-  /** Example: {@code null} */
+  /** The {@code domain} property. */
   @JsonProperty("domain")
   @Nullable
   public String domain;

@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceOrganizationStateQuery {
 
-  /** Example: {@code null} */
+  /** The {@code state} property. */
   @JsonProperty("state")
   @Nullable
   public OrganizationServiceOrganizationState state;

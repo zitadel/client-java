@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceRESTCall {
 
-  /**
-   * Define if any error stops the whole execution. By default the process continues as normal.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Define if any error stops the whole execution. By default the process continues as normal. */
   @JsonProperty("interruptOnError")
   @Nullable
   public Boolean interruptOnError;

@@ -33,14 +33,12 @@ public class BetaAuthorizationServiceProjectNameQuery {
   /**
    * Specify the name of the project the user was granted the authorization for to search for. Note
    * that this will also include authorizations granted for project grants of the same project.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public BetaAuthorizationServiceTextFilterMethod method;

@@ -38,8 +38,6 @@ public class BetaSessionServiceCheckWebAuthN {
    * example, in scripting languages like JS a struct is represented as an object. The details of
    * that representation are described together with the proto support for the language. The JSON
    * representation for `Struct` is JSON object.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("credentialAssertionData")
   @Nullable

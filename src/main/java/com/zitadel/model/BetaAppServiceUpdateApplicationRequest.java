@@ -30,32 +30,32 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceUpdateApplicationRequest {
 
-  /** Example: {@code null} */
+  /** The {@code projectId} property. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
 
-  /** Example: {@code null} */
+  /** The {@code id} property. */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /** Example: {@code null} */
+  /** The {@code name} property. */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /** Example: {@code null} */
+  /** The {@code apiConfigurationRequest} property. */
   @JsonProperty("apiConfigurationRequest")
   @Nullable
   public BetaAppServiceUpdateAPIApplicationConfigurationRequest apiConfigurationRequest;
 
-  /** Example: {@code null} */
+  /** The {@code oidcConfigurationRequest} property. */
   @JsonProperty("oidcConfigurationRequest")
   @Nullable
   public BetaAppServiceUpdateOIDCApplicationConfigurationRequest oidcConfigurationRequest;
 
-  /** Example: {@code null} */
+  /** The {@code samlConfigurationRequest} property. */
   @JsonProperty("samlConfigurationRequest")
   @Nullable
   public BetaAppServiceUpdateSAMLApplicationConfigurationRequest samlConfigurationRequest;

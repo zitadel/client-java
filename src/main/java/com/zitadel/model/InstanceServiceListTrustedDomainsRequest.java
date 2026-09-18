@@ -36,28 +36,22 @@ public class InstanceServiceListTrustedDomainsRequest {
    * InstanceID is the unique ID of the instance whose trusted domains will be listed. If not set,
    * the instance in the current context (e.g. identified by the host header) will be used. If an ID
    * is set, the caller must have additional permissions.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("instanceId")
   @Nullable
   public String instanceId;
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public InstanceServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public InstanceServiceTrustedDomainFieldName sortingColumn;
 
-  /**
-   * Filter the domains to be returned.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Filter the domains to be returned. */
   @JsonProperty("filters")
   @Nullable
   public List<InstanceServiceTrustedDomainFilter> filters = new ArrayList<>();

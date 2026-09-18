@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceListAuthenticationMethodTypesRequest {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code domainQuery} property. */
   @JsonProperty("domainQuery")
   @Nullable
   public UserServiceDomainQuery domainQuery;

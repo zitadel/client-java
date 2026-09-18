@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceOIDCLocalizedMessage {
 
-  /** Example: {@code null} */
+  /** The {@code key} property. */
   @JsonProperty("key")
   @Nullable
   public String key;
 
-  /** Example: {@code null} */
+  /** The {@code localizedMessage} property. */
   @JsonProperty("localizedMessage")
   @Nullable
   public String localizedMessage;

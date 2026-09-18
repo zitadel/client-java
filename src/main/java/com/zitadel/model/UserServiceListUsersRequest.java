@@ -32,21 +32,17 @@ import javax.annotation.Nullable;
 })
 public class UserServiceListUsersRequest {
 
-  /** Example: {@code null} */
+  /** The {@code query} property. */
   @JsonProperty("query")
   @Nullable
   public UserServiceListQuery query;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public UserServiceUserFieldName sortingColumn;
 
-  /**
-   * criteria the client is looking for
-   *
-   * <p>Example: {@code null}
-   */
+  /** criteria the client is looking for */
   @JsonProperty("queries")
   @Nullable
   public List<UserServiceSearchQuery> queries = new ArrayList<>();

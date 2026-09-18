@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceUpdateOrganizationRequest {
 
-  /**
-   * Organization Id for the Organization to be updated
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization Id for the Organization to be updated */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /**
-   * New Name for the Organization to be updated
-   *
-   * <p>Example: {@code null}
-   */
+  /** New Name for the Organization to be updated */
   @JsonProperty("name")
   @Nullable
   public String name;

@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceProjectSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code inProjectIdsFilter} property. */
   @JsonProperty("inProjectIdsFilter")
   @Nullable
   public ProjectServiceInIDsFilter inProjectIdsFilter;
 
-  /** Example: {@code null} */
+  /** The {@code organizationIdFilter} property. */
   @JsonProperty("organizationIdFilter")
   @Nullable
   public ProjectServiceProjectOrganizationIDFilter organizationIdFilter;
 
-  /** Example: {@code null} */
+  /** The {@code projectNameFilter} property. */
   @JsonProperty("projectNameFilter")
   @Nullable
   public ProjectServiceProjectNameFilter projectNameFilter;

@@ -30,43 +30,27 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceDomain {
 
-  /**
-   * The Organization id.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The Organization id. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * The domain name.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The domain name. */
   @JsonProperty("domainName")
   @Nullable
   public String domainName;
 
-  /**
-   * Defines if the domain is verified.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Defines if the domain is verified. */
   @JsonProperty("isVerified")
   @Nullable
   public Boolean isVerified;
 
-  /**
-   * Defines if the domain is the primary domain.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Defines if the domain is the primary domain. */
   @JsonProperty("isPrimary")
   @Nullable
   public Boolean isPrimary;
 
-  /** Example: {@code null} */
+  /** The {@code validationType} property. */
   @JsonProperty("validationType")
   @Nullable
   public BetaOrganizationServiceDomainValidationType validationType;

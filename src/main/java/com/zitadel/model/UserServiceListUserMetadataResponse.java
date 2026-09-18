@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceListUserMetadataResponse {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public UserServicePaginationResponse pagination;
 
-  /**
-   * The user metadata requested.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The user metadata requested. */
   @JsonProperty("metadata")
   @Nullable
   public List<UserServiceMetadata> metadata = new ArrayList<>();

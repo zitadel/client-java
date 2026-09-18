@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceSetSessionResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public SessionServiceDetails details;
@@ -40,14 +40,12 @@ public class SessionServiceSetSessionResponse {
    * e.g.when authenticating an OIDC auth request or SAML request. Additionally, the session token
    * can be used as OAuth2 access token to authenticate against the ZITADEL APIs. The previous token
    * was invalidated and can no longer be used.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("sessionToken")
   @Nullable
   public String sessionToken;
 
-  /** Example: {@code null} */
+  /** The {@code challenges} property. */
   @JsonProperty("challenges")
   @Nullable
   public SessionServiceChallenges challenges;

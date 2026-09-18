@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceNickNameQuery {
 
-  /** Example: {@code null} */
+  /** The {@code nickName} property. */
   @JsonProperty("nickName")
   @Nullable
   public String nickName;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public UserServiceTextQueryMethod method;

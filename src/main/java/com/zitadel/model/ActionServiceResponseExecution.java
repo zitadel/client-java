@@ -33,8 +33,6 @@ public class ActionServiceResponseExecution {
   /**
    * Define all calls as condition. Before a response is returned to the client from any available
    * service, the execution is triggered.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("all")
   @Nullable
@@ -43,8 +41,6 @@ public class ActionServiceResponseExecution {
   /**
    * Define a GRPC-method as condition. Before a response is returned to the client from this
    * method, the execution is triggered.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("method")
   @Nullable
@@ -53,8 +49,6 @@ public class ActionServiceResponseExecution {
   /**
    * Define a GRPC-service as condition. Before a response is returned to the client from any method
    * of this service, the execution is triggered.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("service")
   @Nullable

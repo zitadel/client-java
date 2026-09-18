@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class UserServiceCreatePasskeyRegistrationLinkRequest {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code returnCode} property. */
   @JsonProperty("returnCode")
   @Nullable
   public Object returnCode;
 
-  /** Example: {@code null} */
+  /** The {@code sendLink} property. */
   @JsonProperty("sendLink")
   @Nullable
   public UserServiceSendPasskeyRegistrationLink sendLink;

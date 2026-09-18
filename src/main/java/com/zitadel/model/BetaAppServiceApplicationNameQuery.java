@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceApplicationNameQuery {
 
-  /** Example: {@code null} */
+  /** The {@code name} property. */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public BetaAppServiceTextFilterMethod method;

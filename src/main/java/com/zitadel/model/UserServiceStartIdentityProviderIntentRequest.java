@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class UserServiceStartIdentityProviderIntentRequest {
 
-  /** Example: {@code null} */
+  /** The {@code idpId} property. */
   @JsonProperty("idpId")
   @Nullable
   public String idpId;
 
-  /** Example: {@code null} */
+  /** The {@code ldap} property. */
   @JsonProperty("ldap")
   @Nullable
   public UserServiceLDAPCredentials ldap;
 
-  /** Example: {@code null} */
+  /** The {@code urls} property. */
   @JsonProperty("urls")
   @Nullable
   public UserServiceRedirectURLs urls;

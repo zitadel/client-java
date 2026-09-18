@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServicePhoneQuery {
 
-  /** Example: {@code null} */
+  /** The {@code number} property. */
   @JsonProperty("number")
   @Nullable
   public String number;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public UserServiceTextQueryMethod method;

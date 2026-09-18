@@ -35,28 +35,22 @@ public class OrganizationServiceListOrganizationDomainsRequest {
   /**
    * OrganizationID is the unique identifier of the organization from which the domains are to be
    * listed.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public OrganizationServicePaginationRequest pagination;
 
-  /**
-   * Filters define the criteria to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Filters define the criteria to query for. */
   @JsonProperty("filters")
   @Nullable
   public List<OrganizationServiceDomainSearchFilter> filters = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public OrganizationServiceDomainFieldName sortingColumn;

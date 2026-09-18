@@ -30,27 +30,27 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceProjectGrantSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code grantedOrganizationIdFilter} property. */
   @JsonProperty("grantedOrganizationIdFilter")
   @Nullable
   public ProjectServiceIDFilter grantedOrganizationIdFilter;
 
-  /** Example: {@code null} */
+  /** The {@code inProjectIdsFilter} property. */
   @JsonProperty("inProjectIdsFilter")
   @Nullable
   public ProjectServiceInIDsFilter inProjectIdsFilter;
 
-  /** Example: {@code null} */
+  /** The {@code organizationIdFilter} property. */
   @JsonProperty("organizationIdFilter")
   @Nullable
   public ProjectServiceIDFilter organizationIdFilter;
 
-  /** Example: {@code null} */
+  /** The {@code projectNameFilter} property. */
   @JsonProperty("projectNameFilter")
   @Nullable
   public ProjectServiceProjectNameFilter projectNameFilter;
 
-  /** Example: {@code null} */
+  /** The {@code roleKeyFilter} property. */
   @JsonProperty("roleKeyFilter")
   @Nullable
   public ProjectServiceProjectRoleKeyFilter roleKeyFilter;

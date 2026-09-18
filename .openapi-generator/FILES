@@ -1409,8 +1409,12 @@ src/main/java/com/zitadel/model/WebKeyServiceRSABits.java
 src/main/java/com/zitadel/model/WebKeyServiceRSAHasher.java
 src/main/java/com/zitadel/model/WebKeyServiceState.java
 src/main/java/com/zitadel/model/WebKeyServiceWebKey.java
+src/main/resources/META-INF/native-image/com/zitadel/reflect-config.json
+src/test/java/com/zitadel/ApiResultTest.java
 src/test/java/com/zitadel/ConfigurationTest.java
 src/test/java/com/zitadel/DefaultApiClientUnitTest.java
+src/test/java/com/zitadel/ServerConfigurationTest.java
+src/test/java/com/zitadel/ServerVariableTest.java
 src/test/java/com/zitadel/TransportOptionsTest.java
 src/test/java/com/zitadel/api/HeaderSelectorTest.java
 src/test/java/com/zitadel/api/TraceContextUtilTest.java

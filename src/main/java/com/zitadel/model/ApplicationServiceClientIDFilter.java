@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceClientIDFilter {
 
-  /**
-   * The clientID to search for. The search is performed as an exact match.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The clientID to search for. The search is performed as an exact match. */
   @JsonProperty("clientId")
   @Nullable
   public String clientId;

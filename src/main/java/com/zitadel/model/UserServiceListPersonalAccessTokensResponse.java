@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceListPersonalAccessTokensResponse {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public UserServicePaginationResponse pagination;
 
-  /** Example: {@code null} */
+  /** The {@code result} property. */
   @JsonProperty("result")
   @Nullable
   public List<UserServicePersonalAccessToken> result = new ArrayList<>();

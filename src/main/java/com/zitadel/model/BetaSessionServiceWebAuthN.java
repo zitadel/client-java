@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceWebAuthN {
 
-  /** Example: {@code null} */
+  /** The {@code domain} property. */
   @JsonProperty("domain")
   @Nullable
   public String domain;
 
-  /** Example: {@code null} */
+  /** The {@code userVerificationRequirement} property. */
   @JsonProperty("userVerificationRequirement")
   @Nullable
   public BetaSessionServiceUserVerificationRequirement userVerificationRequirement;

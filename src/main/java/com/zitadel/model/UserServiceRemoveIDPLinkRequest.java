@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class UserServiceRemoveIDPLinkRequest {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code idpId} property. */
   @JsonProperty("idpId")
   @Nullable
   public String idpId;
 
-  /** Example: {@code null} */
+  /** The {@code linkedUserId} property. */
   @JsonProperty("linkedUserId")
   @Nullable
   public String linkedUserId;

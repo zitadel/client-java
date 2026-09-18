@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceRegisterTOTPResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public BetaUserServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code uri} property. */
   @JsonProperty("uri")
   @Nullable
   public String uri;
 
-  /** Example: {@code null} */
+  /** The {@code secret} property. */
   @JsonProperty("secret")
   @Nullable
   public String secret;

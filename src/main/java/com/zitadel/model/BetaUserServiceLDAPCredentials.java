@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceLDAPCredentials {
 
-  /** Example: {@code null} */
+  /** The {@code username} property. */
   @JsonProperty("username")
   @Nullable
   public String username;
 
-  /** Example: {@code null} */
+  /** The {@code password} property. */
   @JsonProperty("password")
   @Nullable
   public String password;

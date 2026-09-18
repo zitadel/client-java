@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceOTPEmail {
 
-  /** Example: {@code null} */
+  /** The {@code returnCode} property. */
   @JsonProperty("returnCode")
   @Nullable
   public Object returnCode;
 
-  /** Example: {@code null} */
+  /** The {@code sendCode} property. */
   @JsonProperty("sendCode")
   @Nullable
   public BetaSessionServiceSendCode sendCode;

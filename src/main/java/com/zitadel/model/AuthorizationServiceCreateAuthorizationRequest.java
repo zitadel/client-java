@@ -32,20 +32,12 @@ import javax.annotation.Nullable;
 })
 public class AuthorizationServiceCreateAuthorizationRequest {
 
-  /**
-   * UserID is the ID of the user who should be granted the authorization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** UserID is the ID of the user who should be granted the authorization. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /**
-   * Project ID is the ID of the project the user should be authorized for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Project ID is the ID of the project the user should be authorized for. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
@@ -53,18 +45,12 @@ public class AuthorizationServiceCreateAuthorizationRequest {
   /**
    * OrganizationID is the ID of the organization on which the authorization should be created. The
    * organization must either own the project or have a grant for the project.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * RoleKeys are the keys of the roles the user should be granted.
-   *
-   * <p>Example: {@code null}
-   */
+  /** RoleKeys are the keys of the roles the user should be granted. */
   @JsonProperty("roleKeys")
   @Nullable
   public List<String> roleKeys = new ArrayList<>();

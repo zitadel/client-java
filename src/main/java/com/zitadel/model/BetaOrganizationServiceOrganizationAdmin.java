@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceOrganizationAdmin {
 
-  /** Example: {@code null} */
+  /** The {@code assignedAdmin} property. */
   @JsonProperty("assignedAdmin")
   @Nullable
   public BetaOrganizationServiceAssignedAdmin assignedAdmin;
 
-  /** Example: {@code null} */
+  /** The {@code createdAdmin} property. */
   @JsonProperty("createdAdmin")
   @Nullable
   public BetaOrganizationServiceCreatedAdmin createdAdmin;

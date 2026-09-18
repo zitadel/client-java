@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceListQuery {
 
-  /** Example: {@code null} */
+  /** The {@code offset} property. */
   @JsonProperty("offset")
   @Nullable
   public Object offset;
 
-  /** Example: {@code null} */
+  /** The {@code limit} property. */
   @JsonProperty("limit")
   @Nullable
   public Integer limit;
 
-  /** Example: {@code null} */
+  /** The {@code asc} property. */
   @JsonProperty("asc")
   @Nullable
   public Boolean asc;

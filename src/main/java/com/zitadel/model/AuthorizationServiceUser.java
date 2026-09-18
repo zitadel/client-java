@@ -30,38 +30,22 @@ import javax.annotation.Nullable;
 })
 public class AuthorizationServiceUser {
 
-  /**
-   * ID represents the ID of the user who was granted the authorization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID represents the ID of the user who was granted the authorization. */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /**
-   * PreferredLoginName represents the preferred login name of the granted user.
-   *
-   * <p>Example: {@code null}
-   */
+  /** PreferredLoginName represents the preferred login name of the granted user. */
   @JsonProperty("preferredLoginName")
   @Nullable
   public String preferredLoginName;
 
-  /**
-   * DisplayName represents the public display name of the granted user.
-   *
-   * <p>Example: {@code null}
-   */
+  /** DisplayName represents the public display name of the granted user. */
   @JsonProperty("displayName")
   @Nullable
   public String displayName;
 
-  /**
-   * AvatarURL is the URL to the user's public avatar image.
-   *
-   * <p>Example: {@code null}
-   */
+  /** AvatarURL is the URL to the user's public avatar image. */
   @JsonProperty("avatarUrl")
   @Nullable
   public String avatarUrl;
@@ -69,8 +53,6 @@ public class AuthorizationServiceUser {
   /**
    * The organization the user belong to. This does not have to correspond with the authorizations
    * organization.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("organizationId")
   @Nullable

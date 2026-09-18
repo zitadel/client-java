@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceOTPSMS {
 
-  /** Example: {@code null} */
+  /** The {@code returnCode} property. */
   @JsonProperty("returnCode")
   @Nullable
   public Boolean returnCode;

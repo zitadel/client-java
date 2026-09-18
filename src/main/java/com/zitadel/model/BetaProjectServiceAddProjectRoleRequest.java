@@ -30,29 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaProjectServiceAddProjectRoleRequest {
 
-  /**
-   * ID of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID of the project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
 
-  /**
-   * The key is the only relevant attribute for ZITADEL regarding the authorization checks.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The key is the only relevant attribute for ZITADEL regarding the authorization checks. */
   @JsonProperty("roleKey")
   @Nullable
   public String roleKey;
 
-  /**
-   * Name displayed for the role.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Name displayed for the role. */
   @JsonProperty("displayName")
   @Nullable
   public String displayName;
@@ -60,8 +48,6 @@ public class BetaProjectServiceAddProjectRoleRequest {
   /**
    * The group is only used for display purposes. That you have better handling, like giving all the
    * roles from a group to a user.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("group")
   @Nullable

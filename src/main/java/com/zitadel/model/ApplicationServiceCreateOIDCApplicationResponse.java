@@ -35,8 +35,6 @@ public class ApplicationServiceCreateOIDCApplicationResponse {
   /**
    * The unique OAuth2/OIDC client_id used for authentication of the application, e.g. at the token
    * endpoint.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("clientId")
   @Nullable
@@ -47,8 +45,6 @@ public class ApplicationServiceCreateOIDCApplicationResponse {
    * OIDCAuthMethodType.OIDC_AUTH_METHOD_TYPE_CLIENT_SECRET_POST the client_secret is generated and
    * returned. It must be stored safely, as it will not be possible to retrieve it again. A new
    * client_secret can be generated using the GenerateClientSecret endpoint.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("clientSecret")
   @Nullable
@@ -58,8 +54,6 @@ public class ApplicationServiceCreateOIDCApplicationResponse {
    * NonCompliant specifies whether the config is OIDC compliant. A production configuration SHOULD
    * be compliant. Non-compliant configurations can run into interoperability issues with OIDC
    * libraries and tools. Compliance problems are listed in the compliance_problems field.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("nonCompliant")
   @Nullable
@@ -68,8 +62,6 @@ public class ApplicationServiceCreateOIDCApplicationResponse {
   /**
    * ComplianceProblems lists the problems for non-compliant configurations. In case of a compliant
    * configuration, this list is empty.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("complianceProblems")
   @Nullable

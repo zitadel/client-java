@@ -32,17 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceIDPInformation {
 
-  /** Example: {@code null} */
+  /** The {@code idpId} property. */
   @JsonProperty("idpId")
   @Nullable
   public String idpId;
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code userName} property. */
   @JsonProperty("userName")
   @Nullable
   public String userName;
@@ -53,24 +53,22 @@ public class BetaUserServiceIDPInformation {
    * example, in scripting languages like JS a struct is represented as an object. The details of
    * that representation are described together with the proto support for the language. The JSON
    * representation for `Struct` is JSON object.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("rawInformation")
   @Nullable
   public Map<String, Object> rawInformation = new HashMap<>();
 
-  /** Example: {@code null} */
+  /** The {@code ldap} property. */
   @JsonProperty("ldap")
   @Nullable
   public BetaUserServiceIDPLDAPAccessInformation ldap;
 
-  /** Example: {@code null} */
+  /** The {@code oauth} property. */
   @JsonProperty("oauth")
   @Nullable
   public BetaUserServiceIDPOAuthAccessInformation oauth;
 
-  /** Example: {@code null} */
+  /** The {@code saml} property. */
   @JsonProperty("saml")
   @Nullable
   public BetaUserServiceIDPSAMLAccessInformation saml;

@@ -103,11 +103,7 @@ public class BetaOIDCServiceConnectError {
     }
   }
 
-  /**
-   * The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
-   *
-   * <p>Example: {@code null}
-   */
+  /** The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code]. */
   @JsonProperty("code")
   @Nullable
   public CodeEnum code;
@@ -116,8 +112,6 @@ public class BetaOIDCServiceConnectError {
    * A developer-facing error message, which should be in English. Any user-facing error message
    * should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details]
    * field, or localized by the client.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("message")
   @Nullable
@@ -125,8 +119,6 @@ public class BetaOIDCServiceConnectError {
 
   /**
    * A list of messages that carry the error details. There is no limit on the number of messages.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("details")
   @Nullable

@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceUserNameQuery {
 
-  /** Example: {@code null} */
+  /** The {@code userName} property. */
   @JsonProperty("userName")
   @Nullable
   public String userName;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public BetaUserServiceTextQueryMethod method;

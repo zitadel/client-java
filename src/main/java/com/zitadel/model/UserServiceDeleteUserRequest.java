@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class UserServiceDeleteUserRequest {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;

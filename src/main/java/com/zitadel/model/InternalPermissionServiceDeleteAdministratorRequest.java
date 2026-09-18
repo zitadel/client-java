@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class InternalPermissionServiceDeleteAdministratorRequest {
 
-  /**
-   * UserID is the ID of the user whose administrator roles should be removed.
-   *
-   * <p>Example: {@code null}
-   */
+  /** UserID is the ID of the user whose administrator roles should be removed. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code resource} property. */
   @JsonProperty("resource")
   @Nullable
   public InternalPermissionServiceResourceType resource;

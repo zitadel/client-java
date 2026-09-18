@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class SAMLServiceAuthorizationError {
 
-  /** Example: {@code null} */
+  /** The {@code error} property. */
   @JsonProperty("error")
   @Nullable
   public SAMLServiceErrorReason error;
 
-  /** Example: {@code null} */
+  /** The {@code errorDescription} property. */
   @JsonProperty("errorDescription")
   @Nullable
   public String errorDescription;

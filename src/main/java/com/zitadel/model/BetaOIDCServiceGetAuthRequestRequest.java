@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaOIDCServiceGetAuthRequestRequest {
 
-  /** Example: {@code null} */
+  /** The {@code authRequestId} property. */
   @JsonProperty("authRequestId")
   @Nullable
   public String authRequestId;

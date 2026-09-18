@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceProjectNameFilter {
 
-  /**
-   * Defines the name of the project to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Defines the name of the project to query for. */
   @JsonProperty("projectName")
   @Nullable
   public String projectName;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public ProjectServiceTextFilterMethod method;

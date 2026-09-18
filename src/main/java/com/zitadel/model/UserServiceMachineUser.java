@@ -30,22 +30,22 @@ import javax.annotation.Nullable;
 })
 public class UserServiceMachineUser {
 
-  /** Example: {@code null} */
+  /** The {@code name} property. */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /** Example: {@code null} */
+  /** The {@code description} property. */
   @JsonProperty("description")
   @Nullable
   public String description;
 
-  /** Example: {@code null} */
+  /** The {@code hasSecret} property. */
   @JsonProperty("hasSecret")
   @Nullable
   public Boolean hasSecret;
 
-  /** Example: {@code null} */
+  /** The {@code accessTokenType} property. */
   @JsonProperty("accessTokenType")
   @Nullable
   public UserServiceAccessTokenType accessTokenType;

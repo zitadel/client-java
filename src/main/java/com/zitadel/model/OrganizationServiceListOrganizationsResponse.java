@@ -32,21 +32,17 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceListOrganizationsResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public OrganizationServiceListDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public OrganizationServiceOrganizationFieldName sortingColumn;
 
-  /**
-   * The Result is a list of organizations matching the query.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The Result is a list of organizations matching the query. */
   @JsonProperty("result")
   @Nullable
   public List<OrganizationServiceOrganization> result = new ArrayList<>();

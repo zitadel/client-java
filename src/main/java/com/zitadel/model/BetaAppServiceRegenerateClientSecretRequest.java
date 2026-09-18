@@ -30,22 +30,22 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceRegenerateClientSecretRequest {
 
-  /** Example: {@code null} */
+  /** The {@code projectId} property. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
 
-  /** Example: {@code null} */
+  /** The {@code applicationId} property. */
   @JsonProperty("applicationId")
   @Nullable
   public String applicationId;
 
-  /** Example: {@code null} */
+  /** The {@code isApi} property. */
   @JsonProperty("isApi")
   @Nullable
   public Boolean isApi;
 
-  /** Example: {@code null} */
+  /** The {@code isOidc} property. */
   @JsonProperty("isOidc")
   @Nullable
   public Boolean isOidc;

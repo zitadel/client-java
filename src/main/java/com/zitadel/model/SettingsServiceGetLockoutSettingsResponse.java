@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class SettingsServiceGetLockoutSettingsResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public SettingsServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code settings} property. */
   @JsonProperty("settings")
   @Nullable
   public SettingsServiceLockoutSettings settings;

@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceListOrganizationMetadataResponse {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public OrganizationServicePaginationResponse pagination;
 
-  /**
-   * Metadata is a list of organization metadata that matched the query.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Metadata is a list of organization metadata that matched the query. */
   @JsonProperty("metadata")
   @Nullable
   public List<OrganizationServiceMetadata> metadata = new ArrayList<>();

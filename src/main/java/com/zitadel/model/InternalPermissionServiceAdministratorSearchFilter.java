@@ -30,57 +30,57 @@ import javax.annotation.Nullable;
 })
 public class InternalPermissionServiceAdministratorSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code and} property. */
   @JsonProperty("and")
   @Nullable
   public InternalPermissionServiceAndFilter and;
 
-  /** Example: {@code null} */
+  /** The {@code changeDate} property. */
   @JsonProperty("changeDate")
   @Nullable
   public InternalPermissionServiceTimestampFilter changeDate;
 
-  /** Example: {@code null} */
+  /** The {@code creationDate} property. */
   @JsonProperty("creationDate")
   @Nullable
   public InternalPermissionServiceTimestampFilter creationDate;
 
-  /** Example: {@code null} */
+  /** The {@code inUserIdsFilter} property. */
   @JsonProperty("inUserIdsFilter")
   @Nullable
   public InternalPermissionServiceInIDsFilter inUserIdsFilter;
 
-  /** Example: {@code null} */
+  /** The {@code not} property. */
   @JsonProperty("not")
   @Nullable
   public InternalPermissionServiceNotFilter not;
 
-  /** Example: {@code null} */
+  /** The {@code or} property. */
   @JsonProperty("or")
   @Nullable
   public InternalPermissionServiceOrFilter or;
 
-  /** Example: {@code null} */
+  /** The {@code resource} property. */
   @JsonProperty("resource")
   @Nullable
   public InternalPermissionServiceResourceFilter resource;
 
-  /** Example: {@code null} */
+  /** The {@code role} property. */
   @JsonProperty("role")
   @Nullable
   public InternalPermissionServiceRoleFilter role;
 
-  /** Example: {@code null} */
+  /** The {@code userDisplayName} property. */
   @JsonProperty("userDisplayName")
   @Nullable
   public InternalPermissionServiceUserDisplayNameFilter userDisplayName;
 
-  /** Example: {@code null} */
+  /** The {@code userOrganizationId} property. */
   @JsonProperty("userOrganizationId")
   @Nullable
   public InternalPermissionServiceIDFilter userOrganizationId;
 
-  /** Example: {@code null} */
+  /** The {@code userPreferredLoginName} property. */
   @JsonProperty("userPreferredLoginName")
   @Nullable
   public InternalPermissionServiceUserPreferredLoginNameFilter userPreferredLoginName;

@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceListApplicationKeysResponse {
 
-  /** Example: {@code null} */
+  /** The {@code keys} property. */
   @JsonProperty("keys")
   @Nullable
   public List<BetaAppServiceApplicationKey> keys = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaAppServicePaginationResponse pagination;

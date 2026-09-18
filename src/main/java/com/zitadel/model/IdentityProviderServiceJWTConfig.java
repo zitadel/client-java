@@ -30,38 +30,22 @@ import javax.annotation.Nullable;
 })
 public class IdentityProviderServiceJWTConfig {
 
-  /**
-   * The endpoint where the JWT can be extracted.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The endpoint where the JWT can be extracted. */
   @JsonProperty("jwtEndpoint")
   @Nullable
   public String jwtEndpoint;
 
-  /**
-   * The issuer of the JWT (for validation).
-   *
-   * <p>Example: {@code null}
-   */
+  /** The issuer of the JWT (for validation). */
   @JsonProperty("issuer")
   @Nullable
   public String issuer;
 
-  /**
-   * The endpoint to the key (JWK) which is used to sign the JWT with.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The endpoint to the key (JWK) which is used to sign the JWT with. */
   @JsonProperty("keysEndpoint")
   @Nullable
   public String keysEndpoint;
 
-  /**
-   * The name of the header where the JWT is sent in, default is authorization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The name of the header where the JWT is sent in, default is authorization. */
   @JsonProperty("headerName")
   @Nullable
   public String headerName;

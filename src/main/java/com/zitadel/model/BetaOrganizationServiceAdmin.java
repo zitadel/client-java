@@ -35,19 +35,17 @@ public class BetaOrganizationServiceAdmin {
   /**
    * specify Organization Member Roles for the provided user (default is ORG_OWNER if roles are
    * empty)
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("roles")
   @Nullable
   public List<String> roles = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code human} property. */
   @JsonProperty("human")
   @Nullable
   public BetaOrganizationServiceAddHumanUserRequest human;
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;

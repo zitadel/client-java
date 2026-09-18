@@ -30,32 +30,32 @@ import javax.annotation.Nullable;
 })
 public class BetaFeatureServiceGetSystemFeaturesResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public BetaFeatureServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code loginDefaultOrg} property. */
   @JsonProperty("loginDefaultOrg")
   @Nullable
   public BetaFeatureServiceFeatureFlag loginDefaultOrg;
 
-  /** Example: {@code null} */
+  /** The {@code userSchema} property. */
   @JsonProperty("userSchema")
   @Nullable
   public BetaFeatureServiceFeatureFlag userSchema;
 
-  /** Example: {@code null} */
+  /** The {@code oidcTokenExchange} property. */
   @JsonProperty("oidcTokenExchange")
   @Nullable
   public BetaFeatureServiceFeatureFlag oidcTokenExchange;
 
-  /** Example: {@code null} */
+  /** The {@code improvedPerformance} property. */
   @JsonProperty("improvedPerformance")
   @Nullable
   public BetaFeatureServiceImprovedPerformanceFeatureFlag improvedPerformance;
 
-  /** Example: {@code null} */
+  /** The {@code oidcSingleV1SessionTermination} property. */
   @JsonProperty("oidcSingleV1SessionTermination")
   @Nullable
   public BetaFeatureServiceFeatureFlag oidcSingleV1SessionTermination;

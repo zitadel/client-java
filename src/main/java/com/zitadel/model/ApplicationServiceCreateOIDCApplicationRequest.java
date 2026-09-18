@@ -37,8 +37,6 @@ public class ApplicationServiceCreateOIDCApplicationRequest {
    * RedirectURIs are the allowed callback URIs for the OAuth2 / OIDC flows, where the authorization
    * code or tokens will be sent to. The redirect_uri parameter in the authorization request must
    * exactly match one of these URIs.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("redirectUris")
   @Nullable
@@ -47,8 +45,6 @@ public class ApplicationServiceCreateOIDCApplicationRequest {
   /**
    * ResponseTypes define whether a code, id_token token or just id_token will be returned. The
    * response_type parameter in the authorization request must exactly match one of these values.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("responseTypes")
   @Nullable
@@ -59,19 +55,17 @@ public class ApplicationServiceCreateOIDCApplicationRequest {
    * the token request must exactly match one of these values. Minimum one grant type must be
    * provided, but multiple grant types can be provided to allow different flows, e.g. authorization
    * code flow and refresh token flow.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("grantTypes")
   @Nullable
   public List<ApplicationServiceOIDCGrantType> grantTypes = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code applicationType} property. */
   @JsonProperty("applicationType")
   @Nullable
   public ApplicationServiceOIDCApplicationType applicationType;
 
-  /** Example: {@code null} */
+  /** The {@code authMethodType} property. */
   @JsonProperty("authMethodType")
   @Nullable
   public ApplicationServiceOIDCAuthMethodType authMethodType;
@@ -79,14 +73,12 @@ public class ApplicationServiceCreateOIDCApplicationRequest {
   /**
    * PostLogoutRedirectURIs are the allowed URIs to redirect to after a logout. The
    * post_logout_redirect_uri parameter in the logout request must exactly match one of these URIs.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("postLogoutRedirectUris")
   @Nullable
   public List<String> postLogoutRedirectUris = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code version} property. */
   @JsonProperty("version")
   @Nullable
   public ApplicationServiceOIDCVersion version;
@@ -95,14 +87,12 @@ public class ApplicationServiceCreateOIDCApplicationRequest {
    * DevelopmentMode can be enabled for development purposes. This allows the use of OIDC
    * non-compliant and potentially insecure settings, such as the use of HTTP redirect URIs or
    * wildcard redirect URIs.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("developmentMode")
   @Nullable
   public Boolean developmentMode;
 
-  /** Example: {@code null} */
+  /** The {@code accessTokenType} property. */
   @JsonProperty("accessTokenType")
   @Nullable
   public ApplicationServiceOIDCTokenType accessTokenType;
@@ -111,8 +101,6 @@ public class ApplicationServiceCreateOIDCApplicationRequest {
    * If AccessTokenRoleAssertion is enabled, the roles of the user are added to the access token.
    * Ensure that the access token is a JWT token and not a bearer token. And either request the
    * roles by scope or enable the user role assertion on the project.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("accessTokenRoleAssertion")
   @Nullable
@@ -121,8 +109,6 @@ public class ApplicationServiceCreateOIDCApplicationRequest {
   /**
    * If IDTokenRoleAssertion is enabled, the roles of the user are added to the id token. Ensure
    * that either the roles are requested by scope or enable the user role assertion on the project.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("idTokenRoleAssertion")
   @Nullable
@@ -136,8 +122,6 @@ public class ApplicationServiceCreateOIDCApplicationRequest {
    * which states that these claims must only be requested from the userinfo endpoint if an access
    * token is issued. This is to prevent leaking of personal information in the id token, which is
    * often stored in the browser and therefore more vulnerable.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("idTokenUserinfoAssertion")
   @Nullable
@@ -146,27 +130,25 @@ public class ApplicationServiceCreateOIDCApplicationRequest {
   /**
    * A Duration represents a signed, fixed-length span of time represented as a count of seconds and
    * fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts
-   * like \"day\" or \"month\". It is related to Timestamp in that the difference between two
-   * Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is
-   * approximately +-10,000 years. # Examples Example 1: Compute Duration from two Timestamps in
-   * pseudo code. Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-   * duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos - start.nanos; if
-   * (duration.seconds < 0 && duration.nanos > 0) { duration.seconds += 1; duration.nanos -=
-   * 1000000000; } else if (duration.seconds > 0 && duration.nanos < 0) { duration.seconds -= 1;
-   * duration.nanos += 1000000000; } Example 2: Compute Timestamp from Timestamp + Duration in
-   * pseudo code. Timestamp start = ...; Duration duration = ...; Timestamp end = ...; end.seconds =
-   * start.seconds + duration.seconds; end.nanos = start.nanos + duration.nanos; if (end.nanos < 0)
-   * { end.seconds -= 1; end.nanos += 1000000000; } else if (end.nanos >= 1000000000) { end.seconds
-   * += 1; end.nanos -= 1000000000; } Example 3: Compute Duration from datetime.timedelta in Python.
-   * td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.FromTimedelta(td) #
-   * JSON Mapping In JSON format, the Duration type is encoded as a string rather than an object,
-   * where the string ends in the suffix \"s\" (indicating seconds) and is preceded by the number of
+   * like "day" or "month". It is related to Timestamp in that the difference between two Timestamp
+   * values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately
+   * +-10,000 years. # Examples Example 1: Compute Duration from two Timestamps in pseudo code.
+   * Timestamp start = ...; Timestamp end = ...; Duration duration = ...; duration.seconds =
+   * end.seconds - start.seconds; duration.nanos = end.nanos - start.nanos; if (duration.seconds < 0
+   * && duration.nanos > 0) { duration.seconds += 1; duration.nanos -= 1000000000; } else if
+   * (duration.seconds > 0 && duration.nanos < 0) { duration.seconds -= 1; duration.nanos +=
+   * 1000000000; } Example 2: Compute Timestamp from Timestamp + Duration in pseudo code. Timestamp
+   * start = ...; Duration duration = ...; Timestamp end = ...; end.seconds = start.seconds +
+   * duration.seconds; end.nanos = start.nanos + duration.nanos; if (end.nanos < 0) { end.seconds -=
+   * 1; end.nanos += 1000000000; } else if (end.nanos >= 1000000000) { end.seconds += 1; end.nanos
+   * -= 1000000000; } Example 3: Compute Duration from datetime.timedelta in Python. td =
+   * datetime.timedelta(days=3, minutes=10) duration = Duration() duration.FromTimedelta(td) # JSON
+   * Mapping In JSON format, the Duration type is encoded as a string rather than an object, where
+   * the string ends in the suffix "s" (indicating seconds) and is preceded by the number of
    * seconds, with nanoseconds expressed as fractional seconds. For example, 3 seconds with 0
-   * nanoseconds should be encoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should
-   * be expressed in JSON format as \"3.000000001s\", and 3 seconds and 1 microsecond should be
-   * expressed in JSON format as \"3.000001s\".
-   *
-   * <p>Example: {@code null}
+   * nanoseconds should be encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should
+   * be expressed in JSON format as "3.000000001s", and 3 seconds and 1 microsecond should be
+   * expressed in JSON format as "3.000001s".
    */
   @JsonProperty("clockSkew")
   @Nullable
@@ -177,8 +159,6 @@ public class ApplicationServiceCreateOIDCApplicationRequest {
    * additional to the redirect_uris. This is useful if the application is used from an origin
    * different to the redirect_uris, e.g. if the application is a SPA served in a native app, where
    * the redirect_uri is a custom scheme, but the application is served from a https origin.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("additionalOrigins")
   @Nullable
@@ -188,8 +168,6 @@ public class ApplicationServiceCreateOIDCApplicationRequest {
    * For native apps a successful login usually shows a success page with a link to open the
    * application again. SkipNativeAppSuccessPage can be used to skip this page and open the
    * application directly.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("skipNativeAppSuccessPage")
   @Nullable
@@ -198,14 +176,12 @@ public class ApplicationServiceCreateOIDCApplicationRequest {
   /**
    * BackChannelLogoutURI is used to notify the application about terminated sessions according to
    * the OIDC Back-Channel Logout (https://openid.net/specs/openid-connect-backchannel-1_0.html).
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("backChannelLogoutUri")
   @Nullable
   public String backChannelLogoutUri;
 
-  /** Example: {@code null} */
+  /** The {@code loginVersion} property. */
   @JsonProperty("loginVersion")
   @Nullable
   public ApplicationServiceLoginVersion loginVersion;

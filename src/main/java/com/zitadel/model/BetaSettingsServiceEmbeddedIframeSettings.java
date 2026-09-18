@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaSettingsServiceEmbeddedIframeSettings {
 
-  /** Example: {@code null} */
+  /** The {@code enabled} property. */
   @JsonProperty("enabled")
   @Nullable
   public Boolean enabled;
 
-  /** Example: {@code null} */
+  /** The {@code allowedOrigins} property. */
   @JsonProperty("allowedOrigins")
   @Nullable
   public List<String> allowedOrigins = new ArrayList<>();

@@ -32,21 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaInstanceServiceListInstancesRequest {
 
-  /**
-   * Criterias the client is looking for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Criterias the client is looking for. */
   @JsonProperty("queries")
   @Nullable
   public List<BetaInstanceServiceQuery> queries = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaInstanceServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public BetaInstanceServiceFieldName sortingColumn;

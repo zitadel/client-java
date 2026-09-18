@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceListPublicKeysResponse {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public ActionServicePaginationResponse pagination;
 
-  /**
-   * List of all public keys for the target.
-   *
-   * <p>Example: {@code null}
-   */
+  /** List of all public keys for the target. */
   @JsonProperty("publicKeys")
   @Nullable
   public List<ActionServicePublicKey> publicKeys = new ArrayList<>();

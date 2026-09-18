@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceAuthFactorU2F {
 
-  /** Example: {@code null} */
+  /** The {@code id} property. */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /** Example: {@code null} */
+  /** The {@code name} property. */
   @JsonProperty("name")
   @Nullable
   public String name;

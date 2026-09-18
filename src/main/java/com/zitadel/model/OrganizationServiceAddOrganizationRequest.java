@@ -35,8 +35,6 @@ public class OrganizationServiceAddOrganizationRequest {
   /**
    * Name is the unique name of the organization to be created. This must be unique across the
    * instance.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("name")
   @Nullable
@@ -47,8 +45,6 @@ public class OrganizationServiceAddOrganizationRequest {
    * organization will be created without any admin users. The organization can still be managed by
    * any instance administrator. If no roles are specified for a user, they will be assigned the
    * role ORG_OWNER.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("admins")
   @Nullable
@@ -58,8 +54,6 @@ public class OrganizationServiceAddOrganizationRequest {
    * OrganizationID is the unique identifier of the organization. This field is optional. If
    * omitted, the system will generate one, which is the recommended way. The generated ID will be
    * returned in the response.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("organizationId")
   @Nullable
@@ -70,8 +64,6 @@ public class OrganizationServiceAddOrganizationRequest {
    * which is the recommended way. The generated ID will be returned in the response. Deprecated:
    * use 'organization_id' field instead. If both org_id and organization_id are set,
    * organization_id will take precedence.
-   *
-   * <p>Example: {@code null}
    *
    * @deprecated This property is deprecated.
    */

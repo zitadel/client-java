@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaInstanceServiceListTrustedDomainsResponse {
 
-  /** Example: {@code null} */
+  /** The {@code trustedDomain} property. */
   @JsonProperty("trustedDomain")
   @Nullable
   public List<BetaInstanceServiceTrustedDomain> trustedDomain = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaInstanceServicePaginationResponse pagination;

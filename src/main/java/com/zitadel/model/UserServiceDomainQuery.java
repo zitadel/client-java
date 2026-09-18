@@ -33,18 +33,12 @@ public class UserServiceDomainQuery {
   /**
    * List also auth method types without domain information like passkey and U2F added through V1
    * APIs / Login UI.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("includeWithoutDomain")
   @Nullable
   public Boolean includeWithoutDomain;
 
-  /**
-   * List only auth methods with specific domain.
-   *
-   * <p>Example: {@code null}
-   */
+  /** List only auth methods with specific domain. */
   @JsonProperty("domain")
   @Nullable
   public String domain;

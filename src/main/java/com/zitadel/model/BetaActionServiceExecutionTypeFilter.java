@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaActionServiceExecutionTypeFilter {
 
-  /** Example: {@code null} */
+  /** The {@code executionType} property. */
   @JsonProperty("executionType")
   @Nullable
   public BetaActionServiceExecutionType executionType;

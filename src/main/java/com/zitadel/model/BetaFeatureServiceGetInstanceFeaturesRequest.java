@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaFeatureServiceGetInstanceFeaturesRequest {
 
-  /** Example: {@code null} */
+  /** The {@code inheritance} property. */
   @JsonProperty("inheritance")
   @Nullable
   public Boolean inheritance;

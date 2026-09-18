@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class UserServiceRemoveSecretRequest {
 
-  /**
-   * The users resource ID.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The users resource ID. */
   @JsonProperty("userId")
   @Nullable
   public String userId;

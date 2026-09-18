@@ -35,32 +35,22 @@ public class SessionServiceUserAgent {
   /**
    * FingerprintID is a unique identifier for the user agent's fingerprint. It can be used to group
    * sessions by device or browser.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("fingerprintId")
   @Nullable
   public String fingerprintId;
 
-  /**
-   * IP is the IP address from which the session was created.
-   *
-   * <p>Example: {@code null}
-   */
+  /** IP is the IP address from which the session was created. */
   @JsonProperty("ip")
   @Nullable
   public String ip;
 
-  /**
-   * Description is a human-readable description of the user agent.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Description is a human-readable description of the user agent. */
   @JsonProperty("description")
   @Nullable
   public String description;
 
-  /** Example: {@code null} */
+  /** The {@code header} property. */
   @JsonProperty("header")
   @Nullable
   public Map<String, SessionServiceHeaderValues> header = new HashMap<>();

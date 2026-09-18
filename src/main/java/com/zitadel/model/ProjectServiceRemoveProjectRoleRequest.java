@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceRemoveProjectRoleRequest {
 
-  /**
-   * ProjectID is the unique identifier of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectID is the unique identifier of the project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
@@ -43,8 +39,6 @@ public class ProjectServiceRemoveProjectRoleRequest {
    * RoleKey is the key of the role to be removed. All dependencies of this role will be removed as
    * well, including project grants and user grants. If the role is not found, the request will
    * return a successful response as the desired state is already achieved.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("roleKey")
   @Nullable

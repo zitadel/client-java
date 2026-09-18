@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceGetUserByIDResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public UserServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code user} property. */
   @JsonProperty("user")
   @Nullable
   public UserServiceUser user;

@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceSendCode {
 
-  /** Example: {@code null} */
+  /** The {@code urlTemplate} property. */
   @JsonProperty("urlTemplate")
   @Nullable
   public String urlTemplate;

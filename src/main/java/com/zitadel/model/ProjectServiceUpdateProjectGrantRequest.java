@@ -32,19 +32,13 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceUpdateProjectGrantRequest {
 
-  /**
-   * ProjectID is the unique identifier of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectID is the unique identifier of the project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
 
   /**
    * GrantedOrganizationID is the unique identifier of the organization the project was granted to.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("grantedOrganizationId")
   @Nullable
@@ -56,8 +50,6 @@ public class ProjectServiceUpdateProjectGrantRequest {
    * project grant. If you want to add a role, make sure to include all other existing roles as
    * well. If any previous role is removed, all user grants for this project grant with this role
    * will be removed as well.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("roleKeys")
   @Nullable

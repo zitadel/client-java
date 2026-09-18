@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceCheckPassword {
 
-  /**
-   * The password of the user to be checked.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The password of the user to be checked. */
   @JsonProperty("password")
   @Nullable
   public String password;

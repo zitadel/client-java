@@ -30,42 +30,42 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceChecks {
 
-  /** Example: {@code null} */
+  /** The {@code user} property. */
   @JsonProperty("user")
   @Nullable
   public SessionServiceCheckUser user;
 
-  /** Example: {@code null} */
+  /** The {@code password} property. */
   @JsonProperty("password")
   @Nullable
   public SessionServiceCheckPassword password;
 
-  /** Example: {@code null} */
+  /** The {@code webAuthN} property. */
   @JsonProperty("webAuthN")
   @Nullable
   public SessionServiceCheckWebAuthN webAuthN;
 
-  /** Example: {@code null} */
+  /** The {@code idpIntent} property. */
   @JsonProperty("idpIntent")
   @Nullable
   public SessionServiceCheckIDPIntent idpIntent;
 
-  /** Example: {@code null} */
+  /** The {@code totp} property. */
   @JsonProperty("totp")
   @Nullable
   public SessionServiceCheckTOTP totp;
 
-  /** Example: {@code null} */
+  /** The {@code otpSms} property. */
   @JsonProperty("otpSms")
   @Nullable
   public SessionServiceCheckOTP otpSms;
 
-  /** Example: {@code null} */
+  /** The {@code otpEmail} property. */
   @JsonProperty("otpEmail")
   @Nullable
   public SessionServiceCheckOTP otpEmail;
 
-  /** Example: {@code null} */
+  /** The {@code recoveryCode} property. */
   @JsonProperty("recoveryCode")
   @Nullable
   public SessionServiceCheckRecoveryCode recoveryCode;

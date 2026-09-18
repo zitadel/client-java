@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceGetApplicationRequest {
 
-  /**
-   * The unique ID of the application to be retrieved.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique ID of the application to be retrieved. */
   @JsonProperty("applicationId")
   @Nullable
   public String applicationId;

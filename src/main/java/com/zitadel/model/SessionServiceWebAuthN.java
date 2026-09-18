@@ -33,17 +33,15 @@ public class SessionServiceWebAuthN {
   /**
    * The domain on which the session was created. Will be used in the WebAuthN challenge. It must be
    * either the exact domain or a top-level domain of the origin of the request. For example if the
-   * request is coming from \"login.example.com\", the domain can be \"login.example.com\" or
-   * \"example.com\", but not \"other.com\" or \"sub.login.example.com\". See also:
+   * request is coming from "login.example.com", the domain can be "login.example.com" or
+   * "example.com", but not "other.com" or "sub.login.example.com". See also:
    * https://www.w3.org/TR/webauthn/#relying-party-identifier
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("domain")
   @Nullable
   public String domain;
 
-  /** Example: {@code null} */
+  /** The {@code userVerificationRequirement} property. */
   @JsonProperty("userVerificationRequirement")
   @Nullable
   public SessionServiceUserVerificationRequirement userVerificationRequirement;

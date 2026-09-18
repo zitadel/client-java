@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceApplicationNameFilter {
 
-  /**
-   * The name of the application to search for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The name of the application to search for. */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public ApplicationServiceTextFilterMethod method;

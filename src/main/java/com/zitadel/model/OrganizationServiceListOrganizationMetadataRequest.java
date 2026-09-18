@@ -34,23 +34,17 @@ public class OrganizationServiceListOrganizationMetadataRequest {
 
   /**
    * Organization ID is the unique identifier of the organization whose metadata is to be listed.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public OrganizationServicePaginationRequest pagination;
 
-  /**
-   * Filters define the criteria to query the metadata for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Filters define the criteria to query the metadata for. */
   @JsonProperty("filters")
   @Nullable
   public List<OrganizationServiceMetadataSearchFilter> filters = new ArrayList<>();

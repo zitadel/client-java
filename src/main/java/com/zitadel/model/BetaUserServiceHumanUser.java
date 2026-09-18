@@ -33,67 +33,47 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceHumanUser {
 
-  /**
-   * Unique identifier of the user.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Unique identifier of the user. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code state} property. */
   @JsonProperty("state")
   @Nullable
   public BetaUserServiceUserState state;
 
-  /**
-   * Username of the user, which can be globally unique or unique on organization level.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Username of the user, which can be globally unique or unique on organization level. */
   @JsonProperty("username")
   @Nullable
   public String username;
 
-  /**
-   * Possible usable login names for the user.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Possible usable login names for the user. */
   @JsonProperty("loginNames")
   @Nullable
   public List<String> loginNames = new ArrayList<>();
 
-  /**
-   * Preferred login name of the user.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Preferred login name of the user. */
   @JsonProperty("preferredLoginName")
   @Nullable
   public String preferredLoginName;
 
-  /** Example: {@code null} */
+  /** The {@code profile} property. */
   @JsonProperty("profile")
   @Nullable
   public BetaUserServiceHumanProfile profile;
 
-  /** Example: {@code null} */
+  /** The {@code email} property. */
   @JsonProperty("email")
   @Nullable
   public BetaUserServiceHumanEmail email;
 
-  /** Example: {@code null} */
+  /** The {@code phone} property. */
   @JsonProperty("phone")
   @Nullable
   public BetaUserServiceHumanPhone phone;
 
-  /**
-   * User is required to change the used password on the next login.
-   *
-   * <p>Example: {@code null}
-   */
+  /** User is required to change the used password on the next login. */
   @JsonProperty("passwordChangeRequired")
   @Nullable
   public Boolean passwordChangeRequired;
@@ -103,7 +83,7 @@ public class BetaUserServiceHumanUser {
    * as a count of seconds and fractions of seconds at nanosecond resolution. The count is relative
    * to an epoch at UTC midnight on January 1, 1970, in the proleptic Gregorian calendar which
    * extends the Gregorian calendar backwards to year one. All minutes are 60 seconds long. Leap
-   * seconds are \"smeared\" so that no leap second table is needed for interpretation, using a
+   * seconds are "smeared" so that no leap second table is needed for interpretation, using a
    * [24-hour linear smear](https://developers.google.com/time/smear). The range is from
    * 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure
    * that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
@@ -124,15 +104,15 @@ public class BetaUserServiceHumanUser {
    * Example 6: Compute Timestamp from current time in Python. timestamp = Timestamp()
    * timestamp.GetCurrentTime() # JSON Mapping In JSON format, the Timestamp type is encoded as a
    * string in the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is
-   * \"{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z\" where {year} is always expressed
-   * using four digits while {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits
-   * each. The fractional seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),
-   * are optional. The \"Z\" suffix indicates the timezone (\"UTC\"); the timezone is required. A
-   * proto3 JSON serializer should always use UTC (as indicated by \"Z\") when printing the
-   * Timestamp type and a proto3 JSON parser should be able to accept both UTC and other timezones
-   * (as indicated by an offset). For example, \"2017-01-15T01:30:15.01Z\" encodes 15.01 seconds
-   * past 01:30 UTC on January 15, 2017. In JavaScript, one can convert a Date object to this format
-   * using the standard
+   * "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z" where {year} is always expressed using
+   * four digits while {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits each.
+   * The fractional seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution), are
+   * optional. The "Z" suffix indicates the timezone ("UTC"); the timezone is required. A proto3
+   * JSON serializer should always use UTC (as indicated by "Z") when printing the Timestamp type
+   * and a proto3 JSON parser should be able to accept both UTC and other timezones (as indicated by
+   * an offset). For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
+   * January 15, 2017. In JavaScript, one can convert a Date object to this format using the
+   * standard
    * [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
    * method. In Python, a standard `datetime.datetime` object can be converted to this format using
    * [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with the time format
@@ -140,8 +120,6 @@ public class BetaUserServiceHumanUser {
    * [`ISODateTimeFormat.dateTime()`](
    * http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()
    * ) to obtain a formatter capable of generating timestamps in this format.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("passwordChanged")
   @Nullable

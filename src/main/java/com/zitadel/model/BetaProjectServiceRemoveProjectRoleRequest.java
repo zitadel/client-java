@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaProjectServiceRemoveProjectRoleRequest {
 
-  /**
-   * ID of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID of the project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
 
-  /**
-   * The key is the only relevant attribute for ZITADEL regarding the authorization checks.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The key is the only relevant attribute for ZITADEL regarding the authorization checks. */
   @JsonProperty("roleKey")
   @Nullable
   public String roleKey;

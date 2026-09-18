@@ -30,22 +30,22 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceGetApplicationKeyRequest {
 
-  /** Example: {@code null} */
+  /** The {@code id} property. */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /** Example: {@code null} */
+  /** The {@code projectId} property. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
 
-  /** Example: {@code null} */
+  /** The {@code applicationId} property. */
   @JsonProperty("applicationId")
   @Nullable
   public String applicationId;
 
-  /** Example: {@code null} */
+  /** The {@code organizationId} property. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;

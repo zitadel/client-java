@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class AuthorizationServiceUserPreferredLoginNameQuery {
 
-  /**
-   * Specify the preferred login name of the granted user to search for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Specify the preferred login name of the granted user to search for. */
   @JsonProperty("loginName")
   @Nullable
   public String loginName;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public AuthorizationServiceTextFilterMethod method;

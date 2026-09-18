@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceIDPIntent {
 
-  /** Example: {@code null} */
+  /** The {@code idpIntentId} property. */
   @JsonProperty("idpIntentId")
   @Nullable
   public String idpIntentId;
 
-  /** Example: {@code null} */
+  /** The {@code idpIntentToken} property. */
   @JsonProperty("idpIntentToken")
   @Nullable
   public String idpIntentToken;
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;

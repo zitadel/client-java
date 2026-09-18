@@ -30,27 +30,27 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceApplicationSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code apiAppOnly} property. */
   @JsonProperty("apiAppOnly")
   @Nullable
   public Boolean apiAppOnly;
 
-  /** Example: {@code null} */
+  /** The {@code nameFilter} property. */
   @JsonProperty("nameFilter")
   @Nullable
   public BetaAppServiceApplicationNameQuery nameFilter;
 
-  /** Example: {@code null} */
+  /** The {@code oidcAppOnly} property. */
   @JsonProperty("oidcAppOnly")
   @Nullable
   public Boolean oidcAppOnly;
 
-  /** Example: {@code null} */
+  /** The {@code samlAppOnly} property. */
   @JsonProperty("samlAppOnly")
   @Nullable
   public Boolean samlAppOnly;
 
-  /** Example: {@code null} */
+  /** The {@code stateFilter} property. */
   @JsonProperty("stateFilter")
   @Nullable
   public BetaAppServiceAppState stateFilter;

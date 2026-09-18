@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class InstanceServiceDeleteInstanceRequest {
 
-  /**
-   * InstanceID is the unique ID of the instance to be deleted.
-   *
-   * <p>Example: {@code null}
-   */
+  /** InstanceID is the unique ID of the instance to be deleted. */
   @JsonProperty("instanceId")
   @Nullable
   public String instanceId;

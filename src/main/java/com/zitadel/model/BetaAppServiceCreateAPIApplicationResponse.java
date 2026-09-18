@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceCreateAPIApplicationResponse {
 
-  /** Example: {@code null} */
+  /** The {@code clientId} property. */
   @JsonProperty("clientId")
   @Nullable
   public String clientId;
 
-  /** Example: {@code null} */
+  /** The {@code clientSecret} property. */
   @JsonProperty("clientSecret")
   @Nullable
   public String clientSecret;

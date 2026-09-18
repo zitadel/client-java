@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceTargetFilter {
 
-  /**
-   * Defines the id of the target that needs to be part of the execution.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Defines the id of the target that needs to be part of the execution. */
   @JsonProperty("targetId")
   @Nullable
   public String targetId;

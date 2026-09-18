@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class InstanceServiceAddCustomDomainRequest {
 
-  /**
-   * InstanceID is the unique ID of the instance to which the domain will be added.
-   *
-   * <p>Example: {@code null}
-   */
+  /** InstanceID is the unique ID of the instance to which the domain will be added. */
   @JsonProperty("instanceId")
   @Nullable
   public String instanceId;
@@ -42,8 +38,6 @@ public class InstanceServiceAddCustomDomainRequest {
   /**
    * Custom domain to add to the instance. Must be a valid domain name. Once the domain is added, it
    * will be used to route requests to this instance.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("customDomain")
   @Nullable

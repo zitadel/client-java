@@ -30,22 +30,22 @@ import javax.annotation.Nullable;
 })
 public class BetaSettingsServiceDomainSettings {
 
-  /** Example: {@code null} */
+  /** The {@code loginNameIncludesDomain} property. */
   @JsonProperty("loginNameIncludesDomain")
   @Nullable
   public Boolean loginNameIncludesDomain;
 
-  /** Example: {@code null} */
+  /** The {@code requireOrgDomainVerification} property. */
   @JsonProperty("requireOrgDomainVerification")
   @Nullable
   public Boolean requireOrgDomainVerification;
 
-  /** Example: {@code null} */
+  /** The {@code smtpSenderAddressMatchesInstanceDomain} property. */
   @JsonProperty("smtpSenderAddressMatchesInstanceDomain")
   @Nullable
   public Boolean smtpSenderAddressMatchesInstanceDomain;
 
-  /** Example: {@code null} */
+  /** The {@code resourceOwnerType} property. */
   @JsonProperty("resourceOwnerType")
   @Nullable
   public BetaSettingsServiceResourceOwnerType resourceOwnerType;

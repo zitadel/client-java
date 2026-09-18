@@ -30,27 +30,27 @@ import javax.annotation.Nullable;
 })
 public class UserServiceAuthFactor {
 
-  /** Example: {@code null} */
+  /** The {@code state} property. */
   @JsonProperty("state")
   @Nullable
   public UserServiceAuthFactorState state;
 
-  /** Example: {@code null} */
+  /** The {@code otp} property. */
   @JsonProperty("otp")
   @Nullable
   public Object otp;
 
-  /** Example: {@code null} */
+  /** The {@code otpEmail} property. */
   @JsonProperty("otpEmail")
   @Nullable
   public Object otpEmail;
 
-  /** Example: {@code null} */
+  /** The {@code otpSms} property. */
   @JsonProperty("otpSms")
   @Nullable
   public Object otpSms;
 
-  /** Example: {@code null} */
+  /** The {@code u2f} property. */
   @JsonProperty("u2f")
   @Nullable
   public UserServiceAuthFactorU2F u2f;

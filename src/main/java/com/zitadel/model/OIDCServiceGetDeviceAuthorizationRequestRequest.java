@@ -33,8 +33,6 @@ public class OIDCServiceGetDeviceAuthorizationRequestRequest {
   /**
    * The user_code returned by the device authorization request and provided to the user by the
    * device.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("userCode")
   @Nullable

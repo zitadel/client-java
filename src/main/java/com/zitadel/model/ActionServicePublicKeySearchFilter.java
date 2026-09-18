@@ -30,21 +30,17 @@ import javax.annotation.Nullable;
 })
 public class ActionServicePublicKeySearchFilter {
 
-  /**
-   * Filter the keys by their active status.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Filter the keys by their active status. */
   @JsonProperty("activeFilter")
   @Nullable
   public Boolean activeFilter;
 
-  /** Example: {@code null} */
+  /** The {@code expirationDateFilter} property. */
   @JsonProperty("expirationDateFilter")
   @Nullable
   public ActionServiceTimestampFilter expirationDateFilter;
 
-  /** Example: {@code null} */
+  /** The {@code keyIdsFilter} property. */
   @JsonProperty("keyIdsFilter")
   @Nullable
   public ActionServiceInIDsFilter keyIdsFilter;

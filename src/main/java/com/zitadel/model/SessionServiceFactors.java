@@ -30,42 +30,42 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceFactors {
 
-  /** Example: {@code null} */
+  /** The {@code user} property. */
   @JsonProperty("user")
   @Nullable
   public SessionServiceUserFactor user;
 
-  /** Example: {@code null} */
+  /** The {@code password} property. */
   @JsonProperty("password")
   @Nullable
   public SessionServicePasswordFactor password;
 
-  /** Example: {@code null} */
+  /** The {@code webAuthN} property. */
   @JsonProperty("webAuthN")
   @Nullable
   public SessionServiceWebAuthNFactor webAuthN;
 
-  /** Example: {@code null} */
+  /** The {@code intent} property. */
   @JsonProperty("intent")
   @Nullable
   public SessionServiceIntentFactor intent;
 
-  /** Example: {@code null} */
+  /** The {@code totp} property. */
   @JsonProperty("totp")
   @Nullable
   public SessionServiceTOTPFactor totp;
 
-  /** Example: {@code null} */
+  /** The {@code otpSms} property. */
   @JsonProperty("otpSms")
   @Nullable
   public SessionServiceOTPFactor otpSms;
 
-  /** Example: {@code null} */
+  /** The {@code otpEmail} property. */
   @JsonProperty("otpEmail")
   @Nullable
   public SessionServiceOTPFactor otpEmail;
 
-  /** Example: {@code null} */
+  /** The {@code recoveryCode} property. */
   @JsonProperty("recoveryCode")
   @Nullable
   public SessionServiceRecoveryCodeFactor recoveryCode;

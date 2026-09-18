@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaProjectServiceGetProjectRequest {
 
-  /**
-   * The unique identifier of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique identifier of the project. */
   @JsonProperty("id")
   @Nullable
   public String id;

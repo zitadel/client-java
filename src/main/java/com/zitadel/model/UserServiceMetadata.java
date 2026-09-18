@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceMetadata {
 
-  /**
-   * Key in the metadata key/value pair.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Key in the metadata key/value pair. */
   @JsonProperty("key")
   @Nullable
   public String key;
 
-  /**
-   * Value in the metadata key/value pair.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Value in the metadata key/value pair. */
   @JsonProperty("value")
   @Nullable
   public byte[] value;

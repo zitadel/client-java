@@ -32,11 +32,7 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceInIDsFilter {
 
-  /**
-   * Defines the ids to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Defines the ids to query for. */
   @JsonProperty("ids")
   @Nullable
   public List<String> ids = new ArrayList<>();

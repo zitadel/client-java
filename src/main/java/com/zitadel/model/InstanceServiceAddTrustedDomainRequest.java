@@ -34,8 +34,6 @@ public class InstanceServiceAddTrustedDomainRequest {
    * InstanceID is the unique ID of the instance to which the trusted domain will be added. If not
    * set, the instance in the current context (e.g. identified by the host header) will be used. If
    * an ID is set, the caller must have additional permissions.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("instanceId")
   @Nullable
@@ -48,8 +46,6 @@ public class InstanceServiceAddTrustedDomainRequest {
    * e.g. proxy setups and custom login UIs. Unlike custom domains, trusted domains are not used to
    * route requests to this instance and therefore do not need to be uniquely assigned to an
    * instance.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("trustedDomain")
   @Nullable

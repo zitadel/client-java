@@ -33,8 +33,6 @@ public class SettingsServiceDomainSettings {
   /**
    * If enabled, the login name will automatically be suffixed with the domain of the organization.
    * This ensures that the login name is unique across the instance.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("loginNameIncludesDomain")
   @Nullable
@@ -43,23 +41,17 @@ public class SettingsServiceDomainSettings {
   /**
    * If enabled, organization domains must be verified (through an DNS or HTTP challenge) upon
    * creation. If disabled, organization domains will be created as already verified automatically.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("requireOrgDomainVerification")
   @Nullable
   public Boolean requireOrgDomainVerification;
 
-  /**
-   * If enabled, the SMTP sender address domain must match custom domain on the instance.
-   *
-   * <p>Example: {@code null}
-   */
+  /** If enabled, the SMTP sender address domain must match custom domain on the instance. */
   @JsonProperty("smtpSenderAddressMatchesInstanceDomain")
   @Nullable
   public Boolean smtpSenderAddressMatchesInstanceDomain;
 
-  /** Example: {@code null} */
+  /** The {@code resourceOwnerType} property. */
   @JsonProperty("resourceOwnerType")
   @Nullable
   public SettingsServiceResourceOwnerType resourceOwnerType;

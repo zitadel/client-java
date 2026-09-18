@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceUpdateApplicationRequest {
 
-  /**
-   * The unique ID of the application to be updated.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique ID of the application to be updated. */
   @JsonProperty("applicationId")
   @Nullable
   public String applicationId;
 
-  /**
-   * The ID of the project the application belongs to.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The ID of the project the application belongs to. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
@@ -51,24 +43,22 @@ public class ApplicationServiceUpdateApplicationRequest {
   /**
    * Publicly visible name of the application. This might be presented to users if they sign in. If
    * not set, the name will not be changed.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /** Example: {@code null} */
+  /** The {@code apiConfiguration} property. */
   @JsonProperty("apiConfiguration")
   @Nullable
   public ApplicationServiceUpdateAPIApplicationConfigurationRequest apiConfiguration;
 
-  /** Example: {@code null} */
+  /** The {@code oidcConfiguration} property. */
   @JsonProperty("oidcConfiguration")
   @Nullable
   public ApplicationServiceUpdateOIDCApplicationConfigurationRequest oidcConfiguration;
 
-  /** Example: {@code null} */
+  /** The {@code samlConfiguration} property. */
   @JsonProperty("samlConfiguration")
   @Nullable
   public ApplicationServiceUpdateSAMLApplicationConfigurationRequest samlConfiguration;

@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceHashedPassword {
 
-  /** Example: {@code null} */
+  /** The {@code hash} property. */
   @JsonProperty("hash")
   @Nullable
   public String hash;
 
-  /** Example: {@code null} */
+  /** The {@code changeRequired} property. */
   @JsonProperty("changeRequired")
   @Nullable
   public Boolean changeRequired;

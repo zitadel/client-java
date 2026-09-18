@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceChallenges {
 
-  /** Example: {@code null} */
+  /** The {@code webAuthN} property. */
   @JsonProperty("webAuthN")
   @Nullable
   public BetaSessionServiceWebAuthN webAuthN;
 
-  /** Example: {@code null} */
+  /** The {@code otpSms} property. */
   @JsonProperty("otpSms")
   @Nullable
   public String otpSms;
 
-  /** Example: {@code null} */
+  /** The {@code otpEmail} property. */
   @JsonProperty("otpEmail")
   @Nullable
   public String otpEmail;

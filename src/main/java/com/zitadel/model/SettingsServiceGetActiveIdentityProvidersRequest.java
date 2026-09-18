@@ -30,27 +30,27 @@ import javax.annotation.Nullable;
 })
 public class SettingsServiceGetActiveIdentityProvidersRequest {
 
-  /** Example: {@code null} */
+  /** The {@code ctx} property. */
   @JsonProperty("ctx")
   @Nullable
   public SettingsServiceRequestContext ctx;
 
-  /** Example: {@code null} */
+  /** The {@code creationAllowed} property. */
   @JsonProperty("creationAllowed")
   @Nullable
   public Boolean creationAllowed;
 
-  /** Example: {@code null} */
+  /** The {@code linkingAllowed} property. */
   @JsonProperty("linkingAllowed")
   @Nullable
   public Boolean linkingAllowed;
 
-  /** Example: {@code null} */
+  /** The {@code autoCreation} property. */
   @JsonProperty("autoCreation")
   @Nullable
   public Boolean autoCreation;
 
-  /** Example: {@code null} */
+  /** The {@code autoLinking} property. */
   @JsonProperty("autoLinking")
   @Nullable
   public Boolean autoLinking;

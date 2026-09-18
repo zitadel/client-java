@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceCheckOTP {
 
-  /**
-   * The One-Time Password sent over SMS or Email of the user to be checked.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The One-Time Password sent over SMS or Email of the user to be checked. */
   @JsonProperty("code")
   @Nullable
   public String code;

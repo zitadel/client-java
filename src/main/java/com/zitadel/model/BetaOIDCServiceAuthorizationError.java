@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaOIDCServiceAuthorizationError {
 
-  /** Example: {@code null} */
+  /** The {@code error} property. */
   @JsonProperty("error")
   @Nullable
   public BetaOIDCServiceErrorReason error;
 
-  /** Example: {@code null} */
+  /** The {@code errorDescription} property. */
   @JsonProperty("errorDescription")
   @Nullable
   public String errorDescription;
 
-  /** Example: {@code null} */
+  /** The {@code errorUri} property. */
   @JsonProperty("errorUri")
   @Nullable
   public String errorUri;

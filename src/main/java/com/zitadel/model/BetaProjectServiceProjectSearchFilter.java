@@ -30,27 +30,27 @@ import javax.annotation.Nullable;
 })
 public class BetaProjectServiceProjectSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code inProjectIdsFilter} property. */
   @JsonProperty("inProjectIdsFilter")
   @Nullable
   public BetaProjectServiceInIDsFilter inProjectIdsFilter;
 
-  /** Example: {@code null} */
+  /** The {@code projectGrantResourceOwnerFilter} property. */
   @JsonProperty("projectGrantResourceOwnerFilter")
   @Nullable
   public BetaProjectServiceIDFilter projectGrantResourceOwnerFilter;
 
-  /** Example: {@code null} */
+  /** The {@code projectNameFilter} property. */
   @JsonProperty("projectNameFilter")
   @Nullable
   public BetaProjectServiceProjectNameFilter projectNameFilter;
 
-  /** Example: {@code null} */
+  /** The {@code projectOrganizationIdFilter} property. */
   @JsonProperty("projectOrganizationIdFilter")
   @Nullable
   public BetaProjectServiceIDFilter projectOrganizationIdFilter;
 
-  /** Example: {@code null} */
+  /** The {@code projectResourceOwnerFilter} property. */
   @JsonProperty("projectResourceOwnerFilter")
   @Nullable
   public BetaProjectServiceIDFilter projectResourceOwnerFilter;

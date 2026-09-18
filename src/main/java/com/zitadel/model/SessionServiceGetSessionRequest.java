@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceGetSessionRequest {
 
-  /**
-   * The unique identifier of the session to be retrieved.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique identifier of the session to be retrieved. */
   @JsonProperty("sessionId")
   @Nullable
   public String sessionId;
@@ -46,8 +42,6 @@ public class SessionServiceGetSessionRequest {
    * provided in the authorization header has the same user agent as the session - the caller is
    * granted the permission session.read permission on either the instance or on the checked user's
    * organization
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("sessionToken")
   @Nullable

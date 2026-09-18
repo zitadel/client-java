@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class SettingsServiceSetHostedLoginTranslationResponse {
 
-  /**
-   * hash of the saved translation. Valid only when ignore_inheritance = true
-   *
-   * <p>Example: {@code null}
-   */
+  /** hash of the saved translation. Valid only when ignore_inheritance = true */
   @JsonProperty("etag")
   @Nullable
   public String etag;

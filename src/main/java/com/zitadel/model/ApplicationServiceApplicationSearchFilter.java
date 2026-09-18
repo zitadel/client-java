@@ -30,32 +30,32 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceApplicationSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code clientIdFilter} property. */
   @JsonProperty("clientIdFilter")
   @Nullable
   public ApplicationServiceClientIDFilter clientIdFilter;
 
-  /** Example: {@code null} */
+  /** The {@code entityIdFilter} property. */
   @JsonProperty("entityIdFilter")
   @Nullable
   public ApplicationServiceEntityIDFilter entityIdFilter;
 
-  /** Example: {@code null} */
+  /** The {@code nameFilter} property. */
   @JsonProperty("nameFilter")
   @Nullable
   public ApplicationServiceApplicationNameFilter nameFilter;
 
-  /** Example: {@code null} */
+  /** The {@code projectIdFilter} property. */
   @JsonProperty("projectIdFilter")
   @Nullable
   public ApplicationServiceProjectIDFilter projectIdFilter;
 
-  /** Example: {@code null} */
+  /** The {@code stateFilter} property. */
   @JsonProperty("stateFilter")
   @Nullable
   public ApplicationServiceApplicationState stateFilter;
 
-  /** Example: {@code null} */
+  /** The {@code typeFilter} property. */
   @JsonProperty("typeFilter")
   @Nullable
   public ApplicationServiceApplicationType typeFilter;

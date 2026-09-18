@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceDeactivateApplicationRequest {
 
-  /**
-   * The unique ID of the application to be deactivated.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique ID of the application to be deactivated. */
   @JsonProperty("applicationId")
   @Nullable
   public String applicationId;
 
-  /**
-   * The ID of the project the application belongs to.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The ID of the project the application belongs to. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;

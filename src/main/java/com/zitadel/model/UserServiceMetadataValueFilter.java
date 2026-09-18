@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceMetadataValueFilter {
 
-  /** Example: {@code null} */
+  /** The {@code value} property. */
   @JsonProperty("value")
   @Nullable
   public byte[] value;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public UserServiceByteFilterMethod method;

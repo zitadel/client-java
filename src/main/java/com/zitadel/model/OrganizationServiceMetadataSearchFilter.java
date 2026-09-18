@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceMetadataSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code keyFilter} property. */
   @JsonProperty("keyFilter")
   @Nullable
   public OrganizationServiceMetadataKeyFilter keyFilter;

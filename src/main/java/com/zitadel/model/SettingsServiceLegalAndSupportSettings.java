@@ -30,70 +30,42 @@ import javax.annotation.Nullable;
 })
 public class SettingsServiceLegalAndSupportSettings {
 
-  /**
-   * Link to the Terms of Service. Can be a relative or absolute URL.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Link to the Terms of Service. Can be a relative or absolute URL. */
   @JsonProperty("tosLink")
   @Nullable
   public String tosLink;
 
-  /**
-   * Link to the Privacy Policy. Can be a relative or absolute URL.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Link to the Privacy Policy. Can be a relative or absolute URL. */
   @JsonProperty("privacyPolicyLink")
   @Nullable
   public String privacyPolicyLink;
 
-  /**
-   * Link to a help page. Can be a relative or absolute URL.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Link to a help page. Can be a relative or absolute URL. */
   @JsonProperty("helpLink")
   @Nullable
   public String helpLink;
 
-  /**
-   * Email address for support issues.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Email address for support issues. */
   @JsonProperty("supportEmail")
   @Nullable
   public String supportEmail;
 
-  /** Example: {@code null} */
+  /** The {@code resourceOwnerType} property. */
   @JsonProperty("resourceOwnerType")
   @Nullable
   public SettingsServiceResourceOwnerType resourceOwnerType;
 
-  /**
-   * Link to documentation to be shown in the console.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Link to documentation to be shown in the console. */
   @JsonProperty("docsLink")
   @Nullable
   public String docsLink;
 
-  /**
-   * Link to an external resource that will be available to users in the console.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Link to an external resource that will be available to users in the console. */
   @JsonProperty("customLink")
   @Nullable
   public String customLink;
 
-  /**
-   * The button text that would be shown in console pointing to custom link.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The button text that would be shown in console pointing to custom link. */
   @JsonProperty("customLinkText")
   @Nullable
   public String customLinkText;

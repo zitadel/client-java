@@ -32,21 +32,17 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceListApplicationsRequest {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public ApplicationServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public ApplicationServiceApplicationSorting sortingColumn;
 
-  /**
-   * Criteria to filter the applications. All provided filters are combined with a logical AND.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Criteria to filter the applications. All provided filters are combined with a logical AND. */
   @JsonProperty("filters")
   @Nullable
   public List<ApplicationServiceApplicationSearchFilter> filters = new ArrayList<>();

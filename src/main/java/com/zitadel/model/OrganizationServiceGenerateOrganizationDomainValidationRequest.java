@@ -33,23 +33,17 @@ public class OrganizationServiceGenerateOrganizationDomainValidationRequest {
   /**
    * OrganizationID is the unique identifier of the organization for which the domain validation is
    * to be generated.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * Domain is the full qualified domain name for which the validation is to be generated.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Domain is the full qualified domain name for which the validation is to be generated. */
   @JsonProperty("domain")
   @Nullable
   public String domain;
 
-  /** Example: {@code null} */
+  /** The {@code type} property. */
   @JsonProperty("type")
   @Nullable
   public OrganizationServiceDomainValidationType type;

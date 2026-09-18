@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceCreateInviteCodeResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public UserServiceDetails details;
 
-  /**
-   * The invite code is returned if the verification was set to return_code.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The invite code is returned if the verification was set to return_code. */
   @JsonProperty("inviteCode")
   @Nullable
   public String inviteCode;

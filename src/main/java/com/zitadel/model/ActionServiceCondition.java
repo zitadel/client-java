@@ -30,22 +30,22 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceCondition {
 
-  /** Example: {@code null} */
+  /** The {@code event} property. */
   @JsonProperty("event")
   @Nullable
   public ActionServiceEventExecution event;
 
-  /** Example: {@code null} */
+  /** The {@code function} property. */
   @JsonProperty("function")
   @Nullable
   public ActionServiceFunctionExecution function;
 
-  /** Example: {@code null} */
+  /** The {@code request} property. */
   @JsonProperty("request")
   @Nullable
   public ActionServiceRequestExecution request;
 
-  /** Example: {@code null} */
+  /** The {@code response} property. */
   @JsonProperty("response")
   @Nullable
   public ActionServiceResponseExecution response;

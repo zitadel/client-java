@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceApplicationKeyApplicationIDFilter {
 
-  /**
-   * Search for application keys belonging to the application with this ID.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Search for application keys belonging to the application with this ID. */
   @JsonProperty("applicationId")
   @Nullable
   public String applicationId;

@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceListAuthenticationMethodTypesResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public BetaUserServiceListDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code authMethodTypes} property. */
   @JsonProperty("authMethodTypes")
   @Nullable
   public List<BetaUserServiceAuthenticationMethodType> authMethodTypes = new ArrayList<>();

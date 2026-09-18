@@ -32,20 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceDeleteOrganizationMetadataRequest {
 
-  /**
-   * Organization ID of Orgalization which metadata is to be deleted is stored on.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization ID of Orgalization which metadata is to be deleted is stored on. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * The keys for the Organization metadata to be deleted.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The keys for the Organization metadata to be deleted. */
   @JsonProperty("keys")
   @Nullable
   public List<String> keys = new ArrayList<>();

@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceVerifyTOTPRegistrationRequest {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code code} property. */
   @JsonProperty("code")
   @Nullable
   public String code;

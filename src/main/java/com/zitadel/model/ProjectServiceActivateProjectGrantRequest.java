@@ -30,19 +30,13 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceActivateProjectGrantRequest {
 
-  /**
-   * ProjectID is the unique identifier of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectID is the unique identifier of the project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
 
   /**
    * GrantedOrganizationID is the unique identifier of the organization the project was granted to.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("grantedOrganizationId")
   @Nullable

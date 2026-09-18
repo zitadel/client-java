@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaSettingsServiceSetSecuritySettingsRequest {
 
-  /** Example: {@code null} */
+  /** The {@code embeddedIframe} property. */
   @JsonProperty("embeddedIframe")
   @Nullable
   public BetaSettingsServiceEmbeddedIframeSettings embeddedIframe;
 
-  /** Example: {@code null} */
+  /** The {@code enableImpersonation} property. */
   @JsonProperty("enableImpersonation")
   @Nullable
   public Boolean enableImpersonation;

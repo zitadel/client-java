@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceOrganizationDomainQuery {
 
-  /**
-   * Domain used in organization, not necessary primary domain.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Domain used in organization, not necessary primary domain. */
   @JsonProperty("domain")
   @Nullable
   public String domain;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public OrganizationServiceTextQueryMethod method;

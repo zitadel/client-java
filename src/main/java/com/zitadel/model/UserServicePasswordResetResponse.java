@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServicePasswordResetResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public UserServiceDetails details;
 
-  /**
-   * in case the medium was set to return_code, the code will be returned
-   *
-   * <p>Example: {@code null}
-   */
+  /** in case the medium was set to return_code, the code will be returned */
   @JsonProperty("verificationCode")
   @Nullable
   public String verificationCode;

@@ -34,18 +34,12 @@ public class InstanceServiceRemoveTrustedDomainRequest {
    * InstanceID is the unique ID of the instance from which the trusted domain will be removed. If
    * not set, the instance in the current context (e.g. identified by the host header) will be used.
    * If an ID is set, the caller must have additional permissions.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("instanceId")
   @Nullable
   public String instanceId;
 
-  /**
-   * The trusted domain to remove from the instance.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The trusted domain to remove from the instance. */
   @JsonProperty("trustedDomain")
   @Nullable
   public String trustedDomain;

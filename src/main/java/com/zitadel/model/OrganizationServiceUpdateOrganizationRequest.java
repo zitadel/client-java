@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceUpdateOrganizationRequest {
 
-  /**
-   * OrganizationID is the unique identifier of the organization to be updated.
-   *
-   * <p>Example: {@code null}
-   */
+  /** OrganizationID is the unique identifier of the organization to be updated. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
@@ -44,8 +40,6 @@ public class OrganizationServiceUpdateOrganizationRequest {
    * generate the organization's default domain, changing the name will also change the domain.
    * Additionally, if the domain is used as suffix for user logins, their login names will also
    * change accordingly. It will not affect any custom domains added to the organization.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("name")
   @Nullable

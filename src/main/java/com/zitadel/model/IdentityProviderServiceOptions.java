@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class IdentityProviderServiceOptions {
 
-  /**
-   * Enable if users should be able to link an existing ZITADEL user with an external account.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Enable if users should be able to link an existing ZITADEL user with an external account. */
   @JsonProperty("isLinkingAllowed")
   @Nullable
   public Boolean isLinkingAllowed;
@@ -42,8 +38,6 @@ public class IdentityProviderServiceOptions {
   /**
    * Enable if users should be able to create a new account in ZITADEL when using an external
    * account.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("isCreationAllowed")
   @Nullable
@@ -52,23 +46,17 @@ public class IdentityProviderServiceOptions {
   /**
    * Enable if a new account in ZITADEL should be created automatically when login with an external
    * account.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("isAutoCreation")
   @Nullable
   public Boolean isAutoCreation;
 
-  /**
-   * Enable if a the ZITADEL account fields should be updated automatically on each login.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Enable if a the ZITADEL account fields should be updated automatically on each login. */
   @JsonProperty("isAutoUpdate")
   @Nullable
   public Boolean isAutoUpdate;
 
-  /** Example: {@code null} */
+  /** The {@code autoLinking} property. */
   @JsonProperty("autoLinking")
   @Nullable
   public IdentityProviderServiceAutoLinkingOption autoLinking;

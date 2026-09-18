@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceAddIDPLinkRequest {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code idpLink} property. */
   @JsonProperty("idpLink")
   @Nullable
   public BetaUserServiceIDPLink idpLink;

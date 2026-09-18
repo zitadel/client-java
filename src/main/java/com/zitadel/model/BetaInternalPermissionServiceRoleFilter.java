@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceRoleFilter {
 
-  /**
-   * Search for administrators by the granted role.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Search for administrators by the granted role. */
   @JsonProperty("roleKey")
   @Nullable
   public String roleKey;

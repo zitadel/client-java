@@ -30,37 +30,37 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceHumanProfile {
 
-  /** Example: {@code null} */
+  /** The {@code givenName} property. */
   @JsonProperty("givenName")
   @Nullable
   public String givenName;
 
-  /** Example: {@code null} */
+  /** The {@code familyName} property. */
   @JsonProperty("familyName")
   @Nullable
   public String familyName;
 
-  /** Example: {@code null} */
+  /** The {@code nickName} property. */
   @JsonProperty("nickName")
   @Nullable
   public String nickName;
 
-  /** Example: {@code null} */
+  /** The {@code displayName} property. */
   @JsonProperty("displayName")
   @Nullable
   public String displayName;
 
-  /** Example: {@code null} */
+  /** The {@code preferredLanguage} property. */
   @JsonProperty("preferredLanguage")
   @Nullable
   public String preferredLanguage;
 
-  /** Example: {@code null} */
+  /** The {@code gender} property. */
   @JsonProperty("gender")
   @Nullable
   public BetaUserServiceGender gender;
 
-  /** Example: {@code null} */
+  /** The {@code avatarUrl} property. */
   @JsonProperty("avatarUrl")
   @Nullable
   public String avatarUrl;

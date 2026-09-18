@@ -30,22 +30,22 @@ import javax.annotation.Nullable;
 })
 public class UserServiceAddHumanUserResponse {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public UserServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code emailCode} property. */
   @JsonProperty("emailCode")
   @Nullable
   public String emailCode;
 
-  /** Example: {@code null} */
+  /** The {@code phoneCode} property. */
   @JsonProperty("phoneCode")
   @Nullable
   public String phoneCode;

@@ -32,21 +32,17 @@ import javax.annotation.Nullable;
 })
 public class InternalPermissionServiceListAdministratorsRequest {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public InternalPermissionServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public InternalPermissionServiceAdministratorFieldName sortingColumn;
 
-  /**
-   * Filter the administrator roles to be returned.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Filter the administrator roles to be returned. */
   @JsonProperty("filters")
   @Nullable
   public List<InternalPermissionServiceAdministratorSearchFilter> filters = new ArrayList<>();

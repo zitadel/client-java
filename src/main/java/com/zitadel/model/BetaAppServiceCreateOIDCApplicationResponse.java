@@ -32,22 +32,22 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceCreateOIDCApplicationResponse {
 
-  /** Example: {@code null} */
+  /** The {@code clientId} property. */
   @JsonProperty("clientId")
   @Nullable
   public String clientId;
 
-  /** Example: {@code null} */
+  /** The {@code clientSecret} property. */
   @JsonProperty("clientSecret")
   @Nullable
   public String clientSecret;
 
-  /** Example: {@code null} */
+  /** The {@code noneCompliant} property. */
   @JsonProperty("noneCompliant")
   @Nullable
   public Boolean noneCompliant;
 
-  /** Example: {@code null} */
+  /** The {@code complianceProblems} property. */
   @JsonProperty("complianceProblems")
   @Nullable
   public List<BetaAppServiceOIDCLocalizedMessage> complianceProblems = new ArrayList<>();

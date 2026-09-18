@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class IdentityProviderServiceGetIDPByIDResponse {
 
-  /** Example: {@code null} */
+  /** The {@code idp} property. */
   @JsonProperty("idp")
   @Nullable
   public IdentityProviderServiceIDP idp;

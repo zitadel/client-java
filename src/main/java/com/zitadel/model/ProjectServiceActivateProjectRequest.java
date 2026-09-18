@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceActivateProjectRequest {
 
-  /**
-   * ProjectID is the unique identifier of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectID is the unique identifier of the project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;

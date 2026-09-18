@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class UserServiceRemoveU2FResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public UserServiceDetails details;

@@ -36,18 +36,12 @@ public class SessionServiceCheckUser {
    * that it will not check for emails or phone numbers, even if the corresponding setting is
    * enabled. Use the user service ListUsers method to find a user by email or phone number first to
    * obtain the user ID or login name.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("loginName")
   @Nullable
   public String loginName;
 
-  /**
-   * The unique identifier of the user to be checked.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique identifier of the user to be checked. */
   @JsonProperty("userId")
   @Nullable
   public String userId;

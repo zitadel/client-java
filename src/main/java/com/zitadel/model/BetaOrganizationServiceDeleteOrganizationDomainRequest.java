@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceDeleteOrganizationDomainRequest {
 
-  /**
-   * Organization Id for the Organization which domain is to be deleted.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization Id for the Organization which domain is to be deleted. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /** Example: {@code null} */
+  /** The {@code domain} property. */
   @JsonProperty("domain")
   @Nullable
   public String domain;

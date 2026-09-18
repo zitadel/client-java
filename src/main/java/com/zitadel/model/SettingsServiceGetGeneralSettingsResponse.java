@@ -36,8 +36,6 @@ public class SettingsServiceGetGeneralSettingsResponse {
    * The unique identifier of the default organization. The default organization is used to assign
    * new users to an organization if no other organization is specified. Deprecated: use
    * default_organization_id instead.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("defaultOrgId")
   @Nullable
@@ -45,9 +43,7 @@ public class SettingsServiceGetGeneralSettingsResponse {
 
   /**
    * The default language is use if no other language is specified or detected. The format is a BCP
-   * 47 language tag (e.g. \"en\", \"de\", \"fr-CH\").
-   *
-   * <p>Example: {@code null}
+   * 47 language tag (e.g. "en", "de", "fr-CH").
    */
   @JsonProperty("defaultLanguage")
   @Nullable
@@ -56,9 +52,7 @@ public class SettingsServiceGetGeneralSettingsResponse {
   /**
    * The list of supported languages. Note that the instance might restrict the languages further
    * only allowing a subset of these languages to be used. The format is a BCP 47 language tag (e.g.
-   * \"en\", \"de\", \"fr-CH\").
-   *
-   * <p>Example: {@code null}
+   * "en", "de", "fr-CH").
    */
   @JsonProperty("supportedLanguages")
   @Nullable
@@ -67,8 +61,6 @@ public class SettingsServiceGetGeneralSettingsResponse {
   /**
    * The unique identifier of the default organization. The default organization is used to assign
    * new users to an organization if no other organization is specified.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("defaultOrganizationId")
   @Nullable
@@ -77,9 +69,7 @@ public class SettingsServiceGetGeneralSettingsResponse {
   /**
    * The list of allowed languages for the instance. This is a subset of the supported languages to
    * be used in the instance e.g. for user selection during registration or language detection in
-   * the UI. The format is a BCP 47 language tag (e.g. \"en\", \"de\", \"fr-CH\").
-   *
-   * <p>Example: {@code null}
+   * the UI. The format is a BCP 47 language tag (e.g. "en", "de", "fr-CH").
    */
   @JsonProperty("allowedLanguages")
   @Nullable

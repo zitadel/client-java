@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceUpdateProjectRoleRequest {
 
-  /**
-   * ProjectID is the unique identifier of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectID is the unique identifier of the project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
@@ -43,8 +39,6 @@ public class ProjectServiceUpdateProjectRoleRequest {
    * RoleKey identifies the role. It's the only relevant attribute for ZITADEL and will be used for
    * authorization checks and as claim in tokens and user info responses. It cannot be changed. If
    * you need a different key, remove the role and create a new one.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("roleKey")
   @Nullable
@@ -53,8 +47,6 @@ public class ProjectServiceUpdateProjectRoleRequest {
   /**
    * DisplayName is the human readable name for the role, which might be displayed to users. If
    * omitted, the name will remain unchanged.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("displayName")
   @Nullable
@@ -65,8 +57,6 @@ public class ProjectServiceUpdateProjectRoleRequest {
    * be used to group roles in a UI to allow easier management for administrators. If omitted, the
    * group will remain unchanged. This attribute is not to be confused with groups as a collection
    * of users.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("group")
   @Nullable

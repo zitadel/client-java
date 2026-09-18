@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class SAMLServiceGetSAMLRequestResponse {
 
-  /** Example: {@code null} */
+  /** The {@code samlRequest} property. */
   @JsonProperty("samlRequest")
   @Nullable
   public SAMLServiceSAMLRequest samlRequest;

@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class InstanceServiceRemoveCustomDomainRequest {
 
-  /**
-   * InstanceID is the unique ID of the instance from which the domain will be removed.
-   *
-   * <p>Example: {@code null}
-   */
+  /** InstanceID is the unique ID of the instance from which the domain will be removed. */
   @JsonProperty("instanceId")
   @Nullable
   public String instanceId;
 
-  /**
-   * CustomDomain is the the domain to remove from the instance.
-   *
-   * <p>Example: {@code null}
-   */
+  /** CustomDomain is the the domain to remove from the instance. */
   @JsonProperty("customDomain")
   @Nullable
   public String customDomain;

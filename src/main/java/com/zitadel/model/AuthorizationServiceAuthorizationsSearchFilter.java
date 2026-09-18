@@ -30,57 +30,57 @@ import javax.annotation.Nullable;
 })
 public class AuthorizationServiceAuthorizationsSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code authorizationIds} property. */
   @JsonProperty("authorizationIds")
   @Nullable
   public AuthorizationServiceInIDsFilter authorizationIds;
 
-  /** Example: {@code null} */
+  /** The {@code inUserIds} property. */
   @JsonProperty("inUserIds")
   @Nullable
   public AuthorizationServiceInIDsFilter inUserIds;
 
-  /** Example: {@code null} */
+  /** The {@code organizationId} property. */
   @JsonProperty("organizationId")
   @Nullable
   public AuthorizationServiceIDFilter organizationId;
 
-  /** Example: {@code null} */
+  /** The {@code projectGrantId} property. */
   @JsonProperty("projectGrantId")
   @Nullable
   public AuthorizationServiceIDFilter projectGrantId;
 
-  /** Example: {@code null} */
+  /** The {@code projectId} property. */
   @JsonProperty("projectId")
   @Nullable
   public AuthorizationServiceIDFilter projectId;
 
-  /** Example: {@code null} */
+  /** The {@code projectName} property. */
   @JsonProperty("projectName")
   @Nullable
   public AuthorizationServiceProjectNameQuery projectName;
 
-  /** Example: {@code null} */
+  /** The {@code roleKey} property. */
   @JsonProperty("roleKey")
   @Nullable
   public AuthorizationServiceRoleKeyQuery roleKey;
 
-  /** Example: {@code null} */
+  /** The {@code state} property. */
   @JsonProperty("state")
   @Nullable
   public AuthorizationServiceStateQuery state;
 
-  /** Example: {@code null} */
+  /** The {@code userDisplayName} property. */
   @JsonProperty("userDisplayName")
   @Nullable
   public AuthorizationServiceUserDisplayNameQuery userDisplayName;
 
-  /** Example: {@code null} */
+  /** The {@code userOrganizationId} property. */
   @JsonProperty("userOrganizationId")
   @Nullable
   public AuthorizationServiceIDFilter userOrganizationId;
 
-  /** Example: {@code null} */
+  /** The {@code userPreferredLoginName} property. */
   @JsonProperty("userPreferredLoginName")
   @Nullable
   public AuthorizationServiceUserPreferredLoginNameQuery userPreferredLoginName;

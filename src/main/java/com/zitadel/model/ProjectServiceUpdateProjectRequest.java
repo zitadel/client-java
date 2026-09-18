@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceUpdateProjectRequest {
 
-  /**
-   * ProjectID is the unique identifier of the project to be updated.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectID is the unique identifier of the project to be updated. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
@@ -42,8 +38,6 @@ public class ProjectServiceUpdateProjectRequest {
   /**
    * Name is used to update the name of the project. This field is optional. If omitted, the name
    * will remain unchanged.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("name")
   @Nullable
@@ -53,8 +47,6 @@ public class ProjectServiceUpdateProjectRequest {
    * ProjectRoleAssertion is a setting that can be enabled to have role information included in the
    * user info endpoint. It is also dependent on your application settings to include it in tokens
    * and other types. If omitted, the setting will remain unchanged.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("projectRoleAssertion")
   @Nullable
@@ -64,8 +56,6 @@ public class ProjectServiceUpdateProjectRequest {
    * AuthorizationRequired is a boolean flag that can be enabled to check if a user has a role of
    * this project assigned when logging into an application of this project. If omitted, the setting
    * will remain unchanged.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("authorizationRequired")
   @Nullable
@@ -74,14 +64,12 @@ public class ProjectServiceUpdateProjectRequest {
   /**
    * ProjectAccessRequired is a boolean flag that can be enabled to check if the organization of the
    * user has a grant to this project. If omitted, the setting will remain unchanged.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("projectAccessRequired")
   @Nullable
   public Boolean projectAccessRequired;
 
-  /** Example: {@code null} */
+  /** The {@code privateLabelingSetting} property. */
   @JsonProperty("privateLabelingSetting")
   @Nullable
   public ProjectServicePrivateLabelingSetting privateLabelingSetting;

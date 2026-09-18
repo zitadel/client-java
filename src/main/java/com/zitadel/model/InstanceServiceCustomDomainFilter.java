@@ -30,25 +30,17 @@ import javax.annotation.Nullable;
 })
 public class InstanceServiceCustomDomainFilter {
 
-  /** Example: {@code null} */
+  /** The {@code domainFilter} property. */
   @JsonProperty("domainFilter")
   @Nullable
   public InstanceServiceDomainFilter domainFilter;
 
-  /**
-   * Filter whether the domain is auto-generated.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Filter whether the domain is auto-generated. */
   @JsonProperty("generatedFilter")
   @Nullable
   public Boolean generatedFilter;
 
-  /**
-   * Filter whether the domain is the primary domain of the instance.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Filter whether the domain is the primary domain of the instance. */
   @JsonProperty("primaryFilter")
   @Nullable
   public Boolean primaryFilter;

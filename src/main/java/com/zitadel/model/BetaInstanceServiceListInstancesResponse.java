@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaInstanceServiceListInstancesResponse {
 
-  /**
-   * The list of instances.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The list of instances. */
   @JsonProperty("instances")
   @Nullable
   public List<BetaInstanceServiceInstance> instances = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaInstanceServicePaginationResponse pagination;

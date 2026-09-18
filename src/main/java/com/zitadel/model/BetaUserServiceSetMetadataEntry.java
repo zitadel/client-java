@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceSetMetadataEntry {
 
-  /** Example: {@code null} */
+  /** The {@code key} property. */
   @JsonProperty("key")
   @Nullable
   public String key;
 
-  /** Example: {@code null} */
+  /** The {@code value} property. */
   @JsonProperty("value")
   @Nullable
   public byte[] value;

@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceMachine {
 
-  /**
-   * The machine users name is a human readable field that helps identifying the user.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The machine users name is a human readable field that helps identifying the user. */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /**
-   * The description is a field that helps to remember the purpose of the user.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The description is a field that helps to remember the purpose of the user. */
   @JsonProperty("description")
   @Nullable
   public String description;

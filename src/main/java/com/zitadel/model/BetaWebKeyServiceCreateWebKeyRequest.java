@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaWebKeyServiceCreateWebKeyRequest {
 
-  /** Example: {@code null} */
+  /** The {@code ecdsa} property. */
   @JsonProperty("ecdsa")
   @Nullable
   public BetaWebKeyServiceECDSA ecdsa;
 
-  /** Example: {@code null} */
+  /** The {@code ed25519} property. */
   @JsonProperty("ed25519")
   @Nullable
   public Object ed25519;
 
-  /** Example: {@code null} */
+  /** The {@code rsa} property. */
   @JsonProperty("rsa")
   @Nullable
   public BetaWebKeyServiceRSA rsa;

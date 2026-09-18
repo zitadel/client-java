@@ -30,35 +30,27 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceStartIdentityProviderIntentResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public BetaUserServiceDetails details;
 
-  /**
-   * URL to which the client should redirect
-   *
-   * <p>Example: {@code null}
-   */
+  /** URL to which the client should redirect */
   @JsonProperty("authUrl")
   @Nullable
   public String authUrl;
 
-  /** Example: {@code null} */
+  /** The {@code formData} property. */
   @JsonProperty("formData")
   @Nullable
   public BetaUserServiceFormData formData;
 
-  /** Example: {@code null} */
+  /** The {@code idpIntent} property. */
   @JsonProperty("idpIntent")
   @Nullable
   public BetaUserServiceIDPIntent idpIntent;
 
-  /**
-   * POST call information Deprecated: Use form_data instead
-   *
-   * <p>Example: {@code null}
-   */
+  /** POST call information Deprecated: Use form_data instead */
   @JsonProperty("postForm")
   @Nullable
   public byte[] postForm;

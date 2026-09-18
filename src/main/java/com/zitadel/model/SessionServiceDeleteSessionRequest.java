@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceDeleteSessionRequest {
 
-  /**
-   * The unique identifier of the session to be terminated.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique identifier of the session to be terminated. */
   @JsonProperty("sessionId")
   @Nullable
   public String sessionId;
@@ -46,8 +42,6 @@ public class SessionServiceDeleteSessionRequest {
    * provided in the authorization header has the same user agent as the session - the caller is
    * granted the permission session.delete permission on either the instance or on the checked
    * user's organization
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("sessionToken")
   @Nullable

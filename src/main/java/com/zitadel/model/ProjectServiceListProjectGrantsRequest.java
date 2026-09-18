@@ -32,21 +32,17 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceListProjectGrantsRequest {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public ProjectServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public ProjectServiceProjectGrantFieldName sortingColumn;
 
-  /**
-   * Filters define the criteria to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Filters define the criteria to query for. */
   @JsonProperty("filters")
   @Nullable
   public List<ProjectServiceProjectGrantSearchFilter> filters = new ArrayList<>();

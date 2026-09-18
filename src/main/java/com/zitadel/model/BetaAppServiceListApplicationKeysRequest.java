@@ -30,27 +30,27 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceListApplicationKeysRequest {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaAppServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public BetaAppServiceApplicationKeysSorting sortingColumn;
 
-  /** Example: {@code null} */
+  /** The {@code applicationId} property. */
   @JsonProperty("applicationId")
   @Nullable
   public String applicationId;
 
-  /** Example: {@code null} */
+  /** The {@code organizationId} property. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /** Example: {@code null} */
+  /** The {@code projectId} property. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;

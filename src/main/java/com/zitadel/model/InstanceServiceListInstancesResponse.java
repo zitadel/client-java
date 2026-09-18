@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class InstanceServiceListInstancesResponse {
 
-  /**
-   * The instances matching the query.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The instances matching the query. */
   @JsonProperty("instances")
   @Nullable
   public List<InstanceServiceInstance> instances = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public InstanceServicePaginationResponse pagination;

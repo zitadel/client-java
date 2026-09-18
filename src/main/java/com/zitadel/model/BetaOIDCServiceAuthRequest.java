@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
 })
 public class BetaOIDCServiceAuthRequest {
 
-  /** Example: {@code null} */
+  /** The {@code id} property. */
   @JsonProperty("id")
   @Nullable
   public String id;
@@ -44,7 +44,7 @@ public class BetaOIDCServiceAuthRequest {
    * as a count of seconds and fractions of seconds at nanosecond resolution. The count is relative
    * to an epoch at UTC midnight on January 1, 1970, in the proleptic Gregorian calendar which
    * extends the Gregorian calendar backwards to year one. All minutes are 60 seconds long. Leap
-   * seconds are \"smeared\" so that no leap second table is needed for interpretation, using a
+   * seconds are "smeared" so that no leap second table is needed for interpretation, using a
    * [24-hour linear smear](https://developers.google.com/time/smear). The range is from
    * 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure
    * that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
@@ -65,15 +65,15 @@ public class BetaOIDCServiceAuthRequest {
    * Example 6: Compute Timestamp from current time in Python. timestamp = Timestamp()
    * timestamp.GetCurrentTime() # JSON Mapping In JSON format, the Timestamp type is encoded as a
    * string in the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is
-   * \"{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z\" where {year} is always expressed
-   * using four digits while {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits
-   * each. The fractional seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),
-   * are optional. The \"Z\" suffix indicates the timezone (\"UTC\"); the timezone is required. A
-   * proto3 JSON serializer should always use UTC (as indicated by \"Z\") when printing the
-   * Timestamp type and a proto3 JSON parser should be able to accept both UTC and other timezones
-   * (as indicated by an offset). For example, \"2017-01-15T01:30:15.01Z\" encodes 15.01 seconds
-   * past 01:30 UTC on January 15, 2017. In JavaScript, one can convert a Date object to this format
-   * using the standard
+   * "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z" where {year} is always expressed using
+   * four digits while {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits each.
+   * The fractional seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution), are
+   * optional. The "Z" suffix indicates the timezone ("UTC"); the timezone is required. A proto3
+   * JSON serializer should always use UTC (as indicated by "Z") when printing the Timestamp type
+   * and a proto3 JSON parser should be able to accept both UTC and other timezones (as indicated by
+   * an offset). For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
+   * January 15, 2017. In JavaScript, one can convert a Date object to this format using the
+   * standard
    * [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
    * method. In Python, a standard `datetime.datetime` object can be converted to this format using
    * [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with the time format
@@ -81,39 +81,37 @@ public class BetaOIDCServiceAuthRequest {
    * [`ISODateTimeFormat.dateTime()`](
    * http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()
    * ) to obtain a formatter capable of generating timestamps in this format.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("creationDate")
   @Nullable
   public OffsetDateTime creationDate;
 
-  /** Example: {@code null} */
+  /** The {@code clientId} property. */
   @JsonProperty("clientId")
   @Nullable
   public String clientId;
 
-  /** Example: {@code null} */
+  /** The {@code scope} property. */
   @JsonProperty("scope")
   @Nullable
   public List<String> scope = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code redirectUri} property. */
   @JsonProperty("redirectUri")
   @Nullable
   public String redirectUri;
 
-  /** Example: {@code null} */
+  /** The {@code prompt} property. */
   @JsonProperty("prompt")
   @Nullable
   public List<BetaOIDCServicePrompt> prompt = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code uiLocales} property. */
   @JsonProperty("uiLocales")
   @Nullable
   public List<String> uiLocales = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code loginHint} property. */
   @JsonProperty("loginHint")
   @Nullable
   public String loginHint;
@@ -121,33 +119,31 @@ public class BetaOIDCServiceAuthRequest {
   /**
    * A Duration represents a signed, fixed-length span of time represented as a count of seconds and
    * fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts
-   * like \"day\" or \"month\". It is related to Timestamp in that the difference between two
-   * Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is
-   * approximately +-10,000 years. # Examples Example 1: Compute Duration from two Timestamps in
-   * pseudo code. Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-   * duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos - start.nanos; if
-   * (duration.seconds < 0 && duration.nanos > 0) { duration.seconds += 1; duration.nanos -=
-   * 1000000000; } else if (duration.seconds > 0 && duration.nanos < 0) { duration.seconds -= 1;
-   * duration.nanos += 1000000000; } Example 2: Compute Timestamp from Timestamp + Duration in
-   * pseudo code. Timestamp start = ...; Duration duration = ...; Timestamp end = ...; end.seconds =
-   * start.seconds + duration.seconds; end.nanos = start.nanos + duration.nanos; if (end.nanos < 0)
-   * { end.seconds -= 1; end.nanos += 1000000000; } else if (end.nanos >= 1000000000) { end.seconds
-   * += 1; end.nanos -= 1000000000; } Example 3: Compute Duration from datetime.timedelta in Python.
-   * td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.FromTimedelta(td) #
-   * JSON Mapping In JSON format, the Duration type is encoded as a string rather than an object,
-   * where the string ends in the suffix \"s\" (indicating seconds) and is preceded by the number of
+   * like "day" or "month". It is related to Timestamp in that the difference between two Timestamp
+   * values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately
+   * +-10,000 years. # Examples Example 1: Compute Duration from two Timestamps in pseudo code.
+   * Timestamp start = ...; Timestamp end = ...; Duration duration = ...; duration.seconds =
+   * end.seconds - start.seconds; duration.nanos = end.nanos - start.nanos; if (duration.seconds < 0
+   * && duration.nanos > 0) { duration.seconds += 1; duration.nanos -= 1000000000; } else if
+   * (duration.seconds > 0 && duration.nanos < 0) { duration.seconds -= 1; duration.nanos +=
+   * 1000000000; } Example 2: Compute Timestamp from Timestamp + Duration in pseudo code. Timestamp
+   * start = ...; Duration duration = ...; Timestamp end = ...; end.seconds = start.seconds +
+   * duration.seconds; end.nanos = start.nanos + duration.nanos; if (end.nanos < 0) { end.seconds -=
+   * 1; end.nanos += 1000000000; } else if (end.nanos >= 1000000000) { end.seconds += 1; end.nanos
+   * -= 1000000000; } Example 3: Compute Duration from datetime.timedelta in Python. td =
+   * datetime.timedelta(days=3, minutes=10) duration = Duration() duration.FromTimedelta(td) # JSON
+   * Mapping In JSON format, the Duration type is encoded as a string rather than an object, where
+   * the string ends in the suffix "s" (indicating seconds) and is preceded by the number of
    * seconds, with nanoseconds expressed as fractional seconds. For example, 3 seconds with 0
-   * nanoseconds should be encoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should
-   * be expressed in JSON format as \"3.000000001s\", and 3 seconds and 1 microsecond should be
-   * expressed in JSON format as \"3.000001s\".
-   *
-   * <p>Example: {@code null}
+   * nanoseconds should be encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should
+   * be expressed in JSON format as "3.000000001s", and 3 seconds and 1 microsecond should be
+   * expressed in JSON format as "3.000001s".
    */
   @JsonProperty("maxAge")
   @Nullable
   public Duration maxAge;
 
-  /** Example: {@code null} */
+  /** The {@code hintUserId} property. */
   @JsonProperty("hintUserId")
   @Nullable
   public String hintUserId;

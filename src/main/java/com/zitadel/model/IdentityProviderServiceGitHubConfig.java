@@ -32,20 +32,12 @@ import javax.annotation.Nullable;
 })
 public class IdentityProviderServiceGitHubConfig {
 
-  /**
-   * The client ID of the GitHub App.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The client ID of the GitHub App. */
   @JsonProperty("clientId")
   @Nullable
   public String clientId;
 
-  /**
-   * The scopes requested by ZITADEL during the request to GitHub.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The scopes requested by ZITADEL during the request to GitHub. */
   @JsonProperty("scopes")
   @Nullable
   public List<String> scopes = new ArrayList<>();

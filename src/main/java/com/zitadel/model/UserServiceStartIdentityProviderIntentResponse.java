@@ -30,31 +30,27 @@ import javax.annotation.Nullable;
 })
 public class UserServiceStartIdentityProviderIntentResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public UserServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code authUrl} property. */
   @JsonProperty("authUrl")
   @Nullable
   public String authUrl;
 
-  /** Example: {@code null} */
+  /** The {@code formData} property. */
   @JsonProperty("formData")
   @Nullable
   public UserServiceFormData formData;
 
-  /** Example: {@code null} */
+  /** The {@code idpIntent} property. */
   @JsonProperty("idpIntent")
   @Nullable
   public UserServiceIDPIntent idpIntent;
 
-  /**
-   * POST call information Deprecated: Use form_data instead
-   *
-   * <p>Example: {@code null}
-   */
+  /** POST call information Deprecated: Use form_data instead */
   @JsonProperty("postForm")
   @Nullable
   public byte[] postForm;

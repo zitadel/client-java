@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class InternalPermissionServiceProjectGrant {
 
-  /**
-   * ProjectID is the unique identifier of the project the project grant belongs to.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectID is the unique identifier of the project the project grant belongs to. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
@@ -42,8 +38,6 @@ public class InternalPermissionServiceProjectGrant {
   /**
    * OrganizationID is the unique identifier of the organization the project was granted to and on
    * which the administrator role should be granted.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("organizationId")
   @Nullable

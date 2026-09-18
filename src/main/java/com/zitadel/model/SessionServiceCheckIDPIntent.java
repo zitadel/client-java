@@ -30,19 +30,13 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceCheckIDPIntent {
 
-  /**
-   * The ID of the idp intent, previously returned on the success response of the IDP callback.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The ID of the idp intent, previously returned on the success response of the IDP callback. */
   @JsonProperty("idpIntentId")
   @Nullable
   public String idpIntentId;
 
   /**
    * The token of the idp intent, previously returned on the success response of the IDP callback.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("idpIntentToken")
   @Nullable

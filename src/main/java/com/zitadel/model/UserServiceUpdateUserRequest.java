@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class UserServiceUpdateUserRequest {
 
-  /**
-   * The user id is the users unique identifier in the instance. It can't be changed.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The user id is the users unique identifier in the instance. It can't be changed. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
@@ -42,19 +38,17 @@ public class UserServiceUpdateUserRequest {
   /**
    * Set a new username that is unique within the instance. Beware that active tokens and sessions
    * are invalidated when the username is changed.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("username")
   @Nullable
   public String username;
 
-  /** Example: {@code null} */
+  /** The {@code human} property. */
   @JsonProperty("human")
   @Nullable
   public UserServiceHuman human;
 
-  /** Example: {@code null} */
+  /** The {@code machine} property. */
   @JsonProperty("machine")
   @Nullable
   public UserServiceMachine machine;

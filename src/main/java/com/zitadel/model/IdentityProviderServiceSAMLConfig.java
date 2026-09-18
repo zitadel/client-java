@@ -30,30 +30,22 @@ import javax.annotation.Nullable;
 })
 public class IdentityProviderServiceSAMLConfig {
 
-  /**
-   * Metadata of the SAML identity provider.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Metadata of the SAML identity provider. */
   @JsonProperty("metadataXml")
   @Nullable
   public byte[] metadataXml;
 
-  /** Example: {@code null} */
+  /** The {@code binding} property. */
   @JsonProperty("binding")
   @Nullable
   public IdentityProviderServiceSAMLBinding binding;
 
-  /**
-   * Boolean which defines if the authentication requests are signed.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Boolean which defines if the authentication requests are signed. */
   @JsonProperty("withSignedRequest")
   @Nullable
   public Boolean withSignedRequest;
 
-  /** Example: {@code null} */
+  /** The {@code nameIdFormat} property. */
   @JsonProperty("nameIdFormat")
   @Nullable
   public IdentityProviderServiceSAMLNameIDFormat nameIdFormat;
@@ -61,8 +53,6 @@ public class IdentityProviderServiceSAMLConfig {
   /**
    * Optional name of the attribute, which will be used to map the user in case the nameid-format
    * returned is `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("transientMappingAttributeName")
   @Nullable
@@ -72,14 +62,12 @@ public class IdentityProviderServiceSAMLConfig {
    * Boolean weather federated logout is enabled. If enabled, ZITADEL will send a logout request to
    * the identity provider, if the user terminates the session in ZITADEL. Be sure to provide a SLO
    * endpoint as part of the metadata.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("federatedLogoutEnabled")
   @Nullable
   public Boolean federatedLogoutEnabled;
 
-  /** Example: {@code null} */
+  /** The {@code signatureAlgorithm} property. */
   @JsonProperty("signatureAlgorithm")
   @Nullable
   public IdentityProviderServiceSAMLSignatureAlgorithm signatureAlgorithm;

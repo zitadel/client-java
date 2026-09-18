@@ -30,25 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceGenerateOrganizationDomainValidationRequest {
 
-  /**
-   * Organization Id for the Organization which doman to be validated.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization Id for the Organization which doman to be validated. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * The domain which to be deleted.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The domain which to be deleted. */
   @JsonProperty("domain")
   @Nullable
   public String domain;
 
-  /** Example: {@code null} */
+  /** The {@code type} property. */
   @JsonProperty("type")
   @Nullable
   public BetaOrganizationServiceDomainValidationType type;

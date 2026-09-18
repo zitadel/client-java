@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceExecutionSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code executionTypeFilter} property. */
   @JsonProperty("executionTypeFilter")
   @Nullable
   public ActionServiceExecutionTypeFilter executionTypeFilter;
 
-  /** Example: {@code null} */
+  /** The {@code inConditionsFilter} property. */
   @JsonProperty("inConditionsFilter")
   @Nullable
   public ActionServiceInConditionsFilter inConditionsFilter;
 
-  /** Example: {@code null} */
+  /** The {@code targetFilter} property. */
   @JsonProperty("targetFilter")
   @Nullable
   public ActionServiceTargetFilter targetFilter;

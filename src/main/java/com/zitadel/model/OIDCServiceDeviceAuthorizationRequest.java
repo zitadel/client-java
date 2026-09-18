@@ -35,45 +35,27 @@ public class OIDCServiceDeviceAuthorizationRequest {
   /**
    * The unique identifier of the device authorization request to be used for authorizing or denying
    * the request.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /**
-   * The client_id of the application that initiated the device authorization request.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The client_id of the application that initiated the device authorization request. */
   @JsonProperty("clientId")
   @Nullable
   public String clientId;
 
-  /**
-   * The scopes requested by the application.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The scopes requested by the application. */
   @JsonProperty("scope")
   @Nullable
   public List<String> scope = new ArrayList<>();
 
-  /**
-   * Name of the client application.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Name of the client application. */
   @JsonProperty("appName")
   @Nullable
   public String appName;
 
-  /**
-   * Name of the project the client application is part of.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Name of the project the client application is part of. */
   @JsonProperty("projectName")
   @Nullable
   public String projectName;

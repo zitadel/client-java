@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaSettingsServiceIdentityProvider {
 
-  /** Example: {@code null} */
+  /** The {@code id} property. */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /** Example: {@code null} */
+  /** The {@code name} property. */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /** Example: {@code null} */
+  /** The {@code type} property. */
   @JsonProperty("type")
   @Nullable
   public BetaSettingsServiceIdentityProviderType type;

@@ -36,14 +36,12 @@ public class ApplicationServiceListApplicationKeysResponse {
    * The list of application keys matching the query. Depending on the applied limit, there might be
    * more keys available than returned in this list. Use the returned pagination information to
    * request further keys.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("keys")
   @Nullable
   public List<ApplicationServiceApplicationKey> keys = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public ApplicationServicePaginationResponse pagination;

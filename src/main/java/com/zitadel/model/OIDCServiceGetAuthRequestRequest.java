@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class OIDCServiceGetAuthRequestRequest {
 
-  /**
-   * The ID of the Auth Request, as obtained from the redirect URL.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The ID of the Auth Request, as obtained from the redirect URL. */
   @JsonProperty("authRequestId")
   @Nullable
   public String authRequestId;

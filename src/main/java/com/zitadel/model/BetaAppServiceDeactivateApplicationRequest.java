@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceDeactivateApplicationRequest {
 
-  /** Example: {@code null} */
+  /** The {@code projectId} property. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
 
-  /** Example: {@code null} */
+  /** The {@code id} property. */
   @JsonProperty("id")
   @Nullable
   public String id;

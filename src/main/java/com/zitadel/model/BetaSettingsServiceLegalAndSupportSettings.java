@@ -30,42 +30,42 @@ import javax.annotation.Nullable;
 })
 public class BetaSettingsServiceLegalAndSupportSettings {
 
-  /** Example: {@code null} */
+  /** The {@code tosLink} property. */
   @JsonProperty("tosLink")
   @Nullable
   public String tosLink;
 
-  /** Example: {@code null} */
+  /** The {@code privacyPolicyLink} property. */
   @JsonProperty("privacyPolicyLink")
   @Nullable
   public String privacyPolicyLink;
 
-  /** Example: {@code null} */
+  /** The {@code helpLink} property. */
   @JsonProperty("helpLink")
   @Nullable
   public String helpLink;
 
-  /** Example: {@code null} */
+  /** The {@code supportEmail} property. */
   @JsonProperty("supportEmail")
   @Nullable
   public String supportEmail;
 
-  /** Example: {@code null} */
+  /** The {@code resourceOwnerType} property. */
   @JsonProperty("resourceOwnerType")
   @Nullable
   public BetaSettingsServiceResourceOwnerType resourceOwnerType;
 
-  /** Example: {@code null} */
+  /** The {@code docsLink} property. */
   @JsonProperty("docsLink")
   @Nullable
   public String docsLink;
 
-  /** Example: {@code null} */
+  /** The {@code customLink} property. */
   @JsonProperty("customLink")
   @Nullable
   public String customLink;
 
-  /** Example: {@code null} */
+  /** The {@code customLinkText} property. */
   @JsonProperty("customLinkText")
   @Nullable
   public String customLinkText;

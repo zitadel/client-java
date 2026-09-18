@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceListSessionsRequest {
 
-  /** Example: {@code null} */
+  /** The {@code query} property. */
   @JsonProperty("query")
   @Nullable
   public SessionServiceListQuery query;
@@ -40,14 +40,12 @@ public class SessionServiceListSessionsRequest {
   /**
    * The criteria to be used when searching for sessions. Multiple queries will be combined with a
    * logical AND.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("queries")
   @Nullable
   public List<SessionServiceSearchQuery> queries = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public SessionServiceSessionFieldName sortingColumn;

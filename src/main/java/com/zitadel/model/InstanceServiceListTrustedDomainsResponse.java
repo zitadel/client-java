@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class InstanceServiceListTrustedDomainsResponse {
 
-  /**
-   * The list of trusted domains matching the query.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The list of trusted domains matching the query. */
   @JsonProperty("trustedDomain")
   @Nullable
   public List<InstanceServiceTrustedDomain> trustedDomain = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public InstanceServicePaginationResponse pagination;

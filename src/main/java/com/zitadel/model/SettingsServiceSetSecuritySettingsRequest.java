@@ -30,16 +30,14 @@ import javax.annotation.Nullable;
 })
 public class SettingsServiceSetSecuritySettingsRequest {
 
-  /** Example: {@code null} */
+  /** The {@code embeddedIframe} property. */
   @JsonProperty("embeddedIframe")
   @Nullable
   public SettingsServiceEmbeddedIframeSettings embeddedIframe;
 
   /**
    * If enabled, users are allowed to impersonate other users. The impersonator needs the
-   * appropriate `*_IMPERSONATOR` roles assigned as well\".
-   *
-   * <p>Example: {@code null}
+   * appropriate `*_IMPERSONATOR` roles assigned as well".
    */
   @JsonProperty("enableImpersonation")
   @Nullable

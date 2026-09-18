@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaActionServiceGetTargetResponse {
 
-  /** Example: {@code null} */
+  /** The {@code target} property. */
   @JsonProperty("target")
   @Nullable
   public BetaActionServiceTarget target;

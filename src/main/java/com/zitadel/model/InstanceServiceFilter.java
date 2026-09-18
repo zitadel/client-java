@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class InstanceServiceFilter {
 
-  /** Example: {@code null} */
+  /** The {@code customDomainsFilter} property. */
   @JsonProperty("customDomainsFilter")
   @Nullable
   public InstanceServiceCustomDomainsFilter customDomainsFilter;
 
-  /** Example: {@code null} */
+  /** The {@code inIdsFilter} property. */
   @JsonProperty("inIdsFilter")
   @Nullable
   public InstanceServiceInIDsFilter inIdsFilter;

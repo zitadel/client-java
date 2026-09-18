@@ -32,11 +32,7 @@ import javax.annotation.Nullable;
 })
 public class AuthorizationServiceUpdateAuthorizationRequest {
 
-  /**
-   * ID is the unique identifier of the authorization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID is the unique identifier of the authorization. */
   @JsonProperty("id")
   @Nullable
   public String id;
@@ -44,8 +40,6 @@ public class AuthorizationServiceUpdateAuthorizationRequest {
   /**
    * RoleKeys are the keys of the roles the user should be granted. Note that any role keys
    * previously granted to the user and not present in the list will be revoked.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("roleKeys")
   @Nullable

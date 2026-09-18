@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceDeleteOrganizationRequest {
 
-  /**
-   * Organization Id for the Organization to be deleted
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization Id for the Organization to be deleted */
   @JsonProperty("id")
   @Nullable
   public String id;

@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceDeleteProjectRequest {
 
-  /**
-   * ProjectID is the unique identifier of the project to be deleted.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectID is the unique identifier of the project to be deleted. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;

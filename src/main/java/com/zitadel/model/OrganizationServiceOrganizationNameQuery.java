@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceOrganizationNameQuery {
 
-  /**
-   * Name of the organization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Name of the organization. */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public OrganizationServiceTextQueryMethod method;

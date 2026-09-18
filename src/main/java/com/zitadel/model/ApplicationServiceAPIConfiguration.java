@@ -33,14 +33,12 @@ public class ApplicationServiceAPIConfiguration {
   /**
    * The unique OAuth2 client_id used for authentication of the API, e.g. at the introspection
    * endpoint.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("clientId")
   @Nullable
   public String clientId;
 
-  /** Example: {@code null} */
+  /** The {@code authMethodType} property. */
   @JsonProperty("authMethodType")
   @Nullable
   public ApplicationServiceAPIAuthMethodType authMethodType;

@@ -30,67 +30,67 @@ import javax.annotation.Nullable;
 })
 public class IdentityProviderServiceIDPConfig {
 
-  /** Example: {@code null} */
+  /** The {@code options} property. */
   @JsonProperty("options")
   @Nullable
   public IdentityProviderServiceOptions options;
 
-  /** Example: {@code null} */
+  /** The {@code apple} property. */
   @JsonProperty("apple")
   @Nullable
   public IdentityProviderServiceAppleConfig apple;
 
-  /** Example: {@code null} */
+  /** The {@code azureAd} property. */
   @JsonProperty("azureAd")
   @Nullable
   public IdentityProviderServiceAzureADConfig azureAd;
 
-  /** Example: {@code null} */
+  /** The {@code github} property. */
   @JsonProperty("github")
   @Nullable
   public IdentityProviderServiceGitHubConfig github;
 
-  /** Example: {@code null} */
+  /** The {@code githubEs} property. */
   @JsonProperty("githubEs")
   @Nullable
   public IdentityProviderServiceGitHubEnterpriseServerConfig githubEs;
 
-  /** Example: {@code null} */
+  /** The {@code gitlab} property. */
   @JsonProperty("gitlab")
   @Nullable
   public IdentityProviderServiceGitLabConfig gitlab;
 
-  /** Example: {@code null} */
+  /** The {@code gitlabSelfHosted} property. */
   @JsonProperty("gitlabSelfHosted")
   @Nullable
   public IdentityProviderServiceGitLabSelfHostedConfig gitlabSelfHosted;
 
-  /** Example: {@code null} */
+  /** The {@code google} property. */
   @JsonProperty("google")
   @Nullable
   public IdentityProviderServiceGoogleConfig google;
 
-  /** Example: {@code null} */
+  /** The {@code jwt} property. */
   @JsonProperty("jwt")
   @Nullable
   public IdentityProviderServiceJWTConfig jwt;
 
-  /** Example: {@code null} */
+  /** The {@code ldap} property. */
   @JsonProperty("ldap")
   @Nullable
   public IdentityProviderServiceLDAPConfig ldap;
 
-  /** Example: {@code null} */
+  /** The {@code oauth} property. */
   @JsonProperty("oauth")
   @Nullable
   public IdentityProviderServiceOAuthConfig oauth;
 
-  /** Example: {@code null} */
+  /** The {@code oidc} property. */
   @JsonProperty("oidc")
   @Nullable
   public IdentityProviderServiceGenericOIDCConfig oidc;
 
-  /** Example: {@code null} */
+  /** The {@code saml} property. */
   @JsonProperty("saml")
   @Nullable
   public IdentityProviderServiceSAMLConfig saml;

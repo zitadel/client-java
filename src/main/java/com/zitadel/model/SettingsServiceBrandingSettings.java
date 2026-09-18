@@ -30,50 +30,40 @@ import javax.annotation.Nullable;
 })
 public class SettingsServiceBrandingSettings {
 
-  /** Example: {@code null} */
+  /** The {@code lightTheme} property. */
   @JsonProperty("lightTheme")
   @Nullable
   public SettingsServiceTheme lightTheme;
 
-  /** Example: {@code null} */
+  /** The {@code darkTheme} property. */
   @JsonProperty("darkTheme")
   @Nullable
   public SettingsServiceTheme darkTheme;
 
-  /**
-   * The url where the font is served.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The url where the font is served. */
   @JsonProperty("fontUrl")
   @Nullable
   public String fontUrl;
 
   /**
    * If enabled, the organization suffix will be hidden on the login form if the scope
-   * \\\"urn:zitadel:iam:org:domain:primary:{domainname}\\\" is used.
-   *
-   * <p>Example: {@code null}
+   * \"urn:zitadel:iam:org:domain:primary:{domainname}\" is used.
    */
   @JsonProperty("hideLoginNameSuffix")
   @Nullable
   public Boolean hideLoginNameSuffix;
 
-  /**
-   * If enabled, the Zitadel logo will not be displayed on the login screen.
-   *
-   * <p>Example: {@code null}
-   */
+  /** If enabled, the Zitadel logo will not be displayed on the login screen. */
   @JsonProperty("disableWatermark")
   @Nullable
   public Boolean disableWatermark;
 
-  /** Example: {@code null} */
+  /** The {@code resourceOwnerType} property. */
   @JsonProperty("resourceOwnerType")
   @Nullable
   public SettingsServiceResourceOwnerType resourceOwnerType;
 
-  /** Example: {@code null} */
+  /** The {@code themeMode} property. */
   @JsonProperty("themeMode")
   @Nullable
   public SettingsServiceThemeMode themeMode;

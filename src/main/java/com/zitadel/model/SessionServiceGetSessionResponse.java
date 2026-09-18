@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceGetSessionResponse {
 
-  /** Example: {@code null} */
+  /** The {@code session} property. */
   @JsonProperty("session")
   @Nullable
   public SessionServiceSession session;

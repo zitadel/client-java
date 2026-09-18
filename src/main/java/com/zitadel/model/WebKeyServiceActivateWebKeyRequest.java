@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class WebKeyServiceActivateWebKeyRequest {
 
-  /**
-   * The unique identifier of the key to activate.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique identifier of the key to activate. */
   @JsonProperty("id")
   @Nullable
   public String id;

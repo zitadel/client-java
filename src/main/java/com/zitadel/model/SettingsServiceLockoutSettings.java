@@ -34,14 +34,12 @@ public class SettingsServiceLockoutSettings {
    * The amount of failed password attempts before the account gets locked. Attempts are reset as
    * soon as the password is entered correctly or the password is reset. If set to 0 the account
    * will never be locked.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("maxPasswordAttempts")
   @Nullable
   public Object maxPasswordAttempts;
 
-  /** Example: {@code null} */
+  /** The {@code resourceOwnerType} property. */
   @JsonProperty("resourceOwnerType")
   @Nullable
   public SettingsServiceResourceOwnerType resourceOwnerType;
@@ -50,8 +48,6 @@ public class SettingsServiceLockoutSettings {
    * THe amount of failed OTP (TOTP, SMS, Email) attempts before the account gets locked. Attempts
    * are reset as soon as the OTP is entered correctly. If set to 0 the account will never be
    * locked.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("maxOtpAttempts")
   @Nullable

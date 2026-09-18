@@ -35,8 +35,6 @@ public class InstanceServiceCustomDomainsFilter {
   /**
    * The domains to query for. All instances that have at least one of the specified domains will be
    * returned. A maximum of 20 domains can be specified.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("domains")
   @Nullable

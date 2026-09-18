@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class SAMLServiceSession {
 
-  /**
-   * ID of the session, used to login the user. Connects the session to the SAML Request.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID of the session, used to login the user. Connects the session to the SAML Request. */
   @JsonProperty("sessionId")
   @Nullable
   public String sessionId;
 
-  /**
-   * Token to verify the session is valid.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Token to verify the session is valid. */
   @JsonProperty("sessionToken")
   @Nullable
   public String sessionToken;

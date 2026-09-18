@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class InternalPermissionServiceIDFilter {
 
-  /**
-   * Only return resources that belong to this id.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Only return resources that belong to this id. */
   @JsonProperty("id")
   @Nullable
   public String id;

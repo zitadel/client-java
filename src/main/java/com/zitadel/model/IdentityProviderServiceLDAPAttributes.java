@@ -30,72 +30,72 @@ import javax.annotation.Nullable;
 })
 public class IdentityProviderServiceLDAPAttributes {
 
-  /** Example: {@code null} */
+  /** The {@code idAttribute} property. */
   @JsonProperty("idAttribute")
   @Nullable
   public String idAttribute;
 
-  /** Example: {@code null} */
+  /** The {@code firstNameAttribute} property. */
   @JsonProperty("firstNameAttribute")
   @Nullable
   public String firstNameAttribute;
 
-  /** Example: {@code null} */
+  /** The {@code lastNameAttribute} property. */
   @JsonProperty("lastNameAttribute")
   @Nullable
   public String lastNameAttribute;
 
-  /** Example: {@code null} */
+  /** The {@code displayNameAttribute} property. */
   @JsonProperty("displayNameAttribute")
   @Nullable
   public String displayNameAttribute;
 
-  /** Example: {@code null} */
+  /** The {@code nickNameAttribute} property. */
   @JsonProperty("nickNameAttribute")
   @Nullable
   public String nickNameAttribute;
 
-  /** Example: {@code null} */
+  /** The {@code preferredUsernameAttribute} property. */
   @JsonProperty("preferredUsernameAttribute")
   @Nullable
   public String preferredUsernameAttribute;
 
-  /** Example: {@code null} */
+  /** The {@code emailAttribute} property. */
   @JsonProperty("emailAttribute")
   @Nullable
   public String emailAttribute;
 
-  /** Example: {@code null} */
+  /** The {@code emailVerifiedAttribute} property. */
   @JsonProperty("emailVerifiedAttribute")
   @Nullable
   public String emailVerifiedAttribute;
 
-  /** Example: {@code null} */
+  /** The {@code phoneAttribute} property. */
   @JsonProperty("phoneAttribute")
   @Nullable
   public String phoneAttribute;
 
-  /** Example: {@code null} */
+  /** The {@code phoneVerifiedAttribute} property. */
   @JsonProperty("phoneVerifiedAttribute")
   @Nullable
   public String phoneVerifiedAttribute;
 
-  /** Example: {@code null} */
+  /** The {@code preferredLanguageAttribute} property. */
   @JsonProperty("preferredLanguageAttribute")
   @Nullable
   public String preferredLanguageAttribute;
 
-  /** Example: {@code null} */
+  /** The {@code avatarUrlAttribute} property. */
   @JsonProperty("avatarUrlAttribute")
   @Nullable
   public String avatarUrlAttribute;
 
-  /** Example: {@code null} */
+  /** The {@code profileAttribute} property. */
   @JsonProperty("profileAttribute")
   @Nullable
   public String profileAttribute;
 
-  /** Example: {@code null} */
+  /** The {@code rootCa} property. */
   @JsonProperty("rootCa")
   @Nullable
   public String rootCa;

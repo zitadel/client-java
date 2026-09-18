@@ -81,14 +81,14 @@ public class SAMLServiceApi extends BaseApi {
    * SAMLResponse. This method can only be called once for an SAML request. Required permissions: -
    * `session.link`
    *
-   * @param sAMLServiceCreateResponseRequest (required)
+   * @param samlServiceCreateResponseRequest (required)
    * @return {@code SAMLServiceCreateResponseResponse}
    * @throws ApiException if fails to make API call
    */
   public SAMLServiceCreateResponseResponse createResponse(
-      SAMLServiceCreateResponseRequest sAMLServiceCreateResponseRequest) {
+      SAMLServiceCreateResponseRequest samlServiceCreateResponseRequest) {
     return requireBody(
-        createResponseWithHttpInfo(sAMLServiceCreateResponseRequest), "createResponse");
+        createResponseWithHttpInfo(samlServiceCreateResponseRequest), "createResponse");
   }
 
   /**
@@ -98,15 +98,15 @@ public class SAMLServiceApi extends BaseApi {
    * SAMLResponse. This method can only be called once for an SAML request. Required permissions: -
    * `session.link`
    *
-   * @param sAMLServiceCreateResponseRequest (required)
+   * @param samlServiceCreateResponseRequest (required)
    * @return the API result wrapping {@code SAMLServiceCreateResponseResponse}
    * @throws ApiException if fails to make API call
    */
   public ApiResult<SAMLServiceCreateResponseResponse> createResponseWithHttpInfo(
-      SAMLServiceCreateResponseRequest sAMLServiceCreateResponseRequest) {
-    if (sAMLServiceCreateResponseRequest == null) {
+      SAMLServiceCreateResponseRequest samlServiceCreateResponseRequest) {
+    if (samlServiceCreateResponseRequest == null) {
       throw new IllegalArgumentException(
-          "Missing the required parameter 'sAMLServiceCreateResponseRequest' when calling createResponse");
+          "Missing the required parameter 'samlServiceCreateResponseRequest' when calling createResponse");
     }
     String path = "/zitadel.saml.v2.SAMLService/CreateResponse";
     Map<String, Object> queryParams = new HashMap<>();
@@ -116,7 +116,7 @@ public class SAMLServiceApi extends BaseApi {
         path,
         queryParams,
         headerParams,
-        sAMLServiceCreateResponseRequest,
+        samlServiceCreateResponseRequest,
         new String[] {"application/json"},
         "application/json",
         createResponseTypeRef,
@@ -127,29 +127,29 @@ public class SAMLServiceApi extends BaseApi {
    * Get SAML Request Get SAML Request details by ID. Returns details that are parsed from the
    * application's SAML Request. Required permissions: - `session.read`
    *
-   * @param sAMLServiceGetSAMLRequestRequest (required)
+   * @param samlServiceGetSAMLRequestRequest (required)
    * @return {@code SAMLServiceGetSAMLRequestResponse}
    * @throws ApiException if fails to make API call
    */
   public SAMLServiceGetSAMLRequestResponse getSAMLRequest(
-      SAMLServiceGetSAMLRequestRequest sAMLServiceGetSAMLRequestRequest) {
+      SAMLServiceGetSAMLRequestRequest samlServiceGetSAMLRequestRequest) {
     return requireBody(
-        getSAMLRequestWithHttpInfo(sAMLServiceGetSAMLRequestRequest), "getSAMLRequest");
+        getSAMLRequestWithHttpInfo(samlServiceGetSAMLRequestRequest), "getSAMLRequest");
   }
 
   /**
    * Get SAML Request Get SAML Request details by ID. Returns details that are parsed from the
    * application's SAML Request. Required permissions: - `session.read`
    *
-   * @param sAMLServiceGetSAMLRequestRequest (required)
+   * @param samlServiceGetSAMLRequestRequest (required)
    * @return the API result wrapping {@code SAMLServiceGetSAMLRequestResponse}
    * @throws ApiException if fails to make API call
    */
   public ApiResult<SAMLServiceGetSAMLRequestResponse> getSAMLRequestWithHttpInfo(
-      SAMLServiceGetSAMLRequestRequest sAMLServiceGetSAMLRequestRequest) {
-    if (sAMLServiceGetSAMLRequestRequest == null) {
+      SAMLServiceGetSAMLRequestRequest samlServiceGetSAMLRequestRequest) {
+    if (samlServiceGetSAMLRequestRequest == null) {
       throw new IllegalArgumentException(
-          "Missing the required parameter 'sAMLServiceGetSAMLRequestRequest' when calling getSAMLRequest");
+          "Missing the required parameter 'samlServiceGetSAMLRequestRequest' when calling getSAMLRequest");
     }
     String path = "/zitadel.saml.v2.SAMLService/GetSAMLRequest";
     Map<String, Object> queryParams = new HashMap<>();
@@ -159,7 +159,7 @@ public class SAMLServiceApi extends BaseApi {
         path,
         queryParams,
         headerParams,
-        sAMLServiceGetSAMLRequestRequest,
+        samlServiceGetSAMLRequestRequest,
         new String[] {"application/json"},
         "application/json",
         getSAMLRequestTypeRef,

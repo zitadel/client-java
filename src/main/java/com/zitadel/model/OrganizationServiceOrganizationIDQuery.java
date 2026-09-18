@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceOrganizationIDQuery {
 
-  /**
-   * Unique identifier of the organization.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Unique identifier of the organization. */
   @JsonProperty("id")
   @Nullable
   public String id;

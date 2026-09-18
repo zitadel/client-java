@@ -30,21 +30,17 @@ import javax.annotation.Nullable;
 })
 public class SAMLServiceCreateResponseRequest {
 
-  /**
-   * ID of the SAML Request.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID of the SAML Request. */
   @JsonProperty("samlRequestId")
   @Nullable
   public String samlRequestId;
 
-  /** Example: {@code null} */
+  /** The {@code error} property. */
   @JsonProperty("error")
   @Nullable
   public SAMLServiceAuthorizationError error;
 
-  /** Example: {@code null} */
+  /** The {@code session} property. */
   @JsonProperty("session")
   @Nullable
   public SAMLServiceSession session;

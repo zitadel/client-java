@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceStartIdentityProviderIntentRequest {
 
-  /** Example: {@code null} */
+  /** The {@code idpId} property. */
   @JsonProperty("idpId")
   @Nullable
   public String idpId;
 
-  /** Example: {@code null} */
+  /** The {@code ldap} property. */
   @JsonProperty("ldap")
   @Nullable
   public BetaUserServiceLDAPCredentials ldap;
 
-  /** Example: {@code null} */
+  /** The {@code urls} property. */
   @JsonProperty("urls")
   @Nullable
   public BetaUserServiceRedirectURLs urls;

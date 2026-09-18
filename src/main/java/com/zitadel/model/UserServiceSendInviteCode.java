@@ -34,8 +34,6 @@ public class UserServiceSendInviteCode {
    * Optionally set a url_template, which will be used in the invite mail sent by ZITADEL to guide
    * the user to your invitation page. If no template is set and no previous code was created, the
    * default ZITADEL url will be used. The following placeholders can be used: UserID, OrgID, Code
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("urlTemplate")
   @Nullable
@@ -44,8 +42,6 @@ public class UserServiceSendInviteCode {
   /**
    * Optionally set an application name, which will be used in the invite mail sent by ZITADEL. If
    * no application name is set and no previous code was created, ZITADEL will be used as default.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("applicationName")
   @Nullable

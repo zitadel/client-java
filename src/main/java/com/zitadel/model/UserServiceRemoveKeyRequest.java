@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceRemoveKeyRequest {
 
-  /**
-   * The users resource ID.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The users resource ID. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /**
-   * The keys ID.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The keys ID. */
   @JsonProperty("keyId")
   @Nullable
   public String keyId;

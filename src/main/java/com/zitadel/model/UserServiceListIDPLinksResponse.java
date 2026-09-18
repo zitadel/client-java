@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceListIDPLinksResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public UserServiceListDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code result} property. */
   @JsonProperty("result")
   @Nullable
   public List<UserServiceIDPLink> result = new ArrayList<>();

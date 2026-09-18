@@ -30,19 +30,13 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceEventExecution {
 
-  /**
-   * Define all events as condition. After any event is created, the execution is triggered.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Define all events as condition. After any event is created, the execution is triggered. */
   @JsonProperty("all")
   @Nullable
   public Boolean all;
 
   /**
    * Define a specific event as condition. After this event is created, the execution is triggered.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("event")
   @Nullable
@@ -51,8 +45,6 @@ public class ActionServiceEventExecution {
   /**
    * Define an event group as condition. After any event under this group is created, the execution
    * is triggered.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("group")
   @Nullable

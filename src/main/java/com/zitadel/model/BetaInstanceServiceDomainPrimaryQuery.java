@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaInstanceServiceDomainPrimaryQuery {
 
-  /** Example: {@code null} */
+  /** The {@code primary} property. */
   @JsonProperty("primary")
   @Nullable
   public Boolean primary;

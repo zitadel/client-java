@@ -32,30 +32,22 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceListPublicKeysRequest {
 
-  /**
-   * TargetID is the unique identifier of the target to list the public keys for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** TargetID is the unique identifier of the target to list the public keys for. */
   @JsonProperty("targetId")
   @Nullable
   public String targetId;
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public ActionServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public ActionServicePublicKeyFieldName sortingColumn;
 
-  /**
-   * Define the criteria to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Define the criteria to query for. */
   @JsonProperty("filters")
   @Nullable
   public List<ActionServicePublicKeySearchFilter> filters = new ArrayList<>();

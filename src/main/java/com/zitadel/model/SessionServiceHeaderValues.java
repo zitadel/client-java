@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceHeaderValues {
 
-  /** Example: {@code null} */
+  /** The {@code values} property. */
   @JsonProperty("values")
   @Nullable
   public List<String> values = new ArrayList<>();

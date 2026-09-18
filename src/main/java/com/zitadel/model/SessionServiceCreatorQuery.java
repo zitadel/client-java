@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceCreatorQuery {
 
-  /**
-   * ID of the user who created the session. If empty, the calling user's ID is used.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID of the user who created the session. If empty, the calling user's ID is used. */
   @JsonProperty("id")
   @Nullable
   public String id;

@@ -34,8 +34,6 @@ public class OrganizationServiceSendEmailVerificationCode {
    * Optionally set a url_template, which will be used in the verification mail sent by ZITADEL to
    * guide the user to your verification page. If no template is set, the default ZITADEL url will
    * be used. The following placeholders can be used: UserID, OrgID, Code
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("urlTemplate")
   @Nullable

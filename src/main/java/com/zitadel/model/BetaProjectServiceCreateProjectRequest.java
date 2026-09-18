@@ -32,29 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaProjectServiceCreateProjectRequest {
 
-  /**
-   * The unique identifier of the organization the project belongs to.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique identifier of the organization the project belongs to. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * The unique identifier of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique identifier of the project. */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /**
-   * Name of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Name of the project. */
   @JsonProperty("name")
   @Nullable
   public String name;
@@ -63,8 +51,6 @@ public class BetaProjectServiceCreateProjectRequest {
    * Enable this setting to provide role information to your application. For OpenID Connect, the
    * roles can be requested from the UserInfo endpoint or sent in the ID or Access Token, based on
    * your application's configuration.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("projectRoleAssertion")
   @Nullable
@@ -73,8 +59,6 @@ public class BetaProjectServiceCreateProjectRequest {
   /**
    * Deny authentication if the user has no authorization assigned to this project. Authorizations
    * to the project without assigned a specific role to the user are allowed.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("authorizationRequired")
   @Nullable
@@ -84,14 +68,12 @@ public class BetaProjectServiceCreateProjectRequest {
    * Before a user can be authenticated, it is verified that their affiliated organization has been
    * granted access to this project. Authentication is not permitted for users from unauthorized
    * organizations.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("projectAccessRequired")
   @Nullable
   public Boolean projectAccessRequired;
 
-  /** Example: {@code null} */
+  /** The {@code privateLabelingSetting} property. */
   @JsonProperty("privateLabelingSetting")
   @Nullable
   public BetaProjectServicePrivateLabelingSetting privateLabelingSetting;
@@ -99,8 +81,6 @@ public class BetaProjectServiceCreateProjectRequest {
   /**
    * List of users and Project Member roles (PROJECT_OWNER, by default) to be assigned to those
    * users.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("admins")
   @Nullable

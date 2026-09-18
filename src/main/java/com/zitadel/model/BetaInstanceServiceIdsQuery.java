@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
 })
 public class BetaInstanceServiceIdsQuery {
 
-  /** Example: {@code null} */
+  /** The {@code ids} property. */
   @JsonProperty("ids")
   @Nullable
   public List<String> ids = new ArrayList<>();

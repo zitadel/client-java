@@ -30,27 +30,27 @@ import javax.annotation.Nullable;
 })
 public class UserServiceKeysSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code createdDateFilter} property. */
   @JsonProperty("createdDateFilter")
   @Nullable
   public UserServiceTimestampFilter createdDateFilter;
 
-  /** Example: {@code null} */
+  /** The {@code expirationDateFilter} property. */
   @JsonProperty("expirationDateFilter")
   @Nullable
   public UserServiceTimestampFilter expirationDateFilter;
 
-  /** Example: {@code null} */
+  /** The {@code keyIdFilter} property. */
   @JsonProperty("keyIdFilter")
   @Nullable
   public UserServiceIDFilter keyIdFilter;
 
-  /** Example: {@code null} */
+  /** The {@code organizationIdFilter} property. */
   @JsonProperty("organizationIdFilter")
   @Nullable
   public UserServiceIDFilter organizationIdFilter;
 
-  /** Example: {@code null} */
+  /** The {@code userIdFilter} property. */
   @JsonProperty("userIdFilter")
   @Nullable
   public UserServiceIDFilter userIdFilter;

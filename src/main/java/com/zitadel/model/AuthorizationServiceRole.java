@@ -33,27 +33,17 @@ public class AuthorizationServiceRole {
   /**
    * Key is the unique key of the role. It's the only relevant attribute for ZITADEL and will be
    * used for authorization checks and as claim in tokens and user info responses.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("key")
   @Nullable
   public String key;
 
-  /**
-   * Human readable name for the role, which might be displayed to users.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Human readable name for the role, which might be displayed to users. */
   @JsonProperty("displayName")
   @Nullable
   public String displayName;
 
-  /**
-   * The group the role belongs to. This is used to group roles in the UI.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The group the role belongs to. This is used to group roles in the UI. */
   @JsonProperty("group")
   @Nullable
   public String group;

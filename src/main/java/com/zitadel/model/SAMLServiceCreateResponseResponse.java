@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class SAMLServiceCreateResponseResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public SAMLServiceDetails details;
@@ -40,19 +40,17 @@ public class SAMLServiceCreateResponseResponse {
    * per POST, depending on the binding. Contains details for the application to obtain the response
    * on success, or error details on failure. Note that this field must be treated as credentials,
    * as the contained SAMLResponse or code can be used on behalve of the user.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("url")
   @Nullable
   public String url;
 
-  /** Example: {@code null} */
+  /** The {@code post} property. */
   @JsonProperty("post")
   @Nullable
   public SAMLServicePostResponse post;
 
-  /** Example: {@code null} */
+  /** The {@code redirect} property. */
   @JsonProperty("redirect")
   @Nullable
   public Object redirect;

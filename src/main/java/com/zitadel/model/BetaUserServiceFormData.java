@@ -32,11 +32,7 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceFormData {
 
-  /**
-   * The URL to which the form should be submitted using the POST method.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The URL to which the form should be submitted using the POST method. */
   @JsonProperty("url")
   @Nullable
   public String url;
@@ -44,9 +40,7 @@ public class BetaUserServiceFormData {
   /**
    * The form fields to be submitted. Each field is represented as a key-value pair, where the key
    * is the field / input name and the value is the field / input value. All fields need to be
-   * submitted as is and as input type \"text\".
-   *
-   * <p>Example: {@code null}
+   * submitted as is and as input type "text".
    */
   @JsonProperty("fields")
   @Nullable

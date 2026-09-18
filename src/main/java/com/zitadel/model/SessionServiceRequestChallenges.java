@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceRequestChallenges {
 
-  /** Example: {@code null} */
+  /** The {@code webAuthN} property. */
   @JsonProperty("webAuthN")
   @Nullable
   public SessionServiceWebAuthN webAuthN;
 
-  /** Example: {@code null} */
+  /** The {@code otpSms} property. */
   @JsonProperty("otpSms")
   @Nullable
   public SessionServiceOTPSMS otpSms;
 
-  /** Example: {@code null} */
+  /** The {@code otpEmail} property. */
   @JsonProperty("otpEmail")
   @Nullable
   public SessionServiceOTPEmail otpEmail;

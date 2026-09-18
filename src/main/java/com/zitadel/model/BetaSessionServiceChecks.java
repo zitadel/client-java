@@ -30,37 +30,37 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceChecks {
 
-  /** Example: {@code null} */
+  /** The {@code user} property. */
   @JsonProperty("user")
   @Nullable
   public BetaSessionServiceCheckUser user;
 
-  /** Example: {@code null} */
+  /** The {@code password} property. */
   @JsonProperty("password")
   @Nullable
   public BetaSessionServiceCheckPassword password;
 
-  /** Example: {@code null} */
+  /** The {@code webAuthN} property. */
   @JsonProperty("webAuthN")
   @Nullable
   public BetaSessionServiceCheckWebAuthN webAuthN;
 
-  /** Example: {@code null} */
+  /** The {@code idpIntent} property. */
   @JsonProperty("idpIntent")
   @Nullable
   public BetaSessionServiceCheckIDPIntent idpIntent;
 
-  /** Example: {@code null} */
+  /** The {@code totp} property. */
   @JsonProperty("totp")
   @Nullable
   public BetaSessionServiceCheckTOTP totp;
 
-  /** Example: {@code null} */
+  /** The {@code otpSms} property. */
   @JsonProperty("otpSms")
   @Nullable
   public BetaSessionServiceCheckOTP otpSms;
 
-  /** Example: {@code null} */
+  /** The {@code otpEmail} property. */
   @JsonProperty("otpEmail")
   @Nullable
   public BetaSessionServiceCheckOTP otpEmail;

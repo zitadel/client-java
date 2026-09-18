@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceProjectOrganizationIDFilter {
 
-  /**
-   * OrganizationID Is the ID of the organization to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** OrganizationID Is the ID of the organization to query for. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /** Example: {@code null} */
+  /** The {@code type} property. */
   @JsonProperty("type")
   @Nullable
   public ProjectServiceType type;

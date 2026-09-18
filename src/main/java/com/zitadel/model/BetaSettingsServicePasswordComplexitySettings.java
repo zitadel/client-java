@@ -30,32 +30,32 @@ import javax.annotation.Nullable;
 })
 public class BetaSettingsServicePasswordComplexitySettings {
 
-  /** Example: {@code null} */
+  /** The {@code minLength} property. */
   @JsonProperty("minLength")
   @Nullable
   public Object minLength;
 
-  /** Example: {@code null} */
+  /** The {@code requiresUppercase} property. */
   @JsonProperty("requiresUppercase")
   @Nullable
   public Boolean requiresUppercase;
 
-  /** Example: {@code null} */
+  /** The {@code requiresLowercase} property. */
   @JsonProperty("requiresLowercase")
   @Nullable
   public Boolean requiresLowercase;
 
-  /** Example: {@code null} */
+  /** The {@code requiresNumber} property. */
   @JsonProperty("requiresNumber")
   @Nullable
   public Boolean requiresNumber;
 
-  /** Example: {@code null} */
+  /** The {@code requiresSymbol} property. */
   @JsonProperty("requiresSymbol")
   @Nullable
   public Boolean requiresSymbol;
 
-  /** Example: {@code null} */
+  /** The {@code resourceOwnerType} property. */
   @JsonProperty("resourceOwnerType")
   @Nullable
   public BetaSettingsServiceResourceOwnerType resourceOwnerType;

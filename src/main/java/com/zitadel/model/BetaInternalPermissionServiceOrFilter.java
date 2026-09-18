@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceOrFilter {
 
-  /** Example: {@code null} */
+  /** The {@code queries} property. */
   @JsonProperty("queries")
   @Nullable
   public List<BetaInternalPermissionServiceAdministratorSearchFilter> queries = new ArrayList<>();

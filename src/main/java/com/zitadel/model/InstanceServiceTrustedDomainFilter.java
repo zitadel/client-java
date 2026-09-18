@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class InstanceServiceTrustedDomainFilter {
 
-  /** Example: {@code null} */
+  /** The {@code domainFilter} property. */
   @JsonProperty("domainFilter")
   @Nullable
   public InstanceServiceDomainFilter domainFilter;

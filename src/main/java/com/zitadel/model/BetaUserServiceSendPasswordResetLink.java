@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceSendPasswordResetLink {
 
-  /** Example: {@code null} */
+  /** The {@code notificationType} property. */
   @JsonProperty("notificationType")
   @Nullable
   public BetaUserServiceNotificationType notificationType;
 
-  /** Example: {@code null} */
+  /** The {@code urlTemplate} property. */
   @JsonProperty("urlTemplate")
   @Nullable
   public String urlTemplate;

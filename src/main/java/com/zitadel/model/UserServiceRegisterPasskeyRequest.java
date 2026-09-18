@@ -30,22 +30,22 @@ import javax.annotation.Nullable;
 })
 public class UserServiceRegisterPasskeyRequest {
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code code} property. */
   @JsonProperty("code")
   @Nullable
   public UserServicePasskeyRegistrationCode code;
 
-  /** Example: {@code null} */
+  /** The {@code authenticator} property. */
   @JsonProperty("authenticator")
   @Nullable
   public UserServicePasskeyAuthenticator authenticator;
 
-  /** Example: {@code null} */
+  /** The {@code domain} property. */
   @JsonProperty("domain")
   @Nullable
   public String domain;

@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class ActionServiceTargetNameFilter {
 
-  /**
-   * Defines the name of the target to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Defines the name of the target to query for. */
   @JsonProperty("targetName")
   @Nullable
   public String targetName;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public ActionServiceTextFilterMethod method;

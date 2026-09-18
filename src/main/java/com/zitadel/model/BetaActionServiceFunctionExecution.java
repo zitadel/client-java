@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaActionServiceFunctionExecution {
 
-  /** Example: {@code null} */
+  /** The {@code name} property. */
   @JsonProperty("name")
   @Nullable
   public String name;

@@ -30,56 +30,32 @@ import javax.annotation.Nullable;
 })
 public class SettingsServiceTheme {
 
-  /**
-   * The hex value for primary color.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The hex value for primary color. */
   @JsonProperty("primaryColor")
   @Nullable
   public String primaryColor;
 
-  /**
-   * The hex value for background color.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The hex value for background color. */
   @JsonProperty("backgroundColor")
   @Nullable
   public String backgroundColor;
 
-  /**
-   * The hex value for warning color.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The hex value for warning color. */
   @JsonProperty("warnColor")
   @Nullable
   public String warnColor;
 
-  /**
-   * The value for font color.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The value for font color. */
   @JsonProperty("fontColor")
   @Nullable
   public String fontColor;
 
-  /**
-   * The URL where the logo is served.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The URL where the logo is served. */
   @JsonProperty("logoUrl")
   @Nullable
   public String logoUrl;
 
-  /**
-   * The URL where the icon is served.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The URL where the icon is served. */
   @JsonProperty("iconUrl")
   @Nullable
   public String iconUrl;

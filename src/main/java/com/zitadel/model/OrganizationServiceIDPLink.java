@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceIDPLink {
 
-  /** Example: {@code null} */
+  /** The {@code idpId} property. */
   @JsonProperty("idpId")
   @Nullable
   public String idpId;
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code userName} property. */
   @JsonProperty("userName")
   @Nullable
   public String userName;

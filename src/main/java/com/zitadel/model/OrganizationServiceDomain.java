@@ -30,43 +30,29 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceDomain {
 
-  /**
-   * OrganizationID is the unique identifier of the organization the domain belongs to.
-   *
-   * <p>Example: {@code null}
-   */
+  /** OrganizationID is the unique identifier of the organization the domain belongs to. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * Domain is the fully qualified domain name.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Domain is the fully qualified domain name. */
   @JsonProperty("domain")
   @Nullable
   public String domain;
 
-  /**
-   * IsVerified is a boolean flag indicating if the domain has been verified.
-   *
-   * <p>Example: {@code null}
-   */
+  /** IsVerified is a boolean flag indicating if the domain has been verified. */
   @JsonProperty("isVerified")
   @Nullable
   public Boolean isVerified;
 
   /**
    * IsPrimary is a boolean flag indicating if the domain is the primary domain of the organization.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("isPrimary")
   @Nullable
   public Boolean isPrimary;
 
-  /** Example: {@code null} */
+  /** The {@code validationType} property. */
   @JsonProperty("validationType")
   @Nullable
   public OrganizationServiceDomainValidationType validationType;

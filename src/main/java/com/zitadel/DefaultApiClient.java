@@ -418,7 +418,35 @@ public final class DefaultApiClient implements ApiClient {
     } else if (body instanceof byte[] bytes) {
       bodyPublisher = HttpRequest.BodyPublishers.ofByteArray(bytes);
     } else if (body instanceof InputStream stream) {
-      bodyPublisher = HttpRequest.BodyPublishers.ofInputStream(() -> stream);
+      /* A raw InputStream is a single-use, non-replayable source: once
+       * the first send drains it, any re-subscription yields an empty
+       * stream. The redirect loop (307/308 preserves the body) and
+       * sendWithRetry both re-subscribe the SAME publisher, so a
+       * supplier capturing one InputStream instance —
+       * `ofInputStream(() -> stream)` — would silently transmit an
+       * empty/partial body on the replay. Buffer the stream eagerly
+       * into a byte[] so the publisher is fully repeatable and every
+       * subscription replays identical content. */
+      byte[] streamBytes;
+      try {
+        streamBytes = stream.readAllBytes();
+      } catch (IOException e) {
+        throw new ApiException("Failed to read request body stream", e);
+      }
+      bodyPublisher = HttpRequest.BodyPublishers.ofByteArray(streamBytes);
+    } else if (body instanceof File file) {
+      /* A raw File body (for example a binary octet-stream upload
+       * selected via the per-call content-type selector) is sent as its
+       * raw bytes. Buffering eagerly keeps the publisher repeatable for
+       * the redirect/retry re-subscription path, exactly like the
+       * InputStream branch above. */
+      byte[] fileBytes;
+      try {
+        fileBytes = Files.readAllBytes(file.toPath());
+      } catch (IOException e) {
+        throw new ApiException("Failed to read request body file", e);
+      }
+      bodyPublisher = HttpRequest.BodyPublishers.ofByteArray(fileBytes);
     } else {
       bodyPublisher = HttpRequest.BodyPublishers.ofString(body.toString());
     }
@@ -702,6 +730,12 @@ public final class DefaultApiClient implements ApiClient {
     String mediaType =
         (semi >= 0 ? contentType.substring(0, semi) : contentType).trim().toLowerCase(Locale.ROOT);
     if (mediaType.isEmpty()) {
+      /* A response with no Content-Type defaults to text handling: this
+       * is the established cross-SDK convention, exercised by the client
+       * tests which serve text bodies without an explicit Content-Type.
+       * Treating missing Content-Type as binary would base64-encode
+       * ordinary text responses; the rare binary-without-Content-Type
+       * case is governed by the caller's declared return type. */
       return true;
     }
     if (mediaType.startsWith("text/")) {

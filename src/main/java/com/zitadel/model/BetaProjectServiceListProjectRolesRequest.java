@@ -32,30 +32,22 @@ import javax.annotation.Nullable;
 })
 public class BetaProjectServiceListProjectRolesRequest {
 
-  /**
-   * ID of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID of the project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaProjectServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public BetaProjectServiceProjectRoleFieldName sortingColumn;
 
-  /**
-   * Define the criteria to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Define the criteria to query for. */
   @JsonProperty("filters")
   @Nullable
   public List<BetaProjectServiceProjectRoleSearchFilter> filters = new ArrayList<>();

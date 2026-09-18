@@ -33,10 +33,8 @@ import javax.annotation.Nullable;
 public class SettingsServiceSetHostedLoginTranslationRequest {
 
   /**
-   * The locale of the translations to be set. Needs to be a BCP 47 language tag (e.g. \"en\",
-   * \"de\", \"fr-CH\").
-   *
-   * <p>Example: {@code null}
+   * The locale of the translations to be set. Needs to be a BCP 47 language tag (e.g. "en", "de",
+   * "fr-CH").
    */
   @JsonProperty("locale")
   @Nullable
@@ -48,19 +46,17 @@ public class SettingsServiceSetHostedLoginTranslationRequest {
    * example, in scripting languages like JS a struct is represented as an object. The details of
    * that representation are described together with the proto support for the language. The JSON
    * representation for `Struct` is JSON object.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("translations")
   @Nullable
   public Map<String, Object> translations = new HashMap<>();
 
-  /** Example: {@code null} */
+  /** The {@code instance} property. */
   @JsonProperty("instance")
   @Nullable
   public Boolean instance;
 
-  /** Example: {@code null} */
+  /** The {@code organizationId} property. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;

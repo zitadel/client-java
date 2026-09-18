@@ -35,8 +35,6 @@ public class SessionServiceSendCode {
    * to your verification page. If no template is set, the default ZITADEL url will be used. The
    * following placeholders can be used: Code, UserID, LoginName, DisplayName, PreferredLanguage,
    * SessionID
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("urlTemplate")
   @Nullable

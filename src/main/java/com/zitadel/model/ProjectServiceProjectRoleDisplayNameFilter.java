@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceProjectRoleDisplayNameFilter {
 
-  /**
-   * The display name of the project role to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The display name of the project role to query for. */
   @JsonProperty("displayName")
   @Nullable
   public String displayName;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public ProjectServiceTextFilterMethod method;

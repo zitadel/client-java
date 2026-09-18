@@ -33,11 +33,7 @@ import javax.annotation.Nullable;
 })
 public class InstanceServiceInstance {
 
-  /**
-   * ID is the unique identifier of the instance.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID is the unique identifier of the instance. */
   @JsonProperty("id")
   @Nullable
   public String id;
@@ -47,7 +43,7 @@ public class InstanceServiceInstance {
    * as a count of seconds and fractions of seconds at nanosecond resolution. The count is relative
    * to an epoch at UTC midnight on January 1, 1970, in the proleptic Gregorian calendar which
    * extends the Gregorian calendar backwards to year one. All minutes are 60 seconds long. Leap
-   * seconds are \"smeared\" so that no leap second table is needed for interpretation, using a
+   * seconds are "smeared" so that no leap second table is needed for interpretation, using a
    * [24-hour linear smear](https://developers.google.com/time/smear). The range is from
    * 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure
    * that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
@@ -68,15 +64,15 @@ public class InstanceServiceInstance {
    * Example 6: Compute Timestamp from current time in Python. timestamp = Timestamp()
    * timestamp.GetCurrentTime() # JSON Mapping In JSON format, the Timestamp type is encoded as a
    * string in the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is
-   * \"{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z\" where {year} is always expressed
-   * using four digits while {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits
-   * each. The fractional seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),
-   * are optional. The \"Z\" suffix indicates the timezone (\"UTC\"); the timezone is required. A
-   * proto3 JSON serializer should always use UTC (as indicated by \"Z\") when printing the
-   * Timestamp type and a proto3 JSON parser should be able to accept both UTC and other timezones
-   * (as indicated by an offset). For example, \"2017-01-15T01:30:15.01Z\" encodes 15.01 seconds
-   * past 01:30 UTC on January 15, 2017. In JavaScript, one can convert a Date object to this format
-   * using the standard
+   * "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z" where {year} is always expressed using
+   * four digits while {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits each.
+   * The fractional seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution), are
+   * optional. The "Z" suffix indicates the timezone ("UTC"); the timezone is required. A proto3
+   * JSON serializer should always use UTC (as indicated by "Z") when printing the Timestamp type
+   * and a proto3 JSON parser should be able to accept both UTC and other timezones (as indicated by
+   * an offset). For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
+   * January 15, 2017. In JavaScript, one can convert a Date object to this format using the
+   * standard
    * [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
    * method. In Python, a standard `datetime.datetime` object can be converted to this format using
    * [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with the time format
@@ -84,8 +80,6 @@ public class InstanceServiceInstance {
    * [`ISODateTimeFormat.dateTime()`](
    * http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()
    * ) to obtain a formatter capable of generating timestamps in this format.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("changeDate")
   @Nullable
@@ -96,7 +90,7 @@ public class InstanceServiceInstance {
    * as a count of seconds and fractions of seconds at nanosecond resolution. The count is relative
    * to an epoch at UTC midnight on January 1, 1970, in the proleptic Gregorian calendar which
    * extends the Gregorian calendar backwards to year one. All minutes are 60 seconds long. Leap
-   * seconds are \"smeared\" so that no leap second table is needed for interpretation, using a
+   * seconds are "smeared" so that no leap second table is needed for interpretation, using a
    * [24-hour linear smear](https://developers.google.com/time/smear). The range is from
    * 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure
    * that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
@@ -117,15 +111,15 @@ public class InstanceServiceInstance {
    * Example 6: Compute Timestamp from current time in Python. timestamp = Timestamp()
    * timestamp.GetCurrentTime() # JSON Mapping In JSON format, the Timestamp type is encoded as a
    * string in the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is
-   * \"{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z\" where {year} is always expressed
-   * using four digits while {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits
-   * each. The fractional seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),
-   * are optional. The \"Z\" suffix indicates the timezone (\"UTC\"); the timezone is required. A
-   * proto3 JSON serializer should always use UTC (as indicated by \"Z\") when printing the
-   * Timestamp type and a proto3 JSON parser should be able to accept both UTC and other timezones
-   * (as indicated by an offset). For example, \"2017-01-15T01:30:15.01Z\" encodes 15.01 seconds
-   * past 01:30 UTC on January 15, 2017. In JavaScript, one can convert a Date object to this format
-   * using the standard
+   * "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z" where {year} is always expressed using
+   * four digits while {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits each.
+   * The fractional seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution), are
+   * optional. The "Z" suffix indicates the timezone ("UTC"); the timezone is required. A proto3
+   * JSON serializer should always use UTC (as indicated by "Z") when printing the Timestamp type
+   * and a proto3 JSON parser should be able to accept both UTC and other timezones (as indicated by
+   * an offset). For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
+   * January 15, 2017. In JavaScript, one can convert a Date object to this format using the
+   * standard
    * [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
    * method. In Python, a standard `datetime.datetime` object can be converted to this format using
    * [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with the time format
@@ -133,22 +127,18 @@ public class InstanceServiceInstance {
    * [`ISODateTimeFormat.dateTime()`](
    * http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()
    * ) to obtain a formatter capable of generating timestamps in this format.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("creationDate")
   @Nullable
   public OffsetDateTime creationDate;
 
-  /** Example: {@code null} */
+  /** The {@code state} property. */
   @JsonProperty("state")
   @Nullable
   public InstanceServiceState state;
 
   /**
    * Name is the display name of the instance. This can be changed by the instance administrator.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("name")
   @Nullable
@@ -157,8 +147,6 @@ public class InstanceServiceInstance {
   /**
    * Version of the system the instance is running on. This is managed by the system and cannot be
    * changed by the instance administrator.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("version")
   @Nullable
@@ -168,8 +156,6 @@ public class InstanceServiceInstance {
    * CustomDomains are the domains that are assigned to the instance. The list includes
    * auto-generated and manually added domains. They are all unique across all instances in the
    * system. They're used to route requests to the correct instance.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("customDomains")
   @Nullable

@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaInstanceServiceDeleteInstanceRequest {
 
-  /** Example: {@code null} */
+  /** The {@code instanceId} property. */
   @JsonProperty("instanceId")
   @Nullable
   public String instanceId;

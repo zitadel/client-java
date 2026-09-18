@@ -32,30 +32,22 @@ import javax.annotation.Nullable;
 })
 public class ProjectServiceListProjectRolesRequest {
 
-  /**
-   * ProjectID is the unique identifier of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectID is the unique identifier of the project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public ProjectServicePaginationRequest pagination;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public ProjectServiceProjectRoleFieldName sortingColumn;
 
-  /**
-   * Filters define the criteria to query for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Filters define the criteria to query for. */
   @JsonProperty("filters")
   @Nullable
   public List<ProjectServiceProjectRoleSearchFilter> filters = new ArrayList<>();

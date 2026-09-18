@@ -33,8 +33,6 @@ public class ActionServiceRequestExecution {
   /**
    * Define all calls as condition. When a call to any available service happens, the execution is
    * triggered.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("all")
   @Nullable
@@ -43,8 +41,6 @@ public class ActionServiceRequestExecution {
   /**
    * Define a GRPC-method as condition. When a request to this method happens, the execution is
    * triggered.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("method")
   @Nullable
@@ -53,8 +49,6 @@ public class ActionServiceRequestExecution {
   /**
    * Define a GRPC-service as condition. When a request to any method of this service happens, the
    * execution is triggered.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("service")
   @Nullable

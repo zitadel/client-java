@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class InternalPermissionServiceNotFilter {
 
-  /** Example: {@code null} */
+  /** The {@code query} property. */
   @JsonProperty("query")
   @Nullable
   public InternalPermissionServiceAdministratorSearchFilter query;

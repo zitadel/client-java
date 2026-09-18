@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaInstanceServiceGetInstanceResponse {
 
-  /** Example: {@code null} */
+  /** The {@code instance} property. */
   @JsonProperty("instance")
   @Nullable
   public BetaInstanceServiceInstance instance;

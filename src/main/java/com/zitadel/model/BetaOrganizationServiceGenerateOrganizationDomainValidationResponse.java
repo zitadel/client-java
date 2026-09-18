@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceGenerateOrganizationDomainValidationResponse {
 
-  /**
-   * The token verify domain.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The token verify domain. */
   @JsonProperty("token")
   @Nullable
   public String token;
 
-  /**
-   * URL used to verify the domain.
-   *
-   * <p>Example: {@code null}
-   */
+  /** URL used to verify the domain. */
   @JsonProperty("url")
   @Nullable
   public String url;

@@ -34,8 +34,6 @@ public class InstanceServiceGetInstanceRequest {
    * InstanceID is the unique ID of the instance to be retrieved. If not set, the instance in the
    * current context (e.g. identified by the host header) will be returned. If an ID is set, the
    * caller must have additional permissions.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("instanceId")
   @Nullable

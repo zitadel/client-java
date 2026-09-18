@@ -33,18 +33,12 @@ public class OrganizationServiceGenerateOrganizationDomainValidationResponse {
   /**
    * Token is a verification token that needs to be added to the DNS records or as a file to the
    * webserver. Zitadel will check for this token to verify the domain.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("token")
   @Nullable
   public String token;
 
-  /**
-   * URL is the location where the token needs to be placed for HTTP challenge.
-   *
-   * <p>Example: {@code null}
-   */
+  /** URL is the location where the token needs to be placed for HTTP challenge. */
   @JsonProperty("url")
   @Nullable
   public String url;

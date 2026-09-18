@@ -32,17 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceListUsersResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public BetaUserServiceListDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code sortingColumn} property. */
   @JsonProperty("sortingColumn")
   @Nullable
   public BetaUserServiceUserFieldName sortingColumn;
 
-  /** Example: {@code null} */
+  /** The {@code result} property. */
   @JsonProperty("result")
   @Nullable
   public List<BetaUserServiceUser> result = new ArrayList<>();

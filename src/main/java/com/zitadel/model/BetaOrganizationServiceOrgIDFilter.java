@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceOrgIDFilter {
 
-  /**
-   * The Organization id.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The Organization id. */
   @JsonProperty("id")
   @Nullable
   public String id;

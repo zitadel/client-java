@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaProjectServiceUpdateProjectRequest {
 
-  /** Example: {@code null} */
+  /** The {@code id} property. */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /**
-   * Name of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Name of the project. */
   @JsonProperty("name")
   @Nullable
   public String name;
@@ -47,8 +43,6 @@ public class BetaProjectServiceUpdateProjectRequest {
   /**
    * Enable this setting to have role information included in the user info endpoint. It is also
    * dependent on your application settings to include it in tokens and other types.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("projectRoleAssertion")
   @Nullable
@@ -57,8 +51,6 @@ public class BetaProjectServiceUpdateProjectRequest {
   /**
    * When enabled ZITADEL will check if a user has a role of this project assigned when login into
    * an application of this project.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("projectRoleCheck")
   @Nullable
@@ -67,14 +59,12 @@ public class BetaProjectServiceUpdateProjectRequest {
   /**
    * When enabled ZITADEL will check if the organization of the user, that is trying to log in, has
    * a grant to this project.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("hasProjectCheck")
   @Nullable
   public Boolean hasProjectCheck;
 
-  /** Example: {@code null} */
+  /** The {@code privateLabelingSetting} property. */
   @JsonProperty("privateLabelingSetting")
   @Nullable
   public BetaProjectServicePrivateLabelingSetting privateLabelingSetting;

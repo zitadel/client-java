@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceListAdministratorsResponse {
 
-  /** Example: {@code null} */
+  /** The {@code pagination} property. */
   @JsonProperty("pagination")
   @Nullable
   public BetaInternalPermissionServicePaginationResponse pagination;
 
-  /** Example: {@code null} */
+  /** The {@code administrators} property. */
   @JsonProperty("administrators")
   @Nullable
   public List<BetaInternalPermissionServiceAdministrator> administrators = new ArrayList<>();

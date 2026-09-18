@@ -38,8 +38,6 @@ public class BetaInternalPermissionServiceAny {
    * A URL that acts as a globally unique identifier for the type of the serialized message. For
    * example: `type.googleapis.com/google.rpc.ErrorInfo`. This is used to determine the schema of
    * the data in the `value` field and is the discriminator for the `debug` field.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("type")
   @Nullable
@@ -48,8 +46,6 @@ public class BetaInternalPermissionServiceAny {
   /**
    * The Protobuf message, serialized as bytes and base64-encoded. The specific message type is
    * identified by the `type` field.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("value")
   @Nullable
@@ -58,8 +54,6 @@ public class BetaInternalPermissionServiceAny {
   /**
    * Deserialized error detail payload. The 'type' field indicates the schema. This field is for
    * easier debugging and should not be relied upon for application logic.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("debug")
   @Nullable

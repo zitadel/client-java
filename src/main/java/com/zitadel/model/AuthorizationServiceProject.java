@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class AuthorizationServiceProject {
 
-  /**
-   * ID is the unique identifier of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID is the unique identifier of the project. */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /**
-   * Name is the name of the project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Name is the name of the project. */
   @JsonProperty("name")
   @Nullable
   public String name;
@@ -52,8 +44,6 @@ public class AuthorizationServiceProject {
    * OrganizationID is the ID of the organization the project belongs to. This does not have to
    * correspond with the authorizations organization. In case the authorization is given on a
    * granted project, this is the organization that owns the project and granted it.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("organizationId")
   @Nullable

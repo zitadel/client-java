@@ -30,20 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceProjectGrant {
 
-  /**
-   * ProjectID is required to grant administrator privileges for a specific project.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ProjectID is required to grant administrator privileges for a specific project. */
   @JsonProperty("projectId")
   @Nullable
   public String projectId;
 
-  /**
-   * OrganizationID is required to grant administrator privileges for a specific project grant.
-   *
-   * <p>Example: {@code null}
-   */
+  /** OrganizationID is required to grant administrator privileges for a specific project grant. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;

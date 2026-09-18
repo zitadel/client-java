@@ -32,17 +32,17 @@ import javax.annotation.Nullable;
 })
 public class BetaSettingsServiceGetGeneralSettingsResponse {
 
-  /** Example: {@code null} */
+  /** The {@code defaultOrgId} property. */
   @JsonProperty("defaultOrgId")
   @Nullable
   public String defaultOrgId;
 
-  /** Example: {@code null} */
+  /** The {@code defaultLanguage} property. */
   @JsonProperty("defaultLanguage")
   @Nullable
   public String defaultLanguage;
 
-  /** Example: {@code null} */
+  /** The {@code supportedLanguages} property. */
   @JsonProperty("supportedLanguages")
   @Nullable
   public List<String> supportedLanguages = new ArrayList<>();

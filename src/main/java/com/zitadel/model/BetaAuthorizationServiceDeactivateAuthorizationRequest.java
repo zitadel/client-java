@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class BetaAuthorizationServiceDeactivateAuthorizationRequest {
 
-  /**
-   * ID is the unique identifier of the authorization that should be deactivated.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID is the unique identifier of the authorization that should be deactivated. */
   @JsonProperty("id")
   @Nullable
   public String id;

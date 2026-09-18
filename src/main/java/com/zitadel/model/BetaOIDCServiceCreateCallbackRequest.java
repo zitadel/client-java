@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaOIDCServiceCreateCallbackRequest {
 
-  /** Example: {@code null} */
+  /** The {@code authRequestId} property. */
   @JsonProperty("authRequestId")
   @Nullable
   public String authRequestId;
 
-  /** Example: {@code null} */
+  /** The {@code error} property. */
   @JsonProperty("error")
   @Nullable
   public BetaOIDCServiceAuthorizationError error;
 
-  /** Example: {@code null} */
+  /** The {@code session} property. */
   @JsonProperty("session")
   @Nullable
   public BetaOIDCServiceSession session;

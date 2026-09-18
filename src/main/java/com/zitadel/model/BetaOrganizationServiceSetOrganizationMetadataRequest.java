@@ -32,20 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceSetOrganizationMetadataRequest {
 
-  /**
-   * Organization Id for the Organization doman to be verified.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Organization Id for the Organization doman to be verified. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * Metadata to set.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Metadata to set. */
   @JsonProperty("metadata")
   @Nullable
   public List<BetaOrganizationServiceMetadata> metadata = new ArrayList<>();

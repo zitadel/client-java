@@ -34,18 +34,12 @@ public class OrganizationServiceDeleteOrganizationMetadataRequest {
 
   /**
    * Organization ID is the unique identifier of the organization whose metadata is to be deleted.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /**
-   * Keys are the organization metadata entries to be deleted by their key.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Keys are the organization metadata entries to be deleted by their key. */
   @JsonProperty("keys")
   @Nullable
   public List<String> keys = new ArrayList<>();

@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class ApplicationServiceGetApplicationKeyRequest {
 
-  /**
-   * The unique ID of the application key to be retrieved.
-   *
-   * <p>Example: {@code null}
-   */
+  /** The unique ID of the application key to be retrieved. */
   @JsonProperty("keyId")
   @Nullable
   public String keyId;

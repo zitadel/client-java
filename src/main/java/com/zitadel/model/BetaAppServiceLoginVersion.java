@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaAppServiceLoginVersion {
 
-  /** Example: {@code null} */
+  /** The {@code loginV1} property. */
   @JsonProperty("loginV1")
   @Nullable
   public Object loginV1;
 
-  /** Example: {@code null} */
+  /** The {@code loginV2} property. */
   @JsonProperty("loginV2")
   @Nullable
   public BetaAppServiceLoginV2 loginV2;

@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 })
 public class UserServiceSendPasswordResetLink {
 
-  /** Example: {@code null} */
+  /** The {@code notificationType} property. */
   @JsonProperty("notificationType")
   @Nullable
   public UserServiceNotificationType notificationType;
@@ -39,8 +39,6 @@ public class UserServiceSendPasswordResetLink {
    * Optionally set a url_template, which will be used in the password reset mail sent by ZITADEL to
    * guide the user to your password change page. If no template is set, the default ZITADEL url
    * will be used. The following placeholders can be used: UserID, OrgID, Code
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("urlTemplate")
   @Nullable

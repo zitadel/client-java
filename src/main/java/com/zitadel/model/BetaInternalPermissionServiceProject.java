@@ -30,29 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceProject {
 
-  /**
-   * ID is the unique identifier of the project the user was granted the administrator role for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** ID is the unique identifier of the project the user was granted the administrator role for. */
   @JsonProperty("id")
   @Nullable
   public String id;
 
-  /**
-   * Name is the name of the project the user was granted the administrator role for.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Name is the name of the project the user was granted the administrator role for. */
   @JsonProperty("name")
   @Nullable
   public String name;
 
-  /**
-   * OrganizationID is the ID of the organization the project belongs to.
-   *
-   * <p>Example: {@code null}
-   */
+  /** OrganizationID is the ID of the organization the project belongs to. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;

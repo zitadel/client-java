@@ -134,7 +134,7 @@ public final class Zitadel {
   public final InternalPermissionServiceApi internalPermissionService;
 
   /** API operations for the OIDCServiceApi group. */
-  public final OIDCServiceApi oIDCService;
+  public final OIDCServiceApi oidcService;
 
   /** API operations for the OrganizationServiceApi group. */
   public final OrganizationServiceApi organizationService;
@@ -143,7 +143,7 @@ public final class Zitadel {
   public final ProjectServiceApi projectService;
 
   /** API operations for the SAMLServiceApi group. */
-  public final SAMLServiceApi sAMLService;
+  public final SAMLServiceApi samlService;
 
   /** API operations for the SessionServiceApi group. */
   public final SessionServiceApi sessionService;
@@ -211,10 +211,10 @@ public final class Zitadel {
     this.instanceService = new InstanceServiceApi(apiClient, config, authenticator);
     this.internalPermissionService =
         new InternalPermissionServiceApi(apiClient, config, authenticator);
-    this.oIDCService = new OIDCServiceApi(apiClient, config, authenticator);
+    this.oidcService = new OIDCServiceApi(apiClient, config, authenticator);
     this.organizationService = new OrganizationServiceApi(apiClient, config, authenticator);
     this.projectService = new ProjectServiceApi(apiClient, config, authenticator);
-    this.sAMLService = new SAMLServiceApi(apiClient, config, authenticator);
+    this.samlService = new SAMLServiceApi(apiClient, config, authenticator);
     this.sessionService = new SessionServiceApi(apiClient, config, authenticator);
     this.settingsService = new SettingsServiceApi(apiClient, config, authenticator);
     this.userService = new UserServiceApi(apiClient, config, authenticator);

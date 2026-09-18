@@ -30,22 +30,22 @@ import javax.annotation.Nullable;
 })
 public class BetaOrganizationServiceOrganizationSearchFilter {
 
-  /** Example: {@code null} */
+  /** The {@code domainFilter} property. */
   @JsonProperty("domainFilter")
   @Nullable
   public BetaOrganizationServiceOrgDomainFilter domainFilter;
 
-  /** Example: {@code null} */
+  /** The {@code idFilter} property. */
   @JsonProperty("idFilter")
   @Nullable
   public BetaOrganizationServiceOrgIDFilter idFilter;
 
-  /** Example: {@code null} */
+  /** The {@code nameFilter} property. */
   @JsonProperty("nameFilter")
   @Nullable
   public BetaOrganizationServiceOrgNameFilter nameFilter;
 
-  /** Example: {@code null} */
+  /** The {@code stateFilter} property. */
   @JsonProperty("stateFilter")
   @Nullable
   public BetaOrganizationServiceOrgStateFilter stateFilter;

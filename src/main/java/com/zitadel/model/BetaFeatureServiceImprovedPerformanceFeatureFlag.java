@@ -32,12 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaFeatureServiceImprovedPerformanceFeatureFlag {
 
-  /** Example: {@code null} */
+  /** The {@code executionPaths} property. */
   @JsonProperty("executionPaths")
   @Nullable
   public List<BetaFeatureServiceImprovedPerformance> executionPaths = new ArrayList<>();
 
-  /** Example: {@code null} */
+  /** The {@code source} property. */
   @JsonProperty("source")
   @Nullable
   public BetaFeatureServiceSource source;

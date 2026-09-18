@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaInstanceServiceQuery {
 
-  /** Example: {@code null} */
+  /** The {@code domainQuery} property. */
   @JsonProperty("domainQuery")
   @Nullable
   public BetaInstanceServiceDomainsQuery domainQuery;
 
-  /** Example: {@code null} */
+  /** The {@code idQuery} property. */
   @JsonProperty("idQuery")
   @Nullable
   public BetaInstanceServiceIdsQuery idQuery;

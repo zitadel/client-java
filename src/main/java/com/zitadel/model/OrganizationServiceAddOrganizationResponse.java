@@ -32,17 +32,17 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceAddOrganizationResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public OrganizationServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code organizationId} property. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /** Example: {@code null} */
+  /** The {@code createdAdmins} property. */
   @JsonProperty("createdAdmins")
   @Nullable
   public List<OrganizationServiceCreatedAdmin> createdAdmins = new ArrayList<>();

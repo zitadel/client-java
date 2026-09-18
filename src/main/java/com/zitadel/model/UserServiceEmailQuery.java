@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class UserServiceEmailQuery {
 
-  /** Example: {@code null} */
+  /** The {@code emailAddress} property. */
   @JsonProperty("emailAddress")
   @Nullable
   public String emailAddress;
 
-  /** Example: {@code null} */
+  /** The {@code method} property. */
   @JsonProperty("method")
   @Nullable
   public UserServiceTextQueryMethod method;

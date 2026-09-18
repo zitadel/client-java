@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaSessionServiceSearchQuery {
 
-  /** Example: {@code null} */
+  /** The {@code creationDateQuery} property. */
   @JsonProperty("creationDateQuery")
   @Nullable
   public BetaSessionServiceCreationDateQuery creationDateQuery;
 
-  /** Example: {@code null} */
+  /** The {@code idsQuery} property. */
   @JsonProperty("idsQuery")
   @Nullable
   public BetaSessionServiceIDsQuery idsQuery;
 
-  /** Example: {@code null} */
+  /** The {@code userIdQuery} property. */
   @JsonProperty("userIdQuery")
   @Nullable
   public BetaSessionServiceUserIDQuery userIdQuery;

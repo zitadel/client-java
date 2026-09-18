@@ -30,17 +30,17 @@ import javax.annotation.Nullable;
 })
 public class BetaSettingsServiceLockoutSettings {
 
-  /** Example: {@code null} */
+  /** The {@code maxPasswordAttempts} property. */
   @JsonProperty("maxPasswordAttempts")
   @Nullable
   public Object maxPasswordAttempts;
 
-  /** Example: {@code null} */
+  /** The {@code resourceOwnerType} property. */
   @JsonProperty("resourceOwnerType")
   @Nullable
   public BetaSettingsServiceResourceOwnerType resourceOwnerType;
 
-  /** Example: {@code null} */
+  /** The {@code maxOtpAttempts} property. */
   @JsonProperty("maxOtpAttempts")
   @Nullable
   public Object maxOtpAttempts;

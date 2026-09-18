@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaUserServiceIDPOAuthAccessInformation {
 
-  /** Example: {@code null} */
+  /** The {@code accessToken} property. */
   @JsonProperty("accessToken")
   @Nullable
   public String accessToken;
 
-  /** Example: {@code null} */
+  /** The {@code idToken} property. */
   @JsonProperty("idToken")
   @Nullable
   public String idToken;

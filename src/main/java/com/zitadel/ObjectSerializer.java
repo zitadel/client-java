@@ -136,8 +136,25 @@ public final class ObjectSerializer {
     if (value instanceof Duration d) {
       return formatDuration(d);
     }
+    if (value instanceof java.time.LocalTime lt) {
+      /* A format:time value has no date or offset, so the offset-bearing
+      ISO_OFFSET_DATE_TIME below would throw on it. ISO_LOCAL_TIME emits
+      HH:mm[:ss[.SSS]] and preserves any sub-second fraction. */
+      return DateTimeFormatter.ISO_LOCAL_TIME.format(lt);
+    }
+    if (value instanceof java.time.LocalDateTime ldt) {
+      /* A local date-time carries no offset, so ISO_OFFSET_DATE_TIME would
+      throw; ISO_LOCAL_DATE_TIME formats it without one. */
+      return DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(ldt);
+    }
     if (value instanceof TemporalAccessor t) {
-      return DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssxxx").format(t);
+      /* ISO_OFFSET_DATE_TIME preserves any sub-second fraction (e.g. the
+      .123 milliseconds of 2020-01-02T03:04:05.123Z) and emits the
+      UTC designator as "Z". The decoder (JavaTimeModule) accepts the
+      fraction, so the encoder must emit it too — a fixed-pattern
+      formatter without a fractional field would silently truncate to
+      whole seconds, an asymmetric lossy round-trip. */
+      return DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(t);
     }
     if (value instanceof Date d) {
       return new StdDateFormat().withColonInTimeZone(true).format(d);

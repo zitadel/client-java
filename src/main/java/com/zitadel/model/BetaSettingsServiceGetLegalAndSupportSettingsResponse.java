@@ -30,12 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaSettingsServiceGetLegalAndSupportSettingsResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public BetaSettingsServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code settings} property. */
   @JsonProperty("settings")
   @Nullable
   public BetaSettingsServiceLegalAndSupportSettings settings;

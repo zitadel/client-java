@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class SessionServiceCreateSessionResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public SessionServiceDetails details;
 
-  /**
-   * Unique identifier of the session.
-   *
-   * <p>Example: {@code null}
-   */
+  /** Unique identifier of the session. */
   @JsonProperty("sessionId")
   @Nullable
   public String sessionId;
@@ -48,14 +44,12 @@ public class SessionServiceCreateSessionResponse {
    * The current token of the session, which is required for using the session as authentication,
    * e.g.when authenticating an OIDC auth request or SAML request. Additionally, the session token
    * can be used as OAuth2 access token to authenticate against the ZITADEL APIs.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("sessionToken")
   @Nullable
   public String sessionToken;
 
-  /** Example: {@code null} */
+  /** The {@code challenges} property. */
   @JsonProperty("challenges")
   @Nullable
   public SessionServiceChallenges challenges;

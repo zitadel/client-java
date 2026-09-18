@@ -32,16 +32,12 @@ import javax.annotation.Nullable;
 })
 public class BetaInternalPermissionServiceCreateAdministratorRequest {
 
-  /**
-   * UserID is the ID of the user who should be granted the administrator role.
-   *
-   * <p>Example: {@code null}
-   */
+  /** UserID is the ID of the user who should be granted the administrator role. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code resource} property. */
   @JsonProperty("resource")
   @Nullable
   public BetaInternalPermissionServiceResourceType resource;
@@ -51,8 +47,6 @@ public class BetaInternalPermissionServiceCreateAdministratorRequest {
    * roles are currently specific to the resource type. This means that if you want to grant a user
    * the administrator role for an organization and a project, you need to create two administrator
    * roles.
-   *
-   * <p>Example: {@code null}
    */
   @JsonProperty("roles")
   @Nullable

@@ -30,11 +30,7 @@ import javax.annotation.Nullable;
 })
 public class OrganizationServiceDeactivateOrganizationRequest {
 
-  /**
-   * OrganizationID is the unique identifier of the organization to be deactivated.
-   *
-   * <p>Example: {@code null}
-   */
+  /** OrganizationID is the unique identifier of the organization to be deactivated. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;

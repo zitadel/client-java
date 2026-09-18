@@ -31,35 +31,29 @@ import javax.annotation.Nullable;
 public class SettingsServiceGetHostedLoginTranslationRequest {
 
   /**
-   * The locale of the translations to be returned. Needs to be a BCP 47 language tag (e.g. \"en\",
-   * \"de\", \"fr-CH\").
-   *
-   * <p>Example: {@code null}
+   * The locale of the translations to be returned. Needs to be a BCP 47 language tag (e.g. "en",
+   * "de", "fr-CH").
    */
   @JsonProperty("locale")
   @Nullable
   public String locale;
 
-  /**
-   * if set to true, higher levels are ignored, if false higher levels are merged into the file
-   *
-   * <p>Example: {@code null}
-   */
+  /** if set to true, higher levels are ignored, if false higher levels are merged into the file */
   @JsonProperty("ignoreInheritance")
   @Nullable
   public Boolean ignoreInheritance;
 
-  /** Example: {@code null} */
+  /** The {@code instance} property. */
   @JsonProperty("instance")
   @Nullable
   public Boolean instance;
 
-  /** Example: {@code null} */
+  /** The {@code organizationId} property. */
   @JsonProperty("organizationId")
   @Nullable
   public String organizationId;
 
-  /** Example: {@code null} */
+  /** The {@code system} property. */
   @JsonProperty("system")
   @Nullable
   public Boolean system;

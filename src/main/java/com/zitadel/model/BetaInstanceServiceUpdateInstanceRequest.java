@@ -30,16 +30,12 @@ import javax.annotation.Nullable;
 })
 public class BetaInstanceServiceUpdateInstanceRequest {
 
-  /**
-   * used only to identify the instance to change.
-   *
-   * <p>Example: {@code null}
-   */
+  /** used only to identify the instance to change. */
   @JsonProperty("instanceId")
   @Nullable
   public String instanceId;
 
-  /** Example: {@code null} */
+  /** The {@code instanceName} property. */
   @JsonProperty("instanceName")
   @Nullable
   public String instanceName;

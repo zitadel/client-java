@@ -30,27 +30,27 @@ import javax.annotation.Nullable;
 })
 public class UserServiceRetrieveIdentityProviderIntentResponse {
 
-  /** Example: {@code null} */
+  /** The {@code details} property. */
   @JsonProperty("details")
   @Nullable
   public UserServiceDetails details;
 
-  /** Example: {@code null} */
+  /** The {@code idpInformation} property. */
   @JsonProperty("idpInformation")
   @Nullable
   public UserServiceIDPInformation idpInformation;
 
-  /** Example: {@code null} */
+  /** The {@code userId} property. */
   @JsonProperty("userId")
   @Nullable
   public String userId;
 
-  /** Example: {@code null} */
+  /** The {@code addHumanUser} property. */
   @JsonProperty("addHumanUser")
   @Nullable
   public UserServiceAddHumanUserRequest addHumanUser;
 
-  /** Example: {@code null} */
+  /** The {@code updateHumanUser} property. */
   @JsonProperty("updateHumanUser")
   @Nullable
   public UserServiceUpdateHumanUserRequest updateHumanUser;
