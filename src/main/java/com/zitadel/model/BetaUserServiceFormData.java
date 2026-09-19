@@ -63,11 +63,11 @@ public class BetaUserServiceFormData {
       return false;
     }
     return java.util.Objects.equals(this.url, other.url)
-        && java.util.Objects.equals(this.fields, other.fields);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.fields, other.fields);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(url, fields);
+    return java.util.Objects.hash(url, com.zitadel.ObjectSerializer.structuralHashCode(fields));
   }
 }

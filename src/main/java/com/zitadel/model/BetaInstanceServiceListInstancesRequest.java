@@ -63,13 +63,14 @@ public class BetaInstanceServiceListInstancesRequest {
     if (!(o instanceof BetaInstanceServiceListInstancesRequest other)) {
       return false;
     }
-    return java.util.Objects.equals(this.queries, other.queries)
+    return com.zitadel.ObjectSerializer.structuralEquals(this.queries, other.queries)
         && java.util.Objects.equals(this.pagination, other.pagination)
         && java.util.Objects.equals(this.sortingColumn, other.sortingColumn);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(queries, pagination, sortingColumn);
+    return java.util.Objects.hash(
+        com.zitadel.ObjectSerializer.structuralHashCode(queries), pagination, sortingColumn);
   }
 }

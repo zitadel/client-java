@@ -56,11 +56,11 @@ public class SessionServiceHeaderValues {
     if (!(o instanceof SessionServiceHeaderValues other)) {
       return false;
     }
-    return java.util.Objects.equals(this.values, other.values);
+    return com.zitadel.ObjectSerializer.structuralEquals(this.values, other.values);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(values);
+    return java.util.Objects.hash(com.zitadel.ObjectSerializer.structuralHashCode(values));
   }
 }

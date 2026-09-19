@@ -59,11 +59,12 @@ public class OrganizationServiceSetOrganizationMetadataRequest {
       return false;
     }
     return java.util.Objects.equals(this.organizationId, other.organizationId)
-        && java.util.Objects.equals(this.metadata, other.metadata);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.metadata, other.metadata);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(organizationId, metadata);
+    return java.util.Objects.hash(
+        organizationId, com.zitadel.ObjectSerializer.structuralHashCode(metadata));
   }
 }

@@ -59,11 +59,12 @@ public class AuthorizationServiceListAuthorizationsResponse {
       return false;
     }
     return java.util.Objects.equals(this.pagination, other.pagination)
-        && java.util.Objects.equals(this.authorizations, other.authorizations);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.authorizations, other.authorizations);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(pagination, authorizations);
+    return java.util.Objects.hash(
+        pagination, com.zitadel.ObjectSerializer.structuralHashCode(authorizations));
   }
 }

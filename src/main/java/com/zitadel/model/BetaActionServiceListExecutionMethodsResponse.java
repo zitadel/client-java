@@ -53,11 +53,11 @@ public class BetaActionServiceListExecutionMethodsResponse {
     if (!(o instanceof BetaActionServiceListExecutionMethodsResponse other)) {
       return false;
     }
-    return java.util.Objects.equals(this.methods, other.methods);
+    return com.zitadel.ObjectSerializer.structuralEquals(this.methods, other.methods);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(methods);
+    return java.util.Objects.hash(com.zitadel.ObjectSerializer.structuralHashCode(methods));
   }
 }

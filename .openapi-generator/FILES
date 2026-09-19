@@ -1,3 +1,4 @@
+SKILLS.md
 src/main/java/com/zitadel/ApiClient.java
 src/main/java/com/zitadel/ApiException.java
 src/main/java/com/zitadel/ApiHttpResponse.java

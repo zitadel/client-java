@@ -65,11 +65,12 @@ public class UserServiceListUserMetadataRequest {
     }
     return java.util.Objects.equals(this.userId, other.userId)
         && java.util.Objects.equals(this.pagination, other.pagination)
-        && java.util.Objects.equals(this.filters, other.filters);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.filters, other.filters);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(userId, pagination, filters);
+    return java.util.Objects.hash(
+        userId, pagination, com.zitadel.ObjectSerializer.structuralHashCode(filters));
   }
 }

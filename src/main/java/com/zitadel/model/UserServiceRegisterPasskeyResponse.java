@@ -71,12 +71,15 @@ public class UserServiceRegisterPasskeyResponse {
     }
     return java.util.Objects.equals(this.details, other.details)
         && java.util.Objects.equals(this.passkeyId, other.passkeyId)
-        && java.util.Objects.equals(
+        && com.zitadel.ObjectSerializer.structuralEquals(
             this.publicKeyCredentialCreationOptions, other.publicKeyCredentialCreationOptions);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(details, passkeyId, publicKeyCredentialCreationOptions);
+    return java.util.Objects.hash(
+        details,
+        passkeyId,
+        com.zitadel.ObjectSerializer.structuralHashCode(publicKeyCredentialCreationOptions));
   }
 }

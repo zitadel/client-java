@@ -112,8 +112,8 @@ public class UserServiceAddHumanUserRequest {
         && java.util.Objects.equals(this.profile, other.profile)
         && java.util.Objects.equals(this.email, other.email)
         && java.util.Objects.equals(this.phone, other.phone)
-        && java.util.Objects.equals(this.metadata, other.metadata)
-        && java.util.Objects.equals(this.idpLinks, other.idpLinks)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.metadata, other.metadata)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.idpLinks, other.idpLinks)
         && java.util.Objects.equals(this.totpSecret, other.totpSecret)
         && java.util.Objects.equals(this.hashedPassword, other.hashedPassword)
         && java.util.Objects.equals(this.password, other.password);
@@ -128,8 +128,8 @@ public class UserServiceAddHumanUserRequest {
         profile,
         email,
         phone,
-        metadata,
-        idpLinks,
+        com.zitadel.ObjectSerializer.structuralHashCode(metadata),
+        com.zitadel.ObjectSerializer.structuralHashCode(idpLinks),
         totpSecret,
         hashedPassword,
         password);

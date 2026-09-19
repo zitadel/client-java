@@ -176,24 +176,27 @@ public class BetaAppServiceOIDCConfig {
     if (!(o instanceof BetaAppServiceOIDCConfig other)) {
       return false;
     }
-    return java.util.Objects.equals(this.redirectUris, other.redirectUris)
-        && java.util.Objects.equals(this.responseTypes, other.responseTypes)
-        && java.util.Objects.equals(this.grantTypes, other.grantTypes)
+    return com.zitadel.ObjectSerializer.structuralEquals(this.redirectUris, other.redirectUris)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.responseTypes, other.responseTypes)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.grantTypes, other.grantTypes)
         && java.util.Objects.equals(this.appType, other.appType)
         && java.util.Objects.equals(this.clientId, other.clientId)
         && java.util.Objects.equals(this.authMethodType, other.authMethodType)
-        && java.util.Objects.equals(this.postLogoutRedirectUris, other.postLogoutRedirectUris)
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.postLogoutRedirectUris, other.postLogoutRedirectUris)
         && java.util.Objects.equals(this.version, other.version)
         && java.util.Objects.equals(this.noneCompliant, other.noneCompliant)
-        && java.util.Objects.equals(this.complianceProblems, other.complianceProblems)
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.complianceProblems, other.complianceProblems)
         && java.util.Objects.equals(this.devMode, other.devMode)
         && java.util.Objects.equals(this.accessTokenType, other.accessTokenType)
         && java.util.Objects.equals(this.accessTokenRoleAssertion, other.accessTokenRoleAssertion)
         && java.util.Objects.equals(this.idTokenRoleAssertion, other.idTokenRoleAssertion)
         && java.util.Objects.equals(this.idTokenUserinfoAssertion, other.idTokenUserinfoAssertion)
         && java.util.Objects.equals(this.clockSkew, other.clockSkew)
-        && java.util.Objects.equals(this.additionalOrigins, other.additionalOrigins)
-        && java.util.Objects.equals(this.allowedOrigins, other.allowedOrigins)
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.additionalOrigins, other.additionalOrigins)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.allowedOrigins, other.allowedOrigins)
         && java.util.Objects.equals(this.skipNativeAppSuccessPage, other.skipNativeAppSuccessPage)
         && java.util.Objects.equals(this.backChannelLogoutUri, other.backChannelLogoutUri)
         && java.util.Objects.equals(this.loginVersion, other.loginVersion);
@@ -202,24 +205,24 @@ public class BetaAppServiceOIDCConfig {
   @Override
   public int hashCode() {
     return java.util.Objects.hash(
-        redirectUris,
-        responseTypes,
-        grantTypes,
+        com.zitadel.ObjectSerializer.structuralHashCode(redirectUris),
+        com.zitadel.ObjectSerializer.structuralHashCode(responseTypes),
+        com.zitadel.ObjectSerializer.structuralHashCode(grantTypes),
         appType,
         clientId,
         authMethodType,
-        postLogoutRedirectUris,
+        com.zitadel.ObjectSerializer.structuralHashCode(postLogoutRedirectUris),
         version,
         noneCompliant,
-        complianceProblems,
+        com.zitadel.ObjectSerializer.structuralHashCode(complianceProblems),
         devMode,
         accessTokenType,
         accessTokenRoleAssertion,
         idTokenRoleAssertion,
         idTokenUserinfoAssertion,
         clockSkew,
-        additionalOrigins,
-        allowedOrigins,
+        com.zitadel.ObjectSerializer.structuralHashCode(additionalOrigins),
+        com.zitadel.ObjectSerializer.structuralHashCode(allowedOrigins),
         skipNativeAppSuccessPage,
         backChannelLogoutUri,
         loginVersion);

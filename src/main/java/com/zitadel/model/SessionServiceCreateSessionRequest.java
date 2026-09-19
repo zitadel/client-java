@@ -97,7 +97,7 @@ public class SessionServiceCreateSessionRequest {
       return false;
     }
     return java.util.Objects.equals(this.checks, other.checks)
-        && java.util.Objects.equals(this.metadata, other.metadata)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.metadata, other.metadata)
         && java.util.Objects.equals(this.challenges, other.challenges)
         && java.util.Objects.equals(this.userAgent, other.userAgent)
         && java.util.Objects.equals(this.lifetime, other.lifetime);
@@ -105,6 +105,11 @@ public class SessionServiceCreateSessionRequest {
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(checks, metadata, challenges, userAgent, lifetime);
+    return java.util.Objects.hash(
+        checks,
+        com.zitadel.ObjectSerializer.structuralHashCode(metadata),
+        challenges,
+        userAgent,
+        lifetime);
   }
 }

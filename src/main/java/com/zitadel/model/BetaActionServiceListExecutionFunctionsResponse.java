@@ -53,11 +53,11 @@ public class BetaActionServiceListExecutionFunctionsResponse {
     if (!(o instanceof BetaActionServiceListExecutionFunctionsResponse other)) {
       return false;
     }
-    return java.util.Objects.equals(this.functions, other.functions);
+    return com.zitadel.ObjectSerializer.structuralEquals(this.functions, other.functions);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(functions);
+    return java.util.Objects.hash(com.zitadel.ObjectSerializer.structuralHashCode(functions));
   }
 }

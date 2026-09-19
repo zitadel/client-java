@@ -53,11 +53,11 @@ public class BetaUserServiceAndQuery {
     if (!(o instanceof BetaUserServiceAndQuery other)) {
       return false;
     }
-    return java.util.Objects.equals(this.queries, other.queries);
+    return com.zitadel.ObjectSerializer.structuralEquals(this.queries, other.queries);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(queries);
+    return java.util.Objects.hash(com.zitadel.ObjectSerializer.structuralHashCode(queries));
   }
 }

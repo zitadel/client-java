@@ -70,12 +70,16 @@ public class IdentityProviderServiceGenericOIDCConfig {
     }
     return java.util.Objects.equals(this.issuer, other.issuer)
         && java.util.Objects.equals(this.clientId, other.clientId)
-        && java.util.Objects.equals(this.scopes, other.scopes)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.scopes, other.scopes)
         && java.util.Objects.equals(this.isIdTokenMapping, other.isIdTokenMapping);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(issuer, clientId, scopes, isIdTokenMapping);
+    return java.util.Objects.hash(
+        issuer,
+        clientId,
+        com.zitadel.ObjectSerializer.structuralHashCode(scopes),
+        isIdTokenMapping);
   }
 }

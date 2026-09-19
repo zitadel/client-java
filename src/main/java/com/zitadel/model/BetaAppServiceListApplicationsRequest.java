@@ -70,12 +70,16 @@ public class BetaAppServiceListApplicationsRequest {
     }
     return java.util.Objects.equals(this.projectId, other.projectId)
         && java.util.Objects.equals(this.pagination, other.pagination)
-        && java.util.Objects.equals(this.filters, other.filters)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.filters, other.filters)
         && java.util.Objects.equals(this.sortingColumn, other.sortingColumn);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(projectId, pagination, filters, sortingColumn);
+    return java.util.Objects.hash(
+        projectId,
+        pagination,
+        com.zitadel.ObjectSerializer.structuralHashCode(filters),
+        sortingColumn);
   }
 }

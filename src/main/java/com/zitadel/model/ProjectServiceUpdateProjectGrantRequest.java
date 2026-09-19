@@ -73,11 +73,14 @@ public class ProjectServiceUpdateProjectGrantRequest {
     }
     return java.util.Objects.equals(this.projectId, other.projectId)
         && java.util.Objects.equals(this.grantedOrganizationId, other.grantedOrganizationId)
-        && java.util.Objects.equals(this.roleKeys, other.roleKeys);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.roleKeys, other.roleKeys);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(projectId, grantedOrganizationId, roleKeys);
+    return java.util.Objects.hash(
+        projectId,
+        grantedOrganizationId,
+        com.zitadel.ObjectSerializer.structuralHashCode(roleKeys));
   }
 }

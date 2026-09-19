@@ -59,11 +59,12 @@ public class ActionServiceListPublicKeysResponse {
       return false;
     }
     return java.util.Objects.equals(this.pagination, other.pagination)
-        && java.util.Objects.equals(this.publicKeys, other.publicKeys);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.publicKeys, other.publicKeys);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(pagination, publicKeys);
+    return java.util.Objects.hash(
+        pagination, com.zitadel.ObjectSerializer.structuralHashCode(publicKeys));
   }
 }

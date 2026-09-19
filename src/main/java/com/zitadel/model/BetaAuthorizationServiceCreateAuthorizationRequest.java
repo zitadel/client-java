@@ -75,11 +75,15 @@ public class BetaAuthorizationServiceCreateAuthorizationRequest {
     return java.util.Objects.equals(this.userId, other.userId)
         && java.util.Objects.equals(this.projectId, other.projectId)
         && java.util.Objects.equals(this.organizationId, other.organizationId)
-        && java.util.Objects.equals(this.roleKeys, other.roleKeys);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.roleKeys, other.roleKeys);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(userId, projectId, organizationId, roleKeys);
+    return java.util.Objects.hash(
+        userId,
+        projectId,
+        organizationId,
+        com.zitadel.ObjectSerializer.structuralHashCode(roleKeys));
   }
 }

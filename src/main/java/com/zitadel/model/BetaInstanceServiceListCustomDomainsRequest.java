@@ -71,11 +71,15 @@ public class BetaInstanceServiceListCustomDomainsRequest {
     return java.util.Objects.equals(this.instanceId, other.instanceId)
         && java.util.Objects.equals(this.pagination, other.pagination)
         && java.util.Objects.equals(this.sortingColumn, other.sortingColumn)
-        && java.util.Objects.equals(this.queries, other.queries);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.queries, other.queries);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(instanceId, pagination, sortingColumn, queries);
+    return java.util.Objects.hash(
+        instanceId,
+        pagination,
+        sortingColumn,
+        com.zitadel.ObjectSerializer.structuralHashCode(queries));
   }
 }

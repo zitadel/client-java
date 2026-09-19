@@ -53,11 +53,11 @@ public class BetaInstanceServiceIdsQuery {
     if (!(o instanceof BetaInstanceServiceIdsQuery other)) {
       return false;
     }
-    return java.util.Objects.equals(this.ids, other.ids);
+    return com.zitadel.ObjectSerializer.structuralEquals(this.ids, other.ids);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(ids);
+    return java.util.Objects.hash(com.zitadel.ObjectSerializer.structuralHashCode(ids));
   }
 }

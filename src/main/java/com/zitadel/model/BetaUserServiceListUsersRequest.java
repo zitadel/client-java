@@ -65,11 +65,12 @@ public class BetaUserServiceListUsersRequest {
     }
     return java.util.Objects.equals(this.query, other.query)
         && java.util.Objects.equals(this.sortingColumn, other.sortingColumn)
-        && java.util.Objects.equals(this.queries, other.queries);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.queries, other.queries);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(query, sortingColumn, queries);
+    return java.util.Objects.hash(
+        query, sortingColumn, com.zitadel.ObjectSerializer.structuralHashCode(queries));
   }
 }

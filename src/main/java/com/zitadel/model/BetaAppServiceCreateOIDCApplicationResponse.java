@@ -71,11 +71,16 @@ public class BetaAppServiceCreateOIDCApplicationResponse {
     return java.util.Objects.equals(this.clientId, other.clientId)
         && java.util.Objects.equals(this.clientSecret, other.clientSecret)
         && java.util.Objects.equals(this.noneCompliant, other.noneCompliant)
-        && java.util.Objects.equals(this.complianceProblems, other.complianceProblems);
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.complianceProblems, other.complianceProblems);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(clientId, clientSecret, noneCompliant, complianceProblems);
+    return java.util.Objects.hash(
+        clientId,
+        clientSecret,
+        noneCompliant,
+        com.zitadel.ObjectSerializer.structuralHashCode(complianceProblems));
   }
 }

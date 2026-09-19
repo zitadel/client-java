@@ -65,11 +65,12 @@ public class BetaOrganizationServiceListOrganizationsRequest {
     }
     return java.util.Objects.equals(this.pagination, other.pagination)
         && java.util.Objects.equals(this.sortingColumn, other.sortingColumn)
-        && java.util.Objects.equals(this.filter, other.filter);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.filter, other.filter);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(pagination, sortingColumn, filter);
+    return java.util.Objects.hash(
+        pagination, sortingColumn, com.zitadel.ObjectSerializer.structuralHashCode(filter));
   }
 }

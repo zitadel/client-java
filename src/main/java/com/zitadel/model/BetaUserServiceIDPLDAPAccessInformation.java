@@ -59,11 +59,11 @@ public class BetaUserServiceIDPLDAPAccessInformation {
     if (!(o instanceof BetaUserServiceIDPLDAPAccessInformation other)) {
       return false;
     }
-    return java.util.Objects.equals(this.attributes, other.attributes);
+    return com.zitadel.ObjectSerializer.structuralEquals(this.attributes, other.attributes);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(attributes);
+    return java.util.Objects.hash(com.zitadel.ObjectSerializer.structuralHashCode(attributes));
   }
 }

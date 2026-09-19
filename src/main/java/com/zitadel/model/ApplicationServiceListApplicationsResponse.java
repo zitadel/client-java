@@ -62,12 +62,13 @@ public class ApplicationServiceListApplicationsResponse {
     if (!(o instanceof ApplicationServiceListApplicationsResponse other)) {
       return false;
     }
-    return java.util.Objects.equals(this.applications, other.applications)
+    return com.zitadel.ObjectSerializer.structuralEquals(this.applications, other.applications)
         && java.util.Objects.equals(this.pagination, other.pagination);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(applications, pagination);
+    return java.util.Objects.hash(
+        com.zitadel.ObjectSerializer.structuralHashCode(applications), pagination);
   }
 }

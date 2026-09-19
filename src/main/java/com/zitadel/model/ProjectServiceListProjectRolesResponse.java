@@ -59,11 +59,12 @@ public class ProjectServiceListProjectRolesResponse {
       return false;
     }
     return java.util.Objects.equals(this.pagination, other.pagination)
-        && java.util.Objects.equals(this.projectRoles, other.projectRoles);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.projectRoles, other.projectRoles);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(pagination, projectRoles);
+    return java.util.Objects.hash(
+        pagination, com.zitadel.ObjectSerializer.structuralHashCode(projectRoles));
   }
 }

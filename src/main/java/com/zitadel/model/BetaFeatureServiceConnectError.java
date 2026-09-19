@@ -168,12 +168,16 @@ public class BetaFeatureServiceConnectError {
     }
     return java.util.Objects.equals(this.code, other.code)
         && java.util.Objects.equals(this.message, other.message)
-        && java.util.Objects.equals(this.details, other.details)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.details, other.details)
         && java.util.Objects.equals(this.additionalProperties, other.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(code, message, details, additionalProperties);
+    return java.util.Objects.hash(
+        code,
+        message,
+        com.zitadel.ObjectSerializer.structuralHashCode(details),
+        additionalProperties);
   }
 }

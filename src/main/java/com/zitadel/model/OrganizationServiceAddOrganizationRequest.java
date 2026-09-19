@@ -89,13 +89,14 @@ public class OrganizationServiceAddOrganizationRequest {
       return false;
     }
     return java.util.Objects.equals(this.name, other.name)
-        && java.util.Objects.equals(this.admins, other.admins)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.admins, other.admins)
         && java.util.Objects.equals(this.organizationId, other.organizationId)
         && java.util.Objects.equals(this.orgId, other.orgId);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(name, admins, organizationId, orgId);
+    return java.util.Objects.hash(
+        name, com.zitadel.ObjectSerializer.structuralHashCode(admins), organizationId, orgId);
   }
 }

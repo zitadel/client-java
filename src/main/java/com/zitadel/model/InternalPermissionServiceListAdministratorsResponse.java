@@ -59,11 +59,12 @@ public class InternalPermissionServiceListAdministratorsResponse {
       return false;
     }
     return java.util.Objects.equals(this.pagination, other.pagination)
-        && java.util.Objects.equals(this.administrators, other.administrators);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.administrators, other.administrators);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(pagination, administrators);
+    return java.util.Objects.hash(
+        pagination, com.zitadel.ObjectSerializer.structuralHashCode(administrators));
   }
 }

@@ -115,13 +115,19 @@ public class SessionServiceSetSessionRequest {
     return java.util.Objects.equals(this.sessionId, other.sessionId)
         && java.util.Objects.equals(this.sessionToken, other.sessionToken)
         && java.util.Objects.equals(this.checks, other.checks)
-        && java.util.Objects.equals(this.metadata, other.metadata)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.metadata, other.metadata)
         && java.util.Objects.equals(this.challenges, other.challenges)
         && java.util.Objects.equals(this.lifetime, other.lifetime);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(sessionId, sessionToken, checks, metadata, challenges, lifetime);
+    return java.util.Objects.hash(
+        sessionId,
+        sessionToken,
+        checks,
+        com.zitadel.ObjectSerializer.structuralHashCode(metadata),
+        challenges,
+        lifetime);
   }
 }

@@ -62,11 +62,11 @@ public class BetaAuthorizationServiceUpdateAuthorizationRequest {
       return false;
     }
     return java.util.Objects.equals(this.id, other.id)
-        && java.util.Objects.equals(this.roleKeys, other.roleKeys);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.roleKeys, other.roleKeys);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, roleKeys);
+    return java.util.Objects.hash(id, com.zitadel.ObjectSerializer.structuralHashCode(roleKeys));
   }
 }

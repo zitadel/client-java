@@ -59,11 +59,12 @@ public class IdentityProviderServiceGitLabConfig {
       return false;
     }
     return java.util.Objects.equals(this.clientId, other.clientId)
-        && java.util.Objects.equals(this.scopes, other.scopes);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.scopes, other.scopes);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(clientId, scopes);
+    return java.util.Objects.hash(
+        clientId, com.zitadel.ObjectSerializer.structuralHashCode(scopes));
   }
 }

@@ -109,7 +109,7 @@ public class BetaProjectServiceCreateProjectRequest {
         && java.util.Objects.equals(this.authorizationRequired, other.authorizationRequired)
         && java.util.Objects.equals(this.projectAccessRequired, other.projectAccessRequired)
         && java.util.Objects.equals(this.privateLabelingSetting, other.privateLabelingSetting)
-        && java.util.Objects.equals(this.admins, other.admins);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.admins, other.admins);
   }
 
   @Override
@@ -122,6 +122,6 @@ public class BetaProjectServiceCreateProjectRequest {
         authorizationRequired,
         projectAccessRequired,
         privateLabelingSetting,
-        admins);
+        com.zitadel.ObjectSerializer.structuralHashCode(admins));
   }
 }

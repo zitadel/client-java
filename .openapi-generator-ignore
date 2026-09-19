@@ -56,7 +56,6 @@ Dockerfile
 lefthook.yml
 qodana.yaml
 settings.xml
-SKILLS.md
 
 # --- build / package config (team-owned: carries repo identity + bespoke
 #     deps) ---

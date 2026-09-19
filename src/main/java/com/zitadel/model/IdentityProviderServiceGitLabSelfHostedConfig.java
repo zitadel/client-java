@@ -65,11 +65,12 @@ public class IdentityProviderServiceGitLabSelfHostedConfig {
     }
     return java.util.Objects.equals(this.issuer, other.issuer)
         && java.util.Objects.equals(this.clientId, other.clientId)
-        && java.util.Objects.equals(this.scopes, other.scopes);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.scopes, other.scopes);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(issuer, clientId, scopes);
+    return java.util.Objects.hash(
+        issuer, clientId, com.zitadel.ObjectSerializer.structuralHashCode(scopes));
   }
 }

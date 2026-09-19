@@ -144,7 +144,7 @@ public class BetaUserServiceHumanUser {
     return java.util.Objects.equals(this.userId, other.userId)
         && java.util.Objects.equals(this.state, other.state)
         && java.util.Objects.equals(this.username, other.username)
-        && java.util.Objects.equals(this.loginNames, other.loginNames)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.loginNames, other.loginNames)
         && java.util.Objects.equals(this.preferredLoginName, other.preferredLoginName)
         && java.util.Objects.equals(this.profile, other.profile)
         && java.util.Objects.equals(this.email, other.email)
@@ -159,7 +159,7 @@ public class BetaUserServiceHumanUser {
         userId,
         state,
         username,
-        loginNames,
+        com.zitadel.ObjectSerializer.structuralHashCode(loginNames),
         preferredLoginName,
         profile,
         email,

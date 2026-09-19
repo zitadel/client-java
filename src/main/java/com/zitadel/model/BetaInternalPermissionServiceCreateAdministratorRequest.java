@@ -70,11 +70,12 @@ public class BetaInternalPermissionServiceCreateAdministratorRequest {
     }
     return java.util.Objects.equals(this.userId, other.userId)
         && java.util.Objects.equals(this.resource, other.resource)
-        && java.util.Objects.equals(this.roles, other.roles);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.roles, other.roles);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(userId, resource, roles);
+    return java.util.Objects.hash(
+        userId, resource, com.zitadel.ObjectSerializer.structuralHashCode(roles));
   }
 }

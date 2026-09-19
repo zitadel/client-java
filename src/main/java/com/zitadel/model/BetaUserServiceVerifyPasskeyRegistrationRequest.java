@@ -76,12 +76,17 @@ public class BetaUserServiceVerifyPasskeyRegistrationRequest {
     }
     return java.util.Objects.equals(this.userId, other.userId)
         && java.util.Objects.equals(this.passkeyId, other.passkeyId)
-        && java.util.Objects.equals(this.publicKeyCredential, other.publicKeyCredential)
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.publicKeyCredential, other.publicKeyCredential)
         && java.util.Objects.equals(this.passkeyName, other.passkeyName);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(userId, passkeyId, publicKeyCredential, passkeyName);
+    return java.util.Objects.hash(
+        userId,
+        passkeyId,
+        com.zitadel.ObjectSerializer.structuralHashCode(publicKeyCredential),
+        passkeyName);
   }
 }

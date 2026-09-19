@@ -71,11 +71,12 @@ public class IdentityProviderServiceAppleConfig {
     return java.util.Objects.equals(this.clientId, other.clientId)
         && java.util.Objects.equals(this.teamId, other.teamId)
         && java.util.Objects.equals(this.keyId, other.keyId)
-        && java.util.Objects.equals(this.scopes, other.scopes);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.scopes, other.scopes);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(clientId, teamId, keyId, scopes);
+    return java.util.Objects.hash(
+        clientId, teamId, keyId, com.zitadel.ObjectSerializer.structuralHashCode(scopes));
   }
 }

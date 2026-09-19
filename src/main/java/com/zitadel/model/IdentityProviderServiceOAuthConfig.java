@@ -82,13 +82,18 @@ public class IdentityProviderServiceOAuthConfig {
         && java.util.Objects.equals(this.authorizationEndpoint, other.authorizationEndpoint)
         && java.util.Objects.equals(this.tokenEndpoint, other.tokenEndpoint)
         && java.util.Objects.equals(this.userEndpoint, other.userEndpoint)
-        && java.util.Objects.equals(this.scopes, other.scopes)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.scopes, other.scopes)
         && java.util.Objects.equals(this.idAttribute, other.idAttribute);
   }
 
   @Override
   public int hashCode() {
     return java.util.Objects.hash(
-        clientId, authorizationEndpoint, tokenEndpoint, userEndpoint, scopes, idAttribute);
+        clientId,
+        authorizationEndpoint,
+        tokenEndpoint,
+        userEndpoint,
+        com.zitadel.ObjectSerializer.structuralHashCode(scopes),
+        idAttribute);
   }
 }

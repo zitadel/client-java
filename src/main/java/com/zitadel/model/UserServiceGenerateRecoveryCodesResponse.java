@@ -59,11 +59,12 @@ public class UserServiceGenerateRecoveryCodesResponse {
       return false;
     }
     return java.util.Objects.equals(this.details, other.details)
-        && java.util.Objects.equals(this.recoveryCodes, other.recoveryCodes);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.recoveryCodes, other.recoveryCodes);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(details, recoveryCodes);
+    return java.util.Objects.hash(
+        details, com.zitadel.ObjectSerializer.structuralHashCode(recoveryCodes));
   }
 }

@@ -64,12 +64,15 @@ public class UserServiceListAuthenticationFactorsRequest {
       return false;
     }
     return java.util.Objects.equals(this.userId, other.userId)
-        && java.util.Objects.equals(this.authFactors, other.authFactors)
-        && java.util.Objects.equals(this.states, other.states);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.authFactors, other.authFactors)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.states, other.states);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(userId, authFactors, states);
+    return java.util.Objects.hash(
+        userId,
+        com.zitadel.ObjectSerializer.structuralHashCode(authFactors),
+        com.zitadel.ObjectSerializer.structuralHashCode(states));
   }
 }

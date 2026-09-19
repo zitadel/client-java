@@ -58,12 +58,13 @@ public class InstanceServiceListCustomDomainsResponse {
     if (!(o instanceof InstanceServiceListCustomDomainsResponse other)) {
       return false;
     }
-    return java.util.Objects.equals(this.domains, other.domains)
+    return com.zitadel.ObjectSerializer.structuralEquals(this.domains, other.domains)
         && java.util.Objects.equals(this.pagination, other.pagination);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(domains, pagination);
+    return java.util.Objects.hash(
+        com.zitadel.ObjectSerializer.structuralHashCode(domains), pagination);
   }
 }

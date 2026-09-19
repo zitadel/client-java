@@ -65,11 +65,15 @@ public class BetaSettingsServiceGetGeneralSettingsResponse {
     }
     return java.util.Objects.equals(this.defaultOrgId, other.defaultOrgId)
         && java.util.Objects.equals(this.defaultLanguage, other.defaultLanguage)
-        && java.util.Objects.equals(this.supportedLanguages, other.supportedLanguages);
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.supportedLanguages, other.supportedLanguages);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(defaultOrgId, defaultLanguage, supportedLanguages);
+    return java.util.Objects.hash(
+        defaultOrgId,
+        defaultLanguage,
+        com.zitadel.ObjectSerializer.structuralHashCode(supportedLanguages));
   }
 }

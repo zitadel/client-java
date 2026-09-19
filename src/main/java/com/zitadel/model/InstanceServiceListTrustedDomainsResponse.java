@@ -58,12 +58,13 @@ public class InstanceServiceListTrustedDomainsResponse {
     if (!(o instanceof InstanceServiceListTrustedDomainsResponse other)) {
       return false;
     }
-    return java.util.Objects.equals(this.trustedDomain, other.trustedDomain)
+    return com.zitadel.ObjectSerializer.structuralEquals(this.trustedDomain, other.trustedDomain)
         && java.util.Objects.equals(this.pagination, other.pagination);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(trustedDomain, pagination);
+    return java.util.Objects.hash(
+        com.zitadel.ObjectSerializer.structuralHashCode(trustedDomain), pagination);
   }
 }

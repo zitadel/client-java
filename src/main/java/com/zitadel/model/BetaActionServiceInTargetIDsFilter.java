@@ -53,11 +53,11 @@ public class BetaActionServiceInTargetIDsFilter {
     if (!(o instanceof BetaActionServiceInTargetIDsFilter other)) {
       return false;
     }
-    return java.util.Objects.equals(this.targetIds, other.targetIds);
+    return com.zitadel.ObjectSerializer.structuralEquals(this.targetIds, other.targetIds);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(targetIds);
+    return java.util.Objects.hash(com.zitadel.ObjectSerializer.structuralHashCode(targetIds));
   }
 }

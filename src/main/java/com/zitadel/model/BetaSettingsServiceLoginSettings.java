@@ -277,8 +277,8 @@ public class BetaSettingsServiceLoginSettings {
         && java.util.Objects.equals(this.mfaInitSkipLifetime, other.mfaInitSkipLifetime)
         && java.util.Objects.equals(this.secondFactorCheckLifetime, other.secondFactorCheckLifetime)
         && java.util.Objects.equals(this.multiFactorCheckLifetime, other.multiFactorCheckLifetime)
-        && java.util.Objects.equals(this.secondFactors, other.secondFactors)
-        && java.util.Objects.equals(this.multiFactors, other.multiFactors)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.secondFactors, other.secondFactors)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.multiFactors, other.multiFactors)
         && java.util.Objects.equals(this.allowDomainDiscovery, other.allowDomainDiscovery)
         && java.util.Objects.equals(this.disableLoginWithEmail, other.disableLoginWithEmail)
         && java.util.Objects.equals(this.disableLoginWithPhone, other.disableLoginWithPhone)
@@ -302,8 +302,8 @@ public class BetaSettingsServiceLoginSettings {
         mfaInitSkipLifetime,
         secondFactorCheckLifetime,
         multiFactorCheckLifetime,
-        secondFactors,
-        multiFactors,
+        com.zitadel.ObjectSerializer.structuralHashCode(secondFactors),
+        com.zitadel.ObjectSerializer.structuralHashCode(multiFactors),
         allowDomainDiscovery,
         disableLoginWithEmail,
         disableLoginWithPhone,

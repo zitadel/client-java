@@ -71,11 +71,15 @@ public class ActionServiceListPublicKeysRequest {
     return java.util.Objects.equals(this.targetId, other.targetId)
         && java.util.Objects.equals(this.pagination, other.pagination)
         && java.util.Objects.equals(this.sortingColumn, other.sortingColumn)
-        && java.util.Objects.equals(this.filters, other.filters);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.filters, other.filters);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(targetId, pagination, sortingColumn, filters);
+    return java.util.Objects.hash(
+        targetId,
+        pagination,
+        sortingColumn,
+        com.zitadel.ObjectSerializer.structuralHashCode(filters));
   }
 }

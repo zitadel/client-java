@@ -67,12 +67,13 @@ public class SessionServiceListSessionsRequest {
       return false;
     }
     return java.util.Objects.equals(this.query, other.query)
-        && java.util.Objects.equals(this.queries, other.queries)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.queries, other.queries)
         && java.util.Objects.equals(this.sortingColumn, other.sortingColumn);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(query, queries, sortingColumn);
+    return java.util.Objects.hash(
+        query, com.zitadel.ObjectSerializer.structuralHashCode(queries), sortingColumn);
   }
 }

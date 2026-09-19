@@ -59,11 +59,12 @@ public class BetaProjectServiceListProjectGrantsResponse {
       return false;
     }
     return java.util.Objects.equals(this.pagination, other.pagination)
-        && java.util.Objects.equals(this.projectGrants, other.projectGrants);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.projectGrants, other.projectGrants);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(pagination, projectGrants);
+    return java.util.Objects.hash(
+        pagination, com.zitadel.ObjectSerializer.structuralHashCode(projectGrants));
   }
 }

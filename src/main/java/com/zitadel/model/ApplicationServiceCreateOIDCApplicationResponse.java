@@ -86,11 +86,16 @@ public class ApplicationServiceCreateOIDCApplicationResponse {
     return java.util.Objects.equals(this.clientId, other.clientId)
         && java.util.Objects.equals(this.clientSecret, other.clientSecret)
         && java.util.Objects.equals(this.nonCompliant, other.nonCompliant)
-        && java.util.Objects.equals(this.complianceProblems, other.complianceProblems);
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.complianceProblems, other.complianceProblems);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(clientId, clientSecret, nonCompliant, complianceProblems);
+    return java.util.Objects.hash(
+        clientId,
+        clientSecret,
+        nonCompliant,
+        com.zitadel.ObjectSerializer.structuralHashCode(complianceProblems));
   }
 }

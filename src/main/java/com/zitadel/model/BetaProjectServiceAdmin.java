@@ -62,11 +62,11 @@ public class BetaProjectServiceAdmin {
       return false;
     }
     return java.util.Objects.equals(this.userId, other.userId)
-        && java.util.Objects.equals(this.roles, other.roles);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.roles, other.roles);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(userId, roles);
+    return java.util.Objects.hash(userId, com.zitadel.ObjectSerializer.structuralHashCode(roles));
   }
 }

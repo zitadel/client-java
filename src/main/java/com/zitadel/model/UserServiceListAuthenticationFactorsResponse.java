@@ -53,11 +53,11 @@ public class UserServiceListAuthenticationFactorsResponse {
     if (!(o instanceof UserServiceListAuthenticationFactorsResponse other)) {
       return false;
     }
-    return java.util.Objects.equals(this.result, other.result);
+    return com.zitadel.ObjectSerializer.structuralEquals(this.result, other.result);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(result);
+    return java.util.Objects.hash(com.zitadel.ObjectSerializer.structuralHashCode(result));
   }
 }

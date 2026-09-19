@@ -223,7 +223,7 @@ public class SessionServiceSession {
         && java.util.Objects.equals(this.changeDate, other.changeDate)
         && java.util.Objects.equals(this.sequence, other.sequence)
         && java.util.Objects.equals(this.factors, other.factors)
-        && java.util.Objects.equals(this.metadata, other.metadata)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.metadata, other.metadata)
         && java.util.Objects.equals(this.userAgent, other.userAgent)
         && java.util.Objects.equals(this.expirationDate, other.expirationDate);
   }
@@ -231,6 +231,13 @@ public class SessionServiceSession {
   @Override
   public int hashCode() {
     return java.util.Objects.hash(
-        id, creationDate, changeDate, sequence, factors, metadata, userAgent, expirationDate);
+        id,
+        creationDate,
+        changeDate,
+        sequence,
+        factors,
+        com.zitadel.ObjectSerializer.structuralHashCode(metadata),
+        userAgent,
+        expirationDate);
   }
 }

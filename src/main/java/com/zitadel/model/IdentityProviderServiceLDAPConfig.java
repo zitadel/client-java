@@ -121,13 +121,14 @@ public class IdentityProviderServiceLDAPConfig {
     if (!(o instanceof IdentityProviderServiceLDAPConfig other)) {
       return false;
     }
-    return java.util.Objects.equals(this.servers, other.servers)
+    return com.zitadel.ObjectSerializer.structuralEquals(this.servers, other.servers)
         && java.util.Objects.equals(this.startTls, other.startTls)
         && java.util.Objects.equals(this.baseDn, other.baseDn)
         && java.util.Objects.equals(this.bindDn, other.bindDn)
         && java.util.Objects.equals(this.userBase, other.userBase)
-        && java.util.Objects.equals(this.userObjectClasses, other.userObjectClasses)
-        && java.util.Objects.equals(this.userFilters, other.userFilters)
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.userObjectClasses, other.userObjectClasses)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.userFilters, other.userFilters)
         && java.util.Objects.equals(this.timeout, other.timeout)
         && java.util.Objects.equals(this.attributes, other.attributes)
         && java.util.Arrays.equals(this.rootCa, other.rootCa);
@@ -136,13 +137,13 @@ public class IdentityProviderServiceLDAPConfig {
   @Override
   public int hashCode() {
     return java.util.Objects.hash(
-        servers,
+        com.zitadel.ObjectSerializer.structuralHashCode(servers),
         startTls,
         baseDn,
         bindDn,
         userBase,
-        userObjectClasses,
-        userFilters,
+        com.zitadel.ObjectSerializer.structuralHashCode(userObjectClasses),
+        com.zitadel.ObjectSerializer.structuralHashCode(userFilters),
         timeout,
         attributes,
         java.util.Arrays.hashCode(rootCa));

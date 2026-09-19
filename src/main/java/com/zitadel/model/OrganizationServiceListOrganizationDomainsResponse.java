@@ -62,11 +62,12 @@ public class OrganizationServiceListOrganizationDomainsResponse {
       return false;
     }
     return java.util.Objects.equals(this.pagination, other.pagination)
-        && java.util.Objects.equals(this.domains, other.domains);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.domains, other.domains);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(pagination, domains);
+    return java.util.Objects.hash(
+        pagination, com.zitadel.ObjectSerializer.structuralHashCode(domains));
   }
 }

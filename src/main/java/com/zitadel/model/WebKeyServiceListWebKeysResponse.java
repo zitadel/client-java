@@ -53,11 +53,11 @@ public class WebKeyServiceListWebKeysResponse {
     if (!(o instanceof WebKeyServiceListWebKeysResponse other)) {
       return false;
     }
-    return java.util.Objects.equals(this.webKeys, other.webKeys);
+    return com.zitadel.ObjectSerializer.structuralEquals(this.webKeys, other.webKeys);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(webKeys);
+    return java.util.Objects.hash(com.zitadel.ObjectSerializer.structuralHashCode(webKeys));
   }
 }

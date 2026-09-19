@@ -71,12 +71,15 @@ public class UserServiceRegisterU2FResponse {
     }
     return java.util.Objects.equals(this.details, other.details)
         && java.util.Objects.equals(this.u2fId, other.u2fId)
-        && java.util.Objects.equals(
+        && com.zitadel.ObjectSerializer.structuralEquals(
             this.publicKeyCredentialCreationOptions, other.publicKeyCredentialCreationOptions);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(details, u2fId, publicKeyCredentialCreationOptions);
+    return java.util.Objects.hash(
+        details,
+        u2fId,
+        com.zitadel.ObjectSerializer.structuralHashCode(publicKeyCredentialCreationOptions));
   }
 }

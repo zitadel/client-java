@@ -65,11 +65,12 @@ public class BetaOrganizationServiceListOrganizationMetadataRequest {
     }
     return java.util.Objects.equals(this.organizationId, other.organizationId)
         && java.util.Objects.equals(this.pagination, other.pagination)
-        && java.util.Objects.equals(this.filter, other.filter);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.filter, other.filter);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(organizationId, pagination, filter);
+    return java.util.Objects.hash(
+        organizationId, pagination, com.zitadel.ObjectSerializer.structuralHashCode(filter));
   }
 }

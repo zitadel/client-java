@@ -59,11 +59,12 @@ public class BetaActionServiceSetExecutionRequest {
       return false;
     }
     return java.util.Objects.equals(this.condition, other.condition)
-        && java.util.Objects.equals(this.targets, other.targets);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.targets, other.targets);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(condition, targets);
+    return java.util.Objects.hash(
+        condition, com.zitadel.ObjectSerializer.structuralHashCode(targets));
   }
 }

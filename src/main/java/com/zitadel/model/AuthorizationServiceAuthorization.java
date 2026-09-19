@@ -180,12 +180,19 @@ public class AuthorizationServiceAuthorization {
         && java.util.Objects.equals(this.organization, other.organization)
         && java.util.Objects.equals(this.user, other.user)
         && java.util.Objects.equals(this.state, other.state)
-        && java.util.Objects.equals(this.roles, other.roles);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.roles, other.roles);
   }
 
   @Override
   public int hashCode() {
     return java.util.Objects.hash(
-        id, creationDate, changeDate, project, organization, user, state, roles);
+        id,
+        creationDate,
+        changeDate,
+        project,
+        organization,
+        user,
+        state,
+        com.zitadel.ObjectSerializer.structuralHashCode(roles));
   }
 }

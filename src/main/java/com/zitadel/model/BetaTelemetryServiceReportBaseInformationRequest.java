@@ -65,11 +65,12 @@ public class BetaTelemetryServiceReportBaseInformationRequest {
     }
     return java.util.Objects.equals(this.systemId, other.systemId)
         && java.util.Objects.equals(this.version, other.version)
-        && java.util.Objects.equals(this.instances, other.instances);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.instances, other.instances);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(systemId, version, instances);
+    return java.util.Objects.hash(
+        systemId, version, com.zitadel.ObjectSerializer.structuralHashCode(instances));
   }
 }

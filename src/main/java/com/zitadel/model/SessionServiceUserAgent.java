@@ -74,11 +74,12 @@ public class SessionServiceUserAgent {
     return java.util.Objects.equals(this.fingerprintId, other.fingerprintId)
         && java.util.Objects.equals(this.ip, other.ip)
         && java.util.Objects.equals(this.description, other.description)
-        && java.util.Objects.equals(this.header, other.header);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.header, other.header);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(fingerprintId, ip, description, header);
+    return java.util.Objects.hash(
+        fingerprintId, ip, description, com.zitadel.ObjectSerializer.structuralHashCode(header));
   }
 }

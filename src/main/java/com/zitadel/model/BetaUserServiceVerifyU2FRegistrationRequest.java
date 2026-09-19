@@ -76,12 +76,17 @@ public class BetaUserServiceVerifyU2FRegistrationRequest {
     }
     return java.util.Objects.equals(this.userId, other.userId)
         && java.util.Objects.equals(this.u2fId, other.u2fId)
-        && java.util.Objects.equals(this.publicKeyCredential, other.publicKeyCredential)
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.publicKeyCredential, other.publicKeyCredential)
         && java.util.Objects.equals(this.tokenName, other.tokenName);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(userId, u2fId, publicKeyCredential, tokenName);
+    return java.util.Objects.hash(
+        userId,
+        u2fId,
+        com.zitadel.ObjectSerializer.structuralHashCode(publicKeyCredential),
+        tokenName);
   }
 }

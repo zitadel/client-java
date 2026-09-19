@@ -56,11 +56,11 @@ public class InstanceServiceCustomDomainsFilter {
     if (!(o instanceof InstanceServiceCustomDomainsFilter other)) {
       return false;
     }
-    return java.util.Objects.equals(this.domains, other.domains);
+    return com.zitadel.ObjectSerializer.structuralEquals(this.domains, other.domains);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(domains);
+    return java.util.Objects.hash(com.zitadel.ObjectSerializer.structuralHashCode(domains));
   }
 }

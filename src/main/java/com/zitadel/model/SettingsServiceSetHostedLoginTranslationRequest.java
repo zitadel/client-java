@@ -78,13 +78,17 @@ public class SettingsServiceSetHostedLoginTranslationRequest {
       return false;
     }
     return java.util.Objects.equals(this.locale, other.locale)
-        && java.util.Objects.equals(this.translations, other.translations)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.translations, other.translations)
         && java.util.Objects.equals(this.instance, other.instance)
         && java.util.Objects.equals(this.organizationId, other.organizationId);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(locale, translations, instance, organizationId);
+    return java.util.Objects.hash(
+        locale,
+        com.zitadel.ObjectSerializer.structuralHashCode(translations),
+        instance,
+        organizationId);
   }
 }

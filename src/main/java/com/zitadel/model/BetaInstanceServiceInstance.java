@@ -174,11 +174,18 @@ public class BetaInstanceServiceInstance {
         && java.util.Objects.equals(this.state, other.state)
         && java.util.Objects.equals(this.name, other.name)
         && java.util.Objects.equals(this.version, other.version)
-        && java.util.Objects.equals(this.domains, other.domains);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.domains, other.domains);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, changeDate, creationDate, state, name, version, domains);
+    return java.util.Objects.hash(
+        id,
+        changeDate,
+        creationDate,
+        state,
+        name,
+        version,
+        com.zitadel.ObjectSerializer.structuralHashCode(domains));
   }
 }

@@ -66,13 +66,14 @@ public class BetaOrganizationServiceAdmin {
     if (!(o instanceof BetaOrganizationServiceAdmin other)) {
       return false;
     }
-    return java.util.Objects.equals(this.roles, other.roles)
+    return com.zitadel.ObjectSerializer.structuralEquals(this.roles, other.roles)
         && java.util.Objects.equals(this.human, other.human)
         && java.util.Objects.equals(this.userId, other.userId);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(roles, human, userId);
+    return java.util.Objects.hash(
+        com.zitadel.ObjectSerializer.structuralHashCode(roles), human, userId);
   }
 }

@@ -63,11 +63,12 @@ public class SessionServiceListSessionsResponse {
       return false;
     }
     return java.util.Objects.equals(this.details, other.details)
-        && java.util.Objects.equals(this.sessions, other.sessions);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.sessions, other.sessions);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(details, sessions);
+    return java.util.Objects.hash(
+        details, com.zitadel.ObjectSerializer.structuralHashCode(sessions));
   }
 }

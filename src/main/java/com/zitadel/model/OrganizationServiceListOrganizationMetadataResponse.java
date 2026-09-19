@@ -59,11 +59,12 @@ public class OrganizationServiceListOrganizationMetadataResponse {
       return false;
     }
     return java.util.Objects.equals(this.pagination, other.pagination)
-        && java.util.Objects.equals(this.metadata, other.metadata);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.metadata, other.metadata);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(pagination, metadata);
+    return java.util.Objects.hash(
+        pagination, com.zitadel.ObjectSerializer.structuralHashCode(metadata));
   }
 }

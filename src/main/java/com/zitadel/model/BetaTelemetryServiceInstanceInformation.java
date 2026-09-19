@@ -107,12 +107,13 @@ public class BetaTelemetryServiceInstanceInformation {
       return false;
     }
     return java.util.Objects.equals(this.id, other.id)
-        && java.util.Objects.equals(this.domains, other.domains)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.domains, other.domains)
         && java.util.Objects.equals(this.createdAt, other.createdAt);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, domains, createdAt);
+    return java.util.Objects.hash(
+        id, com.zitadel.ObjectSerializer.structuralHashCode(domains), createdAt);
   }
 }

@@ -204,7 +204,7 @@ public class BetaAuthorizationServiceAuthorization {
         && java.util.Objects.equals(this.changeDate, other.changeDate)
         && java.util.Objects.equals(this.state, other.state)
         && java.util.Objects.equals(this.user, other.user)
-        && java.util.Objects.equals(this.roles, other.roles);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.roles, other.roles);
   }
 
   @Override
@@ -221,6 +221,6 @@ public class BetaAuthorizationServiceAuthorization {
         changeDate,
         state,
         user,
-        roles);
+        com.zitadel.ObjectSerializer.structuralHashCode(roles));
   }
 }

@@ -59,11 +59,11 @@ public class UserServiceListPasskeysResponse {
       return false;
     }
     return java.util.Objects.equals(this.details, other.details)
-        && java.util.Objects.equals(this.result, other.result);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.result, other.result);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(details, result);
+    return java.util.Objects.hash(details, com.zitadel.ObjectSerializer.structuralHashCode(result));
   }
 }

@@ -92,7 +92,7 @@ public class BetaUserServiceUser {
         && java.util.Objects.equals(this.details, other.details)
         && java.util.Objects.equals(this.state, other.state)
         && java.util.Objects.equals(this.username, other.username)
-        && java.util.Objects.equals(this.loginNames, other.loginNames)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.loginNames, other.loginNames)
         && java.util.Objects.equals(this.preferredLoginName, other.preferredLoginName)
         && java.util.Objects.equals(this.human, other.human)
         && java.util.Objects.equals(this.machine, other.machine);
@@ -101,6 +101,13 @@ public class BetaUserServiceUser {
   @Override
   public int hashCode() {
     return java.util.Objects.hash(
-        userId, details, state, username, loginNames, preferredLoginName, human, machine);
+        userId,
+        details,
+        state,
+        username,
+        com.zitadel.ObjectSerializer.structuralHashCode(loginNames),
+        preferredLoginName,
+        human,
+        machine);
   }
 }

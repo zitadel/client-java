@@ -465,4 +465,119 @@ public final class ObjectSerializer {
       super(message);
     }
   }
+
+  /**
+   * Content-based equality for a value that may be, or may contain, an array.
+   *
+   * <p>Java compares arrays by identity, so a model holding a {@code byte[]} — directly, inside a
+   * list, or as a map VALUE — would report two otherwise-identical instances as unequal. The
+   * generated {@code equals}/{@code hashCode} route container-typed properties through here so
+   * models behave as map and set keys, and so equality matches the value semantics the other SDKs
+   * get from their languages for free.
+   *
+   * <p>Maps are compared by key set and per-key structural value, which is the case a plain {@code
+   * Objects.equals} gets wrong: it would fall back to array identity for the values.
+   *
+   * @param left one value, possibly null
+   * @param right the other value, possibly null
+   * @return whether the two compare equal by content
+   */
+  public static boolean structuralEquals(@Nullable Object left, @Nullable Object right) {
+    if (left == right) {
+      return true;
+    }
+    if (left == null || right == null) {
+      return false;
+    }
+    if (left.getClass().isArray() && right.getClass().isArray()) {
+      return java.util.Objects.deepEquals(left, right);
+    }
+    if (left instanceof java.util.Map<?, ?> leftMap
+        && right instanceof java.util.Map<?, ?> rightMap) {
+      if (leftMap.size() != rightMap.size()) {
+        return false;
+      }
+      for (java.util.Map.Entry<?, ?> entry : leftMap.entrySet()) {
+        if (!rightMap.containsKey(entry.getKey())
+            || !structuralEquals(entry.getValue(), rightMap.get(entry.getKey()))) {
+          return false;
+        }
+      }
+      return true;
+    }
+    /* Sets have no defined iteration order, so compare by membership
+    rather than position, mirroring the map path above. */
+    if (left instanceof java.util.Set<?> leftSet && right instanceof java.util.Set<?> rightSet) {
+      if (leftSet.size() != rightSet.size()) {
+        return false;
+      }
+      for (Object item : leftSet) {
+        boolean matched = false;
+        for (Object candidate : rightSet) {
+          if (structuralEquals(item, candidate)) {
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) {
+          return false;
+        }
+      }
+      return true;
+    }
+    if (left instanceof java.util.Collection<?> leftCollection
+        && right instanceof java.util.Collection<?> rightCollection) {
+      if (leftCollection.size() != rightCollection.size()) {
+        return false;
+      }
+      java.util.Iterator<?> leftIterator = leftCollection.iterator();
+      java.util.Iterator<?> rightIterator = rightCollection.iterator();
+      while (leftIterator.hasNext() && rightIterator.hasNext()) {
+        if (!structuralEquals(leftIterator.next(), rightIterator.next())) {
+          return false;
+        }
+      }
+      return true;
+    }
+    return left.equals(right);
+  }
+
+  /**
+   * Content-based hash code matching {@link #structuralEquals}: two values that compare
+   * structurally equal hash identically.
+   *
+   * @param value the value to hash, possibly null
+   * @return a content-derived hash code
+   */
+  public static int structuralHashCode(@Nullable Object value) {
+    if (value == null) {
+      return 0;
+    }
+    if (value.getClass().isArray()) {
+      return java.util.Arrays.deepHashCode(new Object[] {value});
+    }
+    if (value instanceof java.util.Map<?, ?> map) {
+      int hash = 0;
+      for (java.util.Map.Entry<?, ?> entry : map.entrySet()) {
+        /* XOR so the result does not depend on iteration order. */
+        hash ^= structuralHashCode(entry.getKey()) ^ structuralHashCode(entry.getValue());
+      }
+      return hash;
+    }
+    if (value instanceof java.util.Set<?> set) {
+      int hash = 0;
+      for (Object item : set) {
+        hash ^= structuralHashCode(item);
+      }
+      return hash;
+    }
+    if (value instanceof java.util.Collection<?> collection) {
+      int hash = 1;
+      for (Object item : collection) {
+        hash = 31 * hash + structuralHashCode(item);
+      }
+      return hash;
+    }
+    return value.hashCode();
+  }
 }

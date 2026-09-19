@@ -74,11 +74,12 @@ public class IdentityProviderServiceAzureADConfig {
     return java.util.Objects.equals(this.clientId, other.clientId)
         && java.util.Objects.equals(this.tenant, other.tenant)
         && java.util.Objects.equals(this.emailVerified, other.emailVerified)
-        && java.util.Objects.equals(this.scopes, other.scopes);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.scopes, other.scopes);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(clientId, tenant, emailVerified, scopes);
+    return java.util.Objects.hash(
+        clientId, tenant, emailVerified, com.zitadel.ObjectSerializer.structuralHashCode(scopes));
   }
 }

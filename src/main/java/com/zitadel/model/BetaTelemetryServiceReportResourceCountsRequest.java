@@ -68,11 +68,12 @@ public class BetaTelemetryServiceReportResourceCountsRequest {
     }
     return java.util.Objects.equals(this.systemId, other.systemId)
         && java.util.Objects.equals(this.reportId, other.reportId)
-        && java.util.Objects.equals(this.resourceCounts, other.resourceCounts);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.resourceCounts, other.resourceCounts);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(systemId, reportId, resourceCounts);
+    return java.util.Objects.hash(
+        systemId, reportId, com.zitadel.ObjectSerializer.structuralHashCode(resourceCounts));
   }
 }

@@ -53,11 +53,11 @@ public class ActionServiceListExecutionServicesResponse {
     if (!(o instanceof ActionServiceListExecutionServicesResponse other)) {
       return false;
     }
-    return java.util.Objects.equals(this.services, other.services);
+    return com.zitadel.ObjectSerializer.structuralEquals(this.services, other.services);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(services);
+    return java.util.Objects.hash(com.zitadel.ObjectSerializer.structuralHashCode(services));
   }
 }

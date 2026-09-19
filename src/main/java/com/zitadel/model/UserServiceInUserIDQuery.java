@@ -53,11 +53,11 @@ public class UserServiceInUserIDQuery {
     if (!(o instanceof UserServiceInUserIDQuery other)) {
       return false;
     }
-    return java.util.Objects.equals(this.userIds, other.userIds);
+    return com.zitadel.ObjectSerializer.structuralEquals(this.userIds, other.userIds);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(userIds);
+    return java.util.Objects.hash(com.zitadel.ObjectSerializer.structuralHashCode(userIds));
   }
 }

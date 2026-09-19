@@ -59,11 +59,13 @@ public class SettingsServiceGetActiveIdentityProvidersResponse {
       return false;
     }
     return java.util.Objects.equals(this.details, other.details)
-        && java.util.Objects.equals(this.identityProviders, other.identityProviders);
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.identityProviders, other.identityProviders);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(details, identityProviders);
+    return java.util.Objects.hash(
+        details, com.zitadel.ObjectSerializer.structuralHashCode(identityProviders));
   }
 }

@@ -59,11 +59,12 @@ public class SettingsServiceEmbeddedIframeSettings {
       return false;
     }
     return java.util.Objects.equals(this.enabled, other.enabled)
-        && java.util.Objects.equals(this.allowedOrigins, other.allowedOrigins);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.allowedOrigins, other.allowedOrigins);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(enabled, allowedOrigins);
+    return java.util.Objects.hash(
+        enabled, com.zitadel.ObjectSerializer.structuralHashCode(allowedOrigins));
   }
 }

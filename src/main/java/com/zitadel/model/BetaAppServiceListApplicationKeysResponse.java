@@ -58,12 +58,13 @@ public class BetaAppServiceListApplicationKeysResponse {
     if (!(o instanceof BetaAppServiceListApplicationKeysResponse other)) {
       return false;
     }
-    return java.util.Objects.equals(this.keys, other.keys)
+    return com.zitadel.ObjectSerializer.structuralEquals(this.keys, other.keys)
         && java.util.Objects.equals(this.pagination, other.pagination);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(keys, pagination);
+    return java.util.Objects.hash(
+        com.zitadel.ObjectSerializer.structuralHashCode(keys), pagination);
   }
 }

@@ -59,11 +59,12 @@ public class UserServiceListPersonalAccessTokensResponse {
       return false;
     }
     return java.util.Objects.equals(this.pagination, other.pagination)
-        && java.util.Objects.equals(this.result, other.result);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.result, other.result);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(pagination, result);
+    return java.util.Objects.hash(
+        pagination, com.zitadel.ObjectSerializer.structuralHashCode(result));
   }
 }

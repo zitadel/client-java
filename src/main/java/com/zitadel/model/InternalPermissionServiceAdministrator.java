@@ -176,7 +176,7 @@ public class InternalPermissionServiceAdministrator {
     return java.util.Objects.equals(this.creationDate, other.creationDate)
         && java.util.Objects.equals(this.changeDate, other.changeDate)
         && java.util.Objects.equals(this.user, other.user)
-        && java.util.Objects.equals(this.roles, other.roles)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.roles, other.roles)
         && java.util.Objects.equals(this.instance, other.instance)
         && java.util.Objects.equals(this.organization, other.organization)
         && java.util.Objects.equals(this.project, other.project)
@@ -186,6 +186,13 @@ public class InternalPermissionServiceAdministrator {
   @Override
   public int hashCode() {
     return java.util.Objects.hash(
-        creationDate, changeDate, user, roles, instance, organization, project, projectGrant);
+        creationDate,
+        changeDate,
+        user,
+        com.zitadel.ObjectSerializer.structuralHashCode(roles),
+        instance,
+        organization,
+        project,
+        projectGrant);
   }
 }

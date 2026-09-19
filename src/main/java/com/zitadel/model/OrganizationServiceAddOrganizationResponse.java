@@ -65,11 +65,12 @@ public class OrganizationServiceAddOrganizationResponse {
     }
     return java.util.Objects.equals(this.details, other.details)
         && java.util.Objects.equals(this.organizationId, other.organizationId)
-        && java.util.Objects.equals(this.createdAdmins, other.createdAdmins);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.createdAdmins, other.createdAdmins);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(details, organizationId, createdAdmins);
+    return java.util.Objects.hash(
+        details, organizationId, com.zitadel.ObjectSerializer.structuralHashCode(createdAdmins));
   }
 }

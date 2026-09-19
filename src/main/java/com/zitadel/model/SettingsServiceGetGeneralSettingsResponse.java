@@ -93,14 +93,20 @@ public class SettingsServiceGetGeneralSettingsResponse {
     }
     return java.util.Objects.equals(this.defaultOrgId, other.defaultOrgId)
         && java.util.Objects.equals(this.defaultLanguage, other.defaultLanguage)
-        && java.util.Objects.equals(this.supportedLanguages, other.supportedLanguages)
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.supportedLanguages, other.supportedLanguages)
         && java.util.Objects.equals(this.defaultOrganizationId, other.defaultOrganizationId)
-        && java.util.Objects.equals(this.allowedLanguages, other.allowedLanguages);
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.allowedLanguages, other.allowedLanguages);
   }
 
   @Override
   public int hashCode() {
     return java.util.Objects.hash(
-        defaultOrgId, defaultLanguage, supportedLanguages, defaultOrganizationId, allowedLanguages);
+        defaultOrgId,
+        defaultLanguage,
+        com.zitadel.ObjectSerializer.structuralHashCode(supportedLanguages),
+        defaultOrganizationId,
+        com.zitadel.ObjectSerializer.structuralHashCode(allowedLanguages));
   }
 }

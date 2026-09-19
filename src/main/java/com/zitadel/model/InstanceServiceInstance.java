@@ -183,12 +183,18 @@ public class InstanceServiceInstance {
         && java.util.Objects.equals(this.state, other.state)
         && java.util.Objects.equals(this.name, other.name)
         && java.util.Objects.equals(this.version, other.version)
-        && java.util.Objects.equals(this.customDomains, other.customDomains);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.customDomains, other.customDomains);
   }
 
   @Override
   public int hashCode() {
     return java.util.Objects.hash(
-        id, changeDate, creationDate, state, name, version, customDomains);
+        id,
+        changeDate,
+        creationDate,
+        state,
+        name,
+        version,
+        com.zitadel.ObjectSerializer.structuralHashCode(customDomains));
   }
 }

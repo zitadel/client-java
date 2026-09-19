@@ -186,7 +186,8 @@ public class BetaProjectServiceProjectGrant {
         && java.util.Objects.equals(this.changeDate, other.changeDate)
         && java.util.Objects.equals(this.grantedOrganizationId, other.grantedOrganizationId)
         && java.util.Objects.equals(this.grantedOrganizationName, other.grantedOrganizationName)
-        && java.util.Objects.equals(this.grantedRoleKeys, other.grantedRoleKeys)
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.grantedRoleKeys, other.grantedRoleKeys)
         && java.util.Objects.equals(this.projectId, other.projectId)
         && java.util.Objects.equals(this.projectName, other.projectName)
         && java.util.Objects.equals(this.state, other.state);
@@ -200,7 +201,7 @@ public class BetaProjectServiceProjectGrant {
         changeDate,
         grantedOrganizationId,
         grantedOrganizationName,
-        grantedRoleKeys,
+        com.zitadel.ObjectSerializer.structuralHashCode(grantedRoleKeys),
         projectId,
         projectName,
         state);

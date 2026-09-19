@@ -59,11 +59,13 @@ public class UserServiceListAuthenticationMethodTypesResponse {
       return false;
     }
     return java.util.Objects.equals(this.details, other.details)
-        && java.util.Objects.equals(this.authMethodTypes, other.authMethodTypes);
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.authMethodTypes, other.authMethodTypes);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(details, authMethodTypes);
+    return java.util.Objects.hash(
+        details, com.zitadel.ObjectSerializer.structuralHashCode(authMethodTypes));
   }
 }

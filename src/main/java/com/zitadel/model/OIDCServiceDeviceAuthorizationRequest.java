@@ -78,13 +78,14 @@ public class OIDCServiceDeviceAuthorizationRequest {
     }
     return java.util.Objects.equals(this.id, other.id)
         && java.util.Objects.equals(this.clientId, other.clientId)
-        && java.util.Objects.equals(this.scope, other.scope)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.scope, other.scope)
         && java.util.Objects.equals(this.appName, other.appName)
         && java.util.Objects.equals(this.projectName, other.projectName);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(id, clientId, scope, appName, projectName);
+    return java.util.Objects.hash(
+        id, clientId, com.zitadel.ObjectSerializer.structuralHashCode(scope), appName, projectName);
   }
 }

@@ -59,11 +59,11 @@ public class UserServiceDeleteUserMetadataRequest {
       return false;
     }
     return java.util.Objects.equals(this.userId, other.userId)
-        && java.util.Objects.equals(this.keys, other.keys);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.keys, other.keys);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(userId, keys);
+    return java.util.Objects.hash(userId, com.zitadel.ObjectSerializer.structuralHashCode(keys));
   }
 }

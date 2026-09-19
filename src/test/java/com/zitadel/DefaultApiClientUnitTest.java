@@ -170,8 +170,8 @@ class DefaultApiClientUnitTest {
         "/utf16-no-bom",
         exchange -> {
           // RFC 2781: a UTF-16 body with NO byte-order mark defaults to
-          // big-endian. "Pet" as BOM-less UTF-16BE is 00 50 00 65 00 74.
-          byte[] body = new byte[] {0x00, 0x50, 0x00, 0x65, 0x00, 0x74};
+          // big-endian. "Doc" as BOM-less UTF-16BE is 00 44 00 6F 00 63.
+          byte[] body = new byte[] {0x00, 0x44, 0x00, 0x6F, 0x00, 0x63};
           exchange.getResponseHeaders().add("Content-Type", "text/plain; charset=utf-16");
           exchange.sendResponseHeaders(200, body.length);
           try (OutputStream os = exchange.getResponseBody()) {
@@ -712,8 +712,8 @@ class DefaultApiClientUnitTest {
 
   @Test
   void multipartFilenameAsciiOnlyOmitsFilenameStar() {
-    String directive = DefaultApiClient.buildFilenameDirective("pet.png");
-    assertEquals("filename=\"pet.png\"", directive);
+    String directive = DefaultApiClient.buildFilenameDirective("file.png");
+    assertEquals("filename=\"file.png\"", directive);
     assertFalse(directive.contains("filename*="));
   }
 
@@ -735,7 +735,7 @@ class DefaultApiClientUnitTest {
         IllegalArgumentException.class,
         () -> DefaultApiClient.validateMultipartFilename("a\r\nb.pdf"));
     // ASCII filenames are accepted
-    DefaultApiClient.validateMultipartFilename("pet.png");
+    DefaultApiClient.validateMultipartFilename("file.png");
   }
 
   @Test
@@ -805,13 +805,13 @@ class DefaultApiClientUnitTest {
     ApiHttpResponse response = client.sendRequest("GET", baseUrl + "/utf16-no-bom", Map.of(), null);
     assertEquals(200, response.statusCode());
     assertEquals(
-        "Pet", response.body(), "a BOM-less utf-16 body must decode as big-endian per RFC 2781");
-    // Prove the choice: the same bytes read little-endian are NOT "Pet".
-    byte[] sameBytes = new byte[] {0x00, 0x50, 0x00, 0x65, 0x00, 0x74};
+        "Doc", response.body(), "a BOM-less utf-16 body must decode as big-endian per RFC 2781");
+    // Prove the choice: the same bytes read little-endian are NOT "Doc".
+    byte[] sameBytes = new byte[] {0x00, 0x44, 0x00, 0x6F, 0x00, 0x63};
     assertNotEquals(
-        "Pet",
+        "Doc",
         new String(sameBytes, java.nio.charset.StandardCharsets.UTF_16LE),
-        "little-endian interpretation of the same bytes must NOT equal \"Pet\"");
+        "little-endian interpretation of the same bytes must NOT equal \"Doc\"");
   }
 
   @Test

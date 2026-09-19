@@ -59,11 +59,13 @@ public class BetaSessionServiceCheckWebAuthN {
     if (!(o instanceof BetaSessionServiceCheckWebAuthN other)) {
       return false;
     }
-    return java.util.Objects.equals(this.credentialAssertionData, other.credentialAssertionData);
+    return com.zitadel.ObjectSerializer.structuralEquals(
+        this.credentialAssertionData, other.credentialAssertionData);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(credentialAssertionData);
+    return java.util.Objects.hash(
+        com.zitadel.ObjectSerializer.structuralHashCode(credentialAssertionData));
   }
 }

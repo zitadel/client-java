@@ -61,11 +61,12 @@ public class OrganizationServiceDeleteOrganizationMetadataRequest {
       return false;
     }
     return java.util.Objects.equals(this.organizationId, other.organizationId)
-        && java.util.Objects.equals(this.keys, other.keys);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.keys, other.keys);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(organizationId, keys);
+    return java.util.Objects.hash(
+        organizationId, com.zitadel.ObjectSerializer.structuralHashCode(keys));
   }
 }

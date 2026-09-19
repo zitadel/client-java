@@ -59,11 +59,12 @@ public class BetaActionServiceListTargetsResponse {
       return false;
     }
     return java.util.Objects.equals(this.pagination, other.pagination)
-        && java.util.Objects.equals(this.targets, other.targets);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.targets, other.targets);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(pagination, targets);
+    return java.util.Objects.hash(
+        pagination, com.zitadel.ObjectSerializer.structuralHashCode(targets));
   }
 }

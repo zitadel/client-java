@@ -85,7 +85,8 @@ public class BetaFeatureServiceSetSystemFeaturesRequest {
     return java.util.Objects.equals(this.loginDefaultOrg, other.loginDefaultOrg)
         && java.util.Objects.equals(this.userSchema, other.userSchema)
         && java.util.Objects.equals(this.oidcTokenExchange, other.oidcTokenExchange)
-        && java.util.Objects.equals(this.improvedPerformance, other.improvedPerformance)
+        && com.zitadel.ObjectSerializer.structuralEquals(
+            this.improvedPerformance, other.improvedPerformance)
         && java.util.Objects.equals(
             this.oidcSingleV1SessionTermination, other.oidcSingleV1SessionTermination);
   }
@@ -96,7 +97,7 @@ public class BetaFeatureServiceSetSystemFeaturesRequest {
         loginDefaultOrg,
         userSchema,
         oidcTokenExchange,
-        improvedPerformance,
+        com.zitadel.ObjectSerializer.structuralHashCode(improvedPerformance),
         oidcSingleV1SessionTermination);
   }
 }

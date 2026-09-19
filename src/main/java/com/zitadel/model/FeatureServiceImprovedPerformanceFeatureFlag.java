@@ -58,12 +58,13 @@ public class FeatureServiceImprovedPerformanceFeatureFlag {
     if (!(o instanceof FeatureServiceImprovedPerformanceFeatureFlag other)) {
       return false;
     }
-    return java.util.Objects.equals(this.executionPaths, other.executionPaths)
+    return com.zitadel.ObjectSerializer.structuralEquals(this.executionPaths, other.executionPaths)
         && java.util.Objects.equals(this.source, other.source);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(executionPaths, source);
+    return java.util.Objects.hash(
+        com.zitadel.ObjectSerializer.structuralHashCode(executionPaths), source);
   }
 }

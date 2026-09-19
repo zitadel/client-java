@@ -58,12 +58,13 @@ public class InstanceServiceListInstancesResponse {
     if (!(o instanceof InstanceServiceListInstancesResponse other)) {
       return false;
     }
-    return java.util.Objects.equals(this.instances, other.instances)
+    return com.zitadel.ObjectSerializer.structuralEquals(this.instances, other.instances)
         && java.util.Objects.equals(this.pagination, other.pagination);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(instances, pagination);
+    return java.util.Objects.hash(
+        com.zitadel.ObjectSerializer.structuralHashCode(instances), pagination);
   }
 }

@@ -86,7 +86,7 @@ All API errors extend `ApiException`. The error hierarchy is:
 import com.zitadel.errors.*;
 
 try {
-    var result = client.petApi.getPetById(petId);
+    var result = client.actionService.activatePublicKey(request);
 } catch (NotFoundException e) {
     System.out.println("Not found: " + e.getMessage());
 } catch (ClientException e) {
@@ -115,18 +115,16 @@ var client = new Zitadel(authenticator, transport);
 
 ## API Methods
 
-Each API group is exposed as a typed field on the client. API classes have methods that correspond to OpenAPI operations, accepting typed request parameters and returning typed response models.
+Each API group is exposed as a typed field on the client (e.g., `client.actionService`). API classes have methods that correspond to OpenAPI operations, accepting typed request parameters and returning typed response models.
 
 ## Models
 
-Models are generated as Java classes with builder patterns. They are located in `com.zitadel.api` and model packages.
+Models are generated as Java classes with builder patterns. They are located in the `com.zitadel.model` package.
 
 ```java
-import com.zitadel.models.*;
+import com.zitadel.model.ActionServiceActivatePublicKeyRequest;
 
-var pet = new Pet();
-pet.setName("Fido");
-pet.setStatus("available");
+var model = new ActionServiceActivatePublicKeyRequest();
 ```
 
 ## Binary / File Uploads

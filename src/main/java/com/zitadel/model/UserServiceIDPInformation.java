@@ -92,7 +92,7 @@ public class UserServiceIDPInformation {
     return java.util.Objects.equals(this.idpId, other.idpId)
         && java.util.Objects.equals(this.userId, other.userId)
         && java.util.Objects.equals(this.userName, other.userName)
-        && java.util.Objects.equals(this.rawInformation, other.rawInformation)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.rawInformation, other.rawInformation)
         && java.util.Objects.equals(this.ldap, other.ldap)
         && java.util.Objects.equals(this.oauth, other.oauth)
         && java.util.Objects.equals(this.saml, other.saml);
@@ -100,6 +100,13 @@ public class UserServiceIDPInformation {
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(idpId, userId, userName, rawInformation, ldap, oauth, saml);
+    return java.util.Objects.hash(
+        idpId,
+        userId,
+        userName,
+        com.zitadel.ObjectSerializer.structuralHashCode(rawInformation),
+        ldap,
+        oauth,
+        saml);
   }
 }

@@ -65,11 +65,12 @@ public class SettingsServiceGetHostedLoginTranslationResponse {
       return false;
     }
     return java.util.Objects.equals(this.etag, other.etag)
-        && java.util.Objects.equals(this.translations, other.translations);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.translations, other.translations);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(etag, translations);
+    return java.util.Objects.hash(
+        etag, com.zitadel.ObjectSerializer.structuralHashCode(translations));
   }
 }

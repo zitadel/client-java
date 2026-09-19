@@ -167,10 +167,10 @@ public class BetaOIDCServiceAuthRequest {
     return java.util.Objects.equals(this.id, other.id)
         && java.util.Objects.equals(this.creationDate, other.creationDate)
         && java.util.Objects.equals(this.clientId, other.clientId)
-        && java.util.Objects.equals(this.scope, other.scope)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.scope, other.scope)
         && java.util.Objects.equals(this.redirectUri, other.redirectUri)
-        && java.util.Objects.equals(this.prompt, other.prompt)
-        && java.util.Objects.equals(this.uiLocales, other.uiLocales)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.prompt, other.prompt)
+        && com.zitadel.ObjectSerializer.structuralEquals(this.uiLocales, other.uiLocales)
         && java.util.Objects.equals(this.loginHint, other.loginHint)
         && java.util.Objects.equals(this.maxAge, other.maxAge)
         && java.util.Objects.equals(this.hintUserId, other.hintUserId);
@@ -182,10 +182,10 @@ public class BetaOIDCServiceAuthRequest {
         id,
         creationDate,
         clientId,
-        scope,
+        com.zitadel.ObjectSerializer.structuralHashCode(scope),
         redirectUri,
-        prompt,
-        uiLocales,
+        com.zitadel.ObjectSerializer.structuralHashCode(prompt),
+        com.zitadel.ObjectSerializer.structuralHashCode(uiLocales),
         loginHint,
         maxAge,
         hintUserId);

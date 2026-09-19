@@ -65,11 +65,12 @@ public class BetaOrganizationServiceCreateOrganizationRequest {
     }
     return java.util.Objects.equals(this.name, other.name)
         && java.util.Objects.equals(this.id, other.id)
-        && java.util.Objects.equals(this.admins, other.admins);
+        && com.zitadel.ObjectSerializer.structuralEquals(this.admins, other.admins);
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash(name, id, admins);
+    return java.util.Objects.hash(
+        name, id, com.zitadel.ObjectSerializer.structuralHashCode(admins));
   }
 }
