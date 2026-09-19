@@ -1,9 +1,11 @@
 package com.zitadel;
 
+import com.zitadel.auth.PersonalAccessTokenAuthenticator;
 import com.zitadel.model.*;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -33,7 +35,8 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
 
     @BeforeAll
     void initClient() {
-        client = Zitadel.withAccessToken(getBaseUrl(), getAuthToken());
+        client = Zitadel.withAuthenticator(
+            new PersonalAccessTokenAuthenticator(getBaseUrl(), getAuthToken()));
     }
 
     /**
@@ -41,15 +44,17 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
      */
     @BeforeEach
     void setUp() throws ApiException {
-        UserServiceAddHumanUserRequest request = new UserServiceAddHumanUserRequest()
-            .username(UUID.randomUUID().toString())
-            .profile(new UserServiceSetHumanProfile()
-                .givenName("John")
-                .familyName("Doe"))
-            .email(new UserServiceSetHumanEmail()
-                .email("johndoe" + UUID.randomUUID() + "@example.com"));
+        UserServiceAddHumanUserRequest request = new UserServiceAddHumanUserRequest();
+        request.username = UUID.randomUUID().toString();
+        UserServiceSetHumanProfile profile = new UserServiceSetHumanProfile();
+        profile.givenName = "John";
+        profile.familyName = "Doe";
+        request.profile = profile;
+        UserServiceSetHumanEmail email = new UserServiceSetHumanEmail();
+        email.email = "johndoe" + UUID.randomUUID() + "@example.com";
+        request.email = email;
 
-        user = client.users.addHumanUser(request);
+        user = client.userService.addHumanUser(request);
     }
 
     /**
@@ -58,7 +63,9 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
     @AfterEach
     void tearDown() {
         try {
-            client.users.deleteUser(new UserServiceDeleteUserRequest().userId(user.getUserId()));
+            UserServiceDeleteUserRequest deleteRequest = new UserServiceDeleteUserRequest();
+            deleteRequest.userId = user.userId;
+            client.userService.deleteUser(deleteRequest);
         } catch (ApiException ignored) {
             // cleanup errors are ignored
         }
@@ -69,12 +76,11 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
      */
     @Test
     void testRetrievesUserDetailsById() throws ApiException {
-        UserServiceGetUserByIDResponse response = client.users.getUserByID(
-            new UserServiceGetUserByIDRequest()
-                .userId(user.getUserId())
-        );
-        assertNotNull(response.getUser());
-        assertEquals(user.getUserId(), response.getUser().getUserId());
+        UserServiceGetUserByIDRequest getRequest = new UserServiceGetUserByIDRequest();
+        getRequest.userId = user.userId;
+        UserServiceGetUserByIDResponse response = client.userService.getUserByID(getRequest);
+        assertNotNull(response.user);
+        assertEquals(user.userId, response.user.userId);
     }
 
     /**
@@ -82,15 +88,15 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
      */
     @Test
     void testIncludesCreatedUserWhenListing() throws ApiException {
-        UserServiceListUsersRequest request = new UserServiceListUsersRequest()
-            .query(new UserServiceListQuery());
+        UserServiceListUsersRequest request = new UserServiceListUsersRequest();
+        request.queries = List.of();
 
-        UserServiceListUsersResponse response = client.users.listUsers(request);
-        assertNotNull(response.getResult());
-        List<String> ids = response.getResult().stream()
-            .map(UserServiceUser::getUserId)
+        UserServiceListUsersResponse response = client.userService.listUsers(request);
+        assertNotNull(response.result);
+        List<String> ids = response.result.stream()
+            .map(u -> u.userId)
             .collect(Collectors.toList());
-        assertTrue(ids.contains(user.getUserId()));
+        assertTrue(ids.contains(user.userId));
     }
 
     /**
@@ -99,19 +105,21 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
     @SuppressWarnings("DataFlowIssue")
     @Test
     void testUpdatesUserEmailAndReflectsInGet() throws ApiException {
-        client.users.updateHumanUser(
-            new UserServiceUpdateHumanUserRequest()
-                .userId(user.getUserId())
-                .email(new UserServiceSetHumanEmail()
-                    .email("updated" + UUID.randomUUID() + "@example.com"))
-        );
+        UserServiceUpdateHumanUserRequest updateRequest = new UserServiceUpdateHumanUserRequest();
+        updateRequest.userId = user.userId;
+        UserServiceSetHumanEmail email = new UserServiceSetHumanEmail();
+        email.email = "updated" + UUID.randomUUID() + "@example.com";
+        updateRequest.email = email;
+        client.userService.updateHumanUser(updateRequest);
 
-        UserServiceGetUserByIDResponse response = client.users.getUserByID(
-            new UserServiceGetUserByIDRequest().
-                userId(user.getUserId())
-        );
-        assertNotNull(response.getUser().getHuman().getEmail());
-        assertTrue(response.getUser().getHuman().getEmail().getEmail().contains("updated"));
+        UserServiceGetUserByIDRequest getRequest = new UserServiceGetUserByIDRequest();
+        getRequest.userId = user.userId;
+        UserServiceGetUserByIDResponse response = client.userService.getUserByID(getRequest);
+        UserServiceUser fetched = Objects.requireNonNull(response.user);
+        UserServiceHumanUser human = Objects.requireNonNull(fetched.human);
+        UserServiceHumanEmail humanEmail = Objects.requireNonNull(human.email);
+        assertNotNull(humanEmail);
+        assertTrue(Objects.requireNonNull(humanEmail.email).contains("updated"));
     }
 
     /**
@@ -119,10 +127,10 @@ class UserServiceSanityCheckSpec extends AbstractIntegrationTest {
      */
     @Test
     void testRaisesApiExceptionForNonexistentUser() {
-        assertThrows(ApiException.class, () ->
-            client.users.getUserByID(
-                new UserServiceGetUserByIDRequest()
-                    .userId(UUID.randomUUID().toString()))
-        );
+        assertThrows(ApiException.class, () -> {
+            UserServiceGetUserByIDRequest getRequest = new UserServiceGetUserByIDRequest();
+            getRequest.userId = UUID.randomUUID().toString();
+            client.userService.getUserByID(getRequest);
+        });
     }
 }

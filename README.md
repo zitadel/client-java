@@ -49,7 +49,7 @@ Add the SDK dependency to your `pom.xml`:
 <dependency>
     <groupId>io.github.zitadel</groupId>
     <artifactId>client</artifactId>
-    <version>4.1.0</version>
+    <version>4.1.2</version>
 </dependency>
 ```
 
@@ -79,6 +79,7 @@ JSON file. This process creates a secure token.
 ```java
 import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
+import com.zitadel.auth.WebTokenAuthenticator;
 import com.zitadel.model.UserServiceAddHumanUserRequest;
 import com.zitadel.model.UserServiceAddHumanUserResponse;
 import com.zitadel.model.UserServiceSetHumanEmail;
@@ -86,17 +87,22 @@ import com.zitadel.model.UserServiceSetHumanProfile;
 
 class Demo {
   public static void main(String[] args) throws ApiException {
-    Zitadel zitadel = Zitadel.withPrivateKey("https://example.us1.zitadel.cloud", "path/to/jwt-key.json");
+    Zitadel zitadel = Zitadel.withAuthenticator(
+      WebTokenAuthenticator.fromJson("https://example.us1.zitadel.cloud", "path/to/jwt-key.json"));
 
-    UserServiceAddHumanUserResponse response = zitadel.users.addHumanUser(
-      new UserServiceAddHumanUserRequest()
-        .username("john.doe")
-        .profile(new UserServiceSetHumanProfile()
-          .givenName("John")
-          .familyName("Doe"))
-        .email(new UserServiceSetHumanEmail()
-          .email("john@doe.com"))
-    );
+    UserServiceSetHumanProfile profile = new UserServiceSetHumanProfile();
+    profile.givenName = "John";
+    profile.familyName = "Doe";
+
+    UserServiceSetHumanEmail email = new UserServiceSetHumanEmail();
+    email.email = "john@doe.com";
+
+    UserServiceAddHumanUserRequest request = new UserServiceAddHumanUserRequest();
+    request.username = "john.doe";
+    request.profile = profile;
+    request.email = email;
+
+    UserServiceAddHumanUserResponse response = zitadel.userService.addHumanUser(request);
     System.out.println("User created: " + response);
   }
 }
@@ -123,6 +129,7 @@ which is then used to authenticate.
 ```java
 import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
+import com.zitadel.auth.ClientCredentialsAuthenticator;
 import com.zitadel.model.UserServiceAddHumanUserRequest;
 import com.zitadel.model.UserServiceAddHumanUserResponse;
 import com.zitadel.model.UserServiceSetHumanEmail;
@@ -130,17 +137,22 @@ import com.zitadel.model.UserServiceSetHumanProfile;
 
 class Demo {
   public static void main(String[] args) throws ApiException {
-    Zitadel zitadel = Zitadel.withClientCredentials("https://example.us1.zitadel.cloud", "id", "secret");
+    Zitadel zitadel = Zitadel.withAuthenticator(
+      ClientCredentialsAuthenticator.builder("https://example.us1.zitadel.cloud", "id", "secret").build());
 
-    UserServiceAddHumanUserResponse response = zitadel.users.addHumanUser(
-      new UserServiceAddHumanUserRequest()
-        .username("john.doe")
-        .profile(new UserServiceSetHumanProfile()
-          .givenName("John")
-          .familyName("Doe"))
-        .email(new UserServiceSetHumanEmail()
-          .email("john@doe.com"))
-    );
+    UserServiceSetHumanProfile profile = new UserServiceSetHumanProfile();
+    profile.givenName = "John";
+    profile.familyName = "Doe";
+
+    UserServiceSetHumanEmail email = new UserServiceSetHumanEmail();
+    email.email = "john@doe.com";
+
+    UserServiceAddHumanUserRequest request = new UserServiceAddHumanUserRequest();
+    request.username = "john.doe";
+    request.profile = profile;
+    request.email = email;
+
+    UserServiceAddHumanUserResponse response = zitadel.userService.addHumanUser(request);
     System.out.println("User created: " + response);
   }
 }
@@ -167,6 +179,7 @@ authenticate without exchanging credentials every time.
 ```java
 import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
+import com.zitadel.auth.PersonalAccessTokenAuthenticator;
 import com.zitadel.model.UserServiceAddHumanUserRequest;
 import com.zitadel.model.UserServiceAddHumanUserResponse;
 import com.zitadel.model.UserServiceSetHumanEmail;
@@ -175,17 +188,22 @@ import com.zitadel.model.UserServiceSetHumanProfile;
 class Demo {
 
   public static void main(String[] args) throws ApiException {
-    Zitadel zitadel = Zitadel.withAccessToken("https://example.us1.zitadel.cloud", "token");
+    Zitadel zitadel = Zitadel.withAuthenticator(
+      new PersonalAccessTokenAuthenticator("https://example.us1.zitadel.cloud", "token"));
 
-    UserServiceAddHumanUserResponse response = zitadel.users.addHumanUser(
-      new UserServiceAddHumanUserRequest()
-        .username("john.doe")
-        .profile(new UserServiceSetHumanProfile()
-          .givenName("John")
-          .familyName("Doe"))
-        .email(new UserServiceSetHumanEmail()
-          .email("john@doe.com"))
-    );
+    UserServiceSetHumanProfile profile = new UserServiceSetHumanProfile();
+    profile.givenName = "John";
+    profile.familyName = "Doe";
+
+    UserServiceSetHumanEmail email = new UserServiceSetHumanEmail();
+    email.email = "john@doe.com";
+
+    UserServiceAddHumanUserRequest request = new UserServiceAddHumanUserRequest();
+    request.username = "john.doe";
+    request.profile = profile;
+    request.email = email;
+
+    UserServiceAddHumanUserResponse response = zitadel.userService.addHumanUser(request);
     System.out.println("User created: " + response);
   }
 }
@@ -208,11 +226,14 @@ In development or testing environments with self-signed certificates, you can
 disable TLS verification entirely:
 
 ```java
-TransportOptions options = new TransportOptions(
-    Map.of(), null, true, null);
+TransportOptions options = TransportOptions.builder()
+    .verifySsl(false)
+    .build();
 
-Zitadel zitadel = Zitadel.withClientCredentials(
-    "https://your-instance.zitadel.cloud", "client-id", "client-secret", options);
+Zitadel zitadel = Zitadel.withAuthenticator(
+    ClientCredentialsAuthenticator.builder(
+        "https://your-instance.zitadel.cloud", "client-id", "client-secret").build(),
+    options);
 ```
 
 ### Using a Custom CA Certificate
@@ -221,11 +242,14 @@ If your Zitadel instance uses a certificate signed by a private CA, you can
 provide the path to the CA certificate in PEM format:
 
 ```java
-TransportOptions options = new TransportOptions(
-    Map.of(), "/path/to/ca.pem", false, null);
+TransportOptions options = TransportOptions.builder()
+    .caCertPath("/path/to/ca.pem")
+    .build();
 
-Zitadel zitadel = Zitadel.withClientCredentials(
-    "https://your-instance.zitadel.cloud", "client-id", "client-secret", options);
+Zitadel zitadel = Zitadel.withAuthenticator(
+    ClientCredentialsAuthenticator.builder(
+        "https://your-instance.zitadel.cloud", "client-id", "client-secret").build(),
+    options);
 ```
 
 ### Custom Default Headers
@@ -234,11 +258,14 @@ You can attach default headers to every outgoing request. This is useful for
 custom routing or tracing headers:
 
 ```java
-TransportOptions options = new TransportOptions(
-    Map.of("X-Custom-Header", "my-value"), null, false, null);
+TransportOptions options = TransportOptions.builder()
+    .defaultHeader("X-Custom-Header", "my-value")
+    .build();
 
-Zitadel zitadel = Zitadel.withClientCredentials(
-    "https://your-instance.zitadel.cloud", "client-id", "client-secret", options);
+Zitadel zitadel = Zitadel.withAuthenticator(
+    ClientCredentialsAuthenticator.builder(
+        "https://your-instance.zitadel.cloud", "client-id", "client-secret").build(),
+    options);
 ```
 
 ### Proxy Configuration
@@ -248,11 +275,14 @@ specify the proxy URL. To authenticate with the proxy, embed the credentials
 directly in the URL:
 
 ```java
-TransportOptions options = new TransportOptions(
-    Map.of(), null, false, "http://user:pass@proxy:8080");
+TransportOptions options = TransportOptions.builder()
+    .proxy("http://user:pass@proxy:8080")
+    .build();
 
-Zitadel zitadel = Zitadel.withClientCredentials(
-    "https://your-instance.zitadel.cloud", "client-id", "client-secret", options);
+Zitadel zitadel = Zitadel.withAuthenticator(
+    ClientCredentialsAuthenticator.builder(
+        "https://your-instance.zitadel.cloud", "client-id", "client-secret").build(),
+    options);
 ```
 
 ## Design and Dependencies

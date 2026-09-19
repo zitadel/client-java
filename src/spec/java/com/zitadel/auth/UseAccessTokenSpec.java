@@ -3,7 +3,6 @@ package com.zitadel.auth;
 import com.zitadel.AbstractIntegrationTest;
 import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
-import com.zitadel.ZitadelException;
 import com.zitadel.model.SettingsServiceGetGeneralSettingsResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -29,10 +28,10 @@ class UseAccessTokenSpec extends AbstractIntegrationTest {
      */
     @Test
     void testRetrievesGeneralSettingsWithValidAuth() throws ApiException {
-        Zitadel client = Zitadel.withAccessToken(getBaseUrl(), getAuthToken());
+        Zitadel client = Zitadel.withAuthenticator(new PersonalAccessTokenAuthenticator(getBaseUrl(), getAuthToken()));
 
         SettingsServiceGetGeneralSettingsResponse response =
-            client.settings.getGeneralSettings();
+            client.settingsService.getGeneralSettings(new Object());
         assertNotNull(response);
     }
 
@@ -41,9 +40,9 @@ class UseAccessTokenSpec extends AbstractIntegrationTest {
      */
     @Test
     void testRaisesApiExceptionWithInvalidAuth() {
-        Zitadel invalid = Zitadel.withAccessToken(getBaseUrl(), "invalid");
+        Zitadel invalid = Zitadel.withAuthenticator(new PersonalAccessTokenAuthenticator(getBaseUrl(), "invalid"));
 
-        assertThrows(ZitadelException.class, invalid.settings::getGeneralSettings
+        assertThrows(ApiException.class, () -> invalid.settingsService.getGeneralSettings(new Object())
         );
     }
 }

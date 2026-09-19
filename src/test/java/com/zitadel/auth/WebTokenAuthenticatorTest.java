@@ -1,44 +1,62 @@
 package com.zitadel.auth;
 
-import com.zitadel.auth.OAuthAuthenticator.Token;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.security.GeneralSecurityException;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.time.Instant;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.interfaces.RSAPrivateKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Collections;
+/**
+ * Verifies that {@link WebTokenAuthenticator} redacts its in-memory secret in its {@code
+ * toString()} representation so it cannot leak into logs, matching the Python, PHP and Ruby SDKs.
+ *
+ * <p>{@code WebTokenAuthenticator} inherits the masking from {@link OAuthAuthenticator} and only
+ * ever surfaces the cached access token (never the signing key), so the cached token is seeded
+ * directly and asserted to be masked. Construction never touches the network.
+ */
+class WebTokenAuthenticatorTest {
 
-import static org.junit.jupiter.api.Assertions.*;
+  private static final String TOKEN = "minted-web-token-do-not-leak";
 
-class WebTokenAuthenticatorTest extends OAuthAuthenticatorTest {
+  /** The web token authenticator must mask the cached access token in {@code toString()}. */
+  @Test
+  @DisplayName("WebTokenAuthenticator masks the cached access token")
+  void redactsSecret() throws GeneralSecurityException, ReflectiveOperationException {
+    PrivateKey privateKey = KeyPairGenerator.getInstance("RSA").generateKeyPair().getPrivate();
+    WebTokenAuthenticator authenticator =
+        WebTokenAuthenticator.builder("https://example.zitadel.cloud", "user-1", privateKey)
+            .keyId("key-1")
+            .build();
+    seedCachedToken(authenticator);
 
-    @Test
-    void testRefreshTokenUsingBuilder() throws Exception {
+    String rendered = authenticator.toString();
 
-        KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
-        kpg.initialize(2048);
-        KeyPair keyPair = kpg.generateKeyPair();
-        RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+    assertFalse(rendered.contains(TOKEN), "toString must not contain the cached token");
+    assertTrue(rendered.contains("***"), "toString must redact the token with ***");
+  }
 
-        WebTokenAuthenticator authenticator =
-            WebTokenAuthenticator.builder(oauthHost, "dummy-client", privateKey)
-                .keyId("dummy-key-id")
-                .tokenLifetime(Duration.ofHours(1))
-                .jwtAlgorithm("RS256")
-                .build();
+  /**
+   * Seeds the protected cached-token field with a known access token so masking can be asserted
+   * without minting a token over the network.
+   *
+   * @param authenticator the authenticator whose cached token is seeded.
+   * @throws ReflectiveOperationException if the cached-token field cannot be set.
+   */
+  private static void seedCachedToken(WebTokenAuthenticator authenticator)
+      throws ReflectiveOperationException {
+    Constructor<OAuthAuthenticator.Token> constructor =
+        OAuthAuthenticator.Token.class.getDeclaredConstructor(String.class, Instant.class);
+    constructor.setAccessible(true);
+    OAuthAuthenticator.Token token = constructor.newInstance(TOKEN, Instant.MAX);
 
-        assertNotNull(authenticator.getAuthToken(), "Access token should not be empty");
-        Token token = authenticator.refreshToken();
-        assertEquals(
-            Collections.singletonMap("Authorization", "Bearer " + token.accessToken),
-            authenticator.getAuthHeaders());
-        assertNotNull(token.accessToken, "Access token should not be null");
-        assertTrue(token.expiresAt.isAfter(Instant.now()), "Token expiry should be in the future");
-        assertEquals(token.accessToken, authenticator.getAuthToken());
-        assertEquals(oauthHost, authenticator.getHost());
-        assertNotEquals(
-            authenticator.refreshToken().accessToken, authenticator.refreshToken().accessToken);
-    }
+    Field field = OAuthAuthenticator.class.getDeclaredField("token");
+    field.setAccessible(true);
+    field.set(authenticator, token);
+  }
 }

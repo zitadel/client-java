@@ -38,7 +38,7 @@ class UseClientCredentialsSpec extends AbstractIntegrationTest {
     public Map<String, String> generateUserSecret(String token, String loginName) throws Exception {
 
         HttpRequest userIdRequest = HttpRequest.newBuilder()
-            .uri(URI.create("http://localhost:8099/management/v1/global/users/_by_login_name?loginName=" + URLEncoder.encode(loginName, StandardCharsets.UTF_8)))
+            .uri(URI.create(getBaseUrl() + "/management/v1/global/users/_by_login_name?loginName=" + URLEncoder.encode(loginName, StandardCharsets.UTF_8)))
             .header("Authorization", "Bearer " + token)
             .header("Accept", "application/json")
             .build();
@@ -55,7 +55,7 @@ class UseClientCredentialsSpec extends AbstractIntegrationTest {
 
             if (userId != null && !userId.isEmpty()) {
                 HttpRequest secretRequest = HttpRequest.newBuilder()
-                    .uri(URI.create("http://localhost:8099/management/v1/users/" + userId + "/secret"))
+                    .uri(URI.create(getBaseUrl() + "/management/v1/users/" + userId + "/secret"))
                     .header("Authorization", "Bearer " + token)
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")
@@ -96,10 +96,10 @@ class UseClientCredentialsSpec extends AbstractIntegrationTest {
     @Test
     void testRetrievesGeneralSettingsWithValidAuth() throws Exception {
         Map<String, String> credentials = generateUserSecret(getAuthToken(), "api-user");
-        Zitadel client = Zitadel.withClientCredentials(getBaseUrl(), credentials.getOrDefault("clientId", ""), credentials.getOrDefault("clientSecret", ""));
+        Zitadel client = Zitadel.withAuthenticator(ClientCredentialsAuthenticator.builder(getBaseUrl(), credentials.getOrDefault("clientId", ""), credentials.getOrDefault("clientSecret", "")).build());
 
         SettingsServiceGetGeneralSettingsResponse response =
-            client.settings.getGeneralSettings();
+            client.settingsService.getGeneralSettings(new Object());
         assertNotNull(response);
     }
 
@@ -108,9 +108,9 @@ class UseClientCredentialsSpec extends AbstractIntegrationTest {
      */
     @Test
     void testRaisesApiExceptionWithInvalidAuth() {
-        Zitadel invalid = Zitadel.withClientCredentials(getBaseUrl(), "invalid", "invalid");
+        Zitadel invalid = Zitadel.withAuthenticator(ClientCredentialsAuthenticator.builder(getBaseUrl(), "invalid", "invalid").build());
 
-        assertThrows(ZitadelException.class, invalid.settings::getGeneralSettings
+        assertThrows(ZitadelException.class, () -> invalid.settingsService.getGeneralSettings(new Object())
         );
     }
 }
