@@ -69,7 +69,7 @@ var client = new Zitadel(fake);
 
 ## Error Handling
 
-All API errors extend `ApiException`. The error hierarchy is:
+All API errors derive from `ApiException`. The error hierarchy is:
 
 - `ApiException` (base)
   - `ClientException` (4xx)
@@ -119,7 +119,7 @@ Each API group is exposed as a typed field on the client (e.g., `client.actionSe
 
 ## Models
 
-Models are generated as Java classes with public fields and a no-argument constructor. They are located in the `com.zitadel.model` package.
+Models are generated as Java classes with public fields and a no-argument constructor in the `com.zitadel.model` package.
 
 ```java
 import com.zitadel.model.ActionServiceActivatePublicKeyRequest;
@@ -133,7 +133,7 @@ File upload parameters are typed as `File`. Binary response bodies are returned 
 
 ## Comment Style
 
-Never use inline comments (`//`). Always use block comments (`/* ... */`).
+Never place a comment on the same line as code. Use block comments (`/* ... */`); Javadoc (`/** ... */`) is fine.
 
 ```good
 /* This explains the logic */
