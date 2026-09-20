@@ -1,4 +1,4 @@
-# Zitadel SDK SDK - AI Agent Reference
+# Zitadel SDK - AI Agent Reference
 
 ## Installation
 
@@ -47,7 +47,7 @@ If the OpenAPI spec defines multiple servers, the generated `Servers` class expo
 ```java
 import com.zitadel.Servers;
 
-var client = Zitadel.withToken(Servers.SERVER_0.url(), "your-token");
+var client = Zitadel.withToken(Servers.SERVER_0.getUrl(), "your-token");
 ```
 
 ## Testing
@@ -58,7 +58,7 @@ The `Authenticator` interface is the seam for tests: substitute a fake authentic
 import com.zitadel.auth.Authenticator;
 
 var fake = new Authenticator() {
-    public java.util.Map<String, String> getAuthHeaders(RequestContext req) {
+    public java.util.Map<String, String> getAuthHeaders() {
         return java.util.Map.of("Authorization", "Bearer test-token");
     }
     public String getHost() { return "https://api.example.com"; }
@@ -119,7 +119,7 @@ Each API group is exposed as a typed field on the client (e.g., `client.actionSe
 
 ## Models
 
-Models are generated as Java classes with builder patterns. They are located in the `com.zitadel.model` package.
+Models are generated as Java classes with public fields and a no-argument constructor. They are located in the `com.zitadel.model` package.
 
 ```java
 import com.zitadel.model.ActionServiceActivatePublicKeyRequest;

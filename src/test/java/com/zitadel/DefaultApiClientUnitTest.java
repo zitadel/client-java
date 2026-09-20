@@ -658,20 +658,20 @@ class DefaultApiClientUnitTest {
   }
 
   static class MultipartModelPart {
-    @com.fasterxml.jackson.annotation.JsonProperty("isPrimary")
+    @com.fasterxml.jackson.annotation.JsonProperty("isEnabled")
     @javax.annotation.Nullable
-    public Boolean isPrimary;
+    public Boolean isEnabled;
 
-    @com.fasterxml.jackson.annotation.JsonProperty("takenAt")
+    @com.fasterxml.jackson.annotation.JsonProperty("recordedAt")
     @javax.annotation.Nullable
-    public java.time.OffsetDateTime takenAt;
+    public java.time.OffsetDateTime recordedAt;
   }
 
   @Test
   void multipartModelPartUsesWirePropertyNamesAndDateTimeFormat() throws Exception {
     MultipartModelPart metadata = new MultipartModelPart();
-    metadata.isPrimary = true;
-    metadata.takenAt = java.time.OffsetDateTime.parse("2020-01-02T03:04:05.123Z");
+    metadata.isEnabled = true;
+    metadata.recordedAt = java.time.OffsetDateTime.parse("2020-01-02T03:04:05.123Z");
 
     String part = renderMultipartPart("metadata", metadata);
 
@@ -679,18 +679,18 @@ class DefaultApiClientUnitTest {
         part.contains("Content-Type: application/json"),
         "model multipart part must declare Content-Type: application/json, got: " + part);
     assertTrue(
-        part.contains("\"isPrimary\":true"),
-        "model part must use the wire property name isPrimary, got: " + part);
+        part.contains("\"isEnabled\":true"),
+        "model part must use the wire property name isEnabled, got: " + part);
     assertFalse(
-        part.contains("is_primary"),
-        "model part must NOT snake_case the wire name to is_primary, got: " + part);
+        part.contains("is_enabled"),
+        "model part must NOT snake_case the wire name to is_enabled, got: " + part);
     assertTrue(
-        part.contains("\"takenAt\":\"2020-01-02T03:04:05.123Z\""),
-        "model part must use the wire name takenAt with the ISO-8601 date-time string, got: "
+        part.contains("\"recordedAt\":\"2020-01-02T03:04:05.123Z\""),
+        "model part must use the wire name recordedAt with the ISO-8601 date-time string, got: "
             + part);
     assertFalse(
-        part.contains("taken_at"),
-        "model part must NOT snake_case the wire name to taken_at, got: " + part);
+        part.contains("recorded_at"),
+        "model part must NOT snake_case the wire name to recorded_at, got: " + part);
   }
 
   @Test
