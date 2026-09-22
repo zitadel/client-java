@@ -10,6 +10,8 @@
 package com.zitadel;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.zitadel.errors.NetworkException;
+import com.zitadel.errors.NetworkTimeoutException;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,6 +25,7 @@ import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.net.http.HttpTimeoutException;
 import java.nio.charset.Charset;
 import java.nio.charset.IllegalCharsetNameException;
 import java.nio.charset.StandardCharsets;
@@ -101,7 +104,7 @@ public final class DefaultApiClient implements ApiClient {
    * Intentional all-trusting trust manager. Installed ONLY when the caller
    * explicitly opts out of TLS verification via TransportOptions#verifySsl
    * (false) — the documented curl -k equivalent used against local/dev
-   * Zitadel stacks with self-signed certificates. SpotBugs/find-sec-bugs
+   * servers with self-signed certificates. SpotBugs/find-sec-bugs
    * correctly flags this as a MITM risk in general, but here it is a
    * deliberate, opt-in feature mirrored across all 12 SDKs, so the warning
    * is suppressed on the empty trust-check methods rather than removed.
@@ -139,16 +142,7 @@ public final class DefaultApiClient implements ApiClient {
   public DefaultApiClient() {
     this.transportOptions = TransportOptions.builder().build();
     this.proxyAuthHeader = null;
-    try {
-      /* Default options never set caCertPath, so buildHttpClient's
-       * CA-certificate validation path is unreachable here; the
-       * declared ApiException can never actually be thrown. Catch and
-       * rewrap defensively so this convenience constructor stays
-       * non-throwing and callers like BaseApi() need no throws clause. */
-      this.httpClient = buildHttpClient(this.transportOptions);
-    } catch (ApiException e) {
-      throw new IllegalStateException("default transport configuration unexpectedly failed", e);
-    }
+    this.httpClient = buildHttpClient(this.transportOptions);
   }
 
   /**
@@ -160,12 +154,11 @@ public final class DefaultApiClient implements ApiClient {
    * <p>When {@link TransportOptions#getCaCertPath()} is set, the certificate is read, parsed, and
    * installed eagerly here so a missing, unreadable, or malformed CA certificate fails fast at
    * construction rather than silently falling back to the system trust store — TLS pinning that
-   * silently no-ops is a security hole. The failure surfaces as the SDK's own typed {@link
-   * ApiException} (status code 0, original cause preserved) so a caller wrapping construction in
-   * {@code catch (ApiException)} cannot miss it.
+   * silently no-ops is a security hole. A bad CA certificate is a configuration mistake, not an API
+   * failure, so it surfaces as {@link IllegalArgumentException} with the original cause preserved.
    *
    * @param transportOptions transport configuration to apply
-   * @throws ApiException if a configured CA certificate cannot be read or parsed
+   * @throws IllegalArgumentException if a configured CA certificate cannot be read or parsed
    */
   public DefaultApiClient(TransportOptions transportOptions) {
     this.transportOptions = transportOptions;
@@ -180,14 +173,14 @@ public final class DefaultApiClient implements ApiClient {
    * redirect handling, and connect timeout.
    *
    * <p>A configured CA certificate is read, parsed, and installed eagerly so a missing, unreadable,
-   * or malformed certificate fails fast as a typed {@link ApiException} rather than silently
+   * or malformed certificate fails fast as an {@link IllegalArgumentException} rather than silently
    * disabling TLS pinning. Other (non-CA) SSL/TLS setup errors remain wrapped in {@link
    * RuntimeException} because they reflect a JVM/algorithm misconfiguration rather than caller
    * input.
    *
    * @param transportOptions transport configuration to apply
    * @return the configured {@link HttpClient}
-   * @throws ApiException if a configured CA certificate cannot be read or parsed
+   * @throws IllegalArgumentException if a configured CA certificate cannot be read or parsed
    */
   private static HttpClient buildHttpClient(TransportOptions transportOptions) {
     try {
@@ -249,14 +242,12 @@ public final class DefaultApiClient implements ApiClient {
    *
    * <p>A caller that sets {@code caCertPath} is explicitly opting into certificate pinning; if the
    * file is missing, unreadable, or not a valid X.509 certificate we must fail loudly rather than
-   * silently fall back to the system trust store. The failure is surfaced as the SDK's own typed
-   * {@link ApiException} (status code 0, original cause preserved) so a caller wrapping
-   * construction in {@code catch (ApiException)} cannot miss this security-relevant
-   * misconfiguration — matching the already-typed SDKs.
+   * silently fall back to the system trust store. The failure is a configuration mistake, so it
+   * surfaces as {@link IllegalArgumentException} with the original cause preserved.
    *
    * @param caCertPath path to the PEM/DER X.509 CA certificate
    * @return an {@link SSLContext} trusting only the given CA certificate
-   * @throws ApiException if the certificate cannot be read or parsed
+   * @throws IllegalArgumentException if the certificate cannot be read or parsed
    */
   private static SSLContext buildPinnedSslContext(String caCertPath) {
     try {
@@ -275,7 +266,7 @@ public final class DefaultApiClient implements ApiClient {
       sslContext.init(null, tmf.getTrustManagers(), null);
       return sslContext;
     } catch (IOException | GeneralSecurityException e) {
-      throw new ApiException(
+      throw new IllegalArgumentException(
           "failed to read or parse CA certificate from " + caCertPath + ": " + e, e);
     }
   }
@@ -603,7 +594,14 @@ public final class DefaultApiClient implements ApiClient {
       String contentEncoding = response.headers().firstValue("content-encoding").orElse("identity");
       String contentType = response.headers().firstValue("content-type").orElse("");
       byte[] bodyBytes = response.body() != null ? response.body() : new byte[0];
-      byte[] decompressedBytes = decompressBody(bodyBytes, contentEncoding);
+      byte[] decompressedBytes;
+      try {
+        decompressedBytes = decompressBody(bodyBytes, contentEncoding);
+      } catch (IOException e) {
+        /* A corrupt Content-Encoding body is not a transport failure:
+         * a response did arrive, so keep it out of NetworkException. */
+        throw new ApiException("failed to decode " + contentEncoding + " response body: " + e, e);
+      }
       Charset responseCharset = parseCharset(contentType);
       String responseBody =
           isTextContentType(contentType)
@@ -611,8 +609,13 @@ public final class DefaultApiClient implements ApiClient {
               : Base64.getEncoder().encodeToString(decompressedBytes);
 
       return new ApiHttpResponse(response.statusCode(), responseBody, responseHeaders);
+    } catch (HttpTimeoutException e) {
+      /* Covers HttpConnectTimeoutException too: the request timed out
+       * before a response arrived. */
+      throw new NetworkTimeoutException(e.toString(), e);
     } catch (IOException e) {
-      throw new ApiException(e.toString(), e);
+      /* Connection refused, DNS, TLS handshake, reset: no HTTP response. */
+      throw new NetworkException(e.toString(), e);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
       throw new ApiException(e.toString(), e);

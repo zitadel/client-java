@@ -363,8 +363,8 @@ public final class ObjectSerializer {
         .enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING)
         .addModule(new JavaTimeModule())
         /* Registered after JavaTimeModule so it overrides that module's
-        Duration handling: Zitadel (and protobuf-JSON generally)
-        requires google.protobuf.Duration's decimal-seconds string
+        Duration handling: protobuf-JSON (any google.protobuf.Duration
+        field) requires google.protobuf.Duration's decimal-seconds string
         form ("3600s"), not JavaTimeModule's numeric/ISO-8601 form. */
         .addModule(durationModule())
         .defaultDateFormat(new StdDateFormat().withColonInTimeZone(true))

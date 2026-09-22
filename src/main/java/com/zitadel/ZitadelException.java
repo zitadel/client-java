@@ -20,6 +20,7 @@ package com.zitadel;
  * catch SDK exceptions. The chain for a typed HTTP error is, for example: {@code
  * UnauthorizedException → ClientException → ApiException → ZitadelException → RuntimeException}.
  */
+@SuppressWarnings("checkstyle:AbbreviationAsWordInName")
 public class ZitadelException extends RuntimeException {
   @java.io.Serial private static final long serialVersionUID = 1L;
 

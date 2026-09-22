@@ -161,8 +161,8 @@ public final class Zitadel {
    * Creates a new client with the given authenticator and default transport settings.
    *
    * @param authenticator provides host URL and auth credentials
-   * @throws ApiException if the transport cannot be configured (never thrown for default transport,
-   *     which configures no custom CA certificate)
+   * @throws IllegalArgumentException if the transport cannot be configured (never thrown for
+   *     default transport, which configures no custom CA certificate)
    */
   public Zitadel(Authenticator authenticator) {
     this(authenticator, TransportOptions.builder().build());
@@ -177,7 +177,7 @@ public final class Zitadel {
    *
    * @param authenticator provides host URL and auth credentials
    * @param transportOptions HTTP transport configuration (proxy, TLS, timeouts, etc.)
-   * @throws ApiException if a configured custom CA certificate cannot be read or parsed
+   * @throws IllegalArgumentException if a configured custom CA certificate cannot be read or parsed
    */
   public Zitadel(Authenticator authenticator, TransportOptions transportOptions) {
     ApiClient apiClient = new DefaultApiClient(transportOptions);
@@ -228,7 +228,7 @@ public final class Zitadel {
    * @param accessToken Bearer token
    * @param transportOptions optional HTTP transport configuration (proxy, TLS, timeouts, etc.)
    * @return configured client instance
-   * @throws ApiException if a configured custom CA certificate cannot be read or parsed
+   * @throws IllegalArgumentException if a configured custom CA certificate cannot be read or parsed
    */
   public static Zitadel withToken(
       String host,
@@ -245,7 +245,7 @@ public final class Zitadel {
    * @param host API base URL
    * @param accessToken Bearer token
    * @return configured client instance
-   * @throws ApiException if a configured custom CA certificate cannot be read or parsed
+   * @throws IllegalArgumentException if a configured custom CA certificate cannot be read or parsed
    */
   public static Zitadel withToken(String host, String accessToken) {
     return withToken(host, accessToken, null);
@@ -260,7 +260,7 @@ public final class Zitadel {
    *
    * @param authenticator provides host URL and auth credentials
    * @return configured client instance
-   * @throws ApiException if a configured custom CA certificate cannot be read or parsed
+   * @throws IllegalArgumentException if a configured custom CA certificate cannot be read or parsed
    */
   public static Zitadel withAuthenticator(Authenticator authenticator) {
     return new Zitadel(authenticator);
@@ -272,7 +272,7 @@ public final class Zitadel {
    * @param authenticator provides host URL and auth credentials
    * @param transportOptions HTTP transport configuration (proxy, TLS, timeouts, etc.)
    * @return configured client instance
-   * @throws ApiException if a configured custom CA certificate cannot be read or parsed
+   * @throws IllegalArgumentException if a configured custom CA certificate cannot be read or parsed
    */
   public static Zitadel withAuthenticator(
       Authenticator authenticator, TransportOptions transportOptions) {

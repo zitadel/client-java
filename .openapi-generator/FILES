@@ -55,6 +55,8 @@ src/main/java/com/zitadel/errors/ClientException.java
 src/main/java/com/zitadel/errors/ConflictException.java
 src/main/java/com/zitadel/errors/ForbiddenException.java
 src/main/java/com/zitadel/errors/InternalServerErrorException.java
+src/main/java/com/zitadel/errors/NetworkException.java
+src/main/java/com/zitadel/errors/NetworkTimeoutException.java
 src/main/java/com/zitadel/errors/NotFoundException.java
 src/main/java/com/zitadel/errors/ServerException.java
 src/main/java/com/zitadel/errors/UnauthorizedException.java

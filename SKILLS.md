@@ -81,6 +81,8 @@ All API errors derive from `ApiException`. The error hierarchy is:
     - `UnprocessableEntityException` (422)
   - `ServerException` (5xx)
     - `InternalServerErrorException` (500)
+  - `NetworkException` (no HTTP response, status 0)
+    - `NetworkTimeoutException` (the request timed out, status 0)
 
 ```java
 import com.zitadel.errors.*;

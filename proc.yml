@@ -10,3 +10,4 @@ generateUnitTests: true
 repoName: git@github.com:zitadel/client-java.git
 generatorName: java-plus
 licenseId: Apache-2.0
+errorPrefix: Zitadel

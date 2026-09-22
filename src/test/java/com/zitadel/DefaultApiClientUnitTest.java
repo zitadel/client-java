@@ -521,15 +521,19 @@ class DefaultApiClientUnitTest {
   }
 
   @Test
-  void transportFailureWrapsApiExceptionPreservingCause() {
+  void transportFailureRaisesNetworkExceptionPreservingCause() {
     // A send-phase transport failure (connection refused on a closed port)
-    // must surface as an ApiException whose getCause() is the underlying
-    // IOException, not a cause-less stringified error.
+    // must surface as a NetworkException (an ApiException with status 0)
+    // whose getCause() is the underlying IOException.
     DefaultApiClient client = new DefaultApiClient();
-    ApiException ex =
+    com.zitadel.errors.NetworkException ex =
         assertThrows(
-            ApiException.class,
+            com.zitadel.errors.NetworkException.class,
             () -> client.sendRequest("GET", "http://127.0.0.1:1/never", Map.of(), null));
+    assertEquals(0, ex.getStatusCode());
+    assertFalse(
+        ex instanceof com.zitadel.errors.NetworkTimeoutException,
+        "connection refused is not a timeout");
     assertNotNull(ex.getCause(), "transport exception must be preserved as the cause");
     assertTrue(
         ex.getCause() instanceof java.io.IOException,
@@ -555,39 +559,35 @@ class DefaultApiClientUnitTest {
     // cannot be read or parsed must fail fast at construction rather than
     // silently falling back to the system trust store (security theater).
     //
-    // T-CA-ERRTYPE: the failure must surface as the SDK's own typed
-    // ApiException (NOT a raw RuntimeException/IOException) so a caller
-    // wrapping construction in `catch (ApiException)` cannot miss this
-    // security-relevant TLS-pinning misconfiguration. ApiException is a
-    // checked Exception (not a RuntimeException), so asserting ApiException
-    // here also pins down that we no longer throw the old RuntimeException.
+    // A bad CA certificate is a configuration mistake, not an API failure, so
+    // it surfaces as IllegalArgumentException with the cause preserved.
     TransportOptions transport =
         TransportOptions.builder().caCertPath("/nonexistent/ca.pem").build();
-    ApiException ex = assertThrows(ApiException.class, () -> new DefaultApiClient(transport));
+    IllegalArgumentException ex =
+        assertThrows(IllegalArgumentException.class, () -> new DefaultApiClient(transport));
     assertNotNull(ex.getCause(), "original read/parse failure must be preserved as the cause");
     assertTrue(
-        ex.getMessage().toLowerCase(java.util.Locale.ROOT).contains("ca certificate"),
+        String.valueOf(ex.getMessage())
+            .toLowerCase(java.util.Locale.ROOT)
+            .contains("ca certificate"),
         "message should name the CA certificate failure, was: " + ex.getMessage());
   }
 
   @Test
-  void garbagePemCaCertPathThrowsApiExceptionNotRuntimeException() throws Exception {
-    // T-CA-ERRTYPE: a CA cert file that exists but contains invalid/garbage
-    // PEM content must also fail as a typed ApiException, never a raw
-    // RuntimeException or a leaked IOException/CertificateException.
+  void garbagePemCaCertPathThrowsIllegalArgumentException() throws Exception {
+    // A CA cert file that exists but contains invalid/garbage PEM content
+    // must also fail as IllegalArgumentException, never a leaked
+    // IOException/CertificateException.
     java.io.File bogus = java.io.File.createTempFile("bogus-ca", ".pem");
     bogus.deleteOnExit();
     java.nio.file.Files.write(
         bogus.toPath(), "not a real certificate".getBytes(StandardCharsets.UTF_8));
     TransportOptions transport =
         TransportOptions.builder().caCertPath(bogus.getAbsolutePath()).build();
-    // assertThrows(ApiException.class, ...) succeeding is itself the proof
-    // that a typed ApiException (a checked Exception, NOT the old
-    // RuntimeException) is thrown: ApiException does not extend
-    // RuntimeException, so the compiler statically rules the old type out.
-    ApiException ex = assertThrows(ApiException.class, () -> new DefaultApiClient(transport));
+    IllegalArgumentException ex =
+        assertThrows(IllegalArgumentException.class, () -> new DefaultApiClient(transport));
     assertTrue(
-        ex.getMessage().contains(bogus.getAbsolutePath()),
+        String.valueOf(ex.getMessage()).contains(bogus.getAbsolutePath()),
         "message should name the offending path, was: " + ex.getMessage());
   }
 
