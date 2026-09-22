@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zitadel.AbstractIntegrationTest;
 import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
-import com.zitadel.ZitadelException;
+import com.zitadel.errors.OAuth2ServerException;
 import com.zitadel.model.SettingsServiceGetGeneralSettingsResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -19,7 +19,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
 /**
  * SettingsService Integration Tests using Client Credentials
@@ -104,13 +104,13 @@ class UseClientCredentialsSpec extends AbstractIntegrationTest {
     }
 
     /**
-     * Raises ApiException when using invalid client credentials.
+     * Raises OAuth2ServerException when using invalid client credentials.
      */
     @Test
     void testRaisesApiExceptionWithInvalidAuth() {
         Zitadel invalid = Zitadel.withAuthenticator(ClientCredentialsAuthenticator.builder(getBaseUrl(), "invalid", "invalid").build());
 
-        assertThrows(ZitadelException.class, () -> invalid.settingsService.getGeneralSettings(new Object())
+        assertThrowsExactly(OAuth2ServerException.class, () -> invalid.settingsService.getGeneralSettings(new Object())
         );
     }
 }

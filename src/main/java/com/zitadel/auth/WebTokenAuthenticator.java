@@ -1,6 +1,6 @@
 package com.zitadel.auth;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSAlgorithm;
@@ -9,22 +9,21 @@ import com.nimbusds.jose.JWSSigner;
 import com.nimbusds.jose.crypto.RSASSASigner;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
-import com.zitadel.ZitadelException;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
+import java.security.GeneralSecurityException;
 import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
-import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
+import java.util.Set;
 import javax.annotation.Nullable;
 import org.bouncycastle.asn1.pkcs.PKCSObjectIdentifiers;
 import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
@@ -44,6 +43,8 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
 
   private static final String GRANT_TYPE = "urn:ietf:params:oauth:grant-type:jwt-bearer";
 
+  private static final Set<String> ALGORITHMS = Set.of("RS256", "RS384", "RS512");
+
   private final String jwtIssuer;
   private final String jwtSubject;
   private final String jwtAudience;
@@ -52,6 +53,8 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
   private final JWSHeader jwsHeader;
 
   /**
+   * Constructs a WebTokenAuthenticator.
+   *
    * @param openId the OpenID discovery helper for the target host.
    * @param jwtIssuer the issuer claim for the JWT.
    * @param jwtSubject the subject claim for the JWT.
@@ -80,107 +83,93 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
   }
 
   /**
-   * Creates a {@code WebTokenAuthenticator} from a JSON service-account file.
+   * Creates a WebTokenAuthenticator from a Zitadel service-account key file.
    *
-   * <p>The JSON must contain {@code userId}, {@code keyId}, and a PEM-encoded {@code key}.
+   * <p>Expected JSON format:
+   *
+   * <pre>
+   * {
+   *   "type": "serviceaccount",
+   *   "keyId": "&lt;key-id&gt;",
+   *   "key": "&lt;private-key&gt;",
+   *   "userId": "&lt;user-id&gt;"
+   * }
+   * </pre>
    *
    * @param host the base URL for the API endpoints.
-   * @param jsonPath the file path to the JSON configuration file.
-   * @return a new instance of {@code WebTokenAuthenticator}.
+   * @param jsonPath the path to the key file.
+   * @return a new WebTokenAuthenticator instance.
+   * @throws IllegalArgumentException if the file cannot be read, is not a JSON object, lacks the
+   *     string fields {@code userId}, {@code keyId} and {@code key}, or holds an invalid key.
    */
-  @SuppressWarnings("unused")
-  @SuppressFBWarnings("PATH_TRAVERSAL_IN")
   public static WebTokenAuthenticator fromJson(String host, String jsonPath) {
-    try (FileInputStream fis = new FileInputStream(jsonPath)) {
-      return fromJson(host, fis);
+    JsonNode config;
+    try (InputStream stream = new FileInputStream(jsonPath)) {
+      config = readJson(stream);
     } catch (IOException e) {
-      throw new ZitadelException(
-          "Unable to read JSON file at " + jsonPath + ": " + e.getMessage(), e);
+      throw new IllegalArgumentException("Unable to read the key file at " + jsonPath, e);
+    }
+    if (config == null || !config.isObject()) {
+      throw new IllegalArgumentException("The key file at " + jsonPath + " is not a JSON object");
+    }
+    JsonNode userId = config.get("userId");
+    JsonNode keyId = config.get("keyId");
+    JsonNode key = config.get("key");
+    if (userId == null
+        || !userId.isTextual()
+        || keyId == null
+        || !keyId.isTextual()
+        || key == null
+        || !key.isTextual()) {
+      throw new IllegalArgumentException(
+          "The key file at " + jsonPath + " must contain the string fields userId, keyId and key");
+    }
+    return builder(host, userId.asText(), parsePrivateKey(key.asText()))
+        .keyId(keyId.asText())
+        .build();
+  }
+
+  @Nullable
+  private static JsonNode readJson(InputStream stream) throws IOException {
+    try {
+      return new ObjectMapper().readTree(stream);
+    } catch (com.fasterxml.jackson.core.JsonProcessingException e) {
+      return null;
     }
   }
 
-  /**
-   * Creates a {@code WebTokenAuthenticator} from a JSON service-account stream.
-   *
-   * @param host the base URL for the API endpoints.
-   * @param inputStream the input stream containing the JSON configuration.
-   * @return a new instance of {@code WebTokenAuthenticator}.
-   */
-  public static WebTokenAuthenticator fromJson(String host, InputStream inputStream) {
-    ObjectMapper mapper = new ObjectMapper();
-    Map<String, Object> config;
-    try {
-      config = mapper.readValue(inputStream, new TypeReference<>() {});
-    } catch (IOException e) {
-      throw new ZitadelException(
-          "Unable to read or parse JSON from input stream: " + e.getMessage(), e);
-    }
-
-    if (config == null || config.isEmpty()) {
-      throw new ZitadelException("Expected a JSON object in input stream");
-    }
-
-    String userId = (String) config.get("userId");
-    String keyString = (String) config.get("key");
-    String keyId = (String) config.get("keyId");
-    if (userId == null || keyString == null || keyId == null) {
-      throw new ZitadelException("Missing required keys 'userId', 'keyId' or 'key' in JSON.");
-    }
-
-    PrivateKey privateKey;
-    try {
-      privateKey = getPrivateKeyFromString(keyString);
-    } catch (IOException | InvalidKeySpecException | NoSuchAlgorithmException e) {
-      throw new ZitadelException(
-          "Unable to convert key string to PrivateKey: " + e.getMessage(), e);
-    }
-
-    return WebTokenAuthenticator.builder(host, userId, privateKey).keyId(keyId).build();
-  }
-
-  /**
-   * Converts a PEM-formatted private key string into a {@code PrivateKey} object.
-   *
-   * @param key the PEM-formatted private key string.
-   * @return the corresponding {@code PrivateKey} instance.
-   * @throws IOException if the key cannot be parsed.
-   */
-  private static PrivateKey getPrivateKeyFromString(String key)
-      throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
-    try (PemReader pemReader = new PemReader(new StringReader(key))) {
+  private static PrivateKey parsePrivateKey(String pem) {
+    try (PemReader pemReader = new PemReader(new StringReader(pem))) {
       PemObject pemObject = pemReader.readPemObject();
-
       if (pemObject == null) {
-        throw new IOException(
-            "Failed to parse PEM object from key string. The input may be malformed or empty.");
-      } else {
-        byte[] keyBytes = pemObject.getContent();
-
-        if (pemObject.getType().equals("RSA PRIVATE KEY")) {
-          RSAPrivateKey rsaPrivateKey = RSAPrivateKey.getInstance(keyBytes);
-          PrivateKeyInfo privateKeyInfo =
-              new PrivateKeyInfo(
-                  new AlgorithmIdentifier(PKCSObjectIdentifiers.rsaEncryption), rsaPrivateKey);
-          keyBytes = privateKeyInfo.getEncoded();
-        }
-
-        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(keyBytes);
-        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-        return keyFactory.generatePrivate(keySpec);
+        throw new IllegalArgumentException("Private key is not a valid RSA private key.");
       }
+      byte[] keyBytes = pemObject.getContent();
+      if ("RSA PRIVATE KEY".equals(pemObject.getType())) {
+        keyBytes =
+            new PrivateKeyInfo(
+                    new AlgorithmIdentifier(PKCSObjectIdentifiers.rsaEncryption),
+                    RSAPrivateKey.getInstance(keyBytes))
+                .getEncoded();
+      }
+      return KeyFactory.getInstance("RSA").generatePrivate(new PKCS8EncodedKeySpec(keyBytes));
+    } catch (IOException | GeneralSecurityException | IllegalStateException e) {
+      throw new IllegalArgumentException("Private key is not a valid RSA private key.", e);
     }
   }
 
   /**
    * Returns a new builder instance for WebTokenAuthenticator.
    *
-   * @param host the base URL for API endpoints.
-   * @param userId used as both the issuer and subject in the JWT.
-   * @param privateKey the private key used to sign the JWT.
-   * @return a new {@link Builder} instance.
+   * @param host the base URL for the API endpoints.
+   * @param userId the user ID, used as both the issuer and the subject of the assertion.
+   * @param privateKey the RSA private key used to sign the assertion.
+   * @return a new Builder instance.
+   * @throws IllegalArgumentException if the host is not a valid http or https URL, the user ID is
+   *     empty, or the key is not an RSA private key.
    */
   public static Builder builder(String host, String userId, PrivateKey privateKey) {
-    return new Builder(host, userId, userId, host, privateKey);
+    return new Builder(host, userId, privateKey);
   }
 
   @Override
@@ -194,99 +183,105 @@ public class WebTokenAuthenticator extends OAuthAuthenticator {
   }
 
   private String buildAssertion() {
+    Instant now = Instant.now();
+    SignedJWT signedJwt =
+        new SignedJWT(
+            jwsHeader,
+            new JWTClaimsSet.Builder()
+                .issuer(jwtIssuer)
+                .subject(jwtSubject)
+                .audience(jwtAudience)
+                .issueTime(Date.from(now))
+                .expirationTime(Date.from(now.plus(tokenLifetime)))
+                .build());
     try {
-      SignedJWT signedJWT =
-          new SignedJWT(
-              jwsHeader,
-              new JWTClaimsSet.Builder()
-                  .issuer(jwtIssuer)
-                  .subject(jwtSubject)
-                  .audience(jwtAudience)
-                  .issueTime(Date.from(Instant.now()))
-                  .expirationTime(Date.from(Instant.now().plus(tokenLifetime)))
-                  .build());
-      signedJWT.sign(keySigner);
-      return signedJWT.serialize();
+      signedJwt.sign(keySigner);
     } catch (JOSEException e) {
-      throw new ZitadelException("Failed to generate JWT assertion: " + e.getMessage(), e);
+      throw new IllegalStateException("Unable to sign the JWT assertion", e);
     }
+    return signedJwt.serialize();
   }
 
-  /** Builder for {@link WebTokenAuthenticator}. */
+  /** Builder for WebTokenAuthenticator. */
+  @SuppressFBWarnings("CT_CONSTRUCTOR_THROW")
   public static class Builder extends OAuthAuthenticatorBuilder<Builder> {
 
-    private final String jwtIssuer;
-    private final String jwtSubject;
-    private final String jwtAudience;
+    private final String userId;
     private final RSASSASigner keySigner;
     private Duration tokenLifetime = Duration.ofHours(1);
     @Nullable private String keyId;
     private JWSAlgorithm jwtAlgorithm = JWSAlgorithm.RS256;
 
     /**
+     * Initialises the builder.
+     *
      * @param host the base URL for the API endpoints.
-     * @param jwtIssuer the issuer claim for the JWT.
-     * @param jwtSubject the subject claim for the JWT.
-     * @param jwtAudience the audience claim for the JWT.
-     * @param privateKey the private key used to sign the JWT.
+     * @param userId the user ID, used as both the issuer and the subject of the assertion.
+     * @param privateKey the RSA private key used to sign the assertion.
      */
-    Builder(
-        String host,
-        String jwtIssuer,
-        String jwtSubject,
-        String jwtAudience,
-        PrivateKey privateKey) {
+    Builder(String host, String userId, PrivateKey privateKey) {
       super(host);
-      this.jwtIssuer = jwtIssuer;
-      this.jwtSubject = jwtSubject;
-      this.jwtAudience = jwtAudience;
+      this.userId = requireText(userId, "User ID");
+      if (privateKey == null || !"RSA".equalsIgnoreCase(privateKey.getAlgorithm())) {
+        throw new IllegalArgumentException("Private key is not a valid RSA private key.");
+      }
       this.keySigner = new RSASSASigner(privateKey);
     }
 
     /**
-     * Sets the assertion lifetime.
+     * Sets the lifetime of the JWT assertion.
      *
-     * @param tokenLifetime the assertion lifetime.
+     * @param seconds the lifetime in seconds; must be positive.
      * @return this builder.
+     * @throws IllegalArgumentException if the lifetime is not positive.
      */
-    public Builder tokenLifetime(Duration tokenLifetime) {
-      this.tokenLifetime = tokenLifetime;
+    public Builder tokenLifetimeSeconds(long seconds) {
+      if (seconds <= 0) {
+        throw new IllegalArgumentException("Token lifetime must be a positive number of seconds.");
+      }
+      this.tokenLifetime = Duration.ofSeconds(seconds);
       return this;
     }
 
     /**
-     * Sets the JWS algorithm used to sign the assertion.
+     * Sets the JWT signing algorithm.
      *
-     * @param jwtAlgorithm the JWS algorithm name (for example {@code RS256}).
+     * @param jwtAlgorithm one of {@code RS256}, {@code RS384} or {@code RS512}.
      * @return this builder.
+     * @throws IllegalArgumentException if the algorithm is not supported.
      */
     public Builder jwtAlgorithm(String jwtAlgorithm) {
+      if (jwtAlgorithm == null || !ALGORITHMS.contains(jwtAlgorithm)) {
+        throw new IllegalArgumentException(
+            "Unsupported JWT algorithm '" + jwtAlgorithm + "'; use RS256, RS384 or RS512.");
+      }
       this.jwtAlgorithm = JWSAlgorithm.parse(jwtAlgorithm);
       return this;
     }
 
     /**
-     * Sets the key id placed in the JWS header.
+     * Sets the key ID sent as the {@code kid} header of the assertion.
      *
-     * @param keyId the key id placed in the JWS header.
+     * @param keyId the key ID.
      * @return this builder.
+     * @throws IllegalArgumentException if the key ID is empty.
      */
     public Builder keyId(String keyId) {
-      this.keyId = keyId;
+      this.keyId = requireText(keyId, "Key ID");
       return this;
     }
 
     /**
      * Builds the WebTokenAuthenticator.
      *
-     * @return a new {@link WebTokenAuthenticator} instance.
+     * @return a new WebTokenAuthenticator instance.
      */
     public WebTokenAuthenticator build() {
       return new WebTokenAuthenticator(
           openId,
-          jwtIssuer,
-          jwtSubject,
-          jwtAudience,
+          userId,
+          userId,
+          openId.getHostEndpoint(),
           keySigner,
           tokenLifetime,
           new JWSHeader.Builder(jwtAlgorithm).keyID(keyId).build(),

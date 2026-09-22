@@ -3,11 +3,13 @@ package com.zitadel.auth;
 import com.zitadel.AbstractIntegrationTest;
 import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
-import com.zitadel.ZitadelException;
+import com.zitadel.errors.OAuth2ServerException;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
 /**
  * SettingsService Integration Tests using Private Key Assertion
@@ -32,12 +34,15 @@ class UsePrivateKeySpec extends AbstractIntegrationTest {
     }
 
     /**
-     * Raises ApiException when using an invalid private key.
+     * Raises OAuth2ServerException when signing with a key the instance does not know.
+     *
+     * @throws NoSuchAlgorithmException if RSA key generation is unavailable
      */
     @Test
-    void testRaisesApiExceptionWithInvalidAuth() {
-        Zitadel invalid = Zitadel.withAuthenticator(WebTokenAuthenticator.fromJson("https://zitadel.cloud", getJwtKeyPath()));
+    void testRaisesApiExceptionWithInvalidAuth() throws NoSuchAlgorithmException {
+        Zitadel invalid = Zitadel.withAuthenticator(WebTokenAuthenticator.builder(getBaseUrl(), "invalid",
+            KeyPairGenerator.getInstance("RSA").generateKeyPair().getPrivate()).keyId("invalid").build());
 
-        assertThrows(ZitadelException.class, () -> invalid.settingsService.getGeneralSettings(new Object()));
+        assertThrowsExactly(OAuth2ServerException.class, () -> invalid.settingsService.getGeneralSettings(new Object()));
     }
 }

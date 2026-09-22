@@ -1,6 +1,7 @@
 package com.zitadel.auth;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
@@ -8,8 +9,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Verifies that {@link ClientCredentialsAuthenticator} redacts the OAuth2 client secret in its
- * {@code toString()} representation so it cannot leak into logs, matching the Python, PHP and Ruby
- * SDKs.
+ * {@code toString()} representation so it cannot leak into logs, and rejects empty credentials.
  */
 class ClientCredentialsAuthenticatorTest {
 
@@ -28,5 +28,17 @@ class ClientCredentialsAuthenticatorTest {
     assertFalse(rendered.contains(SECRET), "toString must not contain the client secret");
     assertTrue(rendered.contains("***"), "toString must redact the secret with ***");
     assertTrue(rendered.contains("client-1"), "toString should keep the non-secret client id");
+  }
+
+  /** An empty client identifier or secret is a caller mistake. */
+  @Test
+  @DisplayName("ClientCredentialsAuthenticator rejects empty credentials")
+  void rejectsEmptyCredentials() {
+    assertThrowsExactly(
+        IllegalArgumentException.class,
+        () -> ClientCredentialsAuthenticator.builder("https://example.zitadel.cloud", "", SECRET));
+    assertThrowsExactly(
+        IllegalArgumentException.class,
+        () -> ClientCredentialsAuthenticator.builder("https://example.zitadel.cloud", "id", " "));
   }
 }

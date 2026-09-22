@@ -1,23 +1,22 @@
 package com.zitadel.auth;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zitadel.ApiClient;
-import com.zitadel.ApiException;
 import com.zitadel.ApiHttpResponse;
-import com.zitadel.TransportOptions;
-import com.zitadel.ZitadelException;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import java.io.IOException;
+import com.zitadel.errors.OAuth2ServerException;
+import com.zitadel.errors.OAuth2TokenException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringJoiner;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
 
 /**
@@ -29,16 +28,29 @@ import javax.annotation.Nullable;
  * within the refresh skew of expiring.
  *
  * <p>Token-minting requires an outbound HTTP call, so this class implements {@link
- * HttpAwareAuthenticator}: the shared {@link ApiClient} is injected by the {@code Client} / {@code
- * Zitadel} constructor and the token POST is sent through it. Sharing the SDK transport means token
- * exchange honours the same proxy, TLS, timeout and redirect configuration as regular API calls.
+ * HttpAwareAuthenticator}: the shared {@link ApiClient} is injected by the {@code Zitadel}
+ * constructor and both OpenID discovery and the token POST are sent through it. A token request
+ * fails with:
+ *
+ * <ul>
+ *   <li>{@link IllegalStateException} when no {@link ApiClient} has been injected;
+ *   <li>{@link com.zitadel.errors.NetworkException} or {@link
+ *       com.zitadel.errors.NetworkTimeoutException} when no HTTP response arrived;
+ *   <li>{@link OAuth2ServerException} when the token endpoint answered with a non-2xx status;
+ *   <li>{@link OAuth2TokenException} when it answered 2xx without a usable access token.
+ * </ul>
  */
-@SuppressFBWarnings("URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD")
+@SuppressWarnings("checkstyle:AbbreviationAsWordInName")
 public abstract class OAuthAuthenticator extends BaseAuthenticator
     implements HttpAwareAuthenticator {
 
   /** Seconds before expiry at which a cached token is treated as stale. */
   private static final long REFRESH_SKEW_SECONDS = 300;
+
+  /** The default scopes requested when none are configured. */
+  private static final String DEFAULT_SCOPE = "openid urn:zitadel:iam:org:project:id:zitadel:aud";
+
+  private static final Pattern WHITESPACE = Pattern.compile("\\s");
 
   /** The space-delimited scope string for the token request. */
   protected final String scope;
@@ -47,8 +59,9 @@ public abstract class OAuthAuthenticator extends BaseAuthenticator
 
   @Nullable private volatile ApiClient apiClient;
 
-  /** The cached OAuth token. */
-  @Nullable protected volatile Token token;
+  @Nullable private volatile String accessToken;
+
+  @Nullable private volatile Instant expiresAt;
 
   /**
    * Constructs an OAuthAuthenticator.
@@ -59,7 +72,6 @@ public abstract class OAuthAuthenticator extends BaseAuthenticator
   protected OAuthAuthenticator(OpenId openId, String scope) {
     this.openId = openId;
     this.scope = scope;
-    this.token = null;
   }
 
   @Override
@@ -69,7 +81,7 @@ public abstract class OAuthAuthenticator extends BaseAuthenticator
 
   @Override
   public String getHost() {
-    return openId.getHostEndpoint().toString();
+    return openId.getHostEndpoint();
   }
 
   /**
@@ -77,28 +89,27 @@ public abstract class OAuthAuthenticator extends BaseAuthenticator
    * refresh skew of expiring.
    *
    * @return a valid access token.
-   * @throws ZitadelException if the token cannot be obtained.
    */
-  public String getAuthToken() throws ZitadelException {
-    Token current = token;
-    if (current == null || current.isExpired()) {
+  public String getAuthToken() {
+    String current = accessToken;
+    if (current == null || isStale()) {
       synchronized (this) {
-        current = token;
-        if (current == null || current.isExpired()) {
+        current = accessToken;
+        if (current == null || isStale()) {
           current = refreshToken();
         }
       }
     }
-    if (current == null) {
-      throw new IllegalStateException("Token could not be refreshed successfully.");
-    }
-    return current.accessToken;
+    return current;
+  }
+
+  private boolean isStale() {
+    Instant expiry = expiresAt;
+    return expiry != null && !Instant.now().isBefore(expiry.minusSeconds(REFRESH_SKEW_SECONDS));
   }
 
   /**
-   * Retrieves the authentication headers.
-   *
-   * <p>If no token is available or the current token is expired, refreshes the token.
+   * Retrieves the authentication headers, minting a token first when needed.
    *
    * @return a map containing the {@code Authorization} header.
    */
@@ -110,20 +121,14 @@ public abstract class OAuthAuthenticator extends BaseAuthenticator
   /**
    * Exchanges the configured grant for a fresh access token and caches it.
    *
-   * <p>POSTs an {@code application/x-www-form-urlencoded} body to the token endpoint through the
-   * injected {@link ApiClient}. Subclasses contribute the grant_type, the grant-specific parameters
-   * (scope, assertion, ...) and any grant-specific request headers (e.g. HTTP Basic client
-   * authentication).
-   *
-   * @return the freshly minted token.
-   * @throws ZitadelException if the client is not yet injected or the exchange fails.
+   * @return the freshly minted access token.
    */
-  public Token refreshToken() throws ZitadelException {
+  public synchronized String refreshToken() {
     ApiClient client = apiClient;
     if (client == null) {
-      throw new ZitadelException(
-          "OAuthAuthenticator has no ApiClient; it must be used via the SDK Client/Zitadel"
-              + " entry point, which injects the shared transport before any token exchange.");
+      throw new IllegalStateException(
+          "OAuthAuthenticator has no ApiClient; use it through the Zitadel client, which injects"
+              + " one before the first token request.");
     }
 
     Map<String, String> params = new LinkedHashMap<>();
@@ -134,69 +139,90 @@ public abstract class OAuthAuthenticator extends BaseAuthenticator
     Map<String, String> headers = new LinkedHashMap<>();
     headers.put("Content-Type", "application/x-www-form-urlencoded");
     headers.put("Accept", "application/json");
-    headers.putAll(getTokenRequestHeaders());
 
-    try {
-      ApiHttpResponse response =
-          client.sendRequest(
-              "POST",
-              openId.getTokenEndpoint(client).toString(),
-              headers,
-              encodeForm(params),
-              // never replay a token POST across a redirect — a malicious
-              // 307/308 could otherwise leak the assertion/secret.
-              true);
+    ApiHttpResponse response =
+        client.sendRequest(
+            "POST",
+            openId.getTokenEndpoint(client),
+            headers,
+            encodeForm(params),
+            // never replay a token POST across a redirect: a malicious 307/308 could otherwise
+            // leak the assertion or secret.
+            true);
 
-      if (response.statusCode() < 200 || response.statusCode() >= 300) {
-        throw new ZitadelException(
-            "Token refresh failed: token endpoint returned HTTP " + response.statusCode());
-      }
-
-      JsonNode payload = new ObjectMapper().readTree(response.body());
-      JsonNode accessTokenNode = payload.path("access_token");
-      if (!accessTokenNode.isTextual()) {
-        throw new ZitadelException(
-            "Token refresh failed: token endpoint response did not contain an access_token.");
-      }
-
-      Instant expiresAt;
-      JsonNode expiresIn = payload.path("expires_in");
-      if (expiresIn.isNumber() && expiresIn.asLong() > 0) {
-        expiresAt = Instant.now().plusSeconds(expiresIn.asLong());
-      } else {
-        expiresAt = Instant.MAX;
-      }
-
-      Token fresh = new Token(accessTokenNode.asText(), expiresAt);
-      this.token = fresh;
-      return fresh;
-    } catch (ApiException | IOException e) {
-      throw new ZitadelException("Failed to refresh token: " + e.getMessage(), e);
+    int status = response.statusCode();
+    if (status < 200 || status >= 300) {
+      throw serverError(status, response.body());
     }
+
+    JsonNode payload = parseObject(response.body());
+    if (payload == null) {
+      throw new OAuth2TokenException("Token response is not a JSON object");
+    }
+    JsonNode token = payload.get("access_token");
+    if (token == null || !token.isTextual() || token.asText().isEmpty()) {
+      throw new OAuth2TokenException("Token response missing or empty access_token field");
+    }
+    JsonNode expiresIn = payload.get("expires_in");
+    this.expiresAt =
+        expiresIn != null && expiresIn.isNumber() && expiresIn.asLong() > 0
+            ? Instant.now().plusSeconds(expiresIn.asLong())
+            : null;
+    this.accessToken = token.asText();
+    return token.asText();
+  }
+
+  @Nullable
+  private static JsonNode parseObject(String body) {
+    try {
+      JsonNode node = new ObjectMapper().readTree(body);
+      return node != null && node.isObject() ? node : null;
+    } catch (JsonProcessingException e) {
+      return null;
+    }
+  }
+
+  private static OAuth2ServerException serverError(int status, String body) {
+    JsonNode payload = parseObject(body);
+    JsonNode code = payload == null ? null : payload.get("error");
+    if (payload == null || code == null || !code.isTextual() || code.asText().isEmpty()) {
+      return new OAuth2ServerException(status, null, null, null, body);
+    }
+    JsonNode description = payload.get("error_description");
+    JsonNode uri = payload.get("error_uri");
+    return new OAuth2ServerException(
+        status,
+        code.asText(),
+        description != null && description.isTextual() ? description.asText() : null,
+        uri != null && uri.isTextual() ? uri.asText() : null,
+        body);
   }
 
   /**
    * Returns a string representation of this authenticator with the cached access token redacted.
    *
-   * <p>The minted bearer token is sensitive material; emitting it through {@code toString()} would
-   * leak it into logs and diagnostics. This override masks the token as {@code ***} (or {@code
-   * null} when no token has been minted yet) while keeping non-sensitive fields such as the host
-   * and scope visible, matching the masking behaviour of the Python, PHP and Ruby SDKs.
-   *
    * @return a string representation with the cached token redacted.
    */
   @Override
   public String toString() {
-    Token current = token;
-    String maskedToken = current == null ? null : "***";
     return getClass().getSimpleName()
         + "(host="
         + getHost()
         + ", scope="
         + scope
         + ", accessToken="
-        + maskedToken
+        + maskedToken()
         + ")";
+  }
+
+  /**
+   * Returns {@code ***} when a token is cached and {@code null} otherwise.
+   *
+   * @return the masked token.
+   */
+  @Nullable
+  protected final String maskedToken() {
+    return accessToken == null ? null : "***";
   }
 
   private static String encodeForm(Map<String, String> params) {
@@ -208,6 +234,20 @@ public abstract class OAuthAuthenticator extends BaseAuthenticator
               + URLEncoder.encode(entry.getValue(), StandardCharsets.UTF_8));
     }
     return joiner.toString();
+  }
+
+  /**
+   * Throws {@link IllegalArgumentException} when the value is null or blank.
+   *
+   * @param value the value to check.
+   * @param label the name used in the error message.
+   * @return the value.
+   */
+  static String requireText(@Nullable String value, String label) {
+    if (value == null || value.trim().isEmpty()) {
+      throw new IllegalArgumentException(label + " cannot be empty.");
+    }
+    return value;
   }
 
   /**
@@ -225,49 +265,11 @@ public abstract class OAuthAuthenticator extends BaseAuthenticator
   protected abstract Map<String, String> getTokenRequestParams();
 
   /**
-   * Grant-specific token-request headers (e.g. HTTP Basic client authentication).
-   *
-   * @return additional headers for the token request; empty by default.
-   */
-  protected Map<String, String> getTokenRequestHeaders() {
-    return Collections.emptyMap();
-  }
-
-  /** A simple POJO representing an OAuth token. */
-  public static class Token {
-
-    protected final String accessToken;
-    protected final Instant expiresAt;
-
-    /**
-     * Constructs a Token.
-     *
-     * @param accessToken the access token string.
-     * @param expiresAt the expiration time.
-     */
-    private Token(String accessToken, Instant expiresAt) {
-      this.accessToken = accessToken;
-      this.expiresAt = expiresAt;
-    }
-
-    /**
-     * Checks if the token is expired (within the refresh skew).
-     *
-     * @return true if expired; false otherwise.
-     */
-    private boolean isExpired() {
-      if (expiresAt.equals(Instant.MAX)) {
-        return false;
-      }
-      return Instant.now().isAfter(expiresAt.minus(REFRESH_SKEW_SECONDS, ChronoUnit.SECONDS));
-    }
-  }
-
-  /**
    * Abstract builder for OAuth authenticator instances.
    *
    * @param <T> the concrete builder type.
    */
+  @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
   protected abstract static class OAuthAuthenticatorBuilder<
       T extends OAuthAuthenticatorBuilder<?>> {
 
@@ -275,32 +277,40 @@ public abstract class OAuthAuthenticator extends BaseAuthenticator
     protected final OpenId openId;
 
     /** The space-delimited scope string for the token request. */
-    protected String scope = "openid urn:zitadel:iam:org:project:id:zitadel:aud";
+    protected String scope = DEFAULT_SCOPE;
 
     /**
+     * Initialises the builder for the given host.
+     *
      * @param host the base URL for the API endpoints.
+     * @throws IllegalArgumentException if the host is not a valid http or https URL.
      */
     protected OAuthAuthenticatorBuilder(String host) {
       this.openId = new OpenId(host);
     }
 
     /**
-     * @param host the base URL for the API endpoints.
-     * @param transportOptions optional transport options for TLS, proxy, and headers.
-     */
-    protected OAuthAuthenticatorBuilder(String host, @Nullable TransportOptions transportOptions) {
-      this.openId = new OpenId(host);
-    }
-
-    /**
-     * Overrides the default scopes.
+     * Overrides the default scopes. Duplicates are dropped; order is kept.
      *
-     * @param authScopes a set of scopes for the token request.
+     * @param authScopes the scopes for the token request.
      * @return the builder instance.
+     * @throws IllegalArgumentException if no scope is given, or a scope is empty or contains
+     *     whitespace.
      */
     @SuppressWarnings("unchecked")
-    public final T scopes(Set<String> authScopes) {
-      this.scope = String.join(" ", authScopes);
+    public final T scopes(String... authScopes) {
+      if (authScopes == null || authScopes.length == 0) {
+        throw new IllegalArgumentException("At least one scope is required.");
+      }
+      Set<String> unique = new LinkedHashSet<>();
+      for (String authScope : authScopes) {
+        if (authScope == null || authScope.isEmpty() || WHITESPACE.matcher(authScope).find()) {
+          throw new IllegalArgumentException(
+              "Scope must be a non-empty string without whitespace: '" + authScope + "'");
+        }
+        unique.add(authScope);
+      }
+      this.scope = String.join(" ", unique);
       return (T) this;
     }
   }

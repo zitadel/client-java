@@ -1,9 +1,5 @@
 package com.zitadel.auth;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Collections;
 import java.util.Map;
 
@@ -19,28 +15,16 @@ public class NoAuthAuthenticator extends BaseAuthenticator {
   /**
    * Constructs a NoAuthAuthenticator.
    *
-   * @param host the base URL for authentication endpoints.
+   * @param host the base URL for the API endpoints.
+   * @throws IllegalArgumentException if the host is not a valid http or https URL.
    */
   public NoAuthAuthenticator(String host) {
-    this.host = buildHostname(host).toString();
+    this.host = new OpenId(host).getHostEndpoint();
   }
 
-  @SuppressWarnings("HttpUrlsUsage")
-  private static URL buildHostname(String hostname) {
-    try {
-      if (!hostname.startsWith("http://") && !hostname.startsWith("https://")) {
-        hostname = "https://" + hostname; // default to https
-      }
-
-      return new URI(hostname).toURL();
-    } catch (URISyntaxException | MalformedURLException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  /** Constructs a NoAuthAuthenticator targeting {@code localhost}. */
+  /** Constructs a NoAuthAuthenticator for {@code http://localhost}. */
   public NoAuthAuthenticator() {
-    this("localhost");
+    this("http://localhost");
   }
 
   @Override
@@ -48,6 +32,11 @@ public class NoAuthAuthenticator extends BaseAuthenticator {
     return host;
   }
 
+  /**
+   * Returns an empty map, since no authentication is performed.
+   *
+   * @return an empty map.
+   */
   @Override
   public Map<String, String> getAuthHeaders() {
     return Collections.emptyMap();

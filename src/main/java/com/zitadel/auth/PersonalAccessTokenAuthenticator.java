@@ -1,9 +1,5 @@
 package com.zitadel.auth;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Collections;
 import java.util.Map;
 
@@ -22,23 +18,12 @@ public class PersonalAccessTokenAuthenticator extends BaseAuthenticator {
    *
    * @param host the base URL for the API endpoints.
    * @param token the personal access token.
+   * @throws IllegalArgumentException if the host is not a valid http or https URL or the token is
+   *     empty.
    */
   public PersonalAccessTokenAuthenticator(String host, String token) {
-    this.host = buildHostname(host).toString();
-    this.token = token;
-  }
-
-  @SuppressWarnings("HttpUrlsUsage")
-  private static URL buildHostname(String hostname) {
-    try {
-      if (!hostname.startsWith("http://") && !hostname.startsWith("https://")) {
-        hostname = "https://" + hostname; // default to https
-      }
-
-      return new URI(hostname).toURL();
-    } catch (URISyntaxException | MalformedURLException e) {
-      throw new RuntimeException(e);
-    }
+    this.host = new OpenId(host).getHostEndpoint();
+    this.token = OAuthAuthenticator.requireText(token, "Token");
   }
 
   @Override
@@ -46,17 +31,18 @@ public class PersonalAccessTokenAuthenticator extends BaseAuthenticator {
     return host;
   }
 
+  /**
+   * Returns the authentication headers using the personal access token.
+   *
+   * @return a map containing the {@code Authorization} header.
+   */
   @Override
   public Map<String, String> getAuthHeaders() {
     return Collections.singletonMap("Authorization", "Bearer " + token);
   }
 
   /**
-   * Returns a string representation of this authenticator with the personal access token redacted.
-   *
-   * <p>The personal access token is sensitive; emitting it through {@code toString()} would leak it
-   * into logs and diagnostics. This override masks the token as {@code ***} while keeping the
-   * non-sensitive host visible, matching the masking behaviour of the Python, PHP and Ruby SDKs.
+   * Returns a string representation of this authenticator with the token redacted.
    *
    * @return a string representation with the token redacted.
    */

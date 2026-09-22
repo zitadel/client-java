@@ -39,6 +39,8 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
    * @param clientId the OAuth2 client identifier.
    * @param clientSecret the OAuth2 client secret.
    * @return a new {@link Builder} instance.
+   * @throws IllegalArgumentException if the host is not a valid http or https URL, or the client
+   *     identifier or secret is empty.
    */
   public static Builder builder(String host, String clientId, String clientSecret) {
     return new Builder(host, clientId, clientSecret);
@@ -63,14 +65,12 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
    * <p>The OAuth2 client secret and the cached access token are sensitive; emitting them through
    * {@code toString()} would leak them into logs and diagnostics. This override masks the secret as
    * {@code ***} and the cached token as {@code ***} (or {@code null} when no token has been minted
-   * yet), while keeping the non-sensitive host and client identifier visible, matching the masking
-   * behaviour of the Python, PHP and Ruby SDKs.
+   * yet), while keeping the non-sensitive host and client identifier visible.
    *
    * @return a string representation with the client secret and cached token redacted.
    */
   @Override
   public String toString() {
-    String maskedToken = token == null ? null : "***";
     return getClass().getSimpleName()
         + "(host="
         + getHost()
@@ -79,7 +79,7 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
         + ", clientSecret=***, scope="
         + scope
         + ", accessToken="
-        + maskedToken
+        + maskedToken()
         + ")";
   }
 
@@ -90,14 +90,16 @@ public class ClientCredentialsAuthenticator extends OAuthAuthenticator {
     private final String clientSecret;
 
     /**
+     * Initialises the builder.
+     *
      * @param host the base URL for the API endpoints.
      * @param clientId the OAuth2 client identifier.
      * @param clientSecret the OAuth2 client secret.
      */
     Builder(String host, String clientId, String clientSecret) {
       super(host);
-      this.clientId = clientId;
-      this.clientSecret = clientSecret;
+      this.clientId = requireText(clientId, "Client ID");
+      this.clientSecret = requireText(clientSecret, "Client secret");
     }
 
     /**

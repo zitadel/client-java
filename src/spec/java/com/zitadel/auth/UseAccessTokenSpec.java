@@ -3,12 +3,13 @@ package com.zitadel.auth;
 import com.zitadel.AbstractIntegrationTest;
 import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
+import com.zitadel.errors.UnauthorizedException;
 import com.zitadel.model.SettingsServiceGetGeneralSettingsResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
 /**
  * SettingsService Integration Tests using Personal Access Token
@@ -36,13 +37,13 @@ class UseAccessTokenSpec extends AbstractIntegrationTest {
     }
 
     /**
-     * Raises ApiException when using an invalid access token.
+     * Raises UnauthorizedException when using an invalid access token.
      */
     @Test
     void testRaisesApiExceptionWithInvalidAuth() {
         Zitadel invalid = Zitadel.withAuthenticator(new PersonalAccessTokenAuthenticator(getBaseUrl(), "invalid"));
 
-        assertThrows(ApiException.class, () -> invalid.settingsService.getGeneralSettings(new Object())
+        assertThrowsExactly(UnauthorizedException.class, () -> invalid.settingsService.getGeneralSettings(new Object())
         );
     }
 }
