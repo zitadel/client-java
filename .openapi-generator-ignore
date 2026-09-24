@@ -12,11 +12,6 @@ src/main/java/com/zitadel/auth/OAuthAuthenticator.java
 src/main/java/com/zitadel/auth/OpenId.java
 src/main/java/com/zitadel/auth/PersonalAccessTokenAuthenticator.java
 src/main/java/com/zitadel/auth/WebTokenAuthenticator.java
-#
-# The OAuth2 error types the authenticators raise. The generator only emits
-# them inside its own OAuth2 token manager, which this spec does not use.
-src/main/java/com/zitadel/errors/OAuth2ServerException.java
-src/main/java/com/zitadel/errors/OAuth2TokenException.java
 
 # --- bespoke tests + fixtures the generator does not emit ---
 #

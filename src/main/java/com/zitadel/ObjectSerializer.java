@@ -28,6 +28,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.zitadel.errors.SerializationException;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.time.Duration;
@@ -439,31 +440,6 @@ public final class ObjectSerializer {
    */
   public <T> T resolveAnyOf(String json, List<Function<String, T>> candidates) {
     return resolveOneOf(json, candidates);
-  }
-
-  /** Exception raised when serialization or deserialization fails. */
-  public static class SerializationException extends ZitadelException {
-
-    @java.io.Serial private static final long serialVersionUID = 1L;
-
-    /**
-     * Creates an exception with a detail message and cause.
-     *
-     * @param message the detail message
-     * @param cause the underlying cause
-     */
-    public SerializationException(String message, Throwable cause) {
-      super(message, cause);
-    }
-
-    /**
-     * Creates an exception with a detail message.
-     *
-     * @param message the detail message
-     */
-    public SerializationException(String message) {
-      super(message);
-    }
   }
 
   /**

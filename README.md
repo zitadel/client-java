@@ -77,9 +77,9 @@ JSON file. This process creates a secure token.
 **Example:**
 
 ```java
-import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
 import com.zitadel.auth.WebTokenAuthenticator;
+import com.zitadel.errors.ApiException;
 import com.zitadel.model.UserServiceAddHumanUserRequest;
 import com.zitadel.model.UserServiceAddHumanUserResponse;
 import com.zitadel.model.UserServiceSetHumanEmail;
@@ -127,9 +127,9 @@ which is then used to authenticate.
 **Example:**
 
 ```java
-import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
 import com.zitadel.auth.ClientCredentialsAuthenticator;
+import com.zitadel.errors.ApiException;
 import com.zitadel.model.UserServiceAddHumanUserRequest;
 import com.zitadel.model.UserServiceAddHumanUserResponse;
 import com.zitadel.model.UserServiceSetHumanEmail;
@@ -177,9 +177,9 @@ authenticate without exchanging credentials every time.
 **Example:**
 
 ```java
-import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
 import com.zitadel.auth.PersonalAccessTokenAuthenticator;
+import com.zitadel.errors.ApiException;
 import com.zitadel.model.UserServiceAddHumanUserRequest;
 import com.zitadel.model.UserServiceAddHumanUserResponse;
 import com.zitadel.model.UserServiceSetHumanEmail;

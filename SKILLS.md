@@ -86,9 +86,10 @@ All API errors derive from `ApiException`. The error hierarchy is:
 
 ```java
 import com.zitadel.errors.*;
+import com.zitadel.model.ActionServiceActivatePublicKeyRequest;
 
 try {
-    var result = client.actionService.activatePublicKey(request);
+    client.actionService.activatePublicKey(new ActionServiceActivatePublicKeyRequest());
 } catch (NotFoundException e) {
     System.out.println("Not found: " + e.getMessage());
 } catch (ClientException e) {

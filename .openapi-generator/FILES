@@ -1,6 +1,5 @@
 SKILLS.md
 src/main/java/com/zitadel/ApiClient.java
-src/main/java/com/zitadel/ApiException.java
 src/main/java/com/zitadel/ApiHttpResponse.java
 src/main/java/com/zitadel/ApiResult.java
 src/main/java/com/zitadel/Configuration.java
@@ -11,7 +10,6 @@ src/main/java/com/zitadel/ServerVariable.java
 src/main/java/com/zitadel/Servers.java
 src/main/java/com/zitadel/TransportOptions.java
 src/main/java/com/zitadel/Zitadel.java
-src/main/java/com/zitadel/ZitadelException.java
 src/main/java/com/zitadel/api/ActionServiceApi.java
 src/main/java/com/zitadel/api/ApplicationServiceApi.java
 src/main/java/com/zitadel/api/AuthorizationServiceApi.java
@@ -50,6 +48,7 @@ src/main/java/com/zitadel/auth/BaseAuthenticator.java
 src/main/java/com/zitadel/auth/BearerAuthenticator.java
 src/main/java/com/zitadel/auth/HttpAwareAuthenticator.java
 src/main/java/com/zitadel/auth/ZitadelAccessTokenAuthenticator.java
+src/main/java/com/zitadel/errors/ApiException.java
 src/main/java/com/zitadel/errors/BadRequestException.java
 src/main/java/com/zitadel/errors/ClientException.java
 src/main/java/com/zitadel/errors/ConflictException.java
@@ -58,9 +57,13 @@ src/main/java/com/zitadel/errors/InternalServerErrorException.java
 src/main/java/com/zitadel/errors/NetworkException.java
 src/main/java/com/zitadel/errors/NetworkTimeoutException.java
 src/main/java/com/zitadel/errors/NotFoundException.java
+src/main/java/com/zitadel/errors/OAuth2ServerException.java
+src/main/java/com/zitadel/errors/OAuth2TokenException.java
+src/main/java/com/zitadel/errors/SerializationException.java
 src/main/java/com/zitadel/errors/ServerException.java
 src/main/java/com/zitadel/errors/UnauthorizedException.java
 src/main/java/com/zitadel/errors/UnprocessableEntityException.java
+src/main/java/com/zitadel/errors/ZitadelException.java
 src/main/java/com/zitadel/model/ActionServiceActivatePublicKeyRequest.java
 src/main/java/com/zitadel/model/ActionServiceActivatePublicKeyResponse.java
 src/main/java/com/zitadel/model/ActionServiceAddPublicKeyRequest.java

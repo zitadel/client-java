@@ -4,24 +4,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zitadel.ApiClient;
-import com.zitadel.ApiException;
 import com.zitadel.ApiHttpResponse;
-import com.zitadel.ObjectSerializer.SerializationException;
-import com.zitadel.errors.BadRequestException;
-import com.zitadel.errors.ClientException;
-import com.zitadel.errors.ConflictException;
-import com.zitadel.errors.ForbiddenException;
-import com.zitadel.errors.InternalServerErrorException;
-import com.zitadel.errors.NotFoundException;
-import com.zitadel.errors.ServerException;
-import com.zitadel.errors.UnauthorizedException;
-import com.zitadel.errors.UnprocessableEntityException;
+import com.zitadel.errors.ApiException;
+import com.zitadel.errors.SerializationException;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.Locale;
-import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
@@ -125,11 +115,10 @@ public class OpenId {
             "GET", wellKnownUrl, Collections.singletonMap("Accept", "application/json"), null);
     int status = response.statusCode();
     if (status < 200 || status >= 300) {
-      throw statusException(
-          status,
-          "OpenID discovery at " + wellKnownUrl + " failed with status " + status,
-          response.headers(),
-          response.body());
+      /* ApiException.fromResponse() owns the status-to-subclass table, so a
+       * failed discovery raises exactly the typed error a regular API call
+       * would for the same status. */
+      throw ApiException.fromResponse(status, response.headers(), response.body());
     }
     JsonNode root;
     try {
@@ -148,27 +137,5 @@ public class OpenId {
           "OpenID configuration at " + wellKnownUrl + " has no valid token_endpoint");
     }
     return endpoint.asText();
-  }
-
-  private static ApiException statusException(
-      int status, String message, Map<String, String> headers, String body) {
-    return switch (status) {
-      case 400 -> new BadRequestException(message, headers, body, null);
-      case 401 -> new UnauthorizedException(message, headers, body, null);
-      case 403 -> new ForbiddenException(message, headers, body, null);
-      case 404 -> new NotFoundException(message, headers, body, null);
-      case 409 -> new ConflictException(message, headers, body, null);
-      case 422 -> new UnprocessableEntityException(message, headers, body, null);
-      case 500 -> new InternalServerErrorException(message, headers, body, null);
-      default -> {
-        if (status >= 400 && status < 500) {
-          yield new ClientException(status, message, headers, body, null);
-        }
-        if (status >= 500) {
-          yield new ServerException(status, message, headers, body, null);
-        }
-        yield new ApiException(status, message, headers, body, null);
-      }
-    };
   }
 }

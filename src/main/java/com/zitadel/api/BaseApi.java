@@ -10,22 +10,13 @@
 package com.zitadel.api;
 
 import com.zitadel.ApiClient;
-import com.zitadel.ApiException;
 import com.zitadel.ApiHttpResponse;
 import com.zitadel.ApiResult;
 import com.zitadel.Configuration;
 import com.zitadel.DefaultApiClient;
 import com.zitadel.ObjectSerializer;
 import com.zitadel.auth.Authenticator;
-import com.zitadel.errors.BadRequestException;
-import com.zitadel.errors.ClientException;
-import com.zitadel.errors.ConflictException;
-import com.zitadel.errors.ForbiddenException;
-import com.zitadel.errors.InternalServerErrorException;
-import com.zitadel.errors.NotFoundException;
-import com.zitadel.errors.ServerException;
-import com.zitadel.errors.UnauthorizedException;
-import com.zitadel.errors.UnprocessableEntityException;
+import com.zitadel.errors.ApiException;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Type;
@@ -42,8 +33,6 @@ import javax.annotation.Nullable;
  * deserialization.
  */
 public abstract class BaseApi {
-
-  private static final Type OBJECT_TYPE = Object.class;
 
   /** The HTTP transport client used for sending requests. */
   protected final ApiClient apiClient;
@@ -300,7 +289,7 @@ public abstract class BaseApi {
     ApiHttpResponse response = apiClient.sendRequest(method, url, headers, requestBody);
 
     if (response.statusCode() < 200 || response.statusCode() >= 300) {
-      throwApiException(response);
+      throw ApiException.fromResponse(response.statusCode(), response.headers(), response.body());
     }
 
     T data = null;
@@ -382,7 +371,7 @@ public abstract class BaseApi {
    *
    * @param formBody the form-style body Map
    * @return the binary part suitable for raw transmission
-   * @throws ApiException if no binary part is present
+   * @throws IllegalArgumentException if no binary part is present
    */
   private static Object extractBinaryPart(Map<?, ?> formBody) {
     for (Object value : formBody.values()) {
@@ -392,7 +381,8 @@ public abstract class BaseApi {
         return value;
       }
     }
-    throw new ApiException("No binary payload found in request body for raw octet-stream upload");
+    throw new IllegalArgumentException(
+        "No binary payload found in request body for raw octet-stream upload");
   }
 
   /**
@@ -425,50 +415,6 @@ public abstract class BaseApi {
     return this.<T>invokeApiForResult(
             method, path, queryParams, headerParams, body, accepts, contentType, returnType, auth)
         .data();
-  }
-
-  /**
-   * Throw the appropriate exception subclass for the given error response.
-   *
-   * <p>Attempts to deserialize the response body as JSON so that structured error data (e.g. from a
-   * {@code default} response schema) is available via {@link ApiException#getErrorBody()}.
-   *
-   * @param response the API response with a non-2xx status code
-   * @throws ApiException always
-   */
-  private void throwApiException(ApiHttpResponse response) {
-    int code = response.statusCode();
-    String message = "API returned status code " + code;
-    String body = response.body();
-    Map<String, String> headers = response.headers();
-
-    Object errorBody = null;
-    if (body != null && !body.isEmpty()) {
-      try {
-        errorBody = objectSerializer.deserialize(body, OBJECT_TYPE);
-      } catch (Exception e) {
-        errorBody = null;
-      }
-    }
-
-    if (code >= 400 && code < 500) {
-      throw switch (code) {
-        case 400 -> new BadRequestException(message, headers, body, errorBody);
-        case 401 -> new UnauthorizedException(message, headers, body, errorBody);
-        case 403 -> new ForbiddenException(message, headers, body, errorBody);
-        case 404 -> new NotFoundException(message, headers, body, errorBody);
-        case 409 -> new ConflictException(message, headers, body, errorBody);
-        case 422 -> new UnprocessableEntityException(message, headers, body, errorBody);
-        default -> new ClientException(code, message, headers, body, errorBody);
-      };
-    }
-    if (code >= 500) {
-      throw switch (code) {
-        case 500 -> new InternalServerErrorException(message, headers, body, errorBody);
-        default -> new ServerException(code, message, headers, body, errorBody);
-      };
-    }
-    throw new ApiException(code, message, headers, body, errorBody);
   }
 
   /**

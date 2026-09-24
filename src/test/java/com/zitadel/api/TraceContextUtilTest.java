@@ -15,13 +15,27 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import io.opentelemetry.api.GlobalOpenTelemetry;
+import io.opentelemetry.api.trace.Span;
+import io.opentelemetry.api.trace.SpanContext;
+import io.opentelemetry.api.trace.TraceFlags;
+import io.opentelemetry.api.trace.TraceState;
+import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
+import io.opentelemetry.context.Context;
+import io.opentelemetry.context.propagation.ContextPropagators;
+import io.opentelemetry.sdk.OpenTelemetrySdk;
+import io.opentelemetry.sdk.testing.exporter.InMemorySpanExporter;
+import io.opentelemetry.sdk.trace.SdkTracerProvider;
+import io.opentelemetry.sdk.trace.export.SimpleSpanProcessor;
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Isolated;
 
-/** Unit tests for TraceContextUtil. */
+/**
+ * Unit tests for TraceContextUtil. The tests replace the global OpenTelemetry instance, so the
+ * class runs isolated from every other test class.
+ */
 @SuppressWarnings({
   "checkstyle:SummaryJavadoc",
   "checkstyle:JavadocParagraph",
@@ -37,6 +51,7 @@ import org.junit.jupiter.api.Test;
   "checkstyle:VariableDeclarationUsageDistance",
   "checkstyle:ConstructorsDeclarationGrouping"
 })
+@Isolated
 class TraceContextUtilTest {
 
   @Test
@@ -151,39 +166,115 @@ class TraceContextUtilTest {
     }
   }
 
+  /**
+   * Registers an OpenTelemetry SDK with the W3C trace-context propagator and an in-memory exporter
+   * as the global instance, runs the body, then resets it.
+   */
+  private static void withTracing(java.util.function.Consumer<InMemorySpanExporter> body) {
+    GlobalOpenTelemetry.resetForTest();
+    InMemorySpanExporter exporter = InMemorySpanExporter.create();
+    SdkTracerProvider tracerProvider =
+        SdkTracerProvider.builder().addSpanProcessor(SimpleSpanProcessor.create(exporter)).build();
+    OpenTelemetrySdk.builder()
+        .setTracerProvider(tracerProvider)
+        .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
+        .buildAndRegisterGlobal();
+    try {
+      body.accept(exporter);
+    } finally {
+      tracerProvider.close();
+      GlobalOpenTelemetry.resetForTest();
+    }
+  }
+
+  /**
+   * Starts a span under the given parent, injects the trace context while it is current, ends it,
+   * and returns the injected headers.
+   */
+  private static Map<String, String> injectUnder(Context parent) {
+    Span span =
+        GlobalOpenTelemetry.getTracer("trace-context-test")
+            .spanBuilder("request")
+            .setParent(parent)
+            .startSpan();
+    Map<String, String> headers = new HashMap<>();
+    try {
+      parent.with(span).wrap(() -> TraceContextUtil.injectTraceContext(headers)).run();
+    } finally {
+      span.end();
+    }
+    headers.put("x-test-trace-id", span.getSpanContext().getTraceId());
+    headers.put("x-test-span-id", span.getSpanContext().getSpanId());
+    headers.put("x-test-flags", span.getSpanContext().getTraceFlags().asHex());
+    return headers;
+  }
+
+  private static Context remoteParent(TraceFlags flags, TraceState state) {
+    SpanContext parent =
+        SpanContext.createFromRemoteParent(
+            "0af7651916cd43dd8448eb211c80319c", "b7ad6b7169203331", flags, state);
+    return Context.root().with(Span.wrap(parent));
+  }
+
   @Test
-  @Disabled(
-      "No ambient tracer like .NET Activity.Current; injecting a real active span"
-          + " requires a fully configured OpenTelemetry SDK that is out of scope for this unit test.")
   @DisplayName("injects traceparent when a span is active")
   void injectsTraceparentWhenSpanActive() {
-    // .NET-specific scenario: relies on Activity.Current ambient context.
+    withTracing(
+        exporter -> {
+          Map<String, String> headers = injectUnder(Context.root());
+          assertEquals(
+              "00-"
+                  + headers.get("x-test-trace-id")
+                  + "-"
+                  + headers.get("x-test-span-id")
+                  + "-"
+                  + headers.get("x-test-flags"),
+              headers.get("traceparent"));
+          assertEquals(1, exporter.getFinishedSpanItems().size());
+        });
   }
 
   @Test
-  @Disabled(
-      "No ambient tracer like .NET Activity.Current; setting a tracestate on an active span"
-          + " requires a fully configured OpenTelemetry SDK that is out of scope for this unit test.")
   @DisplayName("includes tracestate when present on the active span")
   void includesTracestateWhenPresent() {
-    // .NET-specific scenario: relies on Activity.Current ambient context.
+    withTracing(
+        exporter -> {
+          Map<String, String> headers =
+              injectUnder(
+                  remoteParent(
+                      TraceFlags.getSampled(),
+                      TraceState.builder().put("vendor", "value").build()));
+          assertTrue(
+              headers
+                  .getOrDefault("traceparent", "")
+                  .startsWith("00-0af7651916cd43dd8448eb211c80319c-"));
+          assertEquals("vendor=value", headers.get("tracestate"));
+        });
   }
 
   @Test
-  @Disabled(
-      "No ambient tracer like .NET Activity.Current; exercising an empty tracestate on an"
-          + " active span requires a fully configured OpenTelemetry SDK that is out of scope here.")
   @DisplayName("omits tracestate when empty on the active span")
   void omitsTracestateWhenEmpty() {
-    // .NET-specific scenario: relies on Activity.Current ambient context.
+    withTracing(
+        exporter -> {
+          Map<String, String> headers =
+              injectUnder(remoteParent(TraceFlags.getSampled(), TraceState.getDefault()));
+          assertTrue(headers.containsKey("traceparent"));
+          assertFalse(headers.containsKey("tracestate"));
+        });
   }
 
   @Test
-  @Disabled(
-      "No ambient tracer like .NET Activity.Current; verifying the recorded trace-flags byte"
-          + " requires a fully configured OpenTelemetry SDK that is out of scope for this unit test.")
   @DisplayName("formats trace flags correctly on the active span")
   void formatsTraceFlagsCorrectly() {
-    // .NET-specific scenario: relies on Activity.Current ambient context.
+    withTracing(
+        exporter -> {
+          Map<String, String> sampled =
+              injectUnder(remoteParent(TraceFlags.getSampled(), TraceState.getDefault()));
+          Map<String, String> unsampled =
+              injectUnder(remoteParent(TraceFlags.getDefault(), TraceState.getDefault()));
+          assertTrue(sampled.getOrDefault("traceparent", "").endsWith("-01"));
+          assertTrue(unsampled.getOrDefault("traceparent", "").endsWith("-00"));
+        });
   }
 }

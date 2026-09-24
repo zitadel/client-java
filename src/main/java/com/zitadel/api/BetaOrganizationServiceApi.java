@@ -11,10 +11,10 @@ package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiClient;
-import com.zitadel.ApiException;
 import com.zitadel.ApiResult;
 import com.zitadel.Configuration;
 import com.zitadel.auth.Authenticator;
+import com.zitadel.errors.ApiException;
 import com.zitadel.model.BetaOrganizationServiceActivateOrganizationRequest;
 import com.zitadel.model.BetaOrganizationServiceActivateOrganizationResponse;
 import com.zitadel.model.BetaOrganizationServiceAddOrganizationDomainRequest;
@@ -61,7 +61,8 @@ import javax.annotation.Nullable;
   "checkstyle:MemberName",
   "checkstyle:OverloadMethodsDeclarationOrder",
   "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
+  "checkstyle:ConstructorsDeclarationGrouping",
+  "checkstyle:LineLength"
 })
 public class BetaOrganizationServiceApi extends BaseApi {
 

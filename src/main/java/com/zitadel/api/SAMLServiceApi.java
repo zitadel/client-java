@@ -11,10 +11,10 @@ package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiClient;
-import com.zitadel.ApiException;
 import com.zitadel.ApiResult;
 import com.zitadel.Configuration;
 import com.zitadel.auth.Authenticator;
+import com.zitadel.errors.ApiException;
 import com.zitadel.model.SAMLServiceCreateResponseRequest;
 import com.zitadel.model.SAMLServiceCreateResponseResponse;
 import com.zitadel.model.SAMLServiceGetSAMLRequestRequest;
@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
   "checkstyle:MemberName",
   "checkstyle:OverloadMethodsDeclarationOrder",
   "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
+  "checkstyle:ConstructorsDeclarationGrouping",
+  "checkstyle:LineLength"
 })
 public class SAMLServiceApi extends BaseApi {
 

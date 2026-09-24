@@ -1,8 +1,8 @@
 package com.zitadel.auth;
 
 import com.zitadel.AbstractIntegrationTest;
-import com.zitadel.ApiException;
 import com.zitadel.Zitadel;
+import com.zitadel.errors.ApiException;
 import com.zitadel.errors.OAuth2ServerException;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;

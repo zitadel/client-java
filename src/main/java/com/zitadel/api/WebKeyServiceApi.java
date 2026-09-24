@@ -11,10 +11,10 @@ package com.zitadel.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.zitadel.ApiClient;
-import com.zitadel.ApiException;
 import com.zitadel.ApiResult;
 import com.zitadel.Configuration;
 import com.zitadel.auth.Authenticator;
+import com.zitadel.errors.ApiException;
 import com.zitadel.model.WebKeyServiceActivateWebKeyRequest;
 import com.zitadel.model.WebKeyServiceActivateWebKeyResponse;
 import com.zitadel.model.WebKeyServiceCreateWebKeyRequest;
@@ -40,7 +40,8 @@ import javax.annotation.Nullable;
   "checkstyle:MemberName",
   "checkstyle:OverloadMethodsDeclarationOrder",
   "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
+  "checkstyle:ConstructorsDeclarationGrouping",
+  "checkstyle:LineLength"
 })
 public class WebKeyServiceApi extends BaseApi {
 

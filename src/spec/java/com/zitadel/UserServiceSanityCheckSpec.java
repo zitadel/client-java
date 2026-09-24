@@ -1,6 +1,7 @@
 package com.zitadel;
 
 import com.zitadel.auth.PersonalAccessTokenAuthenticator;
+import com.zitadel.errors.ApiException;
 import com.zitadel.model.*;
 import org.junit.jupiter.api.*;
 

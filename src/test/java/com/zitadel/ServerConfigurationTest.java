@@ -10,8 +10,10 @@
 package com.zitadel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
+import com.zitadel.errors.ZitadelException;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
@@ -83,6 +85,10 @@ class ServerConfigurationTest {
             null,
             Map.of("env", new ServerVariable("prod", null, List.of("prod", "staging"))));
 
-    assertThrows(IllegalArgumentException.class, () -> config.getUrl(Map.of("env", "dev")));
+    IllegalArgumentException ex =
+        assertThrowsExactly(
+            IllegalArgumentException.class, () -> config.getUrl(Map.of("env", "dev")));
+    // A server variable outside its enum is a caller mistake, not an SDK error.
+    assertFalse(((Object) ex) instanceof ZitadelException);
   }
 }

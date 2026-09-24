@@ -10,8 +10,10 @@
 package com.zitadel;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.zitadel.errors.ApiException;
 import com.zitadel.errors.NetworkException;
 import com.zitadel.errors.NetworkTimeoutException;
+import com.zitadel.errors.SerializationException;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -51,7 +53,7 @@ import javax.annotation.Nullable;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
+import javax.net.ssl.X509ExtendedTrustManager;
 
 /**
  * Default implementation of {@link ApiClient} using {@link java.net.http.HttpClient}.
@@ -109,13 +111,34 @@ public final class DefaultApiClient implements ApiClient {
    * deliberate, opt-in feature mirrored across all 12 SDKs, so the warning
    * is suppressed on the empty trust-check methods rather than removed.
    */
-  private static final X509TrustManager TRUST_ALL_MANAGER =
-      new X509TrustManager() {
+  /* An X509ExtendedTrustManager, not a plain X509TrustManager: the JDK
+   * wraps a plain one and runs its own host name check on the result,
+   * so verifySsl=false would still reject a certificate that does not
+   * name the host. The extended variants below are the ones the JDK
+   * calls, and they accept everything, as curl -k does. */
+  private static final X509ExtendedTrustManager TRUST_ALL_MANAGER =
+      new X509ExtendedTrustManager() {
         @Override
         public void checkClientTrusted(X509Certificate[] chain, String authType) {}
 
         @Override
         public void checkServerTrusted(X509Certificate[] chain, String authType) {}
+
+        @Override
+        public void checkClientTrusted(
+            X509Certificate[] chain, String authType, java.net.Socket socket) {}
+
+        @Override
+        public void checkServerTrusted(
+            X509Certificate[] chain, String authType, java.net.Socket socket) {}
+
+        @Override
+        public void checkClientTrusted(
+            X509Certificate[] chain, String authType, javax.net.ssl.SSLEngine engine) {}
+
+        @Override
+        public void checkServerTrusted(
+            X509Certificate[] chain, String authType, javax.net.ssl.SSLEngine engine) {}
 
         @Override
         public X509Certificate[] getAcceptedIssuers() {
@@ -199,13 +222,10 @@ public final class DefaultApiClient implements ApiClient {
         SSLContext sslContext = SSLContext.getInstance("TLS");
         sslContext.init(null, new TrustManager[] {TRUST_ALL_MANAGER}, null);
         builder.sslContext(sslContext);
-        /* Gap AM: verifySsl=false must disable BOTH cert-chain AND
-         * hostname verification (curl -k semantics). The TRUST_ALL
-         * trust manager skips chain validation, but java.net.http
-         * still performs HTTPS hostname verification by default —
-         * users get inconsistent behavior across SDKs unless we
-         * disable it explicitly. Setting `jdk.internal.httpclient
-         * .disableHostnameVerification` covers that case. */
+        /* verifySsl=false disables BOTH the certificate chain AND the
+         * host name check (curl -k semantics). TRUST_ALL_MANAGER
+         * skips both; clearing the endpoint identification algorithm
+         * keeps the engine from asking for the host name check. */
         javax.net.ssl.SSLParameters sslParameters = new javax.net.ssl.SSLParameters();
         sslParameters.setEndpointIdentificationAlgorithm(null);
         builder.sslParameters(sslParameters);
@@ -379,7 +399,7 @@ public final class DefaultApiClient implements ApiClient {
       boolean noRedirect) {
 
     if (this.closed) {
-      throw new ApiException("ApiClient has been closed");
+      throw new IllegalStateException("ApiClient has been closed");
     }
     Map<String, String> mergedHeaders = new HashMap<>(transportOptions.getDefaultHeaders());
     mergedHeaders.putAll(headers);
@@ -422,7 +442,7 @@ public final class DefaultApiClient implements ApiClient {
       try {
         streamBytes = stream.readAllBytes();
       } catch (IOException e) {
-        throw new ApiException("Failed to read request body stream", e);
+        throw new IllegalArgumentException("Failed to read request body stream", e);
       }
       bodyPublisher = HttpRequest.BodyPublishers.ofByteArray(streamBytes);
     } else if (body instanceof File file) {
@@ -435,7 +455,7 @@ public final class DefaultApiClient implements ApiClient {
       try {
         fileBytes = Files.readAllBytes(file.toPath());
       } catch (IOException e) {
-        throw new ApiException("Failed to read request body file", e);
+        throw new IllegalArgumentException("Failed to read request body file", e);
       }
       bodyPublisher = HttpRequest.BodyPublishers.ofByteArray(fileBytes);
     } else {
@@ -492,7 +512,10 @@ public final class DefaultApiClient implements ApiClient {
           if (!"http".equalsIgnoreCase(redirectScheme)
               && !"https".equalsIgnoreCase(redirectScheme)) {
             throw new ApiException(
-                "Refusing to follow redirect to non-HTTP(S) URL: " + redirectUri);
+                response.statusCode(),
+                "Refusing to follow redirect to non-HTTP(S) URL: " + redirectUri,
+                null,
+                null);
           }
           boolean sameOrigin = sameOrigin(originalUri, redirectUri);
 
@@ -508,7 +531,10 @@ public final class DefaultApiClient implements ApiClient {
           if (shouldRefuseHttpsToHttpBodyReplay(
               originalUri, redirectUri, response.statusCode(), currentBody != NO_BODY)) {
             throw new ApiException(
-                "Refusing to replay request body across HTTPS->HTTP redirect: " + redirectUri);
+                response.statusCode(),
+                "Refusing to replay request body across HTTPS->HTTP redirect: " + redirectUri,
+                null,
+                null);
           }
 
           /* Gap T3: pick follow-up method+body per RFC 7231 §6.4.4 / RFC 7538.
@@ -565,7 +591,11 @@ public final class DefaultApiClient implements ApiClient {
          * the caller the final redirect response as if it were a
          * normal result. */
         if (isRedirect(response.statusCode())) {
-          throw new ApiException("Too many redirects (exceeded maxRedirects) following " + url);
+          throw new ApiException(
+              response.statusCode(),
+              "Too many redirects (exceeded maxRedirects) following " + url,
+              null,
+              null);
         }
       }
 
@@ -600,7 +630,10 @@ public final class DefaultApiClient implements ApiClient {
       } catch (IOException e) {
         /* A corrupt Content-Encoding body is not a transport failure:
          * a response did arrive, so keep it out of NetworkException. */
-        throw new ApiException("failed to decode " + contentEncoding + " response body: " + e, e);
+        throw new ApiException(
+            response.statusCode(),
+            "failed to decode " + contentEncoding + " response body: " + e,
+            e);
       }
       Charset responseCharset = parseCharset(contentType);
       String responseBody =
@@ -617,8 +650,15 @@ public final class DefaultApiClient implements ApiClient {
       /* Connection refused, DNS, TLS handshake, reset: no HTTP response. */
       throw new NetworkException(e.toString(), e);
     } catch (InterruptedException e) {
+      /* Thread interruption is Java's cancellation signal, not an API
+       * failure: restore the interrupt flag and surface it as the
+       * platform's unchecked CancellationException (the interruption
+       * kept as its cause), never as an SDK error. */
       Thread.currentThread().interrupt();
-      throw new ApiException(e.toString(), e);
+      java.util.concurrent.CancellationException cancelled =
+          new java.util.concurrent.CancellationException("request interrupted");
+      cancelled.initCause(e);
+      throw cancelled;
     }
   }
 
@@ -908,7 +948,7 @@ public final class DefaultApiClient implements ApiClient {
       try {
         byteArrays.add(Files.readAllBytes(file.toPath()));
       } catch (IOException e) {
-        throw new RuntimeException("Failed to read file: " + file, e);
+        throw new IllegalArgumentException("Failed to read file: " + file, e);
       }
     } else if (value instanceof byte[] bytes) {
       validateMultipartFilename(fieldName);
@@ -938,7 +978,7 @@ public final class DefaultApiClient implements ApiClient {
                 .getBytes(StandardCharsets.UTF_8));
         byteArrays.add(stream.readAllBytes());
       } catch (IOException e) {
-        throw new RuntimeException("Failed to read stream: " + fieldName, e);
+        throw new IllegalArgumentException("Failed to read stream: " + fieldName, e);
       }
     } else if (value instanceof String || value instanceof Number || value instanceof Boolean) {
       byteArrays.add(("\"" + safeName + "\"\r\n\r\n" + value).getBytes(StandardCharsets.UTF_8));
@@ -949,7 +989,7 @@ public final class DefaultApiClient implements ApiClient {
             ("\"" + safeName + "\"\r\nContent-Type: application/json\r\n\r\n" + json)
                 .getBytes(StandardCharsets.UTF_8));
       } catch (com.fasterxml.jackson.core.JsonProcessingException e) {
-        throw new RuntimeException(
+        throw new SerializationException(
             "Failed to serialize multipart field '" + fieldName + "' as JSON", e);
       }
     }
@@ -1069,7 +1109,7 @@ public final class DefaultApiClient implements ApiClient {
   /**
    * Gap T6: release the underlying {@link HttpClient} (connection pool, executor threads, sockets).
    * Idempotent. After calling this method the client must not be reused — subsequent {@link
-   * #sendRequest} calls will fail with an {@link ApiException}.
+   * #sendRequest} calls will fail with an {@link IllegalStateException}.
    *
    * <p>Calls {@link HttpClient#close()} (JDK 21+ public API). On JDK 25 the implementation class is
    * in {@code jdk.internal.net.http} which isn't reflectively accessible — invoking on the public

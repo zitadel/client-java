@@ -9,6 +9,7 @@
 
 package com.zitadel;
 
+import com.zitadel.errors.ApiException;
 import java.util.Map;
 import javax.annotation.Nullable;
 
