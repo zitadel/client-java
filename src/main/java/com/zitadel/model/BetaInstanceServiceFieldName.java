@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** BetaInstanceServiceFieldName. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum BetaInstanceServiceFieldName {
   /** The {@code "FIELD_NAME_UNSPECIFIED"} value. */
   FIELD_NAME_UNSPECIFIED("FIELD_NAME_UNSPECIFIED"),

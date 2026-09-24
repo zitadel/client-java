@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** BetaTelemetryServiceCountParentType. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum BetaTelemetryServiceCountParentType {
   /** The {@code "COUNT_PARENT_TYPE_UNSPECIFIED"} value. */
   COUNT_PARENT_TYPE_UNSPECIFIED("COUNT_PARENT_TYPE_UNSPECIFIED"),

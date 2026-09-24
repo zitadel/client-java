@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** AuthorizationServiceAuthorizationFieldName. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum AuthorizationServiceAuthorizationFieldName {
   /** The {@code "AUTHORIZATION_FIELD_NAME_UNSPECIFIED"} value. */
   AUTHORIZATION_FIELD_NAME_UNSPECIFIED("AUTHORIZATION_FIELD_NAME_UNSPECIFIED"),

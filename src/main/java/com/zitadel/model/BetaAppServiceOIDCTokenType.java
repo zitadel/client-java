@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** BetaAppServiceOIDCTokenType. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum BetaAppServiceOIDCTokenType {
   /** The {@code "OIDC_TOKEN_TYPE_BEARER"} value. */
   OIDC_TOKEN_TYPE_BEARER("OIDC_TOKEN_TYPE_BEARER"),

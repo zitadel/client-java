@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** BetaSettingsServiceIdentityProviderType. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum BetaSettingsServiceIdentityProviderType {
   /** The {@code "IDENTITY_PROVIDER_TYPE_UNSPECIFIED"} value. */
   IDENTITY_PROVIDER_TYPE_UNSPECIFIED("IDENTITY_PROVIDER_TYPE_UNSPECIFIED"),

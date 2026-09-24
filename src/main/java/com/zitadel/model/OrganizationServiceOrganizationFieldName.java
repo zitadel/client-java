@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** OrganizationServiceOrganizationFieldName. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum OrganizationServiceOrganizationFieldName {
   /** The {@code "ORGANIZATION_FIELD_NAME_UNSPECIFIED"} value. */
   ORGANIZATION_FIELD_NAME_UNSPECIFIED("ORGANIZATION_FIELD_NAME_UNSPECIFIED"),

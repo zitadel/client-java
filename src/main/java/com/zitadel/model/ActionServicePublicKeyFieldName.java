@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** ActionServicePublicKeyFieldName. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum ActionServicePublicKeyFieldName {
   /** The {@code "PUBLIC_KEY_FIELD_NAME_UNSPECIFIED"} value. */
   PUBLIC_KEY_FIELD_NAME_UNSPECIFIED("PUBLIC_KEY_FIELD_NAME_UNSPECIFIED"),

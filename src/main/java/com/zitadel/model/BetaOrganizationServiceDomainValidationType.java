@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** from proto/zitadel/org.proto. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum BetaOrganizationServiceDomainValidationType {
   /** The {@code "DOMAIN_VALIDATION_TYPE_UNSPECIFIED"} value. */
   DOMAIN_VALIDATION_TYPE_UNSPECIFIED("DOMAIN_VALIDATION_TYPE_UNSPECIFIED"),

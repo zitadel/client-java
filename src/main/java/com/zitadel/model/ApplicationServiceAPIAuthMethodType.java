@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** ApplicationServiceAPIAuthMethodType. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum ApplicationServiceAPIAuthMethodType {
   /** The {@code "API_AUTH_METHOD_TYPE_BASIC"} value. */
   API_AUTH_METHOD_TYPE_BASIC("API_AUTH_METHOD_TYPE_BASIC"),

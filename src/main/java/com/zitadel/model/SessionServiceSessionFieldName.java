@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** SessionServiceSessionFieldName. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum SessionServiceSessionFieldName {
   /** The {@code "SESSION_FIELD_NAME_UNSPECIFIED"} value. */
   SESSION_FIELD_NAME_UNSPECIFIED("SESSION_FIELD_NAME_UNSPECIFIED"),

@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** FeatureServiceImprovedPerformance. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum FeatureServiceImprovedPerformance {
   /** The {@code "IMPROVED_PERFORMANCE_UNSPECIFIED"} value. */
   IMPROVED_PERFORMANCE_UNSPECIFIED("IMPROVED_PERFORMANCE_UNSPECIFIED"),

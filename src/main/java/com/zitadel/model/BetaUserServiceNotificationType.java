@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** BetaUserServiceNotificationType. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum BetaUserServiceNotificationType {
   /** The {@code "NOTIFICATION_TYPE_Unspecified"} value. */
   NOTIFICATION_TYPE_UNSPECIFIED("NOTIFICATION_TYPE_Unspecified"),

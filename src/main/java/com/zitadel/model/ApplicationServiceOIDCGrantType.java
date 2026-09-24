@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** ApplicationServiceOIDCGrantType. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum ApplicationServiceOIDCGrantType {
   /** The {@code "OIDC_GRANT_TYPE_AUTHORIZATION_CODE"} value. */
   OIDC_GRANT_TYPE_AUTHORIZATION_CODE("OIDC_GRANT_TYPE_AUTHORIZATION_CODE"),

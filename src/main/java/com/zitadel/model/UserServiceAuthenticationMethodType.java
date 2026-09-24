@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** UserServiceAuthenticationMethodType. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum UserServiceAuthenticationMethodType {
   /** The {@code "AUTHENTICATION_METHOD_TYPE_UNSPECIFIED"} value. */
   AUTHENTICATION_METHOD_TYPE_UNSPECIFIED("AUTHENTICATION_METHOD_TYPE_UNSPECIFIED"),

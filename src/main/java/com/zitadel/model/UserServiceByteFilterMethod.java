@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** UserServiceByteFilterMethod. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum UserServiceByteFilterMethod {
   /** The {@code "BYTE_FILTER_METHOD_EQUALS"} value. */
   BYTE_FILTER_METHOD_EQUALS("BYTE_FILTER_METHOD_EQUALS"),

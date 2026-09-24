@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** SettingsServiceAutoLinkingOption. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum SettingsServiceAutoLinkingOption {
   /** The {@code "AUTO_LINKING_OPTION_UNSPECIFIED"} value. */
   AUTO_LINKING_OPTION_UNSPECIFIED("AUTO_LINKING_OPTION_UNSPECIFIED"),

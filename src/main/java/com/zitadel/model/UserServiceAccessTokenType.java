@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** UserServiceAccessTokenType. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum UserServiceAccessTokenType {
   /** The {@code "ACCESS_TOKEN_TYPE_BEARER"} value. */
   ACCESS_TOKEN_TYPE_BEARER("ACCESS_TOKEN_TYPE_BEARER"),

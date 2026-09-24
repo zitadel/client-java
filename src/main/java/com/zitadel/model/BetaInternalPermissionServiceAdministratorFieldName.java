@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** BetaInternalPermissionServiceAdministratorFieldName. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum BetaInternalPermissionServiceAdministratorFieldName {
   /** The {@code "ADMINISTRATOR_FIELD_NAME_UNSPECIFIED"} value. */
   ADMINISTRATOR_FIELD_NAME_UNSPECIFIED("ADMINISTRATOR_FIELD_NAME_UNSPECIFIED"),

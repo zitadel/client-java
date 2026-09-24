@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** BetaActionServiceExecutionFieldName. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum BetaActionServiceExecutionFieldName {
   /** The {@code "EXECUTION_FIELD_NAME_UNSPECIFIED"} value. */
   EXECUTION_FIELD_NAME_UNSPECIFIED("EXECUTION_FIELD_NAME_UNSPECIFIED"),

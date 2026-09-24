@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** SettingsServiceMultiFactorType. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum SettingsServiceMultiFactorType {
   /** The {@code "MULTI_FACTOR_TYPE_UNSPECIFIED"} value. */
   MULTI_FACTOR_TYPE_UNSPECIFIED("MULTI_FACTOR_TYPE_UNSPECIFIED"),

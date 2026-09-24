@@ -47,22 +47,6 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 /** ActionServiceApi provides methods for the ActionService API group. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping",
-  "checkstyle:LineLength"
-})
 public class ActionServiceApi extends BaseApi {
 
   private static final java.lang.reflect.Type activatePublicKeyTypeRef =

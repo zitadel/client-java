@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** BetaProjectServiceProjectGrantState. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum BetaProjectServiceProjectGrantState {
   /** The {@code "PROJECT_GRANT_STATE_UNSPECIFIED"} value. */
   PROJECT_GRANT_STATE_UNSPECIFIED("PROJECT_GRANT_STATE_UNSPECIFIED"),

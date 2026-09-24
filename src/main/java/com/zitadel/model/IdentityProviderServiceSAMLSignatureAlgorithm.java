@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** IdentityProviderServiceSAMLSignatureAlgorithm. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum IdentityProviderServiceSAMLSignatureAlgorithm {
   /** The {@code "SAML_SIGNATURE_UNSPECIFIED"} value. */
   SAML_SIGNATURE_UNSPECIFIED("SAML_SIGNATURE_UNSPECIFIED"),

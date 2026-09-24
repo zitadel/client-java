@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** BetaUserServicePasskeyAuthenticator. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum BetaUserServicePasskeyAuthenticator {
   /** The {@code "PASSKEY_AUTHENTICATOR_UNSPECIFIED"} value. */
   PASSKEY_AUTHENTICATOR_UNSPECIFIED("PASSKEY_AUTHENTICATOR_UNSPECIFIED"),

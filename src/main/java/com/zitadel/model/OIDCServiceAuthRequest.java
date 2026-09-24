@@ -20,21 +20,6 @@ import javax.annotation.Nullable;
  * AuthRequest represents an OpenID Connect Authorization Request as defined in
  * https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest.
  */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public class OIDCServiceAuthRequest {
 
   /** The unique identifier of the authorization request. */
@@ -56,14 +41,14 @@ public class OIDCServiceAuthRequest {
    * POSIX `gettimeofday()`. struct timeval tv; gettimeofday(&tv, NULL); Timestamp timestamp;
    * timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.tv_usec * 1000); Example 3: Compute
    * Timestamp from Win32 `GetSystemTimeAsFileTime()`. FILETIME ft; GetSystemTimeAsFileTime(&ft);
-   * UINT64 ticks = (((UINT64)ft.dwHighDateTime) << 32) | ft.dwLowDateTime; // A Windows tick is 100
-   * nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is 11644473600 seconds before Unix epoch
-   * 1970-01-01T00:00:00Z. Timestamp timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) -
-   * 11644473600LL)); timestamp.set_nanos((INT32) ((ticks % 10000000) * 100)); Example 4: Compute
-   * Timestamp from Java `System.currentTimeMillis()`. long millis = System.currentTimeMillis();
-   * Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .setNanos((int) ((millis
-   * % 1000) * 1000000)).build(); Example 5: Compute Timestamp from Java `Instant.now()`. Instant
-   * now = Instant.now(); Timestamp timestamp =
+   * UINT64 ticks = (((UINT64)ft.dwHighDateTime) {@literal <}{@literal <} 32) | ft.dwLowDateTime; //
+   * A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is 11644473600 seconds
+   * before Unix epoch 1970-01-01T00:00:00Z. Timestamp timestamp; timestamp.set_seconds((INT64)
+   * ((ticks / 10000000) - 11644473600LL)); timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
+   * Example 4: Compute Timestamp from Java `System.currentTimeMillis()`. long millis =
+   * System.currentTimeMillis(); Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis /
+   * 1000) .setNanos((int) ((millis % 1000) * 1000000)).build(); Example 5: Compute Timestamp from
+   * Java `Instant.now()`. Instant now = Instant.now(); Timestamp timestamp =
    * Timestamp.newBuilder().setSeconds(now.getEpochSecond()) .setNanos(now.getNano()).build();
    * Example 6: Compute Timestamp from current time in Python. timestamp = Timestamp()
    * timestamp.GetCurrentTime() # JSON Mapping In JSON format, the Timestamp type is encoded as a
@@ -139,21 +124,22 @@ public class OIDCServiceAuthRequest {
    * values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately
    * +-10,000 years. # Examples Example 1: Compute Duration from two Timestamps in pseudo code.
    * Timestamp start = ...; Timestamp end = ...; Duration duration = ...; duration.seconds =
-   * end.seconds - start.seconds; duration.nanos = end.nanos - start.nanos; if (duration.seconds < 0
-   * && duration.nanos > 0) { duration.seconds += 1; duration.nanos -= 1000000000; } else if
-   * (duration.seconds > 0 && duration.nanos < 0) { duration.seconds -= 1; duration.nanos +=
-   * 1000000000; } Example 2: Compute Timestamp from Timestamp + Duration in pseudo code. Timestamp
-   * start = ...; Duration duration = ...; Timestamp end = ...; end.seconds = start.seconds +
-   * duration.seconds; end.nanos = start.nanos + duration.nanos; if (end.nanos < 0) { end.seconds -=
-   * 1; end.nanos += 1000000000; } else if (end.nanos >= 1000000000) { end.seconds += 1; end.nanos
-   * -= 1000000000; } Example 3: Compute Duration from datetime.timedelta in Python. td =
-   * datetime.timedelta(days=3, minutes=10) duration = Duration() duration.FromTimedelta(td) # JSON
-   * Mapping In JSON format, the Duration type is encoded as a string rather than an object, where
-   * the string ends in the suffix "s" (indicating seconds) and is preceded by the number of
-   * seconds, with nanoseconds expressed as fractional seconds. For example, 3 seconds with 0
-   * nanoseconds should be encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should
-   * be expressed in JSON format as "3.000000001s", and 3 seconds and 1 microsecond should be
-   * expressed in JSON format as "3.000001s".
+   * end.seconds - start.seconds; duration.nanos = end.nanos - start.nanos; if (duration.seconds
+   * {@literal <} 0 && duration.nanos {@literal >} 0) { duration.seconds += 1; duration.nanos -=
+   * 1000000000; } else if (duration.seconds {@literal >} 0 && duration.nanos {@literal <} 0) {
+   * duration.seconds -= 1; duration.nanos += 1000000000; } Example 2: Compute Timestamp from
+   * Timestamp + Duration in pseudo code. Timestamp start = ...; Duration duration = ...; Timestamp
+   * end = ...; end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
+   * duration.nanos; if (end.nanos {@literal <} 0) { end.seconds -= 1; end.nanos += 1000000000; }
+   * else if (end.nanos {@literal >}= 1000000000) { end.seconds += 1; end.nanos -= 1000000000; }
+   * Example 3: Compute Duration from datetime.timedelta in Python. td = datetime.timedelta(days=3,
+   * minutes=10) duration = Duration() duration.FromTimedelta(td) # JSON Mapping In JSON format, the
+   * Duration type is encoded as a string rather than an object, where the string ends in the suffix
+   * "s" (indicating seconds) and is preceded by the number of seconds, with nanoseconds expressed
+   * as fractional seconds. For example, 3 seconds with 0 nanoseconds should be encoded in JSON
+   * format as "3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as
+   * "3.000000001s", and 3 seconds and 1 microsecond should be expressed in JSON format as
+   * "3.000001s".
    */
   @JsonProperty("maxAge")
   @Nullable

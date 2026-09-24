@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** UserServiceAuthFactorState. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum UserServiceAuthFactorState {
   /** The {@code "AUTH_FACTOR_STATE_UNSPECIFIED"} value. */
   AUTH_FACTOR_STATE_UNSPECIFIED("AUTH_FACTOR_STATE_UNSPECIFIED"),

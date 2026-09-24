@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** UserServicePersonalAccessTokenFieldName. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum UserServicePersonalAccessTokenFieldName {
   /** The {@code "PERSONAL_ACCESS_TOKEN_FIELD_NAME_UNSPECIFIED"} value. */
   PERSONAL_ACCESS_TOKEN_FIELD_NAME_UNSPECIFIED("PERSONAL_ACCESS_TOKEN_FIELD_NAME_UNSPECIFIED"),

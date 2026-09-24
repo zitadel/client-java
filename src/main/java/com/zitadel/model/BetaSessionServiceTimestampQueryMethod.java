@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** BetaSessionServiceTimestampQueryMethod. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum BetaSessionServiceTimestampQueryMethod {
   /** The {@code "TIMESTAMP_QUERY_METHOD_EQUALS"} value. */
   TIMESTAMP_QUERY_METHOD_EQUALS("TIMESTAMP_QUERY_METHOD_EQUALS"),

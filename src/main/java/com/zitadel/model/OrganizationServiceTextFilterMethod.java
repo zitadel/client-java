@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** OrganizationServiceTextFilterMethod. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum OrganizationServiceTextFilterMethod {
   /** The {@code "TEXT_FILTER_METHOD_EQUALS"} value. */
   TEXT_FILTER_METHOD_EQUALS("TEXT_FILTER_METHOD_EQUALS"),

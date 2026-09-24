@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** BetaProjectServiceProjectFieldName. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum BetaProjectServiceProjectFieldName {
   /** The {@code "PROJECT_FIELD_NAME_UNSPECIFIED"} value. */
   PROJECT_FIELD_NAME_UNSPECIFIED("PROJECT_FIELD_NAME_UNSPECIFIED"),

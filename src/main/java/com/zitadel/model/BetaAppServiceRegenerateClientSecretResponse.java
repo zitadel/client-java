@@ -14,21 +14,6 @@ import java.time.OffsetDateTime;
 import javax.annotation.Nullable;
 
 /** BetaAppServiceRegenerateClientSecretResponse. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public class BetaAppServiceRegenerateClientSecretResponse {
 
   /** The {@code clientSecret} property. */
@@ -50,14 +35,14 @@ public class BetaAppServiceRegenerateClientSecretResponse {
    * POSIX `gettimeofday()`. struct timeval tv; gettimeofday(&tv, NULL); Timestamp timestamp;
    * timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.tv_usec * 1000); Example 3: Compute
    * Timestamp from Win32 `GetSystemTimeAsFileTime()`. FILETIME ft; GetSystemTimeAsFileTime(&ft);
-   * UINT64 ticks = (((UINT64)ft.dwHighDateTime) << 32) | ft.dwLowDateTime; // A Windows tick is 100
-   * nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is 11644473600 seconds before Unix epoch
-   * 1970-01-01T00:00:00Z. Timestamp timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) -
-   * 11644473600LL)); timestamp.set_nanos((INT32) ((ticks % 10000000) * 100)); Example 4: Compute
-   * Timestamp from Java `System.currentTimeMillis()`. long millis = System.currentTimeMillis();
-   * Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .setNanos((int) ((millis
-   * % 1000) * 1000000)).build(); Example 5: Compute Timestamp from Java `Instant.now()`. Instant
-   * now = Instant.now(); Timestamp timestamp =
+   * UINT64 ticks = (((UINT64)ft.dwHighDateTime) {@literal <}{@literal <} 32) | ft.dwLowDateTime; //
+   * A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is 11644473600 seconds
+   * before Unix epoch 1970-01-01T00:00:00Z. Timestamp timestamp; timestamp.set_seconds((INT64)
+   * ((ticks / 10000000) - 11644473600LL)); timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
+   * Example 4: Compute Timestamp from Java `System.currentTimeMillis()`. long millis =
+   * System.currentTimeMillis(); Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis /
+   * 1000) .setNanos((int) ((millis % 1000) * 1000000)).build(); Example 5: Compute Timestamp from
+   * Java `Instant.now()`. Instant now = Instant.now(); Timestamp timestamp =
    * Timestamp.newBuilder().setSeconds(now.getEpochSecond()) .setNanos(now.getNano()).build();
    * Example 6: Compute Timestamp from current time in Python. timestamp = Timestamp()
    * timestamp.GetCurrentTime() # JSON Mapping In JSON format, the Timestamp type is encoded as a

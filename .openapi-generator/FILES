@@ -1,4 +1,6 @@
+.openapi-generator/DEV-DEPENDENCIES
 SKILLS.md
+checkstyle-suppressions.xml
 src/main/java/com/zitadel/ApiClient.java
 src/main/java/com/zitadel/ApiHttpResponse.java
 src/main/java/com/zitadel/ApiResult.java

@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** ProjectServiceProjectRoleFieldName. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum ProjectServiceProjectRoleFieldName {
   /** The {@code "PROJECT_ROLE_FIELD_NAME_UNSPECIFIED"} value. */
   PROJECT_ROLE_FIELD_NAME_UNSPECIFIED("PROJECT_ROLE_FIELD_NAME_UNSPECIFIED"),

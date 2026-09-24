@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** IdentityProviderServiceAzureADTenantType. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum IdentityProviderServiceAzureADTenantType {
   /** The {@code "AZURE_AD_TENANT_TYPE_COMMON"} value. */
   AZURE_AD_TENANT_TYPE_COMMON("AZURE_AD_TENANT_TYPE_COMMON"),

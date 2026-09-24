@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** BetaSessionServiceUserVerificationRequirement. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum BetaSessionServiceUserVerificationRequirement {
   /** The {@code "USER_VERIFICATION_REQUIREMENT_UNSPECIFIED"} value. */
   USER_VERIFICATION_REQUIREMENT_UNSPECIFIED("USER_VERIFICATION_REQUIREMENT_UNSPECIFIED"),

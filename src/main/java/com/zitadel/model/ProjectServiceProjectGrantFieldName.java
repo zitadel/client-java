@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** ProjectServiceProjectGrantFieldName. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum ProjectServiceProjectGrantFieldName {
   /** The {@code "PROJECT_GRANT_FIELD_NAME_UNSPECIFIED"} value. */
   PROJECT_GRANT_FIELD_NAME_UNSPECIFIED("PROJECT_GRANT_FIELD_NAME_UNSPECIFIED"),

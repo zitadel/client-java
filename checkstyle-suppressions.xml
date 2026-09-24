@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+<!--
+  The ruleset is google_checks, unmodified. These are the only checks that
+  generated code cannot satisfy; each is named individually with the reason.
+  No generated source file disables a check, a rule set, or a tool.
+-->
+<suppressions>
+  <!-- The summary sentence is the OpenAPI document's own summary/description,
+       reproduced verbatim and identically in all twelve SDKs, so its
+       punctuation belongs to the document author, not to the generator. -->
+  <suppress checks="SummaryJavadoc" files="."/>
+
+  <!-- Identifiers come from the document (operationIds, schema and tag names)
+       and from the cross-SDK type-name contract (OAuth2ServerException and its
+       siblings), so the generator cannot pick a spelling with fewer
+       consecutive capitals. -->
+  <suppress checks="AbbreviationAsWordInName" files="."/>
+
+  <!-- A property whose wire name is a Java keyword is escaped with a leading
+       underscore (_class, _return); the field has to stay recognisable as the
+       wire name it carries. -->
+  <suppress checks="MemberName" files="."/>
+
+  <!-- A generated API file is operation-major: each operation's overloads and
+       its private *Internal helper form one block, as in every other SDK.
+       Grouping by method name instead would interleave unrelated operations. -->
+  <suppress checks="OverloadMethodsDeclarationOrder" files="[\\/]api[\\/][^\\/]*Api\.java$"/>
+
+  <!-- A generated request body declares its parts (path, query params, header
+       params, auth) in one fixed order, whether or not a given operation uses
+       each one. -->
+  <suppress checks="VariableDeclarationUsageDistance" files="."/>
+</suppressions>

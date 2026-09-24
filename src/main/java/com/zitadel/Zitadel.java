@@ -67,7 +67,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  */
 @SuppressFBWarnings(
     value = {"URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD"},
-    justification = "generated code")
+    justification = "the API-group fields exist for the caller, not for the SDK")
 /* A tag the spec spells with an acronym -- BetaOIDCService -- keeps that
  * spelling here, because the accessor is public API and every other SDK
  * spells it the same way. */

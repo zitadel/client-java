@@ -72,24 +72,9 @@ import javax.net.ssl.X509ExtendedTrustManager;
  *   <li>{@link TransportOptions#isInjectRequestId()} — injected if not already set
  * </ol>
  */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 @edu.umd.cs.findbugs.annotations.SuppressFBWarnings(
     value = {"THROWS_METHOD_THROWS_RUNTIMEEXCEPTION"},
-    justification = "generated code")
+    justification = "the SDK's error contract is built on unchecked exceptions")
 public final class DefaultApiClient implements ApiClient {
 
   private static final ObjectMapper MULTIPART_MAPPER = ObjectSerializer.createDefaultObjectMapper();
@@ -122,19 +107,19 @@ public final class DefaultApiClient implements ApiClient {
         public void checkClientTrusted(X509Certificate[] chain, String authType) {}
 
         @Override
-        public void checkServerTrusted(X509Certificate[] chain, String authType) {}
-
-        @Override
         public void checkClientTrusted(
-            X509Certificate[] chain, String authType, java.net.Socket socket) {}
-
-        @Override
-        public void checkServerTrusted(
             X509Certificate[] chain, String authType, java.net.Socket socket) {}
 
         @Override
         public void checkClientTrusted(
             X509Certificate[] chain, String authType, javax.net.ssl.SSLEngine engine) {}
+
+        @Override
+        public void checkServerTrusted(X509Certificate[] chain, String authType) {}
+
+        @Override
+        public void checkServerTrusted(
+            X509Certificate[] chain, String authType, java.net.Socket socket) {}
 
         @Override
         public void checkServerTrusted(
@@ -150,9 +135,9 @@ public final class DefaultApiClient implements ApiClient {
   private final TransportOptions transportOptions;
 
   /**
-   * Pre-computed `Proxy-Authorization: Basic <b64(user:pass)>` value extracted from the proxy URL's
-   * userinfo, or null if no proxy / no embedded credentials. Injected on every outbound request
-   * because java.net.http.HttpClient does not natively handle proxy auth.
+   * Pre-computed {@code Proxy-Authorization: Basic <b64(user:pass)>} value extracted from the proxy
+   * URL's userinfo, or null if no proxy / no embedded credentials. Injected on every outbound
+   * request because java.net.http.HttpClient does not natively handle proxy auth.
    */
   @Nullable private final String proxyAuthHeader;
 
@@ -187,6 +172,23 @@ public final class DefaultApiClient implements ApiClient {
     this.transportOptions = transportOptions;
     this.proxyAuthHeader = computeProxyAuthHeader(transportOptions);
     this.httpClient = buildHttpClient(transportOptions);
+  }
+
+  /**
+   * Create a client with a pre-configured {@link HttpClient}.
+   *
+   * <p>Uses default {@link TransportOptions} for header injection settings.
+   *
+   * <p>Package-private: this is an internal test-only seam for injecting a mock transport and is
+   * not part of the public API. Production callers construct via {@link #DefaultApiClient()} or
+   * {@link #DefaultApiClient(TransportOptions)}.
+   *
+   * @param httpClient the HTTP client to use
+   */
+  DefaultApiClient(HttpClient httpClient) {
+    this.httpClient = httpClient;
+    this.transportOptions = TransportOptions.builder().build();
+    this.proxyAuthHeader = null;
   }
 
   /**
@@ -322,23 +324,6 @@ public final class DefaultApiClient implements ApiClient {
   }
 
   /**
-   * Create a client with a pre-configured {@link HttpClient}.
-   *
-   * <p>Uses default {@link TransportOptions} for header injection settings.
-   *
-   * <p>Package-private: this is an internal test-only seam for injecting a mock transport and is
-   * not part of the public API. Production callers construct via {@link #DefaultApiClient()} or
-   * {@link #DefaultApiClient(TransportOptions)}.
-   *
-   * @param httpClient the HTTP client to use
-   */
-  DefaultApiClient(HttpClient httpClient) {
-    this.httpClient = httpClient;
-    this.transportOptions = TransportOptions.builder().build();
-    this.proxyAuthHeader = null;
-  }
-
-  /**
    * Bucket 3.1 — sensitive header names that must be stripped on a cross-origin redirect. The
    * static triple {Authorization, Cookie, Proxy-Authorization} is always present; any additional
    * API-key header names harvested from the spec's {@code securitySchemes} (type=apiKey, in=header)
@@ -360,27 +345,6 @@ public final class DefaultApiClient implements ApiClient {
   public ApiHttpResponse sendRequest(
       String method, String url, Map<String, String> headers, @Nullable Object body) {
     return sendRequest(method, url, headers, body, false);
-  }
-
-  /**
-   * Send a request, retrying ONCE when the JDK HttpClient fails because it reused a keep-alive
-   * connection the server had already closed. That surfaces as {@code java.io.IOException: HTTP/1.1
-   * header parser received no bytes}: zero bytes were exchanged, so the request never reached the
-   * server and replaying it is safe even for non-idempotent methods. This matches the
-   * stale-connection resilience the other SDKs' HTTP stacks (reqwest, undici, urllib3, ...) provide
-   * automatically. Any other IOException propagates unchanged.
-   */
-  private HttpResponse<byte[]> sendWithRetry(HttpRequest request)
-      throws IOException, InterruptedException {
-    try {
-      return httpClient.send(request, HttpResponse.BodyHandlers.ofByteArray());
-    } catch (IOException e) {
-      String message = e.getMessage();
-      if (message != null && message.contains("header parser received no bytes")) {
-        return httpClient.send(request, HttpResponse.BodyHandlers.ofByteArray());
-      }
-      throw e;
-    }
   }
 
   /**
@@ -659,6 +623,27 @@ public final class DefaultApiClient implements ApiClient {
           new java.util.concurrent.CancellationException("request interrupted");
       cancelled.initCause(e);
       throw cancelled;
+    }
+  }
+
+  /**
+   * Send a request, retrying ONCE when the JDK HttpClient fails because it reused a keep-alive
+   * connection the server had already closed. That surfaces as {@code java.io.IOException: HTTP/1.1
+   * header parser received no bytes}: zero bytes were exchanged, so the request never reached the
+   * server and replaying it is safe even for non-idempotent methods. This matches the
+   * stale-connection resilience the other SDKs' HTTP stacks (reqwest, undici, urllib3, ...) provide
+   * automatically. Any other IOException propagates unchanged.
+   */
+  private HttpResponse<byte[]> sendWithRetry(HttpRequest request)
+      throws IOException, InterruptedException {
+    try {
+      return httpClient.send(request, HttpResponse.BodyHandlers.ofByteArray());
+    } catch (IOException e) {
+      String message = e.getMessage();
+      if (message != null && message.contains("header parser received no bytes")) {
+        return httpClient.send(request, HttpResponse.BodyHandlers.ofByteArray());
+      }
+      throw e;
     }
   }
 

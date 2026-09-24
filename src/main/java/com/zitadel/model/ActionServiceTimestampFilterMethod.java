@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** ActionServiceTimestampFilterMethod. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum ActionServiceTimestampFilterMethod {
   /** The {@code "TIMESTAMP_FILTER_METHOD_EQUALS"} value. */
   TIMESTAMP_FILTER_METHOD_EQUALS("TIMESTAMP_FILTER_METHOD_EQUALS"),

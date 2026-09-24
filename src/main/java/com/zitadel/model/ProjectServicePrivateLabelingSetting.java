@@ -10,21 +10,6 @@
 package com.zitadel.model;
 
 /** ProjectServicePrivateLabelingSetting. */
-@SuppressWarnings({
-  "checkstyle:SummaryJavadoc",
-  "checkstyle:JavadocParagraph",
-  "checkstyle:SingleLineJavadoc",
-  "checkstyle:RequireEmptyLineBeforeBlockTagGroup",
-  "checkstyle:NonEmptyAtclauseDescription",
-  "checkstyle:JavadocTagContinuationIndentation",
-  "checkstyle:AtclauseOrder",
-  "checkstyle:InvalidJavadocPosition",
-  "checkstyle:AbbreviationAsWordInName",
-  "checkstyle:MemberName",
-  "checkstyle:OverloadMethodsDeclarationOrder",
-  "checkstyle:VariableDeclarationUsageDistance",
-  "checkstyle:ConstructorsDeclarationGrouping"
-})
 public enum ProjectServicePrivateLabelingSetting {
   /** The {@code "PRIVATE_LABELING_SETTING_UNSPECIFIED"} value. */
   PRIVATE_LABELING_SETTING_UNSPECIFIED("PRIVATE_LABELING_SETTING_UNSPECIFIED"),
