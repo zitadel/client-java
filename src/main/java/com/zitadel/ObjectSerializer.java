@@ -12,9 +12,11 @@ package com.zitadel;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.StreamReadConstraints;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
@@ -47,6 +49,13 @@ import javax.annotation.Nullable;
  * parameters.
  */
 public final class ObjectSerializer {
+
+  /**
+   * Maximum allowed JSON nesting depth. A malicious 100k-deep {@code {"a":{"a":...}}} payload would
+   * otherwise recurse through the JVM call stack, so the cap is pinned here rather than left to the
+   * parser's default. All twelve SDKs use the same cap.
+   */
+  public static final int MAX_JSON_DEPTH = 1000;
 
   private final ObjectMapper objectMapper;
 
@@ -338,7 +347,13 @@ public final class ObjectSerializer {
     ObjectMapper: the setter-style mutators (setSerializationInclusion,
     configure(MapperFeature, ...)) are deprecated in current Jackson, so
     the builder is the supported path for these settings. */
-    return JsonMapper.builder()
+    return JsonMapper.builder(
+            JsonFactory.builder()
+                /* Refuse a deeply-nested payload before it can
+                recurse through the call stack. */
+                .streamReadConstraints(
+                    StreamReadConstraints.builder().maxNestingDepth(MAX_JSON_DEPTH).build())
+                .build())
         .visibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
         .visibility(PropertyAccessor.GETTER, JsonAutoDetect.Visibility.NONE)
         .visibility(PropertyAccessor.IS_GETTER, JsonAutoDetect.Visibility.NONE)

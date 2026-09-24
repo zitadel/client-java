@@ -13,11 +13,7 @@ import java.util.Map;
 
 /**
  * Abstract base class providing default implementations for optional {@link Authenticator} methods.
- * Concrete authenticators should extend this class instead of implementing {@link Authenticator}
- * directly.
- *
- * <p>The optional {@code getQueryParams()} and {@code getCookieParams()} methods are inherited from
- * {@link Authenticator}, which already supplies empty-map defaults.
+ * Concrete authenticators should extend this class.
  */
 public abstract class BaseAuthenticator implements Authenticator {
 

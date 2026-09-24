@@ -142,6 +142,9 @@ public class ApiException extends ZitadelException {
     Object errorBody = null;
     if (responseBody != null && !responseBody.isEmpty()) {
       try {
+        /* Route through ObjectSerializer so the nesting-depth cap
+        refuses a deeply-nested error payload before it can recurse
+        through the call stack. */
         errorBody = ERROR_BODY_SERIALIZER.deserialize(responseBody, Object.class);
       } catch (SerializationException e) {
         errorBody = null;
@@ -160,7 +163,7 @@ public class ApiException extends ZitadelException {
             new ClientException(statusCode, message, responseHeaders, responseBody, errorBody);
       };
     }
-    if (statusCode >= 500) {
+    if (statusCode >= 500 && statusCode < 600) {
       return statusCode == 500
           ? new InternalServerErrorException(message, responseHeaders, responseBody, errorBody)
           : new ServerException(statusCode, message, responseHeaders, responseBody, errorBody);
@@ -208,29 +211,54 @@ public class ApiException extends ZitadelException {
   }
 
   /**
-   * Get the deserialized error body cast to the specified type.
+   * Deserialize the raw response body into the given type.
    *
-   * @param clazz the expected type of the error body
+   * <p>Useful when the API returns a structured error body that you want to access in a
+   * strongly-typed way.
+   *
+   * @param clazz the type to deserialize the error body into
    * @param <T> the type parameter
-   * @return the error body cast to the specified type, or null if not an instance
+   * @return the deserialized error body, or null if the body is empty
    */
   @Nullable
   public <T> T getTypedErrorBody(Class<T> clazz) {
-    return clazz.isInstance(errorBody) ? clazz.cast(errorBody) : null;
+    if (responseBody == null || responseBody.isEmpty()) {
+      return null;
+    }
+    return ERROR_BODY_SERIALIZER.deserialize(responseBody, clazz);
   }
 
+  /**
+   * Render the error as the message followed by whatever response context was captured, one
+   * labelled field per line.
+   *
+   * <p>{@link #getMessage()} is deliberately not overridden: it keeps returning the detail message
+   * the exception was constructed with.
+   *
+   * @return the human-readable rendering of this exception
+   */
+  /* Error Prone's OverrideThrowableToString would have this class override
+  getMessage() instead. It must not: getMessage() is the detail message a
+  caller reads, and all twelve SDKs render the response context through
+  the string conversion, leaving the detail message alone. */
+  @SuppressWarnings("OverrideThrowableToString")
   @Override
-  public String getMessage() {
-    return "ApiException{"
-        + "statusCode="
-        + statusCode
-        + ", message='"
-        + super.getMessage()
-        + "', responseHeaders="
-        + responseHeaders
-        + ", responseBody='"
-        + responseBody
-        + '\''
-        + '}';
+  public String toString() {
+    String message = super.getMessage();
+    StringBuilder buf =
+        new StringBuilder(
+            message == null || message.isEmpty()
+                ? "Error message: the server returns an error"
+                : message);
+    if (statusCode != 0) {
+      buf.append("\nHTTP status code: ").append(statusCode);
+    }
+    if (responseHeaders != null && !responseHeaders.isEmpty()) {
+      buf.append("\nResponse headers: ").append(responseHeaders);
+    }
+    if (responseBody != null && !responseBody.isEmpty()) {
+      buf.append("\nResponse body: ").append(responseBody);
+    }
+    return buf.toString();
   }
 }

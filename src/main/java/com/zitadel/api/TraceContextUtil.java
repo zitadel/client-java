@@ -13,19 +13,16 @@ import java.util.Map;
 
 /**
  * Utility for injecting W3C Trace Context headers ({@code traceparent}, {@code tracestate}) into
- * outgoing API requests when OpenTelemetry is available on the classpath.
+ * outgoing API requests when OpenTelemetry is available.
  *
- * <p>If the OpenTelemetry API is not present, this class silently no-ops with zero overhead.
+ * <p>If the OpenTelemetry API is not installed, this class silently no-ops.
  */
-final class TraceContextUtil {
+public final class TraceContextUtil {
 
   private TraceContextUtil() {}
 
   /**
    * Inject the current OpenTelemetry trace context into the given headers map.
-   *
-   * <p>If the OpenTelemetry API is not on the classpath or no active span exists, this method does
-   * nothing.
    *
    * @param headers mutable map of request headers
    */

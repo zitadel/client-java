@@ -85,7 +85,7 @@ public abstract class BaseApi {
 
   /** Create an API instance with the default configuration and default transport. */
   public BaseApi() {
-    this(Configuration.getDefault());
+    this(Configuration.defaultConfiguration());
   }
 
   /**

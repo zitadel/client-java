@@ -32,8 +32,6 @@ import javax.annotation.Nullable;
  */
 public final class Configuration {
 
-  @javax.annotation.Nullable private static volatile Configuration defaultInstance;
-
   private final String baseUrl;
   private final Map<String, String> defaultHeaders;
 
@@ -52,34 +50,15 @@ public final class Configuration {
   }
 
   /**
-   * Return the default configuration instance.
+   * Return a {@link Configuration} with default values.
    *
-   * <p>If no default has been set via {@link #setDefault(Configuration)}, a new instance is created
-   * with the spec-defined base URL and no default headers.
+   * <p>A fresh instance every call: the SDK keeps no process-wide default a caller could swap out
+   * from under another caller.
    *
-   * @return the default configuration
+   * @return a configuration with the spec-defined base URL and no default headers
    */
-  public static Configuration getDefault() {
-    Configuration result = defaultInstance;
-    if (result == null) {
-      synchronized (Configuration.class) {
-        result = defaultInstance;
-        if (result == null) {
-          result = builder().build();
-          defaultInstance = result;
-        }
-      }
-    }
-    return result;
-  }
-
-  /**
-   * Set the default configuration instance.
-   *
-   * @param config the configuration to use as default
-   */
-  public static void setDefault(Configuration config) {
-    defaultInstance = config;
+  public static Configuration defaultConfiguration() {
+    return builder().build();
   }
 
   /**
