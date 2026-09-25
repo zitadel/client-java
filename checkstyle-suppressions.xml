@@ -19,6 +19,14 @@
        consecutive capitals. -->
   <suppress checks="AbbreviationAsWordInName" files="."/>
 
+  <!-- Line length is off in every one of the twelve SDKs. A generated Javadoc
+       line reproduces the OpenAPI document's own description verbatim, and
+       google-java-format does not rewrap text inside a comment, so a specification with
+       long descriptions (as real specs have) leaves lines over 100 columns that
+       no formatter can break. A document whose descriptions are all short would
+       hide this; a real specification does not. -->
+  <suppress checks="LineLength" files="."/>
+
   <!-- A property whose wire name is a Java keyword is escaped with a leading
        underscore (_class, _return); the field has to stay recognisable as the
        wire name it carries. -->
