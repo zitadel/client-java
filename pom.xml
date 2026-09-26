@@ -427,6 +427,16 @@
             <version>${junit-version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- Transport-layer tests (ZitadelTransportTest) exercise
+             TransportOptions against a WireMock stub and a Squid forward
+             proxy started as throwaway Docker containers, matching the
+             container-based transport tests in the other Zitadel SDKs. -->
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <version>${testcontainers-version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- Bespoke token-minting authenticators (kept, generator-excluded):
              WebTokenAuthenticator signs JWTs with Nimbus JOSE; KeyUtil parses
              PEM/PKCS#1 private keys with Bouncy Castle. These deps are not part
@@ -451,6 +461,7 @@
         <jackson-databind-version>2.22.1</jackson-databind-version>
         <opentelemetry-version>1.62.0</opentelemetry-version>
         <junit-version>6.1.0</junit-version>
+        <testcontainers-version>1.21.4</testcontainers-version>
         <error-prone-version>2.41.0</error-prone-version>
         <nullaway-version>0.12.10</nullaway-version>
         <spotbugs-plugin-version>4.9.3.2</spotbugs-plugin-version>
