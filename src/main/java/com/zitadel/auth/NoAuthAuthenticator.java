@@ -1,7 +1,5 @@
 package com.zitadel.auth;
 
-import com.zitadel.utils.URLUtil;
-
 import java.util.Collections;
 import java.util.Map;
 
@@ -10,28 +8,37 @@ import java.util.Map;
  *
  * <p>This strategy applies no authentication and returns empty headers.
  */
-public class NoAuthAuthenticator extends Authenticator {
+public class NoAuthAuthenticator extends BaseAuthenticator {
 
-    /**
-     * Constructs a NoAuthAuthenticator.
-     *
-     * @param host The base URL for authentication endpoints.
-     */
-    public NoAuthAuthenticator(String host) {
-        super(URLUtil.buildHostname(host));
-    }
+  private final String host;
 
-    public NoAuthAuthenticator() {
-        this("localhost");
-    }
+  /**
+   * Constructs a NoAuthAuthenticator.
+   *
+   * @param host the base URL for the API endpoints.
+   * @throws IllegalArgumentException if the host is not a valid http or https URL.
+   */
+  public NoAuthAuthenticator(String host) {
+    this.host = new OpenId(host).getHostEndpoint();
+  }
 
-    /**
-     * Returns an empty set of authentication headers.
-     *
-     * @return An empty map.
-     */
-    @Override
-    public Map<String, String> getAuthHeaders() {
-        return Collections.emptyMap();
-    }
+  /** Constructs a NoAuthAuthenticator for {@code http://localhost}. */
+  public NoAuthAuthenticator() {
+    this("http://localhost");
+  }
+
+  @Override
+  public String getHost() {
+    return host;
+  }
+
+  /**
+   * Returns an empty map, since no authentication is performed.
+   *
+   * @return an empty map.
+   */
+  @Override
+  public Map<String, String> getAuthHeaders() {
+    return Collections.emptyMap();
+  }
 }

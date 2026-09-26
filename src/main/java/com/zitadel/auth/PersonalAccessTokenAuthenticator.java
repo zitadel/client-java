@@ -1,7 +1,5 @@
 package com.zitadel.auth;
 
-import com.zitadel.utils.URLUtil;
-
 import java.util.Collections;
 import java.util.Map;
 
@@ -10,31 +8,46 @@ import java.util.Map;
  *
  * <p>Uses a static personal access token for API authentication.
  */
-public class PersonalAccessTokenAuthenticator extends Authenticator {
+public class PersonalAccessTokenAuthenticator extends BaseAuthenticator {
 
-    /**
-     * The personal access token.
-     */
-    private final String token;
+  private final String host;
+  private final String token;
 
-    /**
-     * Constructs a PersonalAccessAuthenticator.
-     *
-     * @param host  The base URL for the API endpoints.
-     * @param token The personal access token.
-     */
-    public PersonalAccessTokenAuthenticator(String host, String token) {
-        super(URLUtil.buildHostname(host));
-        this.token = token;
-    }
+  /**
+   * Constructs a PersonalAccessTokenAuthenticator.
+   *
+   * @param host the base URL for the API endpoints.
+   * @param token the personal access token.
+   * @throws IllegalArgumentException if the host is not a valid http or https URL or the token is
+   *     empty.
+   */
+  public PersonalAccessTokenAuthenticator(String host, String token) {
+    this.host = new OpenId(host).getHostEndpoint();
+    this.token = OAuthAuthenticator.requireText(token, "Token");
+  }
 
-    /**
-     * Returns the authentication headers using the personal access token.
-     *
-     * @return A map containing the 'Authorization' header.
-     */
-    @Override
-    public Map<String, String> getAuthHeaders() {
-        return Collections.singletonMap("Authorization", "Bearer " + token);
-    }
+  @Override
+  public String getHost() {
+    return host;
+  }
+
+  /**
+   * Returns the authentication headers using the personal access token.
+   *
+   * @return a map containing the {@code Authorization} header.
+   */
+  @Override
+  public Map<String, String> getAuthHeaders() {
+    return Collections.singletonMap("Authorization", "Bearer " + token);
+  }
+
+  /**
+   * Returns a string representation of this authenticator with the token redacted.
+   *
+   * @return a string representation with the token redacted.
+   */
+  @Override
+  public String toString() {
+    return getClass().getSimpleName() + "(host=" + host + ", token=***)";
+  }
 }
