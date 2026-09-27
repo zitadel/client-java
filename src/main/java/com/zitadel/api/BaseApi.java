@@ -519,17 +519,38 @@ public abstract class BaseApi {
     }
     StringJoiner joiner = new StringJoiner("&");
     for (Map.Entry<String, Object> entry : queryParams.entrySet()) {
-      if (entry.getValue() != null) {
-        if (entry.getValue() instanceof List<?> list) {
+      Object value = entry.getValue();
+      /* OAS allowReserved: a wrapped value keeps RFC 3986 reserved
+       * characters literal instead of percent-encoding them. */
+      boolean allowReserved = false;
+      if (value instanceof ValueSerializer.AllowReservedValue reserved) {
+        value = reserved.value();
+        allowReserved = true;
+      }
+      if (value != null) {
+        String encodedKey = encode(entry.getKey());
+        if (value instanceof List<?> list) {
           for (Object item : list) {
-            joiner.add(encode(entry.getKey()) + "=" + encode(String.valueOf(item)));
+            joiner.add(encodedKey + "=" + encodeQueryValue(String.valueOf(item), allowReserved));
           }
         } else {
-          joiner.add(encode(entry.getKey()) + "=" + encode(String.valueOf(entry.getValue())));
+          joiner.add(encodedKey + "=" + encodeQueryValue(String.valueOf(value), allowReserved));
         }
       }
     }
     return joiner.toString();
+  }
+
+  /**
+   * Encode a query-parameter value, preserving RFC 3986 reserved characters when the parameter
+   * declared {@code allowReserved: true}.
+   *
+   * @param value the value to encode
+   * @param allowReserved whether reserved characters are left literal
+   * @return the encoded value
+   */
+  private String encodeQueryValue(String value, boolean allowReserved) {
+    return allowReserved ? ValueSerializer.encodeQueryAllowingReserved(value) : encode(value);
   }
 
   /**

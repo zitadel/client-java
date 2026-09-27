@@ -383,6 +383,12 @@ public final class ObjectSerializer {
         field) requires google.protobuf.Duration's decimal-seconds string
         form ("3600s"), not JavaTimeModule's numeric/ISO-8601 form. */
         .addModule(durationModule())
+        /* Reject a non-finite float/double on ENCODE. Jackson's default
+        QUOTE_NON_NUMERIC_NUMBERS emits NaN/Infinity as the quoted
+        strings "NaN"/"Infinity" — invalid per RFC 8259 §6 and a wire
+        value the other SDKs reject. This module fails loudly instead,
+        matching python (allow_nan=False), go, node, etc. */
+        .addModule(nonFiniteNumberModule())
         .defaultDateFormat(new StdDateFormat().withColonInTimeZone(true))
         .build();
   }
@@ -411,6 +417,49 @@ public final class ObjectSerializer {
           public Duration deserialize(JsonParser parser, DeserializationContext context)
               throws IOException {
             return parseDuration(parser.getValueAsString());
+          }
+        });
+    return module;
+  }
+
+  /**
+   * Build a Jackson module that rejects a non-finite {@link Double}/{@link Float} (NaN, +Infinity,
+   * -Infinity) on serialize.
+   *
+   * <p>RFC 8259 §6 has no NaN/Infinity token, so a spec-conformant server rejects them. Jackson's
+   * default {@code QUOTE_NON_NUMERIC_NUMBERS} would emit the quoted strings {@code "NaN"}/{@code
+   * "Infinity"} instead of failing; these serializers throw a {@link SerializationException} so the
+   * caller learns the value cannot be represented, matching the 10 other SDKs that reject
+   * non-finite floats.
+   *
+   * @return the non-finite-number module
+   */
+  private static SimpleModule nonFiniteNumberModule() {
+    SimpleModule module = new SimpleModule();
+    module.addSerializer(
+        Double.class,
+        new JsonSerializer<Double>() {
+          @Override
+          public void serialize(Double value, JsonGenerator gen, SerializerProvider provider)
+              throws IOException {
+            if (value == null || !Double.isFinite(value)) {
+              throw new SerializationException(
+                  "Non-finite double value '" + value + "' is not permitted by RFC 8259");
+            }
+            gen.writeNumber(value.doubleValue());
+          }
+        });
+    module.addSerializer(
+        Float.class,
+        new JsonSerializer<Float>() {
+          @Override
+          public void serialize(Float value, JsonGenerator gen, SerializerProvider provider)
+              throws IOException {
+            if (value == null || !Float.isFinite(value)) {
+              throw new SerializationException(
+                  "Non-finite float value '" + value + "' is not permitted by RFC 8259");
+            }
+            gen.writeNumber(value.floatValue());
           }
         });
     return module;

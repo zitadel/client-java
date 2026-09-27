@@ -33,6 +33,7 @@ src/test/java/com/zitadel/auth/ClientCredentialsAuthenticatorTest.java
 src/test/java/com/zitadel/auth/PersonalAccessTokenAuthenticatorTest.java
 src/test/java/com/zitadel/auth/OAuthAuthenticatorTest.java
 src/test/java/com/zitadel/auth/WebTokenAuthenticatorTest.java
+src/test/java/com/zitadel/ZitadelTransportTest.java
 
 # --- repo identity + docs (team-owned, not generated) ---
 LICENSE

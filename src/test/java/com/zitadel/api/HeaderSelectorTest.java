@@ -210,6 +210,15 @@ class HeaderSelectorTest {
     }
 
     @Test
+    @DisplayName("should drop whitespace-only entries before joining")
+    void shouldDropWhitespaceOnlyEntries() {
+      Map<String, String> headers =
+          headerSelector.selectHeaders(
+              new String[] {"   ", "application/json"}, "application/json", false);
+      assertEquals("application/json", headers.get("Accept"));
+    }
+
+    @Test
     @DisplayName("should not set Accept header when all entries are blank")
     void shouldNotSetAcceptHeaderWhenAllEntriesBlank() {
       Map<String, String> headers =

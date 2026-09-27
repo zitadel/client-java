@@ -11,6 +11,7 @@ package com.zitadel.api;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -537,6 +538,16 @@ class ValueSerializerTest {
               null,
               "spaceDelimited",
               false));
+      assertEquals(
+          Arrays.asList("blue", "black"),
+          ValueSerializer.serializeStyled(
+              "color",
+              Arrays.asList("blue", "black"),
+              "query",
+              "array",
+              null,
+              "spaceDelimited",
+              true));
     }
 
     @Test
@@ -566,6 +577,16 @@ class ValueSerializerTest {
               null,
               "pipeDelimited",
               false));
+      assertEquals(
+          Arrays.asList("blue", "black"),
+          ValueSerializer.serializeStyled(
+              "color",
+              Arrays.asList("blue", "black"),
+              "query",
+              "array",
+              null,
+              "pipeDelimited",
+              true));
     }
 
     @Test
@@ -575,6 +596,32 @@ class ValueSerializerTest {
           "blue",
           ValueSerializer.serializeStyled(
               "color", "blue", "query", "string", null, "pipeDelimited", false));
+    }
+  }
+
+  @Nested
+  @DisplayName("allowReserved query encoding")
+  class AllowReservedTests {
+
+    @Test
+    @DisplayName("reserved characters are left literal, other characters still encoded")
+    void reservedCharsPreserved() {
+      assertEquals("v1.0/beta:rc1", ValueSerializer.encodeQueryAllowingReserved("v1.0/beta:rc1"));
+      // Space is illegal in a URL and must still be percent-encoded even
+      // when reserved characters are preserved.
+      assertEquals("a%20b:c", ValueSerializer.encodeQueryAllowingReserved("a b:c"));
+    }
+
+    @Test
+    @DisplayName("maybeAllowReserved wraps only when allowReserved is true")
+    void maybeAllowReservedWraps() {
+      assertEquals("plain", ValueSerializer.maybeAllowReserved("plain", false));
+      ValueSerializer.AllowReservedValue wrapped =
+          assertInstanceOf(
+              ValueSerializer.AllowReservedValue.class,
+              ValueSerializer.maybeAllowReserved("v1/beta", true));
+      assertEquals("v1/beta", wrapped.value());
+      assertNull(ValueSerializer.maybeAllowReserved(null, true));
     }
   }
 

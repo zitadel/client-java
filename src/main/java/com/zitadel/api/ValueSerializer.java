@@ -139,6 +139,70 @@ final class ValueSerializer {
   }
 
   /**
+   * Wraps a query value so the query-string builder preserves RFC 3986 reserved characters (OAS
+   * {@code allowReserved: true}).
+   *
+   * @param value the serialized query value (a {@link String} or a {@link List} of strings for
+   *     exploded parameters)
+   */
+  record AllowReservedValue(Object value) {}
+
+  /**
+   * Wraps {@code value} in an {@link AllowReservedValue} when the parameter declares {@code
+   * allowReserved: true}; otherwise returns it unchanged.
+   *
+   * @param value the serialized query value
+   * @param allowReserved whether the parameter preserves reserved characters
+   * @return the value, wrapped iff {@code allowReserved} is true
+   */
+  @Nullable
+  public static Object maybeAllowReserved(@Nullable Object value, boolean allowReserved) {
+    if (value == null || !allowReserved) {
+      return value;
+    }
+    return new AllowReservedValue(value);
+  }
+
+  /**
+   * Percent-encodes a query value while leaving RFC 3986 reserved characters literal (OAS {@code
+   * allowReserved: true}).
+   *
+   * <p>Everything that is not RFC 3986 reserved or unreserved — spaces, control characters,
+   * non-ASCII — is still percent-encoded, so the result is always a valid URL query segment. Only
+   * the reserved set {@code : / ? # [ ] @ ! $ & ' ( ) * + , ; =} (plus the unreserved {@code ~}) is
+   * restored after {@link URLEncoder} over-encodes it.
+   *
+   * @param value the raw value to encode
+   * @return the encoded value with reserved characters preserved
+   */
+  public static String encodeQueryAllowingReserved(String value) {
+    if (value == null || value.isEmpty()) {
+      return value;
+    }
+    return URLEncoder.encode(value, StandardCharsets.UTF_8)
+        .replace("+", "%20")
+        .replace("%7E", "~")
+        .replace("%3A", ":")
+        .replace("%2F", "/")
+        .replace("%3F", "?")
+        .replace("%23", "#")
+        .replace("%5B", "[")
+        .replace("%5D", "]")
+        .replace("%40", "@")
+        .replace("%21", "!")
+        .replace("%24", "$")
+        .replace("%26", "&")
+        .replace("%27", "'")
+        .replace("%28", "(")
+        .replace("%29", ")")
+        .replace("%2A", "*")
+        .replace("%2B", "+")
+        .replace("%2C", ",")
+        .replace("%3B", ";")
+        .replace("%3D", "=");
+  }
+
+  /**
    * Serialize a deepObject-style query parameter.
    *
    * <p>Produces a map of flattened keys in the form {@code paramName[key]} to URL-encoded string
@@ -241,8 +305,18 @@ final class ValueSerializer {
         }
         yield ObjectSerializer.stringify(value);
       }
-      case "spaceDelimited" -> String.join(" ", items);
-      case "pipeDelimited" -> String.join("|", items);
+      case "spaceDelimited" -> {
+        if (explode && value instanceof Collection<?>) {
+          yield new ArrayList<>(items);
+        }
+        yield String.join(" ", items);
+      }
+      case "pipeDelimited" -> {
+        if (explode && value instanceof Collection<?>) {
+          yield new ArrayList<>(items);
+        }
+        yield String.join("|", items);
+      }
       default -> serialize(value, location, schemaType, collectionFormat);
     };
   }
