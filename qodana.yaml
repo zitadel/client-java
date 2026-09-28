@@ -8,7 +8,26 @@ exclude:
     paths:
       - src/main/java/com/zitadel/api
       - src/main/java/com/zitadel/model
+      # Test code legitimately uses fixture classes, descriptive names and
+      # reaches into internals; production-grade IDE inspections are noise here.
+      - src/test
+  # HttpAwareAuthenticator#setApiClient has a non-null contract (the client is
+  # always injected by the Client constructor). The backing field is @Nullable
+  # only because it is unset before injection; annotating the setter parameter
+  # @Nullable would misrepresent the public contract, so this inspection is
+  # scoped out for the bespoke authenticator rather than weakening the API.
+  - name: NullableProblems
+    paths:
+      - src/main/java/com/zitadel/auth/OAuthAuthenticator.java
+  # IntelliJ-only refactoring hint ("method could be extracted"); there is no
+  # Checkstyle/SpotBugs equivalent and it is not a correctness issue.
+  - name: ExtractMethodRecommender
+  # Code coverage is not a metric we gate on, and the bulk of the SDK is
+  # generated code that is untested by design. Qodana does not support
+  # path-scoped coverage exclusion (only full-inspection / .NET attribute
+  # excludes), so the coverage inspection is disabled outright.
+  - name: JvmCoverageInspection
 
-projectJDK: "22"
+projectJDK: "25"
 
-linter: jetbrains/qodana-jvm:2025.1
+linter: jetbrains/qodana-jvm:2026.1

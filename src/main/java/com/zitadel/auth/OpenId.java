@@ -1,124 +1,141 @@
 package com.zitadel.auth;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zitadel.TransportOptions;
-import com.zitadel.utils.URLUtil;
+import com.zitadel.ApiClient;
+import com.zitadel.ApiHttpResponse;
+import com.zitadel.errors.ApiException;
+import com.zitadel.errors.SerializationException;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Collections;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.net.MalformedURLException;
-import java.security.GeneralSecurityException;
-import java.util.Map;
-
+/**
+ * Resolves the OpenID Connect discovery document for a Zitadel host.
+ *
+ * <p>The constructor only validates and normalises the host; it performs no I/O. The {@code
+ * token_endpoint} is fetched through the shared {@link ApiClient} the first time {@link
+ * #getTokenEndpoint} is called, so discovery honours the SDK's proxy, TLS and timeout settings and
+ * fails with the same error types as any other request:
+ *
+ * <ul>
+ *   <li>no HTTP response: {@link com.zitadel.errors.NetworkException} or {@link
+ *       com.zitadel.errors.NetworkTimeoutException};
+ *   <li>a non-2xx status: the {@link ApiException} subclass for that status;
+ *   <li>a body that is not a JSON object with a {@code token_endpoint}: {@link
+ *       SerializationException}.
+ * </ul>
+ */
 @SuppressFBWarnings("CT_CONSTRUCTOR_THROW")
 public class OpenId {
 
-    private final URL hostEndpoint;
-    private final URL tokenEndpoint;
+  private static final String WELL_KNOWN_PATH = "/.well-known/openid-configuration";
 
-    /**
-     * @param hostname the hostname of the OpenID provider.
-     */
-    public OpenId(String hostname) {
-        this(hostname, TransportOptions.defaults());
+  private final String hostEndpoint;
+  private final String wellKnownUrl;
+
+  @Nullable private volatile String tokenEndpoint;
+
+  /**
+   * Validates and normalises the host. A host without a scheme gets {@code https://}.
+   *
+   * @param host the Zitadel instance host name or URL.
+   * @throws IllegalArgumentException if the host is empty, uses a scheme other than http or https,
+   *     or is not a valid URL.
+   */
+  public OpenId(String host) {
+    this.hostEndpoint = normaliseHost(host);
+    URI uri = URI.create(hostEndpoint);
+    this.wellKnownUrl = uri.getScheme() + "://" + uri.getRawAuthority() + WELL_KNOWN_PATH;
+  }
+
+  @SuppressWarnings("HttpUrlsUsage")
+  private static String normaliseHost(@Nullable String host) {
+    String trimmed = host == null ? "" : host.trim();
+    if (trimmed.isEmpty()) {
+      throw new IllegalArgumentException("Host cannot be empty.");
     }
+    String lower = trimmed.toLowerCase(Locale.ROOT);
+    if (!lower.startsWith("http://") && !lower.startsWith("https://")) {
+      if (trimmed.contains("://")) {
+        throw new IllegalArgumentException("Host must use the http or https scheme: " + trimmed);
+      }
+      trimmed = "https://" + trimmed;
+    }
+    try {
+      URI uri = new URI(trimmed);
+      if (uri.getHost() == null || uri.getHost().isEmpty()) {
+        throw new IllegalArgumentException("Host is not a valid URL: " + trimmed);
+      }
+    } catch (URISyntaxException e) {
+      throw new IllegalArgumentException("Host is not a valid URL: " + trimmed, e);
+    }
+    return trimmed;
+  }
 
-    /**
-     * @param hostname         the hostname of the OpenID provider.
-     * @param transportOptions Optional transport options for TLS, proxy, and headers.
-     */
-    @SuppressFBWarnings("URLCONNECTION_SSRF_FD")
-    public OpenId(String hostname, TransportOptions transportOptions) {
-        TransportOptions opts = transportOptions != null ? transportOptions : TransportOptions.defaults();
-        HttpURLConnection connection = null;
-        try {
-            this.hostEndpoint = URLUtil.buildHostname(hostname);
-            URL wellKnownUrl = buildWellKnownUrl(hostname);
-            if (opts.getProxyUrl() != null) {
-                URL proxyParsed = new URL(opts.getProxyUrl());
-                String proxyHost = proxyParsed.getHost();
-                int proxyPort = proxyParsed.getPort() != -1 ? proxyParsed.getPort() : proxyParsed.getDefaultPort();
-                Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyHost, proxyPort));
-                connection = (HttpURLConnection) wellKnownUrl.openConnection(proxy);
-                if (proxyParsed.getUserInfo() != null) {
-                    String encoded = java.util.Base64.getEncoder()
-                        .encodeToString(proxyParsed.getUserInfo().getBytes(StandardCharsets.UTF_8));
-                    connection.setRequestProperty("Proxy-Authorization", "Basic " + encoded);
-                }
-            } else {
-                connection = (HttpURLConnection) wellKnownUrl.openConnection();
-            }
-            connection.setRequestMethod("GET");
+  /**
+   * Returns the normalised host endpoint.
+   *
+   * @return the host endpoint.
+   */
+  public String getHostEndpoint() {
+    return hostEndpoint;
+  }
 
-            if (connection instanceof HttpsURLConnection) {
-                HttpsURLConnection httpsConn = (HttpsURLConnection) connection;
-                SSLContext sslContext = opts.buildSSLContext();
-                if (sslContext != null) {
-                    httpsConn.setSSLSocketFactory(sslContext.getSocketFactory());
-                    if (opts.isInsecure()) {
-                        httpsConn.setHostnameVerifier((h, s) -> true);
-                    }
-                }
-            }
-
-            for (Map.Entry<String, String> entry : opts.getDefaultHeaders().entrySet()) {
-                connection.setRequestProperty(entry.getKey(), entry.getValue());
-            }
-
-            int status = connection.getResponseCode();
-            if (status != HttpURLConnection.HTTP_OK) {
-                throw new IOException("Failed to fetch OpenID configuration: HTTP " + status);
-            }
-
-            try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
-                StringBuilder responseBuilder = new StringBuilder();
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    responseBuilder.append(line);
-                }
-                JsonNode root = new ObjectMapper().readTree(responseBuilder.toString());
-                this.tokenEndpoint = new URL(root.path("token_endpoint").asText());
-            }
-        } catch (IOException | GeneralSecurityException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (connection != null) {
-                connection.disconnect();
-            }
+  /**
+   * Returns the OAuth2 token endpoint, fetching the discovery document through the given API client
+   * on first access and caching the result.
+   *
+   * @param apiClient the shared API client used for the discovery request.
+   * @return the token endpoint URL.
+   * @throws ApiException if discovery fails at the transport or HTTP level.
+   * @throws SerializationException if the discovery document is unusable.
+   */
+  public String getTokenEndpoint(ApiClient apiClient) {
+    String resolved = tokenEndpoint;
+    if (resolved == null) {
+      synchronized (this) {
+        resolved = tokenEndpoint;
+        if (resolved == null) {
+          resolved = discover(apiClient);
+          tokenEndpoint = resolved;
         }
+      }
     }
+    return resolved;
+  }
 
-
-    @SuppressWarnings("HttpUrlsUsage")
-    private static URL buildWellKnownUrl(String hostname) {
-        try {
-            if (!hostname.startsWith("http://") && !hostname.startsWith("https://")) {
-                hostname = "https://" + hostname;
-            }
-
-            URL base = new URL(hostname);
-            return new URL(base, "/.well-known/openid-configuration");
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
+  private String discover(ApiClient apiClient) {
+    ApiHttpResponse response =
+        apiClient.sendRequest(
+            "GET", wellKnownUrl, Collections.singletonMap("Accept", "application/json"), null);
+    int status = response.statusCode();
+    if (status < 200 || status >= 300) {
+      /* ApiException.fromResponse() owns the status-to-subclass table, so a
+       * failed discovery raises exactly the typed error a regular API call
+       * would for the same status. */
+      throw ApiException.fromResponse(status, response.headers(), response.body());
     }
-
-    public URL getHostEndpoint() {
-        return hostEndpoint;
+    JsonNode root;
+    try {
+      root = new ObjectMapper().readTree(response.body());
+    } catch (JsonProcessingException e) {
+      throw new SerializationException(
+          "OpenID configuration at " + wellKnownUrl + " is not a JSON object", e);
     }
-
-    public URL getTokenEndpoint() {
-        return tokenEndpoint;
+    if (root == null || !root.isObject()) {
+      throw new SerializationException(
+          "OpenID configuration at " + wellKnownUrl + " is not a JSON object");
     }
+    JsonNode endpoint = root.get("token_endpoint");
+    if (endpoint == null || !endpoint.isTextual() || endpoint.asText().isEmpty()) {
+      throw new SerializationException(
+          "OpenID configuration at " + wellKnownUrl + " has no valid token_endpoint");
+    }
+    return endpoint.asText();
+  }
 }
