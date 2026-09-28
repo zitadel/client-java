@@ -88,7 +88,7 @@ public final class TransportOptions {
    * Path to a custom CA certificate bundle for TLS verification.
    *
    * <p>When set together with {@code verifySsl=true}, the client trusts certificates signed by this
-   * CA in addition to (or instead of) the system trust store, depending on the language runtime.
+   * CA in addition to (or instead of) the system trust store.
    *
    * @return the file path, or {@code null} to use the system default
    */
@@ -193,6 +193,8 @@ public final class TransportOptions {
    *   <li>{@code verifySsl} — {@code true}
    *   <li>{@code followRedirects} — {@code true}
    *   <li>{@code injectRequestId} — {@code false}
+   *   <li>{@code timeout} — {@code 10000} (10 seconds)
+   *   <li>{@code userAgent} — a package-specific default string
    *   <li>All other fields — {@code null} or empty
    * </ul>
    */

@@ -57,6 +57,21 @@ public final class ObjectSerializer {
    */
   public static final int MAX_JSON_DEPTH = 1000;
 
+  /**
+   * Canonical wire format for {@code format: date-time} values: a fixed three-digit millisecond
+   * fraction and a numeric offset (rendering a zero offset as {@code +00:00}, never the {@code Z}
+   * designator). All twelve SDKs emit this exact shape so a value serialises to identical bytes in
+   * every language.
+   *
+   * <p>Three digits — not a variable 0/3/6/9 fraction — because millisecond precision is the
+   * cross-SDK common denominator (PHP's and Ruby's date types cannot carry more), so any
+   * sub-millisecond component is truncated on encode. The {@code xxx} pattern is what forbids the
+   * {@code Z} form: {@code ISO_OFFSET_DATE_TIME}, used previously, emitted {@code Z} for UTC and
+   * diverged from the other eleven SDKs.
+   */
+  private static final DateTimeFormatter DATE_TIME_FORMATTER =
+      DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSxxx");
+
   private final ObjectMapper objectMapper;
 
   /** Creates a new ObjectSerializer with default configuration. */
@@ -158,13 +173,12 @@ public final class ObjectSerializer {
       return DateTimeFormatter.ISO_LOCAL_DATE_TIME.format(ldt);
     }
     if (value instanceof TemporalAccessor t) {
-      /* ISO_OFFSET_DATE_TIME preserves any sub-second fraction (e.g. the
-      .123 milliseconds of 2020-01-02T03:04:05.123Z) and emits the
-      UTC designator as "Z". The decoder (JavaTimeModule) accepts the
-      fraction, so the encoder must emit it too — a fixed-pattern
-      formatter without a fractional field would silently truncate to
-      whole seconds, an asymmetric lossy round-trip. */
-      return DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(t);
+      /* format:date-time is emitted as YYYY-MM-DDTHH:mm:ss.SSS±HH:MM: a
+      fixed three-digit millisecond fraction and a numeric offset,
+      rendering a zero offset as "+00:00" rather than "Z". This is the
+      canonical shape shared by all twelve SDKs; the "xxx" pattern
+      never emits the "Z" designator. */
+      return DATE_TIME_FORMATTER.format(t);
     }
     if (value instanceof Date d) {
       return new StdDateFormat().withColonInTimeZone(true).format(d);

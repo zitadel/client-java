@@ -17,7 +17,10 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-/** Selects {@code Accept} and {@code Content-Type} headers for API requests. */
+/**
+ * Selects {@code Accept} and {@code Content-Type} headers for API requests based on the MIME types
+ * declared in the OpenAPI specification.
+ */
 final class HeaderSelector {
 
   /** Creates a new header selector. */

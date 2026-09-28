@@ -12,11 +12,12 @@ package com.zitadel.errors;
 import javax.annotation.Nullable;
 
 /**
- * Typed representation of an RFC 6749 §5.2 OAuth2 error response. The {@code code} field carries
- * the OAuth2 error code (e.g. {@code invalid_grant}, {@code invalid_client}); {@code description}
- * and {@code uri} are the optional human-readable description and a URL to a page describing the
- * error. {@code rawBody} preserves the original response payload for diagnostics when the body is
- * not a well-formed OAuth2 error object.
+ * Thrown when the OAuth2 token endpoint answers with a non-2xx status, including a 3xx redirect,
+ * which the token POST never follows. Typed representation of an RFC 6749 §5.2 OAuth2 error
+ * response. The {@code code} field carries the OAuth2 error code (e.g. {@code invalid_grant},
+ * {@code invalid_client}); {@code description} and {@code uri} are the optional human-readable
+ * description and a URL to a page describing the error. {@code rawBody} preserves the original
+ * response payload for diagnostics when the body is not a well-formed OAuth2 error object.
  */
 @SuppressWarnings("checkstyle:AbbreviationAsWordInName")
 public class OAuth2ServerException extends ZitadelException {

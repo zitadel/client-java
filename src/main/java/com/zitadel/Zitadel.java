@@ -164,7 +164,7 @@ public final class Zitadel {
   /**
    * Creates a new client with the given authenticator and default transport settings.
    *
-   * @param authenticator provides host URL and auth credentials
+   * @param authenticator provides host URL and auth headers
    * @throws IllegalArgumentException if the transport cannot be configured (never thrown for
    *     default transport, which configures no custom CA certificate)
    */
@@ -179,7 +179,7 @@ public final class Zitadel {
    * is injected so that token exchange and discovery requests use the same proxy, TLS, and timeout
    * settings.
    *
-   * @param authenticator provides host URL and auth credentials
+   * @param authenticator provides host URL and auth headers
    * @param transportOptions HTTP transport configuration (proxy, TLS, timeouts, etc.)
    * @throws IllegalArgumentException if a configured custom CA certificate cannot be read or parsed
    */
@@ -226,7 +226,7 @@ public final class Zitadel {
   }
 
   /**
-   * Creates a client authenticated with a static Bearer token and default transport.
+   * Creates a client authenticated with a static Bearer token.
    *
    * @param host API base URL
    * @param accessToken Bearer token
@@ -244,7 +244,7 @@ public final class Zitadel {
   }
 
   /**
-   * Creates a client authenticated with a static Bearer token and default transport.
+   * Creates a client authenticated with a static Bearer token.
    *
    * @param host API base URL
    * @param accessToken Bearer token
@@ -258,11 +258,12 @@ public final class Zitadel {
   /**
    * Creates a client from any {@link Authenticator} implementation with default transport.
    *
-   * <p>This is the generic entry point for bespoke authenticators (client credentials, JWT private
-   * key, personal access token, etc.): construct the authenticator and pass it here, e.g. {@code
-   * Zitadel.withAuthenticator(new ClientCredentialsAuthenticator(host, id, secret))}.
+   * <p>This is the generic entry point for bespoke authentication strategies such as OAuth2 client
+   * credentials, JWT private-key (service account), or a personal access token (PAT). Supply any
+   * {@link Authenticator} implementation; if it also implements {@link HttpAwareAuthenticator}, the
+   * shared {@link ApiClient} is injected so its HTTP calls reuse the same transport configuration.
    *
-   * @param authenticator provides host URL and auth credentials
+   * @param authenticator provides host URL and auth headers
    * @return configured client instance
    * @throws IllegalArgumentException if a configured custom CA certificate cannot be read or parsed
    */
@@ -273,7 +274,7 @@ public final class Zitadel {
   /**
    * Creates a client from any {@link Authenticator} implementation with the given transport.
    *
-   * @param authenticator provides host URL and auth credentials
+   * @param authenticator provides host URL and auth headers
    * @param transportOptions HTTP transport configuration (proxy, TLS, timeouts, etc.)
    * @return configured client instance
    * @throws IllegalArgumentException if a configured custom CA certificate cannot be read or parsed

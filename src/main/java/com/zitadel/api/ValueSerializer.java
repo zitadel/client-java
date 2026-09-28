@@ -23,9 +23,9 @@ import javax.annotation.Nullable;
 /**
  * Serializes parameter values for HTTP requests based on their location and format.
  *
- * <p>This utility class converts Java objects into their string representations suitable for
- * inclusion in HTTP request paths, query strings, and headers. It handles null values, collections
- * with various collection formats, temporal types, and URL encoding.
+ * <p>Converts values into their string representations suitable for HTTP request paths, query
+ * strings, and headers. Handles null values, collections with various collection formats, and URL
+ * encoding.
  */
 final class ValueSerializer {
 
@@ -140,7 +140,8 @@ final class ValueSerializer {
 
   /**
    * Wraps a query value so the query-string builder preserves RFC 3986 reserved characters (OAS
-   * {@code allowReserved: true}).
+   * {@code allowReserved: true}) instead of percent-encoding them. Produced by {@link
+   * #maybeAllowReserved} and unwrapped when the query string is assembled.
    *
    * @param value the serialized query value (a {@link String} or a {@link List} of strings for
    *     exploded parameters)
@@ -203,30 +204,6 @@ final class ValueSerializer {
   }
 
   /**
-   * Serialize a deepObject-style query parameter.
-   *
-   * <p>Produces a map of flattened keys in the form {@code paramName[key]} to URL-encoded string
-   * values, suitable for inclusion in a query string.
-   *
-   * @param paramName the parameter name (e.g. "filter")
-   * @param value the map value to serialize
-   * @return a map of expanded keys to serialized values, or an empty map if value is null
-   */
-  public static Map<String, String> serializeDeepObject(
-      String paramName, @Nullable Map<?, ?> value) {
-    Map<String, String> result = new LinkedHashMap<>();
-    if (value == null) {
-      return result;
-    }
-    for (Map.Entry<?, ?> entry : value.entrySet()) {
-      String key = paramName + "[" + entry.getKey() + "]";
-      String val = ObjectSerializer.stringify(entry.getValue());
-      result.put(key, val);
-    }
-    return result;
-  }
-
-  /**
    * Serialize a value with OAS 3.0 parameter style formatting.
    *
    * <p>Handles matrix, label, simple, form, spaceDelimited, and pipeDelimited styles. deepObject is
@@ -255,7 +232,7 @@ final class ValueSerializer {
      * empty string would silently produce a malformed URL like
      * `/resource//details`, which most servers route to 404 instead of
      * surfacing the bug at the call site. The required-non-null check
-     * lives in the operation method; here we just catch the empty-string
+     * lives in the operation method; here we catch the empty-string
      * case that slips through it. */
     if ("path".equals(location) && value instanceof String stringValue && stringValue.isEmpty()) {
       throw new IllegalArgumentException("Path parameter '" + paramName + "' must not be empty");
@@ -326,5 +303,30 @@ final class ValueSerializer {
       return col.stream().map(ObjectSerializer::stringify).collect(Collectors.toList());
     }
     return List.of(ObjectSerializer.stringify(value));
+  }
+
+  /**
+   * Serialize a deepObject-style query parameter.
+   *
+   * <p>Produces a map of flattened keys in the form {@code paramName[key]} to stringified values,
+   * suitable for inclusion in a query string. The values are not percent-encoded here; the
+   * query-string builder encodes them.
+   *
+   * @param paramName the parameter name (e.g. "filter")
+   * @param value the map value to serialize
+   * @return a map of expanded keys to serialized values, or an empty map if value is null
+   */
+  public static Map<String, String> serializeDeepObject(
+      String paramName, @Nullable Map<?, ?> value) {
+    Map<String, String> result = new LinkedHashMap<>();
+    if (value == null) {
+      return result;
+    }
+    for (Map.Entry<?, ?> entry : value.entrySet()) {
+      String key = paramName + "[" + entry.getKey() + "]";
+      String val = ObjectSerializer.stringify(entry.getValue());
+      result.put(key, val);
+    }
+    return result;
   }
 }
